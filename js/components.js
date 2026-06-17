@@ -58,7 +58,7 @@ const Composants = (function () {
     const annee = new Date().getFullYear();
     return (
       '<div class="conteneur pied-contenu">' +
-      "  <span>© " + annee + " Alexandre Massie Godon — iAlexMG.</span> " +
+      "  <span>© " + annee + " iAlexMG.</span> " +
       '  <span data-i18n="pied.droits"></span>' +
       "</div>"
     );

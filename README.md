@@ -1,6 +1,6 @@
 # iAlexMG — Site portfolio
 
-Site portfolio personnel d'**Alexandre Massie Godon** (*iAlexMG*).
+Site portfolio personnel **iAlexMG**.
 Site **statique** (HTML / CSS / JavaScript pur), sans framework ni étape de build,
 prêt pour **GitHub Pages**. Bilingue **FR / EN**, responsive (mobile-first).
 
@@ -163,4 +163,4 @@ Le code est commenté et modulaire pour faciliter ces ajouts :
 
 ---
 
-© Alexandre Massie Godon — iAlexMG.
+© iAlexMG.

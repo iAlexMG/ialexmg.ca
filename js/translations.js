@@ -42,8 +42,9 @@ const TRADUCTIONS = {
     "domaine.ml.court": "ML & DL",
 
     // Accueil
-    "accueil.titre": "Alexandre Massie Godon",
-    "accueil.sous_titre": "iAlexMG — Data, modèles et marchés",
+    "accueil.construction": "🚧 Site en construction — le contenu arrive bientôt.",
+    "accueil.titre": "iAlexMG",
+    "accueil.sous_titre": "Data, modèles et marchés",
     "accueil.intro": "Bienvenue. Je conçois des projets autour de l'apprentissage automatique, des statistiques et des marchés financiers. Explorez mes portfolios par domaine.",
     "accueil.portfolios_titre": "Mes portfolios",
     "accueil.voir_portfolio": "Voir le portfolio",
@@ -69,7 +70,7 @@ const TRADUCTIONS = {
 
     // À propos
     "apropos.titre": "À propos",
-    "apropos.p1": "Je suis Alexandre Massie Godon, aussi connu sous le nom iAlexMG. Je travaille à l'intersection de la science des données, des statistiques et des marchés financiers.",
+    "apropos.p1": "Je travaille sous le nom iAlexMG, à l'intersection de la science des données, des statistiques et des marchés financiers.",
     "apropos.p2": "Ce site rassemble mes projets en machine learning et deep learning, en statistiques, en crypto, ainsi que mes développements pour la plateforme Quantower.",
     "apropos.p3": "Mon approche : des méthodes rigoureuses, des résultats mesurables et des outils réutilisables.",
 
@@ -104,8 +105,9 @@ const TRADUCTIONS = {
     "domaine.ml.court": "ML & DL",
 
     // Home
-    "accueil.titre": "Alexandre Massie Godon",
-    "accueil.sous_titre": "iAlexMG — Data, models and markets",
+    "accueil.construction": "🚧 Site under construction — content coming soon.",
+    "accueil.titre": "iAlexMG",
+    "accueil.sous_titre": "Data, models and markets",
     "accueil.intro": "Welcome. I build projects around machine learning, statistics and financial markets. Explore my portfolios by domain.",
     "accueil.portfolios_titre": "My portfolios",
     "accueil.voir_portfolio": "View portfolio",
@@ -131,7 +133,7 @@ const TRADUCTIONS = {
 
     // About
     "apropos.titre": "About",
-    "apropos.p1": "I am Alexandre Massie Godon, also known as iAlexMG. I work at the intersection of data science, statistics and financial markets.",
+    "apropos.p1": "I work under the name iAlexMG, at the intersection of data science, statistics and financial markets.",
     "apropos.p2": "This site brings together my projects in machine learning and deep learning, statistics, crypto, as well as my developments for the Quantower platform.",
     "apropos.p3": "My approach: rigorous methods, measurable results and reusable tools.",
 

@@ -183,6 +183,19 @@ img { max-width: 100%; display: block; }
   max-width: 60ch;
 }
 
+/* ----- Bannière « en construction » (accueil) ----- */
+.construction-banniere {
+  display: inline-block;
+  margin: 0 auto 1.5rem;
+  padding: 0.55rem 1.1rem;
+  background: #fbf3e2;            /* jaune doux */
+  color: #8a6d3b;
+  border: 1px solid #efe0bf;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
 /* ----- Section d'accueil (hero) ----- */
 .hero {
   padding: 4.5rem 0 3rem;
