@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--
+  index.html — Page d'accueil
+  Présente Alexandre Massie Godon (iAlexMG) et donne accès aux portfolios.
+  Les textes sont gérés via data-i18n (voir js/translations.js).
+-->
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iAlexMG — Alexandre Massie Godon</title>
+  <meta name="description" content="Portfolio d'Alexandre Massie Godon (iAlexMG) : Machine Learning, Statistiques, Crypto et Quantower.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<!-- data-page : indique l'onglet actif dans la navigation -->
+<body data-page="accueil">
+  <header class="entete" id="entete"></header>
+
+  <main>
+    <!-- Section d'accueil -->
+    <section class="hero">
+      <div class="conteneur">
+        <p class="sous-titre" data-i18n="accueil.sous_titre"></p>
+        <h1 data-i18n="accueil.titre"></h1>
+        <p class="intro" data-i18n="accueil.intro"></p>
+        <a class="bouton" href="galerie.html" data-i18n="accueil.cta_galerie"></a>
+      </div>
+    </section>
+
+    <!-- Grille des portfolios par domaine -->
+    <section class="section section-doux">
+      <div class="conteneur">
+        <h2 data-i18n="accueil.portfolios_titre"></h2>
+        <div class="grille-portfolios">
+
+          <a class="carte-portfolio" href="ml.html">
+            <h3 data-i18n="domaine.ml"></h3>
+            <p data-i18n="accueil.ml.desc"></p>
+            <span class="fleche" data-i18n="accueil.voir_portfolio"></span> →
+          </a>
+
+          <a class="carte-portfolio" href="statistiques.html">
+            <h3 data-i18n="domaine.statistiques"></h3>
+            <p data-i18n="accueil.statistiques.desc"></p>
+            <span class="fleche" data-i18n="accueil.voir_portfolio"></span> →
+          </a>
+
+          <a class="carte-portfolio" href="crypto.html">
+            <h3 data-i18n="domaine.crypto"></h3>
+            <p data-i18n="accueil.crypto.desc"></p>
+            <span class="fleche" data-i18n="accueil.voir_portfolio"></span> →
+          </a>
+
+          <a class="carte-portfolio" href="quantower.html">
+            <h3 data-i18n="domaine.quantower"></h3>
+            <p data-i18n="accueil.quantower.desc"></p>
+            <span class="fleche" data-i18n="accueil.voir_portfolio"></span> →
+          </a>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pied" id="pied"></footer>
+
+  <!-- Scripts : ordre important (traductions -> moteur i18n -> composants -> galerie -> init) -->
+  <script src="js/translations.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

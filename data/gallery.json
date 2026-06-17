@@ -1,0 +1,113 @@
+{
+  "_commentaire": "Fichier de contenu de la galerie. Ajoutez/modifiez des entrées ici sans toucher au HTML. Chaque entrée suit le schéma documenté dans le README.",
+  "items": [
+    {
+      "id": "ml-1",
+      "type": "video",
+      "domaine": "ml",
+      "url": "https://www.youtube.com/watch?v=aircAruvnKk",
+      "miniature": "",
+      "titre": { "fr": "Réseaux de neurones expliqués", "en": "Neural Networks Explained" },
+      "description": {
+        "fr": "Visualisation d'un réseau de neurones simple appliqué à la reconnaissance de chiffres.",
+        "en": "Visualization of a simple neural network applied to digit recognition."
+      }
+    },
+    {
+      "id": "ml-2",
+      "type": "image",
+      "domaine": "ml",
+      "url": "https://picsum.photos/seed/ialexmg-ml2/800/600",
+      "miniature": "https://picsum.photos/seed/ialexmg-ml2/400/300",
+      "titre": { "fr": "Matrice de confusion", "en": "Confusion Matrix" },
+      "description": {
+        "fr": "Résultats d'un classifieur d'images entraîné sur un jeu de données personnalisé.",
+        "en": "Results of an image classifier trained on a custom dataset."
+      }
+    },
+    {
+      "id": "ml-3",
+      "type": "image",
+      "domaine": "ml",
+      "url": "https://picsum.photos/seed/ialexmg-ml3/800/600",
+      "miniature": "https://picsum.photos/seed/ialexmg-ml3/400/300",
+      "titre": { "fr": "Courbe d'apprentissage", "en": "Learning Curve" },
+      "description": {
+        "fr": "Évolution de la perte (loss) et de la précision au fil des époques.",
+        "en": "Evolution of loss and accuracy across training epochs."
+      }
+    },
+    {
+      "id": "stats-1",
+      "type": "image",
+      "domaine": "statistiques",
+      "url": "https://picsum.photos/seed/ialexmg-stats1/800/600",
+      "miniature": "https://picsum.photos/seed/ialexmg-stats1/400/300",
+      "titre": { "fr": "Distribution normale", "en": "Normal Distribution" },
+      "description": {
+        "fr": "Analyse de la distribution d'un échantillon et test de normalité.",
+        "en": "Sample distribution analysis and normality test."
+      }
+    },
+    {
+      "id": "stats-2",
+      "type": "video",
+      "domaine": "statistiques",
+      "url": "https://www.youtube.com/watch?v=fDek6cYijxI",
+      "miniature": "",
+      "titre": { "fr": "Régression linéaire pas à pas", "en": "Linear Regression Step by Step" },
+      "description": {
+        "fr": "Construction d'un modèle de régression et interprétation des coefficients.",
+        "en": "Building a regression model and interpreting coefficients."
+      }
+    },
+    {
+      "id": "crypto-1",
+      "type": "image",
+      "domaine": "crypto",
+      "url": "https://picsum.photos/seed/ialexmg-crypto1/800/600",
+      "miniature": "https://picsum.photos/seed/ialexmg-crypto1/400/300",
+      "titre": { "fr": "Backtest de stratégie", "en": "Strategy Backtest" },
+      "description": {
+        "fr": "Résultats d'un backtest d'une stratégie de trading automatisée.",
+        "en": "Results of an automated trading strategy backtest."
+      }
+    },
+    {
+      "id": "crypto-2",
+      "type": "image",
+      "domaine": "crypto",
+      "url": "https://picsum.photos/seed/ialexmg-crypto2/800/600",
+      "miniature": "https://picsum.photos/seed/ialexmg-crypto2/400/300",
+      "titre": { "fr": "Carte de chaleur des corrélations", "en": "Correlation Heatmap" },
+      "description": {
+        "fr": "Corrélations entre plusieurs actifs crypto sur une période donnée.",
+        "en": "Correlations between several crypto assets over a given period."
+      }
+    },
+    {
+      "id": "quantower-1",
+      "type": "image",
+      "domaine": "quantower",
+      "url": "https://picsum.photos/seed/ialexmg-qt1/800/600",
+      "miniature": "https://picsum.photos/seed/ialexmg-qt1/400/300",
+      "titre": { "fr": "Tableau de bord Quantower", "en": "Quantower Dashboard" },
+      "description": {
+        "fr": "Espace de travail personnalisé avec indicateurs et graphiques.",
+        "en": "Custom workspace with indicators and charts."
+      }
+    },
+    {
+      "id": "quantower-2",
+      "type": "video",
+      "domaine": "quantower",
+      "url": "https://www.youtube.com/watch?v=aqz-KE-bpKQ",
+      "miniature": "",
+      "titre": { "fr": "Indicateur personnalisé", "en": "Custom Indicator" },
+      "description": {
+        "fr": "Démonstration d'un indicateur développé pour Quantower.",
+        "en": "Demonstration of an indicator built for Quantower."
+      }
+    }
+  ]
+}
