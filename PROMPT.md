@@ -7,12 +7,11 @@ Crée un site portfolio personnel statique pour GitHub Pages.
 - Responsive (mobile, tablette, desktop) par défaut, approche mobile-first.
 
 ## Identité
-- Personne : Alexandre Massie Godon
 - Nom professionnel / marque : iAlexMG
 - Le site présente plusieurs portfolios par domaine : Machine Learning & Deep Learning, Statistiques, Crypto, Quantower.
 
 ## Structure des pages
-- Accueil : présentation d'Alexandre Massie Godon (iAlexMG) + accès aux différents portfolios par domaine.
+- Accueil : présentation de la marque iAlexMG + accès aux différents portfolios par domaine.
 - Galerie : affichage d'images et de vidéos (vidéos hébergées sur YouTube, intégrées via embed). Prévoir la possibilité de filtrer par domaine plus tard.
 - À propos.
 - Contact.
