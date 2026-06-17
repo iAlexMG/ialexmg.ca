@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+  galerie.html — Galerie complète (tous domaines)
+  Le conteneur [data-galerie] est rempli dynamiquement par js/gallery.js
+  à partir de data/gallery.json.
+-->
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galerie — iAlexMG</title>
+  <meta name="description" content="Galerie d'images et de vidéos des projets d'iAlexMG.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="galerie">
+  <header class="entete" id="entete"></header>
+
+  <main>
+    <section class="entete-page">
+      <div class="conteneur">
+        <h1 data-i18n="galerie.titre"></h1>
+        <p class="accroche" data-i18n="galerie.intro"></p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0;">
+      <div class="conteneur">
+        <!-- Galerie complète : aucun data-domaine -> tous les domaines -->
+        <div class="galerie" data-galerie></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pied" id="pied"></footer>
+
+  <script src="js/translations.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,428 @@
+/*
+ * styles.css
+ * --------------------------------------------------------------------------
+ * Feuille de style unique du site iAlexMG.
+ * Approche mobile-first : les règles de base ciblent le mobile, les media
+ * queries enrichissent pour tablette/desktop.
+ *
+ * Palette neutre et douce, beaucoup d'espace blanc, contrastes doux,
+ * transitions discrètes. Toutes les couleurs sont centralisées dans
+ * des variables CSS (:root) pour ajuster le thème facilement.
+ * --------------------------------------------------------------------------
+ */
+
+/* ----- Variables de thème ----- */
+:root {
+  --couleur-fond: #faf9f7;          /* fond général, blanc cassé */
+  --couleur-surface: #ffffff;       /* cartes, en-tête */
+  --couleur-surface-alt: #f1efea;   /* zones douces */
+  --couleur-texte: #2c2a27;         /* texte principal, gris très foncé */
+  --couleur-texte-doux: #6f6a63;    /* texte secondaire */
+  --couleur-bordure: #e6e2db;       /* bordures discrètes */
+  --couleur-accent: #8a7d6b;        /* accent terreux et sobre */
+  --couleur-accent-clair: #b7ad9d;
+  --couleur-lien: #5d6f7a;          /* bleu-gris doux pour les liens */
+
+  --rayon: 12px;                    /* arrondis */
+  --ombre: 0 1px 3px rgba(40, 38, 34, 0.06), 0 6px 24px rgba(40, 38, 34, 0.05);
+  --transition: 180ms ease;
+  --largeur-max: 1100px;
+  --espace: 1rem;
+}
+
+/* ----- Réinitialisation légère ----- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+  color: var(--couleur-texte);
+  background: var(--couleur-fond);
+  line-height: 1.65;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.5em;
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.15rem; }
+
+p { margin: 0 0 1rem; }
+
+a {
+  color: var(--couleur-lien);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+a:hover { color: var(--couleur-accent); }
+
+img { max-width: 100%; display: block; }
+
+/* ----- Conteneur centré ----- */
+.conteneur {
+  width: 100%;
+  max-width: var(--largeur-max);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* ----- En-tête / navigation ----- */
+.entete {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: saturate(140%) blur(8px);
+  border-bottom: 1px solid var(--couleur-bordure);
+}
+
+.entete-contenu {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: 64px;
+  flex-wrap: wrap;
+}
+
+.marque {
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  color: var(--couleur-texte);
+}
+.marque:hover { color: var(--couleur-accent); }
+
+.navigation {
+  flex: 1 1 100%;
+  order: 3;
+  display: none; /* masqué par défaut sur mobile ; ouvert via .ouverte */
+}
+.navigation.ouverte { display: block; }
+
+.navigation ul {
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.navigation a {
+  display: block;
+  padding: 0.55rem 0.25rem;
+  color: var(--couleur-texte-doux);
+  font-size: 0.95rem;
+  border-radius: 8px;
+  transition: color var(--transition), background var(--transition);
+}
+.navigation a:hover { color: var(--couleur-texte); }
+.navigation a.actif {
+  color: var(--couleur-texte);
+  font-weight: 600;
+}
+
+/* Bouton menu (mobile) */
+.menu-bascule {
+  order: 2;
+  margin-left: auto;
+  background: transparent;
+  border: 1px solid var(--couleur-bordure);
+  border-radius: 8px;
+  font-size: 1.1rem;
+  padding: 0.35rem 0.6rem;
+  cursor: pointer;
+  color: var(--couleur-texte);
+  transition: background var(--transition);
+}
+.menu-bascule:hover { background: var(--couleur-surface-alt); }
+
+/* Sélecteur de langue */
+.langue-bascule {
+  order: 4;
+  background: var(--couleur-surface-alt);
+  border: 1px solid var(--couleur-bordure);
+  border-radius: 999px;
+  padding: 0.35rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  color: var(--couleur-texte);
+  transition: background var(--transition), border-color var(--transition);
+}
+.langue-bascule:hover {
+  background: #fff;
+  border-color: var(--couleur-accent-clair);
+}
+
+/* ----- Sections génériques ----- */
+.section { padding: 3rem 0; }
+.section-doux { background: var(--couleur-surface-alt); }
+
+.entete-page {
+  padding: 3rem 0 1.5rem;
+}
+.entete-page .accroche {
+  color: var(--couleur-texte-doux);
+  max-width: 60ch;
+}
+
+/* ----- Section d'accueil (hero) ----- */
+.hero {
+  padding: 4.5rem 0 3rem;
+  text-align: center;
+}
+.hero h1 { font-size: 2.5rem; }
+.hero .sous-titre {
+  color: var(--couleur-accent);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.hero .intro {
+  color: var(--couleur-texte-doux);
+  max-width: 60ch;
+  margin: 0 auto 1.75rem;
+}
+
+/* ----- Boutons ----- */
+.bouton {
+  display: inline-block;
+  background: var(--couleur-accent);
+  color: #fff;
+  padding: 0.7rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background var(--transition), transform var(--transition);
+}
+.bouton:hover {
+  background: #756a59;
+  color: #fff;
+  transform: translateY(-1px);
+}
+.bouton-secondaire {
+  background: transparent;
+  color: var(--couleur-texte);
+  border: 1px solid var(--couleur-bordure);
+}
+.bouton-secondaire:hover {
+  background: var(--couleur-surface);
+  color: var(--couleur-texte);
+}
+
+/* ----- Grille de portfolios (accueil) ----- */
+.grille-portfolios {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.carte-portfolio {
+  display: block;
+  background: var(--couleur-surface);
+  border: 1px solid var(--couleur-bordure);
+  border-radius: var(--rayon);
+  padding: 1.5rem;
+  color: var(--couleur-texte);
+  box-shadow: var(--ombre);
+  transition: transform var(--transition), border-color var(--transition);
+}
+.carte-portfolio:hover {
+  transform: translateY(-3px);
+  border-color: var(--couleur-accent-clair);
+  color: var(--couleur-texte);
+}
+.carte-portfolio h3 { color: var(--couleur-texte); }
+.carte-portfolio p { color: var(--couleur-texte-doux); margin-bottom: 0.75rem; }
+.carte-portfolio .fleche {
+  color: var(--couleur-accent);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* ----- Grille de galerie ----- */
+.galerie {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.galerie-message {
+  color: var(--couleur-texte-doux);
+  text-align: center;
+  padding: 2rem 0;
+}
+.galerie-message.erreur { color: #a5564f; }
+
+.carte {
+  background: var(--couleur-surface);
+  border: 1px solid var(--couleur-bordure);
+  border-radius: var(--rayon);
+  overflow: hidden;
+  box-shadow: var(--ombre);
+  transition: transform var(--transition);
+}
+.carte:hover { transform: translateY(-3px); }
+
+/* Cadre média en ratio 16:9 (images et iframes vidéo) */
+.media-cadre {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  background: var(--couleur-surface-alt);
+}
+.media-cadre iframe,
+.media-cadre img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 0;
+}
+.media-cadre img { cursor: zoom-in; } /* indice visuel pour future lightbox */
+.media-erreur {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--couleur-texte-doux);
+  font-size: 0.9rem;
+}
+
+.carte-corps { padding: 1.1rem 1.25rem 1.35rem; }
+.carte-titre { margin-bottom: 0.35rem; }
+.carte-desc {
+  color: var(--couleur-texte-doux);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  color: var(--couleur-accent);
+  background: var(--couleur-surface-alt);
+  border-radius: 999px;
+  padding: 0.15rem 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+/* ----- Contenu textuel (à propos, contact) ----- */
+.prose { max-width: 65ch; }
+.prose p { color: var(--couleur-texte); }
+
+.liste-contact {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0;
+  display: grid;
+  gap: 0.75rem;
+}
+.liste-contact li {
+  background: var(--couleur-surface);
+  border: 1px solid var(--couleur-bordure);
+  border-radius: var(--rayon);
+  padding: 1rem 1.25rem;
+}
+.liste-contact .etiquette {
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--couleur-texte-doux);
+  margin-bottom: 0.2rem;
+}
+
+/* ----- Pied de page ----- */
+.pied {
+  border-top: 1px solid var(--couleur-bordure);
+  margin-top: 3rem;
+  padding: 2rem 0;
+  background: var(--couleur-surface);
+}
+.pied-contenu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  justify-content: center;
+  text-align: center;
+  color: var(--couleur-texte-doux);
+  font-size: 0.9rem;
+}
+
+/* ----- Accessibilité : focus visible ----- */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--couleur-lien);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* --------------------------------------------------------------------------
+ * Tablette (≥ 640px)
+ * ------------------------------------------------------------------------ */
+@media (min-width: 640px) {
+  .grille-portfolios { grid-template-columns: repeat(2, 1fr); }
+  .galerie { grid-template-columns: repeat(2, 1fr); }
+  h1 { font-size: 2.25rem; }
+  .hero h1 { font-size: 3rem; }
+}
+
+/* --------------------------------------------------------------------------
+ * Desktop (≥ 880px) : la navigation passe en barre horizontale.
+ * ------------------------------------------------------------------------ */
+@media (min-width: 880px) {
+  .menu-bascule { display: none; }
+
+  .navigation {
+    flex: 0 1 auto;
+    order: 2;
+    display: block;
+    margin-left: auto;
+  }
+  .navigation ul {
+    flex-direction: row;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 0;
+  }
+  .navigation a { padding: 0.4rem 0; }
+
+  .langue-bascule { order: 3; margin-left: 1.25rem; }
+
+  .galerie { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* --------------------------------------------------------------------------
+ * Respect de la préférence "réduire les animations".
+ * ------------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

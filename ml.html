@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--
+  ml.html — Portfolio : Machine Learning & Deep Learning
+  La galerie est filtrée via data-domaine="ml".
+  Pour créer une nouvelle page de domaine, dupliquez ce fichier et changez :
+    - <body data-page="...">
+    - le data-i18n du <h1>
+    - data-domaine="..." du conteneur galerie
+  (voir le README, section « Ajouter une page de domaine »).
+-->
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Machine Learning & Deep Learning — iAlexMG</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="ml">
+  <header class="entete" id="entete"></header>
+
+  <main>
+    <section class="entete-page">
+      <div class="conteneur">
+        <h1 data-i18n="domaine.ml"></h1>
+        <p class="accroche" data-i18n="domaine.intro"></p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0;">
+      <div class="conteneur">
+        <div class="galerie" data-galerie data-domaine="ml"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pied" id="pied"></footer>
+
+  <script src="js/translations.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
