@@ -58,7 +58,7 @@ const TRADUCTIONS = {
     // Galerie
     "galerie.titre": "Galerie",
     "galerie.intro": "Une sélection d'images et de vidéos issues de mes projets.",
-    "galerie.vide": "Aucun contenu pour le moment.",
+    "galerie.vide": "🚧 Section en construction — du contenu sera ajouté prochainement.",
     "galerie.chargement": "Chargement du contenu…",
     "galerie.erreur": "Impossible de charger le contenu de la galerie.",
     "galerie.badge_video": "Vidéo",
@@ -120,7 +120,7 @@ const TRADUCTIONS = {
     // Gallery
     "galerie.titre": "Gallery",
     "galerie.intro": "A selection of images and videos from my projects.",
-    "galerie.vide": "No content yet.",
+    "galerie.vide": "🚧 Section under construction — content coming soon.",
     "galerie.chargement": "Loading content…",
     "galerie.erreur": "Unable to load the gallery content.",
     "galerie.badge_video": "Video",

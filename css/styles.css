@@ -267,9 +267,14 @@ img { max-width: 100%; display: block; }
 }
 
 .galerie-message {
+  grid-column: 1 / -1; /* occupe toute la largeur de la grille */
   color: var(--couleur-texte-doux);
   text-align: center;
-  padding: 2rem 0;
+  padding: 3rem 1rem;
+  font-size: 1.05rem;
+  background: var(--couleur-surface);
+  border: 1px dashed var(--couleur-bordure);
+  border-radius: var(--rayon);
 }
 .galerie-message.erreur { color: #a5564f; }
 
