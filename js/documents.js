@@ -2,8 +2,8 @@
  * documents.js
  * --------------------------------------------------------------------------
  * Charge la liste des documents PDF depuis data/python-docs.json et génère
- * dynamiquement des cartes affichant chaque PDF (aperçu intégré + boutons
- * « Voir » / « Télécharger »). Utilisé par la page Documentation Python.
+ * dynamiquement des cartes affichant chaque PDF (aperçu intégré en lecture
+ * seule, barre d'outils masquée). Utilisé par la page Documentation Python.
  *
  * Point d'entrée :
  *   Documents.rendre({ conteneur })
@@ -64,16 +64,16 @@ const Documents = (function () {
       // Aperçu intégré du PDF (#view=FitH ajuste la largeur). loading="lazy"
       // évite de charger les PDF hors écran immédiatement.
       '<div class="doc-apercu">' +
-      '  <iframe src="' + url + '#view=FitH" title="' + echapper(titre) + '" loading="lazy"></iframe>' +
+      // Aperçu intégré en LECTURE SEULE.
+      // Paramètres après le # : toolbar=0 masque la barre d'outils (téléchargement,
+      // impression, « ouvrir dans Drive »), navpanes=0 masque le panneau latéral,
+      // view=FitH ajuste la largeur. (Pris en charge par Chrome/Edge ; voir note.)
+      '  <iframe src="' + url + '#toolbar=0&navpanes=0&view=FitH" title="' + echapper(titre) + '" loading="lazy"></iframe>' +
       "</div>" +
       '<div class="carte-corps">' +
       '  <span class="badge" data-i18n="documents.badge"></span>' +
       '  <h3 class="carte-titre">' + echapper(titre) + "</h3>" +
       '  <p class="carte-desc">' + echapper(description) + "</p>" +
-      '  <div class="doc-actions">' +
-      '    <a class="bouton" href="' + url + '" target="_blank" rel="noopener" data-i18n="documents.voir"></a>' +
-      // '    <a class="doc-lien" href="' + url + '" download data-i18n="documents.telecharger"></a>' +
-      "  </div>" +
       "</div>" +
       "</article>"
     );
