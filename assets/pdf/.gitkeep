@@ -1,0 +1,4 @@
+# Déposez ici les PDF de la formation Python (ex : 01-introduction.pdf).
+# Référencez-les ensuite dans data/python-docs.json via
+#   "fichier": "assets/pdf/01-introduction.pdf"
+# Ce fichier sert uniquement à conserver le dossier dans Git.

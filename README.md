@@ -18,6 +18,7 @@ iAlexMG.ca/
 ├── statistiques.html     # Portfolio : Statistiques
 ├── crypto.html           # Portfolio : Crypto
 ├── quantower.html        # Portfolio : Quantower
+├── python.html           # Documentation Python (affichage des PDF)
 ├── apropos.html          # À propos
 ├── contact.html          # Contact
 ├── CNAME                 # Domaine personnalisé GitHub Pages (ialexmg.ca)
@@ -28,10 +29,14 @@ iAlexMG.ca/
 │   ├── i18n.js           # Moteur de traduction (langue active, application, bascule)
 │   ├── components.js     # En-tête + navigation + pied de page communs
 │   ├── gallery.js        # Lecture du JSON et génération des galeries
+│   ├── documents.js      # Lecture du JSON et affichage des PDF (Documentation Python)
 │   └── main.js           # Initialisation commune de chaque page
 ├── data/
-│   └── gallery.json      # CONTENU de la galerie (images + vidéos) — éditable
-└── assets/               # Vos images locales
+│   ├── gallery.json      # CONTENU de la galerie (images + vidéos) — éditable
+│   └── python-docs.json  # CONTENU des PDF de la formation Python — éditable
+└── assets/
+    ├── (vos images locales)
+    └── pdf/              # Vos fichiers PDF (formation Python)
 ```
 
 ---

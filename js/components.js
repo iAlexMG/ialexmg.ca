@@ -27,6 +27,7 @@ const Composants = (function () {
     { href: "statistiques.html", page: "statistiques", i18n: "domaine.statistiques" },
     { href: "crypto.html", page: "crypto", i18n: "domaine.crypto" },
     { href: "quantower.html", page: "quantower", i18n: "domaine.quantower" },
+    { href: "python.html", page: "python", i18n: "nav.python" },
     { href: "apropos.html", page: "apropos", i18n: "nav.apropos" },
     { href: "contact.html", page: "contact", i18n: "nav.contact" },
   ];

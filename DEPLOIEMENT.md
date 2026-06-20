@@ -56,6 +56,36 @@ Tout le contenu vient de **`data/gallery.json`**. On n'édite **jamais** le HTML
 
 ---
 
+## 📄 Ajouter un PDF à la section « Documentation Python »
+
+Les PDF sont gérés par **`data/python-docs.json`** (on n'édite jamais le HTML).
+
+1. Dépose ton fichier PDF dans le dossier **`assets/pdf/`**
+   (ex : `assets/pdf/01-introduction.pdf`).
+2. Ouvre **`data/python-docs.json`** et ajoute une entrée dans la liste `items` :
+
+```json
+{
+  "id": "py-1",
+  "fichier": "assets/pdf/01-introduction.pdf",
+  "titre":       { "fr": "Introduction à Python", "en": "Introduction to Python" },
+  "description": { "fr": "Premier chapitre du cours.", "en": "First chapter of the course." }
+}
+```
+
+- `fichier` : chemin du PDF, **toujours** sous `assets/pdf/`.
+- `titre` / `description` : objets bilingues `{ "fr": "…", "en": "…" }`.
+
+3. Sauvegarde, puis fais la mise à jour Git (section « Mettre à jour le site »).
+
+> Tant que `items` est vide, la page affiche « Documents à venir ».
+> Dès qu'il y a au moins une entrée, les PDF s'affichent (aperçu + boutons
+> « Voir le PDF » / « Télécharger »).
+> ⚠️ Le nom du fichier dans `data/python-docs.json` doit correspondre
+> **exactement** (majuscules/minuscules comprises) au fichier déposé.
+
+---
+
 ## ✍️ Modifier un texte de l'interface (menus, titres, etc.)
 
 Les textes FR/EN sont dans **`js/translations.js`**. Modifie la valeur voulue

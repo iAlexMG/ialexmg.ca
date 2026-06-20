@@ -33,6 +33,7 @@ const TRADUCTIONS = {
     "nav.apropos": "À propos",
     "nav.contact": "Contact",
     "nav.portfolios": "Portfolios",
+    "nav.python": "Python",
 
     // Domaines
     "domaine.ml": "Machine Learning & Deep Learning",
@@ -55,6 +56,7 @@ const TRADUCTIONS = {
     "accueil.statistiques.desc": "Analyse de données, inférence et visualisation statistique.",
     "accueil.crypto.desc": "Stratégies, backtests et analyse de marchés crypto.",
     "accueil.quantower.desc": "Indicateurs et outils personnalisés pour le trading.",
+    "accueil.python.desc": "Supports de cours et documents PDF de la formation Python.",
 
     // Galerie
     "galerie.titre": "Galerie",
@@ -64,6 +66,16 @@ const TRADUCTIONS = {
     "galerie.erreur": "Impossible de charger le contenu de la galerie.",
     "galerie.badge_video": "Vidéo",
     "galerie.badge_image": "Image",
+
+    // Documentation Python
+    "domaine.python": "Documentation Python",
+    "python.intro": "Supports de cours et documents PDF de la formation Python.",
+    "documents.chargement": "Chargement des documents…",
+    "documents.vide": "🚧 Documents à venir — cette section est en construction.",
+    "documents.erreur": "Impossible de charger les documents.",
+    "documents.badge": "PDF",
+    "documents.voir": "Voir le PDF",
+    "documents.telecharger": "Télécharger",
 
     // Pages domaine
     "domaine.intro": "Portfolio dédié. Le contenu ci-dessous est filtré pour ce domaine.",
@@ -96,6 +108,7 @@ const TRADUCTIONS = {
     "nav.apropos": "About",
     "nav.contact": "Contact",
     "nav.portfolios": "Portfolios",
+    "nav.python": "Python",
 
     // Domains
     "domaine.ml": "Machine Learning & Deep Learning",
@@ -118,6 +131,7 @@ const TRADUCTIONS = {
     "accueil.statistiques.desc": "Data analysis, inference and statistical visualization.",
     "accueil.crypto.desc": "Strategies, backtests and crypto market analysis.",
     "accueil.quantower.desc": "Custom indicators and tools for trading.",
+    "accueil.python.desc": "Course materials and PDF documents from the Python training.",
 
     // Gallery
     "galerie.titre": "Gallery",
@@ -127,6 +141,16 @@ const TRADUCTIONS = {
     "galerie.erreur": "Unable to load the gallery content.",
     "galerie.badge_video": "Video",
     "galerie.badge_image": "Image",
+
+    // Python documentation
+    "domaine.python": "Python Documentation",
+    "python.intro": "Course materials and PDF documents from the Python training.",
+    "documents.chargement": "Loading documents…",
+    "documents.vide": "🚧 Documents coming soon — this section is under construction.",
+    "documents.erreur": "Unable to load the documents.",
+    "documents.badge": "PDF",
+    "documents.voir": "View PDF",
+    "documents.telecharger": "Download",
 
     // Domain pages
     "domaine.intro": "Dedicated portfolio. The content below is filtered for this domain.",
