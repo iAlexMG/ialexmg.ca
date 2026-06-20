@@ -150,7 +150,7 @@ const TRADUCTIONS = {
     "documents.erreur": "Unable to load the documents.",
     "documents.badge": "PDF",
     "documents.voir": "View PDF",
-    "documents.telecharger": "Download",
+    // "documents.telecharger": "Download",
 
     // Domain pages
     "domaine.intro": "Dedicated portfolio. The content below is filtered for this domain.",
