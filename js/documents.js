@@ -72,7 +72,7 @@ const Documents = (function () {
       '  <p class="carte-desc">' + echapper(description) + "</p>" +
       '  <div class="doc-actions">' +
       '    <a class="bouton" href="' + url + '" target="_blank" rel="noopener" data-i18n="documents.voir"></a>' +
-      '    <a class="doc-lien" href="' + url + '" download data-i18n="documents.telecharger"></a>' +
+      // '    <a class="doc-lien" href="' + url + '" download data-i18n="documents.telecharger"></a>' +
       "  </div>" +
       "</div>" +
       "</article>"
