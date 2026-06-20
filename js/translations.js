@@ -68,14 +68,14 @@ const TRADUCTIONS = {
     "galerie.badge_image": "Image",
 
     // Documentation Python
-    "domaine.python": "Documentation Python",
-    "python.intro": "Supports de cours et documents PDF de la formation Python.",
+    "domaine.python": "Formation théorique de Python",
+    "python.intro": "Voici les fichiers que j'ai créés pour apprendre et me perfectionner en Python.",
     "documents.chargement": "Chargement des documents…",
     "documents.vide": "🚧 Documents à venir — cette section est en construction.",
     "documents.erreur": "Impossible de charger les documents.",
     "documents.badge": "PDF",
     "documents.voir": "Voir le PDF",
-    "documents.telecharger": "Télécharger",
+    // "documents.telecharger": "Télécharger",
 
     // Pages domaine
     "domaine.intro": "Portfolio dédié. Le contenu ci-dessous est filtré pour ce domaine.",
@@ -143,8 +143,8 @@ const TRADUCTIONS = {
     "galerie.badge_image": "Image",
 
     // Python documentation
-    "domaine.python": "Python Documentation",
-    "python.intro": "Course materials and PDF documents from the Python training.",
+    "domaine.python": "Python Theory Course",
+    "python.intro": "Here are the files I created to learn and improve my Python skills.",
     "documents.chargement": "Loading documents…",
     "documents.vide": "🚧 Documents coming soon — this section is under construction.",
     "documents.erreur": "Unable to load the documents.",
