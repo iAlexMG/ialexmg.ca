@@ -18,12 +18,23 @@
 
 (function () {
   // Rend toutes les galeries présentes sur la page.
+  // (window.Galerie n'est chargé que sur les pages qui en ont besoin.)
   function rendreGaleries() {
+    if (!window.Galerie) return;
     document.querySelectorAll("[data-galerie]").forEach(function (conteneur) {
       window.Galerie.rendre({
         conteneur: conteneur,
         domaine: conteneur.getAttribute("data-domaine") || null,
       });
+    });
+  }
+
+  // Rend toutes les listes de documents PDF présentes sur la page.
+  // (window.Documents n'est chargé que sur la page Documentation Python.)
+  function rendreDocuments() {
+    if (!window.Documents) return;
+    document.querySelectorAll("[data-documents]").forEach(function (conteneur) {
+      window.Documents.rendre({ conteneur: conteneur });
     });
   }
 
@@ -34,12 +45,14 @@
     // 2 & 3. En-tête / pied + traductions (Composants applique déjà les traductions).
     window.Composants.initialiser();
 
-    // 4. Galeries éventuelles.
+    // 4. Galeries et documents éventuels.
     rendreGaleries();
+    rendreDocuments();
 
-    // 5. Redessiner les galeries au changement de langue (titres/descriptions bilingues).
+    // 5. Redessiner au changement de langue (titres/descriptions bilingues).
     document.addEventListener("langue:changee", function () {
       rendreGaleries();
+      rendreDocuments();
     });
   }
 

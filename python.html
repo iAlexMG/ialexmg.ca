@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+  python.html — Documentation de la formation Python
+  Affiche les PDF listés dans data/python-docs.json (rendu par js/documents.js).
+  Le conteneur [data-documents] est rempli dynamiquement.
+-->
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentation Python — iAlexMG</title>
+  <meta name="description" content="Documentation et supports de cours PDF de la formation Python — iAlexMG.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="python">
+  <header class="entete" id="entete"></header>
+
+  <main>
+    <section class="entete-page">
+      <div class="conteneur">
+        <h1 data-i18n="domaine.python"></h1>
+        <p class="accroche" data-i18n="python.intro"></p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0;">
+      <div class="conteneur">
+        <!-- Documents PDF : rempli par js/documents.js depuis data/python-docs.json -->
+        <div class="galerie" data-documents></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pied" id="pied"></footer>
+
+  <script src="js/translations.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/documents.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

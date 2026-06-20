@@ -1,0 +1,4 @@
+{
+  "_commentaire": "Documents PDF de la formation Python. Tant que 'items' est vide, la page affiche un message « documents à venir ». Pour ajouter un PDF : 1) dépose le fichier dans assets/pdf/ ; 2) ajoute une entrée ci-dessous. Exemple d'entrée : { \"id\": \"py-1\", \"fichier\": \"assets/pdf/01-introduction.pdf\", \"titre\": { \"fr\": \"Introduction\", \"en\": \"Introduction\" }, \"description\": { \"fr\": \"Premier chapitre.\", \"en\": \"First chapter.\" } }",
+  "items": []
+}
