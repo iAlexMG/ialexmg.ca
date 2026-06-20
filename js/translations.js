@@ -69,7 +69,7 @@ const TRADUCTIONS = {
 
     // Documentation Python
     "domaine.python": "Formation théorique de Python",
-    "python.intro": "Voici les fichiers que j'ai créés pour apprendre et me perfectionner en Python.",
+    "python.intro": "Voici les fichiers que j'ai créés pour apprendre et me perfectionner en Python. Toujours en amélioration constante!",
     "documents.chargement": "Chargement des documents…",
     "documents.vide": "🚧 Documents à venir — cette section est en construction.",
     "documents.erreur": "Impossible de charger les documents.",
@@ -144,7 +144,7 @@ const TRADUCTIONS = {
 
     // Python documentation
     "domaine.python": "Python Theory Course",
-    "python.intro": "Here are the files I created to learn and improve my Python skills.",
+    "python.intro": "Here are the files I created to learn and improve my Python skills. I'm always working to make them better!",
     "documents.chargement": "Loading documents…",
     "documents.vide": "🚧 Documents coming soon — this section is under construction.",
     "documents.erreur": "Unable to load the documents.",
