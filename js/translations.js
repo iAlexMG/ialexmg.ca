@@ -52,7 +52,6 @@ const TRADUCTIONS = {
     "accueil.projets_titre": "Mes projets",
     "accueil.voir_projet": "Voir le projet",
     "accueil.cta_projets": "Voir mes projets",
-    "accueil.cta_contact": "Me contacter",
 
     // En-tête générique des pages de projet
     "projet.intro": "Projet dédié. Vous trouverez ci-dessous les contenus associés.",
@@ -134,7 +133,6 @@ const TRADUCTIONS = {
     "accueil.projets_titre": "My projects",
     "accueil.voir_projet": "View project",
     "accueil.cta_projets": "View my projects",
-    "accueil.cta_contact": "Get in touch",
 
     // Generic project page header
     "projet.intro": "Dedicated project. You'll find the related content below.",

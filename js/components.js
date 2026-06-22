@@ -18,21 +18,15 @@
  */
 
 const Composants = (function () {
-  // Navigation construite dynamiquement : Accueil, puis un lien par PROJET
-  // (depuis js/projects.js), puis À propos et Contact. Un seul endroit à
-  // éditer pour ajouter un projet : la liste PROJETS.
+  // Navigation : Accueil, À propos, Contact uniquement. Les projets ne sont
+  // PAS dans le menu (ils sont déjà listés dans la grille « Mes projets » de
+  // l'accueil) — on évite ainsi le doublon.
   function liensNavigation() {
-    const projets = (window.PROJETS || []).map(function (p) {
-      return { href: p.href, page: p.page, i18n: p.titre };
-    });
     return [
       { href: "index.html", page: "accueil", i18n: "nav.accueil" },
-    ]
-      .concat(projets)
-      .concat([
-        { href: "apropos.html", page: "apropos", i18n: "nav.apropos" },
-        { href: "contact.html", page: "contact", i18n: "nav.contact" },
-      ]);
+      { href: "apropos.html", page: "apropos", i18n: "nav.apropos" },
+      { href: "contact.html", page: "contact", i18n: "nav.contact" },
+    ];
   }
 
   function construireEntete(pageCourante) {
