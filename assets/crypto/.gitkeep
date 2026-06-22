@@ -1,0 +1,6 @@
+# Dossier du projet "crypto".
+# Déposez ici les fichiers de ce projet (images : .jpg/.png/.webp ; PDF : .pdf).
+# Puis référencez-les dans data/projets.json (bloc "crypto") :
+#   image : { "type": "image", "url": "assets/crypto/mon-image.png", ... }
+#   pdf   : { "type": "pdf",  "fichier": "assets/crypto/mon-doc.pdf", ... }
+# (Ce fichier sert juste à conserver le dossier dans Git ; supprimable une fois des fichiers ajoutés.)
