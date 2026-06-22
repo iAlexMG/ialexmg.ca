@@ -1,8 +1,203 @@
 {
-  "_commentaire": "Contenu du portfolio, regroupé PAR PROJET. La clé de chaque projet correspond au champ 'id' défini dans js/projects.js et à data-projet=\"...\" dans la page. Chaque projet a SON dossier sous assets/ (assets/649/, assets/python/, assets/crypto/, assets/quantower/) : on y dépose ses images ET ses PDF. Chaque item a un 'type' : 'image', 'video' ou 'pdf'. image -> 'url' (chemin assets/<projet>/... ou URL) ; video -> 'url' (lien YouTube) ; pdf -> 'fichier' (chemin assets/<projet>/...). Quand 'items' est vide, la page du projet affiche un message « en construction ». Exemple image : { \"type\": \"image\", \"url\": \"assets/649/mon-image.png\", \"miniature\": \"\", \"titre\": {\"fr\":\"Titre\",\"en\":\"Title\"}, \"description\": {\"fr\":\"...\",\"en\":\"...\"} }. Exemple pdf : { \"type\": \"pdf\", \"fichier\": \"assets/python/mon.pdf\", \"titre\": {\"fr\":\"...\",\"en\":\"...\"}, \"description\": {\"fr\":\"...\",\"en\":\"...\"} }.",
+  "_commentaire": "Contenu du portfolio, regroupé PAR PROJET. La clé de chaque projet correspond au champ 'id' défini dans js/projects.js et à data-projet=\"...\" dans la page. Chaque projet a SON dossier sous assets/ (assets/649/, assets/python/, ...). DEUX schémas possibles : (1) ancien — un tableau 'items' plat ; (2) nouveau — un tableau 'sections', chaque section ayant un 'titre' {fr,en}, une 'intro' {fr,en} optionnelle et son propre tableau 'items' (un sommaire cliquable est généré automatiquement dès qu'il y a 2+ sections). Types d'item : 'image' -> 'url' (ratio 16:9 rogné) ; 'figure' -> 'url' (planche affichée EN ENTIER + bouton « Voir en grand ») ; 'video' -> 'url' (lien YouTube) ; 'pdf' -> 'fichier'. Quand un projet n'a aucun item, sa page affiche « en construction ».",
   "projets": {
     "649": {
-      "items": []
+      "sections": [
+        {
+          "id": "docs",
+          "titre": { "fr": "Documents formatifs", "en": "Formative documents" },
+          "intro": {
+            "fr": "Dix documents qui expliquent en profondeur chaque concept du projet, des fondations probabilistes jusqu'au deep learning. À lire dans l'ordre (les prérequis suivent la numérotation).",
+            "en": "Ten documents explaining each concept of the project in depth, from probability foundations to deep learning. Meant to be read in order (prerequisites follow the numbering)."
+          },
+          "items": [
+            {
+              "id": "doc-01",
+              "type": "pdf",
+              "fichier": "assets/649/docs/01_fondations.pdf",
+              "titre": { "fr": "01 — Fondations probabilistes", "en": "01 — Probability foundations" },
+              "description": { "fr": "Processus de Bernoulli, espace probabilisé, indépendance, espérance.", "en": "Bernoulli process, probability space, independence, expectation." }
+            },
+            {
+              "id": "doc-02",
+              "type": "pdf",
+              "fichier": "assets/649/docs/02_lois_de_probabilite.pdf",
+              "titre": { "fr": "02 — Les lois de probabilité", "en": "02 — Probability distributions" },
+              "description": { "fr": "Binomiale, géométrique, hypergéométrique, Beta — les lois du projet.", "en": "Binomial, geometric, hypergeometric, Beta — the project's distributions." }
+            },
+            {
+              "id": "doc-03",
+              "type": "pdf",
+              "fichier": "assets/649/docs/03_inference_frequentiste.pdf",
+              "titre": { "fr": "03 — Inférence fréquentiste", "en": "03 — Frequentist inference" },
+              "description": { "fr": "Tests d'hypothèses, p-value, χ², puissance, intervalles de confiance.", "en": "Hypothesis testing, p-value, χ², power, confidence intervals." }
+            },
+            {
+              "id": "doc-04",
+              "type": "pdf",
+              "fichier": "assets/649/docs/04_inference_bayesienne.pdf",
+              "titre": { "fr": "04 — Inférence bayésienne", "en": "04 — Bayesian inference" },
+              "description": { "fr": "A priori/posterior, conjugaison Beta-Bernoulli, intervalle crédible.", "en": "Prior/posterior, Beta-Bernoulli conjugacy, credible interval." }
+            },
+            {
+              "id": "doc-05",
+              "type": "pdf",
+              "fichier": "assets/649/docs/05_biais_cognitifs.pdf",
+              "titre": { "fr": "05 — Biais cognitifs démontés", "en": "05 — Cognitive biases debunked" },
+              "description": { "fr": "Sophisme du joueur, main chaude, illusion de motif.", "en": "Gambler's fallacy, hot hand, illusion of patterns." }
+            },
+            {
+              "id": "doc-06",
+              "type": "pdf",
+              "fichier": "assets/649/docs/06_tests_phase1.pdf",
+              "titre": { "fr": "06 — Tests appliqués (Phase 1)", "en": "06 — Applied tests (Phase 1)" },
+              "description": { "fr": "Les six tests statistiques du projet, hypothèses et démarches.", "en": "The project's six statistical tests, hypotheses and methods." }
+            },
+            {
+              "id": "doc-07",
+              "type": "pdf",
+              "fichier": "assets/649/docs/07_apprentissage_automatique.pdf",
+              "titre": { "fr": "07 — Apprentissage automatique", "en": "07 — Machine learning" },
+              "description": { "fr": "Features causales, log-loss, plancher d'entropie, MLP, LSTM, sur-apprentissage.", "en": "Causal features, log-loss, entropy floor, MLP, LSTM, overfitting." }
+            },
+            {
+              "id": "doc-08",
+              "type": "pdf",
+              "fichier": "assets/649/docs/08_cascade_ngrammes.pdf",
+              "titre": { "fr": "08 — Cascade binaire (n-grammes)", "en": "08 — Binary cascade (n-grams)" },
+              "description": { "fr": "Le sophisme du joueur formalisé en motifs de bits, puis réfuté.", "en": "The gambler's fallacy formalized as bit patterns, then refuted." }
+            },
+            {
+              "id": "doc-09",
+              "type": "pdf",
+              "fichier": "assets/649/docs/09_donnees_methodologie.pdf",
+              "titre": { "fr": "09 — Données & méthodologie", "en": "09 — Data & methodology" },
+              "description": { "fr": "Source des tirages, validation, split temporel, reproductibilité.", "en": "Draw source, validation, temporal split, reproducibility." }
+            },
+            {
+              "id": "doc-10",
+              "type": "pdf",
+              "fichier": "assets/649/docs/10_outils_ecosysteme.pdf",
+              "titre": { "fr": "10 — Outils & écosystème", "en": "10 — Tools & ecosystem" },
+              "description": { "fr": "Python, pandas, numpy, scipy, scikit-learn, PyTorch, matplotlib.", "en": "Python, pandas, numpy, scipy, scikit-learn, PyTorch, matplotlib." }
+            }
+          ]
+        },
+        {
+          "id": "phase0",
+          "titre": { "fr": "Phase 0 — Validation des données", "en": "Phase 0 — Data validation" },
+          "intro": {
+            "fr": "Avant toute analyse : charger, valider et dater les tirages officiels (Loto-Québec, 1982-2025).",
+            "en": "Before any analysis: load, validate and date the official draws (Loto-Québec, 1982-2025)."
+          },
+          "items": [
+            {
+              "id": "fig-01",
+              "type": "figure",
+              "url": "assets/649/figures/fig01_validation_donnees.png",
+              "titre": { "fr": "Validation des données", "en": "Data validation" },
+              "description": { "fr": "Couverture temporelle, complétude et passage hebdomadaire → bihebdomadaire des tirages.", "en": "Temporal coverage, completeness and the weekly → twice-weekly transition of draws." }
+            }
+          ]
+        },
+        {
+          "id": "phase1",
+          "titre": { "fr": "Phase 1 — Tests statistiques", "en": "Phase 1 — Statistical tests" },
+          "intro": {
+            "fr": "Six tests classiques pour confronter l'historique à l'hypothèse d'un hasard uniforme et indépendant. Verdict : on échoue à rejeter l'aléa partout.",
+            "en": "Six classic tests confronting the history with the hypothesis of uniform, independent randomness. Verdict: we fail to reject randomness everywhere."
+          },
+          "items": [
+            {
+              "id": "fig-02",
+              "type": "figure",
+              "url": "assets/649/figures/fig02_test1_frequences.png",
+              "titre": { "fr": "T1 — Fréquences (binomiale, χ²)", "en": "T1 — Frequencies (binomial, χ²)" },
+              "description": { "fr": "Chaque numéro sort-il à sa fréquence attendue ? Test binomial par numéro et χ² d'uniformité.", "en": "Does each number appear at its expected rate? Per-number binomial test and χ² uniformity test." }
+            },
+            {
+              "id": "fig-03",
+              "type": "figure",
+              "url": "assets/649/figures/fig03_test2_gaps.png",
+              "titre": { "fr": "T2 — Écarts (loi géométrique)", "en": "T2 — Gaps (geometric law)" },
+              "description": { "fr": "Les intervalles entre sorties suivent-ils la loi géométrique ? Le sophisme du joueur en direct.", "en": "Do the gaps between appearances follow the geometric law? The gambler's fallacy, live." }
+            },
+            {
+              "id": "fig-04",
+              "type": "figure",
+              "url": "assets/649/figures/fig04_test3_mainchaude.png",
+              "titre": { "fr": "T3 — Main chaude", "en": "T3 — Hot hand" },
+              "description": { "fr": "Un numéro « en forme » a-t-il plus de chances de ressortir ? P(sort | série de k).", "en": "Is a number 'on a streak' more likely to come back? P(drawn | run of k)." }
+            },
+            {
+              "id": "fig-05",
+              "type": "figure",
+              "url": "assets/649/figures/fig05_test4_independance.png",
+              "titre": { "fr": "T4 — Indépendance", "en": "T4 — Independence" },
+              "description": { "fr": "Tests de runs, autocorrélation (ACF) et Ljung-Box : aucune mémoire détectable entre tirages.", "en": "Runs test, autocorrelation (ACF) and Ljung-Box: no detectable memory between draws." }
+            },
+            {
+              "id": "fig-06",
+              "type": "figure",
+              "url": "assets/649/figures/fig06_test5_combinaisons.png",
+              "titre": { "fr": "T5 — Combinaisons", "en": "T5 — Combinations" },
+              "description": { "fr": "Somme, parité (hypergéométrique) et z-test sur la moyenne des numéros tirés.", "en": "Sum, parity (hypergeometric) and z-test on the mean of drawn numbers." }
+            },
+            {
+              "id": "fig-07",
+              "type": "figure",
+              "url": "assets/649/figures/fig07_test6_investigation.png",
+              "titre": { "fr": "T6 — Investigation d'anomalie", "en": "T6 — Anomaly investigation" },
+              "description": { "fr": "Le seul écart relevé : un léger penchant vers les gros numéros (z≈3,2) — statistiquement réel, non exploitable.", "en": "The only deviation found: a slight tilt toward high numbers (z≈3.2) — statistically real, not exploitable." }
+            }
+          ]
+        },
+        {
+          "id": "phase2",
+          "titre": { "fr": "Phase 2 — Modèles ML / DL", "en": "Phase 2 — ML / DL models" },
+          "intro": {
+            "fr": "La preuve empirique : du modèle constant jusqu'au LSTM, aucun ne bat le plancher d'entropie hors-échantillon. La complexité n'achète aucune prédiction.",
+            "en": "The empirical proof: from the constant model up to an LSTM, none beats the entropy floor out-of-sample. Complexity buys no prediction."
+          },
+          "items": [
+            {
+              "id": "fig-08",
+              "type": "figure",
+              "url": "assets/649/figures/fig08_phase2_mlp.png",
+              "titre": { "fr": "MLP & importance par permutation", "en": "MLP & permutation importance" },
+              "description": { "fr": "Un perceptron multicouche rejoint le plancher ; aucune feature ne porte de signal exploitable.", "en": "A multilayer perceptron lands on the floor; no feature carries any exploitable signal." }
+            },
+            {
+              "id": "fig-09",
+              "type": "figure",
+              "url": "assets/649/figures/fig09_phase2_lstm.png",
+              "titre": { "fr": "LSTM — mémorisation vs généralisation", "en": "LSTM — memorization vs generalization" },
+              "description": { "fr": "La punchline : le réseau mémorise le passé (log-loss qui plonge) mais s'effondre sur l'avenir.", "en": "The punchline: the network memorizes the past (log-loss dives) but collapses on the future." }
+            },
+            {
+              "id": "fig-10",
+              "type": "figure",
+              "url": "assets/649/figures/fig10_phase2_bayesien.png",
+              "titre": { "fr": "Estimation bayésienne (Beta-Bernoulli)", "en": "Bayesian estimation (Beta-Bernoulli)" },
+              "description": { "fr": "Les 49 probabilités a posteriori se serrent autour de 6/49 : aucun numéro chanceux.", "en": "The 49 posterior probabilities concentrate around 6/49: no lucky number." }
+            },
+            {
+              "id": "fig-11",
+              "type": "figure",
+              "url": "assets/649/figures/fig11_phase2_cascade.png",
+              "titre": { "fr": "Cascade binaire (n-grammes)", "en": "Binary cascade (n-grams)" },
+              "description": { "fr": "Le sophisme du joueur formalisé en motifs de bits : la règle « déficit ⇒ dû » dégrade la prédiction.", "en": "The gambler's fallacy formalized as bit patterns: the 'deficit ⇒ due' rule degrades prediction." }
+            },
+            {
+              "id": "fig-12",
+              "type": "figure",
+              "url": "assets/649/figures/fig12_phase2_synthese.png",
+              "titre": { "fr": "Synthèse — rien ne prédit le tirage", "en": "Synthesis — nothing predicts the draw" },
+              "description": { "fr": "Toute l'échelle de modèles converge vers le plancher hors-échantillon. Le tirage est empiriquement imprévisible.", "en": "The whole model ladder converges to the out-of-sample floor. The draw is empirically unpredictable." }
+            }
+          ]
+        }
+      ]
     },
     "python": {
       "items": [

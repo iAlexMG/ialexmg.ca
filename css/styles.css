@@ -395,6 +395,68 @@ img { max-width: 100%; display: block; }
   font-weight: 600;
 }
 
+/* ----- Sections d'un projet (contenu structuré) ----- */
+.projet-section { margin-top: 3rem; scroll-margin-top: 90px; }
+.projet-section:first-of-type { margin-top: 1rem; }
+.projet-section-titre {
+  font-size: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--couleur-bordure);
+}
+.section-intro {
+  color: var(--couleur-texte-doux);
+  max-width: 75ch;
+  margin-top: 0.6rem;
+}
+.projet-section .galerie { margin-top: 1.25rem; }
+
+/* Sommaire cliquable en tête de page de projet. */
+.projet-sommaire {
+  background: var(--couleur-surface);
+  border: 1px solid var(--couleur-bordure);
+  border-radius: var(--rayon);
+  padding: 1rem 1.25rem;
+  box-shadow: var(--ombre);
+}
+.projet-sommaire-titre {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  color: var(--couleur-accent);
+  margin-bottom: 0.5rem;
+}
+.projet-sommaire ol {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 0.3rem 1.5rem;
+}
+.projet-sommaire a { color: var(--couleur-texte); }
+.projet-sommaire a:hover { color: var(--couleur-accent); }
+
+/* ----- Cartes figures (planches « manuel », affichées en entier) ----- */
+/* Contrairement aux cartes image (ratio 16:9 rogné), la figure est montrée
+   intégralement (object-fit: contain), car ce sont des planches denses à lire. */
+.fig-apercu {
+  display: block;
+  width: 100%;
+  height: 420px;
+  background: #ffffff;
+  border-bottom: 1px solid var(--couleur-bordure);
+  overflow: hidden;
+  cursor: zoom-in;
+}
+.fig-apercu img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: top center;
+  display: block;
+}
+
 /* ----- Contenu textuel (à propos, contact) ----- */
 .prose { max-width: 65ch; }
 .prose p { color: var(--couleur-texte); }
