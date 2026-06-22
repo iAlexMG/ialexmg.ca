@@ -63,6 +63,9 @@ const TRADUCTIONS = {
     "contenu.badge_video": "Vidéo",
     "contenu.badge_image": "Image",
     "contenu.badge_pdf": "PDF",
+    "contenu.badge_figure": "Figure",
+    "contenu.voir_figure": "Voir en grand",
+    "contenu.sommaire": "Sommaire",
 
     // Documents PDF
     "documents.voir": "Voir le PDF",
@@ -71,6 +74,9 @@ const TRADUCTIONS = {
 
     // Projet Python (intro spécifique)
     "python.intro": "Voici les fichiers que j'ai créés pour apprendre et me perfectionner en Python. Toujours en amélioration constante !",
+
+    // Projet 649 (intro spécifique)
+    "649.intro": "Une analyse statistique rigoureuse du Lotto 6/49 : non pas prédire les numéros, mais tester si l'historique des tirages se distingue d'un pur hasard. On y démonte le sophisme du joueur et la main chaude, des tests classiques jusqu'au deep learning. Ci-dessous : les documents formatifs (les concepts en profondeur) et les figures de résultats, organisés par phase.",
 
     // À propos
     "apropos.titre": "À propos",
@@ -130,6 +136,9 @@ const TRADUCTIONS = {
     "contenu.badge_video": "Video",
     "contenu.badge_image": "Image",
     "contenu.badge_pdf": "PDF",
+    "contenu.badge_figure": "Figure",
+    "contenu.voir_figure": "View full size",
+    "contenu.sommaire": "Contents",
 
     // PDF documents
     "documents.voir": "View PDF",
@@ -138,6 +147,9 @@ const TRADUCTIONS = {
 
     // Python project (specific intro)
     "python.intro": "Here are the files I created to learn and improve my Python skills. Always a work in progress!",
+
+    // 649 project (specific intro)
+    "649.intro": "A rigorous statistical analysis of Lotto 6/49: not to predict the numbers, but to test whether the draw history is distinguishable from pure randomness. It debunks the gambler's fallacy and the hot-hand fallacy, from classic tests all the way to deep learning. Below: the formative documents (the concepts in depth) and the result figures, organized by phase.",
 
     // About
     "apropos.titre": "About",
