@@ -20,10 +20,31 @@
   // (window.Contenu n'est chargé que sur les pages de projet.)
   function rendreProjets() {
     if (!window.Contenu) return;
+
+    // Page de projet « classique » (tout le contenu).
     document.querySelectorAll("[data-projet]").forEach(function (conteneur) {
       window.Contenu.rendre({
         conteneur: conteneur,
         projet: conteneur.getAttribute("data-projet") || null,
+      });
+    });
+
+    // Hub de projet : une carte par section, menant à sa sous-page.
+    document.querySelectorAll("[data-projet-hub]").forEach(function (conteneur) {
+      window.Contenu.rendreHub({
+        conteneur: conteneur,
+        projet: conteneur.getAttribute("data-projet-hub") || null,
+        pageSection: conteneur.getAttribute("data-page-section") || "",
+      });
+    });
+
+    // Sous-page d'une section : le choix vient du paramètre d'URL ?s=<id>.
+    document.querySelectorAll("[data-projet-section]").forEach(function (conteneur) {
+      const params = new URLSearchParams(window.location.search);
+      window.Contenu.rendreSection({
+        conteneur: conteneur,
+        projet: conteneur.getAttribute("data-projet-section") || null,
+        sectionId: params.get("s"),
       });
     });
   }
