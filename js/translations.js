@@ -47,11 +47,12 @@ const TRADUCTIONS = {
     // Accueil
     "accueil.construction": "🚧 Site en construction — le contenu arrive bientôt.",
     "accueil.titre": "iAlexMG",
-    "accueil.sous_titre": "Data, modèles et marchés",
-    "accueil.intro": "Bienvenue. Je conçois des projets autour de l'apprentissage automatique, des statistiques et des marchés financiers. Découvrez-les ci-dessous.",
+    "accueil.sous_titre": "Science des données · Statistiques · Marchés financiers",
+    "accueil.intro": "Je conçois des projets d'analyse de données et de modélisation, de la statistique rigoureuse jusqu'à l'apprentissage automatique. Voici une sélection de mes travaux.",
     "accueil.projets_titre": "Mes projets",
     "accueil.voir_projet": "Voir le projet",
     "accueil.cta_projets": "Voir mes projets",
+    "accueil.cta_contact": "Me contacter",
 
     // En-tête générique des pages de projet
     "projet.intro": "Projet dédié. Vous trouverez ci-dessous les contenus associés.",
@@ -66,6 +67,14 @@ const TRADUCTIONS = {
     "contenu.badge_figure": "Figure",
     "contenu.voir_figure": "Voir en grand",
     "contenu.sommaire": "Sommaire",
+    "contenu.retour": "← Retour au projet",
+
+    // Hub de projet (cartes par section)
+    "hub.documents": "documents",
+    "hub.documents_un": "document",
+    "hub.figures": "figures",
+    "hub.figures_un": "figure",
+    "hub.lecture": "Lecture",
 
     // Documents PDF
     "documents.voir": "Voir le PDF",
@@ -120,11 +129,12 @@ const TRADUCTIONS = {
     // Home
     "accueil.construction": "🚧 Site under construction — content coming soon.",
     "accueil.titre": "iAlexMG",
-    "accueil.sous_titre": "Data, models and markets",
-    "accueil.intro": "Welcome. I build projects around machine learning, statistics and financial markets. Discover them below.",
+    "accueil.sous_titre": "Data science · Statistics · Financial markets",
+    "accueil.intro": "I build data-analysis and modeling projects, from rigorous statistics all the way to machine learning. Here is a selection of my work.",
     "accueil.projets_titre": "My projects",
     "accueil.voir_projet": "View project",
     "accueil.cta_projets": "View my projects",
+    "accueil.cta_contact": "Get in touch",
 
     // Generic project page header
     "projet.intro": "Dedicated project. You'll find the related content below.",
@@ -139,6 +149,14 @@ const TRADUCTIONS = {
     "contenu.badge_figure": "Figure",
     "contenu.voir_figure": "View full size",
     "contenu.sommaire": "Contents",
+    "contenu.retour": "← Back to the project",
+
+    // Project hub (one card per section)
+    "hub.documents": "documents",
+    "hub.documents_un": "document",
+    "hub.figures": "figures",
+    "hub.figures_un": "figure",
+    "hub.lecture": "Read",
 
     // PDF documents
     "documents.voir": "View PDF",

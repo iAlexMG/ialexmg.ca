@@ -333,7 +333,147 @@ const Contenu = (function () {
     }
   }
 
-  return { rendre: rendre };
+  // --- Hub de projet : une carte par section, menant à sa sous-page -----------
+
+  // Libellé de comptage d'une section (ex. « 10 documents », « 6 figures »,
+  // « Lecture » pour une section en texte seul).
+  function libelleCompte(section) {
+    const items = Array.isArray(section.items) ? section.items : [];
+    const n = items.length;
+    if (n === 0) return window.I18n.t("hub.lecture");
+    const cle = items[0].type === "pdf" ? "hub.documents" : "hub.figures";
+    const mot = window.I18n.t(n > 1 ? cle : cle + "_un");
+    return n + " " + mot;
+  }
+
+  // Rendu du HUB : grille de cartes (titre + intro + compte), chacune liée à
+  // la sous-page de la section (projet-...-section.html?s=<id>).
+  async function rendreHub(options) {
+    const conteneur = options.conteneur;
+    const projet = options.projet || null;
+    const pageSection = options.pageSection || "";
+    if (!conteneur) return;
+
+    conteneur.setAttribute("aria-busy", "true");
+    conteneur.innerHTML =
+      '<p class="galerie-message" data-i18n="contenu.chargement"></p>';
+    window.I18n.appliquerTraductions(conteneur);
+
+    try {
+      const donnees = await chargerDonnees();
+      const bloc = (donnees.projets || {})[projet] || null;
+      const sections = sectionsDuBloc(bloc).filter(function (s) {
+        return !s._plat;
+      });
+
+      if (sections.length === 0) {
+        conteneur.innerHTML =
+          '<p class="galerie-message" data-i18n="contenu.vide"></p>';
+      } else {
+        conteneur.innerHTML =
+          '<div class="grille-hub">' +
+          sections
+            .map(function (section, idx) {
+              const titre = echapper(texteLocalise(section.titre));
+              const desc = echapper(
+                texteLocalise(section.intro) || texteLocalise(section.texte)
+              );
+              const id = section.id || String(idx);
+              const href = pageSection + "?s=" + encodeURIComponent(id);
+              return (
+                '<a class="carte-portfolio" href="' + href + '">' +
+                "  <h3>" + titre + "</h3>" +
+                "  <p>" + desc + "</p>" +
+                '  <span class="fleche">' + echapper(libelleCompte(section)) + " →</span>" +
+                "</a>"
+              );
+            })
+            .join("") +
+          "</div>";
+      }
+    } catch (err) {
+      console.error("[hub] Échec du chargement :", err);
+      conteneur.innerHTML =
+        '<p class="galerie-message erreur" data-i18n="contenu.erreur"></p>';
+    } finally {
+      conteneur.setAttribute("aria-busy", "false");
+      window.I18n.appliquerTraductions(conteneur);
+    }
+  }
+
+  // Rendu d'UNE section (sous-page). Remplit aussi, s'ils existent, le titre
+  // [data-section-titre] et l'intro [data-section-intro] de l'en-tête de page.
+  async function rendreSection(options) {
+    const conteneur = options.conteneur;
+    const projet = options.projet || null;
+    const sectionId = options.sectionId || null;
+    if (!conteneur) return;
+
+    conteneur.setAttribute("aria-busy", "true");
+    conteneur.innerHTML =
+      '<p class="galerie-message" data-i18n="contenu.chargement"></p>';
+    window.I18n.appliquerTraductions(conteneur);
+
+    try {
+      const donnees = await chargerDonnees();
+      const bloc = (donnees.projets || {})[projet] || null;
+      const sections = sectionsDuBloc(bloc);
+      let section = sections.filter(function (s) {
+        return String(s.id || "") === String(sectionId);
+      })[0];
+      if (!section && /^\d+$/.test(String(sectionId))) {
+        section = sections[parseInt(sectionId, 10)];
+      }
+
+      const elTitre = document.querySelector("[data-section-titre]");
+      const elIntro = document.querySelector("[data-section-intro]");
+
+      if (!section) {
+        conteneur.innerHTML =
+          '<p class="galerie-message erreur" data-i18n="contenu.erreur"></p>';
+        return;
+      }
+
+      const titre = texteLocalise(section.titre);
+      if (elTitre) elTitre.textContent = titre;
+      if (elIntro) elIntro.textContent = texteLocalise(section.intro);
+      if (titre) document.title = titre + " — Lotto 649 — iAlexMG";
+
+      const items = Array.isArray(section.items) ? section.items : [];
+      const texte = texteLocalise(section.texte);
+
+      if (items.length) {
+        const aPdf = items.some(function (it) {
+          return it.type === "pdf";
+        });
+        conteneur.innerHTML =
+          banniereAvertissementPdf(aPdf) +
+          '<div class="galerie">' + items.map(creerCarte).join("") + "</div>";
+      } else if (texte) {
+        conteneur.innerHTML =
+          '<div class="section-prose">' +
+          texte
+            .split(/\n\s*\n/)
+            .map(function (p) {
+              return "<p>" + echapper(p.trim()) + "</p>";
+            })
+            .join("") +
+          "</div>";
+      } else {
+        conteneur.innerHTML =
+          '<div class="galerie"><p class="galerie-message" data-i18n="contenu.vide"></p></div>';
+      }
+    } catch (err) {
+      console.error("[section] Échec du chargement :", err);
+      conteneur.innerHTML =
+        '<p class="galerie-message erreur" data-i18n="contenu.erreur"></p>';
+    } finally {
+      conteneur.setAttribute("aria-busy", "false");
+      window.I18n.appliquerTraductions(conteneur);
+    }
+  }
+
+  return { rendre: rendre, rendreHub: rendreHub, rendreSection: rendreSection };
 })();
 
 window.Contenu = Contenu;

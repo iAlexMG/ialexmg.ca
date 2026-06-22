@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <!--
-  projet-649.html — Projet : 649
-  Affiche le contenu du projet "649" via js/content.js (lit data/projets.json).
-  Pour créer une nouvelle page de projet, dupliquez ce fichier et changez :
-    - <body data-page="...">
-    - le data-i18n du <h1>
-    - data-projet="..." du conteneur
-  (voir le README, section « Ajouter un projet »).
+  projet-649-section.html — Vue d'UNE section du projet Lotto 649.
+  La section affichée est choisie par le paramètre d'URL ?s=<id>
+  (ex. projet-649-section.html?s=docs). Le titre, l'intro et le contenu
+  sont remplis par js/content.js (rendreSection). Une seule page générique
+  dessert toutes les sections — pas de duplication.
 -->
 <html lang="fr">
 <head>
@@ -21,16 +19,15 @@
   <main>
     <section class="entete-page">
       <div class="conteneur">
-        <h1 data-i18n="projet.649"></h1>
-        <p class="accroche" data-i18n="649.intro"></p>
+        <a class="lien-retour" href="projet-649.html" data-i18n="contenu.retour"></a>
+        <h1 data-section-titre></h1>
+        <p class="accroche" data-section-intro></p>
       </div>
     </section>
 
     <section class="section" style="padding-top:0;">
       <div class="conteneur">
-        <!-- Hub : une carte par section (Documents formatifs, Phases, etc.),
-             chacune menant à projet-649-section.html?s=<id>. -->
-        <div data-projet-hub="649" data-page-section="projet-649-section.html"></div>
+        <div data-projet-section="649"></div>
       </div>
     </section>
   </main>

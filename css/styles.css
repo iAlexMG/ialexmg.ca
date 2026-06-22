@@ -213,6 +213,22 @@ img { max-width: 100%; display: block; }
   max-width: 60ch;
   margin: 0 auto 1.75rem;
 }
+.hero-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.hero-liens {
+  margin-top: 1.25rem;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+}
+.hero-liens a { color: var(--couleur-texte-doux); font-weight: 600; }
+.hero-liens a:hover { color: var(--couleur-accent); }
 
 /* ----- Boutons ----- */
 .bouton {
@@ -247,6 +263,24 @@ img { max-width: 100%; display: block; }
   gap: 1.25rem;
   margin-top: 1.5rem;
 }
+
+/* ----- Grille du hub de projet (cartes par section) ----- */
+.grille-hub {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+/* Lien « retour au projet » en tête des sous-pages. */
+.lien-retour {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  color: var(--couleur-accent);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.lien-retour:hover { text-decoration: underline; }
 
 .carte-portfolio {
   display: block;
