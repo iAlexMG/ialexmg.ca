@@ -33,7 +33,7 @@ const TRADUCTIONS = {
     "nav.contact": "Contact",
 
     // Projets (titres complets — menu, en-tête de page, cartes d'accueil)
-    "projet.649": "649",
+    "projet.649": "Lotto 649",
     "projet.python": "Formation Python",
     "projet.crypto": "Crypto",
     "projet.quantower": "Quantower",
@@ -106,7 +106,7 @@ const TRADUCTIONS = {
     "nav.contact": "Contact",
 
     // Projects (full titles — menu, page header, home cards)
-    "projet.649": "649",
+    "projet.649": "Lotto 649",
     "projet.python": "Python Training",
     "projet.crypto": "Crypto",
     "projet.quantower": "Quantower",

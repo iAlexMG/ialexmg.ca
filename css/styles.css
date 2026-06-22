@@ -410,6 +410,18 @@ img { max-width: 100%; display: block; }
 }
 .projet-section .galerie { margin-top: 1.25rem; }
 
+/* Section en texte seul (ex. Conclusion). */
+.section-prose {
+  max-width: 70ch;
+  margin-top: 1.25rem;
+}
+.section-prose p {
+  color: var(--couleur-texte);
+  margin-bottom: 0.9rem;
+  line-height: 1.7;
+}
+.section-prose p:last-child { margin-bottom: 0; }
+
 /* Sommaire cliquable en tête de page de projet. */
 .projet-sommaire {
   background: var(--couleur-surface);

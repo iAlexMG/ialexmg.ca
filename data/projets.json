@@ -187,15 +187,34 @@
               "url": "assets/649/figures/fig11_phase2_cascade.png",
               "titre": { "fr": "Cascade binaire (n-grammes)", "en": "Binary cascade (n-grams)" },
               "description": { "fr": "Le sophisme du joueur formalisé en motifs de bits : la règle « déficit ⇒ dû » dégrade la prédiction.", "en": "The gambler's fallacy formalized as bit patterns: the 'deficit ⇒ due' rule degrades prediction." }
-            },
+            }
+          ]
+        },
+        {
+          "id": "synthese",
+          "titre": { "fr": "Synthèse", "en": "Synthesis" },
+          "intro": {
+            "fr": "Toute l'échelle de modèles réunie sur un seul graphique : du constant au LSTM, chaque cran ajoute de la capacité — et tous atterrissent sur le même plancher hors-échantillon.",
+            "en": "The whole model ladder on a single chart: from constant to LSTM, each step adds capacity — and all land on the same out-of-sample floor."
+          },
+          "items": [
             {
               "id": "fig-12",
               "type": "figure",
               "url": "assets/649/figures/fig12_phase2_synthese.png",
               "titre": { "fr": "Synthèse — rien ne prédit le tirage", "en": "Synthesis — nothing predicts the draw" },
-              "description": { "fr": "Toute l'échelle de modèles converge vers le plancher hors-échantillon. Le tirage est empiriquement imprévisible.", "en": "The whole model ladder converges to the out-of-sample floor. The draw is empirically unpredictable." }
+              "description": { "fr": "Six modèles convergent vers le plancher hors-échantillon ; seul le LSTM s'en écarte, dans le mauvais sens (sur-apprentissage). Le tirage est empiriquement imprévisible.", "en": "Six models converge to the out-of-sample floor; only the LSTM departs from it, the wrong way (overfitting). The draw is empirically unpredictable." }
             }
           ]
+        },
+        {
+          "id": "conclusion",
+          "titre": { "fr": "Conclusion", "en": "Conclusion" },
+          "texte": {
+            "fr": "Six modèles, deux paradigmes, un seul verdict : aucune approche — de la simple constante 6/49 jusqu'au LSTM récurrent — ne bat le hasard hors-échantillon. La seule structure réelle détectée est un infime penchant statique vers les gros numéros, sans la moindre valeur prédictive ; jamais un « timing », jamais une mémoire utile.\n\nLe sophisme du joueur (« le 49 est en retard, il est dû ») et la main chaude (« le 5 est en forme ») sont ainsi réfutés sur données réelles : sous l'hypothèse d'indépendance, la probabilité qu'un numéro sorte au prochain tirage reste 6/49 ≈ 0,1224, quel que soit le passé.\n\nConclusion : le tirage du Lotto 6/49 est, empiriquement, imprévisible — et c'est exactement ce qu'on attend d'une loterie honnête. L'objectif n'était pas de gagner au loto, mais de montrer, avec rigueur et jusqu'au deep learning, pourquoi on ne le peut pas.",
+            "en": "Six models, two paradigms, one verdict: no approach — from the plain 6/49 constant to a recurrent LSTM — beats chance out-of-sample. The only real structure detected is a tiny static tilt toward high numbers, with no predictive value whatsoever; never a 'timing', never a useful memory.\n\nThe gambler's fallacy ('49 is overdue, it's due') and the hot hand ('5 is hot') are thus refuted on real data: under independence, the probability that a number is drawn next stays 6/49 ≈ 0.1224, regardless of the past.\n\nConclusion: the Lotto 6/49 draw is, empirically, unpredictable — exactly what one expects from a fair lottery. The goal was never to win the lottery, but to show rigorously, all the way to deep learning, why you cannot."
+          },
+          "items": []
         }
       ]
     },
@@ -218,9 +237,51 @@
         {
           "id": "py-3",
           "type": "pdf",
+          "fichier": "assets/python/03 - Concepts_intermediaires.pdf",
+          "titre":       { "fr": "Concepts intermédiaires", "en": "Intermediate concepts" },
+          "description": { "fr": "Chapitre 3 du cours.", "en": "Chapter 3 of the course." }
+        },
+        {
+          "id": "py-4",
+          "type": "pdf",
+          "fichier": "assets/python/04 - Concurrence.pdf",
+          "titre":       { "fr": "Concurrence", "en": "Concurrency" },
+          "description": { "fr": "Chapitre 4 du cours.", "en": "Chapter 4 of the course." }
+        },
+        {
+          "id": "py-5",
+          "type": "pdf",
           "fichier": "assets/python/05 - Donnees.pdf",
           "titre":       { "fr": "Les types de données", "en": "Data Types" },
           "description": { "fr": "Chapitre 5 du cours.", "en": "Chapter 5 of the course." }
+        },
+        {
+          "id": "py-6",
+          "type": "pdf",
+          "fichier": "assets/python/06 - Interactions.pdf",
+          "titre":       { "fr": "Interactions", "en": "Interactions" },
+          "description": { "fr": "Chapitre 6 du cours.", "en": "Chapter 6 of the course." }
+        },
+        {
+          "id": "py-7",
+          "type": "pdf",
+          "fichier": "assets/python/07 - Qualite_tests.pdf",
+          "titre":       { "fr": "Qualité & tests", "en": "Quality & testing" },
+          "description": { "fr": "Chapitre 7 du cours.", "en": "Chapter 7 of the course." }
+        },
+        {
+          "id": "py-8",
+          "type": "pdf",
+          "fichier": "assets/python/08 - Performance.pdf",
+          "titre":       { "fr": "Performance", "en": "Performance" },
+          "description": { "fr": "Chapitre 8 du cours.", "en": "Chapter 8 of the course." }
+        },
+        {
+          "id": "py-9",
+          "type": "pdf",
+          "fichier": "assets/python/09.01 - Affichages.pdf",
+          "titre":       { "fr": "Affichages", "en": "Displays" },
+          "description": { "fr": "Chapitre 9.1 du cours.", "en": "Chapter 9.1 of the course." }
         }
       ]
     },
