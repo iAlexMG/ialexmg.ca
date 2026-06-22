@@ -1,6 +1,6 @@
 # iAlexMG — Site portfolio
 
-Site portfolio personnel **iAlexMG**.
+Site portfolio personnel **iAlexMG**, organisé **par projet**.
 Site **statique** (HTML / CSS / JavaScript pur), sans framework ni étape de build,
 prêt pour **GitHub Pages**. Bilingue **FR / EN**, responsive (mobile-first).
 
@@ -12,13 +12,11 @@ Domaine cible : **ialexmg.ca**
 
 ```
 iAlexMG.ca/
-├── index.html            # Accueil (présentation + accès aux portfolios)
-├── galerie.html          # Galerie complète (tous domaines)
-├── ml.html               # Portfolio : Machine Learning & Deep Learning
-├── statistiques.html     # Portfolio : Statistiques
-├── crypto.html           # Portfolio : Crypto
-├── quantower.html        # Portfolio : Quantower
-├── python.html           # Documentation Python (affichage des PDF)
+├── index.html            # Accueil (présentation + cartes des projets)
+├── projet-649.html       # Projet : 649
+├── python.html           # Projet : Formation Python (PDF)
+├── crypto.html           # Projet : Crypto
+├── quantower.html        # Projet : Quantower
 ├── apropos.html          # À propos
 ├── contact.html          # Contact
 ├── CNAME                 # Domaine personnalisé GitHub Pages (ialexmg.ca)
@@ -27,23 +25,23 @@ iAlexMG.ca/
 ├── js/
 │   ├── translations.js   # Dictionnaire des textes FR/EN (à enrichir)
 │   ├── i18n.js           # Moteur de traduction (langue active, application, bascule)
-│   ├── components.js     # En-tête + navigation + pied de page communs
-│   ├── gallery.js        # Lecture du JSON et génération des galeries
-│   ├── documents.js      # Lecture du JSON et affichage des PDF (Documentation Python)
+│   ├── projects.js       # LISTE CENTRALE des projets (pilote nav + accueil)
+│   ├── components.js     # En-tête + navigation + grille d'accueil + pied
+│   ├── content.js        # Lecture du JSON et rendu du contenu d'un projet
+│   │                     #   (images, vidéos YouTube et PDF)
 │   └── main.js           # Initialisation commune de chaque page
 ├── data/
-│   ├── gallery.json      # CONTENU de la galerie (images + vidéos) — éditable
-│   └── python-docs.json  # CONTENU des PDF de la formation Python — éditable
+│   └── projets.json      # CONTENU de chaque projet — éditable
 └── assets/
     ├── (vos images locales)
-    └── pdf/              # Vos fichiers PDF (formation Python)
+    └── pdf/              # Vos fichiers PDF
 ```
 
 ---
 
 ## Tester en local
 
-Comme le site charge `data/gallery.json` via `fetch`, ouvrir les fichiers
+Comme le site charge `data/projets.json` via `fetch`, ouvrir les fichiers
 directement avec `file://` peut bloquer le chargement (selon le navigateur).
 Lancez un petit serveur local :
 
@@ -58,44 +56,56 @@ Puis ouvrez <http://localhost:8000>.
 
 ---
 
-## Ajouter du contenu à la galerie (sans toucher au HTML)
+## Ajouter du contenu à un projet (sans toucher au HTML)
 
-Tout le contenu vient de **`data/gallery.json`**. Ajoutez une entrée dans le
-tableau `items` :
+Tout le contenu vient de **`data/projets.json`**. Chaque projet (clé `"649"`,
+`"python"`, `"crypto"`, `"quantower"`, …) possède un tableau `items`. Ajoutez-y
+une entrée selon le type de média :
 
 ```json
-{
-  "id": "ml-4",
-  "type": "image",
-  "domaine": "ml",
-  "url": "assets/mon-graphique.png",
-  "miniature": "assets/mon-graphique-min.png",
-  "titre":       { "fr": "Mon titre",       "en": "My title" },
-  "description": { "fr": "Ma description.",  "en": "My description." }
-}
+{ "type": "image", "url": "assets/mon-graphique.png", "miniature": "",
+  "titre": { "fr": "Mon titre", "en": "My title" },
+  "description": { "fr": "Ma description.", "en": "My description." } }
+
+{ "type": "video", "url": "https://www.youtube.com/watch?v=ID",
+  "titre": { "fr": "…", "en": "…" }, "description": { "fr": "…", "en": "…" } }
+
+{ "type": "pdf", "fichier": "assets/pdf/mon-document.pdf",
+  "titre": { "fr": "…", "en": "…" }, "description": { "fr": "…", "en": "…" } }
 ```
 
 Champs :
 
-| Champ         | Obligatoire | Description                                                                 |
-|---------------|-------------|-----------------------------------------------------------------------------|
-| `id`          | recommandé  | Identifiant unique (utile pour de futures fonctionnalités).                 |
-| `type`        | oui         | `"image"` ou `"video"`.                                                     |
-| `domaine`     | oui         | `"ml"`, `"statistiques"`, `"crypto"` ou `"quantower"`.                       |
-| `url`         | oui         | Image : chemin (`assets/...`) ou URL. Vidéo : lien **YouTube**.             |
-| `miniature`   | non         | Image d'aperçu (sinon `url` est utilisée).                                  |
-| `titre`       | oui         | Objet `{ "fr": "…", "en": "…" }`.                                           |
-| `description` | oui         | Objet `{ "fr": "…", "en": "…" }`.                                           |
+| Champ         | Type      | Description                                                        |
+|---------------|-----------|--------------------------------------------------------------------|
+| `type`        | oui       | `"image"`, `"video"` ou `"pdf"`.                                   |
+| `url`         | image/vidéo | Image : chemin (`assets/...`) ou URL. Vidéo : lien **YouTube**.  |
+| `fichier`     | pdf       | Chemin du PDF, sous `assets/pdf/`.                                 |
+| `miniature`   | non       | Image d'aperçu (sinon `url` est utilisée).                        |
+| `titre`       | oui       | Objet `{ "fr": "…", "en": "…" }`.                                 |
+| `description` | oui       | Objet `{ "fr": "…", "en": "…" }`.                                 |
 
-**Vidéos YouTube** : collez simplement le lien habituel
-(`https://www.youtube.com/watch?v=ID`, `https://youtu.be/ID` ou un lien
-`/embed/ID`) — le code extrait l'identifiant et génère l'intégration.
+**Vidéos YouTube** : collez le lien habituel
+(`https://www.youtube.com/watch?v=ID`, `https://youtu.be/ID` ou `/embed/ID`) —
+le code extrait l'identifiant et génère l'intégration.
 
-**Images locales** : déposez le fichier dans `assets/` et mettez
+**Images locales** : déposez le fichier dans `assets/` puis
 `"url": "assets/mon-image.jpg"`.
 
-> Le contenu actuel est du **placeholder de démonstration** (images via picsum.photos,
-> vidéos YouTube d'exemple). Remplacez-le par vos propres médias.
+**PDF** : déposez le fichier dans `assets/pdf/` puis
+`"fichier": "assets/pdf/mon-document.pdf"`. Chaque PDF s'affiche en aperçu, avec
+des boutons **Voir le PDF** (ouverture plein écran) et **Télécharger**.
+
+> Tant que `items` est vide pour un projet, sa page affiche un message
+> « section en construction ».
+
+---
+
+## ⚠️ PDF en français uniquement
+
+Les documents PDF ne sont disponibles qu'**en français**. Lorsque l'interface
+est en **anglais** et qu'un projet contient des PDF, un **avertissement** est
+affiché automatiquement au-dessus du contenu (clé `documents.avertissement_fr`).
 
 ---
 
@@ -109,49 +119,39 @@ Les textes de l'interface sont dans **`js/translations.js`**.
   `data-i18n="ma.cle" data-i18n-attr="alt"` pour traduire un attribut).
 - **Ajouter une langue** : dupliquez le bloc `en`, renommez-le (ex. `es`),
   traduisez, puis ajoutez le code dans `LANGUES_DISPONIBLES`.
-  Le bouton de langue bascule en cycle sur toutes les langues disponibles.
 
 La langue choisie est mémorisée dans le navigateur (`localStorage`). FR par défaut.
 
 ---
 
-## Ajouter une page de domaine
+## Ajouter un projet
 
-1. Dupliquez `ml.html` en `mondomaine.html`.
-2. Changez `<body data-page="mondomaine">`.
-3. Changez le `data-i18n` du `<h1>` (et ajoutez la clé dans `translations.js`).
-4. Changez le filtre : `<div class="galerie" data-galerie data-domaine="mondomaine"></div>`.
-5. Ajoutez le lien dans le menu : éditez le tableau `LIENS` dans `js/components.js`.
-6. Utilisez `"domaine": "mondomaine"` dans `data/gallery.json` pour ses contenus.
-
-La navigation est centralisée dans `js/components.js` : un seul endroit à modifier
-pour tous les en-têtes.
+1. Ajoutez une entrée dans le tableau `PROJETS` de **`js/projects.js`**
+   (`id`, `href`, `page`, `titre`, `desc`). La navigation et la grille de
+   l'accueil se mettent à jour automatiquement.
+2. Dupliquez une page de projet (ex. `crypto.html`) vers le fichier `href`
+   choisi, puis changez `<body data-page="…">`, le `data-i18n` du `<h1>` et
+   `data-projet="…"` du conteneur de contenu.
+3. Ajoutez les clés i18n du titre et de la description dans `js/translations.js`
+   (dans `fr` **et** `en`).
+4. Ajoutez la clé du projet (avec son tableau `items`) dans `data/projets.json`.
 
 ---
 
 ## Déployer sur GitHub Pages
 
-1. Créez un dépôt GitHub et poussez le contenu de ce dossier à la racine.
+1. Poussez le contenu de ce dossier à la racine d'un dépôt GitHub.
    ```bash
-   git init
    git add .
-   git commit -m "Site portfolio iAlexMG"
-   git branch -M main
-   git remote add origin https://github.com/iAlexMG/<depot>.git
-   git push -u origin main
+   git commit -m "Mise à jour du site iAlexMG"
+   git push
    ```
 2. Dans le dépôt : **Settings → Pages**.
    - **Source** : `Deploy from a branch`.
    - **Branch** : `main`, dossier `/ (root)`.
 3. Le fichier **`CNAME`** (déjà présent) configure le domaine `ialexmg.ca`.
-   Chez votre registraire DNS, pointez le domaine vers GitHub Pages :
-   - Enregistrements **A** vers : `185.199.108.153`, `185.199.109.153`,
-     `185.199.110.153`, `185.199.111.153`
-   - ou un **CNAME** `www` vers `iAlexMG.github.io`.
+   Voir `DEPLOIEMENT.md` pour la configuration DNS détaillée.
 4. Activez **Enforce HTTPS** une fois le certificat émis.
-
-> Astuce : pas besoin de fichier `.nojekyll` ici — aucun fichier ne commence par
-> un underscore. Si vous en ajoutez, créez un `.nojekyll` vide à la racine.
 
 ---
 
@@ -159,12 +159,10 @@ pour tous les en-têtes.
 
 Le code est commenté et modulaire pour faciliter ces ajouts :
 
-- **Recherche** : filtrer `donnees.items` sur titre/description dans `gallery.js`.
-- **Filtres par domaine sur la galerie** : réutiliser le paramètre `domaine` de
-  `Galerie.rendre(...)`.
+- **Recherche / filtres** : filtrer `items` avant rendu dans `content.js`.
 - **Lightbox / plein écran** : les images portent déjà `data-lightbox` et
   `data-url` (hooks prêts à brancher).
-- **Lecteur vidéo custom** : remplacer `creerEmbedYoutube()` dans `gallery.js`.
+- **Lecteur vidéo custom** : remplacer `creerEmbedYoutube()` dans `content.js`.
 
 ---
 

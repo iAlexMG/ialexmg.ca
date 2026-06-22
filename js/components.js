@@ -10,30 +10,33 @@
  *   ... contenu ...
  *   <footer id="pied"></footer>
  *
- * Et indiquer la page courante sur la balise <body data-page="galerie">
+ * Et indiquer la page courante sur la balise <body data-page="...">
  * pour mettre en évidence le lien actif dans le menu.
  *
- * Dépend de i18n.js (traductions appliquées après injection).
+ * Dépend de i18n.js (traductions) et de projects.js (window.PROJETS).
  * --------------------------------------------------------------------------
  */
 
 const Composants = (function () {
-  // Liste centrale des liens de navigation.
-  // "page" correspond à la valeur de body[data-page] pour marquer l'onglet actif.
-  const LIENS = [
-    { href: "index.html", page: "accueil", i18n: "nav.accueil" },
-    { href: "galerie.html", page: "galerie", i18n: "nav.galerie" },
-    { href: "ml.html", page: "ml", i18n: "domaine.ml.court" },
-    { href: "statistiques.html", page: "statistiques", i18n: "domaine.statistiques" },
-    { href: "crypto.html", page: "crypto", i18n: "domaine.crypto" },
-    { href: "quantower.html", page: "quantower", i18n: "domaine.quantower" },
-    { href: "python.html", page: "python", i18n: "nav.python" },
-    { href: "apropos.html", page: "apropos", i18n: "nav.apropos" },
-    { href: "contact.html", page: "contact", i18n: "nav.contact" },
-  ];
+  // Navigation construite dynamiquement : Accueil, puis un lien par PROJET
+  // (depuis js/projects.js), puis À propos et Contact. Un seul endroit à
+  // éditer pour ajouter un projet : la liste PROJETS.
+  function liensNavigation() {
+    const projets = (window.PROJETS || []).map(function (p) {
+      return { href: p.href, page: p.page, i18n: p.titre };
+    });
+    return [
+      { href: "index.html", page: "accueil", i18n: "nav.accueil" },
+    ]
+      .concat(projets)
+      .concat([
+        { href: "apropos.html", page: "apropos", i18n: "nav.apropos" },
+        { href: "contact.html", page: "contact", i18n: "nav.contact" },
+      ]);
+  }
 
   function construireEntete(pageCourante) {
-    const liens = LIENS.map(function (lien) {
+    const liens = liensNavigation().map(function (lien) {
       const actif = lien.page === pageCourante ? ' class="actif" aria-current="page"' : "";
       return (
         '<li><a href="' + lien.href + '"' + actif + ' data-i18n="' + lien.i18n + '"></a></li>'
@@ -55,6 +58,22 @@ const Composants = (function () {
     );
   }
 
+  // Grille des projets pour l'accueil, générée depuis window.PROJETS.
+  // S'insère dans le conteneur [data-grille-projets] de index.html.
+  function construireGrilleProjets() {
+    return (window.PROJETS || [])
+      .map(function (p) {
+        return (
+          '<a class="carte-portfolio" href="' + p.href + '">' +
+          '  <h3 data-i18n="' + p.titre + '"></h3>' +
+          '  <p data-i18n="' + p.desc + '"></p>' +
+          '  <span class="fleche" data-i18n="accueil.voir_projet"></span> →' +
+          "</a>"
+        );
+      })
+      .join("");
+  }
+
   function construirePied() {
     const annee = new Date().getFullYear();
     return (
@@ -74,6 +93,10 @@ const Composants = (function () {
 
     const pied = document.getElementById("pied");
     if (pied) pied.innerHTML = construirePied();
+
+    // Grille des projets (présente uniquement sur l'accueil).
+    const grilleProjets = document.querySelector("[data-grille-projets]");
+    if (grilleProjets) grilleProjets.innerHTML = construireGrilleProjets();
 
     // Sélecteur de langue.
     const boutonLangue = document.getElementById("langue-bascule");

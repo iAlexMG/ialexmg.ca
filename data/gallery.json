@@ -1,4 +1,0 @@
-{
-  "_commentaire": "Contenu de la galerie. Tant que 'items' est vide, les pages affichent un message « en construction ». Pour ajouter du vrai contenu, voir DEPLOIEMENT.md (ou README.md). Exemple d'entrée : { \"id\": \"ml-1\", \"type\": \"image\", \"domaine\": \"ml\", \"url\": \"assets/mon-image.png\", \"miniature\": \"\", \"titre\": { \"fr\": \"Titre\", \"en\": \"Title\" }, \"description\": { \"fr\": \"Desc FR\", \"en\": \"Desc EN\" } }",
-  "items": []
-}
