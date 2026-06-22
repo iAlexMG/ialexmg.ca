@@ -5,36 +5,26 @@
  *
  * Rôle :
  *   1. Fixer la langue active sur <html lang="…"> dès le départ.
- *   2. Construire l'en-tête et le pied (via Composants).
+ *   2. Construire l'en-tête, la grille de projets (accueil) et le pied.
  *   3. Appliquer les traductions à la page.
- *   4. Si la page contient une galerie ([data-galerie]), la rendre.
- *   5. Re-rendre la galerie quand la langue change (évènement "langue:changee").
+ *   4. Rendre le contenu du projet si la page contient un [data-projet].
+ *   5. Re-rendre ce contenu quand la langue change (évènement "langue:changee").
  *
- * Une page déclare une galerie ainsi :
- *   <div data-galerie></div>                 -> galerie complète (tous domaines)
- *   <div data-galerie data-domaine="ml"></div> -> galerie filtrée sur un domaine
+ * Une page de projet déclare son contenu ainsi :
+ *   <div data-projet="python"></div>   -> rend le contenu du projet "python"
  * --------------------------------------------------------------------------
  */
 
 (function () {
-  // Rend toutes les galeries présentes sur la page.
-  // (window.Galerie n'est chargé que sur les pages qui en ont besoin.)
-  function rendreGaleries() {
-    if (!window.Galerie) return;
-    document.querySelectorAll("[data-galerie]").forEach(function (conteneur) {
-      window.Galerie.rendre({
+  // Rend le contenu de chaque projet présent sur la page.
+  // (window.Contenu n'est chargé que sur les pages de projet.)
+  function rendreProjets() {
+    if (!window.Contenu) return;
+    document.querySelectorAll("[data-projet]").forEach(function (conteneur) {
+      window.Contenu.rendre({
         conteneur: conteneur,
-        domaine: conteneur.getAttribute("data-domaine") || null,
+        projet: conteneur.getAttribute("data-projet") || null,
       });
-    });
-  }
-
-  // Rend toutes les listes de documents PDF présentes sur la page.
-  // (window.Documents n'est chargé que sur la page Documentation Python.)
-  function rendreDocuments() {
-    if (!window.Documents) return;
-    document.querySelectorAll("[data-documents]").forEach(function (conteneur) {
-      window.Documents.rendre({ conteneur: conteneur });
     });
   }
 
@@ -42,17 +32,17 @@
     // 1. Appliquer la langue mémorisée à l'attribut lang du document.
     document.documentElement.setAttribute("lang", window.I18n.langueActive());
 
-    // 2 & 3. En-tête / pied + traductions (Composants applique déjà les traductions).
+    // 2 & 3. En-tête / grille projets / pied + traductions (Composants applique
+    // déjà les traductions sur le contenu injecté).
     window.Composants.initialiser();
 
-    // 4. Galeries et documents éventuels.
-    rendreGaleries();
-    rendreDocuments();
+    // 4. Contenu du projet éventuel.
+    rendreProjets();
 
-    // 5. Redessiner au changement de langue (titres/descriptions bilingues).
+    // 5. Redessiner au changement de langue (titres/descriptions bilingues
+    //    et avertissement PDF FR/EN).
     document.addEventListener("langue:changee", function () {
-      rendreGaleries();
-      rendreDocuments();
+      rendreProjets();
     });
   }
 

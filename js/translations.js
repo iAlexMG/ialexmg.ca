@@ -29,61 +29,53 @@ const TRADUCTIONS = {
 
     // Navigation
     "nav.accueil": "Accueil",
-    "nav.galerie": "Galerie",
     "nav.apropos": "À propos",
     "nav.contact": "Contact",
-    "nav.portfolios": "Portfolios",
-    "nav.python": "Python",
 
-    // Domaines
-    "domaine.ml": "Machine Learning & Deep Learning",
-    "domaine.statistiques": "Statistiques",
-    "domaine.crypto": "Crypto",
-    "domaine.quantower": "Quantower",
-    "domaine.ml.court": "ML & DL",
+    // Projets (titres complets — menu, en-tête de page, cartes d'accueil)
+    "projet.649": "649",
+    "projet.python": "Formation Python",
+    "projet.crypto": "Crypto",
+    "projet.quantower": "Quantower",
+
+    // Descriptions courtes des projets (cartes d'accueil)
+    "projet.649.desc": "Analyse de données et modèles autour du 6/49.",
+    "projet.python.desc": "Supports de cours et documents PDF de la formation Python.",
+    "projet.crypto.desc": "Stratégies, backtests et analyse de marchés crypto.",
+    "projet.quantower.desc": "Indicateurs et outils personnalisés pour le trading.",
 
     // Accueil
     "accueil.construction": "🚧 Site en construction — le contenu arrive bientôt.",
     "accueil.titre": "iAlexMG",
     "accueil.sous_titre": "Data, modèles et marchés",
-    "accueil.intro": "Bienvenue. Je conçois des projets autour de l'apprentissage automatique, des statistiques et des marchés financiers. Explorez mes portfolios par domaine.",
-    "accueil.portfolios_titre": "Mes portfolios",
-    "accueil.voir_portfolio": "Voir le portfolio",
-    "accueil.cta_galerie": "Parcourir la galerie",
+    "accueil.intro": "Bienvenue. Je conçois des projets autour de l'apprentissage automatique, des statistiques et des marchés financiers. Découvrez-les ci-dessous.",
+    "accueil.projets_titre": "Mes projets",
+    "accueil.voir_projet": "Voir le projet",
+    "accueil.cta_projets": "Voir mes projets",
 
-    // Descriptions courtes des domaines (cartes d'accueil)
-    "accueil.ml.desc": "Modèles prédictifs, réseaux de neurones et vision par ordinateur.",
-    "accueil.statistiques.desc": "Analyse de données, inférence et visualisation statistique.",
-    "accueil.crypto.desc": "Stratégies, backtests et analyse de marchés crypto.",
-    "accueil.quantower.desc": "Indicateurs et outils personnalisés pour le trading.",
-    "accueil.python.desc": "Supports de cours et documents PDF de la formation Python.",
+    // En-tête générique des pages de projet
+    "projet.intro": "Projet dédié. Vous trouverez ci-dessous les contenus associés.",
 
-    // Galerie
-    "galerie.titre": "Galerie",
-    "galerie.intro": "Une sélection d'images et de vidéos issues de mes projets.",
-    "galerie.vide": "🚧 Section en construction — du contenu sera ajouté prochainement.",
-    "galerie.chargement": "Chargement du contenu…",
-    "galerie.erreur": "Impossible de charger le contenu de la galerie.",
-    "galerie.badge_video": "Vidéo",
-    "galerie.badge_image": "Image",
+    // Contenu de projet (images / vidéos / PDF)
+    "contenu.chargement": "Chargement du contenu…",
+    "contenu.vide": "🚧 Section en construction — du contenu sera ajouté prochainement.",
+    "contenu.erreur": "Impossible de charger le contenu.",
+    "contenu.badge_video": "Vidéo",
+    "contenu.badge_image": "Image",
+    "contenu.badge_pdf": "PDF",
 
-    // Documentation Python
-    "domaine.python": "Formation théorique de Python",
-    "python.intro": "Voici les fichiers que j'ai créés pour apprendre et me perfectionner en Python. Toujours en amélioration constante!",
-    "documents.chargement": "Chargement des documents…",
-    "documents.vide": "🚧 Documents à venir — cette section est en construction.",
-    "documents.erreur": "Impossible de charger les documents.",
-    "documents.badge": "PDF",
+    // Documents PDF
     "documents.voir": "Voir le PDF",
-    // "documents.telecharger": "Télécharger",
+    "documents.telecharger": "Télécharger",
+    "documents.avertissement_fr": "⚠️ Les documents PDF ne sont disponibles qu'en français.",
 
-    // Pages domaine
-    "domaine.intro": "Portfolio dédié. Le contenu ci-dessous est filtré pour ce domaine.",
+    // Projet Python (intro spécifique)
+    "python.intro": "Voici les fichiers que j'ai créés pour apprendre et me perfectionner en Python. Toujours en amélioration constante !",
 
     // À propos
     "apropos.titre": "À propos",
     "apropos.p1": "Je travaille sous le nom iAlexMG, à l'intersection de la science des données, des statistiques et des marchés financiers.",
-    "apropos.p2": "Ce site rassemble mes projets en machine learning et deep learning, en statistiques, en crypto, ainsi que mes développements pour la plateforme Quantower.",
+    "apropos.p2": "Ce site rassemble mes projets : analyse du 6/49, formation Python, crypto, ainsi que mes développements pour la plateforme Quantower.",
     "apropos.p3": "Mon approche : des méthodes rigoureuses, des résultats mesurables et des outils réutilisables.",
 
     // Contact
@@ -104,61 +96,53 @@ const TRADUCTIONS = {
 
     // Navigation
     "nav.accueil": "Home",
-    "nav.galerie": "Gallery",
     "nav.apropos": "About",
     "nav.contact": "Contact",
-    "nav.portfolios": "Portfolios",
-    "nav.python": "Python",
 
-    // Domains
-    "domaine.ml": "Machine Learning & Deep Learning",
-    "domaine.statistiques": "Statistics",
-    "domaine.crypto": "Crypto",
-    "domaine.quantower": "Quantower",
-    "domaine.ml.court": "ML & DL",
+    // Projects (full titles — menu, page header, home cards)
+    "projet.649": "649",
+    "projet.python": "Python Training",
+    "projet.crypto": "Crypto",
+    "projet.quantower": "Quantower",
+
+    // Project short descriptions (home cards)
+    "projet.649.desc": "Data analysis and models around the 6/49 lottery.",
+    "projet.python.desc": "Course materials and PDF documents from the Python training.",
+    "projet.crypto.desc": "Strategies, backtests and crypto market analysis.",
+    "projet.quantower.desc": "Custom indicators and tools for trading.",
 
     // Home
     "accueil.construction": "🚧 Site under construction — content coming soon.",
     "accueil.titre": "iAlexMG",
     "accueil.sous_titre": "Data, models and markets",
-    "accueil.intro": "Welcome. I build projects around machine learning, statistics and financial markets. Explore my portfolios by domain.",
-    "accueil.portfolios_titre": "My portfolios",
-    "accueil.voir_portfolio": "View portfolio",
-    "accueil.cta_galerie": "Browse the gallery",
+    "accueil.intro": "Welcome. I build projects around machine learning, statistics and financial markets. Discover them below.",
+    "accueil.projets_titre": "My projects",
+    "accueil.voir_projet": "View project",
+    "accueil.cta_projets": "View my projects",
 
-    // Domain short descriptions (home cards)
-    "accueil.ml.desc": "Predictive models, neural networks and computer vision.",
-    "accueil.statistiques.desc": "Data analysis, inference and statistical visualization.",
-    "accueil.crypto.desc": "Strategies, backtests and crypto market analysis.",
-    "accueil.quantower.desc": "Custom indicators and tools for trading.",
-    "accueil.python.desc": "Course materials and PDF documents from the Python training.",
+    // Generic project page header
+    "projet.intro": "Dedicated project. You'll find the related content below.",
 
-    // Gallery
-    "galerie.titre": "Gallery",
-    "galerie.intro": "A selection of images and videos from my projects.",
-    "galerie.vide": "🚧 Section under construction — content coming soon.",
-    "galerie.chargement": "Loading content…",
-    "galerie.erreur": "Unable to load the gallery content.",
-    "galerie.badge_video": "Video",
-    "galerie.badge_image": "Image",
+    // Project content (images / videos / PDF)
+    "contenu.chargement": "Loading content…",
+    "contenu.vide": "🚧 Section under construction — content coming soon.",
+    "contenu.erreur": "Unable to load the content.",
+    "contenu.badge_video": "Video",
+    "contenu.badge_image": "Image",
+    "contenu.badge_pdf": "PDF",
 
-    // Python documentation
-    "domaine.python": "Python Theory Course",
-    "python.intro": "Here are the files I created to learn and improve my Python skills. I'm always working to make them better!",
-    "documents.chargement": "Loading documents…",
-    "documents.vide": "🚧 Documents coming soon — this section is under construction.",
-    "documents.erreur": "Unable to load the documents.",
-    "documents.badge": "PDF",
+    // PDF documents
     "documents.voir": "View PDF",
-    // "documents.telecharger": "Download",
+    "documents.telecharger": "Download",
+    "documents.avertissement_fr": "⚠️ The PDF documents are only available in French.",
 
-    // Domain pages
-    "domaine.intro": "Dedicated portfolio. The content below is filtered for this domain.",
+    // Python project (specific intro)
+    "python.intro": "Here are the files I created to learn and improve my Python skills. Always a work in progress!",
 
     // About
     "apropos.titre": "About",
     "apropos.p1": "I work under the name iAlexMG, at the intersection of data science, statistics and financial markets.",
-    "apropos.p2": "This site brings together my projects in machine learning and deep learning, statistics, crypto, as well as my developments for the Quantower platform.",
+    "apropos.p2": "This site brings together my projects: 6/49 analysis, Python training, crypto, as well as my developments for the Quantower platform.",
     "apropos.p3": "My approach: rigorous methods, measurable results and reusable tools.",
 
     // Contact

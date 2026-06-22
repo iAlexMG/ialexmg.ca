@@ -24,19 +24,28 @@ git push
 
 ---
 
-## 🖼️ Ajouter une image ou une vidéo à la galerie
+## 🗂️ Le contenu est rangé PAR PROJET
 
-Tout le contenu vient de **`data/gallery.json`**. On n'édite **jamais** le HTML.
+Tout le contenu vient de **`data/projets.json`**. On n'édite **jamais** le HTML.
+Le fichier contient un bloc par projet (`"649"`, `"python"`, `"crypto"`,
+`"quantower"`, …) ; chacun a une liste `items`. On ajoute le média dans le
+projet voulu.
+
+> ⚠️ Attention à la **virgule** entre chaque entrée `{ ... }` du tableau.
+> En cas de doute, vérifie le fichier sur https://jsonlint.com (copier-coller).
+
+---
+
+## 🖼️ Ajouter une image ou une vidéo à un projet
 
 1. (Image) Dépose ton fichier dans le dossier **`assets/`**.
    (Vidéo) Récupère le lien YouTube — rien à déposer.
-2. Ouvre **`data/gallery.json`** et ajoute une entrée dans la liste `items` :
+2. Ouvre **`data/projets.json`** et ajoute une entrée dans le `items` du
+   projet voulu :
 
 ```json
 {
-  "id": "ml-5",
   "type": "image",
-  "domaine": "ml",
   "url": "assets/mon-image.png",
   "miniature": "",
   "titre":       { "fr": "Titre FR",       "en": "Title EN" },
@@ -45,30 +54,27 @@ Tout le contenu vient de **`data/gallery.json`**. On n'édite **jamais** le HTML
 ```
 
 - `type` : `"image"` ou `"video"`
-- `domaine` : `"ml"`, `"statistiques"`, `"crypto"` ou `"quantower"`
 - `url` (vidéo) : le lien YouTube (`https://www.youtube.com/watch?v=...`)
 - `url` (image) : `assets/mon-fichier.png` (ou une URL externe)
 
 3. Sauvegarde, puis fais la mise à jour Git (section ci-dessus).
 
-> ⚠️ Attention à la **virgule** entre chaque entrée `{ ... }` du tableau.
-> En cas de doute, vérifie le fichier sur https://jsonlint.com (copier-coller).
-
 ---
 
-## 📄 Ajouter un PDF à la section « Documentation Python »
+## 📄 Ajouter un PDF à un projet
 
-Les PDF sont gérés par **`data/python-docs.json`** (on n'édite jamais le HTML).
+Les PDF se gèrent aussi dans **`data/projets.json`** (type `"pdf"`).
 
 1. Dépose ton fichier PDF dans le dossier **`assets/pdf/`**
-   (ex : `assets/pdf/01-introduction.pdf`).
-2. Ouvre **`data/python-docs.json`** et ajoute une entrée dans la liste `items` :
+   (ex : `assets/pdf/01 - Fondamentaux.pdf`).
+2. Ouvre **`data/projets.json`** et ajoute une entrée dans le `items` du
+   projet voulu (ex. `"python"`) :
 
 ```json
 {
-  "id": "py-1",
-  "fichier": "assets/pdf/01-introduction.pdf",
-  "titre":       { "fr": "Introduction à Python", "en": "Introduction to Python" },
+  "type": "pdf",
+  "fichier": "assets/pdf/01 - Fondamentaux.pdf",
+  "titre":       { "fr": "Les bases de Python", "en": "The basics of Python" },
   "description": { "fr": "Premier chapitre du cours.", "en": "First chapter of the course." }
 }
 ```
@@ -78,11 +84,13 @@ Les PDF sont gérés par **`data/python-docs.json`** (on n'édite jamais le HTML
 
 3. Sauvegarde, puis fais la mise à jour Git (section « Mettre à jour le site »).
 
-> Tant que `items` est vide, la page affiche « Documents à venir ».
-> Dès qu'il y a au moins une entrée, les PDF s'affichent (aperçu + boutons
+> Tant que `items` est vide, la page du projet affiche « section en construction ».
+> Dès qu'il y a au moins une entrée PDF, les PDF s'affichent (aperçu + boutons
 > « Voir le PDF » / « Télécharger »).
-> ⚠️ Le nom du fichier dans `data/python-docs.json` doit correspondre
-> **exactement** (majuscules/minuscules comprises) au fichier déposé.
+> En **anglais**, un avertissement « PDF en français uniquement » s'affiche
+> automatiquement.
+> ⚠️ Le nom du fichier dans `data/projets.json` doit correspondre
+> **exactement** (espaces, majuscules/minuscules compris) au fichier déposé.
 
 ---
 

@@ -1,3 +1,4 @@
 # Placez ici vos images locales (jpg, png, webp…).
-# Référencez-les dans data/gallery.json via "url": "assets/mon-image.jpg".
+# Référencez-les dans data/projets.json via une entrée :
+#   { "type": "image", "url": "assets/mon-image.jpg", ... } dans le projet voulu.
 # Ce fichier sert uniquement à conserver le dossier dans Git.

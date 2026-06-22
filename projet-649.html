@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <!--
-  galerie.html — Galerie complète (tous domaines)
-  Le conteneur [data-galerie] est rempli dynamiquement par js/gallery.js
-  à partir de data/gallery.json.
+  projet-649.html — Projet : 649
+  Affiche le contenu du projet "649" via js/content.js (lit data/projets.json).
+  Pour créer une nouvelle page de projet, dupliquez ce fichier et changez :
+    - <body data-page="...">
+    - le data-i18n du <h1>
+    - data-projet="..." du conteneur
+  (voir le README, section « Ajouter un projet »).
 -->
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galerie — iAlexMG</title>
-  <meta name="description" content="Galerie d'images et de vidéos des projets d'iAlexMG.">
+  <title>649 — iAlexMG</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<body data-page="galerie">
+<body data-page="projet-649">
   <header class="entete" id="entete"></header>
 
   <main>
     <section class="entete-page">
       <div class="conteneur">
-        <h1 data-i18n="galerie.titre"></h1>
-        <p class="accroche" data-i18n="galerie.intro"></p>
+        <h1 data-i18n="projet.649"></h1>
+        <p class="accroche" data-i18n="projet.intro"></p>
       </div>
     </section>
 
     <section class="section" style="padding-top:0;">
       <div class="conteneur">
-        <!-- Galerie complète : aucun data-domaine -> tous les domaines -->
-        <div class="galerie" data-galerie></div>
+        <div class="galerie" data-projet="649"></div>
       </div>
     </section>
   </main>
@@ -35,8 +37,9 @@
 
   <script src="js/translations.js"></script>
   <script src="js/i18n.js"></script>
+  <script src="js/projects.js"></script>
   <script src="js/components.js"></script>
-  <script src="js/gallery.js"></script>
+  <script src="js/content.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

@@ -382,6 +382,19 @@ img { max-width: 100%; display: block; }
   font-weight: 600;
 }
 
+/* Avertissement « PDF en français uniquement » (affiché en anglais). */
+.avertissement-langue {
+  grid-column: 1 / -1; /* occupe toute la largeur de la grille */
+  margin: 0 0 0.5rem;
+  padding: 0.75rem 1.1rem;
+  background: #fbf3e2;            /* jaune doux, cohérent avec la bannière accueil */
+  color: #8a6d3b;
+  border: 1px solid #efe0bf;
+  border-radius: var(--rayon);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
 /* ----- Contenu textuel (à propos, contact) ----- */
 .prose { max-width: 65ch; }
 .prose p { color: var(--couleur-texte); }
