@@ -194,20 +194,42 @@ const Contenu = (function () {
     return "sec-" + (idx + 1);
   }
 
-  // Rend une section : titre + intro optionnelle + grille de cartes.
+  // Rend une section : titre + intro optionnelle + (grille de cartes OU prose).
+  // Une section peut être :
+  //   - une grille (elle a des 'items') ;
+  //   - un bloc de texte seul (champ 'texte' {fr,en}, sans items) — ex. Conclusion ;
+  //   - vide (ni items ni texte) -> message « en construction ».
   function creerSection(section, idx) {
     const titre = texteLocalise(section.titre);
     const intro = texteLocalise(section.intro);
+    const texte = texteLocalise(section.texte);
     const items = Array.isArray(section.items) ? section.items : [];
     const ancre = ancreSection(section, idx);
-    const cartes = items.length
-      ? items.map(creerCarte).join("")
-      : '<p class="galerie-message" data-i18n="contenu.vide"></p>';
+
+    let corps;
+    if (items.length) {
+      corps = '<div class="galerie">' + items.map(creerCarte).join("") + "</div>";
+    } else if (texte) {
+      // Bloc de prose (chaque double saut de ligne = un paragraphe).
+      corps =
+        '<div class="section-prose">' +
+        texte
+          .split(/\n\s*\n/)
+          .map(function (p) {
+            return "<p>" + echapper(p.trim()) + "</p>";
+          })
+          .join("") +
+        "</div>";
+    } else {
+      corps =
+        '<div class="galerie"><p class="galerie-message" data-i18n="contenu.vide"></p></div>';
+    }
+
     return (
       '<section class="projet-section" id="' + echapper(ancre) + '">' +
       '  <h2 class="projet-section-titre">' + echapper(titre) + "</h2>" +
       (intro ? '  <p class="section-intro">' + echapper(intro) + "</p>" : "") +
-      '  <div class="galerie">' + cartes + "</div>" +
+      corps +
       "</section>"
     );
   }
