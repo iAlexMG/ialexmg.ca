@@ -1,5 +1,5 @@
 {
-  "_commentaire": "Contenu du portfolio, regroupé PAR PROJET. La clé de chaque projet correspond au champ 'id' défini dans js/projects.js et à data-projet=\"...\" dans la page. Chaque item a un 'type' : 'image', 'video' ou 'pdf'. image -> 'url' (chemin assets/ ou URL) ; video -> 'url' (lien YouTube) ; pdf -> 'fichier' (chemin sous assets/pdf/). Quand 'items' est vide, la page du projet affiche un message « en construction ». Exemple image : { \"type\": \"image\", \"url\": \"assets/mon-image.png\", \"miniature\": \"\", \"titre\": {\"fr\":\"Titre\",\"en\":\"Title\"}, \"description\": {\"fr\":\"...\",\"en\":\"...\"} }. Exemple pdf : { \"type\": \"pdf\", \"fichier\": \"assets/pdf/mon.pdf\", \"titre\": {\"fr\":\"...\",\"en\":\"...\"}, \"description\": {\"fr\":\"...\",\"en\":\"...\"} }.",
+  "_commentaire": "Contenu du portfolio, regroupé PAR PROJET. La clé de chaque projet correspond au champ 'id' défini dans js/projects.js et à data-projet=\"...\" dans la page. Chaque projet a SON dossier sous assets/ (assets/649/, assets/python/, assets/crypto/, assets/quantower/) : on y dépose ses images ET ses PDF. Chaque item a un 'type' : 'image', 'video' ou 'pdf'. image -> 'url' (chemin assets/<projet>/... ou URL) ; video -> 'url' (lien YouTube) ; pdf -> 'fichier' (chemin assets/<projet>/...). Quand 'items' est vide, la page du projet affiche un message « en construction ». Exemple image : { \"type\": \"image\", \"url\": \"assets/649/mon-image.png\", \"miniature\": \"\", \"titre\": {\"fr\":\"Titre\",\"en\":\"Title\"}, \"description\": {\"fr\":\"...\",\"en\":\"...\"} }. Exemple pdf : { \"type\": \"pdf\", \"fichier\": \"assets/python/mon.pdf\", \"titre\": {\"fr\":\"...\",\"en\":\"...\"}, \"description\": {\"fr\":\"...\",\"en\":\"...\"} }.",
   "projets": {
     "649": {
       "items": []
@@ -9,21 +9,21 @@
         {
           "id": "py-1",
           "type": "pdf",
-          "fichier": "assets/pdf/01 - Fondamentaux.pdf",
+          "fichier": "assets/python/01 - Fondamentaux.pdf",
           "titre":       { "fr": "Les bases de Python", "en": "The basics of Python" },
           "description": { "fr": "Chapitre 1 du cours.", "en": "Chapter 1 of the course." }
         },
         {
           "id": "py-2",
           "type": "pdf",
-          "fichier": "assets/pdf/02 - POO.pdf",
+          "fichier": "assets/python/02 - POO.pdf",
           "titre":       { "fr": "Programmation orientée objet", "en": "Object-Oriented Programming" },
           "description": { "fr": "Chapitre 2 du cours.", "en": "Chapter 2 of the course." }
         },
         {
           "id": "py-3",
           "type": "pdf",
-          "fichier": "assets/pdf/05 - Donnees.pdf",
+          "fichier": "assets/python/05 - Donnees.pdf",
           "titre":       { "fr": "Les types de données", "en": "Data Types" },
           "description": { "fr": "Chapitre 5 du cours.", "en": "Chapter 5 of the course." }
         }

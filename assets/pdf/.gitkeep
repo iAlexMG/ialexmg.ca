@@ -1,4 +1,0 @@
-# Déposez ici les PDF (ex : 01 - Fondamentaux.pdf).
-# Référencez-les ensuite dans data/projets.json via une entrée :
-#   { "type": "pdf", "fichier": "assets/pdf/mon.pdf", ... } dans le projet voulu.
-# Ce fichier sert uniquement à conserver le dossier dans Git.

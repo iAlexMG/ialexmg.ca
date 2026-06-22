@@ -1,0 +1,6 @@
+# Dossier du projet "python".
+# Déposez ici les fichiers de ce projet (images : .jpg/.png/.webp ; PDF : .pdf).
+# Puis référencez-les dans data/projets.json (bloc "python") :
+#   image : { "type": "image", "url": "assets/python/mon-image.png", ... }
+#   pdf   : { "type": "pdf",  "fichier": "assets/python/mon-doc.pdf", ... }
+# (Ce fichier sert juste à conserver le dossier dans Git ; supprimable une fois des fichiers ajoutés.)

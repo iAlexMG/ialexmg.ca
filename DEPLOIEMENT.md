@@ -31,6 +31,11 @@ Le fichier contient un bloc par projet (`"649"`, `"python"`, `"crypto"`,
 `"quantower"`, …) ; chacun a une liste `items`. On ajoute le média dans le
 projet voulu.
 
+📁 **Chaque projet a son dossier sous `assets/`** : `assets/649/`,
+`assets/python/`, `assets/crypto/`, `assets/quantower/`. On y dépose **toutes**
+les images et **tous** les PDF de ce projet. Le chemin à mettre dans le JSON est
+donc `assets/<projet>/mon-fichier`.
+
 > ⚠️ Attention à la **virgule** entre chaque entrée `{ ... }` du tableau.
 > En cas de doute, vérifie le fichier sur https://jsonlint.com (copier-coller).
 
@@ -38,7 +43,7 @@ projet voulu.
 
 ## 🖼️ Ajouter une image ou une vidéo à un projet
 
-1. (Image) Dépose ton fichier dans le dossier **`assets/`**.
+1. (Image) Dépose ton fichier dans le dossier du projet, ex. **`assets/649/`**.
    (Vidéo) Récupère le lien YouTube — rien à déposer.
 2. Ouvre **`data/projets.json`** et ajoute une entrée dans le `items` du
    projet voulu :
@@ -46,7 +51,7 @@ projet voulu.
 ```json
 {
   "type": "image",
-  "url": "assets/mon-image.png",
+  "url": "assets/649/mon-image.png",
   "miniature": "",
   "titre":       { "fr": "Titre FR",       "en": "Title EN" },
   "description": { "fr": "Description FR.", "en": "Description EN." }
@@ -65,21 +70,21 @@ projet voulu.
 
 Les PDF se gèrent aussi dans **`data/projets.json`** (type `"pdf"`).
 
-1. Dépose ton fichier PDF dans le dossier **`assets/pdf/`**
-   (ex : `assets/pdf/01 - Fondamentaux.pdf`).
+1. Dépose ton fichier PDF dans le dossier du projet, ex. **`assets/python/`**
+   (ex : `assets/python/01 - Fondamentaux.pdf`).
 2. Ouvre **`data/projets.json`** et ajoute une entrée dans le `items` du
    projet voulu (ex. `"python"`) :
 
 ```json
 {
   "type": "pdf",
-  "fichier": "assets/pdf/01 - Fondamentaux.pdf",
+  "fichier": "assets/python/01 - Fondamentaux.pdf",
   "titre":       { "fr": "Les bases de Python", "en": "The basics of Python" },
   "description": { "fr": "Premier chapitre du cours.", "en": "First chapter of the course." }
 }
 ```
 
-- `fichier` : chemin du PDF, **toujours** sous `assets/pdf/`.
+- `fichier` : chemin du PDF, sous le dossier du projet (`assets/<projet>/`).
 - `titre` / `description` : objets bilingues `{ "fr": "…", "en": "…" }`.
 
 3. Sauvegarde, puis fais la mise à jour Git (section « Mettre à jour le site »).
