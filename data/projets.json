@@ -1,5 +1,5 @@
 {
-  "_commentaire": "Contenu du portfolio, regroupé PAR PROJET. La clé de chaque projet correspond au champ 'id' défini dans js/projects.js et à data-projet=\"...\" dans la page. Chaque projet a SON dossier sous assets/ (assets/649/, assets/python/, ...). DEUX schémas possibles : (1) ancien — un tableau 'items' plat ; (2) nouveau — un tableau 'sections', chaque section ayant un 'titre' {fr,en}, une 'intro' {fr,en} optionnelle et son propre tableau 'items' (un sommaire cliquable est généré automatiquement dès qu'il y a 2+ sections). Types d'item : 'image' -> 'url' (ratio 16:9 rogné) ; 'figure' -> 'url' (planche affichée EN ENTIER + bouton « Voir en grand ») ; 'video' -> 'url' (lien YouTube) ; 'pdf' -> 'fichier'. Quand un projet n'a aucun item, sa page affiche « en construction ».",
+  "_commentaire": "Contenu du portfolio, regroupé PAR PROJET. La clé de chaque projet correspond au champ 'id' défini dans js/projects.js et à data-projet=\"...\" dans la page. Chaque projet a SON dossier sous assets/ (assets/649/, assets/python/, ...). DEUX schémas possibles : (1) ancien — un tableau 'items' plat ; (2) nouveau — un tableau 'sections', chaque section ayant un 'titre' {fr,en}, une 'intro' {fr,en} optionnelle et son propre tableau 'items' (un sommaire cliquable est généré automatiquement dès qu'il y a 2+ sections). Une section peut aussi être en texte seul via le champ 'texte' {fr,en} (sans items). Types d'item : 'image' -> 'url' (ratio 16:9 rogné) ; 'figure' -> 'url' (planche affichée EN ENTIER + bouton « Voir en grand ») ; 'video' -> 'url' (lien YouTube) ; 'pdf' -> 'fichier'. Quand un projet n'a aucun item, sa page affiche « en construction ».",
   "projets": {
     "649": {
       "sections": [
@@ -7,8 +7,8 @@
           "id": "docs",
           "titre": { "fr": "Documents formatifs", "en": "Formative documents" },
           "intro": {
-            "fr": "Dix documents qui expliquent en profondeur chaque concept du projet, des fondations probabilistes jusqu'au deep learning. À lire dans l'ordre (les prérequis suivent la numérotation).",
-            "en": "Ten documents explaining each concept of the project in depth, from probability foundations to deep learning. Meant to be read in order (prerequisites follow the numbering)."
+            "fr": "Dix documents qui expliquent les concepts utilisés dans le projet, des bases de probabilité jusqu'aux réseaux de neurones. Ils se lisent dans l'ordre : chaque numéro s'appuie sur les précédents.",
+            "en": "Ten documents explaining the concepts used in the project, from basic probability to neural networks. They're meant to be read in order: each one builds on the previous ones."
           },
           "items": [
             {
@@ -16,70 +16,70 @@
               "type": "pdf",
               "fichier": "assets/649/docs/01_fondations.pdf",
               "titre": { "fr": "01 — Fondations probabilistes", "en": "01 — Probability foundations" },
-              "description": { "fr": "Processus de Bernoulli, espace probabilisé, indépendance, espérance.", "en": "Bernoulli process, probability space, independence, expectation." }
+              "description": { "fr": "Les notions de base : hasard, événements indépendants, espérance.", "en": "The basics: randomness, independent events, expectation." }
             },
             {
               "id": "doc-02",
               "type": "pdf",
               "fichier": "assets/649/docs/02_lois_de_probabilite.pdf",
               "titre": { "fr": "02 — Les lois de probabilité", "en": "02 — Probability distributions" },
-              "description": { "fr": "Binomiale, géométrique, hypergéométrique, Beta — les lois du projet.", "en": "Binomial, geometric, hypergeometric, Beta — the project's distributions." }
+              "description": { "fr": "Les lois utilisées dans le projet : binomiale, géométrique, hypergéométrique, Beta.", "en": "The distributions used in the project: binomial, geometric, hypergeometric, Beta." }
             },
             {
               "id": "doc-03",
               "type": "pdf",
               "fichier": "assets/649/docs/03_inference_frequentiste.pdf",
               "titre": { "fr": "03 — Inférence fréquentiste", "en": "03 — Frequentist inference" },
-              "description": { "fr": "Tests d'hypothèses, p-value, χ², puissance, intervalles de confiance.", "en": "Hypothesis testing, p-value, χ², power, confidence intervals." }
+              "description": { "fr": "Tester une hypothèse : p-value, test du χ², puissance, intervalles de confiance.", "en": "Testing a hypothesis: p-value, χ² test, power, confidence intervals." }
             },
             {
               "id": "doc-04",
               "type": "pdf",
               "fichier": "assets/649/docs/04_inference_bayesienne.pdf",
               "titre": { "fr": "04 — Inférence bayésienne", "en": "04 — Bayesian inference" },
-              "description": { "fr": "A priori/posterior, conjugaison Beta-Bernoulli, intervalle crédible.", "en": "Prior/posterior, Beta-Bernoulli conjugacy, credible interval." }
+              "description": { "fr": "Le raisonnement bayésien : a priori, a posteriori, intervalle crédible.", "en": "Bayesian reasoning: prior, posterior, credible interval." }
             },
             {
               "id": "doc-05",
               "type": "pdf",
               "fichier": "assets/649/docs/05_biais_cognitifs.pdf",
-              "titre": { "fr": "05 — Biais cognitifs démontés", "en": "05 — Cognitive biases debunked" },
-              "description": { "fr": "Sophisme du joueur, main chaude, illusion de motif.", "en": "Gambler's fallacy, hot hand, illusion of patterns." }
+              "titre": { "fr": "05 — Biais cognitifs", "en": "05 — Cognitive biases" },
+              "description": { "fr": "Pourquoi l'intuition se trompe : numéro « en retard », numéro « en avance », illusion de motif.", "en": "Why intuition misleads us: the \"overdue\" number, the \"hot\" number, seeing patterns that aren't there." }
             },
             {
               "id": "doc-06",
               "type": "pdf",
               "fichier": "assets/649/docs/06_tests_phase1.pdf",
-              "titre": { "fr": "06 — Tests appliqués (Phase 1)", "en": "06 — Applied tests (Phase 1)" },
-              "description": { "fr": "Les six tests statistiques du projet, hypothèses et démarches.", "en": "The project's six statistical tests, hypotheses and methods." }
+              "titre": { "fr": "06 — Les tests de la Phase 1", "en": "06 — The Phase 1 tests" },
+              "description": { "fr": "Les six tests statistiques du projet, avec leurs hypothèses et leur méthode.", "en": "The project's six statistical tests, with their hypotheses and method." }
             },
             {
               "id": "doc-07",
               "type": "pdf",
               "fichier": "assets/649/docs/07_apprentissage_automatique.pdf",
               "titre": { "fr": "07 — Apprentissage automatique", "en": "07 — Machine learning" },
-              "description": { "fr": "Features causales, log-loss, plancher d'entropie, MLP, LSTM, sur-apprentissage.", "en": "Causal features, log-loss, entropy floor, MLP, LSTM, overfitting." }
+              "description": { "fr": "Ce qu'on mesure, comment on évite de se tromper, du modèle simple au réseau de neurones.", "en": "What we measure, how we avoid fooling ourselves, from a simple model to a neural network." }
             },
             {
               "id": "doc-08",
               "type": "pdf",
               "fichier": "assets/649/docs/08_cascade_ngrammes.pdf",
               "titre": { "fr": "08 — Cascade binaire (n-grammes)", "en": "08 — Binary cascade (n-grams)" },
-              "description": { "fr": "Le sophisme du joueur formalisé en motifs de bits, puis réfuté.", "en": "The gambler's fallacy formalized as bit patterns, then refuted." }
+              "description": { "fr": "Réécrire le « numéro en retard » sous forme de motifs, puis montrer que la règle ne tient pas.", "en": "Rewriting the \"overdue number\" idea as patterns, then showing the rule doesn't hold." }
             },
             {
               "id": "doc-09",
               "type": "pdf",
               "fichier": "assets/649/docs/09_donnees_methodologie.pdf",
-              "titre": { "fr": "09 — Données & méthodologie", "en": "09 — Data & methodology" },
-              "description": { "fr": "Source des tirages, validation, split temporel, reproductibilité.", "en": "Draw source, validation, temporal split, reproducibility." }
+              "titre": { "fr": "09 — Données et méthode", "en": "09 — Data and method" },
+              "description": { "fr": "D'où viennent les données, comment elles sont validées, et comment garder des résultats reproductibles.", "en": "Where the data comes from, how it's validated, and how to keep results reproducible." }
             },
             {
               "id": "doc-10",
               "type": "pdf",
               "fichier": "assets/649/docs/10_outils_ecosysteme.pdf",
-              "titre": { "fr": "10 — Outils & écosystème", "en": "10 — Tools & ecosystem" },
-              "description": { "fr": "Python, pandas, numpy, scipy, scikit-learn, PyTorch, matplotlib.", "en": "Python, pandas, numpy, scipy, scikit-learn, PyTorch, matplotlib." }
+              "titre": { "fr": "10 — Les outils", "en": "10 — The tools" },
+              "description": { "fr": "Les outils utilisés : Python, pandas, NumPy, SciPy, scikit-learn, PyTorch, Matplotlib.", "en": "The tools used: Python, pandas, NumPy, SciPy, scikit-learn, PyTorch, Matplotlib." }
             }
           ]
         },
@@ -87,8 +87,8 @@
           "id": "phase0",
           "titre": { "fr": "Phase 0 — Validation des données", "en": "Phase 0 — Data validation" },
           "intro": {
-            "fr": "Avant toute analyse : charger, valider et dater les tirages officiels (Loto-Québec, 1982-2025).",
-            "en": "Before any analysis: load, validate and date the official draws (Loto-Québec, 1982-2025)."
+            "fr": "Première étape : récupérer les tirages officiels (Loto-Québec, 1982-2025), vérifier qu'ils sont complets et corrects, et les dater.",
+            "en": "First step: load the official draws (Loto-Québec, 1982-2025), check that they're complete and correct, and date them."
           },
           "items": [
             {
@@ -96,7 +96,7 @@
               "type": "figure",
               "url": "assets/649/figures/fig01_validation_donnees.png",
               "titre": { "fr": "Validation des données", "en": "Data validation" },
-              "description": { "fr": "Couverture temporelle, complétude et passage hebdomadaire → bihebdomadaire des tirages.", "en": "Temporal coverage, completeness and the weekly → twice-weekly transition of draws." }
+              "description": { "fr": "La période couverte, les tirages manquants, et le passage d'un tirage par semaine à deux.", "en": "The time span covered, the missing draws, and the switch from one draw a week to two." }
             }
           ]
         },
@@ -104,106 +104,106 @@
           "id": "phase1",
           "titre": { "fr": "Phase 1 — Tests statistiques", "en": "Phase 1 — Statistical tests" },
           "intro": {
-            "fr": "Six tests classiques pour confronter l'historique à l'hypothèse d'un hasard uniforme et indépendant. Verdict : on échoue à rejeter l'aléa partout.",
-            "en": "Six classic tests confronting the history with the hypothesis of uniform, independent randomness. Verdict: we fail to reject randomness everywhere."
+            "fr": "Six tests pour comparer l'historique à ce qu'on attendrait d'un tirage purement aléatoire. À chaque fois, les données restent compatibles avec le hasard.",
+            "en": "Six tests comparing the history with what we'd expect from a purely random draw. Each time, the data stays consistent with chance."
           },
           "items": [
             {
               "id": "fig-02",
               "type": "figure",
               "url": "assets/649/figures/fig02_test1_frequences.png",
-              "titre": { "fr": "T1 — Fréquences (binomiale, χ²)", "en": "T1 — Frequencies (binomial, χ²)" },
-              "description": { "fr": "Chaque numéro sort-il à sa fréquence attendue ? Test binomial par numéro et χ² d'uniformité.", "en": "Does each number appear at its expected rate? Per-number binomial test and χ² uniformity test." }
+              "titre": { "fr": "T1 — Fréquence des numéros", "en": "T1 — Number frequencies" },
+              "description": { "fr": "Chaque numéro sort-il aussi souvent que prévu ? Le test ne montre aucun écart.", "en": "Does each number come up as often as expected? The test shows no deviation." }
             },
             {
               "id": "fig-03",
               "type": "figure",
               "url": "assets/649/figures/fig03_test2_gaps.png",
-              "titre": { "fr": "T2 — Écarts (loi géométrique)", "en": "T2 — Gaps (geometric law)" },
-              "description": { "fr": "Les intervalles entre sorties suivent-ils la loi géométrique ? Le sophisme du joueur en direct.", "en": "Do the gaps between appearances follow the geometric law? The gambler's fallacy, live." }
+              "titre": { "fr": "T2 — Écarts entre deux sorties", "en": "T2 — Gaps between appearances" },
+              "description": { "fr": "Le temps d'attente d'un numéro suit la courbe attendue. Un numéro « en retard » n'est pas plus susceptible de sortir.", "en": "A number's waiting time follows the expected curve. An \"overdue\" number is no more likely to come up." }
             },
             {
               "id": "fig-04",
               "type": "figure",
               "url": "assets/649/figures/fig04_test3_mainchaude.png",
-              "titre": { "fr": "T3 — Main chaude", "en": "T3 — Hot hand" },
-              "description": { "fr": "Un numéro « en forme » a-t-il plus de chances de ressortir ? P(sort | série de k).", "en": "Is a number 'on a streak' more likely to come back? P(drawn | run of k)." }
+              "titre": { "fr": "T3 — Le numéro « en avance »", "en": "T3 — The \"hot\" number" },
+              "description": { "fr": "Un numéro sorti plusieurs fois récemment n'a pas plus de chances de revenir.", "en": "A number drawn several times recently is no more likely to return." }
             },
             {
               "id": "fig-05",
               "type": "figure",
               "url": "assets/649/figures/fig05_test4_independance.png",
-              "titre": { "fr": "T4 — Indépendance", "en": "T4 — Independence" },
-              "description": { "fr": "Tests de runs, autocorrélation (ACF) et Ljung-Box : aucune mémoire détectable entre tirages.", "en": "Runs test, autocorrelation (ACF) and Ljung-Box: no detectable memory between draws." }
+              "titre": { "fr": "T4 — Indépendance des tirages", "en": "T4 — Independence between draws" },
+              "description": { "fr": "Un tirage ne garde aucune trace des précédents : ils sont indépendants les uns des autres.", "en": "A draw keeps no memory of the previous ones: they're independent of each other." }
             },
             {
               "id": "fig-06",
               "type": "figure",
               "url": "assets/649/figures/fig06_test5_combinaisons.png",
-              "titre": { "fr": "T5 — Combinaisons", "en": "T5 — Combinations" },
-              "description": { "fr": "Somme, parité (hypergéométrique) et z-test sur la moyenne des numéros tirés.", "en": "Sum, parity (hypergeometric) and z-test on the mean of drawn numbers." }
+              "titre": { "fr": "T5 — Somme et parité", "en": "T5 — Sum and parity" },
+              "description": { "fr": "Somme des numéros, nombre de pairs et d'impairs, moyenne : tout reste dans la plage attendue.", "en": "Sum of the numbers, count of odd and even, average: all stay within the expected range." }
             },
             {
               "id": "fig-07",
               "type": "figure",
               "url": "assets/649/figures/fig07_test6_investigation.png",
-              "titre": { "fr": "T6 — Investigation d'anomalie", "en": "T6 — Anomaly investigation" },
-              "description": { "fr": "Le seul écart relevé : un léger penchant vers les gros numéros (z≈3,2) — statistiquement réel, non exploitable.", "en": "The only deviation found: a slight tilt toward high numbers (z≈3.2) — statistically real, not exploitable." }
+              "titre": { "fr": "T6 — Le seul écart trouvé", "en": "T6 — The one deviation found" },
+              "description": { "fr": "Un léger penchant vers les grands numéros (moyenne 25,3 au lieu de 25). Réel, mais trop faible pour être utile.", "en": "A slight lean toward higher numbers (average 25.3 instead of 25). Real, but far too small to be useful." }
             }
           ]
         },
         {
           "id": "phase2",
-          "titre": { "fr": "Phase 2 — Modèles ML / DL", "en": "Phase 2 — ML / DL models" },
+          "titre": { "fr": "Phase 2 — Modèles d'apprentissage", "en": "Phase 2 — Machine-learning models" },
           "intro": {
-            "fr": "La preuve empirique : du modèle constant jusqu'au LSTM, aucun ne bat le plancher d'entropie hors-échantillon. La complexité n'achète aucune prédiction.",
-            "en": "The empirical proof: from the constant model up to an LSTM, none beats the entropy floor out-of-sample. Complexity buys no prediction."
+            "fr": "On laisse des modèles chercher un signal dans l'historique, du plus simple au plus complexe. Aucun ne fait mieux qu'un tirage au hasard sur les données qu'il n'a pas vues.",
+            "en": "We let models look for a signal in the history, from the simplest to the most complex. None does better than a random guess on data it hasn't seen."
           },
           "items": [
             {
               "id": "fig-08",
               "type": "figure",
               "url": "assets/649/figures/fig08_phase2_mlp.png",
-              "titre": { "fr": "MLP & importance par permutation", "en": "MLP & permutation importance" },
-              "description": { "fr": "Un perceptron multicouche rejoint le plancher ; aucune feature ne porte de signal exploitable.", "en": "A multilayer perceptron lands on the floor; no feature carries any exploitable signal." }
+              "titre": { "fr": "Réseau de neurones simple (MLP)", "en": "Simple neural network (MLP)" },
+              "description": { "fr": "Même avec plus de puissance, le réseau ne fait pas mieux que le modèle de base. Aucune donnée fournie n'aide à prédire.", "en": "Even with more power, the network does no better than the baseline. None of the inputs helps predict the draw." }
             },
             {
               "id": "fig-09",
               "type": "figure",
               "url": "assets/649/figures/fig09_phase2_lstm.png",
-              "titre": { "fr": "LSTM — mémorisation vs généralisation", "en": "LSTM — memorization vs generalization" },
-              "description": { "fr": "La punchline : le réseau mémorise le passé (log-loss qui plonge) mais s'effondre sur l'avenir.", "en": "The punchline: the network memorizes the past (log-loss dives) but collapses on the future." }
+              "titre": { "fr": "Réseau à mémoire (LSTM)", "en": "Memory network (LSTM)" },
+              "description": { "fr": "Le réseau apprend par cœur les tirages passés, mais ne prévoit pas mieux l'avenir qu'un tirage au hasard.", "en": "The network memorizes past draws, but predicts the future no better than chance." }
             },
             {
               "id": "fig-10",
               "type": "figure",
               "url": "assets/649/figures/fig10_phase2_bayesien.png",
-              "titre": { "fr": "Estimation bayésienne (Beta-Bernoulli)", "en": "Bayesian estimation (Beta-Bernoulli)" },
-              "description": { "fr": "Les 49 probabilités a posteriori se serrent autour de 6/49 : aucun numéro chanceux.", "en": "The 49 posterior probabilities concentrate around 6/49: no lucky number." }
+              "titre": { "fr": "Estimation bayésienne", "en": "Bayesian estimation" },
+              "description": { "fr": "En estimant la probabilité de chaque numéro, les 49 valeurs se regroupent autour de 6/49. Aucun numéro chanceux.", "en": "Estimating each number's probability, all 49 values cluster around 6/49. No lucky number." }
             },
             {
               "id": "fig-11",
               "type": "figure",
               "url": "assets/649/figures/fig11_phase2_cascade.png",
-              "titre": { "fr": "Cascade binaire (n-grammes)", "en": "Binary cascade (n-grams)" },
-              "description": { "fr": "Le sophisme du joueur formalisé en motifs de bits : la règle « déficit ⇒ dû » dégrade la prédiction.", "en": "The gambler's fallacy formalized as bit patterns: the 'deficit ⇒ due' rule degrades prediction." }
+              "titre": { "fr": "L'idée du numéro « en retard », testée", "en": "The \"overdue number\" idea, tested" },
+              "description": { "fr": "On transforme « il est en retard, il est dû » en règle de prédiction. Plus on l'applique, plus on se trompe.", "en": "We turn \"it's overdue, it's due\" into a prediction rule. The more we apply it, the worse it does." }
             }
           ]
         },
         {
           "id": "synthese",
-          "titre": { "fr": "Synthèse", "en": "Synthesis" },
+          "titre": { "fr": "Synthèse", "en": "Summary" },
           "intro": {
-            "fr": "Toute l'échelle de modèles réunie sur un seul graphique : du constant au LSTM, chaque cran ajoute de la capacité — et tous atterrissent sur le même plancher hors-échantillon.",
-            "en": "The whole model ladder on a single chart: from constant to LSTM, each step adds capacity — and all land on the same out-of-sample floor."
+            "fr": "Tous les modèles réunis sur un même graphique. Du plus simple au plus complexe, ils obtiennent le même résultat sur les données qu'ils n'ont pas vues : celui du hasard.",
+            "en": "All the models on one chart. From the simplest to the most complex, they reach the same result on unseen data: the result of chance."
           },
           "items": [
             {
               "id": "fig-12",
               "type": "figure",
               "url": "assets/649/figures/fig12_phase2_synthese.png",
-              "titre": { "fr": "Synthèse — rien ne prédit le tirage", "en": "Synthesis — nothing predicts the draw" },
-              "description": { "fr": "Six modèles convergent vers le plancher hors-échantillon ; seul le LSTM s'en écarte, dans le mauvais sens (sur-apprentissage). Le tirage est empiriquement imprévisible.", "en": "Six models converge to the out-of-sample floor; only the LSTM departs from it, the wrong way (overfitting). The draw is empirically unpredictable." }
+              "titre": { "fr": "Synthèse des modèles", "en": "Model summary" },
+              "description": { "fr": "Les six modèles donnent le même résultat hors échantillon. Le seul qui s'en écarte fait pire, à force d'apprendre par cœur.", "en": "All six models give the same result on unseen data. The only one that differs does worse, from memorizing too much." }
             }
           ]
         },
@@ -211,8 +211,8 @@
           "id": "conclusion",
           "titre": { "fr": "Conclusion", "en": "Conclusion" },
           "texte": {
-            "fr": "Six modèles, deux paradigmes, un seul verdict : aucune approche — de la simple constante 6/49 jusqu'au LSTM récurrent — ne bat le hasard hors-échantillon. La seule structure réelle détectée est un infime penchant statique vers les gros numéros, sans la moindre valeur prédictive ; jamais un « timing », jamais une mémoire utile.\n\nLe sophisme du joueur (« le 49 est en retard, il est dû ») et la main chaude (« le 5 est en forme ») sont ainsi réfutés sur données réelles : sous l'hypothèse d'indépendance, la probabilité qu'un numéro sorte au prochain tirage reste 6/49 ≈ 0,1224, quel que soit le passé.\n\nConclusion : le tirage du Lotto 6/49 est, empiriquement, imprévisible — et c'est exactement ce qu'on attend d'une loterie honnête. L'objectif n'était pas de gagner au loto, mais de montrer, avec rigueur et jusqu'au deep learning, pourquoi on ne le peut pas.",
-            "en": "Six models, two paradigms, one verdict: no approach — from the plain 6/49 constant to a recurrent LSTM — beats chance out-of-sample. The only real structure detected is a tiny static tilt toward high numbers, with no predictive value whatsoever; never a 'timing', never a useful memory.\n\nThe gambler's fallacy ('49 is overdue, it's due') and the hot hand ('5 is hot') are thus refuted on real data: under independence, the probability that a number is drawn next stays 6/49 ≈ 0.1224, regardless of the past.\n\nConclusion: the Lotto 6/49 draw is, empirically, unpredictable — exactly what one expects from a fair lottery. The goal was never to win the lottery, but to show rigorously, all the way to deep learning, why you cannot."
+            "fr": "Six modèles, des statistiques classiques jusqu'aux réseaux de neurones, arrivent à la même conclusion : aucun ne prédit les tirages mieux que le hasard. Le seul écart trouvé est un très léger penchant vers les grands numéros, sans aucune valeur pour parier.\n\nLes deux croyances de départ ne tiennent pas face aux données. Un numéro « en retard » n'est pas « dû », et un numéro « en avance » n'a pas la cote : à chaque tirage, chaque numéro a la même probabilité de sortir, 6 sur 49, peu importe ce qui s'est passé avant.\n\nAutrement dit, le Lotto 6/49 est imprévisible — ce qui est exactement le but d'une loterie honnête. L'objectif n'était pas de gagner au loto, mais de montrer clairement, étape par étape, pourquoi on ne peut pas.",
+            "en": "Six models, from classic statistics to neural networks, reach the same conclusion: none predicts the draws better than chance. The only deviation found is a very slight lean toward higher numbers, with no value for betting.\n\nThe two starting beliefs don't survive the data. An \"overdue\" number isn't \"due,\" and a \"hot\" number has no edge: at every draw, each number has the same chance of coming up, 6 in 49, no matter what happened before.\n\nIn other words, Lotto 6/49 is unpredictable — which is exactly the point of a fair lottery. The goal was never to win the lottery, but to show clearly, step by step, why you can't."
           },
           "items": []
         }
@@ -266,7 +266,7 @@
           "id": "py-7",
           "type": "pdf",
           "fichier": "assets/python/07 - Qualite_tests.pdf",
-          "titre":       { "fr": "Qualité & tests", "en": "Quality & testing" },
+          "titre":       { "fr": "Qualité et tests", "en": "Quality and testing" },
           "description": { "fr": "Chapitre 7 du cours.", "en": "Chapter 7 of the course." }
         },
         {

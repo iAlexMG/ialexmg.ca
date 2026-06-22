@@ -76,7 +76,7 @@ const TRADUCTIONS = {
     "python.intro": "Voici les fichiers que j'ai créés pour apprendre et me perfectionner en Python. Toujours en amélioration constante !",
 
     // Projet 649 (intro spécifique)
-    "649.intro": "Une analyse statistique rigoureuse du Lotto 6/49 : non pas prédire les numéros, mais tester si l'historique des tirages se distingue d'un pur hasard. On y démonte le sophisme du joueur et la main chaude, des tests classiques jusqu'au deep learning. Ci-dessous : les documents formatifs (les concepts en profondeur) et les figures de résultats, organisés par phase.",
+    "649.intro": "Le Lotto 6/49 est-il vraiment aléatoire ? Plutôt que de chercher à prédire les numéros, ce projet vérifie si l'historique des tirages se comporte autrement qu'un pur hasard. J'y teste deux croyances répandues — le numéro « en retard » et le numéro « en avance » — d'abord avec des statistiques, puis avec des modèles d'apprentissage automatique. Vous trouverez ci-dessous les documents explicatifs et les résultats, classés par étape.",
 
     // À propos
     "apropos.titre": "À propos",
@@ -149,7 +149,7 @@ const TRADUCTIONS = {
     "python.intro": "Here are the files I created to learn and improve my Python skills. Always a work in progress!",
 
     // 649 project (specific intro)
-    "649.intro": "A rigorous statistical analysis of Lotto 6/49: not to predict the numbers, but to test whether the draw history is distinguishable from pure randomness. It debunks the gambler's fallacy and the hot-hand fallacy, from classic tests all the way to deep learning. Below: the formative documents (the concepts in depth) and the result figures, organized by phase.",
+    "649.intro": "Is Lotto 6/49 really random? Rather than trying to predict the numbers, this project checks whether the draw history behaves any differently from pure chance. I test two common beliefs — the \"overdue\" number and the \"hot\" number — first with statistics, then with machine-learning models. Below you'll find the explanatory documents and the results, organized by stage.",
 
     // About
     "apropos.titre": "About",
