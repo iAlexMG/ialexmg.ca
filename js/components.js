@@ -23,7 +23,7 @@ const Composants = (function () {
   // l'accueil) — on évite ainsi le doublon.
   function liensNavigation() {
     return [
-      { href: "index.html", page: "accueil", i18n: "nav.accueil" },
+      { href: "/", page: "accueil", i18n: "nav.accueil" },
       { href: "apropos.html", page: "apropos", i18n: "nav.apropos" },
       { href: "contact.html", page: "contact", i18n: "nav.contact" },
     ];
@@ -39,7 +39,7 @@ const Composants = (function () {
 
     return (
       '<div class="conteneur entete-contenu">' +
-      '  <a class="marque" href="index.html">iAlexMG</a>' +
+      '  <a class="marque" href="/">iAlexMG</a>' +
       '  <button class="menu-bascule" id="menu-bascule" aria-label="Menu" aria-expanded="false">☰</button>' +
       '  <nav class="navigation" id="navigation" aria-label="Navigation principale">' +
       '    <ul>' + liens + "</ul>" +
