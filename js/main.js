@@ -29,22 +29,36 @@
       });
     });
 
-    // Hub de projet : une carte par section, menant à sa sous-page.
+    // Hub de projet (table des matières) : une carte par section OU par item.
     document.querySelectorAll("[data-projet-hub]").forEach(function (conteneur) {
       window.Contenu.rendreHub({
         conteneur: conteneur,
         projet: conteneur.getAttribute("data-projet-hub") || null,
         pageSection: conteneur.getAttribute("data-page-section") || "",
+        pageItem: conteneur.getAttribute("data-page-item") || "",
       });
     });
 
-    // Sous-page d'une section : le choix vient du paramètre d'URL ?s=<id>.
+    // Sous-page d'une section : projet via l'attribut OU ?p=, section via ?s=.
     document.querySelectorAll("[data-projet-section]").forEach(function (conteneur) {
       const params = new URLSearchParams(window.location.search);
       window.Contenu.rendreSection({
         conteneur: conteneur,
-        projet: conteneur.getAttribute("data-projet-section") || null,
+        projet: conteneur.getAttribute("data-projet-section") || params.get("p"),
         sectionId: params.get("s"),
+        pageItem: conteneur.getAttribute("data-page-item") || "",
+      });
+    });
+
+    // Page feuille (item) : projet via l'attribut OU ?p=, ?s= (optionnel), ?i=.
+    document.querySelectorAll("[data-projet-item]").forEach(function (conteneur) {
+      const params = new URLSearchParams(window.location.search);
+      window.Contenu.rendreItem({
+        conteneur: conteneur,
+        projet: conteneur.getAttribute("data-projet-item") || params.get("p"),
+        sectionId: params.get("s"),
+        itemId: params.get("i"),
+        pageSection: conteneur.getAttribute("data-page-section") || "",
       });
     });
   }

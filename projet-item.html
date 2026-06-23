@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <!--
-  projet-649-section.html — Vue d'UNE section du projet Lotto 649.
-  La section affichée est choisie par le paramètre d'URL ?s=<id>
-  (ex. projet-649-section.html?s=docs). Le titre, l'intro et le contenu
-  sont remplis par js/content.js (rendreSection). Une seule page générique
-  dessert toutes les sections — pas de duplication.
+  projet-item.html — Vue générique d'UNE feuille (item) d'un projet.
+  L'item vient de l'URL : ?p=<projet>&s=<section>&i=<item>
+  (s est optionnel pour les projets à items plats, ex. Python :
+  projet-item.html?p=python&i=py-1). Titre, intro, lien retour et contenu sont
+  remplis par js/content.js (rendreItem) : figure en grand OU visionneuse PDF,
+  suivie du texte détaillé. Une seule page dessert tous les items.
 -->
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lotto 649 — iAlexMG</title>
+  <title>iAlexMG</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body data-page="projet-649">
@@ -19,7 +20,7 @@
   <main>
     <section class="entete-page">
       <div class="conteneur">
-        <a class="lien-retour" href="projet-649.html" data-i18n="contenu.retour"></a>
+        <a class="lien-retour" data-lien-retour href="index.html" data-i18n="contenu.retour"></a>
         <h1 data-section-titre></h1>
         <p class="accroche" data-section-intro></p>
       </div>
@@ -27,7 +28,8 @@
 
     <section class="section" style="padding-top:0;">
       <div class="conteneur">
-        <div data-projet-section="649"></div>
+        <!-- Le projet vient de ?p= ; data-page-section sert au lien retour. -->
+        <div data-projet-item data-page-section="projet-section.html"></div>
       </div>
     </section>
   </main>

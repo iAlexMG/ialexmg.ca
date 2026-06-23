@@ -503,6 +503,54 @@ img { max-width: 100%; display: block; }
   display: block;
 }
 
+/* Sous-titres dans un bloc de prose (lignes « ## … »). */
+.prose-sous-titre {
+  font-size: 1.05rem;
+  margin: 1.6rem 0 0.5rem;
+  color: var(--couleur-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.section-prose .prose-sous-titre:first-child { margin-top: 0; }
+
+/* ----- Page item : figure affichée en grand ----- */
+.figure-pleine {
+  margin: 0 0 1.5rem;
+  background: var(--couleur-surface);
+  border: 1px solid var(--couleur-bordure);
+  border-radius: var(--rayon);
+  box-shadow: var(--ombre);
+  overflow: hidden;
+}
+.figure-pleine > a {
+  display: block;
+  background: #ffffff;
+  cursor: zoom-in;
+}
+.figure-pleine img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.figure-pleine figcaption {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  border-top: 1px solid var(--couleur-bordure);
+}
+
+/* ----- Page item : visionneuse PDF en grand ----- */
+.pdf-pleine { margin-bottom: 1.5rem; }
+.doc-apercu-grand {
+  height: 80vh;
+  min-height: 480px;
+  border: 1px solid var(--couleur-bordure);
+  border-radius: var(--rayon);
+  overflow: hidden;
+  box-shadow: var(--ombre);
+}
+.pdf-pleine .doc-actions { justify-content: center; }
+
 /* ----- Contenu textuel (à propos, contact) ----- */
 .prose { max-width: 65ch; }
 .prose p { color: var(--couleur-texte); }
