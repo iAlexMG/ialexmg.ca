@@ -1,6 +1,9 @@
 # Réglages locaux Claude Code (ne pas publier)
 .claude/
 
+# notes de travail (conservés en local, jamais publiés)
+NOTES*.md
+
 # Fichiers système
 Thumbs.db
 .DS_Store
