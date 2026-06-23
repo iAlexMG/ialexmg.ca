@@ -1,28 +1,27 @@
 /*
  * content.js
  * --------------------------------------------------------------------------
- * Rendu du contenu d'un PROJET. Remplace les anciens modules gallery.js et
- * documents.js : un même projet peut mélanger images, vidéos YouTube et PDF.
+ * Rendu du contenu d'un PROJET. Un même projet peut mélanger images, figures,
+ * vidéos YouTube et PDF.
  *
- * Charge data/projets.json puis génère les cartes du projet demandé.
- *
- * Point d'entrée :
- *   Contenu.rendre({ conteneur, projet })
- *     - conteneur : élément DOM qui recevra les cartes.
- *     - projet    : id du projet (clé dans projets.json). Obligatoire.
+ * Charge data/projets.json puis génère le contenu demandé selon la vue :
+ *   - rendre        : projet « à plat » (tous les items d'un coup).
+ *   - rendreHub     : table des matières — une carte par SECTION (projet
+ *                     sectionné, ex. 649) OU une carte par ITEM (projet à items
+ *                     plats, ex. Python). Chaque carte mène à sa sous-page.
+ *   - rendreSection : UNE section (via ?s=). Si la section a "sousMenu":true,
+ *                     elle affiche un sous-hub (une carte par item) ; sinon la
+ *                     ou les figures + le texte détaillé.
+ *   - rendreItem    : UNE feuille (via ?i=) — figure en grand OU visionneuse
+ *                     PDF + texte détaillé.
  *
  * Schéma d'un item (dans projets.json) :
- *   { "type": "image", "url": "assets/x.png", "miniature": "",
- *     "titre": {fr,en}, "description": {fr,en} }
- *   { "type": "video", "url": "https://youtu.be/ID",
- *     "titre": {fr,en}, "description": {fr,en} }
- *   { "type": "pdf",   "fichier": "assets/pdf/x.pdf",
- *     "titre": {fr,en}, "description": {fr,en} }
- *
- * EXTENSIONS FUTURES (laissées ouvertes) :
- *   - Recherche / filtres : filtrer "items" avant rendu.
- *   - Lightbox : hook data-lightbox/data-url déjà posé sur les images.
- *   - Lecteur vidéo custom : remplacer creerEmbedYoutube().
+ *   { "type": "image",  "url": "assets/x.png", ... }
+ *   { "type": "figure", "url": "assets/x.png", "texte": {fr,en}? ... }
+ *   { "type": "video",  "url": "https://youtu.be/ID", ... }
+ *   { "type": "pdf",    "fichier": "assets/x.pdf", "texte": {fr,en}? ... }
+ * Tous acceptent "titre" {fr,en}, "description" {fr,en} et "texte" {fr,en}
+ * (prose détaillée ; les lignes « ## … » deviennent des sous-titres).
  * --------------------------------------------------------------------------
  */
 
@@ -60,6 +59,47 @@ const Contenu = (function () {
     if (typeof champ === "string") return champ; // tolère un champ non bilingue.
     const langue = window.I18n.langueActive();
     return champ[langue] || champ.fr || champ.en || "";
+  }
+
+  // --- Métadonnées de projet (depuis window.PROJETS) -------------------------
+
+  function metaProjet(projet) {
+    return (window.PROJETS || []).filter(function (p) {
+      return p.id === projet;
+    })[0] || null;
+  }
+  function titreProjet(projet) {
+    const meta = metaProjet(projet);
+    return meta ? window.I18n.t(meta.titre) : "";
+  }
+  function hrefProjet(projet) {
+    const meta = metaProjet(projet);
+    return meta ? meta.href : "index.html";
+  }
+
+  // --- Prose détaillée -------------------------------------------------------
+
+  // Rend un bloc de prose : les blocs séparés par une ligne vide deviennent des
+  // paragraphes ; un bloc commençant par « ## » devient un sous-titre (suivi de
+  // son paragraphe éventuel). Renvoie "" si le texte est vide.
+  function rendreProse(texte) {
+    if (!texte) return "";
+    const html = String(texte)
+      .split(/\n\s*\n/)
+      .map(function (bloc) {
+        const t = bloc.trim();
+        if (!t) return "";
+        const m = t.match(/^##\s+(.+?)(?:\n([\s\S]*))?$/);
+        if (m) {
+          let out =
+            '<h3 class="prose-sous-titre">' + echapper(m[1].trim()) + "</h3>";
+          if (m[2] && m[2].trim()) out += "<p>" + echapper(m[2].trim()) + "</p>";
+          return out;
+        }
+        return "<p>" + echapper(t) + "</p>";
+      })
+      .join("");
+    return '<div class="section-prose">' + html + "</div>";
   }
 
   // Extrait l'identifiant d'une vidéo YouTube depuis différentes formes d'URL.
@@ -127,6 +167,42 @@ const Contenu = (function () {
     );
   }
 
+  // Figure affichée EN GRAND sur une page item (pas dans une carte) : l'image
+  // occupe toute la largeur, fond blanc, clic pour ouvrir l'original lisible.
+  function creerFigurePleine(item, titre) {
+    const src = encoderChemin(item.miniature || item.url);
+    const url = encoderChemin(item.url);
+    return (
+      '<figure class="figure-pleine">' +
+      '  <a href="' + url + '" target="_blank" rel="noopener" data-lightbox="1" data-url="' + url + '">' +
+      '    <img src="' + src + '" alt="' + echapper(titre) + '" loading="lazy">' +
+      "  </a>" +
+      '  <figcaption>' +
+      '    <a class="bouton" href="' + url + '" target="_blank" rel="noopener"' +
+      '       data-i18n="contenu.voir_figure"></a>' +
+      "  </figcaption>" +
+      "</figure>"
+    );
+  }
+
+  // Visionneuse PDF EN GRAND sur une page item : aperçu large + boutons.
+  function creerVisionneusePdf(item, titre) {
+    const url = encoderChemin(item.fichier);
+    return (
+      '<div class="pdf-pleine">' +
+      '  <div class="doc-apercu doc-apercu-grand">' +
+      '    <iframe src="' + url + '#view=FitH" title="' + echapper(titre) + '" loading="lazy"></iframe>' +
+      "  </div>" +
+      '  <div class="doc-actions">' +
+      '    <a class="bouton" href="' + url + '" target="_blank" rel="noopener"' +
+      '       data-i18n="documents.voir"></a>' +
+      '    <a class="doc-lien" href="' + url + '" download' +
+      '       data-i18n="documents.telecharger"></a>' +
+      "  </div>" +
+      "</div>"
+    );
+  }
+
   // --- Cartes ---------------------------------------------------------------
 
   // Carte image ou vidéo.
@@ -166,10 +242,8 @@ const Contenu = (function () {
       '  <h3 class="carte-titre">' + echapper(titre) + "</h3>" +
       '  <p class="carte-desc">' + echapper(description) + "</p>" +
       '  <div class="doc-actions">' +
-      // « Voir » : ouvre le PDF en plein écran dans un nouvel onglet.
       '    <a class="bouton" href="' + url + '" target="_blank" rel="noopener"' +
       '       data-i18n="documents.voir"></a>' +
-      // « Télécharger » : l'attribut download force le téléchargement.
       '    <a class="doc-lien" href="' + url + '" download' +
       '       data-i18n="documents.telecharger"></a>' +
       "  </div>" +
@@ -186,6 +260,40 @@ const Contenu = (function () {
     return creerCarteMedia(item, titre, description);
   }
 
+  // --- Cartes de navigation (hub / sous-hub) --------------------------------
+
+  // Carte « portfolio » menant à une sous-page (titre + description + flèche).
+  function creerCarteLien(titre, desc, href, fleche) {
+    return (
+      '<a class="carte-portfolio" href="' + href + '">' +
+      "  <h3>" + echapper(titre) + "</h3>" +
+      "  <p>" + echapper(desc) + "</p>" +
+      '  <span class="fleche">' + echapper(fleche) + " →</span>" +
+      "</a>"
+    );
+  }
+
+  // Sous-hub : une carte par item d'une section (mène à la page item).
+  function construireSousHub(items, projet, sectionId, pageItem) {
+    return (
+      '<div class="grille-hub">' +
+      items
+        .map(function (item) {
+          const titre = texteLocalise(item.titre);
+          const desc = texteLocalise(item.description);
+          const href =
+            pageItem +
+            "?p=" + encodeURIComponent(projet) +
+            "&s=" + encodeURIComponent(sectionId) +
+            "&i=" + encodeURIComponent(item.id);
+          const fleche = window.I18n.t("hub.ouvrir");
+          return creerCarteLien(titre, desc, href, fleche);
+        })
+        .join("") +
+      "</div>"
+    );
+  }
+
   // --- Sections (regroupement du contenu d'un projet) -----------------------
 
   // Identifiant d'ancre stable pour une section (sommaire + lien profond #...).
@@ -195,10 +303,6 @@ const Contenu = (function () {
   }
 
   // Rend une section : titre + intro optionnelle + (grille de cartes OU prose).
-  // Une section peut être :
-  //   - une grille (elle a des 'items') ;
-  //   - un bloc de texte seul (champ 'texte' {fr,en}, sans items) — ex. Conclusion ;
-  //   - vide (ni items ni texte) -> message « en construction ».
   function creerSection(section, idx) {
     const titre = texteLocalise(section.titre);
     const intro = texteLocalise(section.intro);
@@ -208,18 +312,11 @@ const Contenu = (function () {
 
     let corps;
     if (items.length) {
-      corps = '<div class="galerie">' + items.map(creerCarte).join("") + "</div>";
-    } else if (texte) {
-      // Bloc de prose (chaque double saut de ligne = un paragraphe).
       corps =
-        '<div class="section-prose">' +
-        texte
-          .split(/\n\s*\n/)
-          .map(function (p) {
-            return "<p>" + echapper(p.trim()) + "</p>";
-          })
-          .join("") +
-        "</div>";
+        '<div class="galerie">' + items.map(creerCarte).join("") + "</div>" +
+        rendreProse(texte);
+    } else if (texte) {
+      corps = rendreProse(texte);
     } else {
       corps =
         '<div class="galerie"><p class="galerie-message" data-i18n="contenu.vide"></p></div>';
@@ -281,7 +378,7 @@ const Contenu = (function () {
     return [];
   }
 
-  // Rendu principal. Gère les états : chargement, vide, erreur, contenu.
+  // Rendu principal (projet « à plat »). Gère chargement / vide / erreur / contenu.
   async function rendre(options) {
     const conteneur = options.conteneur;
     const projet = options.projet || null;
@@ -302,20 +399,16 @@ const Contenu = (function () {
       }, 0);
 
       if (total === 0) {
-        // Aucun contenu : on garde la grille et le message « en construction ».
         conteneur.classList.add("galerie");
         conteneur.innerHTML =
           '<p class="galerie-message" data-i18n="contenu.vide"></p>';
       } else if (sections.length === 1 && sections[0]._plat) {
-        // Ancien schéma (items plats) : rendu grille direct, inchangé.
         conteneur.classList.add("galerie");
         const items = sections[0].items;
         conteneur.innerHTML =
           banniereAvertissementPdf(contientPdf(sections)) +
           items.map(creerCarte).join("");
       } else {
-        // Nouveau schéma à sections : le conteneur devient un empilement de
-        // sections (chacune avec sa propre grille), précédé d'un sommaire.
         conteneur.classList.remove("galerie");
         conteneur.innerHTML =
           banniereAvertissementPdf(contientPdf(sections)) +
@@ -328,12 +421,11 @@ const Contenu = (function () {
         '<p class="galerie-message erreur" data-i18n="contenu.erreur"></p>';
     } finally {
       conteneur.setAttribute("aria-busy", "false");
-      // Traduit badges, messages et boutons fraîchement injectés.
       window.I18n.appliquerTraductions(conteneur);
     }
   }
 
-  // --- Hub de projet : une carte par section, menant à sa sous-page -----------
+  // --- Hub de projet : table des matières ------------------------------------
 
   // Libellé de comptage d'une section (ex. « 10 documents », « 6 figures »,
   // « Lecture » pour une section en texte seul).
@@ -346,12 +438,14 @@ const Contenu = (function () {
     return n + " " + mot;
   }
 
-  // Rendu du HUB : grille de cartes (titre + intro + compte), chacune liée à
-  // la sous-page de la section (projet-...-section.html?s=<id>).
+  // Rendu du HUB (table des matières). Deux cas :
+  //   - projet SECTIONNÉ (649) : une carte par section -> page section.
+  //   - projet à items PLATS (Python) : une carte par item -> page item.
   async function rendreHub(options) {
     const conteneur = options.conteneur;
     const projet = options.projet || null;
     const pageSection = options.pageSection || "";
+    const pageItem = options.pageItem || "";
     if (!conteneur) return;
 
     conteneur.setAttribute("aria-busy", "true");
@@ -362,11 +456,39 @@ const Contenu = (function () {
     try {
       const donnees = await chargerDonnees();
       const bloc = (donnees.projets || {})[projet] || null;
-      const sections = sectionsDuBloc(bloc).filter(function (s) {
+      const toutes = sectionsDuBloc(bloc);
+      const estPlat = toutes.length === 1 && toutes[0]._plat;
+      const sections = toutes.filter(function (s) {
         return !s._plat;
       });
 
-      if (sections.length === 0) {
+      if (estPlat) {
+        // Projet à items plats : la table des matières liste les items.
+        const items = toutes[0].items || [];
+        if (!items.length) {
+          conteneur.innerHTML =
+            '<p class="galerie-message" data-i18n="contenu.vide"></p>';
+        } else {
+          conteneur.innerHTML =
+            '<div class="grille-hub">' +
+            items
+              .map(function (item) {
+                const titre = texteLocalise(item.titre);
+                const desc = texteLocalise(item.description);
+                const href =
+                  pageItem +
+                  "?p=" + encodeURIComponent(projet) +
+                  "&i=" + encodeURIComponent(item.id);
+                const fleche =
+                  item.type === "pdf"
+                    ? window.I18n.t("documents.voir")
+                    : window.I18n.t("hub.ouvrir");
+                return creerCarteLien(titre, desc, href, fleche);
+              })
+              .join("") +
+            "</div>";
+        }
+      } else if (sections.length === 0) {
         conteneur.innerHTML =
           '<p class="galerie-message" data-i18n="contenu.vide"></p>';
       } else {
@@ -374,19 +496,15 @@ const Contenu = (function () {
           '<div class="grille-hub">' +
           sections
             .map(function (section, idx) {
-              const titre = echapper(texteLocalise(section.titre));
-              const desc = echapper(
-                texteLocalise(section.intro) || texteLocalise(section.texte)
-              );
+              const titre = texteLocalise(section.titre);
+              const desc =
+                texteLocalise(section.intro) || texteLocalise(section.texte);
               const id = section.id || String(idx);
-              const href = pageSection + "?s=" + encodeURIComponent(id);
-              return (
-                '<a class="carte-portfolio" href="' + href + '">' +
-                "  <h3>" + titre + "</h3>" +
-                "  <p>" + desc + "</p>" +
-                '  <span class="fleche">' + echapper(libelleCompte(section)) + " →</span>" +
-                "</a>"
-              );
+              const href =
+                pageSection +
+                "?p=" + encodeURIComponent(projet) +
+                "&s=" + encodeURIComponent(id);
+              return creerCarteLien(titre, desc, href, libelleCompte(section));
             })
             .join("") +
           "</div>";
@@ -401,12 +519,35 @@ const Contenu = (function () {
     }
   }
 
-  // Rendu d'UNE section (sous-page). Remplit aussi, s'ils existent, le titre
-  // [data-section-titre] et l'intro [data-section-intro] de l'en-tête de page.
+  // Résout une section par id (ou index numérique de secours).
+  function trouverSection(sections, sectionId) {
+    let section = sections.filter(function (s) {
+      return String(s.id || "") === String(sectionId);
+    })[0];
+    if (!section && /^\d+$/.test(String(sectionId))) {
+      section = sections[parseInt(sectionId, 10)];
+    }
+    return section || null;
+  }
+
+  // Résout un item par id (ou index numérique de secours).
+  function trouverItem(items, itemId) {
+    let item = items.filter(function (it) {
+      return String(it.id || "") === String(itemId);
+    })[0];
+    if (!item && /^\d+$/.test(String(itemId))) {
+      item = items[parseInt(itemId, 10)];
+    }
+    return item || null;
+  }
+
+  // Rendu d'UNE section (sous-page). Remplit aussi l'en-tête de page :
+  // [data-section-titre], [data-section-intro] et le lien retour [data-lien-retour].
   async function rendreSection(options) {
     const conteneur = options.conteneur;
     const projet = options.projet || null;
     const sectionId = options.sectionId || null;
+    const pageItem = options.pageItem || "";
     if (!conteneur) return;
 
     conteneur.setAttribute("aria-busy", "true");
@@ -418,15 +559,12 @@ const Contenu = (function () {
       const donnees = await chargerDonnees();
       const bloc = (donnees.projets || {})[projet] || null;
       const sections = sectionsDuBloc(bloc);
-      let section = sections.filter(function (s) {
-        return String(s.id || "") === String(sectionId);
-      })[0];
-      if (!section && /^\d+$/.test(String(sectionId))) {
-        section = sections[parseInt(sectionId, 10)];
-      }
+      const section = trouverSection(sections, sectionId);
 
       const elTitre = document.querySelector("[data-section-titre]");
       const elIntro = document.querySelector("[data-section-intro]");
+      const elRetour = document.querySelector("[data-lien-retour]");
+      if (elRetour) elRetour.setAttribute("href", hrefProjet(projet));
 
       if (!section) {
         conteneur.innerHTML =
@@ -437,28 +575,26 @@ const Contenu = (function () {
       const titre = texteLocalise(section.titre);
       if (elTitre) elTitre.textContent = titre;
       if (elIntro) elIntro.textContent = texteLocalise(section.intro);
-      if (titre) document.title = titre + " — Lotto 649 — iAlexMG";
+      if (titre) document.title = titre + " — " + titreProjet(projet) + " — iAlexMG";
 
       const items = Array.isArray(section.items) ? section.items : [];
       const texte = texteLocalise(section.texte);
 
-      if (items.length) {
+      if (section.sousMenu && items.length) {
+        // Sous-menu : une carte par item (mène à sa page item).
+        conteneur.innerHTML =
+          rendreProse(texte) +
+          construireSousHub(items, projet, section.id || sectionId, pageItem);
+      } else if (items.length) {
         const aPdf = items.some(function (it) {
           return it.type === "pdf";
         });
         conteneur.innerHTML =
           banniereAvertissementPdf(aPdf) +
-          '<div class="galerie">' + items.map(creerCarte).join("") + "</div>";
+          '<div class="galerie">' + items.map(creerCarte).join("") + "</div>" +
+          rendreProse(texte);
       } else if (texte) {
-        conteneur.innerHTML =
-          '<div class="section-prose">' +
-          texte
-            .split(/\n\s*\n/)
-            .map(function (p) {
-              return "<p>" + echapper(p.trim()) + "</p>";
-            })
-            .join("") +
-          "</div>";
+        conteneur.innerHTML = rendreProse(texte);
       } else {
         conteneur.innerHTML =
           '<div class="galerie"><p class="galerie-message" data-i18n="contenu.vide"></p></div>';
@@ -473,7 +609,101 @@ const Contenu = (function () {
     }
   }
 
-  return { rendre: rendre, rendreHub: rendreHub, rendreSection: rendreSection };
+  // Rendu d'UNE feuille (page item). Média en grand + texte détaillé.
+  // Remplit l'en-tête : [data-section-titre], [data-section-intro] et le lien
+  // retour [data-lien-retour] (vers la section pour un projet sectionné, vers le
+  // hub pour un projet à items plats).
+  async function rendreItem(options) {
+    const conteneur = options.conteneur;
+    const projet = options.projet || null;
+    const sectionId = options.sectionId || null;
+    const itemId = options.itemId || null;
+    const pageSection = options.pageSection || "";
+    if (!conteneur) return;
+
+    conteneur.setAttribute("aria-busy", "true");
+    conteneur.innerHTML =
+      '<p class="galerie-message" data-i18n="contenu.chargement"></p>';
+    window.I18n.appliquerTraductions(conteneur);
+
+    const elTitre = document.querySelector("[data-section-titre]");
+    const elIntro = document.querySelector("[data-section-intro]");
+    const elRetour = document.querySelector("[data-lien-retour]");
+
+    try {
+      const donnees = await chargerDonnees();
+      const bloc = (donnees.projets || {})[projet] || null;
+      const sections = sectionsDuBloc(bloc);
+
+      let section = null;
+      let items = [];
+      if (sectionId) {
+        section = trouverSection(sections, sectionId);
+        items = section ? section.items || [] : [];
+      } else {
+        const plat = sections.filter(function (s) {
+          return s._plat;
+        })[0] || sections[0];
+        items = plat ? plat.items || [] : [];
+      }
+      const item = trouverItem(items, itemId);
+
+      // Lien retour : vers la section (649) ou le hub du projet (Python).
+      // On retire data-i18n car on fixe le texte ici (sinon appliquerTraductions
+      // sur tout le document écraserait le titre de section).
+      if (elRetour) {
+        elRetour.removeAttribute("data-i18n");
+        if (section && !section._plat) {
+          elRetour.setAttribute(
+            "href",
+            pageSection +
+              "?p=" + encodeURIComponent(projet) +
+              "&s=" + encodeURIComponent(sectionId)
+          );
+          elRetour.textContent = "← " + texteLocalise(section.titre);
+        } else {
+          elRetour.setAttribute("href", hrefProjet(projet));
+          elRetour.textContent = window.I18n.t("contenu.retour");
+        }
+      }
+
+      if (!item) {
+        if (elTitre) elTitre.textContent = window.I18n.t("contenu.erreur");
+        conteneur.innerHTML =
+          '<p class="galerie-message erreur" data-i18n="contenu.erreur"></p>';
+        return;
+      }
+
+      const titre = texteLocalise(item.titre);
+      if (elTitre) elTitre.textContent = titre;
+      if (elIntro) elIntro.textContent = texteLocalise(item.description);
+      if (titre) document.title = titre + " — " + titreProjet(projet) + " — iAlexMG";
+
+      const estPdf = item.type === "pdf";
+      const media = estPdf
+        ? creerVisionneusePdf(item, titre)
+        : creerFigurePleine(item, titre);
+
+      conteneur.innerHTML =
+        banniereAvertissementPdf(estPdf) +
+        media +
+        rendreProse(texteLocalise(item.texte));
+    } catch (err) {
+      console.error("[item] Échec du chargement :", err);
+      conteneur.innerHTML =
+        '<p class="galerie-message erreur" data-i18n="contenu.erreur"></p>';
+    } finally {
+      conteneur.setAttribute("aria-busy", "false");
+      window.I18n.appliquerTraductions(conteneur);
+    }
+  }
+
+  return {
+    rendre: rendre,
+    rendreHub: rendreHub,
+    rendreSection: rendreSection,
+    rendreItem: rendreItem,
+  };
 })();
 
 window.Contenu = Contenu;
