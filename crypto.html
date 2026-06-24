@@ -14,13 +14,17 @@
     <section class="entete-page">
       <div class="conteneur">
         <h1 data-i18n="projet.crypto"></h1>
-        <p class="accroche" data-i18n="projet.intro"></p>
+        <p class="accroche" data-i18n="crypto.intro"></p>
       </div>
     </section>
 
     <section class="section" style="padding-top:0;">
       <div class="conteneur">
-        <div class="galerie" data-projet="crypto"></div>
+        <!-- Table des matières : une carte par étape (Bitget, Binance, …, Hybride),
+             chacune menant à projet-section.html?p=crypto&s=<id>. -->
+        <div data-projet-hub="crypto"
+             data-page-section="projet-section.html"
+             data-page-item="projet-item.html"></div>
       </div>
     </section>
   </main>

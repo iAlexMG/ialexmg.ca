@@ -368,7 +368,60 @@
       ]
     },
     "crypto": {
-      "items": []
+      "sections": [
+        {
+          "id": "bitget",
+          "titre": { "fr": "Bitget", "en": "Bitget" },
+          "accroche": {
+            "fr": "Le socle central : la première source de données du projet.",
+            "en": "The central foundation: the project's first data source."
+          },
+          "intro": {
+            "fr": "Bitget est la plateforme centrale du projet : la première source branchée, celle qui sert de référence. On y récupère les données de marché en temps réel, puis on les nettoie et on les met au format commun qui servira à toutes les autres plateformes.",
+            "en": "Bitget is the project's central platform: the first source plugged in and the one used as a reference. We pull its market data in real time, then clean it and put it into the common format that every other platform will reuse."
+          },
+          "items": []
+        },
+        {
+          "id": "binance",
+          "titre": { "fr": "Binance", "en": "Binance" },
+          "accroche": {
+            "fr": "Deuxième source à fusionner avec Bitget.",
+            "en": "The second source, merged with Bitget."
+          },
+          "intro": {
+            "fr": "Binance vient s'ajouter à Bitget. Le défi : aligner ses données (symboles, intervalles, horodatage) sur le format commun pour les fusionner sans perdre d'information. Cette étape pose les bases de la mise en commun de plusieurs plateformes.",
+            "en": "Binance is added on top of Bitget. The challenge: aligning its data (symbols, intervals, timestamps) to the common format so it can be merged without losing information. This step lays the groundwork for combining several platforms."
+          },
+          "items": []
+        },
+        {
+          "id": "coinbase",
+          "titre": { "fr": "Coinbase", "en": "Coinbase" },
+          "accroche": {
+            "fr": "Troisième source intégrée au format commun.",
+            "en": "A third source brought into the common format."
+          },
+          "intro": {
+            "fr": "Coinbase est la troisième plateforme intégrée. Chaque nouvelle source apporte ses propres particularités (paires disponibles, granularité, conventions) ; il faut les réconcilier avec les précédentes pour garder un jeu de données cohérent.",
+            "en": "Coinbase is the third platform integrated. Each new source brings its own quirks (available pairs, granularity, conventions); they must be reconciled with the previous ones to keep a consistent dataset."
+          },
+          "items": []
+        },
+        {
+          "id": "hybride",
+          "titre": { "fr": "Hybride", "en": "Hybrid" },
+          "accroche": {
+            "fr": "Toutes les sources réunies en un marché global artificiel.",
+            "en": "All sources combined into one artificial global market."
+          },
+          "intro": {
+            "fr": "L'hybride est l'aboutissement du projet : une plateforme construite artificiellement à partir de toutes les autres. Il se comporte comme une source de plus, mais ses données sont une synthèse de Bitget, Binance et Coinbase — une vue globale du marché, plus robuste qu'une seule plateforme.",
+            "en": "The hybrid is the project's culmination: a platform built artificially from all the others. It behaves like just another source, but its data is a synthesis of Bitget, Binance and Coinbase — a global view of the market, more robust than any single platform."
+          },
+          "items": []
+        }
+      ]
     },
     "quantower": {
       "items": []
