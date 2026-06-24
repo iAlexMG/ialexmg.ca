@@ -48,7 +48,7 @@ const TRADUCTIONS = {
     "accueil.construction": "🚧 Site en construction — le contenu arrive bientôt.",
     "accueil.titre": "iAlexMG",
     "accueil.sous_titre": "Science des données · Statistiques · Marchés financiers",
-    "accueil.intro": "Je conçois des projets d'analyse de données et de modélisation, de la statistique rigoureuse jusqu'à l'apprentissage automatique. Mon terrain de jeu : les marchés boursiers et la crypto — actions, indices comme le S&P 500 et le Nasdaq, et actifs numériques. J'y développe des stratégies de trading, des indicateurs d'analyse de marché et des outils de backtesting pour transformer les données en décisions mesurables. Voici une sélection de mes travaux.",
+    "accueil.intro": "Je conçois des projets d'analyse de données et de modélisation, de la statistique rigoureuse jusqu'à l'apprentissage automatique. Mon terrain de jeu : les marchés boursiers et la crypto — actions, indices comme le S&P 500 et le Nasdaq, et actifs numériques. J'y développe des stratégies de trading, des indicateurs d'analyse de marché et des outils de backtesting pour transformer les données en décisions mesurables.\n\nVoici une sélection de mes travaux.",
     "accueil.projets_titre": "Mes projets",
     "accueil.voir_projet": "Voir le projet",
 
@@ -132,7 +132,7 @@ const TRADUCTIONS = {
     "accueil.construction": "🚧 Site under construction — content coming soon.",
     "accueil.titre": "iAlexMG",
     "accueil.sous_titre": "Data science · Statistics · Financial markets",
-    "accueil.intro": "I build data-analysis and modeling projects, from rigorous statistics all the way to machine learning. My playground: the stock and crypto markets — equities, indices like the S&P 500 and the Nasdaq, and digital assets. There I develop trading strategies, market-analysis indicators and backtesting tools to turn data into measurable decisions. Here is a selection of my work.",
+    "accueil.intro": "I build data-analysis and modeling projects, from rigorous statistics all the way to machine learning. My playground: the stock and crypto markets — equities, indices like the S&P 500 and the Nasdaq, and digital assets. There I develop trading strategies, market-analysis indicators and backtesting tools to turn data into measurable decisions.\n\nHere is a selection of my work.",
     "accueil.projets_titre": "My projects",
     "accueil.voir_projet": "View project",
 

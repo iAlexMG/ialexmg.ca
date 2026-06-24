@@ -216,6 +216,7 @@ img { max-width: 100%; display: block; }
   margin: 0 auto 1.75rem;
   text-align: justify;      /* bords gauche/droite alignés */
   hyphens: auto;            /* évite les grands trous entre les mots */
+  white-space: pre-line;    /* respecte les sauts de ligne (\n) du texte */
 }
 .hero-actions {
   display: flex;
