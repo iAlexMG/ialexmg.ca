@@ -39,10 +39,10 @@ const TRADUCTIONS = {
     "projet.quantower": "Quantower",
 
     // Descriptions courtes des projets (cartes d'accueil)
-    "projet.649.desc": "Analyse de données et modèles autour du 6/49.",
-    "projet.python.desc": "Supports de cours et documents PDF de la formation Python.",
-    "projet.crypto.desc": "Stratégies, backtests et analyse de marchés crypto.",
-    "projet.quantower.desc": "Indicateurs et outils personnalisés pour le trading.",
+    "projet.649.desc": "Est-il possible de prédire la combinaison gagnante ?",
+    "projet.python.desc": "Maîtriser Python, des bases aux concepts avancés.",
+    "projet.crypto.desc": "Peut-on vraiment battre le marché crypto ?",
+    "projet.quantower.desc": "Des indicateurs sur mesure pour trader autrement.",
 
     // Accueil
     "accueil.construction": "🚧 Site en construction — le contenu arrive bientôt.",
@@ -84,7 +84,7 @@ const TRADUCTIONS = {
     "python.intro": "Voici les fichiers que j'ai créés pour apprendre et me perfectionner en Python. Toujours en amélioration constante !",
 
     // Projet 649 (intro spécifique)
-    "649.intro": "Le Lotto 6/49 est-il vraiment aléatoire ? Plutôt que de chercher à prédire les numéros, ce projet vérifie si l'historique des tirages se comporte autrement qu'un pur hasard. J'y teste deux croyances répandues — le numéro « en retard » et le numéro « en avance » — d'abord avec des statistiques, puis avec des modèles d'apprentissage automatique. Vous trouverez ci-dessous les documents explicatifs et les résultats, classés par étape.",
+    "649.intro": "Le Lotto 6/49 est-il vraiment aléatoire ? Plutôt que de chercher à prédire les numéros, ce projet vérifie si l'historique des tirages se comporte autrement qu'un pur hasard. J'y teste deux croyances répandues — le numéro « en retard » et le numéro « en avance » — d'abord avec des statistiques, puis avec des modèles d'apprentissage automatique. J'ai choisi le Lotto 6/49 pour son historique de plusieurs décennies : plus l'historique est long, plus les résultats gagnent en crédibilité. Vous trouverez ci-dessous les documents explicatifs et les résultats, classés par étape.",
 
     // À propos
     "apropos.titre": "À propos",
@@ -120,10 +120,10 @@ const TRADUCTIONS = {
     "projet.quantower": "Quantower",
 
     // Project short descriptions (home cards)
-    "projet.649.desc": "Data analysis and models around the 6/49 lottery.",
-    "projet.python.desc": "Course materials and PDF documents from the Python training.",
-    "projet.crypto.desc": "Strategies, backtests and crypto market analysis.",
-    "projet.quantower.desc": "Custom indicators and tools for trading.",
+    "projet.649.desc": "Can the winning combination be predicted?",
+    "projet.python.desc": "Mastering Python, from the basics to advanced concepts.",
+    "projet.crypto.desc": "Can you really beat the crypto market?",
+    "projet.quantower.desc": "Custom-built indicators to trade differently.",
 
     // Home
     "accueil.construction": "🚧 Site under construction — content coming soon.",
@@ -165,7 +165,7 @@ const TRADUCTIONS = {
     "python.intro": "Here are the files I created to learn and improve my Python skills. Always a work in progress!",
 
     // 649 project (specific intro)
-    "649.intro": "Is Lotto 6/49 really random? Rather than trying to predict the numbers, this project checks whether the draw history behaves any differently from pure chance. I test two common beliefs — the \"overdue\" number and the \"hot\" number — first with statistics, then with machine-learning models. Below you'll find the explanatory documents and the results, organized by stage.",
+    "649.intro": "Is Lotto 6/49 really random? Rather than trying to predict the numbers, this project checks whether the draw history behaves any differently from pure chance. I test two common beliefs — the \"overdue\" number and the \"hot\" number — first with statistics, then with machine-learning models. I chose Lotto 6/49 precisely for its decades-long history: the longer the record, the more credible the results. Below you'll find the explanatory documents and the results, organized by stage.",
 
     // About
     "apropos.titre": "About",

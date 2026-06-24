@@ -181,6 +181,8 @@ img { max-width: 100%; display: block; }
 .entete-page .accroche {
   color: var(--couleur-texte-doux);
   max-width: 60ch;
+  text-align: justify;      /* bords gauche/droite alignés */
+  hyphens: auto;            /* évite les grands trous entre les mots */
 }
 
 /* ----- Bannière « en construction » (accueil) ----- */
@@ -212,6 +214,8 @@ img { max-width: 100%; display: block; }
   color: var(--couleur-texte-doux);
   max-width: 60ch;
   margin: 0 auto 1.75rem;
+  text-align: justify;      /* bords gauche/droite alignés */
+  hyphens: auto;            /* évite les grands trous entre les mots */
 }
 .hero-actions {
   display: flex;
