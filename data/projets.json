@@ -6,6 +6,10 @@
         {
           "id": "docs",
           "titre": { "fr": "Documents formatifs", "en": "Formative documents" },
+          "accroche": {
+            "fr": "Tout le bagage théorique, des probabilités aux réseaux de neurones.",
+            "en": "All the theory, from probability to neural networks."
+          },
           "intro": {
             "fr": "Dix documents qui expliquent les concepts utilisés dans le projet, des bases de probabilité jusqu'aux réseaux de neurones. Ils se lisent dans l'ordre : chaque numéro s'appuie sur les précédents.",
             "en": "Ten documents explaining the concepts used in the project, from basic probability to neural networks. They're meant to be read in order: each one builds on the previous ones."
@@ -86,6 +90,10 @@
         {
           "id": "phase0",
           "titre": { "fr": "Phase 0 — Validation des données", "en": "Phase 0 — Data validation" },
+          "accroche": {
+            "fr": "Des données fiables, ou rien ne tient.",
+            "en": "Reliable data, or nothing holds."
+          },
           "intro": {
             "fr": "Première étape : récupérer les tirages officiels (Loto-Québec, 1982-2025), vérifier qu'ils sont complets et corrects, et les dater.",
             "en": "First step: load the official draws (Loto-Québec, 1982-2025), check that they're complete and correct, and date them."
@@ -107,6 +115,10 @@
         {
           "id": "phase1",
           "titre": { "fr": "Phase 1 — Tests statistiques", "en": "Phase 1 — Statistical tests" },
+          "accroche": {
+            "fr": "Six tests pour confronter l'historique au pur hasard.",
+            "en": "Six tests pitting the history against pure chance."
+          },
           "intro": {
             "fr": "Six tests pour comparer l'historique à ce qu'on attendrait d'un tirage purement aléatoire. À chaque fois, les données restent compatibles avec le hasard.",
             "en": "Six tests comparing the history with what we'd expect from a purely random draw. Each time, the data stays consistent with chance."
@@ -188,6 +200,10 @@
         {
           "id": "phase2",
           "titre": { "fr": "Phase 2 — Modèles d'apprentissage", "en": "Phase 2 — Machine-learning models" },
+          "accroche": {
+            "fr": "Et si une IA trouvait le motif caché ?",
+            "en": "What if an AI could find the hidden pattern?"
+          },
           "intro": {
             "fr": "On laisse des modèles chercher un signal dans l'historique, du plus simple au plus complexe. Aucun ne fait mieux qu'un tirage au hasard sur les données qu'il n'a pas vues.",
             "en": "We let models look for a signal in the history, from the simplest to the most complex. None does better than a random guess on data it hasn't seen."
@@ -247,6 +263,10 @@
         {
           "id": "synthese",
           "titre": { "fr": "Synthèse", "en": "Summary" },
+          "accroche": {
+            "fr": "Tous les modèles, un seul verdict.",
+            "en": "Every model, one verdict."
+          },
           "intro": {
             "fr": "Tous les modèles réunis sur un même graphique. Du plus simple au plus complexe, ils obtiennent le même résultat sur les données qu'ils n'ont pas vues : celui du hasard.",
             "en": "All the models on one chart. From the simplest to the most complex, they reach the same result on unseen data: the result of chance."
@@ -268,6 +288,10 @@
         {
           "id": "conclusion",
           "titre": { "fr": "Conclusion", "en": "Conclusion" },
+          "accroche": {
+            "fr": "Le verdict final — et pourquoi il était couru d'avance.",
+            "en": "The final verdict — and why it was a foregone conclusion."
+          },
           "texte": {
             "fr": "## Le verdict\n\nDeux approches complémentaires, six modèles en tout — des statistiques classiques (Phase 1) jusqu'aux réseaux de neurones (Phase 2) — arrivent à la même conclusion : aucun ne prédit les tirages mieux que le hasard. Hors-échantillon, tous se collent au plancher d'entropie ; le plus complexe (LSTM) fait même légèrement pire, à force de mémoriser le passé.\n\n## Les deux croyances réfutées\n\nLe numéro « en retard » n'est pas « dû » (Test 2 et cascade binaire), et le numéro « en avance » n'a pas la cote (Test 3). À chaque tirage, chaque numéro garde la même probabilité de sortir — 6 sur 49 — peu importe ce qui s'est passé avant. L'attente passée ne porte aucune information sur le prochain tirage.\n\n## La seule anomalie\n\nUn unique écart a résisté aux tests : un très léger penchant vers les grands numéros (numéro moyen 25,3 au lieu de 25,0). Réel ou simple fluctuation, il est indiscernable à l'échelle d'un tirage et, surtout, inexploitable — aucun numéro individuel ne dévie.\n\n## La portée du projet\n\nAutrement dit, le Lotto 6/49 est imprévisible — ce qui est exactement le but d'une loterie honnête. L'objectif n'était pas de gagner au loto, mais de montrer clairement, étape par étape, pourquoi on ne peut pas : poser des hypothèses, les tester avec rigueur, et accepter le résultat même lorsqu'il déçoit.",
             "en": "## The verdict\n\nTwo complementary approaches, six models in all — from classic statistics (Phase 1) to neural networks (Phase 2) — reach the same conclusion: none predicts the draws better than chance. Out-of-sample, all of them stick to the entropy floor; the most complex one (LSTM) does even slightly worse, from memorizing the past.\n\n## The two beliefs refuted\n\nThe \"overdue\" number isn't \"due\" (Test 2 and the binary cascade), and the \"hot\" number has no edge (Test 3). At every draw, each number keeps the same chance of coming up — 6 in 49 — no matter what happened before. Past waiting carries no information about the next draw.\n\n## The one anomaly\n\nA single deviation resisted the tests: a very slight lean toward higher numbers (mean number 25.3 instead of 25.0). Real or mere fluctuation, it is indiscernible at the scale of a draw and, above all, unexploitable — no individual number deviates.\n\n## The point of the project\n\nIn other words, Lotto 6/49 is unpredictable — which is exactly the point of a fair lottery. The goal was never to win the lottery, but to show clearly, step by step, why you can't: state hypotheses, test them rigorously, and accept the result even when it disappoints."

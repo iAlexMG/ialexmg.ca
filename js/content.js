@@ -497,8 +497,13 @@ const Contenu = (function () {
           sections
             .map(function (section, idx) {
               const titre = texteLocalise(section.titre);
+              // Accroche courte pour la carte du hub ; à défaut l'intro, puis le
+              // texte complet. 'accroche' évite d'étaler toute la prose (ex. la
+              // Conclusion, qui n'a pas d'intro) sur la table des matières.
               const desc =
-                texteLocalise(section.intro) || texteLocalise(section.texte);
+                texteLocalise(section.accroche) ||
+                texteLocalise(section.intro) ||
+                texteLocalise(section.texte);
               const id = section.id || String(idx);
               const href =
                 pageSection +
