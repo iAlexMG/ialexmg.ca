@@ -84,7 +84,7 @@ const TRADUCTIONS = {
     "python.intro": "Voici les fichiers que j'ai créés pour apprendre et me perfectionner en Python. Toujours en amélioration constante !",
 
     // Projet Crypto (intro spécifique)
-    "crypto.intro": "Ce projet agrège les données de marché en temps réel de plusieurs plateformes (Bitget, Binance, Coinbase…) pour en construire un marché « hybride » global. Chaque plateforme parle son propre langage : l'essentiel du travail consiste à nettoyer, aligner et fusionner ces sources pour qu'elles deviennent comparables. Découvrez ci-dessous chaque étape séparément, de la plateforme centrale jusqu'à l'hybride.",
+    "crypto.intro": "Un terminal d'orderflow façon Bookmap qui réconcilie six exchanges crypto en une vue cohérente : footprint, heatmap de liquidité, carnet et trades, le tout normalisé puis fusionné en un marché « hybride » avec détection d'arbitrage en direct. Le vrai sujet n'est pas « j'ai branché six exchanges », mais que chacun s'est battu pour rentrer dans le moule : choisissez-en un pour voir ses embûches et leurs solutions, puis suivez l'hybride, l'arbitrage et l'architecture.",
 
     // Projet 649 (intro spécifique)
     "649.intro": "Le Lotto 6/49 est-il vraiment aléatoire ? Plutôt que de chercher à prédire les numéros, ce projet vérifie si l'historique des tirages se comporte autrement qu'un pur hasard. J'y teste deux croyances répandues — le numéro « en retard » et le numéro « en avance » — d'abord avec des statistiques, puis avec des modèles d'apprentissage automatique. J'ai choisi le Lotto 6/49 pour son historique de plusieurs décennies : plus l'historique est long, plus les résultats gagnent en crédibilité. Vous trouverez ci-dessous les documents explicatifs et les résultats, classés par étape.",
@@ -165,7 +165,7 @@ const TRADUCTIONS = {
     "documents.avertissement_fr": "⚠️ The PDF documents are only available in French.",
 
     // Crypto project (specific intro)
-    "crypto.intro": "This project aggregates real-time market data from several platforms (Bitget, Binance, Coinbase…) to build a global \"hybrid\" market. Each platform speaks its own language: most of the work is cleaning, aligning and merging these sources so they become comparable. Explore each step separately below, from the central platform all the way to the hybrid.",
+    "crypto.intro": "A Bookmap-style orderflow terminal that reconciles six crypto exchanges into one coherent view: footprint, liquidity heatmap, order book and trades, all normalized then merged into a \"hybrid\" market with live arbitrage detection. The real story isn't \"I plugged in six exchanges\" but that each one had to fight its way into the mold: pick one to see its pitfalls and fixes, then follow the hybrid, arbitrage and architecture.",
 
     // Python project (specific intro)
     "python.intro": "Here are the files I created to learn and improve my Python skills. Always a work in progress!",
