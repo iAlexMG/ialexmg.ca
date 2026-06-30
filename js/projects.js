@@ -53,6 +53,27 @@ const PROJETS = [
     titre: "projet.quantower",
     desc: "projet.quantower.desc",
   },
+  {
+    id: "backtesting",
+    href: "backtesting.html",
+    page: "backtesting",
+    titre: "projet.backtesting",
+    desc: "projet.backtesting.desc",
+  },
+  {
+    id: "detection",
+    href: "detection.html",
+    page: "detection",
+    titre: "projet.detection",
+    desc: "projet.detection.desc",
+  },
+  {
+    id: "ibkr",
+    href: "ibkr.html",
+    page: "ibkr",
+    titre: "projet.ibkr",
+    desc: "projet.ibkr.desc",
+  },
 ];
 
 // Exposition globale (pas de modules pour rester compatible file:// et GitHub Pages).

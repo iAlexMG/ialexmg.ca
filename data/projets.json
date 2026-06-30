@@ -808,6 +808,15 @@
     },
     "quantower": {
       "items": []
+    },
+    "backtesting": {
+      "items": []
+    },
+    "detection": {
+      "items": []
+    },
+    "ibkr": {
+      "items": []
     }
   }
 }

@@ -16,6 +16,37 @@
  */
 
 (function () {
+  // Date de dernière mise à jour du site (format ISO AAAA-MM-JJ).
+  // ⚙️ À METTRE À JOUR à chaque déploiement notable : c'est la seule valeur à
+  // changer pour rafraîchir la bannière « en construction » de l'accueil.
+  const DATE_MAJ = "2026-06-30";
+
+  // Formate DATE_MAJ dans la langue active (ex. « 30 juin 2026 » / « June 30, 2026 »).
+  function formaterDateMaj(langue) {
+    const morceaux = DATE_MAJ.split("-").map(Number);
+    const date = new Date(morceaux[0], morceaux[1] - 1, morceaux[2]);
+    const locale = langue === "en" ? "en-US" : "fr-CA";
+    return new Intl.DateTimeFormat(locale, {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }).format(date);
+  }
+
+  // Remplit la bannière « en construction » de l'accueil (avertissement + date).
+  // Le texte est construit ici (et non via data-i18n) pour y intégrer la date.
+  function rendreBanniereConstruction() {
+    const banniere = document.querySelector("[data-construction]");
+    if (!banniere) return; // présente uniquement sur l'accueil.
+    const langue = window.I18n.langueActive();
+    banniere.textContent =
+      window.I18n.t("accueil.construction") +
+      " · " +
+      window.I18n.t("accueil.maj") +
+      " " +
+      formaterDateMaj(langue);
+  }
+
   // Rend le contenu de chaque projet présent sur la page.
   // (window.Contenu n'est chargé que sur les pages de projet.)
   function rendreProjets() {
@@ -71,12 +102,14 @@
     // déjà les traductions sur le contenu injecté).
     window.Composants.initialiser();
 
-    // 4. Contenu du projet éventuel.
+    // 4. Bannière « en construction » (accueil) + contenu du projet éventuel.
+    rendreBanniereConstruction();
     rendreProjets();
 
-    // 5. Redessiner au changement de langue (titres/descriptions bilingues
-    //    et avertissement PDF FR/EN).
+    // 5. Redessiner au changement de langue (bannière + titres/descriptions
+    //    bilingues et avertissement PDF FR/EN).
     document.addEventListener("langue:changee", function () {
+      rendreBanniereConstruction();
       rendreProjets();
     });
   }
