@@ -305,121 +305,128 @@
         {
           "id": "py-1",
           "type": "pdf",
-          "fichier": "assets/python/01 - Fondamentaux.pdf",
+          "fichier": "assets/python/Cours 01 - Les fondements/Cours 01 - Les fondements.pdf",
           "titre":       { "fr": "Les bases de Python", "en": "The basics of Python" },
           "description": { "fr": "Chapitre 1 du cours.", "en": "Chapter 1 of the course." }
         },
         {
           "id": "py-2",
           "type": "pdf",
-          "fichier": "assets/python/02 - POO.pdf",
+          "fichier": "assets/python/Cours 02 - Programmatin orientée objet/Cours 02 - Programmatin orientée objet.pdf",
           "titre":       { "fr": "Programmation orientée objet", "en": "Object-Oriented Programming" },
           "description": { "fr": "Chapitre 2 du cours.", "en": "Chapter 2 of the course." }
         },
         {
           "id": "py-3",
           "type": "pdf",
-          "fichier": "assets/python/03 - Concepts_intermediaires.pdf",
+          "fichier": "assets/python/Cours 03 - Concepts_intermediaires/Cours 03 - Concepts_intermediaires.pdf",
           "titre":       { "fr": "Concepts intermédiaires", "en": "Intermediate concepts" },
           "description": { "fr": "Chapitre 3 du cours.", "en": "Chapter 3 of the course." }
         },
         {
           "id": "py-4",
           "type": "pdf",
-          "fichier": "assets/python/04 - Concurrence.pdf",
+          "fichier": "assets/python/Cours 04 - Concurrence/Cours 04 - Concurrence.pdf",
           "titre":       { "fr": "Concurrence", "en": "Concurrency" },
           "description": { "fr": "Chapitre 4 du cours.", "en": "Chapter 4 of the course." }
         },
         {
           "id": "py-5",
           "type": "pdf",
-          "fichier": "assets/python/05 - Donnees.pdf",
+          "fichier": "assets/python/Cours 05 - Donnees/Cours 05 - Donnees.pdf",
           "titre":       { "fr": "Les types de données", "en": "Data Types" },
           "description": { "fr": "Chapitre 5 du cours.", "en": "Chapter 5 of the course." }
         },
         {
           "id": "py-6",
           "type": "pdf",
-          "fichier": "assets/python/06 - Interactions.pdf",
+          "fichier": "assets/python/Cours 06 - Interactions/Cours 06 - Interactions.pdf",
           "titre":       { "fr": "Interactions", "en": "Interactions" },
           "description": { "fr": "Chapitre 6 du cours.", "en": "Chapter 6 of the course." }
         },
         {
           "id": "py-7",
           "type": "pdf",
-          "fichier": "assets/python/07 - Qualite_tests.pdf",
+          "fichier": "assets/python/Cours 07 - Qualite_tests/Cours 07 - Qualite_tests.pdf",
           "titre":       { "fr": "Qualité et tests", "en": "Quality and testing" },
           "description": { "fr": "Chapitre 7 du cours.", "en": "Chapter 7 of the course." }
         },
         {
           "id": "py-8",
           "type": "pdf",
-          "fichier": "assets/python/08 - Performance.pdf",
+          "fichier": "assets/python/Cours 08 - Performance/Cours 08 - Performance.pdf",
           "titre":       { "fr": "Performance", "en": "Performance" },
           "description": { "fr": "Chapitre 8 du cours.", "en": "Chapter 8 of the course." }
         },
         {
           "id": "py-9",
           "type": "pdf",
-          "fichier": "assets/python/Viz_00_Introduction.pdf",
+          "fichier": "assets/python/Cours 09 - Affichages/9.01- Introduction.pdf",
           "titre":       { "fr": "Visualisation — Introduction", "en": "Visualization — Introduction" },
           "description": { "fr": "Pourquoi et comment visualiser des données : panorama des bibliothèques Python.", "en": "Why and how to visualize data: an overview of the Python libraries." }
         },
         {
           "id": "py-10",
           "type": "pdf",
-          "fichier": "assets/python/Viz_10_Matplotlib.pdf",
+          "fichier": "assets/python/Cours 09 - Affichages/9.02-Matplotlib.pdf",
           "titre":       { "fr": "Visualisation — Matplotlib", "en": "Visualization — Matplotlib" },
           "description": { "fr": "La bibliothèque de base : figures, axes et tracés entièrement personnalisables.", "en": "The foundational library: figures, axes and fully customizable plots." }
         },
         {
           "id": "py-11",
           "type": "pdf",
-          "fichier": "assets/python/Viz_20_Pandas.pdf",
+          "fichier": "assets/python/Cours 09 - Affichages/9.03-Pandas.pdf",
           "titre":       { "fr": "Visualisation — Pandas", "en": "Visualization — Pandas" },
           "description": { "fr": "Tracer directement depuis un DataFrame, pour explorer les données en un coup d'œil.", "en": "Plotting straight from a DataFrame, to explore data at a glance." }
         },
         {
           "id": "py-12",
           "type": "pdf",
-          "fichier": "assets/python/Viz_30_Seaborn.pdf",
+          "fichier": "assets/python/Cours 09 - Affichages/9.04-Seaborn.pdf",
           "titre":       { "fr": "Visualisation — Seaborn", "en": "Visualization — Seaborn" },
           "description": { "fr": "Des graphiques statistiques élégants en quelques lignes.", "en": "Elegant statistical graphics in just a few lines." }
         },
         {
           "id": "py-13",
           "type": "pdf",
-          "fichier": "assets/python/Viz_40_Plotly.pdf",
+          "fichier": "assets/python/Cours 09 - Affichages/9.05-Plotly.pdf",
           "titre":       { "fr": "Visualisation — Plotly", "en": "Visualization — Plotly" },
           "description": { "fr": "Des graphiques interactifs : survol, zoom et export pour le web.", "en": "Interactive charts: hover, zoom and web export." }
         },
         {
           "id": "py-14",
           "type": "pdf",
-          "fichier": "assets/python/Viz_50_PyQtGraph.pdf",
+          "fichier": "assets/python/Cours 09 - Affichages/9.06-PyQtGraph.pdf",
           "titre":       { "fr": "Visualisation — PyQtGraph", "en": "Visualization — PyQtGraph" },
           "description": { "fr": "Tracés temps réel et haute performance pour les applications.", "en": "Real-time, high-performance plotting for applications." }
         },
         {
           "id": "py-15",
           "type": "pdf",
-          "fichier": "assets/python/Viz_60_Matplotlib3D.pdf",
+          "fichier": "assets/python/Cours 09 - Affichages/9.07-Matplotlib3D.pdf",
           "titre":       { "fr": "Visualisation — Matplotlib 3D", "en": "Visualization — Matplotlib 3D" },
           "description": { "fr": "Surfaces, nuages de points et tracés en trois dimensions.", "en": "Surfaces, scatter plots and plots in three dimensions." }
         },
         {
           "id": "py-16",
           "type": "pdf",
-          "fichier": "assets/python/Viz_70_Images_Texte.pdf",
+          "fichier": "assets/python/Cours 09 - Affichages/9.08-Images_Texte.pdf",
           "titre":       { "fr": "Visualisation — Images et texte", "en": "Visualization — Images and text" },
           "description": { "fr": "Afficher des images, annoter et habiller ses figures de texte.", "en": "Displaying images, annotating and adding text to figures." }
         },
         {
           "id": "py-17",
           "type": "pdf",
-          "fichier": "assets/python/Viz_999_Cheat_sheets.pdf",
+          "fichier": "assets/python/Cours 09 - Affichages/9.09-Cheat_sheets.pdf",
           "titre":       { "fr": "Visualisation — Aide-mémoire", "en": "Visualization — Cheat sheets" },
           "description": { "fr": "Les aide-mémoire pour retrouver vite la bonne syntaxe.", "en": "Cheat sheets to quickly find the right syntax." }
+        },
+        {
+          "id": "py-18",
+          "type": "pdf",
+          "fichier": "assets/python/Cours 10 - Environnements/Cours 10 - Environnements.pdf",
+          "titre":       { "fr": "Environnements", "en": "Environments" },
+          "description": { "fr": "Chapitre 10 du cours : environnements virtuels et gestion des dépendances.", "en": "Chapter 10 of the course: virtual environments and dependency management." }
         }
       ]
     },
@@ -810,7 +817,22 @@
       "items": []
     },
     "backtesting": {
-      "items": []
+      "items": [
+        {
+          "id": "bt-1",
+          "type": "pdf",
+          "fichier": "assets/Backtesting/01- QuantConnect_LEAN.pdf",
+          "titre":       { "fr": "QuantConnect / LEAN", "en": "QuantConnect / LEAN" },
+          "description": { "fr": "Le moteur de backtesting open source LEAN et la plateforme QuantConnect.", "en": "The open-source LEAN backtesting engine and the QuantConnect platform." }
+        },
+        {
+          "id": "bt-2",
+          "type": "pdf",
+          "fichier": "assets/Backtesting/02- VectorbtPro.pdf",
+          "titre":       { "fr": "VectorbtPro", "en": "VectorbtPro" },
+          "description": { "fr": "Backtesting vectorisé haute performance avec VectorbtPro.", "en": "High-performance vectorized backtesting with VectorbtPro." }
+        }
+      ]
     },
     "detection": {
       "items": []
