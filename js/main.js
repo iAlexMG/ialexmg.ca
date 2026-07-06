@@ -19,7 +19,7 @@
   // Date de dernière mise à jour du site (format ISO AAAA-MM-JJ).
   // ⚙️ À METTRE À JOUR à chaque déploiement notable : c'est la seule valeur à
   // changer pour rafraîchir la bannière « en construction » de l'accueil.
-  const DATE_MAJ = "2026-07-01";
+  const DATE_MAJ = "2026-07-06";
 
   // Formate DATE_MAJ dans la langue active (ex. « 30 juin 2026 » / « June 30, 2026 »).
   function formaterDateMaj(langue) {
