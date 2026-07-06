@@ -47,6 +47,7 @@ const TRADUCTIONS = {
     "projet.crypto.desc": "Peut-on vraiment battre le marché crypto ?",
     "projet.quantower.desc": "Des indicateurs sur mesure pour trader autrement.",
     "projet.backtesting.desc": "Et si on testait les stratégies avant de miser ?",
+    "projet.backtesting.intro": "Une formation complète sur le moteur LEAN — neuf leçons, de la compilation à l'order-flow — et les outils qui en sont nés.",
     "projet.detection.desc": "Apprendre à la machine à reconnaître ce qu'elle voit.",
     "projet.ibkr.desc": "Automatiser le trading via l'API d'Interactive Brokers.",
 
@@ -142,6 +143,7 @@ const TRADUCTIONS = {
     "projet.crypto.desc": "Can you really beat the crypto market?",
     "projet.quantower.desc": "Custom-built indicators to trade differently.",
     "projet.backtesting.desc": "What if we tested strategies before betting?",
+    "projet.backtesting.intro": "A full course on the LEAN engine — nine lessons, from compiling it to order-flow — and the tools born from it.",
     "projet.detection.desc": "Teaching the machine to recognize what it sees.",
     "projet.ibkr.desc": "Automating trading through the Interactive Brokers API.",
 
