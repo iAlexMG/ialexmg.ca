@@ -427,6 +427,13 @@
           "fichier": "assets/python/Cours 10 - Environnements/Cours 10 - Environnements.pdf",
           "titre":       { "fr": "Environnements", "en": "Environments" },
           "description": { "fr": "Chapitre 10 du cours : environnements virtuels et gestion des dépendances.", "en": "Chapter 10 of the course: virtual environments and dependency management." }
+        },
+        {
+          "id": "py-19",
+          "type": "pdf",
+          "fichier": "assets/python/Cours 11 - Lignes de commande/Cours 11 - Lignes de commande.pdf",
+          "titre":       { "fr": "Lignes de commande", "en": "Command line" },
+          "description": { "fr": "Chapitre 11 du cours : le terminal et les outils en ligne de commande.", "en": "Chapter 11 of the course: the terminal and command-line tools." }
         }
       ]
     },
