@@ -884,7 +884,26 @@
         },
         {
           "id": "formation",
-          "titre": { "fr": "La formation LEAN, leçon par leçon", "en": "The LEAN course, lesson by lesson" },
+          "titre": { "fr": "La formation", "en": "The course" },
+          "accroche": {
+            "fr": "Un backtesting de niveau pro, bâti de zéro sur deux moteurs — en trois temps.",
+            "en": "Professional-grade backtesting, built from scratch on two engines — in three parts."
+          },
+          "intro": {
+            "fr": "Construire un backtesting de niveau professionnel sur deux moteurs complémentaires — LEAN (événementiel) et vectorbt (vectorisé) — appliqué à de vraies données crypto, puis réconcilier leurs résultats.",
+            "en": "Building professional-grade backtesting on two complementary engines — LEAN (event-driven) and vectorbt (vectorized) — applied to real crypto data, then reconciling their results."
+          },
+          "statut": { "fr": "3 parties", "en": "3 parts" },
+          "sousHub": true,
+          "texte": {
+            "fr": "## Deux moteurs, trois temps\n\nUn backtesting fiable ne se juge pas à un seul moteur. Cette formation construit les mêmes stratégies sur deux moteurs complémentaires — LEAN (événementiel) et vectorbt (vectorisé) — puis les réconcilie au centime. C'est la compétence qui sépare un backtest fiable d'un joli graphique trompeur. Choisissez une partie ci-dessous.\n\n## Avertissement\n\nContenu pédagogique. Rien ici n'est un conseil financier ; les performances passées, a fortiori simulées, ne préjugent pas des performances futures.",
+            "en": "## Two engines, three parts\n\nA reliable backtest isn't judged on a single engine. This course builds the same strategies on two complementary engines — LEAN (event-driven) and vectorbt (vectorized) — then reconciles them to the cent. That's the skill that separates a reliable backtest from a pretty, misleading chart. Pick a part below.\n\n## Disclaimer\n\nEducational content. Nothing here is financial advice; past — let alone simulated — performance does not guarantee future results."
+          }
+        },
+        {
+          "id": "lean",
+          "parent": "formation",
+          "titre": { "fr": "01 · LEAN — le moteur événementiel", "en": "01 · LEAN — the event-driven engine" },
           "accroche": {
             "fr": "Neuf leçons : d'un moteur compilé à la main jusqu'à l'order-flow tick par tick.",
             "en": "Nine lessons: from an engine compiled by hand to tick-by-tick order flow."
@@ -893,6 +912,7 @@
             "fr": "Construire un backtesting de niveau professionnel sur le moteur événementiel LEAN, appliqué à de vraies données crypto (BTCUSDT perp), en mesurant tout — jamais en supposant.",
             "en": "Building professional-grade backtesting on the LEAN event-driven engine, applied to real crypto data (BTCUSDT perp), measuring everything — never assuming."
           },
+          "statut": { "fr": "9 leçons", "en": "9 lessons" },
           "sousMenu": true,
           "texte": {
             "fr": "## La démarche\n\nChaque leçon part d'une hypothèse, la teste sur le vrai moteur LEAN (compilé depuis les sources GitHub, sans Docker), puis cherche à la falsifier. Aucun chiffre n'est figé : tout est recalculé depuis les données réellement chargées, souvent au centime près. Sept stratégies sont construites et mesurées côte à côte — du Buy & Hold à une stratégie complète (régime + momentum + risque) — plus une extension order-flow.\n\n## Les données\n\nBTCUSDT, futures perpétuels margés en USDT (Binance USDⓈ-M) : des barres horaires OHLCV dérivées de ~328 millions de ticks bruts, une seule « source de vérité » consommée telle quelle. L'historique s'étend au fil du cours — les chiffres ci-dessous valent pour la fenêtre mesurée (janvier-juin 2026) ; la démarche, elle, vaut toujours.\n\n## Feuille de route\n\nSection 01 — LEAN : publiée, les neuf leçons ci-dessous. Section 02 — vectorbt : rejouer les mêmes stratégies en vectorisé (en attente de licence). Section 03 — Conclusion : réconcilier les deux moteurs au centime et expliquer chaque écart (à venir).\n\n## Avertissement\n\nContenu pédagogique. Rien ici n'est un conseil financier ; les performances passées, a fortiori simulées, ne préjugent pas des performances futures.",
@@ -999,6 +1019,42 @@
               }
             }
           ]
+        },
+        {
+          "id": "vbt",
+          "parent": "formation",
+          "titre": { "fr": "02 · vectorbt — le moteur vectorisé", "en": "02 · vectorbt — the vectorized engine" },
+          "accroche": {
+            "fr": "Les mêmes stratégies, calculées sur toute la série d'un coup — pour explorer des milliers de variantes en quelques secondes.",
+            "en": "The same strategies, computed over the whole series at once — to explore thousands of variants in seconds."
+          },
+          "intro": {
+            "fr": "Rejouer en vectorisé les stratégies de la sous-section LEAN avec vectorbt Pro : même source de vérité OHLCV, mêmes frais — la condition de la parité traitée en conclusion.",
+            "en": "Replaying the LEAN sub-section's strategies vectorized with vectorbt Pro: same OHLCV ground truth, same fees — the condition for the parity handled in the conclusion."
+          },
+          "statut": { "fr": "En attente", "en": "On hold" },
+          "texte": {
+            "fr": "## En attente de licence\n\nvectorbt Pro est un paquet privé sous licence (dépôt GitHub privé, installation par pip depuis une URL SSH). La licence n'est pas encore acquise : dès qu'elle le sera, cette sous-section sera construite en miroir de la sous-section LEAN, avec la même source de vérité OHLCV et les mêmes frais.\n\n## Plan prévu (miroir de LEAN)\n\nInstallation et philosophie vectorisée (vs événementielle). Buy & Hold : from_holding, frais, freq, pf.stats(). Les mêmes stratégies que côté LEAN, une par une. L'optimisation de grille — là où vectorbt brille : des milliers de combinaisons en quelques secondes. Puis le walk-forward, et une synthèse qui prépare la confrontation des deux moteurs.\n\n## Pourquoi deux moteurs ?\n\nLEAN rejoue le marché barre par barre — réaliste, débogable, orienté production. vectorbt calcule sur toute la série d'un coup — idéal pour explorer. La compétence finale de la formation : réconcilier leurs résultats sur les mêmes stratégies.",
+            "en": "## Awaiting a license\n\nvectorbt Pro is a private, licensed package (private GitHub repo, installed via pip from an SSH URL). The license is not yet acquired: as soon as it is, this sub-section will be built as a mirror of the LEAN one, with the same OHLCV ground truth and the same fees.\n\n## Planned outline (mirror of LEAN)\n\nInstallation and the vectorized philosophy (vs event-driven). Buy & Hold: from_holding, fees, freq, pf.stats(). The same strategies as on the LEAN side, one by one. Grid optimization — where vectorbt shines: thousands of combinations in seconds. Then walk-forward, and a synthesis that sets up the confrontation of the two engines.\n\n## Why two engines?\n\nLEAN replays the market bar by bar — realistic, debuggable, production-oriented. vectorbt computes over the whole series at once — ideal for exploring. The course's final skill: reconciling their results on the same strategies."
+          }
+        },
+        {
+          "id": "conclusion",
+          "parent": "formation",
+          "titre": { "fr": "03 · Conclusion — réconcilier les deux moteurs", "en": "03 · Conclusion — reconciling the two engines" },
+          "accroche": {
+            "fr": "Le même backtest des deux côtés doit retomber au centime — et chaque écart s'explique.",
+            "en": "The same backtest on both sides must land to the cent — and every gap is explained."
+          },
+          "intro": {
+            "fr": "Confronter LEAN et vectorbt sur les mêmes stratégies : sol de vérité, parité stratégie par stratégie, puis le verdict — quel moteur pour quoi.",
+            "en": "Confronting LEAN and vectorbt on the same strategies: ground truth, strategy-by-strategy parity, then the verdict — which engine for what."
+          },
+          "statut": { "fr": "À venir", "en": "Coming" },
+          "texte": {
+            "fr": "## Le test « sol de vérité »\n\nSur un Buy & Hold, les deux moteurs doivent retrouver close_dernier / open_premier − 1 (moins les frais). Sinon, la normalisation ou les frais sont faux — on corrige avant d'aller plus loin.\n\n## Parité stratégie par stratégie\n\nMêmes signaux, mêmes fills, mêmes P&L ? Chaque écart est expliqué : sémantique d'exécution, sizing, annualisation des métriques.\n\n## Le verdict\n\nUn tableau comparatif final : quand utiliser quel moteur, les limites assumées de chacun, et comment les combiner dans un flux de travail pro.\n\n## Prérequis\n\nLes sous-sections 01 — LEAN et 02 — vectorbt terminées.",
+            "en": "## The \"ground truth\" test\n\nOn a Buy & Hold, both engines must recover last_close / first_open − 1 (minus fees). Otherwise, normalization or fees are wrong — we fix it before going further.\n\n## Strategy-by-strategy parity\n\nSame signals, same fills, same P&L? Every gap is explained: execution semantics, sizing, metric annualization.\n\n## The verdict\n\nA final comparison table: when to use which engine, each one's assumed limits, and how to combine them in a pro workflow.\n\n## Prerequisites\n\nThe 01 — LEAN and 02 — vectorbt sub-sections completed."
+          }
         },
         {
           "id": "references",

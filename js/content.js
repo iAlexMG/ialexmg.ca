@@ -294,6 +294,29 @@ const Contenu = (function () {
     );
   }
 
+  // Sous-hub de SECTIONS : une carte par sous-section (mène à sa page section).
+  // Sert à imbriquer un niveau (ex. « La formation » -> LEAN / vbt / conclusion).
+  function construireSousHubSections(sections, projet, pageSection) {
+    return (
+      '<div class="grille-hub">' +
+      sections
+        .map(function (section) {
+          const titre = texteLocalise(section.titre);
+          const desc =
+            texteLocalise(section.accroche) ||
+            texteLocalise(section.intro) ||
+            texteLocalise(section.texte);
+          const href =
+            pageSection +
+            "?p=" + encodeURIComponent(projet) +
+            "&s=" + encodeURIComponent(section.id);
+          return creerCarteLien(titre, desc, href, libelleCarteSection(section));
+        })
+        .join("") +
+      "</div>"
+    );
+  }
+
   // --- Sections (regroupement du contenu d'un projet) -----------------------
 
   // Identifiant d'ancre stable pour une section (sommaire + lien profond #...).
@@ -438,6 +461,14 @@ const Contenu = (function () {
     return n + " " + mot;
   }
 
+  // Libellé du chip d'une carte de section : le champ "statut" (bilingue) s'il
+  // existe — ex. « 9 leçons », « En attente », « 3 parties » — sinon le compte
+  // d'items. Permet à une section-hub (sans items) ou en attente d'annoncer son
+  // état plutôt qu'un décompte trompeur.
+  function libelleCarteSection(section) {
+    return texteLocalise(section.statut) || libelleCompte(section);
+  }
+
   // Rendu du HUB (table des matières). Deux cas :
   //   - projet SECTIONNÉ (649) : une carte par section -> page section.
   //   - projet à items PLATS (Python) : une carte par item -> page item.
@@ -459,7 +490,9 @@ const Contenu = (function () {
       const toutes = sectionsDuBloc(bloc);
       const estPlat = toutes.length === 1 && toutes[0]._plat;
       const sections = toutes.filter(function (s) {
-        return !s._plat;
+        // On exclut les sous-sections (parent défini) : elles sont présentées
+        // dans le sous-hub de leur section parente, pas dans le hub principal.
+        return !s._plat && !s.parent;
       });
 
       if (estPlat) {
@@ -509,7 +542,7 @@ const Contenu = (function () {
                 pageSection +
                 "?p=" + encodeURIComponent(projet) +
                 "&s=" + encodeURIComponent(id);
-              return creerCarteLien(titre, desc, href, libelleCompte(section));
+              return creerCarteLien(titre, desc, href, libelleCarteSection(section));
             })
             .join("") +
           "</div>";
@@ -553,6 +586,7 @@ const Contenu = (function () {
     const projet = options.projet || null;
     const sectionId = options.sectionId || null;
     const pageItem = options.pageItem || "";
+    const pageSection = options.pageSection || ""; // pour les cartes d'un sous-hub.
     if (!conteneur) return;
 
     conteneur.setAttribute("aria-busy", "true");
@@ -569,7 +603,27 @@ const Contenu = (function () {
       const elTitre = document.querySelector("[data-section-titre]");
       const elIntro = document.querySelector("[data-section-intro]");
       const elRetour = document.querySelector("[data-lien-retour]");
-      if (elRetour) elRetour.setAttribute("href", hrefProjet(projet));
+      // Lien retour : vers la section PARENTE si sous-section (ex. une partie de
+      // la formation -> le hub Formation), sinon vers l'accueil du projet. On
+      // fixe le texte ici (et on retire data-i18n) pour qu'appliquerTraductions
+      // ne l'écrase pas.
+      if (elRetour) {
+        elRetour.removeAttribute("data-i18n");
+        if (section && section.parent) {
+          const parentSection = trouverSection(sections, section.parent);
+          elRetour.setAttribute(
+            "href",
+            pageSection +
+              "?p=" + encodeURIComponent(projet) +
+              "&s=" + encodeURIComponent(section.parent)
+          );
+          elRetour.textContent =
+            "← " + texteLocalise(parentSection ? parentSection.titre : "");
+        } else {
+          elRetour.setAttribute("href", hrefProjet(projet));
+          elRetour.textContent = window.I18n.t("contenu.retour");
+        }
+      }
 
       if (!section) {
         conteneur.innerHTML =
@@ -585,7 +639,16 @@ const Contenu = (function () {
       const items = Array.isArray(section.items) ? section.items : [];
       const texte = texteLocalise(section.texte);
 
-      if (section.sousMenu && items.length) {
+      if (section.sousHub) {
+        // Section-hub : ses sous-sections (parent === cette section) forment un
+        // sous-hub imbriqué — une carte par sous-section, menant à sa page.
+        const enfants = sections.filter(function (s) {
+          return s.parent === (section.id || sectionId);
+        });
+        conteneur.innerHTML =
+          rendreProse(texte) +
+          construireSousHubSections(enfants, projet, pageSection);
+      } else if (section.sousMenu && items.length) {
         // Sous-menu : une carte par item (mène à sa page item).
         conteneur.innerHTML =
           rendreProse(texte) +

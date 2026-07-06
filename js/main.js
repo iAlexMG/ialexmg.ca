@@ -77,6 +77,7 @@
         conteneur: conteneur,
         projet: conteneur.getAttribute("data-projet-section") || params.get("p"),
         sectionId: params.get("s"),
+        pageSection: conteneur.getAttribute("data-page-section") || "",
         pageItem: conteneur.getAttribute("data-page-item") || "",
       });
     });
