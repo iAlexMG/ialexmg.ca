@@ -54,13 +54,26 @@ const Composants = (function () {
 
   // Grille des projets pour l'accueil, générée depuis window.PROJETS.
   // S'insère dans le conteneur [data-grille-projets] de index.html.
+  // Chaque carte affiche : miniature (optionnelle), titre, description et
+  // badges de stack technique (optionnels) — voir les champs dans projects.js.
   function construireGrilleProjets() {
     return (window.PROJETS || [])
       .map(function (p) {
+        // Miniature décorative (le titre de la carte décrit déjà le projet).
+        const miniature = p.miniature
+          ? '<img class="carte-miniature" src="' + encodeURI(p.miniature) + '" alt="" loading="lazy">'
+          : "";
+        // Badges de stack : noms de technologies, identiques en FR et EN.
+        const badges = (p.stack || [])
+          .map(function (tech) { return '<span class="badge-stack">' + tech + "</span>"; })
+          .join("");
+        const stack = badges ? '<div class="carte-stack">' + badges + "</div>" : "";
         return (
           '<a class="carte-portfolio" href="' + p.href + '">' +
+          miniature +
           '  <h3 data-i18n="' + p.titre + '"></h3>' +
           '  <p data-i18n="' + p.desc + '"></p>' +
+          stack +
           '  <span class="fleche" data-i18n="accueil.voir_projet"></span> →' +
           "</a>"
         );
@@ -73,7 +86,9 @@ const Composants = (function () {
     return (
       '<div class="conteneur pied-contenu">' +
       "  <span>© " + annee + " iAlexMG.</span> " +
-      '  <span data-i18n="pied.droits"></span>' +
+      '  <span data-i18n="pied.droits"></span> ' +
+      // Date de dernière mise à jour, remplie par main.js (rendreDateMaj).
+      "  <span data-maj></span>" +
       "</div>"
     );
   }

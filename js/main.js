@@ -18,7 +18,7 @@
 (function () {
   // Date de dernière mise à jour du site (format ISO AAAA-MM-JJ).
   // ⚙️ À METTRE À JOUR à chaque déploiement notable : c'est la seule valeur à
-  // changer pour rafraîchir la bannière « en construction » de l'accueil.
+  // changer pour rafraîchir la mention du pied de page.
   const DATE_MAJ = "2026-07-06";
 
   // Formate DATE_MAJ dans la langue active (ex. « 30 juin 2026 » / « June 30, 2026 »).
@@ -33,18 +33,15 @@
     }).format(date);
   }
 
-  // Remplit la bannière « en construction » de l'accueil (avertissement + date).
-  // Le texte est construit ici (et non via data-i18n) pour y intégrer la date.
-  function rendreBanniereConstruction() {
-    const banniere = document.querySelector("[data-construction]");
-    if (!banniere) return; // présente uniquement sur l'accueil.
+  // Remplit la date de mise à jour du pied de page (mention discrète, présente
+  // sur toutes les pages). Le texte est construit ici (et non via data-i18n)
+  // pour y intégrer la date formatée selon la langue active.
+  function rendreDateMaj() {
+    const zone = document.querySelector("[data-maj]");
+    if (!zone) return;
     const langue = window.I18n.langueActive();
-    banniere.textContent =
-      window.I18n.t("accueil.construction") +
-      " · " +
-      window.I18n.t("accueil.maj") +
-      " " +
-      formaterDateMaj(langue);
+    zone.textContent =
+      window.I18n.t("pied.maj") + " " + formaterDateMaj(langue) + ".";
   }
 
   // Rend le contenu de chaque projet présent sur la page.
@@ -103,14 +100,14 @@
     // déjà les traductions sur le contenu injecté).
     window.Composants.initialiser();
 
-    // 4. Bannière « en construction » (accueil) + contenu du projet éventuel.
-    rendreBanniereConstruction();
+    // 4. Date de mise à jour (pied de page) + contenu du projet éventuel.
+    rendreDateMaj();
     rendreProjets();
 
-    // 5. Redessiner au changement de langue (bannière + titres/descriptions
+    // 5. Redessiner au changement de langue (date + titres/descriptions
     //    bilingues et avertissement PDF FR/EN).
     document.addEventListener("langue:changee", function () {
-      rendreBanniereConstruction();
+      rendreDateMaj();
       rendreProjets();
     });
   }

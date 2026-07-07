@@ -8,8 +8,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>iAlexMG</title>
-  <meta name="description" content="Portfolio iAlexMG, organisé par projet : 649, Formation Python, Crypto et Quantower.">
+  <title>iAlexMG — Ingénierie &amp; trading quantitatif</title>
+  <meta name="description" content="Portfolio d'ingénierie et de trading quantitatif : terminal d'orderflow crypto multi-exchanges, dashboard temps réel IBKR, backtesting LEAN et vectorbt, statistiques et formation Python.">
+  <link rel="canonical" href="https://ialexmg.ca/">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <!-- Aperçu de partage (LinkedIn, courriel, réseaux sociaux) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="iAlexMG">
+  <meta property="og:title" content="iAlexMG — Ingénierie &amp; trading quantitatif">
+  <meta property="og:description" content="Terminal d'orderflow crypto multi-exchanges, dashboard temps réel IBKR, backtesting LEAN et vectorbt, statistiques et formation Python.">
+  <meta property="og:url" content="https://ialexmg.ca/">
+  <meta property="og:image" content="https://ialexmg.ca/assets/crypto/img/Hybride.PNG">
+  <meta property="og:locale" content="fr_CA">
+  <meta property="og:locale:alternate" content="en_CA">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <!-- data-page : indique l'onglet actif dans la navigation -->
@@ -20,12 +32,14 @@
     <!-- Section d'accueil -->
     <section class="hero">
       <div class="conteneur">
-        <!-- Avertissement « en construction » + date de dernière mise à jour.
-             Texte construit par js/main.js (DATE_MAJ) ; redessiné au changement de langue. -->
-        <p class="construction-banniere" data-construction></p>
         <p class="sous-titre" data-i18n="accueil.sous_titre"></p>
         <h1 data-i18n="accueil.titre"></h1>
         <p class="intro" data-i18n="accueil.intro"></p>
+        <!-- Appels à l'action : ancre vers la grille des projets + page contact. -->
+        <div class="hero-actions">
+          <a class="bouton" href="#projets" data-i18n="accueil.cta_projets"></a>
+          <a class="bouton bouton-secondaire" href="contact.html" data-i18n="accueil.cta_contact"></a>
+        </div>
       </div>
     </section>
 

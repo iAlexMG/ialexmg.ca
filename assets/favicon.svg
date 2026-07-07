@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Favicon iAlexMG : courbe de marché stylisée, palette du site. -->
+  <rect width="64" height="64" rx="14" fill="#2c2a27"/>
+  <polyline points="10,48 24,34 32,41 52,18" fill="none" stroke="#b7ad9d" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="52" cy="18" r="5" fill="#d8cfc0"/>
+</svg>

@@ -42,7 +42,7 @@ const TRADUCTIONS = {
     "projet.ibkr": "IBKR",
 
     // Descriptions courtes des projets (cartes d'accueil)
-    "projet.649.desc": "Est-il possible de prédire la combinaison gagnante ?",
+    "projet.649.desc": "Mettre le hasard à l'épreuve : tests statistiques et apprentissage automatique sur des décennies de tirages.",
     "projet.python.desc": "Maîtriser Python, des bases aux concepts avancés.",
     "projet.crypto.desc": "Peut-on vraiment battre le marché crypto ?",
     "projet.quantower.desc": "Des indicateurs sur mesure pour trader autrement.",
@@ -52,13 +52,13 @@ const TRADUCTIONS = {
     "projet.ibkr.desc": "Automatiser le trading via l'API d'Interactive Brokers.",
 
     // Accueil
-    "accueil.construction": "🚧 Site en construction",
-    "accueil.maj": "Dernière mise à jour le",
     "accueil.titre": "iAlexMG",
     "accueil.sous_titre": "Science des données · Statistiques · Marchés financiers",
     "accueil.intro": "Je conçois des projets d'analyse de données et de modélisation, de la statistique rigoureuse jusqu'à l'apprentissage automatique. Mon terrain de jeu : les marchés boursiers et la crypto — actions, indices comme le S&P 500 et le Nasdaq, et actifs numériques. J'y développe des stratégies de trading, des indicateurs d'analyse de marché et des outils de backtesting pour transformer les données en décisions mesurables.\n\nVoici une sélection de mes travaux.",
     "accueil.projets_titre": "Mes projets",
     "accueil.voir_projet": "Voir le projet",
+    "accueil.cta_projets": "Voir mes projets",
+    "accueil.cta_contact": "Me contacter",
 
     // En-tête générique des pages de projet
     "projet.intro": "Projet dédié. Vous trouverez ci-dessous les contenus associés.",
@@ -104,7 +104,7 @@ const TRADUCTIONS = {
     // À propos
     "apropos.titre": "À propos",
     "apropos.p1": "Je travaille sous le nom iAlexMG, à l'intersection de la science des données, des statistiques et des marchés financiers.",
-    "apropos.p2": "Ce site rassemble mes projets : analyse du 6/49, formation Python, crypto, ainsi que mes développements pour la plateforme Quantower.",
+    "apropos.p2": "Ce site rassemble mes projets : terminal d'orderflow crypto multi-exchanges, tableau de bord temps réel IBKR, backtesting (LEAN, vectorbt), analyse statistique du 6/49 et formation Python.",
     "apropos.p3": "Mon approche : des méthodes rigoureuses, des résultats mesurables et des outils réutilisables.",
 
     // Contact
@@ -115,6 +115,7 @@ const TRADUCTIONS = {
 
     // Pied de page
     "pied.droits": "Tous droits réservés.",
+    "pied.maj": "Dernière mise à jour le",
   },
 
   en: {
@@ -138,7 +139,7 @@ const TRADUCTIONS = {
     "projet.ibkr": "IBKR",
 
     // Project short descriptions (home cards)
-    "projet.649.desc": "Can the winning combination be predicted?",
+    "projet.649.desc": "Putting randomness to the test: statistics and machine learning on decades of draws.",
     "projet.python.desc": "Mastering Python, from the basics to advanced concepts.",
     "projet.crypto.desc": "Can you really beat the crypto market?",
     "projet.quantower.desc": "Custom-built indicators to trade differently.",
@@ -148,13 +149,13 @@ const TRADUCTIONS = {
     "projet.ibkr.desc": "Automating trading through the Interactive Brokers API.",
 
     // Home
-    "accueil.construction": "🚧 Site under construction",
-    "accueil.maj": "Last updated",
     "accueil.titre": "iAlexMG",
     "accueil.sous_titre": "Data science · Statistics · Financial markets",
     "accueil.intro": "I build data-analysis and modeling projects, from rigorous statistics all the way to machine learning. My playground: the stock and crypto markets — equities, indices like the S&P 500 and the Nasdaq, and digital assets. There I develop trading strategies, market-analysis indicators and backtesting tools to turn data into measurable decisions.\n\nHere is a selection of my work.",
     "accueil.projets_titre": "My projects",
     "accueil.voir_projet": "View project",
+    "accueil.cta_projets": "View my projects",
+    "accueil.cta_contact": "Contact me",
 
     // Generic project page header
     "projet.intro": "Dedicated project. You'll find the related content below.",
@@ -200,7 +201,7 @@ const TRADUCTIONS = {
     // About
     "apropos.titre": "About",
     "apropos.p1": "I work under the name iAlexMG, at the intersection of data science, statistics and financial markets.",
-    "apropos.p2": "This site brings together my projects: 6/49 analysis, Python training, crypto, as well as my developments for the Quantower platform.",
+    "apropos.p2": "This site brings together my projects: a multi-exchange crypto orderflow terminal, a real-time IBKR dashboard, backtesting (LEAN, vectorbt), statistical analysis of the 6/49 and Python training.",
     "apropos.p3": "My approach: rigorous methods, measurable results and reusable tools.",
 
     // Contact
@@ -211,6 +212,7 @@ const TRADUCTIONS = {
 
     // Footer
     "pied.droits": "All rights reserved.",
+    "pied.maj": "Last updated",
   },
 };
 

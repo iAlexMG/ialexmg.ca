@@ -185,19 +185,6 @@ img { max-width: 100%; display: block; }
   hyphens: auto;            /* évite les grands trous entre les mots */
 }
 
-/* ----- Bannière « en construction » (accueil) ----- */
-.construction-banniere {
-  display: inline-block;
-  margin: 0 auto 1.5rem;
-  padding: 0.55rem 1.1rem;
-  background: #fbf3e2;            /* jaune doux */
-  color: #8a6d3b;
-  border: 1px solid #efe0bf;
-  border-radius: 999px;
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
 /* ----- Section d'accueil (hero) ----- */
 .hero {
   padding: 4.5rem 0 3rem;
@@ -308,6 +295,35 @@ img { max-width: 100%; display: block; }
   color: var(--couleur-accent);
   font-weight: 600;
   font-size: 0.9rem;
+}
+
+/* Miniature d'aperçu en tête d'une carte de projet (champ "miniature"
+   de projects.js — décoratif, le titre décrit déjà le projet). */
+.carte-miniature {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border: 1px solid var(--couleur-bordure);
+  border-radius: calc(var(--rayon) - 4px);
+  margin-bottom: 1rem;
+  background: var(--couleur-surface-alt);
+}
+
+/* Badges de stack technique d'une carte (champ "stack" de projects.js). */
+.carte-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.9rem;
+}
+.badge-stack {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.72rem;
+  padding: 0.15rem 0.55rem;
+  border: 1px solid var(--couleur-bordure);
+  border-radius: 999px;
+  background: var(--couleur-surface-alt);
+  color: var(--couleur-texte-doux);
 }
 
 /* ----- Grille de galerie ----- */
