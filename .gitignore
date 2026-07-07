@@ -1,8 +1,9 @@
 # Réglages locaux Claude Code (ne pas publier)
 .claude/
 
-# notes de travail (conservés en local, jamais publiés)
+# notes et notes de travail (conservés en local, jamais publiés)
 NOTES*.md
+ANALYSE*.md
 
 # Fichiers système
 Thumbs.db
