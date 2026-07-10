@@ -1,5 +1,10 @@
 # Contenu du site — un fichier JSON par projet
 
+> ⚠️ **Fichiers générés** : pour un projet ayant un dossier
+> `Portfolio/<Projet>/site-content/`, le fichier `<id>.json` est copié depuis
+> `site-content/contenu.json` par `tools/sync-site.py` — éditez la **source**,
+> pas ce fichier (la prochaine synchro écraserait la modification).
+
 Chaque fichier `<id>.json` contient le contenu d'UN projet. L'`id` correspond
 au champ `id` défini dans `js/projects.js` et à `data-projet="…"` dans la page.
 Chaque projet a SON dossier de médias sous `assets/<id>/`.
