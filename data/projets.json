@@ -844,7 +844,7 @@
             {
               "id": "fig-optim",
               "type": "figure",
-              "url": "assets/Backtesting/figures/optim-heatmap-isoos.png",
+              "url": "assets/backtesting/figures/optim-heatmap-isoos.png",
               "titre": { "fr": "Balayage réel LEAN + démasquage in/out-of-sample", "en": "Real LEAN sweep + in/out-of-sample unmasking" },
               "description": { "fr": "À gauche, le rendement de chaque combinaison de moyennes mobiles (rapide × lente) mesuré par le vrai moteur. À droite, le champion in-sample confronté à l'out-of-sample : le croisement de moyennes tient, le RSI s'effondre.", "en": "Left: the return of each moving-average combination (fast × slow), measured by the real engine. Right: the in-sample champion confronted with out-of-sample: the moving-average crossover holds, the RSI collapses." }
             }
@@ -869,14 +869,14 @@
             {
               "id": "fig-vp",
               "type": "figure",
-              "url": "assets/Backtesting/figures/vp-multiscale.png",
+              "url": "assets/backtesting/figures/vp-multiscale.png",
               "titre": { "fr": "Volume profile multi-échelles", "en": "Multi-scale volume profile" },
               "description": { "fr": "Chaque tranche de 5 minutes a son mini-profil de volume, coloré par l'agression acheteur/vendeur ; à droite, le profil cumulé de toute la session ; en violet, le POC glissant qui suit la valeur.", "en": "Each 5-minute slice has its own mini volume profile, colored by buyer/seller aggression; on the right, the cumulative profile of the whole session; in purple, the rolling POC that follows value." }
             },
             {
               "id": "fig-footprint",
               "type": "figure",
-              "url": "assets/Backtesting/figures/footprint-multiscale.png",
+              "url": "assets/backtesting/figures/footprint-multiscale.png",
               "titre": { "fr": "Footprint : l'agression par niveau", "en": "Footprint: aggression per level" },
               "description": { "fr": "Par niveau de prix, le volume vendeur (rouge, à gauche) contre acheteur (vert, à droite) ; en bas, le delta cumulé de la session — le compteur d'agression nette.", "en": "Per price level, seller volume (red, left) versus buyer (green, right); at the bottom, the session's cumulative delta — the net-aggression counter." }
             }
@@ -922,7 +922,7 @@
             {
               "id": "lecon-01",
               "type": "figure",
-              "url": "assets/Backtesting/figures/lecon-01-docker-vs-source.png",
+              "url": "assets/backtesting/figures/lecon-01-docker-vs-source.png",
               "titre": { "fr": "Leçon 01 — Compiler LEAN sans Docker", "en": "Lesson 01 — Compiling LEAN without Docker" },
               "description": { "fr": "Cloner et compiler le moteur soi-même — capot ouvert, lisible et débogable.", "en": "Clone and compile the engine yourself — hood open, readable and debuggable." },
               "texte": {
@@ -933,7 +933,7 @@
             {
               "id": "lecon-02",
               "type": "figure",
-              "url": "assets/Backtesting/figures/lecon-02-boucle-evenementielle.png",
+              "url": "assets/backtesting/figures/lecon-02-boucle-evenementielle.png",
               "titre": { "fr": "Leçon 02 — Le moteur à l'œuvre et nos données", "en": "Lesson 02 — The engine at work, and our data" },
               "description": { "fr": "La boucle événementielle, la sémantique des fills mesurée, et nos données BTCUSDT branchées.", "en": "The event loop, fill semantics measured, and our BTCUSDT data plugged in." },
               "texte": {
@@ -944,7 +944,7 @@
             {
               "id": "lecon-03",
               "type": "figure",
-              "url": "assets/Backtesting/figures/lecon-03-buyhold-equite.png",
+              "url": "assets/backtesting/figures/lecon-03-buyhold-equite.png",
               "titre": { "fr": "Leçon 03 — Buy & Hold : le sol de vérité", "en": "Lesson 03 — Buy & Hold: the ground truth" },
               "description": { "fr": "Le backtest le plus simple, recalculé à la main au centime près.", "en": "The simplest backtest, recomputed by hand to the cent." },
               "texte": {
@@ -955,7 +955,7 @@
             {
               "id": "lecon-04",
               "type": "figure",
-              "url": "assets/Backtesting/figures/lecon-04-sma-croisement.png",
+              "url": "assets/backtesting/figures/lecon-04-sma-croisement.png",
               "titre": { "fr": "Leçon 04 — Suivre la tendance : SMA & MACD", "en": "Lesson 04 — Trend following: SMA & MACD" },
               "description": { "fr": "Même camp, un seul facteur isolé : la réactivité. Le lent écrase le rapide.", "en": "Same camp, a single factor isolated: reactivity. Slow crushes fast." },
               "texte": {
@@ -966,7 +966,7 @@
             {
               "id": "lecon-05",
               "type": "figure",
-              "url": "assets/Backtesting/figures/lecon-05-rsi.png",
+              "url": "assets/backtesting/figures/lecon-05-rsi.png",
               "titre": { "fr": "Leçon 05 — Le retour à la moyenne : RSI & Bollinger", "en": "Lesson 05 — Mean reversion: RSI & Bollinger" },
               "description": { "fr": "Acheter la faiblesse — et le trade catastrophe à −27 000 $.", "en": "Buying weakness — and the catastrophe trade at −$27,000." },
               "texte": {
@@ -977,7 +977,7 @@
             {
               "id": "lecon-06",
               "type": "figure",
-              "url": "assets/Backtesting/figures/lecon-06-risque.png",
+              "url": "assets/backtesting/figures/lecon-06-risque.png",
               "titre": { "fr": "Leçon 06 — La gestion du risque", "en": "Lesson 06 — Risk management" },
               "description": { "fr": "Séparer le signal de la survie — et le paradoxe du stop qui nuit.", "en": "Separating signal from survival — and the paradox of the stop that hurts." },
               "texte": {
@@ -988,7 +988,7 @@
             {
               "id": "lecon-07",
               "type": "figure",
-              "url": "assets/Backtesting/figures/lecon-07-metriques.png",
+              "url": "assets/backtesting/figures/lecon-07-metriques.png",
               "titre": { "fr": "Leçon 07 — Métriques & optimisation", "en": "Lesson 07 — Metrics & optimization" },
               "description": { "fr": "Lire un rapport comme un pro — et reconnaître un backtest trop beau pour être vrai.", "en": "Reading a report like a pro — and spotting a backtest too good to be true." },
               "texte": {
@@ -999,7 +999,7 @@
             {
               "id": "lecon-08",
               "type": "figure",
-              "url": "assets/Backtesting/figures/lecon-08-synthese.png",
+              "url": "assets/backtesting/figures/lecon-08-synthese.png",
               "titre": { "fr": "Leçon 08 — La stratégie avancée : tout assembler", "en": "Lesson 08 — The advanced strategy: putting it all together" },
               "description": { "fr": "Régime + momentum + sizing au risque : la casse contrôlée, mesurée.", "en": "Regime + momentum + risk-based sizing: controlled damage, measured." },
               "texte": {
@@ -1010,7 +1010,7 @@
             {
               "id": "lecon-09",
               "type": "figure",
-              "url": "assets/Backtesting/figures/lecon-09-volume-profile-sessions.png",
+              "url": "assets/backtesting/figures/lecon-09-volume-profile-sessions.png",
               "titre": { "fr": "Leçon 09 — Le volume profile par session", "en": "Lesson 09 — Session volume profile" },
               "description": { "fr": "Reconstruire depuis les ticks la dimension que l'OHLCV a écrasée — sans casser la causalité.", "en": "Rebuilding from ticks the dimension OHLCV flattened — without breaking causality." },
               "texte": {
@@ -1071,14 +1071,14 @@
             {
               "id": "bt-1",
               "type": "pdf",
-              "fichier": "assets/Backtesting/01- QuantConnect_LEAN.pdf",
+              "fichier": "assets/backtesting/01- QuantConnect_LEAN.pdf",
               "titre":       { "fr": "QuantConnect / LEAN", "en": "QuantConnect / LEAN" },
               "description": { "fr": "Le moteur de backtesting open source LEAN et la plateforme QuantConnect.", "en": "The open-source LEAN backtesting engine and the QuantConnect platform." }
             },
             {
               "id": "bt-2",
               "type": "pdf",
-              "fichier": "assets/Backtesting/02- VectorbtPro.pdf",
+              "fichier": "assets/backtesting/02- VectorbtPro.pdf",
               "titre":       { "fr": "VectorbtPro", "en": "VectorbtPro" },
               "description": { "fr": "Backtesting vectorisé haute performance avec VectorbtPro.", "en": "High-performance vectorized backtesting with VectorbtPro." }
             }
@@ -1106,7 +1106,7 @@
             {
               "id": "vue-complete",
               "type": "figure",
-              "url": "assets/IBKR/img/Capture_02.PNG",
+              "url": "assets/ibkr/img/Capture_02.PNG",
               "titre": { "fr": "Le tableau de bord complet (ES)", "en": "The full dashboard (ES)" },
               "description": {
                 "fr": "Toutes les couches actives : footprint, scatter des trades, heatmap et carnet, avec les en-têtes Volume / Delta par bougie.",
@@ -1116,7 +1116,7 @@
             {
               "id": "vue-superposee",
               "type": "figure",
-              "url": "assets/IBKR/img/Capture_03.PNG",
+              "url": "assets/ibkr/img/Capture_03.PNG",
               "titre": { "fr": "Superposition footprint + orderflow + DOM", "en": "Footprint + order flow + DOM superposed" },
               "description": {
                 "fr": "Le même instant, axe temps + prix partagé : tout est aligné au tick près, avec l'échelle DOM collée à droite.",
@@ -1144,7 +1144,7 @@
             {
               "id": "footprint-isole",
               "type": "figure",
-              "url": "assets/IBKR/img/Footprint.PNG",
+              "url": "assets/ibkr/img/Footprint.PNG",
               "titre": { "fr": "Footprint seul", "en": "Footprint alone" },
               "description": {
                 "fr": "Barres bid (gauche, rouge) / ask (droite, vert) par niveau, chiffres bid × ask, en-tête Volume (V) et Delta (D).",
@@ -1154,7 +1154,7 @@
             {
               "id": "footprint-contexte",
               "type": "figure",
-              "url": "assets/IBKR/img/Capture_01.PNG",
+              "url": "assets/ibkr/img/Capture_01.PNG",
               "titre": { "fr": "Footprint et fil des prix", "en": "Footprint with the price path" },
               "description": {
                 "fr": "Le footprint en arrière-plan, le fil des trades par-dessus : la structure du volume sous le mouvement de prix.",
@@ -1182,7 +1182,7 @@
             {
               "id": "heatmap-isolee",
               "type": "figure",
-              "url": "assets/IBKR/img/Heatmap.PNG",
+              "url": "assets/ibkr/img/Heatmap.PNG",
               "titre": { "fr": "Heatmap seule", "en": "Heatmap alone" },
               "description": {
                 "fr": "Intensité de la liquidité du carnet dans le temps : plus c'est clair, plus il y a d'ordres en attente à ce prix.",
@@ -1210,7 +1210,7 @@
             {
               "id": "trades-isoles",
               "type": "figure",
-              "url": "assets/IBKR/img/Trades.PNG",
+              "url": "assets/ibkr/img/Trades.PNG",
               "titre": { "fr": "Scatter des trades", "en": "Trade scatter" },
               "description": {
                 "fr": "Le fil des transactions : un point par trade, posé à son prix et à son instant, coloré selon le côté agresseur.",
@@ -1238,7 +1238,7 @@
             {
               "id": "dom-isole",
               "type": "figure",
-              "url": "assets/IBKR/img/Orderbook.PNG",
+              "url": "assets/ibkr/img/Orderbook.PNG",
               "titre": { "fr": "Échelle DOM", "en": "DOM scale" },
               "description": {
                 "fr": "Le carnet courant en barres horizontales : achats (vert) et ventes (rouge) empilés par niveau de prix.",

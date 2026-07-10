@@ -48,7 +48,7 @@ const PROJETS = [
     titre: "projet.ibkr",
     desc: "projet.ibkr.desc",
     stack: ["Python", "PyQt5", "pyqtgraph", "ib_insync"],
-    miniature: "assets/IBKR/img/Capture_01.PNG",
+    miniature: "assets/ibkr/img/Capture_01.PNG",
   },
   {
     id: "backtesting",
@@ -57,7 +57,7 @@ const PROJETS = [
     titre: "projet.backtesting",
     desc: "projet.backtesting.desc",
     stack: ["Python", "LEAN", "vectorbt", "Docker"],
-    miniature: "assets/Backtesting/figures/optim-heatmap-isoos.png",
+    miniature: "assets/backtesting/figures/optim-heatmap-isoos.png",
   },
   {
     id: "649",
