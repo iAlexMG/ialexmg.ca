@@ -19,7 +19,13 @@
   // Date de dernière mise à jour du site (format ISO AAAA-MM-JJ).
   // ⚙️ À METTRE À JOUR à chaque déploiement notable : c'est la seule valeur à
   // changer pour rafraîchir la mention du pied de page.
-  const DATE_MAJ = "2026-07-06";
+  const DATE_MAJ = "2026-07-10";
+
+  // Résout un id de projet en tenant compte des anciens ids (projets fusionnés
+  // dans les hubs — voir PROJETS_ALIAS dans projects.js).
+  function resoudreProjet(id) {
+    return (window.PROJETS_ALIAS || {})[id] || id;
+  }
 
   // Formate DATE_MAJ dans la langue active (ex. « 30 juin 2026 » / « June 30, 2026 »).
   function formaterDateMaj(langue) {
@@ -72,7 +78,9 @@
       const params = new URLSearchParams(window.location.search);
       window.Contenu.rendreSection({
         conteneur: conteneur,
-        projet: conteneur.getAttribute("data-projet-section") || params.get("p"),
+        projet: resoudreProjet(
+          conteneur.getAttribute("data-projet-section") || params.get("p")
+        ),
         sectionId: params.get("s"),
         pageSection: conteneur.getAttribute("data-page-section") || "",
         pageItem: conteneur.getAttribute("data-page-item") || "",
@@ -84,7 +92,9 @@
       const params = new URLSearchParams(window.location.search);
       window.Contenu.rendreItem({
         conteneur: conteneur,
-        projet: conteneur.getAttribute("data-projet-item") || params.get("p"),
+        projet: resoudreProjet(
+          conteneur.getAttribute("data-projet-item") || params.get("p")
+        ),
         sectionId: params.get("s"),
         itemId: params.get("i"),
         pageSection: conteneur.getAttribute("data-page-section") || "",
