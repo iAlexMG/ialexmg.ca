@@ -15,8 +15,8 @@ iAlexMG.ca/
 ├── index.html            # Accueil (présentation + cartes des projets)
 ├── projet-649.html       # Projet : 649
 ├── python.html           # Projet : Formation Python (PDF)
-├── crypto.html           # Projet : Crypto
-├── quantower.html        # Projet : Quantower
+├── crypto.html           # Hub : Crypto (4 piliers)
+├── indices.html          # Hub : Indices boursiers (4 piliers)
 ├── apropos.html          # À propos
 ├── contact.html          # Contact
 ├── CNAME                 # Domaine personnalisé GitHub Pages (ialexmg.ca)
@@ -35,13 +35,14 @@ iAlexMG.ca/
 ├── data/
 │   └── projets/          # CONTENU du site — UN fichier JSON par projet
 │       ├── README.md     #   (schéma détaillé des fichiers)
-│       ├── 649.json      #   crypto.json, ibkr.json, backtesting.json, …
+│       ├── 649.json      #   crypto.json, indices.json, python.json, …
 │       └── …             #   ⚠️ générés par sync-site.py — éditer la SOURCE
 └── assets/               # UN DOSSIER PAR PROJET (images + PDF du projet)
     ├── 649/
     ├── python/
-    ├── crypto/
-    └── quantower/
+    ├── crypto/           # assets du pilier crypto/affichage
+    ├── backtesting/      # assets du pilier crypto/backtesting
+    └── ibkr/             # assets du pilier indicesBoursiers/affichage
 ```
 
 > **Où je mets mes fichiers ?** La **source de vérité** d'un projet est

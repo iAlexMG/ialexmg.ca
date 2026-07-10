@@ -1,6 +1,45 @@
 {
   "sections": [
     {
+      "id": "historique",
+      "titre": {
+        "fr": "Historique — extraction des ticks",
+        "en": "History — tick extraction"
+      },
+      "accroche": {
+        "fr": "Les ticks NQ extraits depuis Quantower, au schéma exact du pilier crypto.",
+        "en": "NQ ticks extracted from inside Quantower, in the exact schema of the crypto pillar."
+      },
+      "intro": {
+        "fr": "Le point de départ de la chaîne : extraire les transactions tick-par-tick des futures NQ pour alimenter la même chaîne Python que le projet crypto.",
+        "en": "The starting point of the chain: extracting tick-by-tick trades of the NQ futures to feed the same Python chain as the crypto project."
+      },
+      "texte": {
+        "fr": "## Le problème\n\nRithmic ne fournit pas d'API publique hors Quantower : impossible d'extraire les ticks NQ par un simple script. L'accès passe donc par une stratégie C# qui tourne dans Quantower et lit la connexion déjà authentifiée.\n\n## Ce qui est livré\n\nUne stratégie Quantower (NQ Tick Extractor) qui télécharge les ticks (prix, taille, côté agresseur) et les écrit en SQLite au schéma exact du projet crypto — toute la chaîne Python en aval (chandelles, volume profile) tourne sans modification.\n\nCollecte incrémentale et idempotente : les jours complets sont marqués et jamais re-téléchargés, le jour courant est purgé puis ré-inséré, et un mode démon recollecte automatiquement toutes les N heures tant que Quantower est ouvert.\n\n## Mesuré\n\nEnviron 412 000 ticks par jour sur NQ, à peu près deux semaines de profondeur d'historique disponible, et le côté agresseur présent sur la quasi-totalité des ticks.",
+        "en": "## The problem\n\nRithmic offers no public API outside Quantower: extracting NQ ticks with a plain script is impossible. Access therefore goes through a C# strategy that runs inside Quantower and reads the already-authenticated connection.\n\n## What is delivered\n\nA Quantower strategy (NQ Tick Extractor) that downloads the ticks (price, size, aggressor side) and writes them to SQLite in the exact schema of the crypto project — the whole downstream Python chain (candles, volume profile) runs unmodified.\n\nIncremental and idempotent collection: complete days are marked and never re-downloaded, the current day is purged then re-inserted, and a daemon mode automatically re-collects every N hours while Quantower is open.\n\n## Measured\n\nAbout 412,000 ticks per day on NQ, roughly two weeks of available history depth, and the aggressor side present on nearly every tick."
+      }
+    },
+    {
+      "id": "affichage",
+      "titre": {
+        "fr": "Affichage — dashboard temps réel",
+        "en": "Display — real-time dashboard"
+      },
+      "accroche": {
+        "fr": "Footprint, heatmap, trades et carnet superposés sur un même graphe (ES / NQ).",
+        "en": "Footprint, heatmap, trades and order book superposed on a single chart (ES / NQ)."
+      },
+      "intro": {
+        "fr": "Un tableau de bord d'orderflow temps réel pour les futures ES et NQ d'Interactive Brokers : footprint, heatmap de liquidité, trades et carnet d'ordres superposés sur un même graphe, façon Bookmap et Quantower. Construit en Python (PyQt5, pyqtgraph, ib_insync), avec une source de données unique derrière laquelle on permute le flux réel d'IBKR et un mode démo synthétique. Parcourez les couches une à une, puis la contrainte de données propre à IBKR.",
+        "en": "A real-time order-flow dashboard for the ES and NQ futures on Interactive Brokers: footprint, liquidity heatmap, trades and order book superposed on a single chart, Bookmap- and Quantower-style. Built in Python (PyQt5, pyqtgraph, ib_insync), with a single data source behind which the real IBKR feed and a synthetic demo mode are interchangeable. Walk through the layers one by one, then the data constraint specific to IBKR."
+      },
+      "statut": {
+        "fr": "4 couches",
+        "en": "4 layers"
+      },
+      "sousHub": true
+    },
+    {
       "id": "apercu",
       "titre": {
         "fr": "Vue d'ensemble",
@@ -45,7 +84,8 @@
       "texte": {
         "fr": "## L'idée\n\nReproduire, sur les futures d'Interactive Brokers, les graphiques d'un terminal d'orderflow professionnel — un mélange de Bookmap (liquidité et trades) et de Quantower (footprint) — mais dans une seule fenêtre Python. Chaque symbole, ES et NQ, a son graphe ; les quatre couches partagent exactement le même axe temps + prix, si bien que tout est aligné au tick près.\n\n## Les quatre couches\n\nLe footprint (chandeliers détaillés, volume par niveau de prix), la heatmap (intensité de la liquidité du carnet dans le temps), le scatter des trades (chaque transaction = un point) et l'échelle DOM (le carnet courant, à droite). On les affiche ou on les masque à la volée par de simples cases à cocher, et la résolution d'une bougie se règle de 1 s à 5 min.\n\n## Deux sources, une même vue\n\nDerrière l'affichage, une interface de données unique (FlowStore) : la vue ignore si les données viennent du flux réel d'IBKR ou d'un générateur synthétique. On bascule de l'un à l'autre sans toucher au rendu.\n\n## Pile technique\n\nPython, PyQt5 et pyqtgraph pour un rendu natif fluide (mise à jour par QTimer, sans bloquer la boucle d'événements). Connexion temps réel via ib_insync. Seul l'onglet visible est redessiné : le coût d'affichage reste constant quel que soit le nombre de symboles.",
         "en": "## The idea\n\nReproduce, on the Interactive Brokers futures, the charts of a professional order-flow terminal — a blend of Bookmap (liquidity and trades) and Quantower (footprint) — but inside a single Python window. Each symbol, ES and NQ, has its own chart; the four layers share exactly the same time + price axis, so everything is aligned to the tick.\n\n## The four layers\n\nThe footprint (detailed candles, volume per price level), the heatmap (intensity of order-book liquidity over time), the trade scatter (each transaction = one point) and the DOM scale (the current book, on the right). They toggle on and off on the fly with simple checkboxes, and a candle's resolution adjusts from 1 s to 5 min.\n\n## Two sources, one view\n\nBehind the display sits a single data interface (FlowStore): the view doesn't know whether the data comes from the real IBKR feed or from a synthetic generator. You switch from one to the other without touching the rendering.\n\n## Tech stack\n\nPython, PyQt5 and pyqtgraph for smooth native rendering (refreshed by a QTimer, without blocking the event loop). Real-time connection via ib_insync. Only the visible tab is redrawn: the rendering cost stays constant whatever the number of symbols."
-      }
+      },
+      "parent": "affichage"
     },
     {
       "id": "footprint",
@@ -92,7 +132,8 @@
       "texte": {
         "fr": "## Ce que ça montre\n\nPour chaque bougie, des barres horizontales donnent le volume traité à chaque prix : vendeurs à gauche, acheteurs à droite, avec les chiffres bid × ask. L'en-tête de la bougie affiche le volume total (V) et le delta (D = acheteurs − vendeurs), qui dit d'un coup d'œil quel côté a dominé.\n\n## Les déséquilibres\n\nQuand le volume d'un côté écrase l'autre (ratio ≥ 3×), le niveau est mis en surbrillance : ce sont les endroits où une pression nette s'est exprimée — utiles pour repérer absorptions et accélérations.\n\n## Le footprint porte tout l'OHLC\n\nLes bougies sont reconstruites directement depuis les trades, pas depuis un canal de chandeliers : le footprint exige de toute façon le détail par prix (volume acheteur / vendeur à chaque niveau). L'ancien agrégateur OHLC est donc devenu redondant et a été retiré.\n\n## Anti-vibration au zoom\n\nLe regroupement des prix est figé par hystérésis : on conserve le pas courant tant que le nombre de lignes reste lisible, et on ne le recalcule qu'au franchissement d'un seuil — sans cela, le footprint « tremblerait » à chaque coup de molette.",
         "en": "## What it shows\n\nFor each candle, horizontal bars give the volume traded at every price: sellers on the left, buyers on the right, with the bid × ask figures. The candle header shows the total volume (V) and the delta (D = buyers − sellers), which tells at a glance which side dominated.\n\n## Imbalances\n\nWhen the volume on one side crushes the other (ratio ≥ 3×), the level is highlighted: these are the spots where net pressure showed up — handy for spotting absorption and acceleration.\n\n## The footprint carries all the OHLC\n\nCandles are rebuilt straight from the trades, not from a candle channel: the footprint needs the per-price detail anyway (buy / sell volume at each level). The old OHLC aggregator therefore became redundant and was removed.\n\n## Anti-jitter on zoom\n\nThe price grouping is frozen by hysteresis: the current step is kept as long as the number of rows stays readable, and recomputed only when a threshold is crossed — without this, the footprint would \"shimmer\" at every scroll of the wheel."
-      }
+      },
+      "parent": "affichage"
     },
     {
       "id": "heatmap",
@@ -126,7 +167,8 @@
       "texte": {
         "fr": "## Ce que ça montre\n\nÀ intervalle régulier, on photographie le carnet d'ordres et on peint chaque niveau selon sa taille : plus c'est clair, plus la liquidité en attente est importante. En défilant, on voit naître les « murs » d'ordres, leur épaississement et leur retrait — exactement la lecture façon Bookmap.\n\n## Une grille de prix commune\n\nLa heatmap et l'échelle DOM partagent la même grille de prix : chaque rangée de la heatmap correspond à une barre du carnet. Le pas de la grille dérive du plus petit écart réel observé entre niveaux (le tick de l'instrument), pour une superposition cohérente.\n\n## Snapshots throttlés\n\nSans limite, on enregistrerait un instantané du carnet à chaque tick — mémoire et heatmap vite saturées. On n'en garde qu'un toutes les 250 ms : assez fin pour l'œil, assez sobre pour rester fluide.\n\n## Réservée au temps réel\n\nLa heatmap n'existe qu'avec le carnet L2 en temps réel (voir « Mode démo & contrainte de données »).",
         "en": "## What it shows\n\nAt regular intervals, the order book is photographed and each level is painted by its size: the brighter it is, the larger the resting liquidity. Scrolling through, you watch the order \"walls\" appear, thicken and pull back — exactly the Bookmap-style read.\n\n## A shared price grid\n\nThe heatmap and the DOM scale share the same price grid: each heatmap row matches one book bar. The grid step derives from the smallest real gap observed between levels (the instrument's tick), for a coherent overlay.\n\n## Throttled snapshots\n\nWithout a limit, a book snapshot would be stored on every tick — memory and heatmap quickly saturated. Only one is kept every 250 ms: fine enough for the eye, light enough to stay smooth.\n\n## Real-time only\n\nThe heatmap only exists with the real-time L2 book (see \"Demo mode & data constraint\")."
-      }
+      },
+      "parent": "affichage"
     },
     {
       "id": "trades",
@@ -160,7 +202,8 @@
       "texte": {
         "fr": "## Ce que ça montre\n\nLe scatter dessine le fil des transactions : un point par trade, posé à son prix et à son instant. La couleur donne le côté agresseur, la taille donne le volume. On y lit d'un coup d'œil le rythme du marché et les rafales d'achats ou de ventes.\n\n## Lignes best bid / best ask\n\nDeux lignes suivent le meilleur achat (vert) et la meilleure vente (rouge) dans le temps. Quand un snapshot manque un côté, on prolonge par la dernière valeur connue (forward-fill) pour des lignes continues, sans trous.\n\n## Le côté agresseur est inféré\n\nIBKR donne le dernier prix et la taille, mais pas le côté du trade. On l'infère par la règle du tick : prix ≥ ask → achat, prix ≤ bid → vente, sinon on compare au dernier prix. Suffisant pour la lecture visuelle ; pour une précision parfaite par trade, on passerait à reqTickByTickData (piste ouverte).",
         "en": "## What it shows\n\nThe scatter draws the thread of transactions: one dot per trade, placed at its price and its time. Color gives the aggressor side, size gives the volume. You read the market's rhythm and the bursts of buying or selling at a glance.\n\n## Best bid / best ask lines\n\nTwo lines track the best bid (green) and the best ask (red) over time. When a snapshot misses one side, it's extended with the last known value (forward-fill) for continuous lines, with no gaps.\n\n## The aggressor side is inferred\n\nIBKR gives the last price and size, but not the side of the trade. It's inferred by the tick rule: price ≥ ask → buy, price ≤ bid → sell, otherwise compared to the previous price. Good enough for the visual read; for perfect per-trade accuracy, one would move to reqTickByTickData (an open avenue)."
-      }
+      },
+      "parent": "affichage"
     },
     {
       "id": "carnet",
@@ -194,7 +237,8 @@
       "texte": {
         "fr": "## Ce que ça montre\n\nLe DOM (Depth of Market) empile, niveau par niveau, les ordres en attente à l'achat (vert) et à la vente (rouge). Comme il partage l'axe des prix du graphe principal, on voit instantanément à quels prix se concentre la liquidité par rapport au dernier échange.\n\n## Lié au graphe principal\n\nLe panneau est étroit et collé à droite, mais son axe vertical est synchronisé (setYLink) avec le graphe : zoomer les prix d'un côté déplace l'autre à l'identique, et le carnet reste toujours en face des bons niveaux.\n\n## Réservé au temps réel\n\nComme la heatmap, le DOM repose sur le carnet L2 et n'apparaît qu'en données temps réel.",
         "en": "## What it shows\n\nThe DOM (Depth of Market) stacks, level by level, the resting orders on the bid (green) and on the ask (red). Since it shares the price axis of the main chart, you instantly see at which prices liquidity concentrates relative to the last trade.\n\n## Linked to the main chart\n\nThe panel is narrow and pinned to the right, but its vertical axis is synchronized (setYLink) with the chart: zooming prices on one side moves the other identically, and the book always stays opposite the right levels.\n\n## Real-time only\n\nLike the heatmap, the DOM relies on the L2 book and only appears with real-time data."
-      }
+      },
+      "parent": "affichage"
     },
     {
       "id": "donnees",
@@ -214,6 +258,45 @@
       "texte": {
         "fr": "## La contrainte IBKR\n\nUn exchange crypto pousse en continu trades et carnet complets ; IBKR, non. Le côté agresseur n'est pas fourni (on l'infère), et le carnet L2 — indispensable à la heatmap et au DOM — exige un abonnement CME en temps réel. En données différées (gratuites, ~15 min), le footprint et les trades se remplissent quand même, mais la heatmap et le DOM restent vides.\n\n## Marché fermé = aucun tick\n\nLe CME ferme le week-end : plus rien ne circule. Impossible, alors, de vérifier l'affichage en direct — un vrai problème quand on développe le soir ou la fin de semaine.\n\n## Le mode démo\n\nD'où un générateur de données synthétiques : marche aléatoire du prix, trades acheteurs / vendeurs, carnet animé. Il préremplit l'historique au lancement pour que la fenêtre soit déjà pleine, sans connexion ni abonnement. Comme il écrit dans le même FlowStore que le flux réel, il valide tout l'affichage, marché ouvert ou non.\n\n## Robustesse de la connexion\n\nConnexion à TWS / IB Gateway en lecture seule (readonly), reconnexions gérées proprement, et fermeture propre qui arrête le timer, déconnecte IB et stoppe la boucle asyncio — fini les spirales de reconnexion et les crashs de QTimer.",
         "en": "## The IBKR constraint\n\nA crypto exchange continuously pushes full trades and book; IBKR does not. The aggressor side isn't provided (it's inferred), and the L2 book — essential to the heatmap and the DOM — requires a real-time CME subscription. On delayed data (free, ~15 min), the footprint and trades still fill in, but the heatmap and DOM stay empty.\n\n## Market closed = no ticks\n\nThe CME closes on weekends: nothing flows. Checking the display live then becomes impossible — a real problem when you develop in the evening or on the weekend.\n\n## Demo mode\n\nHence a synthetic data generator: random walk of the price, buy / sell trades, an animated book. It pre-fills the history at launch so the window is already full, with no connection and no subscription. Since it writes into the same FlowStore as the real feed, it validates the entire display, market open or not.\n\n## Connection robustness\n\nConnection to TWS / IB Gateway in read-only mode (readonly), reconnections handled cleanly, and a clean shutdown that stops the timer, disconnects IB and halts the asyncio loop — no more reconnection spirals or QTimer crashes."
+      },
+      "parent": "affichage"
+    },
+    {
+      "id": "backtesting",
+      "titre": {
+        "fr": "Backtesting — LEAN sur NQ",
+        "en": "Backtesting — LEAN on NQ"
+      },
+      "accroche": {
+        "fr": "Les huit stratégies BTC rejouées telles quelles sur les futures NQ.",
+        "en": "The eight BTC strategies replayed as-is on the NQ futures."
+      },
+      "statut": {
+        "fr": "À consolider",
+        "en": "Being consolidated"
+      },
+      "texte": {
+        "fr": "## Le portage\n\nLes huit stratégies backtestées sur BTCUSDT (pilier backtesting du projet crypto) ont été rejouées telles quelles sur les futures NQ avec le moteur LEAN : mêmes règles, mêmes garde-fous de causalité, données de ticks extraites de Quantower.\n\n## Résultats\n\nHuit backtests sur huit menés à terme ; la stratégie volume profile ressort en tête (+2,9 %, drawdown 0,9 % sur la période testée). Les écarts avec BTC sont commentés dans le dépôt.\n\n## À consolider\n\nLe socle LEAN partagé (chargement des données, sessions, modèle de frais NQ) vit encore côté crypto : il reste à le rapatrier pour rendre ce pilier autonome.",
+        "en": "## The port\n\nThe eight strategies backtested on BTCUSDT (the crypto project's backtesting pillar) were replayed as-is on the NQ futures with the LEAN engine: same rules, same causality safeguards, tick data extracted from Quantower.\n\n## Results\n\nEight backtests out of eight completed; the volume-profile strategy comes out on top (+2.9%, 0.9% drawdown over the tested period). The gaps versus BTC are discussed in the repository.\n\n## To consolidate\n\nThe shared LEAN scaffolding (data loading, sessions, NQ fee model) still lives on the crypto side: it remains to be brought over to make this pillar self-contained."
+      }
+    },
+    {
+      "id": "automatisation",
+      "titre": {
+        "fr": "Automatisation — Quantower",
+        "en": "Automation — Quantower"
+      },
+      "accroche": {
+        "fr": "Des indicateurs C# validés par parité, vers le trading semi-automatisé — en simulation d'abord.",
+        "en": "C# indicators validated by parity, toward semi-automated trading — in simulation first."
+      },
+      "statut": {
+        "fr": "En simulation",
+        "en": "In simulation"
+      },
+      "texte": {
+        "fr": "## La démarche par phases\n\nPorter vers NQ, dans Quantower, la chaîne construite et backtestée sur BTC — en avançant par phases mesurées, chacune avec un critère de sortie vérifiable avant de passer à la suivante.\n\n## Fait\n\nPhase 0 — faisabilité mesurée : profondeur d'historique, fiabilité du côté agresseur, volumétrie.\n\nPhase 1 — l'extracteur de ticks (voir le pilier Historique).\n\nPhase 2 — les huit stratégies backtestées sur NQ (voir le pilier Backtesting).\n\nPhase 3 — indicateurs C# natifs Quantower (volume profile de session, EMA de delta, signaux par stratégie), chacun validé par un rapport de parité contre le pipeline Python de référence.\n\n## À venir\n\nPhase 4 — shadow mode : les signaux sont journalisés en direct, zéro ordre envoyé, puis comparés aux backtests.\n\nPhase 5 — ordres semi-automatisés supervisés, d'abord en simulation, avec garde-fous : taille limitée, arrêt d'urgence, journal d'exécution.",
+        "en": "## The phased approach\n\nPorting to NQ, inside Quantower, the chain built and backtested on BTC — moving through measured phases, each with a verifiable exit criterion before starting the next.\n\n## Done\n\nPhase 0 — measured feasibility: history depth, aggressor-side reliability, tick volume.\n\nPhase 1 — the tick extractor (see the History pillar).\n\nPhase 2 — the eight strategies backtested on NQ (see the Backtesting pillar).\n\nPhase 3 — native C# Quantower indicators (session volume profile, delta EMA, per-strategy signals), each validated by a parity report against the reference Python pipeline.\n\n## Next\n\nPhase 4 — shadow mode: signals are logged live, zero orders sent, then compared to the backtests.\n\nPhase 5 — supervised semi-automated orders, in simulation first, with safeguards: capped size, emergency stop, execution journal."
       }
     }
   ]

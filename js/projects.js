@@ -22,7 +22,11 @@
  *
  * L'ordre du tableau = l'ordre des cartes sur l'accueil. Les projets les plus
  * pertinents pour un recruteur « ingénierie / trading » sont placés en tête
- * (Crypto, IBKR, Backtesting), puis 649 et Python.
+ * (les deux hubs Crypto et Indices boursiers), puis 649 et Python.
+ *
+ * HUBS : « crypto » et « indices » couvrent chacun un mono-dépôt GitHub en
+ * 4 piliers (historique / affichage / backtesting / automatisation). Leur JSON
+ * est ASSEMBLÉ par tools/sync-site.py depuis les site-content du mono-dépôt.
  *
  * POUR AJOUTER UN PROJET :
  *   1. Ajoutez une entrée ci-dessous.
@@ -40,29 +44,19 @@ const PROJETS = [
     page: "crypto",
     titre: "projet.crypto",
     desc: "projet.crypto.desc",
-    stack: ["Python", "asyncio", "WebSocket"],
+    stack: ["Python", "asyncio", "WebSocket", "LEAN"],
     miniature: "assets/crypto/img/Hybride.PNG",
-    code: "https://github.com/iAlexMG/crypto-orderflow-aggregator",
+    code: "https://github.com/iAlexMG/crypto",
   },
   {
-    id: "ibkr",
-    href: "ibkr.html",
-    page: "ibkr",
-    titre: "projet.ibkr",
-    desc: "projet.ibkr.desc",
-    stack: ["Python", "PyQt5", "pyqtgraph", "ib_insync"],
+    id: "indices",
+    href: "indices.html",
+    page: "indices",
+    titre: "projet.indices",
+    desc: "projet.indices.desc",
+    stack: ["Python", "PyQt5", "C#", "LEAN"],
     miniature: "assets/ibkr/img/Capture_01.PNG",
-    code: "https://github.com/iAlexMG/ibkr-orderflow-dashboard",
-  },
-  {
-    id: "backtesting",
-    href: "backtesting.html",
-    page: "backtesting",
-    titre: "projet.backtesting",
-    desc: "projet.backtesting.desc",
-    stack: ["Python", "LEAN", "vectorbt", "Docker"],
-    miniature: "assets/backtesting/figures/optim-heatmap-isoos.png",
-    code: "https://github.com/iAlexMG/backtesting-lean-formation",
+    code: "https://github.com/iAlexMG/indicesBoursiers",
   },
   {
     id: "649",
@@ -81,17 +75,9 @@ const PROJETS = [
     desc: "projet.python.desc",
     stack: ["Python", "Matplotlib", "pandas", "Plotly"],
   },
-  // Projets sans contenu pour l'instant : masqués de la grille d'accueil
-  // (les pages quantower.html / detection.html restent accessibles par URL).
-  // Pour les réactiver, décommenter l'entrée une fois du contenu ajouté
-  // dans data/projets/<id>.json.
-  // {
-  //   id: "quantower",
-  //   href: "quantower.html",
-  //   page: "quantower",
-  //   titre: "projet.quantower",
-  //   desc: "projet.quantower.desc",
-  // },
+  // Projet sans contenu pour l'instant : masqué de la grille d'accueil
+  // (la page detection.html reste accessible par URL). Pour le réactiver,
+  // décommenter l'entrée une fois du contenu ajouté dans data/projets/<id>.json.
   // {
   //   id: "detection",
   //   href: "detection.html",
@@ -101,5 +87,16 @@ const PROJETS = [
   // },
 ];
 
+// Anciens ids de projet (avant la refonte en hubs, 2026-07) -> hub qui héberge
+// désormais leur contenu. Sert à honorer les anciennes URL profondes
+// (projet-section.html?p=backtesting&s=lean, …) : les ids de section ont été
+// conservés lors de la fusion, seul le ?p= change.
+const PROJETS_ALIAS = {
+  ibkr: "indices",
+  quantower: "indices",
+  backtesting: "crypto",
+};
+
 // Exposition globale (pas de modules pour rester compatible file:// et GitHub Pages).
 window.PROJETS = PROJETS;
+window.PROJETS_ALIAS = PROJETS_ALIAS;

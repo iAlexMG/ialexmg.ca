@@ -38,19 +38,26 @@ git push
 La **source de vérité** d'un projet est son dossier
 `Portfolio/<Projet>/site-content/` :
 
-| Dossier dans Portfolio | id du site    |
-|------------------------|---------------|
-| Lotto 649              | `649`         |
-| Formation - Python     | `python`      |
-| Crypto                 | `crypto`      |
-| Backtesting            | `backtesting` |
-| IBKR                   | `ibkr`        |
-| Quantower              | `quantower`   |
-| Détection d'objets     | `detection`   |
+| Dossier dans Portfolio        | id du site  |
+|-------------------------------|-------------|
+| Lotto 649                     | `649`       |
+| Formation - Python            | `python`    |
+| Détection d'objets            | `detection` |
+| crypto (mono-dépôt, hub)      | `crypto`    |
+| indicesBoursiers (mono-dépôt, hub) | `indices` |
 
 `tools/sync-site.py` copie `site-content/contenu.json` vers
 `data/projets/<id>.json` et `site-content/assets/**` vers `assets/<id>/**`
 en **miroir** : un fichier supprimé de la source est retiré du site.
+
+**Hubs `crypto` / `indices`** : le mono-dépôt a un `site-content/` à sa racine
+(le squelette : une section par pilier) **et** un `site-content/` dans chaque
+pilier publié (`affichage/`, `backtesting/`…). La synchro **assemble** le tout
+en un seul `data/projets/<id>.json` (les sections des piliers deviennent des
+sous-sections) et met en miroir les assets des piliers vers leurs dossiers
+historiques du site : `crypto/affichage → assets/crypto`,
+`crypto/backtesting → assets/backtesting`, `indicesBoursiers/affichage →
+assets/ibkr`. Détails : en-tête de `tools/sync-site.py`.
 
 📁 **Correspondance des chemins** : un fichier déposé dans
 `site-content/assets/figures/x.png` sera servi à `assets/<id>/figures/x.png`

@@ -4,6 +4,11 @@
 > `Portfolio/<Projet>/site-content/`, le fichier `<id>.json` est copié depuis
 > `site-content/contenu.json` par `tools/sync-site.py` — éditez la **source**,
 > pas ce fichier (la prochaine synchro écraserait la modification).
+>
+> Les projets **hub** (`crypto.json`, `indices.json`) sont **assemblés** : le
+> squelette (une section par pilier) vient de `<mono-dépôt>/site-content/`,
+> et les sections des piliers qui portent `"inclure"` y sont injectées comme
+> sous-sections (`parent` = le pilier). Voir l'en-tête de `tools/sync-site.py`.
 
 Chaque fichier `<id>.json` contient le contenu d'UN projet. L'`id` correspond
 au champ `id` défini dans `js/projects.js` et à `data-projet="…"` dans la page.

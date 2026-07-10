@@ -36,20 +36,15 @@ const TRADUCTIONS = {
     "projet.649": "Lotto 649",
     "projet.python": "Formation Python",
     "projet.crypto": "Crypto",
-    "projet.quantower": "Quantower",
-    "projet.backtesting": "Backtesting",
+    "projet.indices": "Indices boursiers",
     "projet.detection": "Détection d'objets",
-    "projet.ibkr": "IBKR",
 
     // Descriptions courtes des projets (cartes d'accueil)
     "projet.649.desc": "Mettre le hasard à l'épreuve : tests statistiques et apprentissage automatique sur des décennies de tirages.",
     "projet.python.desc": "Maîtriser Python, des bases aux concepts avancés.",
-    "projet.crypto.desc": "Peut-on vraiment battre le marché crypto ?",
-    "projet.quantower.desc": "Des indicateurs sur mesure pour trader autrement.",
-    "projet.backtesting.desc": "Et si on testait les stratégies avant de miser ?",
-    "projet.backtesting.intro": "Construire un backtesting de niveau pro sur de vraies données crypto : deux résultats phares, et une formation en trois temps — LEAN, vectorbt, réconciliation.",
+    "projet.crypto.desc": "La chaîne complète sur le Bitcoin : données historiques, terminal d'orderflow, backtesting, automatisation.",
+    "projet.indices.desc": "La même chaîne sur les futures ES et NQ du CME — jusqu'au trading automatisé en simulation.",
     "projet.detection.desc": "Apprendre à la machine à reconnaître ce qu'elle voit.",
-    "projet.ibkr.desc": "Automatiser le trading via l'API d'Interactive Brokers.",
 
     // Accueil
     "accueil.titre": "iAlexMG",
@@ -93,19 +88,19 @@ const TRADUCTIONS = {
     // Projet Python (intro spécifique)
     "python.intro": "Voici les fichiers que j'ai créés pour apprendre et me perfectionner en Python. Toujours en amélioration constante !",
 
-    // Projet Crypto (intro spécifique)
-    "crypto.intro": "Un terminal d'orderflow façon Bookmap qui réconcilie six exchanges crypto en une vue cohérente : footprint, heatmap de liquidité, carnet et trades, le tout normalisé puis fusionné en un marché « hybride » avec détection d'arbitrage en direct. Le vrai sujet n'est pas « j'ai branché six exchanges », mais que chacun s'est battu pour rentrer dans le moule : choisissez-en un pour voir ses embûches et leurs solutions, puis suivez l'hybride, l'arbitrage et l'architecture.",
+    // Hub Crypto (intro spécifique)
+    "crypto.intro": "La chaîne complète du trading crypto (BTC/USDT), en quatre piliers : extraire l'historique tick-par-tick, l'afficher dans un terminal d'orderflow multi-exchanges façon Bookmap, backtester les stratégies avec LEAN et vectorbt, puis automatiser l'exécution sur Bitget. Chaque pilier a sa section — de la donnée brute jusqu'à l'exécution.",
+
+    // Hub Indices boursiers (intro spécifique)
+    "indices.intro": "La même chaîne, appliquée aux futures d'indices du CME (ES et NQ) : extraire les ticks depuis Quantower, les afficher dans un dashboard d'orderflow temps réel branché sur Interactive Brokers, rejouer les stratégies LEAN sur NQ, puis avancer par phases mesurées vers le trading semi-automatisé — en simulation d'abord.",
 
     // Projet 649 (intro spécifique)
     "649.intro": "Le Lotto 6/49 est-il vraiment aléatoire ? Plutôt que de chercher à prédire les numéros, ce projet vérifie si l'historique des tirages se comporte autrement qu'un pur hasard. J'y teste deux croyances répandues — le numéro « en retard » et le numéro « en avance » — d'abord avec des statistiques, puis avec des modèles d'apprentissage automatique. J'ai choisi le Lotto 6/49 pour son historique de plusieurs décennies : plus l'historique est long, plus les résultats gagnent en crédibilité. Vous trouverez ci-dessous les documents explicatifs et les résultats, classés par étape.",
 
-    // Projet IBKR (intro spécifique)
-    "ibkr.intro": "Un tableau de bord d'orderflow temps réel pour les futures ES et NQ d'Interactive Brokers : footprint, heatmap de liquidité, trades et carnet d'ordres superposés sur un même graphe, façon Bookmap et Quantower. Construit en Python (PyQt5, pyqtgraph, ib_insync), avec une source de données unique derrière laquelle on permute le flux réel d'IBKR et un mode démo synthétique. Parcourez les couches une à une, puis la contrainte de données propre à IBKR.",
-
     // À propos
     "apropos.titre": "À propos",
     "apropos.p1": "Je travaille sous le nom iAlexMG, à l'intersection de la science des données, des statistiques et des marchés financiers.",
-    "apropos.p2": "Ce site rassemble mes projets : terminal d'orderflow crypto multi-exchanges, tableau de bord temps réel IBKR, backtesting (LEAN, vectorbt), analyse statistique du 6/49 et formation Python.",
+    "apropos.p2": "Ce site rassemble mes projets : deux chaînes de trading complètes — crypto (BTC) et indices boursiers (ES/NQ) — de l'extraction des données à l'affichage order-flow, au backtesting (LEAN, vectorbt) et à l'automatisation, plus l'analyse statistique du 6/49 et une formation Python.",
     "apropos.p3": "Mon approche : des méthodes rigoureuses, des résultats mesurables et des outils réutilisables.",
 
     // Contact
@@ -134,20 +129,15 @@ const TRADUCTIONS = {
     "projet.649": "Lotto 649",
     "projet.python": "Python Training",
     "projet.crypto": "Crypto",
-    "projet.quantower": "Quantower",
-    "projet.backtesting": "Backtesting",
+    "projet.indices": "Stock Indices",
     "projet.detection": "Object Detection",
-    "projet.ibkr": "IBKR",
 
     // Project short descriptions (home cards)
     "projet.649.desc": "Putting randomness to the test: statistics and machine learning on decades of draws.",
     "projet.python.desc": "Mastering Python, from the basics to advanced concepts.",
-    "projet.crypto.desc": "Can you really beat the crypto market?",
-    "projet.quantower.desc": "Custom-built indicators to trade differently.",
-    "projet.backtesting.desc": "What if we tested strategies before betting?",
-    "projet.backtesting.intro": "Building professional-grade backtesting on real crypto data: two headline results, and a course in three parts — LEAN, vectorbt, reconciliation.",
+    "projet.crypto.desc": "The full chain on Bitcoin: historical data, orderflow terminal, backtesting, automation.",
+    "projet.indices.desc": "The same chain on the CME ES and NQ futures — all the way to automated trading in simulation.",
     "projet.detection.desc": "Teaching the machine to recognize what it sees.",
-    "projet.ibkr.desc": "Automating trading through the Interactive Brokers API.",
 
     // Home
     "accueil.titre": "iAlexMG",
@@ -188,8 +178,11 @@ const TRADUCTIONS = {
     "documents.telecharger": "Download",
     "documents.avertissement_fr": "⚠️ The PDF documents are only available in French.",
 
-    // Crypto project (specific intro)
-    "crypto.intro": "A Bookmap-style orderflow terminal that reconciles six crypto exchanges into one coherent view: footprint, liquidity heatmap, order book and trades, all normalized then merged into a \"hybrid\" market with live arbitrage detection. The real story isn't \"I plugged in six exchanges\" but that each one had to fight its way into the mold: pick one to see its pitfalls and fixes, then follow the hybrid, arbitrage and architecture.",
+    // Crypto hub (specific intro)
+    "crypto.intro": "The full crypto trading chain (BTC/USDT), in four pillars: extracting the tick-by-tick history, displaying it in a Bookmap-style multi-exchange orderflow terminal, backtesting the strategies with LEAN and vectorbt, then automating execution on Bitget. Each pillar has its own section — from raw data all the way to execution.",
+
+    // Stock Indices hub (specific intro)
+    "indices.intro": "The same chain, applied to the CME index futures (ES and NQ): extracting the ticks from Quantower, displaying them in a real-time orderflow dashboard plugged into Interactive Brokers, replaying the LEAN strategies on NQ, then moving through measured phases toward semi-automated trading — in simulation first.",
 
     // Python project (specific intro)
     "python.intro": "Here are the files I created to learn and improve my Python skills. Always a work in progress!",
@@ -197,13 +190,10 @@ const TRADUCTIONS = {
     // 649 project (specific intro)
     "649.intro": "Is Lotto 6/49 really random? Rather than trying to predict the numbers, this project checks whether the draw history behaves any differently from pure chance. I test two common beliefs — the \"overdue\" number and the \"hot\" number — first with statistics, then with machine-learning models. I chose Lotto 6/49 precisely for its decades-long history: the longer the record, the more credible the results. Below you'll find the explanatory documents and the results, organized by stage.",
 
-    // IBKR project (specific intro)
-    "ibkr.intro": "A real-time order-flow dashboard for the ES and NQ futures on Interactive Brokers: footprint, liquidity heatmap, trades and order book superposed on a single chart, Bookmap- and Quantower-style. Built in Python (PyQt5, pyqtgraph, ib_insync), with a single data source behind which the real IBKR feed and a synthetic demo mode are interchangeable. Walk through the layers one by one, then the data constraint specific to IBKR.",
-
     // About
     "apropos.titre": "About",
     "apropos.p1": "I work under the name iAlexMG, at the intersection of data science, statistics and financial markets.",
-    "apropos.p2": "This site brings together my projects: a multi-exchange crypto orderflow terminal, a real-time IBKR dashboard, backtesting (LEAN, vectorbt), statistical analysis of the 6/49 and Python training.",
+    "apropos.p2": "This site brings together my projects: two complete trading chains — crypto (BTC) and stock indices (ES/NQ) — from data extraction to order-flow display, backtesting (LEAN, vectorbt) and automation, plus statistical analysis of the 6/49 and Python training.",
     "apropos.p3": "My approach: rigorous methods, measurable results and reusable tools.",
 
     // Contact

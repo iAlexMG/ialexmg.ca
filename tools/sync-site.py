@@ -13,6 +13,17 @@ ARCHITECTURE « source → pipeline → vitrine » :
         assets/**     ->  assets/<id>/**   (MIROIR : ajouts, mises à jour,
                                             suppressions des fichiers orphelins)
 
+PROJETS « HUB » (crypto, indices) — un mono-dépôt en 4 piliers
+(historique / affichage / backtesting / automatisation) :
+  - Le SQUELETTE du hub est <mono-dépôt>/site-content/contenu.json : une section
+    par pilier (titre, accroche, statut, prose).
+  - Une section du squelette peut porter "inclure": "<pilier>" : le script y
+    injecte les sections de <mono-dépôt>/<pilier>/site-content/contenu.json en
+    SOUS-SECTIONS (champ parent = id de la section, mécanisme sousHub du site).
+  - Les assets de chaque pilier inclus gardent leur dossier historique du site
+    (assets/crypto, assets/backtesting, assets/ibkr) : les URL des contenu.json
+    sources y pointent déjà — on ne les réécrit pas.
+
 USAGE (depuis la racine du site iAlexMG.ca) :
     python tools/sync-site.py             # synchronise tous les projets
     python tools/sync-site.py --dry-run   # montre ce qui serait fait, sans écrire
@@ -42,15 +53,31 @@ try:
 except AttributeError:
     pass
 
-# id du site (data/projets/<id>.json, assets/<id>/) -> dossier dans Portfolio.
+# Projets SIMPLES : id du site (data/projets/<id>.json, assets/<id>/) -> dossier
+# dans Portfolio (le site-content est à la racine de ce dossier).
 PROJETS = {
     "649": "Lotto 649",
     "python": "Formation - Python",
-    "crypto": "Crypto",
-    "backtesting": "Backtesting",
-    "ibkr": "IBKR",
-    "quantower": "Quantower",
     "detection": "Détection d'objets",
+}
+
+# Projets HUB : id du site -> mono-dépôt en 4 piliers (voir l'en-tête du script).
+#   dossiers : candidats essayés dans l'ordre — le staging _restructure/ d'abord,
+#              puis l'emplacement final prévu après le ménage local. ⚠️ Piège de
+#              casse Windows : « crypto » matcherait aussi l'ANCIEN dossier
+#              « Crypto » tant qu'il existe, d'où la priorité au staging.
+#   assets   : pilier inclus -> dossier assets/<...> du site (namespaces
+#              HISTORIQUES conservés, ne pas les renommer sans réécrire les URL
+#              dans les contenu.json sources).
+HUBS = {
+    "crypto": {
+        "dossiers": ["_restructure/crypto", "crypto"],
+        "assets": {"affichage": "crypto", "backtesting": "backtesting"},
+    },
+    "indices": {
+        "dossiers": ["_restructure/indicesBoursiers", "indicesBoursiers"],
+        "assets": {"affichage": "ibkr"},
+    },
 }
 
 RACINE_SITE = Path(__file__).resolve().parent.parent
@@ -74,8 +101,58 @@ def supprimer(fichier, dry_run):
         fichier.unlink()
 
 
+def miroir_assets(assets_src, assets_dst, dry_run, actions):
+    """Miroir assets_src/** -> assets_dst/** (copies + orphelins supprimés)."""
+    if not assets_src.is_dir():
+        return
+    fichiers_src = lister_fichiers(assets_src)
+    fichiers_dst = lister_fichiers(assets_dst)
+
+    copies = 0
+    for rel in sorted(fichiers_src):
+        src, dst = assets_src / rel, assets_dst / rel
+        if rel not in fichiers_dst or not filecmp.cmp(src, dst, shallow=False):
+            copier(src, dst, dry_run)
+            copies += 1
+    if copies:
+        actions.append(f"{copies} fichier(s) copié(s)")
+
+    # Suppression des orphelins (jamais les .gitkeep).
+    orphelins = [
+        rel for rel in sorted(fichiers_dst - fichiers_src)
+        if rel.name != ".gitkeep"
+    ]
+    for rel in orphelins:
+        supprimer(assets_dst / rel, dry_run)
+    if orphelins:
+        actions.append(
+            f"{len(orphelins)} orphelin(s) supprimé(s) : "
+            + ", ".join(str(r) for r in orphelins)
+        )
+        # Retire les dossiers devenus vides.
+        if not dry_run:
+            for d in sorted(
+                (p for p in assets_dst.rglob("*") if p.is_dir()),
+                key=lambda p: len(p.parts),
+                reverse=True,
+            ):
+                if not any(d.iterdir()):
+                    d.rmdir()
+
+
+def ecrire_json(donnees, cible, dry_run, actions):
+    """Écrit `donnees` (JSON indenté) dans `cible` si le contenu change."""
+    texte = json.dumps(donnees, ensure_ascii=False, indent=2) + "\n"
+    if cible.is_file() and cible.read_text(encoding="utf-8") == texte:
+        return
+    if not dry_run:
+        cible.parent.mkdir(parents=True, exist_ok=True)
+        cible.write_text(texte, encoding="utf-8", newline="\n")
+    actions.append(f"{cible.name} mis à jour")
+
+
 def synchroniser_projet(pid, dossier_portfolio, dry_run):
-    """Synchronise UN projet. Renvoie (ok, résumé) ; ok=False si JSON invalide."""
+    """Synchronise UN projet simple. Renvoie (ok, résumé) ; ok=False si JSON invalide."""
     source = dossier_portfolio / PROJETS[pid] / "site-content"
     if not source.is_dir():
         return True, "site-content absent — ignoré"
@@ -95,42 +172,65 @@ def synchroniser_projet(pid, dossier_portfolio, dry_run):
             actions.append("contenu.json mis à jour")
 
     # 2) Miroir assets : site-content/assets/** -> assets/<id>/**.
-    assets_src = source / "assets"
-    assets_dst = RACINE_SITE / "assets" / pid
-    if assets_src.is_dir():
-        fichiers_src = lister_fichiers(assets_src)
-        fichiers_dst = lister_fichiers(assets_dst)
+    miroir_assets(source / "assets", RACINE_SITE / "assets" / pid, dry_run, actions)
 
-        copies = 0
-        for rel in sorted(fichiers_src):
-            src, dst = assets_src / rel, assets_dst / rel
-            if rel not in fichiers_dst or not filecmp.cmp(src, dst, shallow=False):
-                copier(src, dst, dry_run)
-                copies += 1
-        if copies:
-            actions.append(f"{copies} fichier(s) copié(s)")
+    return True, " ; ".join(actions) if actions else "à jour"
 
-        # Suppression des orphelins (jamais les .gitkeep).
-        orphelins = [
-            rel for rel in sorted(fichiers_dst - fichiers_src)
-            if rel.name != ".gitkeep"
-        ]
-        for rel in orphelins:
-            supprimer(assets_dst / rel, dry_run)
-        if orphelins:
-            actions.append(
-                f"{len(orphelins)} orphelin(s) supprimé(s) : "
-                + ", ".join(str(r) for r in orphelins)
-            )
-            # Retire les dossiers devenus vides.
-            if not dry_run:
-                for d in sorted(
-                    (p for p in assets_dst.rglob("*") if p.is_dir()),
-                    key=lambda p: len(p.parts),
-                    reverse=True,
-                ):
-                    if not any(d.iterdir()):
-                        d.rmdir()
+
+def assembler_hub(pid, dossier_portfolio, dry_run):
+    """Assemble UN projet hub (squelette + piliers inclus). Renvoie (ok, résumé)."""
+    hub = HUBS[pid]
+    racine = next(
+        (dossier_portfolio / c for c in hub["dossiers"]
+         if (dossier_portfolio / c / "site-content" / "contenu.json").is_file()),
+        None,
+    )
+    if racine is None:
+        return True, "site-content absent — ignoré"
+
+    def lire(chemin):
+        return json.loads(chemin.read_text(encoding="utf-8"))
+
+    actions = []
+    try:
+        squelette = lire(racine / "site-content" / "contenu.json")
+    except json.JSONDecodeError as err:
+        return False, f"squelette INVALIDE ({err}) — projet sauté"
+
+    # Injection des piliers : les sections d'un pilier deviennent des
+    # sous-sections (parent = la section du squelette qui porte "inclure").
+    sections = []
+    for section in squelette.get("sections", []):
+        pilier = section.pop("inclure", None)
+        sections.append(section)
+        if not pilier:
+            continue
+        source = racine / pilier / "site-content" / "contenu.json"
+        try:
+            contenu_pilier = lire(source)
+        except FileNotFoundError:
+            return False, f"pilier {pilier}/site-content/contenu.json ABSENT — projet sauté"
+        except json.JSONDecodeError as err:
+            return False, f"pilier {pilier} INVALIDE ({err}) — projet sauté"
+        for sous in contenu_pilier.get("sections", []):
+            # Les sections déjà imbriquées côté pilier (ex. les parties de la
+            # formation) gardent leur parent ; les autres s'accrochent au pilier.
+            sous.setdefault("parent", section["id"])
+            sections.append(sous)
+
+    # Garde-fou : les ids de section doivent rester uniques dans le hub fusionné.
+    ids = [s.get("id") for s in sections]
+    doublons = {i for i in ids if i and ids.count(i) > 1}
+    if doublons:
+        return False, f"ids de section EN DOUBLE ({', '.join(sorted(doublons))}) — projet sauté"
+
+    ecrire_json({"sections": sections}, RACINE_SITE / "data" / "projets" / f"{pid}.json",
+                dry_run, actions)
+
+    # Miroir des assets de chaque pilier vers son dossier historique du site.
+    for pilier, dossier_assets in hub["assets"].items():
+        miroir_assets(racine / pilier / "site-content" / "assets",
+                      RACINE_SITE / "assets" / dossier_assets, dry_run, actions)
 
     return True, " ; ".join(actions) if actions else "à jour"
 
@@ -139,7 +239,7 @@ def main():
     parser = argparse.ArgumentParser(
         description="Synchronise Portfolio/<Projet>/site-content vers le site."
     )
-    parser.add_argument("projets", nargs="*", choices=[[], *PROJETS],
+    parser.add_argument("projets", nargs="*", choices=[[], *PROJETS, *HUBS],
                         help="ids à synchroniser (défaut : tous)")
     parser.add_argument("--dry-run", action="store_true",
                         help="n'écrit rien, montre ce qui serait fait")
@@ -151,11 +251,12 @@ def main():
     if not args.portfolio.is_dir():
         sys.exit(f"Dossier Portfolio introuvable : {args.portfolio}")
 
-    ids = args.projets or list(PROJETS)
+    ids = args.projets or [*PROJETS, *HUBS]
     prefixe = "[dry-run] " if args.dry_run else ""
     erreurs = 0
     for pid in ids:
-        ok, resume = synchroniser_projet(pid, args.portfolio, args.dry_run)
+        synchro = assembler_hub if pid in HUBS else synchroniser_projet
+        ok, resume = synchro(pid, args.portfolio, args.dry_run)
         print(f"{prefixe}{pid:<12} {resume}")
         if not ok:
             erreurs += 1
