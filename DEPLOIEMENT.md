@@ -8,10 +8,16 @@ DNS géré par **Cloudflare**, domaine **ialexmg.ca**.
 
 ## 🔄 Mettre à jour le site (le geste à retenir)
 
-À chaque modification (ajouter une image/vidéo, changer un texte, etc.) :
+Le contenu d'un projet se modifie **dans le dossier du projet**, sous
+`Portfolio/<Projet>/site-content/` — jamais directement dans le site :
+
+1. Dépose/modifie les fichiers dans `Portfolio/<Projet>/site-content/`
+   (`contenu.json` pour les textes, `assets/…` pour images et PDF).
+2. Synchronise vers le site, puis publie :
 
 ```powershell
 cd "C:/Users/Moi/Desktop/Claude_Code/iAlexMG.ca"
+python tools/sync-site.py
 git add .
 git commit -m "Description de ma modification"
 git push
@@ -19,34 +25,56 @@ git push
 
 ➡️ Le site en ligne se met à jour **tout seul en ~1 minute** après le `git push`.
 
+> Les **textes d'interface** (menus, accueil, À propos…) restent dans le site
+> (`js/translations.js`) : pour eux, pas de synchro — modifier puis Git direct.
+
 > Astuce : si rien ne change après le push, vide le cache du navigateur
 > (Ctrl+F5) — le navigateur garde parfois l'ancienne version en mémoire.
 
 ---
 
-## 🗂️ Le contenu est rangé PAR PROJET
+## 🗂️ Le contenu est rangé PAR PROJET — la source est dans Portfolio
 
-Tout le contenu vient de **`data/projets/<projet>.json`** — UN fichier par
-projet (`649.json`, `python.json`, `crypto.json`, …). On n'édite **jamais** le
-HTML. On ajoute le média dans le fichier du projet voulu (schéma détaillé :
-`data/projets/README.md`).
+La **source de vérité** d'un projet est son dossier
+`Portfolio/<Projet>/site-content/` :
 
-📁 **Chaque projet a son dossier sous `assets/`** : `assets/649/`,
-`assets/python/`, `assets/crypto/`, `assets/quantower/`. On y dépose **toutes**
-les images et **tous** les PDF de ce projet. Le chemin à mettre dans le JSON est
-donc `assets/<projet>/mon-fichier`.
+| Dossier dans Portfolio | id du site    |
+|------------------------|---------------|
+| Lotto 649              | `649`         |
+| Formation - Python     | `python`      |
+| Crypto                 | `crypto`      |
+| Backtesting            | `backtesting` |
+| IBKR                   | `ibkr`        |
+| Quantower              | `quantower`   |
+| Détection d'objets     | `detection`   |
+
+`tools/sync-site.py` copie `site-content/contenu.json` vers
+`data/projets/<id>.json` et `site-content/assets/**` vers `assets/<id>/**`
+en **miroir** : un fichier supprimé de la source est retiré du site.
+
+📁 **Correspondance des chemins** : un fichier déposé dans
+`site-content/assets/figures/x.png` sera servi à `assets/<id>/figures/x.png`
+— c'est **ce chemin final** qu'on écrit dans `contenu.json`
+(ex. `"url": "assets/649/figures/x.png"`).
+
+> ⚠️ Pour un projet synchronisé, on n'édite **plus directement**
+> `data/projets/<id>.json` ni `assets/<id>/` dans le site : la prochaine
+> synchro écraserait la modification. On n'édite **jamais** le HTML.
+> Schéma du `contenu.json` : `data/projets/README.md`.
 
 > ⚠️ Attention à la **virgule** entre chaque entrée `{ ... }` du tableau.
-> En cas de doute, vérifie le fichier sur https://jsonlint.com (copier-coller).
+> En cas de doute, vérifie le fichier sur https://jsonlint.com (copier-coller)
+> — la synchro valide aussi le JSON et refuse un fichier invalide.
 
 ---
 
 ## 🖼️ Ajouter une image ou une vidéo à un projet
 
-1. (Image) Dépose ton fichier dans le dossier du projet, ex. **`assets/649/`**.
+1. (Image) Dépose ton fichier dans le dossier source du projet, ex.
+   **`Portfolio/Lotto 649/site-content/assets/figures/`**.
    (Vidéo) Récupère le lien YouTube — rien à déposer.
-2. Ouvre **`data/projets/<projet>.json`** (ex. `data/projets/649.json`) et
-   ajoute une entrée dans son `items` :
+2. Ouvre **`Portfolio/<Projet>/site-content/contenu.json`** et ajoute une
+   entrée dans son `items` :
 
 ```json
 {
@@ -62,18 +90,18 @@ donc `assets/<projet>/mon-fichier`.
 - `url` (vidéo) : le lien YouTube (`https://www.youtube.com/watch?v=...`)
 - `url` (image) : `assets/mon-fichier.png` (ou une URL externe)
 
-3. Sauvegarde, puis fais la mise à jour Git (section ci-dessus).
+3. Sauvegarde, puis synchronise + mise à jour Git (section ci-dessus).
 
 ---
 
 ## 📄 Ajouter un PDF à un projet
 
-Les PDF se gèrent aussi dans **`data/projets/<projet>.json`** (type `"pdf"`).
+Les PDF se gèrent aussi dans le **`contenu.json`** du projet (type `"pdf"`).
 
-1. Dépose ton fichier PDF dans le dossier du projet, ex. **`assets/python/`**
-   (ex : `assets/python/01 - Fondamentaux.pdf`).
-2. Ouvre **`data/projets/<projet>.json`** (ex. `data/projets/python.json`) et
-   ajoute une entrée dans son `items` :
+1. Dépose ton fichier PDF dans le dossier source du projet, ex.
+   **`Portfolio/Formation - Python/site-content/assets/`**.
+2. Ouvre **`Portfolio/<Projet>/site-content/contenu.json`** et ajoute une
+   entrée dans son `items` :
 
 ```json
 {
@@ -87,15 +115,15 @@ Les PDF se gèrent aussi dans **`data/projets/<projet>.json`** (type `"pdf"`).
 - `fichier` : chemin du PDF, sous le dossier du projet (`assets/<projet>/`).
 - `titre` / `description` : objets bilingues `{ "fr": "…", "en": "…" }`.
 
-3. Sauvegarde, puis fais la mise à jour Git (section « Mettre à jour le site »).
+3. Sauvegarde, puis synchronise + mise à jour Git (section « Mettre à jour le site »).
 
 > Tant que `items` est vide, la page du projet affiche « section en construction ».
 > Dès qu'il y a au moins une entrée PDF, les PDF s'affichent (aperçu + boutons
 > « Voir le PDF » / « Télécharger »).
 > En **anglais**, un avertissement « PDF en français uniquement » s'affiche
 > automatiquement.
-> ⚠️ Le nom du fichier dans `data/projets/<projet>.json` doit correspondre
-> **exactement** (espaces, majuscules/minuscules compris) au fichier déposé.
+> ⚠️ Le nom du fichier dans `contenu.json` doit correspondre **exactement**
+> (espaces, majuscules/minuscules compris) au fichier déposé.
 
 ---
 

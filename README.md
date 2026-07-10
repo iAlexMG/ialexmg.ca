@@ -30,11 +30,13 @@ iAlexMG.ca/
 │   ├── content.js        # Lecture du JSON et rendu du contenu d'un projet
 │   │                     #   (images, vidéos YouTube et PDF)
 │   └── main.js           # Initialisation commune de chaque page
+├── tools/
+│   └── sync-site.py      # Synchronise Portfolio/<Projet>/site-content -> site
 ├── data/
 │   └── projets/          # CONTENU du site — UN fichier JSON par projet
 │       ├── README.md     #   (schéma détaillé des fichiers)
 │       ├── 649.json      #   crypto.json, ibkr.json, backtesting.json, …
-│       └── …
+│       └── …             #   ⚠️ générés par sync-site.py — éditer la SOURCE
 └── assets/               # UN DOSSIER PAR PROJET (images + PDF du projet)
     ├── 649/
     ├── python/
@@ -42,10 +44,12 @@ iAlexMG.ca/
     └── quantower/
 ```
 
-> **Où je mets mes fichiers ?** Chaque projet a son dossier sous `assets/`
-> (`assets/649/`, `assets/python/`, …). Déposez-y les images **et** les PDF du
-> projet, puis référencez-les dans `data/projets/<projet>.json` avec le chemin
-> `assets/<projet>/mon-fichier`.
+> **Où je mets mes fichiers ?** La **source de vérité** d'un projet est
+> `Portfolio/<Projet>/site-content/` (à côté de ce dépôt) : `contenu.json`
+> pour les textes, `assets/…` pour images et PDF. `python tools/sync-site.py`
+> copie le tout vers `data/projets/<id>.json` et `assets/<id>/` (miroir).
+> Dans `contenu.json`, on référence le chemin **final** sur le site :
+> `assets/<id>/mon-fichier`. Procédure pas à pas : `DEPLOIEMENT.md`.
 
 ---
 
@@ -68,8 +72,9 @@ Puis ouvrez <http://localhost:8000>.
 
 ## Ajouter du contenu à un projet (sans toucher au HTML)
 
-Tout le contenu vient de **`data/projets/<projet>.json`** — un fichier par
-projet (`649.json`, `python.json`, `crypto.json`, …). Chaque projet possède un
+Tout le contenu s'édite dans **`Portfolio/<Projet>/site-content/contenu.json`**
+(la source), puis `python tools/sync-site.py` le copie vers
+`data/projets/<id>.json` (un fichier par projet). Chaque projet possède un
 tableau `items` (ou `sections` — schéma détaillé dans `data/projets/README.md`).
 Ajoutez une entrée selon le type de média :
 
