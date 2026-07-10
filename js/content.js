@@ -81,6 +81,19 @@ const Contenu = (function () {
     return meta ? meta.href : "index.html";
   }
 
+  // Bouton « Code source (GitHub) » en tête de la page projet, si le projet
+  // déclare un champ `code` dans projects.js. Renvoie "" sinon.
+  function lienCodeSource(projet) {
+    const meta = metaProjet(projet);
+    if (!meta || !meta.code) return "";
+    return (
+      '<div class="doc-actions projet-code-source">' +
+      '<a class="bouton" href="' + encodeURI(meta.code) + '"' +
+      ' target="_blank" rel="noopener" data-i18n="contenu.code_source"></a>' +
+      "</div>"
+    );
+  }
+
   // --- Prose détaillée -------------------------------------------------------
 
   // Rend un bloc de prose : les blocs séparés par une ligne vide deviennent des
@@ -419,6 +432,7 @@ const Contenu = (function () {
     try {
       const bloc = await chargerProjet(projet);
       const sections = sectionsDuBloc(bloc);
+      const lienCode = lienCodeSource(projet);
       const total = sections.reduce(function (n, s) {
         return n + (Array.isArray(s.items) ? s.items.length : 0);
       }, 0);
@@ -426,16 +440,19 @@ const Contenu = (function () {
       if (total === 0) {
         conteneur.classList.add("galerie");
         conteneur.innerHTML =
+          lienCode +
           '<p class="galerie-message" data-i18n="contenu.vide"></p>';
       } else if (sections.length === 1 && sections[0]._plat) {
         conteneur.classList.add("galerie");
         const items = sections[0].items;
         conteneur.innerHTML =
+          lienCode +
           banniereAvertissementPdf(contientPdf(sections)) +
           items.map(creerCarte).join("");
       } else {
         conteneur.classList.remove("galerie");
         conteneur.innerHTML =
+          lienCode +
           banniereAvertissementPdf(contientPdf(sections)) +
           creerSommaire(sections) +
           sections.map(creerSection).join("");
@@ -490,6 +507,7 @@ const Contenu = (function () {
       const bloc = await chargerProjet(projet);
       const toutes = sectionsDuBloc(bloc);
       const estPlat = toutes.length === 1 && toutes[0]._plat;
+      const lienCode = lienCodeSource(projet);
       const sections = toutes.filter(function (s) {
         // On exclut les sous-sections (parent défini) : elles sont présentées
         // dans le sous-hub de leur section parente, pas dans le hub principal.
@@ -501,9 +519,11 @@ const Contenu = (function () {
         const items = toutes[0].items || [];
         if (!items.length) {
           conteneur.innerHTML =
+            lienCode +
             '<p class="galerie-message" data-i18n="contenu.vide"></p>';
         } else {
           conteneur.innerHTML =
+            lienCode +
             '<div class="grille-hub">' +
             items
               .map(function (item) {
@@ -524,9 +544,11 @@ const Contenu = (function () {
         }
       } else if (sections.length === 0) {
         conteneur.innerHTML =
+          lienCode +
           '<p class="galerie-message" data-i18n="contenu.vide"></p>';
       } else {
         conteneur.innerHTML =
+          lienCode +
           '<div class="grille-hub">' +
           sections
             .map(function (section, idx) {

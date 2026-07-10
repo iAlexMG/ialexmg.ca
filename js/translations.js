@@ -75,6 +75,7 @@ const TRADUCTIONS = {
     "contenu.sommaire": "Sommaire",
     "contenu.retour": "← Retour au projet",
     "contenu.retour_accueil": "← Retour à l'accueil",
+    "contenu.code_source": "Code source (GitHub) ↗",
 
     // Hub de projet (cartes par section)
     "hub.documents": "documents",
@@ -172,6 +173,7 @@ const TRADUCTIONS = {
     "contenu.sommaire": "Contents",
     "contenu.retour": "← Back to the project",
     "contenu.retour_accueil": "← Back to home",
+    "contenu.code_source": "Source code (GitHub) ↗",
 
     // Project hub (one card per section)
     "hub.documents": "documents",

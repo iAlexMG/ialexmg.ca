@@ -432,6 +432,15 @@ img { max-width: 100%; display: block; }
   padding: 0.5rem 1.1rem;
   font-size: 0.9rem;
 }
+/* Bouton « Code source (GitHub) » en tête de la page projet. */
+.projet-code-source {
+  margin-top: 0;
+  margin-bottom: 1.6rem;
+}
+/* Dans un conteneur-grille (.galerie), le bouton occupe toute la rangée. */
+.galerie .projet-code-source {
+  grid-column: 1 / -1;
+}
 .doc-lien {
   font-size: 0.9rem;
   font-weight: 600;

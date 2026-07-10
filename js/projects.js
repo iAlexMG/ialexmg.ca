@@ -17,6 +17,8 @@
  *   stack     : (optionnel) technologies affichées en badges sur la carte
  *               d'accueil (noms identiques FR/EN, pas de clé i18n).
  *   miniature : (optionnel) chemin d'une capture affichée en tête de carte.
+ *   code      : (optionnel) URL du dépôt GitHub du projet — affiche un bouton
+ *               « Code source » en tête de la page du projet (content.js).
  *
  * L'ordre du tableau = l'ordre des cartes sur l'accueil. Les projets les plus
  * pertinents pour un recruteur « ingénierie / trading » sont placés en tête
@@ -40,6 +42,7 @@ const PROJETS = [
     desc: "projet.crypto.desc",
     stack: ["Python", "asyncio", "WebSocket"],
     miniature: "assets/crypto/img/Hybride.PNG",
+    code: "https://github.com/iAlexMG/crypto-orderflow-aggregator",
   },
   {
     id: "ibkr",
@@ -49,6 +52,7 @@ const PROJETS = [
     desc: "projet.ibkr.desc",
     stack: ["Python", "PyQt5", "pyqtgraph", "ib_insync"],
     miniature: "assets/ibkr/img/Capture_01.PNG",
+    code: "https://github.com/iAlexMG/ibkr-orderflow-dashboard",
   },
   {
     id: "backtesting",
