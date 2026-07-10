@@ -62,6 +62,7 @@ const PROJETS = [
     desc: "projet.backtesting.desc",
     stack: ["Python", "LEAN", "vectorbt", "Docker"],
     miniature: "assets/backtesting/figures/optim-heatmap-isoos.png",
+    code: "https://github.com/iAlexMG/backtesting-lean-formation",
   },
   {
     id: "649",
