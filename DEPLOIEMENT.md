@@ -26,10 +26,10 @@ git push
 
 ## 🗂️ Le contenu est rangé PAR PROJET
 
-Tout le contenu vient de **`data/projets.json`**. On n'édite **jamais** le HTML.
-Le fichier contient un bloc par projet (`"649"`, `"python"`, `"crypto"`,
-`"quantower"`, …) ; chacun a une liste `items`. On ajoute le média dans le
-projet voulu.
+Tout le contenu vient de **`data/projets/<projet>.json`** — UN fichier par
+projet (`649.json`, `python.json`, `crypto.json`, …). On n'édite **jamais** le
+HTML. On ajoute le média dans le fichier du projet voulu (schéma détaillé :
+`data/projets/README.md`).
 
 📁 **Chaque projet a son dossier sous `assets/`** : `assets/649/`,
 `assets/python/`, `assets/crypto/`, `assets/quantower/`. On y dépose **toutes**
@@ -45,8 +45,8 @@ donc `assets/<projet>/mon-fichier`.
 
 1. (Image) Dépose ton fichier dans le dossier du projet, ex. **`assets/649/`**.
    (Vidéo) Récupère le lien YouTube — rien à déposer.
-2. Ouvre **`data/projets.json`** et ajoute une entrée dans le `items` du
-   projet voulu :
+2. Ouvre **`data/projets/<projet>.json`** (ex. `data/projets/649.json`) et
+   ajoute une entrée dans son `items` :
 
 ```json
 {
@@ -68,12 +68,12 @@ donc `assets/<projet>/mon-fichier`.
 
 ## 📄 Ajouter un PDF à un projet
 
-Les PDF se gèrent aussi dans **`data/projets.json`** (type `"pdf"`).
+Les PDF se gèrent aussi dans **`data/projets/<projet>.json`** (type `"pdf"`).
 
 1. Dépose ton fichier PDF dans le dossier du projet, ex. **`assets/python/`**
    (ex : `assets/python/01 - Fondamentaux.pdf`).
-2. Ouvre **`data/projets.json`** et ajoute une entrée dans le `items` du
-   projet voulu (ex. `"python"`) :
+2. Ouvre **`data/projets/<projet>.json`** (ex. `data/projets/python.json`) et
+   ajoute une entrée dans son `items` :
 
 ```json
 {
@@ -94,7 +94,7 @@ Les PDF se gèrent aussi dans **`data/projets.json`** (type `"pdf"`).
 > « Voir le PDF » / « Télécharger »).
 > En **anglais**, un avertissement « PDF en français uniquement » s'affiche
 > automatiquement.
-> ⚠️ Le nom du fichier dans `data/projets.json` doit correspondre
+> ⚠️ Le nom du fichier dans `data/projets/<projet>.json` doit correspondre
 > **exactement** (espaces, majuscules/minuscules compris) au fichier déposé.
 
 ---

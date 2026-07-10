@@ -1,6 +1,6 @@
 # Dossier du projet "quantower".
 # Déposez ici les fichiers de ce projet (images : .jpg/.png/.webp ; PDF : .pdf).
-# Puis référencez-les dans data/projets.json (bloc "quantower") :
+# Puis référencez-les dans data/projets/quantower.json :
 #   image : { "type": "image", "url": "assets/quantower/mon-image.png", ... }
 #   pdf   : { "type": "pdf",  "fichier": "assets/quantower/mon-doc.pdf", ... }
 # (Ce fichier sert juste à conserver le dossier dans Git ; supprimable une fois des fichiers ajoutés.)

@@ -8,7 +8,7 @@
  * (index.html) sont générées à partir de cette liste.
  *
  * Champs d'un projet :
- *   id        : identifiant utilisé dans data/projets.json (clé du contenu)
+ *   id        : identifiant du fichier de contenu (data/projets/<id>.json)
  *               et dans la page via <... data-projet="id">.
  *   href      : fichier HTML de la page du projet.
  *   page      : valeur de <body data-page="..."> pour marquer l'onglet actif.
@@ -27,7 +27,7 @@
  *   2. Dupliquez une page de projet (ex : crypto.html) en <href>, et changez
  *      data-page="<page>" et data-projet="<id>".
  *   3. Ajoutez les clés i18n (titre + desc) dans js/translations.js (fr ET en).
- *   4. Ajoutez le contenu du projet dans data/projets.json (clé "<id>").
+ *   4. Créez le fichier de contenu data/projets/<id>.json.
  * --------------------------------------------------------------------------
  */
 
@@ -79,7 +79,7 @@ const PROJETS = [
   // Projets sans contenu pour l'instant : masqués de la grille d'accueil
   // (les pages quantower.html / detection.html restent accessibles par URL).
   // Pour les réactiver, décommenter l'entrée une fois du contenu ajouté
-  // dans data/projets.json.
+  // dans data/projets/<id>.json.
   // {
   //   id: "quantower",
   //   href: "quantower.html",

@@ -1,6 +1,6 @@
 # Dossier du projet "ibkr" (Interactive Brokers).
 # Déposez ici les fichiers de ce projet (images : .jpg/.png/.webp ; PDF : .pdf).
-# Puis référencez-les dans data/projets.json (bloc "ibkr") :
+# Puis référencez-les dans data/projets/ibkr.json :
 #   image : { "type": "image", "url": "assets/ibkr/mon-image.png", ... }
 #   pdf   : { "type": "pdf",  "fichier": "assets/ibkr/mon-doc.pdf", ... }
 # (Ce fichier sert juste à conserver le dossier dans Git ; supprimable une fois des fichiers ajoutés.)

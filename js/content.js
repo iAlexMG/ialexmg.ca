@@ -4,7 +4,7 @@
  * Rendu du contenu d'un PROJET. Un même projet peut mélanger images, figures,
  * vidéos YouTube et PDF.
  *
- * Charge data/projets.json puis génère le contenu demandé selon la vue :
+ * Charge data/projets/<projet>.json puis génère le contenu demandé selon la vue :
  *   - rendre        : projet « à plat » (tous les items d'un coup).
  *   - rendreHub     : table des matières — une carte par SECTION (projet
  *                     sectionné, ex. 649) OU une carte par ITEM (projet à items
@@ -15,7 +15,7 @@
  *   - rendreItem    : UNE feuille (via ?i=) — figure en grand OU visionneuse
  *                     PDF + texte détaillé.
  *
- * Schéma d'un item (dans projets.json) :
+ * Schéma d'un item (dans data/projets/<projet>.json) :
  *   { "type": "image",  "url": "assets/x.png", ... }
  *   { "type": "figure", "url": "assets/x.png", "texte": {fr,en}? ... }
  *   { "type": "video",  "url": "https://youtu.be/ID", ... }
@@ -26,16 +26,20 @@
  */
 
 const Contenu = (function () {
-  const CHEMIN_DONNEES = "data/projets.json";
-  let cacheDonnees = null; // évite de re-télécharger le JSON à chaque rendu.
+  const DOSSIER_DONNEES = "data/projets/";
+  const cacheProjets = {}; // évite de re-télécharger le JSON d'un projet à chaque rendu.
 
-  // Charge (et met en cache) le JSON des projets.
-  async function chargerDonnees() {
-    if (cacheDonnees) return cacheDonnees;
-    const reponse = await fetch(CHEMIN_DONNEES, { cache: "no-cache" });
+  // Charge (et met en cache) le JSON d'UN projet (data/projets/<id>.json).
+  // Renvoie null si le fichier n'existe pas : la page affichera « vide »,
+  // comme avant pour un projet absent du JSON central.
+  async function chargerProjet(projet) {
+    if (!projet) return null;
+    if (projet in cacheProjets) return cacheProjets[projet];
+    const url = DOSSIER_DONNEES + encodeURIComponent(projet) + ".json";
+    const reponse = await fetch(url, { cache: "no-cache" });
+    if (reponse.status === 404) return (cacheProjets[projet] = null);
     if (!reponse.ok) throw new Error("HTTP " + reponse.status);
-    cacheDonnees = await reponse.json();
-    return cacheDonnees;
+    return (cacheProjets[projet] = await reponse.json());
   }
 
   // Protection minimale contre l'injection HTML dans les champs texte du JSON.
@@ -413,9 +417,7 @@ const Contenu = (function () {
     window.I18n.appliquerTraductions(conteneur);
 
     try {
-      const donnees = await chargerDonnees();
-      const projets = donnees.projets || {};
-      const bloc = projet && projets[projet] ? projets[projet] : null;
+      const bloc = await chargerProjet(projet);
       const sections = sectionsDuBloc(bloc);
       const total = sections.reduce(function (n, s) {
         return n + (Array.isArray(s.items) ? s.items.length : 0);
@@ -485,8 +487,7 @@ const Contenu = (function () {
     window.I18n.appliquerTraductions(conteneur);
 
     try {
-      const donnees = await chargerDonnees();
-      const bloc = (donnees.projets || {})[projet] || null;
+      const bloc = await chargerProjet(projet);
       const toutes = sectionsDuBloc(bloc);
       const estPlat = toutes.length === 1 && toutes[0]._plat;
       const sections = toutes.filter(function (s) {
@@ -595,8 +596,7 @@ const Contenu = (function () {
     window.I18n.appliquerTraductions(conteneur);
 
     try {
-      const donnees = await chargerDonnees();
-      const bloc = (donnees.projets || {})[projet] || null;
+      const bloc = await chargerProjet(projet);
       const sections = sectionsDuBloc(bloc);
       const section = trouverSection(sections, sectionId);
 
@@ -699,8 +699,7 @@ const Contenu = (function () {
     const elRetour = document.querySelector("[data-lien-retour]");
 
     try {
-      const donnees = await chargerDonnees();
-      const bloc = (donnees.projets || {})[projet] || null;
+      const bloc = await chargerProjet(projet);
       const sections = sectionsDuBloc(bloc);
 
       let section = null;

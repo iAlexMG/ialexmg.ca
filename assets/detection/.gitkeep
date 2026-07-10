@@ -1,6 +1,6 @@
 # Dossier du projet "detection" (Détection d'objets).
 # Déposez ici les fichiers de ce projet (images : .jpg/.png/.webp ; PDF : .pdf).
-# Puis référencez-les dans data/projets.json (bloc "detection") :
+# Puis référencez-les dans data/projets/detection.json :
 #   image : { "type": "image", "url": "assets/detection/mon-image.png", ... }
 #   pdf   : { "type": "pdf",  "fichier": "assets/detection/mon-doc.pdf", ... }
 # (Ce fichier sert juste à conserver le dossier dans Git ; supprimable une fois des fichiers ajoutés.)
