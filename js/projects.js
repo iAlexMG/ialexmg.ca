@@ -46,7 +46,9 @@ const PROJETS = [
     desc: "projet.crypto.desc",
     stack: ["Python", "asyncio", "WebSocket", "LEAN"],
     miniature: "assets/crypto/img/Hybride.PNG",
-    code: "https://github.com/iAlexMG/crypto",
+    // Bouton « Code source » désactivé tant que le dépôt est en cours de
+    // modification — décommenter pour le réafficher.
+    // code: "https://github.com/iAlexMG/crypto",
   },
   {
     id: "indices",
