@@ -20,9 +20,9 @@ PROJETS « HUB » (crypto, indices) — un mono-dépôt en 4 piliers
   - Une section du squelette peut porter "inclure": "<pilier>" : le script y
     injecte les sections de <mono-dépôt>/<pilier>/site-content/contenu.json en
     SOUS-SECTIONS (champ parent = id de la section, mécanisme sousHub du site).
-  - Les assets de chaque pilier inclus gardent leur dossier historique du site
-    (assets/crypto, assets/backtesting, assets/ibkr) : les URL des contenu.json
-    sources y pointent déjà — on ne les réécrit pas.
+  - Les assets de chaque pilier inclus vont dans assets/<id-du-hub>/<pilier>/
+    (ex. assets/crypto/affichage) : les URL des contenu.json sources pointent
+    déjà sur ce chemin final — on ne les réécrit pas.
 
 USAGE (depuis la racine du site iAlexMG.ca) :
     python tools/sync-site.py             # synchronise tous les projets
@@ -66,17 +66,17 @@ PROJETS = {
 #              puis l'emplacement final prévu après le ménage local. ⚠️ Piège de
 #              casse Windows : « crypto » matcherait aussi l'ANCIEN dossier
 #              « Crypto » tant qu'il existe, d'où la priorité au staging.
-#   assets   : pilier inclus -> dossier assets/<...> du site (namespaces
-#              HISTORIQUES conservés, ne pas les renommer sans réécrire les URL
-#              dans les contenu.json sources).
+#   assets   : pilier inclus -> dossier assets/<...> du site, au schéma
+#              standard <id-du-hub>/<pilier> (ne pas renommer sans réécrire
+#              les URL dans les contenu.json sources).
 HUBS = {
     "crypto": {
         "dossiers": ["_restructure/crypto", "crypto"],
-        "assets": {"affichage": "crypto", "backtesting": "backtesting"},
+        "assets": {"affichage": "crypto/affichage", "backtesting": "crypto/backtesting"},
     },
     "indices": {
         "dossiers": ["_restructure/indicesBoursiers", "indicesBoursiers"],
-        "assets": {"affichage": "ibkr"},
+        "assets": {"affichage": "indices/affichage"},
     },
 }
 

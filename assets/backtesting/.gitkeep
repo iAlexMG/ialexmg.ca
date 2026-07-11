@@ -1,6 +1,0 @@
-# Dossier du projet "backtesting".
-# Déposez ici les fichiers de ce projet (images : .jpg/.png/.webp ; PDF : .pdf).
-# Puis référencez-les dans data/projets/backtesting.json :
-#   image : { "type": "image", "url": "assets/backtesting/mon-image.png", ... }
-#   pdf   : { "type": "pdf",  "fichier": "assets/backtesting/mon-doc.pdf", ... }
-# (Ce fichier sert juste à conserver le dossier dans Git ; supprimable une fois des fichiers ajoutés.)

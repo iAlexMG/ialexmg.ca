@@ -12,7 +12,9 @@
 
 Chaque fichier `<id>.json` contient le contenu d'UN projet. L'`id` correspond
 au champ `id` défini dans `js/projects.js` et à `data-projet="…"` dans la page.
-Chaque projet a SON dossier de médias sous `assets/<id>/`.
+Chaque projet a SON dossier de médias sous `assets/<id>/` ; pour un hub,
+chaque pilier inclus a le sien sous `assets/<id>/<pilier>/`
+(ex. `assets/crypto/affichage/`).
 
 ## Deux schémas possibles
 

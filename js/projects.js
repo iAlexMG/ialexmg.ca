@@ -45,7 +45,7 @@ const PROJETS = [
     titre: "projet.crypto",
     desc: "projet.crypto.desc",
     stack: ["Python", "asyncio", "WebSocket", "LEAN"],
-    miniature: "assets/crypto/img/Hybride.PNG",
+    miniature: "assets/crypto/affichage/img/Hybride.PNG",
     // Bouton « Code source » désactivé tant que le dépôt est en cours de
     // modification — décommenter pour le réafficher.
     // code: "https://github.com/iAlexMG/crypto",
@@ -57,7 +57,7 @@ const PROJETS = [
     titre: "projet.indices",
     desc: "projet.indices.desc",
     stack: ["Python", "PyQt5", "C#", "LEAN"],
-    miniature: "assets/ibkr/img/Capture_01.PNG",
+    miniature: "assets/indices/affichage/img/Capture_01.PNG",
     // Bouton « Code source » désactivé tant que le dépôt est en cours de
     // modification — décommenter pour le réafficher.
     // code: "https://github.com/iAlexMG/indicesBoursiers",
