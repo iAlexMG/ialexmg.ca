@@ -181,8 +181,8 @@ img { max-width: 100%; display: block; }
 .entete-page .accroche {
   color: var(--couleur-texte-doux);
   max-width: 60ch;
-  text-align: justify;      /* bords gauche/droite alignés */
-  hyphens: auto;            /* évite les grands trous entre les mots */
+  /* Aligné à gauche, sans césure : la justification + hyphens coupait des
+     mots sur deux lignes. */
 }
 
 /* ----- Section d'accueil (hero) ----- */

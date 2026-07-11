@@ -284,7 +284,7 @@ const Contenu = (function () {
     return (
       '<a class="carte-portfolio" href="' + href + '">' +
       "  <h3>" + echapper(titre) + "</h3>" +
-      "  <p>" + echapper(desc) + "</p>" +
+      (desc ? "  <p>" + echapper(desc) + "</p>" : "") +
       '  <span class="fleche">' + echapper(fleche) + " →</span>" +
       "</a>"
     );
@@ -508,6 +508,9 @@ const Contenu = (function () {
       const toutes = sectionsDuBloc(bloc);
       const estPlat = toutes.length === 1 && toutes[0]._plat;
       const lienCode = lienCodeSource(projet);
+      // data-hub-titres-seuls sur le conteneur : cartes sans description
+      // (les hubs Crypto / Indices, où le titre du pilier suffit).
+      const titresSeuls = conteneur.hasAttribute("data-hub-titres-seuls");
       const sections = toutes.filter(function (s) {
         // On exclut les sous-sections (parent défini) : elles sont présentées
         // dans le sous-hub de leur section parente, pas dans le hub principal.
@@ -556,10 +559,11 @@ const Contenu = (function () {
               // Accroche courte pour la carte du hub ; à défaut l'intro, puis le
               // texte complet. 'accroche' évite d'étaler toute la prose (ex. la
               // Conclusion, qui n'a pas d'intro) sur la table des matières.
-              const desc =
-                texteLocalise(section.accroche) ||
-                texteLocalise(section.intro) ||
-                texteLocalise(section.texte);
+              const desc = titresSeuls
+                ? ""
+                : texteLocalise(section.accroche) ||
+                  texteLocalise(section.intro) ||
+                  texteLocalise(section.texte);
               const id = section.id || String(idx);
               const href =
                 pageSection +
