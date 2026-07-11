@@ -43,7 +43,7 @@ const TRADUCTIONS = {
     "projet.649.desc": "Mettre le hasard à l'épreuve : tests statistiques et apprentissage automatique sur des décennies de tirages.",
     "projet.python.desc": "Maîtriser Python, des bases aux concepts avancés.",
     "projet.crypto.desc": "La chaîne complète sur le Bitcoin : données historiques, terminal d'orderflow, backtesting, automatisation.",
-    "projet.indices.desc": "La même chaîne sur les futures ES et NQ du CME — jusqu'au trading automatisé en simulation.",
+    "projet.indices.desc": "Les futures d'indices du CME (NQ, ES) : données temps réel, backtesting sur historique — jusqu'au trading automatisé en simulation.",
     "projet.detection.desc": "Apprendre à la machine à reconnaître ce qu'elle voit.",
 
     // Accueil
@@ -92,7 +92,7 @@ const TRADUCTIONS = {
     "crypto.intro": "La chaîne complète du trading crypto (BTC/USDT), en quatre piliers : extraire l'historique tick-par-tick, l'afficher dans un terminal d'orderflow multi-exchanges façon Bookmap, backtester les stratégies avec LEAN et vectorbt, puis automatiser l'exécution sur Bitget. Chaque pilier a sa section — de la donnée brute jusqu'à l'exécution.",
 
     // Hub Indices boursiers (intro spécifique)
-    "indices.intro": "La même chaîne, appliquée aux futures d'indices du CME (ES et NQ) : extraire les ticks depuis Quantower, les afficher dans un dashboard d'orderflow temps réel branché sur Interactive Brokers, rejouer les stratégies LEAN sur NQ, puis avancer par phases mesurées vers le trading semi-automatisé — en simulation d'abord.",
+    "indices.intro": "Ce projet porte sur les futures d'indices du CME — le NQ (Nasdaq 100) et l'ES (S&P 500) — avec un objectif : automatiser le trading. Pour automatiser, il faut recevoir et afficher les données du marché en temps réel ; et avant de laisser tourner une stratégie, il faut la backtester sur un historique. D'où les quatre piliers ci-dessous.",
 
     // Projet 649 (intro spécifique)
     "649.intro": "Le Lotto 6/49 est-il vraiment aléatoire ? Plutôt que de chercher à prédire les numéros, ce projet vérifie si l'historique des tirages se comporte autrement qu'un pur hasard. J'y teste deux croyances répandues — le numéro « en retard » et le numéro « en avance » — d'abord avec des statistiques, puis avec des modèles d'apprentissage automatique. J'ai choisi le Lotto 6/49 pour son historique de plusieurs décennies : plus l'historique est long, plus les résultats gagnent en crédibilité. Vous trouverez ci-dessous les documents explicatifs et les résultats, classés par étape.",
@@ -136,7 +136,7 @@ const TRADUCTIONS = {
     "projet.649.desc": "Putting randomness to the test: statistics and machine learning on decades of draws.",
     "projet.python.desc": "Mastering Python, from the basics to advanced concepts.",
     "projet.crypto.desc": "The full chain on Bitcoin: historical data, orderflow terminal, backtesting, automation.",
-    "projet.indices.desc": "The same chain on the CME ES and NQ futures — all the way to automated trading in simulation.",
+    "projet.indices.desc": "The CME index futures (NQ, ES): real-time data, backtesting on history — all the way to automated trading in simulation.",
     "projet.detection.desc": "Teaching the machine to recognize what it sees.",
 
     // Home
@@ -182,7 +182,7 @@ const TRADUCTIONS = {
     "crypto.intro": "The full crypto trading chain (BTC/USDT), in four pillars: extracting the tick-by-tick history, displaying it in a Bookmap-style multi-exchange orderflow terminal, backtesting the strategies with LEAN and vectorbt, then automating execution on Bitget. Each pillar has its own section — from raw data all the way to execution.",
 
     // Stock Indices hub (specific intro)
-    "indices.intro": "The same chain, applied to the CME index futures (ES and NQ): extracting the ticks from Quantower, displaying them in a real-time orderflow dashboard plugged into Interactive Brokers, replaying the LEAN strategies on NQ, then moving through measured phases toward semi-automated trading — in simulation first.",
+    "indices.intro": "This project is about the CME index futures — the NQ (Nasdaq 100) and the ES (S&P 500) — with one goal: automating the trading. Automation requires receiving and displaying market data in real time; and before letting a strategy run, it must be backtested on history. Hence the four pillars below.",
 
     // Python project (specific intro)
     "python.intro": "Here are the files I created to learn and improve my Python skills. Always a work in progress!",
