@@ -40,15 +40,18 @@ iAlexMG.ca/
 └── assets/               # UN DOSSIER PAR PROJET (images + PDF du projet)
     ├── 649/
     ├── python/
-    ├── crypto/           # assets du pilier crypto/affichage
-    ├── backtesting/      # assets du pilier crypto/backtesting
-    └── ibkr/             # assets du pilier indicesBoursiers/affichage
+    ├── crypto/           # hub crypto : un sous-dossier par pilier
+    │   ├── affichage/
+    │   └── backtesting/
+    └── indices/          # hub indices : idem
+        └── affichage/
 ```
 
 > **Où je mets mes fichiers ?** La **source de vérité** d'un projet est
 > `Portfolio/<Projet>/site-content/` (à côté de ce dépôt) : `contenu.json`
 > pour les textes, `assets/…` pour images et PDF. `python tools/sync-site.py`
-> copie le tout vers `data/projets/<id>.json` et `assets/<id>/` (miroir).
+> copie le tout vers `data/projets/<id>.json` et `assets/<id>/` (miroir) —
+> pour un pilier de hub, vers `assets/<id-du-hub>/<pilier>/`.
 > Dans `contenu.json`, on référence le chemin **final** sur le site :
 > `assets/<id>/mon-fichier`. Procédure pas à pas : `DEPLOIEMENT.md`.
 
