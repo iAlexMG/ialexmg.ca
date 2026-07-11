@@ -181,6 +181,7 @@ img { max-width: 100%; display: block; }
 .entete-page .accroche {
   color: var(--couleur-texte-doux);
   max-width: 60ch;
+  white-space: pre-line;    /* respecte les sauts de ligne (\n) du texte */
   /* Aligné à gauche, sans césure : la justification + hyphens coupait des
      mots sur deux lignes. */
 }
