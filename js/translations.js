@@ -89,10 +89,10 @@ const TRADUCTIONS = {
     "python.intro": "Voici les fichiers que j'ai créés pour apprendre et me perfectionner en Python. Toujours en amélioration constante !",
 
     // Hub Crypto (intro spécifique)
-    "crypto.intro": "La chaîne complète du trading crypto (BTC/USDT), en quatre piliers : extraire l'historique tick-par-tick, l'afficher dans un terminal d'orderflow multi-exchanges façon Bookmap, backtester les stratégies avec LEAN et vectorbt, puis automatiser l'exécution sur Bitget. Chaque pilier a sa section — de la donnée brute jusqu'à l'exécution.",
+    "crypto.intro": "Ce projet porte sur le marché crypto — le Bitcoin (BTC/USDT) — avec un objectif : automatiser le trading. Pour automatiser, il faut recevoir et afficher les données du marché en temps réel ; et avant de laisser tourner une stratégie, il faut la backtester sur un historique. Contrairement aux marchés boursiers, la crypto se négocie 24 h sur 24, 7 jours sur 7, et les exchanges exposent publiquement des données très détaillées. D'où les quatre piliers ci-dessous.",
 
     // Hub Indices boursiers (intro spécifique)
-    "indices.intro": "Ce projet porte sur les futures d'indices du CME — le NQ (Nasdaq 100) et l'ES (S&P 500) — avec un objectif : automatiser le trading. Pour automatiser, il faut recevoir et afficher les données du marché en temps réel ; et avant de laisser tourner une stratégie, il faut la backtester sur un historique. D'où les quatre piliers ci-dessous.",
+    "indices.intro": "Ce projet porte sur les futures d'indices du CME — le NQ (Nasdaq 100) et l'ES (S&P 500) — avec un objectif : automatiser le trading. Pour automatiser, il faut recevoir et afficher les données du marché en temps réel ; et avant de laisser tourner une stratégie, il faut la backtester sur un historique. Contrairement à la crypto qui se négocie 24/7, ces marchés ouvrent et ferment à heures fixes, et leurs données détaillées sont plus rares et plus coûteuses. D'où les quatre piliers ci-dessous.",
 
     // Projet 649 (intro spécifique)
     "649.intro": "Le Lotto 6/49 est-il vraiment aléatoire ? Plutôt que de chercher à prédire les numéros, ce projet vérifie si l'historique des tirages se comporte autrement qu'un pur hasard. J'y teste deux croyances répandues — le numéro « en retard » et le numéro « en avance » — d'abord avec des statistiques, puis avec des modèles d'apprentissage automatique. J'ai choisi le Lotto 6/49 pour son historique de plusieurs décennies : plus l'historique est long, plus les résultats gagnent en crédibilité. Vous trouverez ci-dessous les documents explicatifs et les résultats, classés par étape.",
@@ -179,10 +179,10 @@ const TRADUCTIONS = {
     "documents.avertissement_fr": "⚠️ The PDF documents are only available in French.",
 
     // Crypto hub (specific intro)
-    "crypto.intro": "The full crypto trading chain (BTC/USDT), in four pillars: extracting the tick-by-tick history, displaying it in a Bookmap-style multi-exchange orderflow terminal, backtesting the strategies with LEAN and vectorbt, then automating execution on Bitget. Each pillar has its own section — from raw data all the way to execution.",
+    "crypto.intro": "This project is about the crypto market — Bitcoin (BTC/USDT) — with one goal: automating the trading. Automation requires receiving and displaying market data in real time; and before letting a strategy run, it must be backtested on history. Unlike stock markets, crypto trades 24/7 and the exchanges publicly expose very detailed data. Hence the four pillars below.",
 
     // Stock Indices hub (specific intro)
-    "indices.intro": "This project is about the CME index futures — the NQ (Nasdaq 100) and the ES (S&P 500) — with one goal: automating the trading. Automation requires receiving and displaying market data in real time; and before letting a strategy run, it must be backtested on history. Hence the four pillars below.",
+    "indices.intro": "This project is about the CME index futures — the NQ (Nasdaq 100) and the ES (S&P 500) — with one goal: automating the trading. Automation requires receiving and displaying market data in real time; and before letting a strategy run, it must be backtested on history. Unlike crypto, which trades 24/7, these markets open and close at fixed hours, and detailed data is scarcer and more expensive. Hence the four pillars below.",
 
     // Python project (specific intro)
     "python.intro": "Here are the files I created to learn and improve my Python skills. Always a work in progress!",
