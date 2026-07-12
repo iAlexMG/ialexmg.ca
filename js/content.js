@@ -99,6 +99,36 @@ const Contenu = (function () {
   // Rend un bloc de prose : les blocs séparés par une ligne vide deviennent des
   // paragraphes ; un bloc commençant par « ## » devient un sous-titre (suivi de
   // son paragraphe éventuel). Renvoie "" si le texte est vide.
+  // Mise en forme INLINE de la prose : échappe le HTML puis convertit le
+  // gras **…** et le code `…` — le seul Markdown inline que les contenus
+  // des projets utilisent.
+  function formaterInline(texte) {
+    return echapper(texte)
+      .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+      .replace(/`([^`]+)`/g, "<code>$1</code>");
+  }
+
+  // Un bloc SANS titre : liste à puces si toutes ses lignes commencent par
+  // « - », paragraphe sinon.
+  function rendreBlocProse(t) {
+    const lignes = t.split("\n").map(function (l) {
+      return l.trim();
+    }).filter(Boolean);
+    const estListe = lignes.length && lignes.every(function (l) {
+      return l.indexOf("- ") === 0;
+    });
+    if (estListe) {
+      return (
+        "<ul>" +
+        lignes.map(function (l) {
+          return "<li>" + formaterInline(l.slice(2)) + "</li>";
+        }).join("") +
+        "</ul>"
+      );
+    }
+    return "<p>" + formaterInline(t) + "</p>";
+  }
+
   function rendreProse(texte) {
     if (!texte) return "";
     const html = String(texte)
@@ -110,10 +140,10 @@ const Contenu = (function () {
         if (m) {
           let out =
             '<h3 class="prose-sous-titre">' + echapper(m[1].trim()) + "</h3>";
-          if (m[2] && m[2].trim()) out += "<p>" + echapper(m[2].trim()) + "</p>";
+          if (m[2] && m[2].trim()) out += rendreBlocProse(m[2].trim());
           return out;
         }
-        return "<p>" + echapper(t) + "</p>";
+        return rendreBlocProse(t);
       })
       .join("");
     return '<div class="section-prose">' + html + "</div>";
@@ -286,6 +316,28 @@ const Contenu = (function () {
       "  <h3>" + echapper(titre) + "</h3>" +
       (desc ? "  <p>" + echapper(desc) + "</p>" : "") +
       '  <span class="fleche">' + echapper(fleche) + " →</span>" +
+      "</a>"
+    );
+  }
+
+  // Bandeau « concept transversal » d'un hub (section marquée "concept": true) :
+  // pleine largeur sous la grille des piliers — un concept traverse la chaîne,
+  // il ne s'y insère pas comme un pilier. Montre toujours l'accroche (c'est le
+  // manifeste du concept), même en mode titres seuls.
+  function creerBandeauConcept(section, projet, pageSection) {
+    const titre = texteLocalise(section.titre);
+    const desc = texteLocalise(section.accroche) || texteLocalise(section.intro);
+    const chip = texteLocalise(section.statut);
+    const href =
+      pageSection +
+      "?p=" + encodeURIComponent(projet) +
+      "&s=" + encodeURIComponent(section.id);
+    return (
+      '<a class="carte-portfolio carte-concept" href="' + href + '">' +
+      (chip ? '<span class="concept-etiquette">' + echapper(chip) + "</span>" : "") +
+      "  <h3>" + echapper(titre) + "</h3>" +
+      (desc ? "  <p>" + echapper(desc) + "</p>" : "") +
+      '  <span class="fleche">' + echapper(window.I18n.t("hub.ouvrir")) + " →</span>" +
       "</a>"
     );
   }
@@ -550,10 +602,18 @@ const Contenu = (function () {
           lienCode +
           '<p class="galerie-message" data-i18n="contenu.vide"></p>';
       } else {
+        // Les sections « concept » sortent de la grille des piliers : elles se
+        // rendent en bandeau pleine largeur à la suite.
+        const concepts = sections.filter(function (s) {
+          return s.concept;
+        });
+        const piliers = sections.filter(function (s) {
+          return !s.concept;
+        });
         conteneur.innerHTML =
           lienCode +
           '<div class="grille-hub">' +
-          sections
+          piliers
             .map(function (section, idx) {
               const titre = texteLocalise(section.titre);
               // Accroche courte pour la carte du hub ; à défaut l'intro, puis le
@@ -572,7 +632,12 @@ const Contenu = (function () {
               return creerCarteLien(titre, desc, href, libelleCarteSection(section));
             })
             .join("") +
-          "</div>";
+          "</div>" +
+          concepts
+            .map(function (section) {
+              return creerBandeauConcept(section, projet, pageSection);
+            })
+            .join("");
       }
     } catch (err) {
       console.error("[hub] Échec du chargement :", err);
