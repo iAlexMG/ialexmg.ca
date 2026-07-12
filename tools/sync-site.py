@@ -41,7 +41,7 @@ RÈGLES :
   - Le dossier Portfolio est supposé être à côté du dossier du site
     (…/Claude_Code/Portfolio) ; sinon, passer --portfolio <chemin>.
 
-Après une synchro : git add -A && git commit && git push (voir DEPLOIEMENT.md).
+Après une synchro : git add -A && git commit && git push.
 """
 
 import argparse
