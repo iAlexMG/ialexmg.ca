@@ -298,6 +298,27 @@ img { max-width: 100%; display: block; }
   font-size: 0.9rem;
 }
 
+/* Bandeau « concept transversal » d'un hub (section "concept" du JSON,
+   ex. l'hybride du hub crypto) : pleine largeur sous les cartes de piliers,
+   marqué par un filet accent et une étiquette. */
+.carte-concept {
+  margin-top: 1.25rem;
+  border-left: 4px solid var(--couleur-accent);
+  background: var(--couleur-surface-alt);
+}
+.concept-etiquette {
+  display: inline-block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.15rem 0.55rem;
+  border: 1px solid var(--couleur-bordure);
+  border-radius: 999px;
+  color: var(--couleur-texte-doux);
+  margin-bottom: 0.6rem;
+}
+
 /* Miniature d'aperçu en tête d'une carte de projet (champ "miniature"
    de projects.js — décoratif, le titre décrit déjà le projet). */
 .carte-miniature {
@@ -486,6 +507,20 @@ img { max-width: 100%; display: block; }
   line-height: 1.7;
 }
 .section-prose p:last-child { margin-bottom: 0; }
+.section-prose ul {
+  margin: 0 0 0.9rem 1.25rem;
+  color: var(--couleur-texte);
+  line-height: 1.7;
+}
+.section-prose li { margin-bottom: 0.35rem; }
+.section-prose code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.88em;
+  background: var(--couleur-surface-alt);
+  border: 1px solid var(--couleur-bordure);
+  border-radius: 4px;
+  padding: 0.05rem 0.3rem;
+}
 
 /* Sommaire cliquable en tête de page de projet. */
 .projet-sommaire {

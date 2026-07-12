@@ -20,6 +20,10 @@ PROJETS « HUB » (crypto, indices) — un mono-dépôt en 4 piliers
   - Une section du squelette peut porter "inclure": "<pilier>" : le script y
     injecte les sections de <mono-dépôt>/<pilier>/site-content/contenu.json en
     SOUS-SECTIONS (champ parent = id de la section, mécanisme sousHub du site).
+  - Cas particulier « pilier page unique » (ex. crypto/historique) : une section
+    du pilier qui porte le MÊME id que la section du squelette la COMPLÈTE
+    (texte, items… ; les champs du squelette priment) au lieu de s'y accrocher ;
+    si le pilier n'apporte aucune sous-section, le flag sousHub est retiré.
   - Les assets de chaque pilier inclus vont dans assets/<id-du-hub>/<pilier>/
     (ex. assets/crypto/affichage) : les URL des contenu.json sources pointent
     déjà sur ce chemin final — on ne les réécrit pas.
@@ -72,7 +76,11 @@ PROJETS = {
 HUBS = {
     "crypto": {
         "dossiers": ["_restructure/crypto", "crypto"],
-        "assets": {"affichage": "crypto/affichage", "backtesting": "crypto/backtesting"},
+        "assets": {
+            "historique": "crypto/historique",
+            "affichage": "crypto/affichage",
+            "backtesting": "crypto/backtesting",
+        },
     },
     "indices": {
         "dossiers": ["_restructure/indicesBoursiers", "indicesBoursiers"],
@@ -212,11 +220,24 @@ def assembler_hub(pid, dossier_portfolio, dry_run):
             return False, f"pilier {pilier}/site-content/contenu.json ABSENT — projet sauté"
         except json.JSONDecodeError as err:
             return False, f"pilier {pilier} INVALIDE ({err}) — projet sauté"
+        enfants = 0
         for sous in contenu_pilier.get("sections", []):
+            if sous.get("id") == section["id"]:
+                # Pilier « page unique » (ex. historique) : la section homonyme
+                # COMPLÈTE la section du squelette (dont les champs priment)
+                # au lieu de s'y accrocher — sinon doublon d'id.
+                for cle, valeur in sous.items():
+                    section.setdefault(cle, valeur)
+                continue
             # Les sections déjà imbriquées côté pilier (ex. les parties de la
             # formation) gardent leur parent ; les autres s'accrochent au pilier.
             sous.setdefault("parent", section["id"])
             sections.append(sous)
+            enfants += 1
+        # Sans sous-section injectée, la section n'est pas un sous-hub : sa
+        # page (texte + items fusionnés) se rend directement.
+        if not enfants:
+            section.pop("sousHub", None)
 
     # Garde-fou : les ids de section doivent rester uniques dans le hub fusionné.
     ids = [s.get("id") for s in sections]
