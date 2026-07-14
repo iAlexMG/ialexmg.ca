@@ -100,12 +100,17 @@ const Contenu = (function () {
   // paragraphes ; un bloc commençant par « ## » devient un sous-titre (suivi de
   // son paragraphe éventuel). Renvoie "" si le texte est vide.
   // Mise en forme INLINE de la prose : échappe le HTML puis convertit le
-  // gras **…** et le code `…` — le seul Markdown inline que les contenus
-  // des projets utilisent.
+  // gras **…**, le code `…` et les liens [texte](https://…) — le seul
+  // Markdown inline que les contenus des projets utilisent. Liens https
+  // uniquement (le texte est déjà échappé, l'URL ne peut pas fermer l'attribut).
   function formaterInline(texte) {
     return echapper(texte)
       .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
-      .replace(/`([^`]+)`/g, "<code>$1</code>");
+      .replace(/`([^`]+)`/g, "<code>$1</code>")
+      .replace(
+        /\[([^\]]+)\]\((https:\/\/[^\s)]+)\)/g,
+        '<a href="$2" target="_blank" rel="noopener">$1</a>'
+      );
   }
 
   // Un bloc SANS titre : liste à puces si toutes ses lignes commencent par
@@ -418,6 +423,7 @@ const Contenu = (function () {
       '<section class="projet-section" id="' + echapper(ancre) + '">' +
       '  <h2 class="projet-section-titre">' + echapper(titre) + "</h2>" +
       (intro ? '  <p class="section-intro">' + echapper(intro) + "</p>" : "") +
+      avertissementTexteFr(section.texte) +
       corps +
       "</section>"
     );
@@ -458,6 +464,15 @@ const Contenu = (function () {
     const enAnglais = window.I18n.langueActive() === "en";
     if (!enAnglais || !aDesPdf) return "";
     return '<p class="avertissement-langue" data-i18n="documents.avertissement_fr"></p>';
+  }
+
+  // Avertissement affiché en anglais quand le texte d'une section ou d'un item
+  // n'existe qu'en français (texteLocalise retombe alors silencieusement sur
+  // le fr, sans que le visiteur sache pourquoi).
+  function avertissementTexteFr(champ) {
+    if (window.I18n.langueActive() !== "en") return "";
+    if (!champ || typeof champ === "string" || champ.en || !champ.fr) return "";
+    return '<p class="avertissement-langue" data-i18n="contenu.avertissement_texte_fr"></p>';
   }
 
   // Normalise un bloc projet vers une liste de sections.
@@ -737,11 +752,13 @@ const Contenu = (function () {
           return s.parent === (section.id || sectionId);
         });
         conteneur.innerHTML =
+          avertissementTexteFr(section.texte) +
           rendreProse(texte) +
           construireSousHubSections(enfants, projet, pageSection);
       } else if (section.sousMenu && items.length) {
         // Sous-menu : une carte par item (mène à sa page item).
         conteneur.innerHTML =
+          avertissementTexteFr(section.texte) +
           rendreProse(texte) +
           construireSousHub(items, projet, section.id || sectionId, pageItem);
       } else if (items.length) {
@@ -750,10 +767,11 @@ const Contenu = (function () {
         });
         conteneur.innerHTML =
           banniereAvertissementPdf(aPdf) +
+          avertissementTexteFr(section.texte) +
           '<div class="galerie">' + items.map(creerCarte).join("") + "</div>" +
           rendreProse(texte);
       } else if (texte) {
-        conteneur.innerHTML = rendreProse(texte);
+        conteneur.innerHTML = avertissementTexteFr(section.texte) + rendreProse(texte);
       } else {
         conteneur.innerHTML =
           '<div class="galerie"><p class="galerie-message" data-i18n="contenu.vide"></p></div>';
@@ -844,6 +862,7 @@ const Contenu = (function () {
 
       conteneur.innerHTML =
         banniereAvertissementPdf(estPdf) +
+        avertissementTexteFr(item.texte) +
         media +
         rendreProse(texteLocalise(item.texte));
     } catch (err) {
