@@ -71,6 +71,7 @@ const TRADUCTIONS = {
     "contenu.retour": "← Retour au projet",
     "contenu.retour_accueil": "← Retour à l'accueil",
     "contenu.code_source": "Code source (GitHub) ↗",
+    "contenu.avertissement_texte_fr": "⚠️ Cette section n'est disponible qu'en français.",
 
     // Hub de projet (cartes par section)
     "hub.documents": "documents",
@@ -164,6 +165,7 @@ const TRADUCTIONS = {
     "contenu.retour": "← Back to the project",
     "contenu.retour_accueil": "← Back to home",
     "contenu.code_source": "Source code (GitHub) ↗",
+    "contenu.avertissement_texte_fr": "⚠️ This section is only available in French.",
 
     // Project hub (one card per section)
     "hub.documents": "documents",
