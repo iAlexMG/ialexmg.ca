@@ -22,11 +22,15 @@
  *
  * L'ordre du tableau = l'ordre des cartes sur l'accueil. Les projets les plus
  * pertinents pour un recruteur « ingénierie / trading » sont placés en tête
- * (les deux hubs Crypto et Indices boursiers), puis 649 et Python.
+ * (les deux hubs Crypto et Indices boursiers), puis Statistiques et Formations.
  *
- * HUBS : « crypto » et « indices » couvrent chacun un mono-dépôt GitHub en
- * 4 piliers (historique / affichage / backtesting / automatisation). Leur JSON
- * est ASSEMBLÉ par tools/sync-site.py depuis les site-content du mono-dépôt.
+ * HUBS : les quatre projets sont des hubs, dont le JSON est ASSEMBLÉ par
+ * tools/sync-site.py depuis des site-content sources.
+ *   - « crypto » et « indices » couvrent chacun un mono-dépôt GitHub en
+ *     4 piliers (historique / affichage / backtesting / automatisation) ;
+ *   - « statistiques » et « formations » rassemblent des projets et des cours
+ *     qui restent chez eux — un pilier de hub peut vivre hors de la racine du
+ *     hub (voir la clé « chemins » de sync-site.py).
  *
  * POUR AJOUTER UN PROJET :
  *   1. Ajoutez une entrée ci-dessous.
@@ -63,21 +67,21 @@ const PROJETS = [
     // code: "https://github.com/iAlexMG/indicesBoursiers",
   },
   {
-    id: "649",
-    href: "projet-649.html",
-    page: "projet-649",
-    titre: "projet.649",
-    desc: "projet.649.desc",
+    id: "statistiques",
+    href: "statistiques.html",
+    page: "statistiques",
+    titre: "projet.statistiques",
+    desc: "projet.statistiques.desc",
     stack: ["Python", "pandas", "scikit-learn"],
-    miniature: "assets/649/figures/fig12_phase2_synthese.png",
+    miniature: "assets/statistiques/lotto-649/figures/fig12_phase2_synthese.png",
   },
   {
-    id: "python",
-    href: "python.html",
-    page: "python",
-    titre: "projet.python",
-    desc: "projet.python.desc",
-    stack: ["Python", "Matplotlib", "pandas", "Plotly"],
+    id: "formations",
+    href: "formations.html",
+    page: "formations",
+    titre: "projet.formations",
+    desc: "projet.formations.desc",
+    stack: ["Python", "Git", "LEAN", "vectorbt"],
   },
   // Projet sans contenu pour l'instant : masqué de la grille d'accueil
   // (la page detection.html reste accessible par URL). Pour le réactiver,
@@ -99,8 +103,37 @@ const PROJETS_ALIAS = {
   ibkr: "indices",
   quantower: "indices",
   backtesting: "crypto",
+  "649": "statistiques",
+  python: "formations",
+};
+
+// Sections qui ont CHANGÉ DE PROJET (refonte de juillet 2026) : ancien projet ->
+// { id de section -> projet qui l'héberge désormais }. Prime sur PROJETS_ALIAS,
+// qui raisonne par projet et ne suffit plus dès qu'un projet s'est SCINDÉ :
+// ?p=backtesting&s=lean visait crypto par alias, mais la formation vit
+// maintenant sous formations, alors que les stratégies du même ancien projet,
+// elles, sont restées dans crypto.
+//
+// ⚠️ La clé est l'ANCIEN PROJET, pas la section seule : « conclusion » existe
+// AUSSI dans le 649, et une table à plat y enverrait la conclusion du 649.
+const SECTIONS_ALIAS = {
+  backtesting: {
+    formation: "formations",
+    lean: "formations",
+    vbt: "formations",
+    conclusion: "formations",
+    references: "formations",
+  },
+  crypto: {
+    formation: "formations",
+    lean: "formations",
+    vbt: "formations",
+    conclusion: "formations",
+    references: "formations",
+  },
 };
 
 // Exposition globale (pas de modules pour rester compatible file:// et GitHub Pages).
 window.PROJETS = PROJETS;
 window.PROJETS_ALIAS = PROJETS_ALIAS;
+window.SECTIONS_ALIAS = SECTIONS_ALIAS;

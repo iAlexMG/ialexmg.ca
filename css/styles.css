@@ -298,6 +298,64 @@ img { max-width: 100%; display: block; }
   font-size: 0.9rem;
 }
 
+/* ----- Bandeau des exchanges (hub crypto) -----
+   Une fiche par exchange du périmètre, écartés compris : les piliers ne les
+   listent plus, c'est ici qu'on dit le rôle de chacun. Fiches non cliquables
+   (rien à ouvrir) — d'où une carte plus sobre que .carte-portfolio. */
+.section-exchanges { padding-top: 0; }
+.exchanges-titre { margin-bottom: 0.25rem; }
+.exchanges-intro {
+  color: var(--couleur-texte-doux);
+  max-width: 65ch;
+  margin: 0 0 1.5rem;
+}
+.grille-exchanges {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+.exchange-fiche {
+  background: var(--couleur-surface);
+  border: 1px solid var(--couleur-bordure);
+  border-radius: var(--rayon);
+  padding: 1.25rem;
+  box-shadow: var(--ombre);
+}
+/* Écarté : la fiche reste lisible mais se retire visuellement du peloton. */
+.exchange-ecarte {
+  background: var(--couleur-surface-alt);
+  box-shadow: none;
+  border-style: dashed;
+}
+.exchange-entete {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.exchange-pastille {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  border-radius: 50%;
+}
+.exchange-ecarte .exchange-pastille { filter: grayscale(1); opacity: 0.65; }
+.exchange-nom { margin: 0; font-size: 1.05rem; }
+.exchange-chip {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--couleur-accent);
+  text-transform: uppercase;
+}
+.exchange-ecarte .exchange-chip { color: var(--couleur-texte-doux); }
+.exchange-role {
+  margin: 0;
+  color: var(--couleur-texte-doux);
+  font-size: 0.94rem;
+}
+
 /* Bandeau « concept transversal » d'un hub (section "concept" du JSON,
    ex. l'hybride du hub crypto) : pleine largeur sous les cartes de piliers,
    marqué par un filet accent et une étiquette. */
