@@ -1,56 +1,17 @@
 <!DOCTYPE html>
-<!--
-  python.html — Projet : Formation Python
-  Affiche le contenu du projet "python" (PDF de la formation) via js/content.js,
-  qui lit data/projets/python.json. Le conteneur [data-projet] est rempli dynamiquement.
--->
+<!-- python.html — ANCIENNE page projet. La formation Python est devenue une
+     section du hub Formations : redirection immédiate. Les anciennes URL
+     profondes (?p=python&i=py-1) sont, elles, remappées par PROJETS_ALIAS. -->
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Formation Python — des bases à la visualisation | iAlexMG</title>
-  <meta name="description" content="Formation Python complète : 8 chapitres de cours et une série visualisation en 9 parties (Matplotlib, Pandas, Seaborn, Plotly, PyQtGraph) — supports PDF.">
-  <link rel="canonical" href="https://ialexmg.ca/python.html">
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <!-- Aperçu de partage (LinkedIn, courriel, réseaux sociaux) -->
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="iAlexMG">
-  <meta property="og:title" content="Formation Python — des bases à la visualisation">
-  <meta property="og:description" content="8 chapitres de cours et une série visualisation en 9 parties (Matplotlib, Pandas, Seaborn, Plotly, PyQtGraph).">
-  <meta property="og:url" content="https://ialexmg.ca/python.html">
-  <meta property="og:locale" content="fr_CA">
-  <meta property="og:locale:alternate" content="en_CA">
-  <meta name="twitter:card" content="summary">
-  <link rel="stylesheet" href="css/styles.css">
+  <meta http-equiv="refresh" content="0; url=projet-section.html?p=formations&amp;s=python">
+  <link rel="canonical" href="https://ialexmg.ca/projet-section.html?p=formations&s=python">
+  <meta name="robots" content="noindex">
+  <title>Redirection — Formation Python | iAlexMG</title>
 </head>
-<body data-page="python">
-  <header class="entete" id="entete"></header>
-
-  <main>
-    <section class="entete-page">
-      <div class="conteneur">
-        <a class="lien-retour" href="/" data-i18n="contenu.retour_accueil"></a>
-        <h1 data-i18n="projet.python"></h1>
-        <p class="accroche" data-i18n="python.intro"></p>
-      </div>
-    </section>
-
-    <section class="section" style="padding-top:0;">
-      <div class="conteneur">
-        <!-- Table des matières : une carte par chapitre, chacune menant à
-             projet-item.html?p=python&i=<id> (visionneuse PDF). -->
-        <div data-projet-hub="python" data-page-item="projet-item.html"></div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="pied" id="pied"></footer>
-
-  <script src="js/translations.js"></script>
-  <script src="js/i18n.js"></script>
-  <script src="js/projects.js"></script>
-  <script src="js/components.js"></script>
-  <script src="js/content.js"></script>
-  <script src="js/main.js"></script>
+<body>
+  <p>Cette page a déménagé :
+    <a href="projet-section.html?p=formations&amp;s=python">Formations — Python</a>.</p>
 </body>
 </html>

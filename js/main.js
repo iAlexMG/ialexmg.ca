@@ -19,11 +19,15 @@
   // Date de dernière mise à jour du site (format ISO AAAA-MM-JJ).
   // ⚙️ À METTRE À JOUR à chaque déploiement notable : c'est la seule valeur à
   // changer pour rafraîchir la mention du pied de page.
-  const DATE_MAJ = "2026-07-10";
+  const DATE_MAJ = "2026-07-14";
 
   // Résout un id de projet en tenant compte des anciens ids (projets fusionnés
-  // dans les hubs — voir PROJETS_ALIAS dans projects.js).
-  function resoudreProjet(id) {
+  // dans les hubs — voir PROJETS_ALIAS dans projects.js). La section demandée
+  // tranche d'abord : un projet SCINDÉ envoie certaines de ses sections vers un
+  // autre hub que les autres (voir SECTIONS_ALIAS).
+  function resoudreProjet(id, section) {
+    const deplacees = (window.SECTIONS_ALIAS || {})[id];
+    if (deplacees && section && deplacees[section]) return deplacees[section];
     return (window.PROJETS_ALIAS || {})[id] || id;
   }
 
@@ -73,13 +77,22 @@
       });
     });
 
+    // Bandeau des exchanges d'un hub (clé "exchanges" du JSON du projet).
+    document.querySelectorAll("[data-projet-exchanges]").forEach(function (conteneur) {
+      window.Contenu.rendreExchanges({
+        conteneur: conteneur,
+        projet: conteneur.getAttribute("data-projet-exchanges") || null,
+      });
+    });
+
     // Sous-page d'une section : projet via l'attribut OU ?p=, section via ?s=.
     document.querySelectorAll("[data-projet-section]").forEach(function (conteneur) {
       const params = new URLSearchParams(window.location.search);
       window.Contenu.rendreSection({
         conteneur: conteneur,
         projet: resoudreProjet(
-          conteneur.getAttribute("data-projet-section") || params.get("p")
+          conteneur.getAttribute("data-projet-section") || params.get("p"),
+          params.get("s")
         ),
         sectionId: params.get("s"),
         pageSection: conteneur.getAttribute("data-page-section") || "",
@@ -93,7 +106,8 @@
       window.Contenu.rendreItem({
         conteneur: conteneur,
         projet: resoudreProjet(
-          conteneur.getAttribute("data-projet-item") || params.get("p")
+          conteneur.getAttribute("data-projet-item") || params.get("p"),
+          params.get("s")
         ),
         sectionId: params.get("s"),
         itemId: params.get("i"),

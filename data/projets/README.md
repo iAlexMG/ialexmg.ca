@@ -5,10 +5,13 @@
 > `site-content/contenu.json` par `tools/sync-site.py` — éditez la **source**,
 > pas ce fichier (la prochaine synchro écraserait la modification).
 >
-> Les projets **hub** (`crypto.json`, `indices.json`) sont **assemblés** : le
-> squelette (une section par pilier) vient de `<mono-dépôt>/site-content/`,
-> et les sections des piliers qui portent `"inclure"` y sont injectées comme
-> sous-sections (`parent` = le pilier). Voir l'en-tête de `tools/sync-site.py`.
+> Les projets **hub** (`crypto.json`, `indices.json`, `formations.json`,
+> `statistiques.json`) sont **assemblés** : le squelette (une section par
+> pilier) vient de `<racine du hub>/site-content/`, et les sections des piliers
+> qui portent `"inclure"` y sont injectées comme sous-sections (`parent` = le
+> pilier). Un pilier peut vivre hors de la racine du hub (clé `chemins`) : la
+> formation LEAN/vectorbt reste dans le mono-dépôt crypto tout en étant
+> présentée sous Formations. Voir l'en-tête de `tools/sync-site.py`.
 
 Chaque fichier `<id>.json` contient le contenu d'UN projet. L'`id` correspond
 au champ `id` défini dans `js/projects.js` et à `data-projet="…"` dans la page.
@@ -36,6 +39,23 @@ chaque pilier inclus a le sien sous `assets/<id>/<pilier>/`
   « En attente ») ; à défaut, le compte d'items est affiché.
 - `texte` {fr,en} — prose détaillée rendue sous le contenu (les lignes
   commençant par `## ` deviennent des sous-titres).
+- `masque: true` — (source de pilier seulement) la section est ÉCARTÉE à
+  l'assemblage : le fichier source reste versionné, mais la page disparaît du
+  site. Sert à retirer d'un sous-hub ce qui a été évalué puis rejeté (Kraken)
+  sans en perdre la trace ni le répéter à deux endroits.
+- `concept: true` — la section se rend en bandeau pleine largeur sous la grille
+  des piliers du hub, plutôt que comme une carte.
+
+## Clé `exchanges` (hub crypto)
+
+À la racine du JSON, à côté de `sections`. Chaque entrée = `id`, `nom`,
+`monogramme` (2 lettres), `couleur` (hex de la marque), `statut` {fr,en},
+`role` {fr,en}, et `ecarte: true` le cas échéant. Le site en fait un bandeau
+(`data-projet-exchanges` dans la page) : la pastille est fabriquée en SVG à la
+volée — aucun logo déposé n'est hébergé — et l'encre du monogramme suit la
+luminance de la couleur. C'est le SEUL endroit où le sort d'un exchange écarté
+est expliqué. Les autres clés de premier niveau d'un squelette de hub sont
+recopiées telles quelles : `exchanges` n'est pas un cas particulier du script.
 
 ## Types d'item
 

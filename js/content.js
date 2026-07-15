@@ -391,6 +391,80 @@ const Contenu = (function () {
     );
   }
 
+  // --- Exchanges (bandeau du hub crypto) ------------------------------------
+
+  // Pastille d'un exchange : monogramme sur une rondelle à sa couleur de marque.
+  // Fabriquée ici plutôt que chargée en image — pas de logo déposé à héberger,
+  // et le rendu suit le thème. Le monogramme passe en foncé sur les couleurs
+  // claires (le jaune de Binance) : on choisit selon la luminance perçue.
+  function creerPastille(exchange) {
+    const couleur = /^#[0-9a-f]{6}$/i.test(String(exchange.couleur || ""))
+      ? exchange.couleur
+      : "#6E7681";
+    const r = parseInt(couleur.slice(1, 3), 16);
+    const v = parseInt(couleur.slice(3, 5), 16);
+    const b = parseInt(couleur.slice(5, 7), 16);
+    const luminance = (0.299 * r + 0.587 * v + 0.114 * b) / 255;
+    const encre = luminance > 0.6 ? "#12161C" : "#FFFFFF";
+    return (
+      '<svg class="exchange-pastille" viewBox="0 0 48 48" role="img"' +
+      ' aria-label="' + echapper(exchange.nom) + '">' +
+      '<circle cx="24" cy="24" r="24" fill="' + couleur + '"></circle>' +
+      '<text x="24" y="24" text-anchor="middle" dominant-baseline="central"' +
+      ' font-size="18" font-weight="700" fill="' + encre + '"' +
+      ' font-family="system-ui, sans-serif">' +
+      echapper(exchange.monogramme || "?") +
+      "</text></svg>"
+    );
+  }
+
+  // Bandeau « tous les exchanges » du hub : une fiche par exchange, y compris
+  // ceux qui ont été écartés — c'est le seul endroit où leur sort est expliqué,
+  // les piliers ne les listent plus.
+  function creerFicheExchange(exchange) {
+    const classe = "exchange-fiche" + (exchange.ecarte ? " exchange-ecarte" : "");
+    const statut = texteLocalise(exchange.statut);
+    return (
+      '<article class="' + classe + '">' +
+      '<div class="exchange-entete">' +
+      creerPastille(exchange) +
+      '  <div>' +
+      '    <h3 class="exchange-nom">' + echapper(exchange.nom) + "</h3>" +
+      (statut ? '    <span class="exchange-chip">' + echapper(statut) + "</span>" : "") +
+      "  </div>" +
+      "</div>" +
+      '<p class="exchange-role">' + echapper(texteLocalise(exchange.role)) + "</p>" +
+      "</article>"
+    );
+  }
+
+  // Rend le bandeau des exchanges d'un projet (clé "exchanges" de son JSON).
+  // Sans cette clé, le conteneur reste vide : les autres projets ne changent pas.
+  async function rendreExchanges(options) {
+    const conteneur = options.conteneur;
+    const projet = options.projet || null;
+    if (!conteneur) return;
+    try {
+      const bloc = await chargerProjet(projet);
+      const exchanges = (bloc && Array.isArray(bloc.exchanges)) ? bloc.exchanges : [];
+      if (!exchanges.length) {
+        conteneur.innerHTML = "";
+        return;
+      }
+      conteneur.innerHTML =
+        '<h2 class="exchanges-titre" data-i18n="crypto.exchanges_titre"></h2>' +
+        '<p class="exchanges-intro" data-i18n="crypto.exchanges_intro"></p>' +
+        '<div class="grille-exchanges">' +
+        exchanges.map(creerFicheExchange).join("") +
+        "</div>";
+    } catch (err) {
+      console.error("[exchanges] Échec du chargement :", err);
+      conteneur.innerHTML = "";
+    } finally {
+      window.I18n.appliquerTraductions(conteneur);
+    }
+  }
+
   // --- Sections (regroupement du contenu d'un projet) -----------------------
 
   // Identifiant d'ancre stable pour une section (sommaire + lien profond #...).
@@ -748,11 +822,16 @@ const Contenu = (function () {
       if (section.sousHub) {
         // Section-hub : ses sous-sections (parent === cette section) forment un
         // sous-hub imbriqué — une carte par sous-section, menant à sa page.
+        // Ses items éventuels l'illustrent en tête (ex. la capture du terminal
+        // sur le pilier Visualisations).
         const enfants = sections.filter(function (s) {
           return s.parent === (section.id || sectionId);
         });
         conteneur.innerHTML =
           avertissementTexteFr(section.texte) +
+          (items.length
+            ? '<div class="galerie">' + items.map(creerCarte).join("") + "</div>"
+            : "") +
           rendreProse(texte) +
           construireSousHubSections(enfants, projet, pageSection);
       } else if (section.sousMenu && items.length) {
@@ -878,6 +957,7 @@ const Contenu = (function () {
   return {
     rendre: rendre,
     rendreHub: rendreHub,
+    rendreExchanges: rendreExchanges,
     rendreSection: rendreSection,
     rendreItem: rendreItem,
   };

@@ -1,6 +1,30 @@
 {
   "sections": [
     {
+      "id": "lotto-649",
+      "titre": {
+        "fr": "Lotto 6/49",
+        "en": "Lotto 6/49"
+      },
+      "accroche": {
+        "fr": "Mettre le hasard à l'épreuve : des décennies de tirages passées aux tests statistiques, puis à l'apprentissage automatique.",
+        "en": "Putting randomness to the test: decades of draws run through statistical tests, then machine learning."
+      },
+      "intro": {
+        "fr": "Le Lotto 6/49 est-il vraiment aléatoire ? Plutôt que de chercher à prédire les numéros, ce projet vérifie si l'historique des tirages se comporte autrement qu'un pur hasard.",
+        "en": "Is Lotto 6/49 really random? Rather than trying to predict the numbers, this project checks whether the draw history behaves any differently from pure chance."
+      },
+      "statut": {
+        "fr": "Projet complet",
+        "en": "Complete project"
+      },
+      "texte": {
+        "fr": "## La question\n\nDeux croyances tenaces disent l'inverse l'une de l'autre. Le numéro « en retard » : il n'est pas sorti depuis longtemps, donc il est dû. Le numéro « en avance » : il sort souvent ces temps-ci, donc il est chaud. Les deux ne peuvent pas être vraies en même temps, et le projet ne prend parti pour aucune : il les met à l'épreuve.\n\n## Pourquoi le 6/49\n\nPour son historique. Plusieurs décennies de tirages, publiés et vérifiables — et en statistique, la longueur de l'historique est ce qui sépare une impression d'un résultat. Un tirage de loterie a aussi le mérite d'avoir une réponse connue d'avance : le mécanisme est conçu pour être aléatoire. Si la méthode trouve un signal là où il ne doit pas y en avoir, c'est la méthode qui est en cause — un banc d'essai honnête pour des outils qu'on voudra ensuite pointer vers les marchés.\n\n## La démarche\n\nQuatre étapes, dans cet ordre : valider les données avant de les interroger, tester les deux croyances par la statistique classique, puis reprendre la même question avec des modèles d'apprentissage automatique, et enfin confronter les deux verdicts.",
+        "en": "## The question\n\nTwo stubborn beliefs contradict each other. The \"overdue\" number: it hasn't come up in a long time, so it's due. The \"hot\" number: it keeps coming up lately, so it's running. Both can't be true at once, and the project takes neither side: it puts them to the test.\n\n## Why the 6/49\n\nFor its history. Several decades of draws, published and verifiable — and in statistics, the length of the record is what separates an impression from a result. A lottery draw also has the merit of having a known answer in advance: the mechanism is designed to be random. If the method finds a signal where there shouldn't be one, the method is what's at fault — an honest test bench for tools you'll later want to point at the markets.\n\n## The path\n\nFour stages, in this order: validate the data before questioning it, test both beliefs with classical statistics, then take the same question up again with machine-learning models, and finally set the two verdicts against each other."
+      },
+      "sousHub": true
+    },
+    {
       "id": "docs",
       "titre": {
         "fr": "Documents formatifs",
@@ -18,7 +42,7 @@
         {
           "id": "doc-01",
           "type": "pdf",
-          "fichier": "assets/649/docs/01_fondations.pdf",
+          "fichier": "assets/statistiques/lotto-649/docs/01_fondations.pdf",
           "titre": {
             "fr": "01 — Fondations probabilistes",
             "en": "01 — Probability foundations"
@@ -31,7 +55,7 @@
         {
           "id": "doc-02",
           "type": "pdf",
-          "fichier": "assets/649/docs/02_lois_de_probabilite.pdf",
+          "fichier": "assets/statistiques/lotto-649/docs/02_lois_de_probabilite.pdf",
           "titre": {
             "fr": "02 — Les lois de probabilité",
             "en": "02 — Probability distributions"
@@ -44,7 +68,7 @@
         {
           "id": "doc-03",
           "type": "pdf",
-          "fichier": "assets/649/docs/03_inference_frequentiste.pdf",
+          "fichier": "assets/statistiques/lotto-649/docs/03_inference_frequentiste.pdf",
           "titre": {
             "fr": "03 — Inférence fréquentiste",
             "en": "03 — Frequentist inference"
@@ -57,7 +81,7 @@
         {
           "id": "doc-04",
           "type": "pdf",
-          "fichier": "assets/649/docs/04_inference_bayesienne.pdf",
+          "fichier": "assets/statistiques/lotto-649/docs/04_inference_bayesienne.pdf",
           "titre": {
             "fr": "04 — Inférence bayésienne",
             "en": "04 — Bayesian inference"
@@ -70,7 +94,7 @@
         {
           "id": "doc-05",
           "type": "pdf",
-          "fichier": "assets/649/docs/05_biais_cognitifs.pdf",
+          "fichier": "assets/statistiques/lotto-649/docs/05_biais_cognitifs.pdf",
           "titre": {
             "fr": "05 — Biais cognitifs",
             "en": "05 — Cognitive biases"
@@ -83,7 +107,7 @@
         {
           "id": "doc-06",
           "type": "pdf",
-          "fichier": "assets/649/docs/06_tests_phase1.pdf",
+          "fichier": "assets/statistiques/lotto-649/docs/06_tests_phase1.pdf",
           "titre": {
             "fr": "06 — Les tests de la Phase 1",
             "en": "06 — The Phase 1 tests"
@@ -96,7 +120,7 @@
         {
           "id": "doc-07",
           "type": "pdf",
-          "fichier": "assets/649/docs/07_apprentissage_automatique.pdf",
+          "fichier": "assets/statistiques/lotto-649/docs/07_apprentissage_automatique.pdf",
           "titre": {
             "fr": "07 — Apprentissage automatique",
             "en": "07 — Machine learning"
@@ -109,7 +133,7 @@
         {
           "id": "doc-08",
           "type": "pdf",
-          "fichier": "assets/649/docs/08_cascade_ngrammes.pdf",
+          "fichier": "assets/statistiques/lotto-649/docs/08_cascade_ngrammes.pdf",
           "titre": {
             "fr": "08 — Cascade binaire (n-grammes)",
             "en": "08 — Binary cascade (n-grams)"
@@ -122,7 +146,7 @@
         {
           "id": "doc-09",
           "type": "pdf",
-          "fichier": "assets/649/docs/09_donnees_methodologie.pdf",
+          "fichier": "assets/statistiques/lotto-649/docs/09_donnees_methodologie.pdf",
           "titre": {
             "fr": "09 — Données et méthode",
             "en": "09 — Data and method"
@@ -135,7 +159,7 @@
         {
           "id": "doc-10",
           "type": "pdf",
-          "fichier": "assets/649/docs/10_outils_ecosysteme.pdf",
+          "fichier": "assets/statistiques/lotto-649/docs/10_outils_ecosysteme.pdf",
           "titre": {
             "fr": "10 — Les outils",
             "en": "10 — The tools"
@@ -145,7 +169,8 @@
             "en": "The tools used: Python, pandas, NumPy, SciPy, scikit-learn, PyTorch, Matplotlib."
           }
         }
-      ]
+      ],
+      "parent": "lotto-649"
     },
     {
       "id": "phase0",
@@ -169,7 +194,7 @@
         {
           "id": "fig-01",
           "type": "figure",
-          "url": "assets/649/figures/fig01_validation_donnees.png",
+          "url": "assets/statistiques/lotto-649/figures/fig01_validation_donnees.png",
           "titre": {
             "fr": "Validation des données",
             "en": "Data validation"
@@ -179,7 +204,8 @@
             "en": "The time span covered, the missing draws, and the switch from one draw a week to two."
           }
         }
-      ]
+      ],
+      "parent": "lotto-649"
     },
     {
       "id": "phase1",
@@ -204,7 +230,7 @@
         {
           "id": "fig-02",
           "type": "figure",
-          "url": "assets/649/figures/fig02_test1_frequences.png",
+          "url": "assets/statistiques/lotto-649/figures/fig02_test1_frequences.png",
           "titre": {
             "fr": "T1 — Fréquence des numéros",
             "en": "T1 — Number frequencies"
@@ -221,7 +247,7 @@
         {
           "id": "fig-03",
           "type": "figure",
-          "url": "assets/649/figures/fig03_test2_gaps.png",
+          "url": "assets/statistiques/lotto-649/figures/fig03_test2_gaps.png",
           "titre": {
             "fr": "T2 — Écarts entre deux sorties",
             "en": "T2 — Gaps between appearances"
@@ -238,7 +264,7 @@
         {
           "id": "fig-04",
           "type": "figure",
-          "url": "assets/649/figures/fig04_test3_mainchaude.png",
+          "url": "assets/statistiques/lotto-649/figures/fig04_test3_mainchaude.png",
           "titre": {
             "fr": "T3 — Le numéro « en avance »",
             "en": "T3 — The \"hot\" number"
@@ -255,7 +281,7 @@
         {
           "id": "fig-05",
           "type": "figure",
-          "url": "assets/649/figures/fig05_test4_independance.png",
+          "url": "assets/statistiques/lotto-649/figures/fig05_test4_independance.png",
           "titre": {
             "fr": "T4 — Indépendance des tirages",
             "en": "T4 — Independence between draws"
@@ -272,7 +298,7 @@
         {
           "id": "fig-06",
           "type": "figure",
-          "url": "assets/649/figures/fig06_test5_combinaisons.png",
+          "url": "assets/statistiques/lotto-649/figures/fig06_test5_combinaisons.png",
           "titre": {
             "fr": "T5 — Somme et parité",
             "en": "T5 — Sum and parity"
@@ -289,7 +315,7 @@
         {
           "id": "fig-07",
           "type": "figure",
-          "url": "assets/649/figures/fig07_test6_investigation.png",
+          "url": "assets/statistiques/lotto-649/figures/fig07_test6_investigation.png",
           "titre": {
             "fr": "T6 — Le seul écart trouvé",
             "en": "T6 — The one deviation found"
@@ -303,7 +329,8 @@
             "en": "## Hypothesis\n\nTest 5 revealed a slight lean toward higher numbers (mean number 25.27 versus 25 expected). If it is a real bias, it should be stable from one sub-period to the next; a mere fluke would be concentrated in one isolated era.\n\n## Method\n\nWe split the history into 5-year slices and compute the mean number of each slice, with its 95% confidence interval. Since the source is official and already cross-validated (Phase 0), a transcription artifact is excluded: it remains to settle fluke versus real bias.\n\n## Results\n\nOut of 10 sub-periods, 1 shows a mean number significantly above 25. The lean only appears clearly here and there: it looks more like a fluctuation than a systematic bias.\n\n## Conclusion\n\nWhether it is a tiny real bias or a fluctuation, the deviation is indiscernible at the scale of a single draw and, above all, NOT exploitable: no individual number deviates (Test 1). At the end of the six tests, Lotto 6/49 is empirically indistinguishable from a random draw — and therefore unpredictable."
           }
         }
-      ]
+      ],
+      "parent": "lotto-649"
     },
     {
       "id": "phase2",
@@ -328,7 +355,7 @@
         {
           "id": "fig-08",
           "type": "figure",
-          "url": "assets/649/figures/fig08_phase2_mlp.png",
+          "url": "assets/statistiques/lotto-649/figures/fig08_phase2_mlp.png",
           "titre": {
             "fr": "Réseau de neurones simple (MLP)",
             "en": "Simple neural network (MLP)"
@@ -345,7 +372,7 @@
         {
           "id": "fig-09",
           "type": "figure",
-          "url": "assets/649/figures/fig09_phase2_lstm.png",
+          "url": "assets/statistiques/lotto-649/figures/fig09_phase2_lstm.png",
           "titre": {
             "fr": "Réseau à mémoire (LSTM)",
             "en": "Memory network (LSTM)"
@@ -362,7 +389,7 @@
         {
           "id": "fig-10",
           "type": "figure",
-          "url": "assets/649/figures/fig10_phase2_bayesien.png",
+          "url": "assets/statistiques/lotto-649/figures/fig10_phase2_bayesien.png",
           "titre": {
             "fr": "Estimation bayésienne",
             "en": "Bayesian estimation"
@@ -379,7 +406,7 @@
         {
           "id": "fig-11",
           "type": "figure",
-          "url": "assets/649/figures/fig11_phase2_cascade.png",
+          "url": "assets/statistiques/lotto-649/figures/fig11_phase2_cascade.png",
           "titre": {
             "fr": "L'idée du numéro « en retard », testée",
             "en": "The \"overdue number\" idea, tested"
@@ -393,7 +420,8 @@
             "en": "## Hypothesis\n\nWe formalize the \"overdue number\" intuition: represent each number's history in bits (0 absent, 1 drawn), then analyze patterns of increasing length. Under the i.i.d. draw hypothesis, two things must hold: the frequencies of n-bit patterns match their theoretical value, and the rule \"a pattern in deficit is due\" gives no advantage to prediction.\n\n## Method\n\nDiagnostic side: we count observed 4-bit patterns against those expected under i.i.d.(6/49), with a permutation p-value (which handles overlapping windows) — Figure 11a. Predictor side: we encode the \"deficit = due\" rule as mean reversion, p = 2·(6/49) − realized rate (computed causally), and measure its out-of-sample log-loss for increasing lengths n — Figure 11b.\n\n## Results\n\nThe observed pattern frequencies hug the theory (permutation p = 0.72 at 4 bits; not significant for any n): no block structure. On the prediction side, the log-loss equals the floor at n = 1 (0.3718) but RISES monotonically to 0.3762: the more we apply the deficit rule, the worse we do.\n\n## Conclusion\n\nThe \"overdue number\" myth, formalized then executed, fails on the data: an \"overdue\" pattern is never due. The diluted convergence of the mean does not pay back the counters. The rigor of a randomness test and the refutation of a betting strategy, in a single model."
           }
         }
-      ]
+      ],
+      "parent": "lotto-649"
     },
     {
       "id": "synthese",
@@ -417,7 +445,7 @@
         {
           "id": "fig-12",
           "type": "figure",
-          "url": "assets/649/figures/fig12_phase2_synthese.png",
+          "url": "assets/statistiques/lotto-649/figures/fig12_phase2_synthese.png",
           "titre": {
             "fr": "Synthèse des modèles",
             "en": "Model summary"
@@ -427,7 +455,8 @@
             "en": "All six models give the same result on unseen data. The only one that differs does worse, from memorizing too much."
           }
         }
-      ]
+      ],
+      "parent": "lotto-649"
     },
     {
       "id": "conclusion",
@@ -443,7 +472,8 @@
         "fr": "## Le verdict\n\nDeux approches complémentaires, six modèles en tout — des statistiques classiques (Phase 1) jusqu'aux réseaux de neurones (Phase 2) — arrivent à la même conclusion : aucun ne prédit les tirages mieux que le hasard. Hors-échantillon, tous se collent au plancher d'entropie ; le plus complexe (LSTM) fait même légèrement pire, à force de mémoriser le passé.\n\n## Les deux croyances réfutées\n\nLe numéro « en retard » n'est pas « dû » (Test 2 et cascade binaire), et le numéro « en avance » n'a pas la cote (Test 3). À chaque tirage, chaque numéro garde la même probabilité de sortir — 6 sur 49 — peu importe ce qui s'est passé avant. L'attente passée ne porte aucune information sur le prochain tirage.\n\n## La seule anomalie\n\nUn unique écart a résisté aux tests : un très léger penchant vers les grands numéros (numéro moyen 25,3 au lieu de 25,0). Réel ou simple fluctuation, il est indiscernable à l'échelle d'un tirage et, surtout, inexploitable — aucun numéro individuel ne dévie.\n\n## La portée du projet\n\nAutrement dit, le Lotto 6/49 est imprévisible — ce qui est exactement le but d'une loterie honnête. L'objectif n'était pas de gagner au loto, mais de montrer clairement, étape par étape, pourquoi on ne peut pas : poser des hypothèses, les tester avec rigueur, et accepter le résultat même lorsqu'il déçoit.",
         "en": "## The verdict\n\nTwo complementary approaches, six models in all — from classic statistics (Phase 1) to neural networks (Phase 2) — reach the same conclusion: none predicts the draws better than chance. Out-of-sample, all of them stick to the entropy floor; the most complex one (LSTM) does even slightly worse, from memorizing the past.\n\n## The two beliefs refuted\n\nThe \"overdue\" number isn't \"due\" (Test 2 and the binary cascade), and the \"hot\" number has no edge (Test 3). At every draw, each number keeps the same chance of coming up — 6 in 49 — no matter what happened before. Past waiting carries no information about the next draw.\n\n## The one anomaly\n\nA single deviation resisted the tests: a very slight lean toward higher numbers (mean number 25.3 instead of 25.0). Real or mere fluctuation, it is indiscernible at the scale of a draw and, above all, unexploitable — no individual number deviates.\n\n## The point of the project\n\nIn other words, Lotto 6/49 is unpredictable — which is exactly the point of a fair lottery. The goal was never to win the lottery, but to show clearly, step by step, why you can't: state hypotheses, test them rigorously, and accept the result even when it disappoints."
       },
-      "items": []
+      "items": [],
+      "parent": "lotto-649"
     }
   ]
 }

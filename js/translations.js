@@ -33,15 +33,15 @@ const TRADUCTIONS = {
     "nav.contact": "Contact",
 
     // Projets (titres complets — menu, en-tête de page, cartes d'accueil)
-    "projet.649": "Lotto 649",
-    "projet.python": "Formation Python",
+    "projet.statistiques": "Statistiques",
+    "projet.formations": "Formations",
     "projet.crypto": "Crypto",
     "projet.indices": "Indices boursiers",
     "projet.detection": "Détection d'objets",
 
     // Descriptions courtes des projets (cartes d'accueil)
-    "projet.649.desc": "Mettre le hasard à l'épreuve : tests statistiques et apprentissage automatique sur des décennies de tirages.",
-    "projet.python.desc": "Maîtriser Python, des bases aux concepts avancés.",
+    "projet.statistiques.desc": "Mettre le hasard à l'épreuve : tests statistiques et apprentissage automatique sur des décennies de tirages.",
+    "projet.formations.desc": "Ce que j'ai appris, remis au propre : Python, Git & GitHub, et deux moteurs de backtesting.",
     "projet.crypto.desc": "La chaîne complète sur le Bitcoin : données historiques, terminal d'orderflow, backtesting, automatisation.",
     "projet.indices.desc": "Les futures d'indices du CME (NQ, ES) : données temps réel, backtesting sur historique — jusqu'au trading automatisé en simulation.",
     "projet.detection.desc": "Apprendre à la machine à reconnaître ce qu'elle voit.",
@@ -86,8 +86,12 @@ const TRADUCTIONS = {
     "documents.telecharger": "Télécharger",
     "documents.avertissement_fr": "⚠️ Les documents PDF ne sont disponibles qu'en français.",
 
-    // Projet Python (intro spécifique)
-    "python.intro": "Voici les fichiers que j'ai créés pour apprendre et me perfectionner en Python. Toujours en amélioration constante !",
+    // Hub Formations (intro spécifique)
+    "formations.intro": "Ce que j'ai appris, remis au propre. Chaque formation part de zéro et suit le même parcours : les fondements d'abord, puis les concepts, puis un projet qui les met à l'épreuve. Toujours en amélioration constante.",
+
+    // Hub Crypto — bandeau des exchanges (le détail vit dans crypto.json)
+    "crypto.exchanges_titre": "Les exchanges du périmètre",
+    "crypto.exchanges_intro": "Sept exchanges ont été évalués ; six sont branchés. Chacun a son rôle dans la chaîne — et celui qui a été écarté l'est pour une raison précise, dite ici une fois pour toutes.",
 
     // Hub Crypto (intro spécifique)
     "crypto.intro": "Le marché crypto ne dort jamais : le Bitcoin (BTC/USDT) se négocie 24 h sur 24, 7 jours sur 7, et contrairement aux marchés boursiers, les exchanges exposent publiquement des données très détaillées — chaque transaction, chaque mouvement du carnet d'ordres.\n\nL'objectif de ce projet : automatiser le trading. Cela exige d'abord de recevoir et d'afficher les données du marché en temps réel, puis de valider chaque stratégie par un backtesting sur l'historique avant de la laisser tourner. D'où les cinq piliers ci-dessous.",
@@ -95,13 +99,13 @@ const TRADUCTIONS = {
     // Hub Indices boursiers (intro spécifique)
     "indices.intro": "Les futures d'indices du CME — le NQ (Nasdaq 100) et l'ES (S&P 500) — jouent sur un terrain différent de la crypto : le marché ouvre et ferme à heures fixes, et les données détaillées y sont plus rares et plus coûteuses.\n\nL'objectif reste le même : automatiser le trading. Cela exige d'abord de recevoir et d'afficher les données du marché en temps réel, puis de valider chaque stratégie par un backtesting sur l'historique avant de la laisser tourner. D'où les cinq piliers ci-dessous.",
 
-    // Projet 649 (intro spécifique)
-    "649.intro": "Le Lotto 6/49 est-il vraiment aléatoire ? Plutôt que de chercher à prédire les numéros, ce projet vérifie si l'historique des tirages se comporte autrement qu'un pur hasard. J'y teste deux croyances répandues — le numéro « en retard » et le numéro « en avance » — d'abord avec des statistiques, puis avec des modèles d'apprentissage automatique. J'ai choisi le Lotto 6/49 pour son historique de plusieurs décennies : plus l'historique est long, plus les résultats gagnent en crédibilité. Vous trouverez ci-dessous les documents explicatifs et les résultats, classés par étape.",
+    // Hub Statistiques (intro spécifique)
+    "statistiques.intro": "Des questions où la réponse se mesure plutôt qu'elle ne s'argumente. On y teste des croyances répandues contre des données longues, avec les outils de la statistique classique d'abord, ceux de l'apprentissage automatique ensuite — et on accepte le verdict, même quand il est négatif.\n\nUn premier projet ci-dessous ; d'autres suivront.",
 
     // À propos
     "apropos.titre": "À propos",
     "apropos.p1": "Je travaille sous le nom iAlexMG, à l'intersection de la science des données, des statistiques et des marchés financiers.",
-    "apropos.p2": "Ce site rassemble mes projets : deux chaînes de trading complètes — crypto (BTC) et indices boursiers (ES/NQ) — de l'extraction des données à l'affichage order-flow, au backtesting (LEAN, vectorbt) et à l'automatisation, plus l'analyse statistique du 6/49 et une formation Python.",
+    "apropos.p2": "Ce site rassemble mes projets : deux chaînes de trading complètes — crypto (BTC) et indices boursiers (ES/NQ) — de l'extraction des données à l'affichage order-flow, au backtesting (LEAN, vectorbt) et à l'automatisation. S'y ajoutent des travaux de statistique, à commencer par le 6/49, et mes formations : Python, Git & GitHub, et les deux moteurs de backtesting.",
     "apropos.p3": "Mon approche : des méthodes rigoureuses, des résultats mesurables et des outils réutilisables.",
 
     // Contact
@@ -127,15 +131,15 @@ const TRADUCTIONS = {
     "nav.contact": "Contact",
 
     // Projects (full titles — menu, page header, home cards)
-    "projet.649": "Lotto 649",
-    "projet.python": "Python Training",
+    "projet.statistiques": "Statistics",
+    "projet.formations": "Courses",
     "projet.crypto": "Crypto",
     "projet.indices": "Stock Indices",
     "projet.detection": "Object Detection",
 
     // Project short descriptions (home cards)
-    "projet.649.desc": "Putting randomness to the test: statistics and machine learning on decades of draws.",
-    "projet.python.desc": "Mastering Python, from the basics to advanced concepts.",
+    "projet.statistiques.desc": "Putting randomness to the test: statistics and machine learning on decades of draws.",
+    "projet.formations.desc": "What I learned, written up properly: Python, Git & GitHub, and two backtesting engines.",
     "projet.crypto.desc": "The full chain on Bitcoin: historical data, orderflow terminal, backtesting, automation.",
     "projet.indices.desc": "The CME index futures (NQ, ES): real-time data, backtesting on history — all the way to automated trading in simulation.",
     "projet.detection.desc": "Teaching the machine to recognize what it sees.",
@@ -180,22 +184,26 @@ const TRADUCTIONS = {
     "documents.telecharger": "Download",
     "documents.avertissement_fr": "⚠️ The PDF documents are only available in French.",
 
+    // Crypto hub — exchanges band (the detail lives in crypto.json)
+    "crypto.exchanges_titre": "The exchanges in scope",
+    "crypto.exchanges_intro": "Seven exchanges were evaluated; six are connected. Each has its role in the chain — and the one that was set aside is, for a precise reason, stated here once and for all.",
+
     // Crypto hub (specific intro)
     "crypto.intro": "The crypto market never sleeps: Bitcoin (BTC/USDT) trades around the clock, 7 days a week, and unlike stock markets, the exchanges publicly expose very detailed data — every trade, every move of the order book.\n\nThe goal of this project: automating the trading. That means first receiving and displaying market data in real time, then validating each strategy with a backtest on history before letting it run. Hence the five pillars below.",
 
     // Stock Indices hub (specific intro)
     "indices.intro": "The CME index futures — the NQ (Nasdaq 100) and the ES (S&P 500) — play on a different field than crypto: the market opens and closes at fixed hours, and detailed data is scarcer and more expensive.\n\nThe goal stays the same: automating the trading. That means first receiving and displaying market data in real time, then validating each strategy with a backtest on history before letting it run. Hence the five pillars below.",
 
-    // Python project (specific intro)
-    "python.intro": "Here are the files I created to learn and improve my Python skills. Always a work in progress!",
+    // Courses hub (specific intro)
+    "formations.intro": "What I learned, written up properly. Each course starts from zero and follows the same path: the fundamentals first, then the concepts, then a project that puts them to the test. Always a work in progress.",
 
-    // 649 project (specific intro)
-    "649.intro": "Is Lotto 6/49 really random? Rather than trying to predict the numbers, this project checks whether the draw history behaves any differently from pure chance. I test two common beliefs — the \"overdue\" number and the \"hot\" number — first with statistics, then with machine-learning models. I chose Lotto 6/49 precisely for its decades-long history: the longer the record, the more credible the results. Below you'll find the explanatory documents and the results, organized by stage.",
+    // Statistics hub (specific intro)
+    "statistiques.intro": "Questions whose answer gets measured rather than argued. Common beliefs are tested against long records, with the tools of classical statistics first, machine learning next — and the verdict is accepted, even when it's negative.\n\nA first project below; more will follow.",
 
     // About
     "apropos.titre": "About",
     "apropos.p1": "I work under the name iAlexMG, at the intersection of data science, statistics and financial markets.",
-    "apropos.p2": "This site brings together my projects: two complete trading chains — crypto (BTC) and stock indices (ES/NQ) — from data extraction to order-flow display, backtesting (LEAN, vectorbt) and automation, plus statistical analysis of the 6/49 and Python training.",
+    "apropos.p2": "This site brings together my projects: two complete trading chains — crypto (BTC) and stock indices (ES/NQ) — from data extraction to order-flow display, backtesting (LEAN, vectorbt) and automation. Alongside them: statistical work, starting with the 6/49, and my courses — Python, Git & GitHub, and both backtesting engines.",
     "apropos.p3": "My approach: rigorous methods, measurable results and reusable tools.",
 
     // Contact

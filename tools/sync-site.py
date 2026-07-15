@@ -16,10 +16,15 @@ ARCHITECTURE « source → pipeline → vitrine » :
 PROJETS « HUB » (crypto, indices) — un mono-dépôt en 4 piliers
 (historique / affichage / backtesting / automatisation) :
   - Le SQUELETTE du hub est <mono-dépôt>/site-content/contenu.json : une section
-    par pilier (titre, accroche, statut, prose).
+    par pilier (titre, accroche, statut, prose). Ses autres clés de premier
+    niveau (ex. "exchanges") sont recopiées telles quelles dans le JSON du site.
   - Une section du squelette peut porter "inclure": "<pilier>" : le script y
     injecte les sections de <mono-dépôt>/<pilier>/site-content/contenu.json en
     SOUS-SECTIONS (champ parent = id de la section, mécanisme sousHub du site).
+  - Une section de pilier qui porte "masque": true est ÉCARTÉE de l'assemblage :
+    sa source reste versionnée (l'évaluation qui a mené au rejet d'un exchange
+    garde sa trace) mais elle ne paraît plus dans le sous-hub. Le hub la
+    présente à sa façon — voir la clé "exchanges" du squelette crypto.
   - Cas particulier « pilier page unique » (ex. crypto/historique) : une section
     du pilier qui porte le MÊME id que la section du squelette la COMPLÈTE
     (texte, items… ; les champs du squelette priment) au lieu de s'y accrocher ;
@@ -60,16 +65,20 @@ except AttributeError:
 # Projets SIMPLES : id du site (data/projets/<id>.json, assets/<id>/) -> dossier
 # dans Portfolio (le site-content est à la racine de ce dossier).
 PROJETS = {
-    "649": "Lotto 649",
-    "python": "Formation - Python",
     "detection": "Détection d'objets",
 }
 
-# Projets HUB : id du site -> mono-dépôt en 4 piliers (voir l'en-tête du script).
+# Projets HUB : id du site -> le dossier qui porte son squelette (voir l'en-tête).
 #   dossiers : candidats essayés dans l'ordre — le staging _restructure/ d'abord,
 #              puis l'emplacement final prévu après le ménage local. ⚠️ Piège de
 #              casse Windows : « crypto » matcherait aussi l'ANCIEN dossier
 #              « Crypto » tant qu'il existe, d'où la priorité au staging.
+#   chemins  : pilier inclus -> son dossier, RELATIF À PORTFOLIO. À défaut, le
+#              pilier est cherché sous la racine du hub (<racine>/<pilier>). Sert
+#              aux hubs dont les piliers vivent ailleurs : Formations rassemble
+#              des cours qui restent chez eux (la formation LEAN/vectorbt reste
+#              dans le mono-dépôt crypto, à côté des backtests qu'elle enseigne).
+#              Toujours déclarer la casse exacte du dossier — voir le piège ci-dessus.
 #   assets   : pilier inclus -> dossier assets/<...> du site, au schéma
 #              standard <id-du-hub>/<pilier> (ne pas renommer sans réécrire
 #              les URL dans les contenu.json sources).
@@ -85,6 +94,24 @@ HUBS = {
     "indices": {
         "dossiers": ["_restructure/indicesBoursiers", "indicesBoursiers"],
         "assets": {"affichage": "indices/affichage"},
+    },
+    "formations": {
+        "dossiers": ["Formations"],
+        "chemins": {
+            "python": "Formations/Python",
+            "github": "Formations/Github",
+            "trading": "crypto/backtesting/formation",
+        },
+        "assets": {
+            "python": "formations/python",
+            "github": "formations/github",
+            "trading": "formations/trading",
+        },
+    },
+    "statistiques": {
+        "dossiers": ["Statistiques"],
+        "chemins": {"lotto-649": "Lotto 649"},
+        "assets": {"lotto-649": "statistiques/lotto-649"},
     },
 }
 
@@ -185,6 +212,12 @@ def synchroniser_projet(pid, dossier_portfolio, dry_run):
     return True, " ; ".join(actions) if actions else "à jour"
 
 
+def dossier_pilier(hub, racine, dossier_portfolio, pilier):
+    """Dossier source d'un pilier : déclaré dans `chemins`, sinon sous la racine."""
+    relatif = hub.get("chemins", {}).get(pilier)
+    return (dossier_portfolio / relatif) if relatif else (racine / pilier)
+
+
 def assembler_hub(pid, dossier_portfolio, dry_run):
     """Assemble UN projet hub (squelette + piliers inclus). Renvoie (ok, résumé)."""
     hub = HUBS[pid]
@@ -208,12 +241,13 @@ def assembler_hub(pid, dossier_portfolio, dry_run):
     # Injection des piliers : les sections d'un pilier deviennent des
     # sous-sections (parent = la section du squelette qui porte "inclure").
     sections = []
+    masquees = 0
     for section in squelette.get("sections", []):
         pilier = section.pop("inclure", None)
         sections.append(section)
         if not pilier:
             continue
-        source = racine / pilier / "site-content" / "contenu.json"
+        source = dossier_pilier(hub, racine, dossier_portfolio, pilier) / "site-content" / "contenu.json"
         try:
             contenu_pilier = lire(source)
         except FileNotFoundError:
@@ -222,6 +256,10 @@ def assembler_hub(pid, dossier_portfolio, dry_run):
             return False, f"pilier {pilier} INVALIDE ({err}) — projet sauté"
         enfants = 0
         for sous in contenu_pilier.get("sections", []):
+            if sous.get("masque"):
+                # Écartée du site : la source reste, la page disparaît.
+                masquees += 1
+                continue
             if sous.get("id") == section["id"]:
                 # Pilier « page unique » (ex. historique) : la section homonyme
                 # COMPLÈTE la section du squelette (dont les champs priment)
@@ -245,12 +283,16 @@ def assembler_hub(pid, dossier_portfolio, dry_run):
     if doublons:
         return False, f"ids de section EN DOUBLE ({', '.join(sorted(doublons))}) — projet sauté"
 
-    ecrire_json({"sections": sections}, RACINE_SITE / "data" / "projets" / f"{pid}.json",
-                dry_run, actions)
+    if masquees:
+        actions.append(f"{masquees} section(s) masquée(s)")
+
+    # Les autres clés du squelette (ex. "exchanges") passent telles quelles.
+    ecrire_json({**squelette, "sections": sections},
+                RACINE_SITE / "data" / "projets" / f"{pid}.json", dry_run, actions)
 
     # Miroir des assets de chaque pilier vers son dossier historique du site.
     for pilier, dossier_assets in hub["assets"].items():
-        miroir_assets(racine / pilier / "site-content" / "assets",
+        miroir_assets(dossier_pilier(hub, racine, dossier_portfolio, pilier) / "site-content" / "assets",
                       RACINE_SITE / "assets" / dossier_assets, dry_run, actions)
 
     return True, " ; ".join(actions) if actions else "à jour"
