@@ -265,6 +265,45 @@ img { max-width: 100%; display: block; }
   margin-top: 0.5rem;
 }
 
+/* ----- Pyramide des piliers (hubs crypto / indices) -----
+   Une chaîne « de la donnée à l'exécution » n'est pas une liste : Historique et
+   Temps réel forment le socle, convergent dans la Visualisation, qui nourrit le
+   Backtesting, qui mène à l'Automatisation. Les étages s'empilent dans le sens
+   de lecture de la page et se resserrent vers l'exécution ; les jonctions
+   dessinent la convergence. Étages et jonctions sont posés par content.js
+   (clé `etage` du JSON). */
+.pyramide {
+  margin-top: 0.5rem;
+  --pyramide-gouttiere: 1.25rem; /* la fourche s'aligne dessus — voir plus bas */
+}
+
+/* auto-fit : deux piliers au socle se partagent la rangée, un pilier seul la
+   prend en entier — sans que le rendu ait à compter les cartes. */
+.pyramide-etage {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--pyramide-gouttiere);
+}
+
+/* Tige verticale terminée par une pointe, entre deux étages. */
+.pyramide-jonction {
+  position: relative;
+  width: 2px;
+  height: 34px;
+  margin: 0 auto;
+  background: var(--couleur-accent-clair);
+}
+.pyramide-jonction::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 7px solid var(--couleur-accent-clair);
+}
+
 /* Lien « retour au projet » en tête des sous-pages. */
 .lien-retour {
   display: inline-block;
@@ -299,7 +338,7 @@ img { max-width: 100%; display: block; }
 }
 
 /* ----- Carte illustrée (sous-hub) -----
-   Une carte qui se présente par son visuel — la rondelle d'un exchange, ou
+   Une carte qui se présente par son visuel — la rondelle d'une source, ou
    l'aperçu de la vue qu'elle documente — plutôt que par son accroche. */
 .carte-illustree { display: flex; flex-direction: column; }
 .carte-illustree h3 { margin-bottom: 0.5rem; }
@@ -331,13 +370,14 @@ img { max-width: 100%; display: block; }
    rangées de marques ; la taille est fixée par le contexte. */
 .pastille { border-radius: 50%; display: block; }
 
-/* ----- Bandeau des exchanges (hub crypto) -----
-   En tête du hub : les rondelles du périmètre, écartés compris (grisés).
-   Aucun texte de rôle — le sort de chaque exchange se raconte sur sa page,
-   sous Historiques et sous Temps réel. Le nom reste : un monogramme seul
-   n'identifie personne. */
-.section-exchanges { padding-bottom: 0; }
-.bandeau-exchanges {
+/* ----- Bandeau des sources (hubs crypto / indices) -----
+   En tête du hub : les rondelles du périmètre, écartées comprises (grisées).
+   Aucun texte de rôle — le sort de chaque source se raconte sur sa page, sous
+   Historique et sous Temps réel. Le nom reste : un monogramme seul n'identifie
+   personne. Crypto y met ses sept exchanges, les indices les deux plateformes
+   par lesquelles il atteint le CME. */
+.section-sources { padding-bottom: 0; }
+.bandeau-sources {
   display: flex;
   flex-wrap: wrap;
   gap: 1.75rem;
@@ -345,22 +385,22 @@ img { max-width: 100%; display: block; }
   margin: 0;
   padding: 0;
 }
-.exchange-logo {
+.source-logo {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.4rem;
 }
-.exchange-logo .pastille { width: 44px; height: 44px; }
-.exchange-nom {
+.source-logo .pastille { width: 44px; height: 44px; }
+.source-nom {
   margin: 0;
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--couleur-texte-doux);
 }
-/* Écarté du périmètre : présent, mais visiblement hors du peloton. */
-.exchange-ecarte .pastille { filter: grayscale(1); opacity: 0.5; }
-.exchange-ecarte .exchange-nom { opacity: 0.6; font-weight: 500; }
+/* Écartée du périmètre : présente, mais visiblement hors du peloton. */
+.source-ecartee .pastille { filter: grayscale(1); opacity: 0.5; }
+.source-ecartee .source-nom { opacity: 0.6; font-weight: 500; }
 
 /* ----- Rangée de marques (page section) -----
    Les outils d'une section sans sous-hub — ex. les deux moteurs du
@@ -785,6 +825,48 @@ button:focus-visible {
   .galerie { grid-template-columns: repeat(2, 1fr); }
   h1 { font-size: 2.25rem; }
   .hero h1 { font-size: 3rem; }
+
+  /* La pyramide ne prend forme qu'ici : sous 640px les cartes s'empilent déjà
+     pleine largeur, et deux cartes empilées ne convergent nulle part — la
+     fourche resterait donc une tige (règle de base ci-dessus).
+     Le resserrement : chaque étage perd 18 % de largeur sur le précédent
+     (100 / 82 / 64 / 46 %). --rang (1, 2, 3…) est posé par content.js. */
+  .pyramide-etage {
+    width: calc(100% - (var(--rang, 1) - 1) * 18%);
+    min-width: 260px;
+    margin-inline: auto;
+  }
+
+  /* Fourche : deux tiges qui descendent du centre des cartes du socle, un rail
+     qui les réunit, puis une tige centrale vers l'étage du dessous. Le rail est
+     le bas d'un « U » — d'où les bordures.
+     Le centre d'une carte du socle n'est PAS à 25 % de la rangée : la gouttière
+     pousse chaque carte vers l'extérieur d'un quart de sa largeur. Sans ce
+     retrait, chaque branche tombe à côté de sa carte. */
+  .pyramide-jonction-fourche {
+    width: auto;
+    height: 26px;
+    margin: 0 calc(25% - var(--pyramide-gouttiere) / 4) 26px;
+    background: none;
+    border: 2px solid var(--couleur-accent-clair);
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+  }
+  .pyramide-jonction-fourche::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 2px;
+    height: 26px;
+    margin-left: -1px;
+    background: var(--couleur-accent-clair);
+  }
+  /* La pointe descend au bout de la tige centrale, pas du rail. */
+  .pyramide-jonction-fourche::after {
+    top: calc(100% + 19px);
+    bottom: auto;
+  }
 }
 
 /* --------------------------------------------------------------------------

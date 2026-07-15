@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!-- crypto.html — Hub : Crypto, 4 piliers (historique / affichage / backtesting /
-     automatisation), rendu via data-projet-hub="crypto" -->
+<!-- crypto.html — Hub : Crypto, 5 piliers en pyramide (historique + temps réel /
+     affichage / backtesting / automatisation), rendu via data-projet-hub="crypto" -->
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
@@ -33,19 +33,20 @@
       </div>
     </section>
 
-    <section class="section section-exchanges" style="padding-top:0;">
+    <section class="section section-sources" style="padding-top:0;">
       <div class="conteneur">
         <!-- Le périmètre en un coup d'œil, avant les piliers : la rondelle de
-             chaque exchange, écartés compris (clé "exchanges" de crypto.json).
+             chaque exchange, écartés compris (clé "sources" de crypto.json).
              Le rôle de chacun se lit sur sa page, sous Historiques / Temps réel. -->
-        <div data-projet-exchanges="crypto"></div>
+        <div data-projet-sources="crypto"></div>
       </div>
     </section>
 
     <section class="section" style="padding-top:0;">
       <div class="conteneur">
-        <!-- Table des matières : une carte par pilier (Historique, Affichage,
-             Backtesting, Automatisation), chacune menant à
+        <!-- Table des matières : les cinq piliers en pyramide (clé `etage` du
+             JSON) — Historiques + Temps réel, Visualisations, Backtesting,
+             Automatisation — chacun menant à
              projet-section.html?p=crypto&s=<pilier>. -->
         <div data-projet-hub="crypto"
              data-hub-titres-seuls

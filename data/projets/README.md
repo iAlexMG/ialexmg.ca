@@ -49,11 +49,11 @@ chaque pilier inclus a le sien sous `assets/<id>/<pilier>/`
 - `concept: true` — la section se rend en bandeau pleine largeur sous la grille
   des piliers du hub, plutôt que comme une carte.
 - `pastille` — rondelle de marque sur la carte de la section dans le sous-hub de
-  son parent. Une CHAÎNE est l'id d'une entrée de la clé `exchanges` du projet
+  son parent. Une CHAÎNE est l'id d'une entrée de la clé `sources` du projet
   (couleur et monogramme déclarés une seule fois, dans le squelette du hub) ; un
   OBJET `{nom, monogramme, couleur}` est pris tel quel, pour une marque qui
-  n'est pas un exchange (les moteurs de backtesting). La rondelle REMPLACE
-  l'accroche sur la carte.
+  n'est pas une source de données (les moteurs de backtesting). La rondelle
+  REMPLACE l'accroche sur la carte.
 - `vignette` — chemin d'image ; l'aperçu coiffe la carte de la section et
   remplace lui aussi l'accroche. Sert l'arborescence du pilier Visualisations
   (la capture des quatre vues en tête, chaque vue en dessous).
@@ -62,20 +62,37 @@ chaque pilier inclus a le sien sous `assets/<id>/<pilier>/`
   et `ecarte: true` optionnels. Pour une section sans sous-hub qui veut quand
   même montrer ses outils (les deux moteurs du backtesting des indices).
 
-## Clé `exchanges` (hub crypto)
+## Clé `sources` (hubs crypto / indices)
 
 À la racine du JSON, à côté de `sections`. Chaque entrée = `id`, `nom`,
 `monogramme` (2 lettres), `couleur` (hex de la marque), `statut` {fr,en},
 `role` {fr,en}, et `ecarte: true` le cas échéant. Le site en fait un bandeau de
-logos en tête du hub (`data-projet-exchanges` dans la page) : la pastille est
+logos en tête du hub (`data-projet-sources` dans la page) : la pastille est
 fabriquée en SVG à la volée — aucun logo déposé n'est hébergé — et l'encre du
 monogramme suit la luminance de la couleur. Le bandeau ne montre QUE les
-rondelles et les noms ; le sort de chaque exchange, écartés compris, se raconte
-sur sa page (sous Historiques et sous Temps réel), et `role` sert de source à
+rondelles et les noms ; le sort de chaque source, écartées comprises, se raconte
+sur sa page (sous Historique et sous Temps réel), et `role` sert de source à
 ces pages plutôt qu'à un affichage direct. Les piliers s'y réfèrent par id via
 le champ `pastille` d'une section. Les autres clés de premier niveau d'un
-squelette de hub sont recopiées telles quelles : `exchanges` n'est pas un cas
+squelette de hub sont recopiées telles quelles : `sources` n'est pas un cas
 particulier du script.
+
+« Source » et non « exchange » : crypto tire ses données de sept exchanges, les
+indices d'un seul marché (le CME) atteint par deux plateformes (Quantower,
+IBKR). Un seul mot couvre les deux hubs.
+
+## Clé `etage` (piliers d'un hub)
+
+Sur une section de pilier : son niveau (1, 2, 3…) dans la chaîne du projet. Dès
+que TOUS les piliers d'un hub en portent un, la table des matières se rend en
+PYRAMIDE plutôt qu'en grille — les piliers de même étage partagent une rangée,
+et les rangées se resserrent vers le bas. C'est la chaîne « de la donnée à
+l'exécution » de crypto et des indices : Historique et Temps réel (étage 1)
+alimentent les Visualisations (2), qui nourrissent le Backtesting (3), qui mène
+à l'Automatisation (4). Un seul pilier sans `etage` suffit à retomber sur la
+grille — les hubs qui rassemblent des sections sans chaîne (formations,
+statistiques) n'ont donc rien à déclarer. Une section `concept` reste hors
+pyramide : elle garde son bandeau pleine largeur, en dessous.
 
 ## Types d'item
 

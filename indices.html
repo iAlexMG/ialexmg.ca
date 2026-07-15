@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<!-- indices.html — Hub : Indices boursiers (ES/NQ), 4 piliers (historique /
-     affichage / backtesting / automatisation), rendu via data-projet-hub="indices" -->
+<!-- indices.html — Hub : Indices boursiers (ES/NQ), 5 piliers en pyramide
+     (historique + temps réel / affichage / backtesting / automatisation),
+     rendu via data-projet-hub="indices" -->
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
@@ -33,10 +34,22 @@
       </div>
     </section>
 
+    <section class="section section-sources" style="padding-top:0;">
+      <div class="conteneur">
+        <!-- Le périmètre en un coup d'œil, avant les piliers : la rondelle de
+             chaque source (clé "sources" de indices.json). Ici ce ne sont pas
+             des exchanges — le marché est unique (CME) — mais les deux accès
+             qui y mènent. Le rôle de chacun se lit sur sa page, sous Historique
+             / Temps réel. -->
+        <div data-projet-sources="indices"></div>
+      </div>
+    </section>
+
     <section class="section" style="padding-top:0;">
       <div class="conteneur">
-        <!-- Table des matières : une carte par pilier (Historique, Affichage,
-             Backtesting, Automatisation), chacune menant à
+        <!-- Table des matières : les cinq piliers en pyramide (clé `etage` du
+             JSON) — Historique + Temps réel, Visualisations, Backtesting,
+             Automatisation — chacun menant à
              projet-section.html?p=indices&s=<pilier>. -->
         <div data-projet-hub="indices"
              data-hub-titres-seuls
