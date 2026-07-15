@@ -17,14 +17,14 @@ PROJETS « HUB » (crypto, indices) — un mono-dépôt en 4 piliers
 (historique / affichage / backtesting / automatisation) :
   - Le SQUELETTE du hub est <mono-dépôt>/site-content/contenu.json : une section
     par pilier (titre, accroche, statut, prose). Ses autres clés de premier
-    niveau (ex. "exchanges") sont recopiées telles quelles dans le JSON du site.
+    niveau (ex. "sources") sont recopiées telles quelles dans le JSON du site.
   - Une section du squelette peut porter "inclure": "<pilier>" : le script y
     injecte les sections de <mono-dépôt>/<pilier>/site-content/contenu.json en
     SOUS-SECTIONS (champ parent = id de la section, mécanisme sousHub du site).
   - Une section de pilier qui porte "masque": true est ÉCARTÉE de l'assemblage :
     sa source reste versionnée (l'évaluation qui a mené au rejet d'un exchange
     garde sa trace) mais elle ne paraît plus dans le sous-hub. Le hub la
-    présente à sa façon — voir la clé "exchanges" du squelette crypto.
+    présente à sa façon — voir la clé "sources" du squelette crypto.
   - Cas particulier « pilier page unique » (ex. crypto/historique) : une section
     du pilier qui porte le MÊME id que la section du squelette la COMPLÈTE
     (texte, items… ; les champs du squelette priment) au lieu de s'y accrocher ;
@@ -93,7 +93,11 @@ HUBS = {
     },
     "indices": {
         "dossiers": ["_restructure/indicesBoursiers", "indicesBoursiers"],
-        "assets": {"affichage": "indices/affichage"},
+        "assets": {
+            "historique": "indices/historique",
+            "affichage": "indices/affichage",
+            "backtesting": "indices/backtesting",
+        },
     },
     "formations": {
         "dossiers": ["Formations"],
@@ -286,7 +290,7 @@ def assembler_hub(pid, dossier_portfolio, dry_run):
     if masquees:
         actions.append(f"{masquees} section(s) masquée(s)")
 
-    # Les autres clés du squelette (ex. "exchanges") passent telles quelles.
+    # Les autres clés du squelette (ex. "sources") passent telles quelles.
     ecrire_json({**squelette, "sections": sections},
                 RACINE_SITE / "data" / "projets" / f"{pid}.json", dry_run, actions)
 

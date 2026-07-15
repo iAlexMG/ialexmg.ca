@@ -352,6 +352,71 @@ const Contenu = (function () {
     );
   }
 
+  // --- Pyramide des piliers (hubs crypto / indices) --------------------------
+
+  // Les piliers d'une chaîne « de la donnée à l'exécution » ne forment pas une
+  // liste plate : Historique et Temps réel alimentent ENSEMBLE la Visualisation,
+  // qui nourrit le Backtesting, qui mène à l'Automatisation. La clé `etage`
+  // (1, 2, 3…) du JSON porte ce niveau ; le rendu empile les étages dans le sens
+  // de lecture, du socle le plus large vers l'exécution.
+  // Renvoie null dès qu'UN pilier n'a pas d'étage : le hub retombe alors sur la
+  // grille — les autres projets (formations, statistiques, 649) rassemblent des
+  // sections côte à côte, sans chaîne à raconter.
+  function etagesDePiliers(piliers) {
+    if (!piliers.length) return null;
+    const numerotes = piliers.every(function (s) {
+      return typeof s.etage === "number";
+    });
+    if (!numerotes) return null;
+    const niveaux = [];
+    piliers
+      .slice()
+      .sort(function (a, b) {
+        return a.etage - b.etage;
+      })
+      .forEach(function (section) {
+        const dernier = niveaux[niveaux.length - 1];
+        if (dernier && dernier.etage === section.etage) dernier.sections.push(section);
+        else niveaux.push({ etage: section.etage, sections: [section] });
+      });
+    return niveaux;
+  }
+
+  // Jonction entre deux étages : une FOURCHE quand l'étage du dessus porte
+  // plusieurs piliers qui convergent (Historique + Temps réel vers la
+  // Visualisation), une simple TIGE sinon. Décor pur, masqué aux lecteurs
+  // d'écran : la succession des cartes dit déjà l'ordre de la chaîne.
+  function creerJonction(piliersDessus) {
+    return (
+      '<div class="pyramide-jonction' +
+      (piliersDessus > 1 ? " pyramide-jonction-fourche" : "") +
+      '" aria-hidden="true"></div>'
+    );
+  }
+
+  function construirePyramide(niveaux, projet, pageSection, titresSeuls) {
+    return (
+      '<div class="pyramide">' +
+      niveaux
+        .map(function (niveau, rang) {
+          const cartes = niveau.sections
+            .map(function (section) {
+              return carteDePilier(section, projet, pageSection, titresSeuls);
+            })
+            .join("");
+          // --rang pilote le resserrement de l'étage (voir styles.css).
+          return (
+            (rang === 0 ? "" : creerJonction(niveaux[rang - 1].sections.length)) +
+            '<div class="pyramide-etage" style="--rang: ' + (rang + 1) + '">' +
+            cartes +
+            "</div>"
+          );
+        })
+        .join("") +
+      "</div>"
+    );
+  }
+
   // Sous-hub : une carte par item d'une section (mène à la page item).
   function construireSousHub(items, projet, sectionId, pageItem) {
     return (
@@ -389,16 +454,16 @@ const Contenu = (function () {
   // Sous-hub de SECTIONS : une carte par sous-section (mène à sa page section).
   // Sert à imbriquer un niveau (ex. « La formation » -> LEAN / vbt / conclusion).
   // Une section qui porte une vignette ou une pastille se présente par son
-  // visuel : la rondelle de l'exchange ou l'aperçu de la vue remplace l'accroche
-  // (`exchanges` = la clé du projet, pour résoudre les pastilles par id).
-  function construireSousHubSections(sections, projet, pageSection, exchanges) {
+  // visuel : la rondelle de la source ou l'aperçu de la vue remplace l'accroche
+  // (`sources` = la clé du projet, pour résoudre les pastilles par id).
+  function construireSousHubSections(sections, projet, pageSection, sources) {
     return (
       '<div class="grille-hub">' +
       sections
         .map(function (section) {
           const titre = texteLocalise(section.titre);
           const visuel =
-            vignetteDeCarte(section, titre) || pastilleDeCarte(section, exchanges);
+            vignetteDeCarte(section, titre) || pastilleDeCarte(section, sources);
           const desc = visuel
             ? ""
             : texteLocalise(section.accroche) ||
@@ -449,25 +514,25 @@ const Contenu = (function () {
   }
 
   // Résout le champ `pastille` / une entrée de `marques` d'une section :
-  //   - une CHAÎNE est l'id d'un exchange du projet (clé "exchanges" du JSON) —
-  //     la couleur et le monogramme d'un exchange sont déclarés une seule fois,
-  //     dans le squelette du hub, et les piliers s'y réfèrent par id ;
+  //   - une CHAÎNE est l'id d'une source du projet (clé "sources" du JSON) — la
+  //     couleur et le monogramme d'une source sont déclarés une seule fois, dans
+  //     le squelette du hub, et les piliers s'y réfèrent par id ;
   //   - un OBJET {nom, monogramme, couleur} est pris tel quel — pour les marques
-  //     qui ne sont pas des exchanges (les moteurs de backtesting).
+  //     qui ne sont pas des sources de données (les moteurs de backtesting).
   // Renvoie null si l'id est inconnu : une carte sans rondelle vaut mieux
   // qu'une rondelle « ? » sur une coquille de frappe.
-  function resoudreMarque(valeur, exchanges) {
+  function resoudreMarque(valeur, sources) {
     if (!valeur) return null;
     if (typeof valeur !== "string") return valeur;
-    return (exchanges || []).filter(function (e) {
-      return e.id === valeur;
+    return (sources || []).filter(function (s) {
+      return s.id === valeur;
     })[0] || null;
   }
 
   // Rondelle d'une carte de sous-hub. Grisée si la marque est écartée du
   // périmètre (Kraken) : le statut se lit alors avant même la puce.
-  function pastilleDeCarte(section, exchanges) {
-    const marque = resoudreMarque(section.pastille, exchanges);
+  function pastilleDeCarte(section, sources) {
+    const marque = resoudreMarque(section.pastille, sources);
     if (!marque) return "";
     return (
       '<span class="carte-pastille' + (marque.ecarte ? " pastille-ecartee" : "") + '">' +
@@ -479,10 +544,10 @@ const Contenu = (function () {
   // Rangée de rondelles en tête d'une page section (clé `marques`) : sert aux
   // sections sans sous-hub qui veulent quand même afficher leurs outils —
   // ex. les deux moteurs du backtesting des indices.
-  function creerRangeeMarques(section, exchanges) {
+  function creerRangeeMarques(section, sources) {
     const marques = (Array.isArray(section.marques) ? section.marques : [])
       .map(function (m) {
-        return resoudreMarque(m, exchanges);
+        return resoudreMarque(m, sources);
       })
       .filter(Boolean);
     if (!marques.length) return "";
@@ -506,41 +571,45 @@ const Contenu = (function () {
     );
   }
 
-  // --- Exchanges (bandeau du hub crypto) ------------------------------------
+  // --- Sources de données (bandeau des hubs crypto / indices) ---------------
 
-  // Bandeau du hub : la rondelle de chaque exchange du périmètre, écartés
-  // compris (grisés). Aucun texte de rôle ici — le sort de chaque exchange est
-  // raconté sur sa page, sous Historiques et sous Temps réel. Le nom reste sous
+  // « Source » et non « exchange » : crypto tire ses données de sept exchanges,
+  // les indices d'un seul marché (le CME) atteint par deux plateformes
+  // (Quantower, IBKR). Un seul mot couvre les deux hubs.
+
+  // Bandeau du hub : la rondelle de chaque source du périmètre, écartées
+  // comprises (grisées). Aucun texte de rôle ici — le sort de chaque source est
+  // raconté sur sa page, sous Historique et sous Temps réel. Le nom reste sous
   // la rondelle : un monogramme seul (« KC », « BG ») n'identifie personne.
-  function creerLogoExchange(exchange) {
-    const classe = "exchange-logo" + (exchange.ecarte ? " exchange-ecarte" : "");
+  function creerLogoSource(source) {
+    const classe = "source-logo" + (source.ecarte ? " source-ecartee" : "");
     return (
       '<li class="' + classe + '">' +
-      creerPastille(exchange) +
-      '<span class="exchange-nom">' + echapper(exchange.nom) + "</span>" +
+      creerPastille(source) +
+      '<span class="source-nom">' + echapper(source.nom) + "</span>" +
       "</li>"
     );
   }
 
-  // Rend le bandeau des exchanges d'un projet (clé "exchanges" de son JSON).
+  // Rend le bandeau des sources d'un projet (clé "sources" de son JSON).
   // Sans cette clé, le conteneur reste vide : les autres projets ne changent pas.
-  async function rendreExchanges(options) {
+  async function rendreSources(options) {
     const conteneur = options.conteneur;
     const projet = options.projet || null;
     if (!conteneur) return;
     try {
       const bloc = await chargerProjet(projet);
-      const exchanges = (bloc && Array.isArray(bloc.exchanges)) ? bloc.exchanges : [];
-      if (!exchanges.length) {
+      const sources = (bloc && Array.isArray(bloc.sources)) ? bloc.sources : [];
+      if (!sources.length) {
         conteneur.innerHTML = "";
         return;
       }
       conteneur.innerHTML =
-        '<ul class="bandeau-exchanges">' +
-        exchanges.map(creerLogoExchange).join("") +
+        '<ul class="bandeau-sources">' +
+        sources.map(creerLogoSource).join("") +
         "</ul>";
     } catch (err) {
-      console.error("[exchanges] Échec du chargement :", err);
+      console.error("[sources] Échec du chargement :", err);
       conteneur.innerHTML = "";
     } finally {
       window.I18n.appliquerTraductions(conteneur);
@@ -711,6 +780,25 @@ const Contenu = (function () {
     return texteLocalise(section.statut) || libelleCompte(section);
   }
 
+  // Carte d'un pilier dans la table des matières d'un hub — grille OU pyramide.
+  function carteDePilier(section, projet, pageSection, titresSeuls, idx) {
+    const titre = texteLocalise(section.titre);
+    // Accroche courte pour la carte du hub ; à défaut l'intro, puis le texte
+    // complet. 'accroche' évite d'étaler toute la prose (ex. la Conclusion, qui
+    // n'a pas d'intro) sur la table des matières.
+    const desc = titresSeuls
+      ? ""
+      : texteLocalise(section.accroche) ||
+        texteLocalise(section.intro) ||
+        texteLocalise(section.texte);
+    const id = section.id || String(idx);
+    const href =
+      pageSection +
+      "?p=" + encodeURIComponent(projet) +
+      "&s=" + encodeURIComponent(id);
+    return creerCarteLien(titre, desc, href, libelleCarteSection(section));
+  }
+
   // Rendu du HUB (table des matières). Deux cas :
   //   - projet SECTIONNÉ (649) : une carte par section -> page section.
   //   - projet à items PLATS (Python) : une carte par item -> page item.
@@ -781,29 +869,25 @@ const Contenu = (function () {
         const piliers = sections.filter(function (s) {
           return !s.concept;
         });
+        // Les piliers étagés (clé `etage`) racontent une chaîne : ils se rendent
+        // en pyramide. Les autres hubs gardent la grille.
+        const niveaux = etagesDePiliers(piliers);
+        function grilleDesPiliers() {
+          return (
+            '<div class="grille-hub">' +
+            piliers
+              .map(function (section, idx) {
+                return carteDePilier(section, projet, pageSection, titresSeuls, idx);
+              })
+              .join("") +
+            "</div>"
+          );
+        }
         conteneur.innerHTML =
           lienCode +
-          '<div class="grille-hub">' +
-          piliers
-            .map(function (section, idx) {
-              const titre = texteLocalise(section.titre);
-              // Accroche courte pour la carte du hub ; à défaut l'intro, puis le
-              // texte complet. 'accroche' évite d'étaler toute la prose (ex. la
-              // Conclusion, qui n'a pas d'intro) sur la table des matières.
-              const desc = titresSeuls
-                ? ""
-                : texteLocalise(section.accroche) ||
-                  texteLocalise(section.intro) ||
-                  texteLocalise(section.texte);
-              const id = section.id || String(idx);
-              const href =
-                pageSection +
-                "?p=" + encodeURIComponent(projet) +
-                "&s=" + encodeURIComponent(id);
-              return creerCarteLien(titre, desc, href, libelleCarteSection(section));
-            })
-            .join("") +
-          "</div>" +
+          (niveaux
+            ? construirePyramide(niveaux, projet, pageSection, titresSeuls)
+            : grilleDesPiliers()) +
           concepts
             .map(function (section) {
               return creerBandeauConcept(section, projet, pageSection);
@@ -901,9 +985,9 @@ const Contenu = (function () {
       const items = Array.isArray(section.items) ? section.items : [];
       const texte = texteLocalise(section.texte);
       // Les pastilles se déclarent par id dans les piliers ; leurs couleurs
-      // vivent dans la clé "exchanges" du projet (squelette du hub).
-      const exchanges = Array.isArray(bloc && bloc.exchanges) ? bloc.exchanges : [];
-      const marques = creerRangeeMarques(section, exchanges);
+      // vivent dans la clé "sources" du projet (squelette du hub).
+      const sources = Array.isArray(bloc && bloc.sources) ? bloc.sources : [];
+      const marques = creerRangeeMarques(section, sources);
 
       if (section.sousHub) {
         // Section-hub : ses sous-sections (parent === cette section) forment un
@@ -923,7 +1007,7 @@ const Contenu = (function () {
             ? '<div class="galerie galerie-tete">' + items.map(creerCarte).join("") + "</div>"
             : "") +
           rendreProse(texte) +
-          construireSousHubSections(enfants, projet, pageSection, exchanges);
+          construireSousHubSections(enfants, projet, pageSection, sources);
       } else if (section.sousMenu && items.length) {
         // Sous-menu : une carte par item (mène à sa page item).
         conteneur.innerHTML =
@@ -1052,7 +1136,7 @@ const Contenu = (function () {
   return {
     rendre: rendre,
     rendreHub: rendreHub,
-    rendreExchanges: rendreExchanges,
+    rendreSources: rendreSources,
     rendreSection: rendreSection,
     rendreItem: rendreItem,
   };
