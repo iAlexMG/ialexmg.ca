@@ -394,6 +394,25 @@ const Contenu = (function () {
     );
   }
 
+  // Fourche DIVERGENTE : la racine d'une arborescence (l'image générale d'un
+  // pilier) descend vers les cartes de ses branches. C'est l'inverse de la
+  // fourche de la pyramide, où plusieurs piliers convergent vers un seul : son
+  // « U » ne se retourne pas, et il faut ici une branche par carte. D'où une
+  // tige centrale, puis une cellule par carte qui porte le rail et sa branche —
+  // la grille des cellules rejoue celle des cartes, et l'alignement suit
+  // (voir .arbre-branches). Décor pur, masqué aux lecteurs d'écran : la
+  // succession image → cartes dit déjà l'arborescence.
+  function creerFourcheArbre(nombreDeCartes) {
+    let branches = "";
+    for (let i = 0; i < nombreDeCartes; i++) branches += "<span><i></i></span>";
+    return (
+      '<div class="arbre-jonction" aria-hidden="true">' +
+      '<div class="arbre-tige"></div>' +
+      '<div class="arbre-branches">' + branches + "</div>" +
+      "</div>"
+    );
+  }
+
   function construirePyramide(niveaux, projet, pageSection, titresSeuls) {
     return (
       '<div class="pyramide">' +
@@ -451,6 +470,31 @@ const Contenu = (function () {
     );
   }
 
+  // Ordonne les cartes d'un sous-hub sur le bandeau des sources : les rondelles
+  // se lisent alors dans le même ordre, de gauche à droite, sur toutes les
+  // pages du projet. Sans cette règle l'ordre est celui des sections du JSON,
+  // et il dérive d'un pilier à l'autre — Bitget ouvrait le Temps réel et
+  // arrivait cinquième dans l'Historique, si bien que les rondelles semblaient
+  // alterner d'une page à l'autre. L'ordre du bandeau fait foi : il est déclaré
+  // une seule fois, dans le squelette du hub (clé `sources`).
+  // Ne trie QUE si toutes les sous-sections portent une rondelle de source —
+  // même prudence qu'`etagesDePiliers` : les sous-hubs sans rondelle (les
+  // stratégies d'un moteur) ou aux marques déclarées en clair (les moteurs de
+  // backtesting) gardent l'ordre voulu par l'auteur.
+  function ordonnerSurLesSources(sections, sources) {
+    const rang = {};
+    (sources || []).forEach(function (source, i) {
+      rang[source.id] = i;
+    });
+    const toutes = sections.every(function (s) {
+      return typeof s.pastille === "string" && rang[s.pastille] !== undefined;
+    });
+    if (!toutes) return sections;
+    return sections.slice().sort(function (a, b) {
+      return rang[a.pastille] - rang[b.pastille];
+    });
+  }
+
   // Sous-hub de SECTIONS : une carte par sous-section (mène à sa page section).
   // Sert à imbriquer un niveau (ex. « La formation » -> LEAN / vbt / conclusion).
   // Une section qui porte une vignette ou une pastille se présente par son
@@ -459,7 +503,7 @@ const Contenu = (function () {
   function construireSousHubSections(sections, projet, pageSection, sources) {
     return (
       '<div class="grille-hub">' +
-      sections
+      ordonnerSurLesSources(sections, sources)
         .map(function (section) {
           const titre = texteLocalise(section.titre);
           const visuel =
@@ -1000,14 +1044,27 @@ const Contenu = (function () {
         // Les items d'une section-hub ne sont pas des items parmi d'autres :
         // ils portent le sujet de la page (la capture des quatre vues, en tête
         // de l'arborescence des Visualisations). D'où la galerie de tête.
+        const galerie = items.length
+          ? '<div class="galerie galerie-tete">' + items.map(creerCarte).join("") + "</div>"
+          : "";
+        const sousHub = construireSousHubSections(enfants, projet, pageSection, sources);
+        // Une section-hub illustrée EN TÊTE est une arborescence : l'image
+        // générale est la racine, ses sous-sections les branches qui la
+        // démontent. Une fourche descend donc de l'image vers les cartes, et la
+        // prose passe SOUS l'arbre — une vue se lit juste sous l'image dont elle
+        // est extraite, pas après un paragraphe. Les section-hubs sans
+        // illustration (Historiques, Temps réel) n'ont pas de racine à montrer :
+        // ils gardent leur prose avant les cartes.
         conteneur.innerHTML =
           avertissementTexteFr(section.texte) +
           marques +
-          (items.length
-            ? '<div class="galerie galerie-tete">' + items.map(creerCarte).join("") + "</div>"
-            : "") +
-          rendreProse(texte) +
-          construireSousHubSections(enfants, projet, pageSection, sources);
+          (galerie && enfants.length
+            ? // --n : le nombre de branches. La fourche et la grille des cartes
+              // s'y accordent pour tenir sur une rangée unique (voir styles.css).
+              '<div class="arborescence" style="--n: ' + enfants.length + '">' +
+              galerie + creerFourcheArbre(enfants.length) + sousHub +
+              "</div>" + rendreProse(texte)
+            : galerie + rendreProse(texte) + sousHub);
       } else if (section.sousMenu && items.length) {
         // Sous-menu : une carte par item (mène à sa page item).
         conteneur.innerHTML =

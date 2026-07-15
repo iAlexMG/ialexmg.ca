@@ -28,6 +28,10 @@
   --transition: 180ms ease;
   --largeur-max: 1100px;
   --espace: 1rem;
+  /* Gouttière des grilles de cartes. Variable et non littéral : la fourche de
+     l'arborescence rejoue la grille du sous-hub pour tomber pile au centre de
+     chaque carte — les deux doivent bouger ensemble. */
+  --grille-gouttiere: 1.25rem;
 }
 
 /* ----- Réinitialisation légère ----- */
@@ -261,7 +265,7 @@ img { max-width: 100%; display: block; }
 .grille-hub {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1.25rem;
+  gap: var(--grille-gouttiere);
   margin-top: 0.5rem;
 }
 
@@ -285,6 +289,10 @@ img { max-width: 100%; display: block; }
   gap: var(--pyramide-gouttiere);
 }
 
+/* Titres et flèches centrés : un pilier seul occupe toute la largeur de son
+   étage, et un titre calé à gauche y flotte dans le vide. */
+.pyramide .carte-portfolio { text-align: center; }
+
 /* Tige verticale terminée par une pointe, entre deux étages. */
 .pyramide-jonction {
   position: relative;
@@ -294,6 +302,78 @@ img { max-width: 100%; display: block; }
   background: var(--couleur-accent-clair);
 }
 .pyramide-jonction::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 7px solid var(--couleur-accent-clair);
+}
+
+/* ----- Arborescence d'un pilier (page Visualisations) -----
+   Une section-hub qui porte une illustration en tête est un arbre : l'image
+   générale est la racine — la capture où les quatre vues se superposent — et
+   ses sous-sections sont les branches qui la démontent. Même vocabulaire que
+   la pyramide des piliers (tige, rail, pointe), mais la fourche DIVERGE au
+   lieu de converger : la forme en « U » de la pyramide ne se retourne pas, et
+   il faut une branche par carte, pas deux. Posée par content.js. */
+.arborescence .galerie-tete { margin-bottom: 0; }
+/* Les cartes se lisent juste sous l'image : la fourche est le seul écart. */
+.arborescence .grille-hub { margin-top: 0; }
+
+/* La fourche suppose que les cartes partagent UNE rangée : une branche par
+   carte, reliées par un rail horizontal. Tant que la grille s'enroule (les
+   cartes passent à la ligne), le rail traverserait deux rangées sans plus rien
+   relier — on ne dessine donc rien. Voir le seuil de 880px plus bas. */
+.arbre-jonction { display: none; }
+
+.arbre-tige {
+  width: 2px;
+  height: 26px;
+  margin: 0 auto;
+  background: var(--couleur-accent-clair);
+}
+
+/* Le rail et les branches rejouent EXACTEMENT la grille du sous-hub (mêmes
+   colonnes, même gouttière) et reçoivent une cellule par carte : chaque
+   branche tombe donc au centre de sa carte sans que rien n'ait à être mesuré.
+   Les deux grilles doivent rester jumelles — voir --grille-gouttiere et la
+   règle de colonnes commune à 880px. */
+.arbre-branches {
+  display: grid;
+  gap: var(--grille-gouttiere);
+  height: 26px;
+}
+.arbre-branches span { position: relative; }
+
+/* Le rail court d'un centre de carte à l'autre : la moitié droite de la
+   première cellule, la moitié gauche de la dernière, et tout l'entre-deux —
+   gouttières comprises, d'où le débord de part et d'autre. Une carte seule est
+   à la fois première et dernière : le rail disparaît, la tige suffit. */
+.arbre-branches span::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: calc(var(--grille-gouttiere) / -2);
+  right: calc(var(--grille-gouttiere) / -2);
+  border-top: 2px solid var(--couleur-accent-clair);
+}
+.arbre-branches span:first-child::before { left: 50%; }
+.arbre-branches span:last-child::before { right: 50%; }
+
+/* Une branche par cellule, terminée par la même pointe que la pyramide. */
+.arbre-branches i {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  margin-left: -1px;
+  background: var(--couleur-accent-clair);
+}
+.arbre-branches i::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -829,10 +909,16 @@ button:focus-visible {
   /* La pyramide ne prend forme qu'ici : sous 640px les cartes s'empilent déjà
      pleine largeur, et deux cartes empilées ne convergent nulle part — la
      fourche resterait donc une tige (règle de base ci-dessus).
-     Le resserrement : chaque étage perd 18 % de largeur sur le précédent
-     (100 / 82 / 64 / 46 %). --rang (1, 2, 3…) est posé par content.js. */
-  .pyramide-etage {
-    width: calc(100% - (var(--rang, 1) - 1) * 18%);
+
+     Le socle garde toute la rangée : ses deux piliers donnent la largeur de
+     référence — une carte ≈ la moitié. Le resserrement ne vise donc QUE les
+     étages à pilier seul : sans ça un pilier seul remplissait son étage et
+     partait plus large qu'une carte du socle, si bien que l'entonnoir
+     s'inversait au sommet (Visualisations dépassait Historiques). Un étage
+     seul part sous la moitié de la rangée, puis perd 5,5 points sur le
+     précédent (47 / 41,5 / 36 %). --rang (1, 2, 3…) est posé par content.js. */
+  .pyramide-etage:has(> .carte-portfolio:only-child) {
+    width: calc(47% - (var(--rang, 2) - 2) * 5.5%);
     min-width: 260px;
     margin-inline: auto;
   }
@@ -874,6 +960,19 @@ button:focus-visible {
  * ------------------------------------------------------------------------ */
 @media (min-width: 880px) {
   .menu-bascule { display: none; }
+
+  /* L'arborescence des Visualisations ne diverge qu'ici : c'est la largeur à
+     partir de laquelle une colonne par vue tient au large (≈265px pour trois).
+     On y fige les colonnes sur le NOMBRE de cartes (--n, posé par content.js)
+     au lieu de laisser auto-fill en déduire : la rangée reste unique, donc le
+     rail relie bien toutes les branches, et les deux grilles restent jumelles.
+     Sous ce seuil, auto-fill reprend la main, les cartes s'enroulent et la
+     fourche s'efface (voir .arbre-jonction). */
+  .arbre-jonction { display: block; }
+  .arborescence .grille-hub,
+  .arbre-branches {
+    grid-template-columns: repeat(var(--n, 1), minmax(0, 1fr));
+  }
 
   .navigation {
     flex: 0 1 auto;
