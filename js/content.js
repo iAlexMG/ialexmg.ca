@@ -315,9 +315,14 @@ const Contenu = (function () {
   // --- Cartes de navigation (hub / sous-hub) --------------------------------
 
   // Carte « portfolio » menant à une sous-page (titre + description + flèche).
-  function creerCarteLien(titre, desc, href, fleche) {
+  // `visuel` (HTML, optionnel) coiffe la carte — une rondelle de marque ou la
+  // vignette d'une vue. Il tient alors lieu de description : l'appelant qui
+  // passe un visuel passe une desc vide.
+  function creerCarteLien(titre, desc, href, fleche, visuel) {
     return (
-      '<a class="carte-portfolio" href="' + href + '">' +
+      '<a class="carte-portfolio' + (visuel ? " carte-illustree" : "") + '"' +
+      ' href="' + href + '">' +
+      (visuel || "") +
       "  <h3>" + echapper(titre) + "</h3>" +
       (desc ? "  <p>" + echapper(desc) + "</p>" : "") +
       '  <span class="fleche">' + echapper(fleche) + " →</span>" +
@@ -368,23 +373,133 @@ const Contenu = (function () {
     );
   }
 
+  // Vignette d'une carte de sous-hub (clé `vignette` d'une section) : l'aperçu
+  // de la vue que la sous-section documente. Sert l'arborescence du pilier
+  // Visualisations — la capture des quatre vues en tête, chaque vue en dessous.
+  function vignetteDeCarte(section, titre) {
+    if (!section.vignette) return "";
+    return (
+      '<span class="carte-vignette">' +
+      '<img src="' + encoderChemin(section.vignette) + '"' +
+      ' alt="' + echapper(titre) + '" loading="lazy">' +
+      "</span>"
+    );
+  }
+
   // Sous-hub de SECTIONS : une carte par sous-section (mène à sa page section).
   // Sert à imbriquer un niveau (ex. « La formation » -> LEAN / vbt / conclusion).
-  function construireSousHubSections(sections, projet, pageSection) {
+  // Une section qui porte une vignette ou une pastille se présente par son
+  // visuel : la rondelle de l'exchange ou l'aperçu de la vue remplace l'accroche
+  // (`exchanges` = la clé du projet, pour résoudre les pastilles par id).
+  function construireSousHubSections(sections, projet, pageSection, exchanges) {
     return (
       '<div class="grille-hub">' +
       sections
         .map(function (section) {
           const titre = texteLocalise(section.titre);
-          const desc =
-            texteLocalise(section.accroche) ||
-            texteLocalise(section.intro) ||
-            texteLocalise(section.texte);
+          const visuel =
+            vignetteDeCarte(section, titre) || pastilleDeCarte(section, exchanges);
+          const desc = visuel
+            ? ""
+            : texteLocalise(section.accroche) ||
+              texteLocalise(section.intro) ||
+              texteLocalise(section.texte);
           const href =
             pageSection +
             "?p=" + encodeURIComponent(projet) +
             "&s=" + encodeURIComponent(section.id);
-          return creerCarteLien(titre, desc, href, libelleCarteSection(section));
+          return creerCarteLien(
+            titre, desc, href, libelleCarteSection(section), visuel
+          );
+        })
+        .join("") +
+      "</div>"
+    );
+  }
+
+  // --- Pastilles de marque --------------------------------------------------
+
+  // Pastille d'une marque : monogramme sur une rondelle à sa couleur.
+  // Fabriquée ici plutôt que chargée en image — pas de logo déposé à héberger,
+  // et le rendu suit le thème. Le monogramme passe en foncé sur les couleurs
+  // claires (le jaune de Binance) : on choisit selon la luminance perçue.
+  function creerPastille(marque) {
+    const couleur = /^#[0-9a-f]{6}$/i.test(String(marque.couleur || ""))
+      ? marque.couleur
+      : "#6E7681";
+    const r = parseInt(couleur.slice(1, 3), 16);
+    const v = parseInt(couleur.slice(3, 5), 16);
+    const b = parseInt(couleur.slice(5, 7), 16);
+    const luminance = (0.299 * r + 0.587 * v + 0.114 * b) / 255;
+    const encre = luminance > 0.6 ? "#12161C" : "#FFFFFF";
+    const monogramme = String(marque.monogramme || "?");
+    // Un monogramme de 3 lettres (VBT) doit tenir dans la même rondelle qu'un
+    // monogramme de 2 (BN) : on resserre la fonte plutôt que la rondelle.
+    const taille = monogramme.length > 2 ? 14 : 18;
+    return (
+      '<svg class="pastille" viewBox="0 0 48 48" role="img"' +
+      ' aria-label="' + echapper(marque.nom) + '">' +
+      '<circle cx="24" cy="24" r="24" fill="' + couleur + '"></circle>' +
+      '<text x="24" y="24" text-anchor="middle" dominant-baseline="central"' +
+      ' font-size="' + taille + '" font-weight="700" fill="' + encre + '"' +
+      ' font-family="system-ui, sans-serif">' +
+      echapper(monogramme) +
+      "</text></svg>"
+    );
+  }
+
+  // Résout le champ `pastille` / une entrée de `marques` d'une section :
+  //   - une CHAÎNE est l'id d'un exchange du projet (clé "exchanges" du JSON) —
+  //     la couleur et le monogramme d'un exchange sont déclarés une seule fois,
+  //     dans le squelette du hub, et les piliers s'y réfèrent par id ;
+  //   - un OBJET {nom, monogramme, couleur} est pris tel quel — pour les marques
+  //     qui ne sont pas des exchanges (les moteurs de backtesting).
+  // Renvoie null si l'id est inconnu : une carte sans rondelle vaut mieux
+  // qu'une rondelle « ? » sur une coquille de frappe.
+  function resoudreMarque(valeur, exchanges) {
+    if (!valeur) return null;
+    if (typeof valeur !== "string") return valeur;
+    return (exchanges || []).filter(function (e) {
+      return e.id === valeur;
+    })[0] || null;
+  }
+
+  // Rondelle d'une carte de sous-hub. Grisée si la marque est écartée du
+  // périmètre (Kraken) : le statut se lit alors avant même la puce.
+  function pastilleDeCarte(section, exchanges) {
+    const marque = resoudreMarque(section.pastille, exchanges);
+    if (!marque) return "";
+    return (
+      '<span class="carte-pastille' + (marque.ecarte ? " pastille-ecartee" : "") + '">' +
+      creerPastille(marque) +
+      "</span>"
+    );
+  }
+
+  // Rangée de rondelles en tête d'une page section (clé `marques`) : sert aux
+  // sections sans sous-hub qui veulent quand même afficher leurs outils —
+  // ex. les deux moteurs du backtesting des indices.
+  function creerRangeeMarques(section, exchanges) {
+    const marques = (Array.isArray(section.marques) ? section.marques : [])
+      .map(function (m) {
+        return resoudreMarque(m, exchanges);
+      })
+      .filter(Boolean);
+    if (!marques.length) return "";
+    return (
+      '<div class="rangee-marques">' +
+      marques
+        .map(function (marque) {
+          const statut = texteLocalise(marque.statut);
+          // -item : `.marque` seul est le mot-symbole du site dans l'en-tête.
+          return (
+            '<span class="marque-item' +
+            (marque.ecarte ? " marque-item-ecartee" : "") + '">' +
+            creerPastille(marque) +
+            '<span class="marque-item-nom">' + echapper(marque.nom) + "</span>" +
+            (statut ? '<span class="marque-item-chip">' + echapper(statut) + "</span>" : "") +
+            "</span>"
+          );
         })
         .join("") +
       "</div>"
@@ -393,48 +508,17 @@ const Contenu = (function () {
 
   // --- Exchanges (bandeau du hub crypto) ------------------------------------
 
-  // Pastille d'un exchange : monogramme sur une rondelle à sa couleur de marque.
-  // Fabriquée ici plutôt que chargée en image — pas de logo déposé à héberger,
-  // et le rendu suit le thème. Le monogramme passe en foncé sur les couleurs
-  // claires (le jaune de Binance) : on choisit selon la luminance perçue.
-  function creerPastille(exchange) {
-    const couleur = /^#[0-9a-f]{6}$/i.test(String(exchange.couleur || ""))
-      ? exchange.couleur
-      : "#6E7681";
-    const r = parseInt(couleur.slice(1, 3), 16);
-    const v = parseInt(couleur.slice(3, 5), 16);
-    const b = parseInt(couleur.slice(5, 7), 16);
-    const luminance = (0.299 * r + 0.587 * v + 0.114 * b) / 255;
-    const encre = luminance > 0.6 ? "#12161C" : "#FFFFFF";
+  // Bandeau du hub : la rondelle de chaque exchange du périmètre, écartés
+  // compris (grisés). Aucun texte de rôle ici — le sort de chaque exchange est
+  // raconté sur sa page, sous Historiques et sous Temps réel. Le nom reste sous
+  // la rondelle : un monogramme seul (« KC », « BG ») n'identifie personne.
+  function creerLogoExchange(exchange) {
+    const classe = "exchange-logo" + (exchange.ecarte ? " exchange-ecarte" : "");
     return (
-      '<svg class="exchange-pastille" viewBox="0 0 48 48" role="img"' +
-      ' aria-label="' + echapper(exchange.nom) + '">' +
-      '<circle cx="24" cy="24" r="24" fill="' + couleur + '"></circle>' +
-      '<text x="24" y="24" text-anchor="middle" dominant-baseline="central"' +
-      ' font-size="18" font-weight="700" fill="' + encre + '"' +
-      ' font-family="system-ui, sans-serif">' +
-      echapper(exchange.monogramme || "?") +
-      "</text></svg>"
-    );
-  }
-
-  // Bandeau « tous les exchanges » du hub : une fiche par exchange, y compris
-  // ceux qui ont été écartés — c'est le seul endroit où leur sort est expliqué,
-  // les piliers ne les listent plus.
-  function creerFicheExchange(exchange) {
-    const classe = "exchange-fiche" + (exchange.ecarte ? " exchange-ecarte" : "");
-    const statut = texteLocalise(exchange.statut);
-    return (
-      '<article class="' + classe + '">' +
-      '<div class="exchange-entete">' +
+      '<li class="' + classe + '">' +
       creerPastille(exchange) +
-      '  <div>' +
-      '    <h3 class="exchange-nom">' + echapper(exchange.nom) + "</h3>" +
-      (statut ? '    <span class="exchange-chip">' + echapper(statut) + "</span>" : "") +
-      "  </div>" +
-      "</div>" +
-      '<p class="exchange-role">' + echapper(texteLocalise(exchange.role)) + "</p>" +
-      "</article>"
+      '<span class="exchange-nom">' + echapper(exchange.nom) + "</span>" +
+      "</li>"
     );
   }
 
@@ -452,11 +536,9 @@ const Contenu = (function () {
         return;
       }
       conteneur.innerHTML =
-        '<h2 class="exchanges-titre" data-i18n="crypto.exchanges_titre"></h2>' +
-        '<p class="exchanges-intro" data-i18n="crypto.exchanges_intro"></p>' +
-        '<div class="grille-exchanges">' +
-        exchanges.map(creerFicheExchange).join("") +
-        "</div>";
+        '<ul class="bandeau-exchanges">' +
+        exchanges.map(creerLogoExchange).join("") +
+        "</ul>";
     } catch (err) {
       console.error("[exchanges] Échec du chargement :", err);
       conteneur.innerHTML = "";
@@ -818,6 +900,10 @@ const Contenu = (function () {
 
       const items = Array.isArray(section.items) ? section.items : [];
       const texte = texteLocalise(section.texte);
+      // Les pastilles se déclarent par id dans les piliers ; leurs couleurs
+      // vivent dans la clé "exchanges" du projet (squelette du hub).
+      const exchanges = Array.isArray(bloc && bloc.exchanges) ? bloc.exchanges : [];
+      const marques = creerRangeeMarques(section, exchanges);
 
       if (section.sousHub) {
         // Section-hub : ses sous-sections (parent === cette section) forment un
@@ -827,17 +913,22 @@ const Contenu = (function () {
         const enfants = sections.filter(function (s) {
           return s.parent === (section.id || sectionId);
         });
+        // Les items d'une section-hub ne sont pas des items parmi d'autres :
+        // ils portent le sujet de la page (la capture des quatre vues, en tête
+        // de l'arborescence des Visualisations). D'où la galerie de tête.
         conteneur.innerHTML =
           avertissementTexteFr(section.texte) +
+          marques +
           (items.length
-            ? '<div class="galerie">' + items.map(creerCarte).join("") + "</div>"
+            ? '<div class="galerie galerie-tete">' + items.map(creerCarte).join("") + "</div>"
             : "") +
           rendreProse(texte) +
-          construireSousHubSections(enfants, projet, pageSection);
+          construireSousHubSections(enfants, projet, pageSection, exchanges);
       } else if (section.sousMenu && items.length) {
         // Sous-menu : une carte par item (mène à sa page item).
         conteneur.innerHTML =
           avertissementTexteFr(section.texte) +
+          marques +
           rendreProse(texte) +
           construireSousHub(items, projet, section.id || sectionId, pageItem);
       } else if (items.length) {
@@ -847,10 +938,14 @@ const Contenu = (function () {
         conteneur.innerHTML =
           banniereAvertissementPdf(aPdf) +
           avertissementTexteFr(section.texte) +
+          marques +
           '<div class="galerie">' + items.map(creerCarte).join("") + "</div>" +
           rendreProse(texte);
       } else if (texte) {
-        conteneur.innerHTML = avertissementTexteFr(section.texte) + rendreProse(texte);
+        conteneur.innerHTML =
+          avertissementTexteFr(section.texte) + marques + rendreProse(texte);
+      } else if (marques) {
+        conteneur.innerHTML = marques;
       } else {
         conteneur.innerHTML =
           '<div class="galerie"><p class="galerie-message" data-i18n="contenu.vide"></p></div>';
