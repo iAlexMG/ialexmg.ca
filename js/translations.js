@@ -89,10 +89,6 @@ const TRADUCTIONS = {
     // Hub Formations (intro spécifique)
     "formations.intro": "Ce que j'ai appris, remis au propre. Chaque formation part de zéro et suit le même parcours : les fondements d'abord, puis les concepts, puis un projet qui les met à l'épreuve. Toujours en amélioration constante.",
 
-    // Hub Crypto — bandeau des exchanges (le détail vit dans crypto.json)
-    "crypto.exchanges_titre": "Les exchanges du périmètre",
-    "crypto.exchanges_intro": "Sept exchanges ont été évalués ; six sont branchés. Chacun a son rôle dans la chaîne — et celui qui a été écarté l'est pour une raison précise, dite ici une fois pour toutes.",
-
     // Hub Crypto (intro spécifique)
     "crypto.intro": "Le marché crypto ne dort jamais : le Bitcoin (BTC/USDT) se négocie 24 h sur 24, 7 jours sur 7, et contrairement aux marchés boursiers, les exchanges exposent publiquement des données très détaillées — chaque transaction, chaque mouvement du carnet d'ordres.\n\nL'objectif de ce projet : automatiser le trading. Cela exige d'abord de recevoir et d'afficher les données du marché en temps réel, puis de valider chaque stratégie par un backtesting sur l'historique avant de la laisser tourner. D'où les cinq piliers ci-dessous.",
 
@@ -183,10 +179,6 @@ const TRADUCTIONS = {
     "documents.voir": "View PDF",
     "documents.telecharger": "Download",
     "documents.avertissement_fr": "⚠️ The PDF documents are only available in French.",
-
-    // Crypto hub — exchanges band (the detail lives in crypto.json)
-    "crypto.exchanges_titre": "The exchanges in scope",
-    "crypto.exchanges_intro": "Seven exchanges were evaluated; six are connected. Each has its role in the chain — and the one that was set aside is, for a precise reason, stated here once and for all.",
 
     // Crypto hub (specific intro)
     "crypto.intro": "The crypto market never sleeps: Bitcoin (BTC/USDT) trades around the clock, 7 days a week, and unlike stock markets, the exchanges publicly expose very detailed data — every trade, every move of the order book.\n\nThe goal of this project: automating the trading. That means first receiving and displaying market data in real time, then validating each strategy with a backtest on history before letting it run. Hence the five pillars below.",

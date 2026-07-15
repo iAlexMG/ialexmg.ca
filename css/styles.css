@@ -298,63 +298,98 @@ img { max-width: 100%; display: block; }
   font-size: 0.9rem;
 }
 
-/* ----- Bandeau des exchanges (hub crypto) -----
-   Une fiche par exchange du périmètre, écartés compris : les piliers ne les
-   listent plus, c'est ici qu'on dit le rôle de chacun. Fiches non cliquables
-   (rien à ouvrir) — d'où une carte plus sobre que .carte-portfolio. */
-.section-exchanges { padding-top: 0; }
-.exchanges-titre { margin-bottom: 0.25rem; }
-.exchanges-intro {
-  color: var(--couleur-texte-doux);
-  max-width: 65ch;
-  margin: 0 0 1.5rem;
-}
-.grille-exchanges {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.25rem;
-}
-.exchange-fiche {
-  background: var(--couleur-surface);
+/* ----- Carte illustrée (sous-hub) -----
+   Une carte qui se présente par son visuel — la rondelle d'un exchange, ou
+   l'aperçu de la vue qu'elle documente — plutôt que par son accroche. */
+.carte-illustree { display: flex; flex-direction: column; }
+.carte-illustree h3 { margin-bottom: 0.5rem; }
+.carte-illustree .fleche { margin-top: auto; }
+.carte-pastille { display: block; margin-bottom: 0.9rem; }
+.carte-pastille .pastille { width: 40px; height: 40px; }
+.pastille-ecartee .pastille { filter: grayscale(1); opacity: 0.5; }
+
+/* Vignette : l'aperçu tient en entier (contain) — une vue rognée ne dit plus
+   ce qu'elle montre. Fond sombre fixe : les captures du terminal le sont. */
+.carte-vignette {
+  display: block;
+  margin: -0.5rem -0.5rem 0.9rem;
+  border-radius: calc(var(--rayon) - 4px);
+  overflow: hidden;
+  background: #0d1117;
   border: 1px solid var(--couleur-bordure);
-  border-radius: var(--rayon);
-  padding: 1.25rem;
-  box-shadow: var(--ombre);
 }
-/* Écarté : la fiche reste lisible mais se retire visuellement du peloton. */
-.exchange-ecarte {
-  background: var(--couleur-surface-alt);
-  box-shadow: none;
-  border-style: dashed;
+.carte-vignette img {
+  display: block;
+  width: 100%;
+  height: 130px;
+  object-fit: contain;
 }
-.exchange-entete {
+
+/* ----- Pastille de marque -----
+   Rondelle monogrammée fabriquée en SVG par content.js — aucun logo déposé
+   n'est hébergé. Sert au bandeau du hub, aux cartes de sous-hub et aux
+   rangées de marques ; la taille est fixée par le contexte. */
+.pastille { border-radius: 50%; display: block; }
+
+/* ----- Bandeau des exchanges (hub crypto) -----
+   En tête du hub : les rondelles du périmètre, écartés compris (grisés).
+   Aucun texte de rôle — le sort de chaque exchange se raconte sur sa page,
+   sous Historiques et sous Temps réel. Le nom reste : un monogramme seul
+   n'identifie personne. */
+.section-exchanges { padding-bottom: 0; }
+.bandeau-exchanges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.exchange-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+.exchange-logo .pastille { width: 44px; height: 44px; }
+.exchange-nom {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--couleur-texte-doux);
+}
+/* Écarté du périmètre : présent, mais visiblement hors du peloton. */
+.exchange-ecarte .pastille { filter: grayscale(1); opacity: 0.5; }
+.exchange-ecarte .exchange-nom { opacity: 0.6; font-weight: 500; }
+
+/* ----- Rangée de marques (page section) -----
+   Les outils d'une section sans sous-hub — ex. les deux moteurs du
+   backtesting des indices. ⚠️ `.marque` tout court est DÉJÀ le mot-symbole
+   « iAlexMG » de l'en-tête (voir plus haut) : d'où le suffixe -item, sans quoi
+   la rangée restylerait la marque du site sur toutes les pages. */
+.rangee-marques {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 0 0 1.75rem;
+}
+.marque-item {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.75rem;
+  gap: 0.6rem;
 }
-.exchange-pastille {
-  width: 40px;
-  height: 40px;
-  flex: 0 0 40px;
-  border-radius: 50%;
-}
-.exchange-ecarte .exchange-pastille { filter: grayscale(1); opacity: 0.65; }
-.exchange-nom { margin: 0; font-size: 1.05rem; }
-.exchange-chip {
-  display: inline-block;
-  font-size: 0.75rem;
+.marque-item .pastille { width: 36px; height: 36px; flex: 0 0 36px; }
+.marque-item-nom { font-weight: 600; font-size: 0.95rem; }
+.marque-item-chip {
+  font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.02em;
-  color: var(--couleur-accent);
   text-transform: uppercase;
+  color: var(--couleur-accent);
 }
-.exchange-ecarte .exchange-chip { color: var(--couleur-texte-doux); }
-.exchange-role {
-  margin: 0;
-  color: var(--couleur-texte-doux);
-  font-size: 0.94rem;
-}
+.marque-item-ecartee .pastille { filter: grayscale(1); opacity: 0.5; }
+.marque-item-ecartee .marque-item-nom { color: var(--couleur-texte-doux); }
+.marque-item-ecartee .marque-item-chip { color: var(--couleur-texte-doux); }
 
 /* Bandeau « concept transversal » d'un hub (section "concept" du JSON,
    ex. l'hybride du hub crypto) : pleine largeur sous les cartes de piliers,
@@ -412,6 +447,22 @@ img { max-width: 100%; display: block; }
   grid-template-columns: 1fr;
   gap: 1.5rem;
   margin-top: 1.5rem;
+}
+
+/* Galerie de TÊTE d'une section-hub : son illustration porte le sujet de la
+   page (la capture des quatre vues du terminal) — pleine largeur donc, jamais
+   une colonne sur trois. Double classe pour primer sur la règle 3 colonnes du
+   media query plus bas, quel que soit l'ordre. Ces captures sont sombres et
+   panoramiques : fond sombre et ratio naturel, là où .fig-apercu cadre par
+   défaut des planches claires en portrait (les figures du 649). */
+.galerie.galerie-tete { grid-template-columns: 1fr; }
+.galerie-tete .fig-apercu {
+  height: auto;
+  background: #0d1117;
+}
+.galerie-tete .fig-apercu img {
+  height: auto;
+  object-position: center;
 }
 
 .galerie-message {
