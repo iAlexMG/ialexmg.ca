@@ -38,7 +38,11 @@ chaque pilier inclus a le sien sous `assets/<id>/<pilier>/`
 - `statut` {fr,en} — libellé du chip de la carte (ex. « 9 leçons »,
   « En attente ») ; à défaut, le compte d'items est affiché.
 - `texte` {fr,en} — prose détaillée rendue sous le contenu (les lignes
-  commençant par `## ` deviennent des sous-titres).
+  commençant par `## ` deviennent des sous-titres). Inline : `**gras**`,
+  `` `code` ``, `[texte](https://…)` (externe, nouvel onglet),
+  `[texte](projet-item.html?…)` / `[texte](projet-section.html?…)` (lien
+  interne — un test du 649 renvoie ainsi à son document formatif) et `[[id]]` /
+  `[[id|libellé]]` (fiche de concept en pop-up, voir la clé `concepts`).
 - `masque: true` — (source de pilier seulement) la section est ÉCARTÉE à
   l'assemblage : le fichier source reste versionné, mais la page disparaît du
   site. Sert à retirer d'un sous-hub une section dont le contenu est déjà dit
@@ -61,6 +65,10 @@ chaque pilier inclus a le sien sous `assets/<id>/<pilier>/`
   section. Mêmes valeurs que `pastille` (chaîne ou objet), plus `statut` {fr,en}
   et `ecarte: true` optionnels. Pour une section sans sous-hub qui veut quand
   même montrer ses outils (les deux moteurs du backtesting des indices).
+- `renvois` — liste d'ids de CONCEPTS (voir la clé `concepts` plus bas) : la
+  page de la section affiche une rangée de chips « Concepts : … » en tête, et
+  les reprend dans son bloc « Continuer ». Règle éditoriale : 2 à 4 renvois par
+  page maximum ; pop-up pour un concept, lien direct pour un document entier.
 
 ## Clé `sources` (hubs crypto / indices)
 
@@ -80,6 +88,25 @@ particulier du script.
 « Source » et non « exchange » : crypto tire ses données de sept exchanges, les
 indices d'un seul marché (le CME) atteint par deux plateformes (Quantower,
 IBKR). Un seul mot couvre les deux hubs.
+
+## Clé `concepts` (squelette Formations)
+
+À la racine de `formations.json` (source :
+`Portfolio/Formations/site-content/contenu.json` — recopiée telle quelle par la
+synchro). Chaque entrée : `id`, `titre` {fr,en}, `resume` {fr,en} (3-4
+phrases), `lien` `{p, s, i?}` — la leçon qui enseigne le concept (`i` absent :
+la page de section suffit). Deux façons d'y renvoyer depuis n'importe quel
+projet : la syntaxe inline `[[id]]` / `[[id|libellé]]` dans un `texte` (terme
+souligné pointillé → fiche pop-up avec « Voir la leçon → »), et la clé de
+section `renvois` (chips en tête de page). Un id inconnu est ignoré sans bruit.
+
+## Clé `jumeau` (hubs crypto / indices)
+
+À la racine du squelette : l'id du projet miroir (`"jumeau": "indices"` chez
+crypto, et réciproquement). Le hub en tire son bandeau « Même chaîne, autre
+marché : … → » sous la pyramide, et chaque page de pilier une carte vers le
+même pilier de l'autre marché dans son bloc « Continuer » (le pilier doit
+exister sous le même id des deux côtés).
 
 ## Clé `etage` (piliers d'un hub)
 
