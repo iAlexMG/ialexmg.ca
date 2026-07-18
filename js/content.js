@@ -1076,6 +1076,54 @@ const Contenu = (function () {
     document.body.classList.add("avec-rail");
   }
 
+  // --- Fiche mesurée d'une stratégie (clé "fiche" d'une section) -------------
+
+  // Le bloc de métriques mono sous la planche du signal — rendement, ordres,
+  // frais, les deux moitiés hors échantillon — puis le verdict, assumé. Les
+  // valeurs viennent du JSON, bilingues (les formats de nombres diffèrent
+  // d'une langue à l'autre) : rien n'est calculé ici. Une valeur qui commence
+  // par « − » ou « + » prend la couleur de données correspondante — le seul
+  // usage décoratif permis au vert/rouge.
+  function creerFicheMetriques(section) {
+    const fiche = section.fiche;
+    if (!fiche) return "";
+    const metriques = (Array.isArray(fiche.metriques) ? fiche.metriques : [])
+      .map(function (m) {
+        const valeur = texteLocalise(m.valeur);
+        const classe =
+          valeur.charAt(0) === "−" ? " metrique-perte"
+          : valeur.charAt(0) === "+" ? " metrique-gain"
+          : "";
+        return (
+          '<div class="metrique' + classe + '">' +
+          "<dt>" + echapper(texteLocalise(m.libelle)) + "</dt>" +
+          "<dd>" + echapper(valeur) + "</dd>" +
+          "</div>"
+        );
+      })
+      .join("");
+    const verdict = texteLocalise(fiche.verdict);
+    if (!metriques && !verdict) return "";
+    return (
+      '<div class="fiche-mesuree">' +
+      (metriques ? '<dl class="fiche-metriques">' + metriques + "</dl>" : "") +
+      (verdict
+        ? '<p class="fiche-verdict">' +
+          '<span class="verdict-etiquette" data-i18n="fiche.verdict"></span>' +
+          "<span>" + echapper(verdict) + "</span></p>"
+        : "") +
+      "</div>"
+    );
+  }
+
+  // Bandeau sobre des pages de résultats (clé "noteResultats" d'une section) :
+  // courts historiques + mention Claude Code — la chaîne est le livrable, pas
+  // les rendements.
+  function noteResultats(section) {
+    if (!section.noteResultats) return "";
+    return '<p class="bandeau-note" data-i18n="avertissement.resultats"></p>';
+  }
+
   // --- Carte des stratégies (SVG — page moteur-lean du hub crypto) -----------
 
   // Un SVG inline généré depuis les sous-sections : le banc au centre-gauche
@@ -1721,7 +1769,9 @@ const Contenu = (function () {
       // chargée que si la page en déclare — les autres pages ne paient rien.
       const concepts =
         section.renvois && section.renvois.length ? await chargerConcepts() : {};
-      const entete = marques + creerRenvois(section.renvois, concepts);
+      const entete =
+        marques + creerRenvois(section.renvois, concepts) + noteResultats(section);
+      const fiche = creerFicheMetriques(section);
 
       if (section.sousHub) {
         // Section-hub : ses sous-sections (parent === cette section) forment un
@@ -1797,11 +1847,14 @@ const Contenu = (function () {
           entete +
           (section.sousMenu
             ? rendreProse(texte) + rendreItemsEnPlanches(items, hrefItemDeSection)
-            : rendreItemsEnPlanches(items, hrefItemDeSection) + rendreProse(texte));
+            : // Fiche stratégie type : la planche du signal, le bloc de
+              // métriques et son verdict, puis le récit détaillé.
+              rendreItemsEnPlanches(items, hrefItemDeSection) + fiche +
+              rendreProse(texte));
         marquerPlanchesLarges(conteneur);
       } else if (texte) {
         conteneur.innerHTML =
-          avertissementTexteFr(section.texte) + entete + rendreProse(texte);
+          avertissementTexteFr(section.texte) + entete + fiche + rendreProse(texte);
       } else if (entete) {
         conteneur.innerHTML = entete;
       } else {

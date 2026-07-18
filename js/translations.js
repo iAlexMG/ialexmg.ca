@@ -133,6 +133,10 @@ const TRADUCTIONS = {
     "carte.aria": "Carte des stratégies",
     "flux.aria": "Le parcours du projet",
 
+    // Fiche mesurée d'une stratégie + note des pages de résultats
+    "fiche.verdict": "Verdict",
+    "avertissement.resultats": "Résultats obtenus sur de courts historiques — l'objectif est la chaîne fonctionnelle et réutilisable, pas des rendements crédibles. Développé avec l'assistance de Claude Code (voir À propos).",
+
     // Documents PDF
     "documents.voir": "Voir le PDF",
     "documents.telecharger": "Télécharger",
@@ -279,6 +283,10 @@ const TRADUCTIONS = {
     // Schemas (phase 5): strategy map, hub step flow
     "carte.aria": "Strategy map",
     "flux.aria": "The project's path",
+
+    // Strategy fact sheet + results-page note
+    "fiche.verdict": "Verdict",
+    "avertissement.resultats": "Results obtained on short histories — the goal is the working, reusable pipeline, not credible returns. Built with the assistance of Claude Code (see About).",
 
     // PDF documents
     "documents.voir": "View PDF",
