@@ -411,6 +411,22 @@ img { max-width: 100%; display: block; }
 }
 .carte-portfolio h3 { color: var(--couleur-texte); }
 .carte-portfolio p { color: var(--couleur-texte-doux); margin-bottom: 0.75rem; }
+/* Suffixe d'index d'une carte numérotée (stratégies d'un banc) : petite
+   pastille monospace après le titre, discrète mais lisible d'un coup d'œil. */
+.carte-numero {
+  display: inline-block;
+  font-family: ui-monospace, "SFMono-Regular", "Consolas", monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--couleur-accent);
+  background: var(--couleur-surface-alt);
+  border: 1px solid var(--couleur-bordure);
+  border-radius: 999px;
+  padding: 0.18rem 0.42rem;
+  margin-left: 0.4rem;
+  vertical-align: middle;
+}
 .carte-portfolio .fleche {
   color: var(--couleur-accent);
   font-weight: 600;

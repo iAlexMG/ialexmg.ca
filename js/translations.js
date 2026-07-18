@@ -103,6 +103,7 @@ const TRADUCTIONS = {
     "apropos.p1": "Je travaille sous le nom iAlexMG, à l'intersection de la science des données, des statistiques et des marchés financiers.",
     "apropos.p2": "Ce site rassemble mes projets : deux chaînes de trading complètes — crypto (BTC) et indices boursiers (ES/NQ) — de l'extraction des données à l'affichage order-flow, au backtesting (LEAN, vectorbt) et à l'automatisation. S'y ajoutent des travaux de statistique, à commencer par le 6/49, et mes formations : Python, Git & GitHub, et les deux moteurs de backtesting.",
     "apropos.p3": "Mon approche : des méthodes rigoureuses, des résultats mesurables et des outils réutilisables.",
+    "apropos.p4": "Ces projets ont été développés avec l'assistance de Claude Code (Anthropic), employé comme outil de programmation et de rédaction — la conception, les décisions et la validation restent les miennes.",
 
     // Contact
     "contact.titre": "Contact",
@@ -197,6 +198,7 @@ const TRADUCTIONS = {
     "apropos.p1": "I work under the name iAlexMG, at the intersection of data science, statistics and financial markets.",
     "apropos.p2": "This site brings together my projects: two complete trading chains — crypto (BTC) and stock indices (ES/NQ) — from data extraction to order-flow display, backtesting (LEAN, vectorbt) and automation. Alongside them: statistical work, starting with the 6/49, and my courses — Python, Git & GitHub, and both backtesting engines.",
     "apropos.p3": "My approach: rigorous methods, measurable results and reusable tools.",
+    "apropos.p4": "These projects were developed with the assistance of Claude Code (Anthropic), used as a programming and writing tool — the design, decisions and validation remain my own.",
 
     // Contact
     "contact.titre": "Contact",
