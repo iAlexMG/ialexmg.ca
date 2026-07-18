@@ -29,6 +29,7 @@ const TRADUCTIONS = {
 
     // Navigation
     "nav.accueil": "Accueil",
+    "nav.trading": "Trading",
     "nav.apropos": "À propos",
     "nav.contact": "Contact",
 
@@ -54,6 +55,33 @@ const TRADUCTIONS = {
     "accueil.voir_projet": "Voir le projet",
     "accueil.cta_projets": "Voir mes projets",
     "accueil.cta_contact": "Me contacter",
+
+    // Tuiles du hero (les quatre messages au recruteur)
+    "accueil.tuile1_titre": "Rigueur",
+    "accueil.tuile1_desc": "Walk-forward IS/OOS, verdicts assumés",
+    "accueil.tuile2_titre": "Temps réel",
+    "accueil.tuile2_desc": "NQ/ES en direct, pont C#",
+    "accueil.tuile3_titre": "Bout en bout",
+    "accueil.tuile3_desc": "De la donnée brute jusqu'à ce site",
+    "accueil.tuile4_titre": "Marchés",
+    "accueil.tuile4_desc": "Crypto & indices CME",
+
+    // Rangées de projet de l'accueil
+    "accueil.groupe_trading": "Trading — deux marchés, une même chaîne",
+
+    // Liens de piliers dans les rangées (crypto / indices partagent les ids)
+    "pilier.historique": "Historique",
+    "pilier.temps-reel": "Temps réel",
+    "pilier.affichage": "Visualisations",
+    "pilier.backtesting": "Backtesting",
+    "pilier.automatisation": "Automatisation",
+    "pilier.docs": "Documents",
+    "pilier.phase1": "Phase 1 — six tests",
+    "pilier.phase2": "Phase 2 — modèles",
+    "pilier.synthese": "Synthèse",
+    "pilier.python": "Python",
+    "pilier.github": "Git & GitHub",
+    "pilier.formation": "Formation backtesting",
 
     // En-tête générique des pages de projet
     "projet.intro": "Projet dédié. Vous trouverez ci-dessous les contenus associés.",
@@ -124,6 +152,7 @@ const TRADUCTIONS = {
 
     // Navigation
     "nav.accueil": "Home",
+    "nav.trading": "Trading",
     "nav.apropos": "About",
     "nav.contact": "Contact",
 
@@ -149,6 +178,33 @@ const TRADUCTIONS = {
     "accueil.voir_projet": "View project",
     "accueil.cta_projets": "View my projects",
     "accueil.cta_contact": "Contact me",
+
+    // Hero tiles (the four messages to the recruiter)
+    "accueil.tuile1_titre": "Rigor",
+    "accueil.tuile1_desc": "Walk-forward IS/OOS, verdicts owned",
+    "accueil.tuile2_titre": "Real time",
+    "accueil.tuile2_desc": "NQ/ES live, C# bridge",
+    "accueil.tuile3_titre": "End to end",
+    "accueil.tuile3_desc": "From raw data all the way to this site",
+    "accueil.tuile4_titre": "Markets",
+    "accueil.tuile4_desc": "Crypto & CME indices",
+
+    // Home project rows
+    "accueil.groupe_trading": "Trading — two markets, one chain",
+
+    // Pillar links in the rows (crypto / indices share the ids)
+    "pilier.historique": "History",
+    "pilier.temps-reel": "Real time",
+    "pilier.affichage": "Visualizations",
+    "pilier.backtesting": "Backtesting",
+    "pilier.automatisation": "Automation",
+    "pilier.docs": "Documents",
+    "pilier.phase1": "Phase 1 — six tests",
+    "pilier.phase2": "Phase 2 — models",
+    "pilier.synthese": "Synthesis",
+    "pilier.python": "Python",
+    "pilier.github": "Git & GitHub",
+    "pilier.formation": "Backtesting course",
 
     // Generic project page header
     "projet.intro": "Dedicated project. You'll find the related content below.",

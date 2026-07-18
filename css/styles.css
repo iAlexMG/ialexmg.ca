@@ -210,6 +210,22 @@ img { max-width: 100%; display: block; }
   font-weight: 600;
 }
 
+/* Groupe « Trading » : sur mobile le déclencheur s'efface et ses deux
+   entrées s'affichent à plat parmi les autres ; le menu déroulant
+   n'existe qu'au large (voir le media query 880px).
+   ⚠️ Spécificité : « .navigation ul » (0-1-1) style déjà TOUTES les listes
+   de la navigation, sous-menu compris — d'où le préfixe .navigation
+   (0-2-0), sans quoi display/padding/direction du sous-menu perdent. */
+.nav-declencheur { display: none; }
+.navigation .nav-sous-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
 /* Bouton menu (mobile) */
 .menu-bascule {
   order: 2;
@@ -309,6 +325,111 @@ img { max-width: 100%; display: block; }
 }
 .hero-liens a { color: var(--couleur-texte-doux); font-weight: 600; }
 .hero-liens a:hover { color: var(--couleur-accent); }
+
+/* ----- Tuiles du hero -----
+   Les quatre messages au recruteur, en chips-panneaux mono : l'étiquette en
+   capitales espacées, la précision dessous. Deux par rangée en mobile,
+   quatre au large. */
+.tuiles {
+  list-style: none;
+  padding: 0;
+  margin: 2.5rem auto 0;
+  max-width: 920px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+.tuile {
+  background: var(--couleur-surface);
+  border: 1px solid var(--couleur-bordure);
+  border-radius: var(--rayon);
+  padding: 0.9rem 1rem;
+  text-align: left;
+}
+.tuile-titre {
+  display: block;
+  font-family: var(--police-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--couleur-accent);
+  margin-bottom: 0.3rem;
+}
+.tuile-desc {
+  display: block;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--couleur-texte-doux);
+}
+
+/* ----- Rangées de projet (accueil) -----
+   La grille de cartes cède la place à des rangées pleine largeur : la capture
+   réelle d'un côté, le récit et les liens de piliers de l'autre, en
+   alternance. Un filet sépare les rangées ; l'en-tête de groupe « Trading »
+   coiffe les deux rangées de marché. */
+.groupe-titre {
+  font-family: var(--police-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--couleur-texte-doux);
+  margin: 2.25rem 0 0;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--couleur-bordure);
+}
+.rangee-projet {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  align-items: center;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--couleur-bordure);
+}
+.rangee-visuel {
+  display: block;
+  background: #0d1117;
+  border: 1px solid var(--couleur-bordure);
+  border-radius: var(--rayon);
+  overflow: hidden;
+  transition: border-color var(--transition);
+}
+.rangee-visuel:hover { border-color: var(--couleur-accent); }
+.rangee-visuel img { display: block; width: 100%; height: auto; }
+.rangee-corps h3 { font-size: 1.35rem; margin-bottom: 0.4rem; }
+.rangee-corps h3 a { color: var(--couleur-texte); }
+.rangee-corps h3 a:hover { color: var(--couleur-accent); }
+.rangee-accroche { color: var(--couleur-texte-doux); margin-bottom: 0; }
+.rangee-piliers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0 1.1rem;
+}
+.pilier-chip {
+  font-family: var(--police-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--couleur-texte-doux);
+  background: var(--couleur-surface);
+  border: 1px solid var(--couleur-bordure);
+  border-radius: var(--rayon);
+  padding: 0.3rem 0.6rem;
+  transition: color var(--transition), border-color var(--transition);
+}
+.pilier-chip:hover {
+  color: var(--couleur-accent);
+  border-color: var(--couleur-accent);
+}
+.rangee-voir {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--couleur-accent);
+}
+.rangee-voir:hover { text-decoration: underline; text-underline-offset: 3px; }
 
 /* ----- Boutons -----
    Boutons de commande : cadre accent, texte mono espacé. Le survol inverse
@@ -483,6 +604,24 @@ img { max-width: 100%; display: block; }
   font-size: 0.9rem;
 }
 .lien-retour:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ----- Fil d'Ariane (sous-pages) -----
+   Le chemin complet en mono, façon chemin de fichiers : « Crypto /
+   Backtesting / RSI ». Rempli par content.js ; le dernier morceau est la
+   page courante, sans lien. */
+.fil-ariane {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.9rem;
+  font-family: var(--police-mono);
+  font-size: 0.8rem;
+}
+.fil-ariane a { color: var(--couleur-accent); }
+.fil-ariane a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.fil-ariane span[aria-current] { color: var(--couleur-texte-doux); }
+.fil-separateur { color: var(--couleur-texte-doux); opacity: 0.5; }
 
 .carte-portfolio {
   display: block;
@@ -1106,9 +1245,63 @@ button:focus-visible {
   }
   .navigation a { padding: 0.4rem 0; }
 
+  /* Menu déroulant Trading : le déclencheur reprend le style des liens, le
+     panneau tombe sous lui. Ouvert par survol/focus (CSS) ou clic (JS pose
+     .ouvert sur le groupe — nécessaire au tactile). */
+  .nav-groupe { position: relative; }
+  .nav-declencheur {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.95rem;
+    color: var(--couleur-texte-doux);
+    padding: 0.4rem 0;
+    transition: color var(--transition);
+  }
+  .nav-declencheur:hover { color: var(--couleur-texte); }
+  .nav-declencheur.actif { color: var(--couleur-texte); font-weight: 600; }
+  .nav-caret { font-size: 0.7em; opacity: 0.7; }
+  /* Même précaution de spécificité que la règle de base (voir plus haut) :
+     « .navigation ul » repasse ici en rangée, le panneau doit rester
+     en colonne et fermé. */
+  .navigation .nav-sous-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 190px;
+    margin: 0;
+    padding: 0.4rem;
+    background: var(--couleur-surface);
+    border: 1px solid var(--couleur-bordure);
+    border-radius: var(--rayon);
+    z-index: 60;
+  }
+  .nav-groupe.ouvert .nav-sous-menu,
+  .nav-groupe:hover .nav-sous-menu,
+  .nav-groupe:focus-within .nav-sous-menu { display: flex; }
+  .nav-sous-menu a { padding: 0.45rem 0.6rem; }
+
   .langue-bascule { order: 3; margin-left: 1.25rem; }
 
   .galerie { grid-template-columns: repeat(3, 1fr); }
+
+  /* Rangées de l'accueil : capture et récit côte à côte, en alternance.
+     La colonne du texte garde la même largeur des deux côtés (2fr) ; une
+     rangée sans visuel reste pleine largeur, bornée par la mesure du texte. */
+  .rangee-projet { grid-template-columns: 3fr 2fr; gap: 2.5rem; }
+  .rangee-inverse { grid-template-columns: 2fr 3fr; }
+  .rangee-inverse .rangee-visuel { order: 2; }
+  .rangee-sans-visuel { grid-template-columns: 1fr; }
+  .rangee-sans-visuel .rangee-corps { max-width: 70ch; }
+
+  .tuiles { grid-template-columns: repeat(4, 1fr); }
 }
 
 /* --------------------------------------------------------------------------

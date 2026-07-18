@@ -17,6 +17,8 @@
  *   stack     : (optionnel) technologies affichées en badges sur la carte
  *               d'accueil (noms identiques FR/EN, pas de clé i18n).
  *   miniature : (optionnel) chemin d'une capture affichée en tête de carte.
+ *   piliers   : (optionnel) liens directs des rangées de l'accueil vers les
+ *               sections du hub : { i18n: clé du libellé, s: id de section }.
  *   code      : (optionnel) URL du dépôt GitHub du projet — affiche un bouton
  *               « Code source » en tête de la page du projet (content.js).
  *
@@ -50,6 +52,13 @@ const PROJETS = [
     desc: "projet.crypto.desc",
     stack: ["Python", "asyncio", "WebSocket", "LEAN"],
     miniature: "assets/crypto/affichage/img/Hybride.PNG",
+    piliers: [
+      { i18n: "pilier.historique", s: "historique" },
+      { i18n: "pilier.temps-reel", s: "temps-reel" },
+      { i18n: "pilier.affichage", s: "affichage" },
+      { i18n: "pilier.backtesting", s: "backtesting" },
+      { i18n: "pilier.automatisation", s: "automatisation" },
+    ],
     // Bouton « Code source » désactivé tant que le dépôt est en cours de
     // modification — décommenter pour le réafficher.
     // code: "https://github.com/iAlexMG/crypto",
@@ -62,6 +71,13 @@ const PROJETS = [
     desc: "projet.indices.desc",
     stack: ["Python", "PyQt5", "C#", "LEAN"],
     miniature: "assets/indices/affichage/img/All.PNG",
+    piliers: [
+      { i18n: "pilier.historique", s: "historique" },
+      { i18n: "pilier.temps-reel", s: "temps-reel" },
+      { i18n: "pilier.affichage", s: "affichage" },
+      { i18n: "pilier.backtesting", s: "backtesting" },
+      { i18n: "pilier.automatisation", s: "automatisation" },
+    ],
     // Bouton « Code source » désactivé tant que le dépôt est en cours de
     // modification — décommenter pour le réafficher.
     // code: "https://github.com/iAlexMG/indicesBoursiers",
@@ -74,6 +90,12 @@ const PROJETS = [
     desc: "projet.statistiques.desc",
     stack: ["Python", "pandas", "scikit-learn"],
     miniature: "assets/statistiques/lotto-649/figures/fig12_phase2_synthese.png",
+    piliers: [
+      { i18n: "pilier.docs", s: "docs" },
+      { i18n: "pilier.phase1", s: "phase1" },
+      { i18n: "pilier.phase2", s: "phase2" },
+      { i18n: "pilier.synthese", s: "synthese" },
+    ],
   },
   {
     id: "formations",
@@ -82,6 +104,11 @@ const PROJETS = [
     titre: "projet.formations",
     desc: "projet.formations.desc",
     stack: ["Python", "Git", "LEAN", "vectorbt"],
+    piliers: [
+      { i18n: "pilier.python", s: "python" },
+      { i18n: "pilier.github", s: "github" },
+      { i18n: "pilier.formation", s: "formation" },
+    ],
   },
   // Projet sans contenu pour l'instant : masqué de la grille d'accueil
   // (la page detection.html reste accessible par URL). Pour le réactiver,

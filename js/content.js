@@ -976,8 +976,40 @@ const Contenu = (function () {
     return item || null;
   }
 
+  // Chaîne des parents d'une section, du hub vers elle (« backtesting »
+  // avant « moteur-lean »). Garde-fou contre un cycle accidentel de `parent`.
+  function cheminSections(sections, section) {
+    const chaine = [];
+    let s = section;
+    let garde = 0;
+    while (s && garde++ < 6) {
+      chaine.unshift(s);
+      s = s.parent ? trouverSection(sections, s.parent) : null;
+    }
+    return chaine;
+  }
+
+  // Fil d'Ariane des sous-pages (« Crypto / Backtesting / RSI ») : remplit
+  // [data-fil-ariane] depuis une liste { titre, href } — le dernier morceau
+  // est la page courante, sans lien. Renvoie false si le gabarit n'a pas de
+  // fil d'Ariane : l'appelant retombe alors sur le lien-retour simple.
+  function remplirFilAriane(morceaux) {
+    const elAriane = document.querySelector("[data-fil-ariane]");
+    if (!elAriane) return false;
+    elAriane.innerHTML = morceaux
+      .map(function (m, i) {
+        const dernier = i === morceaux.length - 1;
+        return !dernier && m.href
+          ? '<a href="' + m.href + '">' + echapper(m.titre) + "</a>"
+          : '<span aria-current="page">' + echapper(m.titre) + "</span>";
+      })
+      .join('<span class="fil-separateur" aria-hidden="true">/</span>');
+    return true;
+  }
+
   // Rendu d'UNE section (sous-page). Remplit aussi l'en-tête de page :
-  // [data-section-titre], [data-section-intro] et le lien retour [data-lien-retour].
+  // [data-section-titre], [data-section-intro] et le fil d'Ariane
+  // [data-fil-ariane] (ou l'ancien lien retour [data-lien-retour]).
   async function rendreSection(options) {
     const conteneur = options.conteneur;
     const projet = options.projet || null;
@@ -998,26 +1030,38 @@ const Contenu = (function () {
 
       const elTitre = document.querySelector("[data-section-titre]");
       const elIntro = document.querySelector("[data-section-intro]");
-      const elRetour = document.querySelector("[data-lien-retour]");
-      // Lien retour : vers la section PARENTE si sous-section (ex. une partie de
-      // la formation -> le hub Formation), sinon vers l'accueil du projet. On
-      // fixe le texte ici (et on retire data-i18n) pour qu'appliquerTraductions
-      // ne l'écrase pas.
-      if (elRetour) {
-        elRetour.removeAttribute("data-i18n");
-        if (section && section.parent) {
-          const parentSection = trouverSection(sections, section.parent);
-          elRetour.setAttribute(
-            "href",
+      // Fil d'Ariane : hub du projet / chaîne des parents / section courante.
+      const morceaux = [{ titre: titreProjet(projet), href: hrefProjet(projet) }];
+      cheminSections(sections, section).forEach(function (s) {
+        morceaux.push({
+          titre: texteLocalise(s.titre),
+          href:
             pageSection +
-              "?p=" + encodeURIComponent(projet) +
-              "&s=" + encodeURIComponent(section.parent)
-          );
-          elRetour.textContent =
-            "← " + texteLocalise(parentSection ? parentSection.titre : "");
-        } else {
-          elRetour.setAttribute("href", hrefProjet(projet));
-          elRetour.textContent = window.I18n.t("contenu.retour");
+            "?p=" + encodeURIComponent(projet) +
+            "&s=" + encodeURIComponent(s.id),
+        });
+      });
+      if (!remplirFilAriane(morceaux)) {
+        // Ancien gabarit : lien retour simple vers la section PARENTE si
+        // sous-section, sinon vers l'accueil du projet. On fixe le texte ici
+        // (et on retire data-i18n) pour qu'appliquerTraductions ne l'écrase pas.
+        const elRetour = document.querySelector("[data-lien-retour]");
+        if (elRetour) {
+          elRetour.removeAttribute("data-i18n");
+          if (section && section.parent) {
+            const parentSection = trouverSection(sections, section.parent);
+            elRetour.setAttribute(
+              "href",
+              pageSection +
+                "?p=" + encodeURIComponent(projet) +
+                "&s=" + encodeURIComponent(section.parent)
+            );
+            elRetour.textContent =
+              "← " + texteLocalise(parentSection ? parentSection.titre : "");
+          } else {
+            elRetour.setAttribute("href", hrefProjet(projet));
+            elRetour.textContent = window.I18n.t("contenu.retour");
+          }
         }
       }
 
@@ -1132,7 +1176,6 @@ const Contenu = (function () {
 
     const elTitre = document.querySelector("[data-section-titre]");
     const elIntro = document.querySelector("[data-section-intro]");
-    const elRetour = document.querySelector("[data-lien-retour]");
 
     try {
       const bloc = await chargerProjet(projet);
@@ -1151,22 +1194,39 @@ const Contenu = (function () {
       }
       const item = trouverItem(items, itemId);
 
-      // Lien retour : vers la section (649) ou le hub du projet (Python).
-      // On retire data-i18n car on fixe le texte ici (sinon appliquerTraductions
-      // sur tout le document écraserait le titre de section).
-      if (elRetour) {
-        elRetour.removeAttribute("data-i18n");
-        if (section && !section._plat) {
-          elRetour.setAttribute(
-            "href",
-            pageSection +
+      // Fil d'Ariane : hub / chaîne des sections (sauf plat) / item courant.
+      const morceaux = [{ titre: titreProjet(projet), href: hrefProjet(projet) }];
+      if (section && !section._plat) {
+        cheminSections(sections, section).forEach(function (s) {
+          morceaux.push({
+            titre: texteLocalise(s.titre),
+            href:
+              pageSection +
               "?p=" + encodeURIComponent(projet) +
-              "&s=" + encodeURIComponent(sectionId)
-          );
-          elRetour.textContent = "← " + texteLocalise(section.titre);
-        } else {
-          elRetour.setAttribute("href", hrefProjet(projet));
-          elRetour.textContent = window.I18n.t("contenu.retour");
+              "&s=" + encodeURIComponent(s.id),
+          });
+        });
+      }
+      if (item) morceaux.push({ titre: texteLocalise(item.titre) });
+      if (!remplirFilAriane(morceaux)) {
+        // Ancien gabarit : lien retour simple vers la section (649) ou le hub
+        // du projet (Python). On retire data-i18n car on fixe le texte ici
+        // (sinon appliquerTraductions sur tout le document l'écraserait).
+        const elRetour = document.querySelector("[data-lien-retour]");
+        if (elRetour) {
+          elRetour.removeAttribute("data-i18n");
+          if (section && !section._plat) {
+            elRetour.setAttribute(
+              "href",
+              pageSection +
+                "?p=" + encodeURIComponent(projet) +
+                "&s=" + encodeURIComponent(sectionId)
+            );
+            elRetour.textContent = "← " + texteLocalise(section.titre);
+          } else {
+            elRetour.setAttribute("href", hrefProjet(projet));
+            elRetour.textContent = window.I18n.t("contenu.retour");
+          }
         }
       }
 
