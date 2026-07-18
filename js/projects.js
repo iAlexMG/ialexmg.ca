@@ -61,7 +61,7 @@ const PROJETS = [
     titre: "projet.indices",
     desc: "projet.indices.desc",
     stack: ["Python", "PyQt5", "C#", "LEAN"],
-    miniature: "assets/indices/affichage/img/Capture_01.PNG",
+    miniature: "assets/indices/affichage/img/All.PNG",
     // Bouton « Code source » désactivé tant que le dépôt est en cours de
     // modification — décommenter pour le réafficher.
     // code: "https://github.com/iAlexMG/indicesBoursiers",
