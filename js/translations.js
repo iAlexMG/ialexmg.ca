@@ -109,6 +109,26 @@ const TRADUCTIONS = {
     "hub.lecture": "Lecture",
     "hub.ouvrir": "Ouvrir",
 
+    // Rail de chaîne (hubs crypto / indices) — étiquettes mono par pilier.
+    // Volontairement identiques en anglais : ce sont des codes de terminal.
+    "rail.aria": "Chaîne du projet",
+    "rail.historique": "HIST",
+    "rail.temps-reel": "TR",
+    "rail.affichage": "VIEW",
+    "rail.backtesting": "TEST",
+    "rail.automatisation": "EXEC",
+
+    // Concepts (renvois transversaux vers les formations)
+    "concept.renvois": "Concepts :",
+    "concept.voir_lecon": "Voir la leçon",
+    "concept.fermer": "Fermer la fiche",
+
+    // Bloc « Continuer » (fin des pages de section)
+    "continuer.titre": "Continuer",
+    "continuer.suite": "La suite",
+    "continuer.jumeau": "Même chaîne, autre marché",
+    "continuer.concepts": "Concepts liés",
+
     // Documents PDF
     "documents.voir": "Voir le PDF",
     "documents.telecharger": "Télécharger",
@@ -231,6 +251,26 @@ const TRADUCTIONS = {
     "hub.figures_un": "figure",
     "hub.lecture": "Read",
     "hub.ouvrir": "Open",
+
+    // Chain rail (crypto / indices hubs) — mono labels per pillar.
+    // Deliberately the same in French: they're terminal codes.
+    "rail.aria": "Project chain",
+    "rail.historique": "HIST",
+    "rail.temps-reel": "TR",
+    "rail.affichage": "VIEW",
+    "rail.backtesting": "TEST",
+    "rail.automatisation": "EXEC",
+
+    // Concepts (cross-references to the courses)
+    "concept.renvois": "Concepts:",
+    "concept.voir_lecon": "See the lesson",
+    "concept.fermer": "Close",
+
+    // "Continue" block (bottom of section pages)
+    "continuer.titre": "Continue",
+    "continuer.suite": "Up next",
+    "continuer.jumeau": "Same chain, other market",
+    "continuer.concepts": "Related concepts",
 
     // PDF documents
     "documents.voir": "View PDF",

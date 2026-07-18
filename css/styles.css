@@ -138,6 +138,9 @@ img { max-width: 100%; display: block; }
 .concept-etiquette,
 .marque-item-chip,
 .projet-sommaire-titre,
+.renvois-titre,
+.continuer-etiquette,
+.miroir-etiquette,
 .liste-contact .etiquette {
   font-family: var(--police-mono);
   text-transform: uppercase;
@@ -1326,6 +1329,222 @@ body.lightbox-ouverte { overflow: hidden; }
   font-size: 0.9rem;
 }
 
+/* ----- Rail de chaîne (hubs crypto / indices et leurs sous-pages) -----
+   La chaîne HIST·TR → VIEW → TEST → EXEC, injectée par content.js en tête de
+   <main> dès qu'un projet a des piliers étagés. Barre compacte sous
+   l'en-tête par défaut ; colonne fixe dans la marge gauche au très large
+   (voir le media query 1440px). La position courante est allumée. */
+.rail-chaine {
+  background: var(--couleur-surface);
+  border-bottom: 1px solid var(--couleur-bordure);
+  font-family: var(--police-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+.rail-chaine ol {
+  list-style: none;
+  max-width: var(--largeur-max);
+  margin: 0 auto;
+  padding: 0.45rem 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.75rem;
+}
+.rail-etage,
+.rail-noeud {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+/* Jonction entre deux étages : une flèche, dans le même ambre éteint que les
+   connecteurs de la pyramide. Devient « ↓ » en colonne fixe. */
+.rail-etage + .rail-etage::before {
+  content: "→";
+  color: var(--couleur-accent-clair);
+  margin-right: 0.4rem;
+}
+.rail-point { color: var(--couleur-texte-doux); opacity: 0.6; }
+.rail-lien {
+  padding: 0.12rem 0.35rem;
+  border: 1px solid transparent;
+  border-radius: var(--rayon);
+  color: var(--couleur-texte-doux);
+}
+.rail-lien:hover {
+  color: var(--couleur-texte);
+  border-color: var(--couleur-bordure);
+}
+.rail-actif {
+  color: var(--couleur-accent);
+  border-color: var(--couleur-accent-clair);
+  background: var(--couleur-surface-alt);
+}
+
+/* ----- Renvois de concepts -----
+   Un terme [[id]] dans la prose : souligné pointillé, cliquable — la fiche
+   du concept s'ouvre en pop-up. Le bouton se fond dans le texte. */
+.concept-lien {
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-decoration: underline dotted var(--couleur-accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.concept-lien:hover { color: var(--couleur-accent); }
+
+/* En chip (rangée « Concepts : » et bloc Continuer) : même graphie que les
+   chips de piliers de l'accueil. Auto-portant — pas dans la base « étiquette
+   mono » : .concept-lien poserait son font:inherit par-dessus. */
+.concept-chip {
+  font-family: var(--police-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--couleur-texte-doux);
+  background: var(--couleur-surface);
+  border: 1px solid var(--couleur-bordure);
+  border-radius: var(--rayon);
+  padding: 0.3rem 0.6rem;
+  text-decoration: none;
+  transition: color var(--transition), border-color var(--transition);
+}
+.concept-chip:hover {
+  color: var(--couleur-accent);
+  border-color: var(--couleur-accent);
+}
+
+/* Rangée « Concepts : … » en tête d'une page de section (clé "renvois"). */
+.renvois {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 1.5rem;
+}
+.renvois-titre {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--couleur-texte-doux);
+}
+
+/* La fiche d'un concept : <dialog> natif — Échap ferme tout seul. */
+.concept-dialog {
+  background: var(--couleur-surface);
+  color: var(--couleur-texte);
+  border: 1px solid var(--couleur-bordure);
+  border-radius: var(--rayon);
+  padding: 0;
+  width: min(30rem, 92vw);
+}
+.concept-dialog::backdrop { background: rgba(4, 6, 10, 0.7); }
+.concept-fiche { position: relative; padding: 1.4rem 1.5rem 1.5rem; }
+.concept-fermer {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--couleur-bordure);
+  border-radius: var(--rayon);
+  color: var(--couleur-texte);
+  font-family: var(--police-mono);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color var(--transition), color var(--transition);
+}
+.concept-fermer:hover {
+  border-color: var(--couleur-accent);
+  color: var(--couleur-accent);
+}
+.concept-titre { padding-right: 2.2rem; margin-bottom: 0.5rem; }
+.concept-resume {
+  color: var(--couleur-texte);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin-bottom: 0.9rem;
+}
+.concept-voir {
+  font-family: var(--police-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--couleur-accent);
+}
+.concept-voir:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ----- Bloc « Continuer » (fin des pages de section) ----- */
+.continuer {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--couleur-bordure);
+}
+.continuer-titre {
+  font-family: var(--police-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--couleur-texte-doux);
+  margin-bottom: 1rem;
+}
+.continuer-grille {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--grille-gouttiere);
+}
+.carte-continuer { padding: 1.1rem 1.25rem; }
+.carte-continuer h3 { font-size: 1.02rem; margin-bottom: 0.5rem; }
+.continuer-etiquette {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--couleur-texte-doux);
+  margin-bottom: 0.45rem;
+}
+/* La carte des concepts n'est pas un lien : sa bordure ne s'allume pas. */
+.carte-continuer-concepts:hover { border-color: var(--couleur-bordure); }
+.continuer-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+/* ----- Bandeau-miroir d'un hub (« Même chaîne, autre marché : … → ») ----- */
+.bandeau-miroir {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.75rem;
+  margin-top: 1.25rem;
+  padding: 0.9rem 1.25rem;
+  background: var(--couleur-surface);
+  border: 1px solid var(--couleur-bordure);
+  border-radius: var(--rayon);
+  color: var(--couleur-texte);
+  transition: border-color var(--transition);
+}
+.bandeau-miroir:hover {
+  border-color: var(--couleur-accent);
+  color: var(--couleur-texte);
+}
+.miroir-etiquette {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--couleur-texte-doux);
+}
+.miroir-titre { font-weight: 600; }
+.bandeau-miroir .fleche { color: var(--couleur-accent); font-weight: 600; }
+
 /* ----- Accessibilité : focus visible ----- */
 a:focus-visible,
 button:focus-visible {
@@ -1482,6 +1701,41 @@ button:focus-visible {
   .rangee-sans-visuel .rangee-corps { max-width: 70ch; }
 
   .tuiles { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* --------------------------------------------------------------------------
+ * Très large (≥ 1440px) : le rail de chaîne quitte le flux et devient une
+ * colonne fixe dans la marge gauche — un conteneur de 1100 px y laisse au
+ * moins 170 px de chaque côté. Les planches pleine trame cèdent alors cette
+ * marge au rail (body.avec-rail) au lieu de glisser dessous : à 1440 px la
+ * planche reste dans la trame, puis regagne ses 1400 px dès ~1740 px.
+ * ------------------------------------------------------------------------ */
+@media (min-width: 1440px) {
+  .rail-chaine {
+    position: fixed;
+    left: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 40;
+    border: 1px solid var(--couleur-bordure);
+    border-radius: var(--rayon);
+  }
+  .rail-chaine ol {
+    flex-direction: column;
+    align-items: center;
+    max-width: none;
+    margin: 0;
+    padding: 0.75rem 0.9rem;
+    gap: 0.45rem;
+  }
+  .rail-etage { flex-direction: column; gap: 0.3rem; }
+  .rail-etage + .rail-etage::before {
+    content: "↓";
+    margin-right: 0;
+  }
+  body.avec-rail .planche-large {
+    width: min(1400px, 100vw - 340px);
+  }
 }
 
 /* --------------------------------------------------------------------------

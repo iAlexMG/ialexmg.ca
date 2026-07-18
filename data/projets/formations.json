@@ -560,5 +560,135 @@
       ],
       "parent": "formation"
     }
+  ],
+  "concepts": [
+    {
+      "id": "plancher-buyhold",
+      "titre": {
+        "fr": "Le plancher Buy & Hold",
+        "en": "The Buy & Hold floor"
+      },
+      "resume": {
+        "fr": "Acheter une fois, ne plus rien faire : le résultat se recalcule à la main, au centime près. C'est d'abord un outil de validation — si le moteur ne retombe pas sur le calcul, quelque chose est faux. C'est ensuite le plancher : une stratégie qui ne bat pas l'achat-conservation ne justifie pas ses frais.",
+        "en": "Buy once, then do nothing: the result can be recomputed by hand, to the cent. It's a validation tool first — if the engine doesn't land on the by-hand figure, something is wrong. It's also the floor: a strategy that doesn't beat buy-and-hold doesn't justify its fees."
+      },
+      "lien": {
+        "p": "formations",
+        "s": "lean",
+        "i": "lecon-03"
+      }
+    },
+    {
+      "id": "suivi-tendance",
+      "titre": {
+        "fr": "Le suivi de tendance",
+        "en": "Trend following"
+      },
+      "resume": {
+        "fr": "Acheter la force, vendre la faiblesse : on suit le marché au lieu de le prédire. Les croisements de moyennes (SMA) et le MACD en sont les deux formes classiques — la lente et la rapide. Le facteur décisif n'est pas l'indicateur mais son échelle de temps : trop réactif, il ne capte que du bruit et fond en frais.",
+        "en": "Buy strength, sell weakness: you follow the market instead of predicting it. Moving-average crossovers (SMA) and the MACD are its two classic forms — the slow one and the fast one. The deciding factor isn't the indicator but its timeframe: too reactive, it only catches noise and melts into fees."
+      },
+      "lien": {
+        "p": "formations",
+        "s": "lean",
+        "i": "lecon-04"
+      }
+    },
+    {
+      "id": "retour-moyenne",
+      "titre": {
+        "fr": "Le retour à la moyenne",
+        "en": "Mean reversion"
+      },
+      "resume": {
+        "fr": "Le pari inverse du suivi de tendance : acheter la faiblesse en comptant sur le rebond. Le RSI le fait à seuils fixes (30/70), les bandes de Bollinger avec une enveloppe qui respire au rythme de la volatilité. Le piège est structurel : en tendance, la survente n'annonce pas un rebond — elle annonce plus de baisse.",
+        "en": "The opposite bet to trend following: buy weakness and count on the bounce. The RSI does it with fixed thresholds (30/70), Bollinger Bands with an envelope that breathes with volatility. The trap is structural: in a trend, oversold doesn't signal a bounce — it signals more downside."
+      },
+      "lien": {
+        "p": "formations",
+        "s": "lean",
+        "i": "lecon-05"
+      }
+    },
+    {
+      "id": "gestion-risque",
+      "titre": {
+        "fr": "La gestion du risque",
+        "en": "Risk management"
+      },
+      "resume": {
+        "fr": "Séparer la décision d'entrer de la décision de rester : le signal dit quand entrer, le stop et le take-profit disent quand sortir. Un stop coupe le trade catastrophe, mais il peut aussi combattre l'avantage qu'il protège — sur du retour à la moyenne, il vend le creux qu'on voulait détenir. Le risque doit s'accorder au type de signal, et seule la mesure tranche.",
+        "en": "Separate the decision to enter from the decision to stay: the signal says when to get in, the stop and take-profit say when to get out. A stop cuts the catastrophe trade, but it can also fight the very edge it protects — on mean reversion, it sells the dip you wanted to hold. Risk has to match the type of signal, and only measurement decides."
+      },
+      "lien": {
+        "p": "formations",
+        "s": "lean",
+        "i": "lecon-06"
+      }
+    },
+    {
+      "id": "metriques",
+      "titre": {
+        "fr": "Les métriques d'un backtest",
+        "en": "Backtest metrics"
+      },
+      "resume": {
+        "fr": "Rendement, drawdown, ratio de Sharpe, win rate : chaque métrique éclaire un angle, et chacune peut mentir seule. Une stratégie peut gagner la majorité de ses trades et perdre quand même — seule l'expectancy, le gain moyen par trade, dit la vérité. Un rapport se lit en familles : le rendement, le risque, et le rendement ajusté au risque.",
+        "en": "Return, drawdown, Sharpe ratio, win rate: each metric lights one angle, and each can lie on its own. A strategy can win most of its trades and still lose — only expectancy, the average gain per trade, tells the truth. A report reads in families: return, risk, and risk-adjusted return."
+      },
+      "lien": {
+        "p": "formations",
+        "s": "lean",
+        "i": "lecon-07"
+      }
+    },
+    {
+      "id": "walk-forward",
+      "titre": {
+        "fr": "Le walk-forward (IS/OOS)",
+        "en": "Walk-forward (IS/OOS)"
+      },
+      "resume": {
+        "fr": "Sur des données passées, il existe toujours un réglage qui brille par pur hasard. Le walk-forward coupe l'historique en deux : on optimise sur la première partie (in-sample), on juge sur la seconde (out-of-sample), jamais vue. Un réglage qui s'effondre hors échantillon n'était pas un avantage — c'était du sur-apprentissage.",
+        "en": "On past data there is always a setting that shines by pure chance. The walk-forward cuts the history in two: you optimize on the first part (in-sample) and judge on the second (out-of-sample), never seen. A setting that collapses out of sample was never an edge — it was overfitting."
+      },
+      "lien": {
+        "p": "formations",
+        "s": "lean",
+        "i": "lecon-07"
+      }
+    },
+    {
+      "id": "strategie-composite",
+      "titre": {
+        "fr": "La stratégie composite",
+        "en": "The composite strategy"
+      },
+      "resume": {
+        "fr": "Assembler les briques en un seul algorithme : un filtre de régime qui interdit d'acheter contre le fond, une entrée momentum confirmée deux fois, une taille de position calée sur le risque (1 % du capital, dimensionnée par l'ATR) et des sorties de risque. L'entrée est un signal ; les sorties sont du risque. Empiler les briques limite la casse, mais ne crée pas d'avantage là où aucune n'en avait.",
+        "en": "Assemble the building blocks into a single algorithm: a regime filter that forbids buying against the tide, a momentum entry confirmed twice, a position size set by risk (1% of capital, scaled by the ATR) and risk exits. The entry is a signal; the exits are risk. Stacking the blocks limits the damage, but creates no edge where none of them had one."
+      },
+      "lien": {
+        "p": "formations",
+        "s": "lean",
+        "i": "lecon-08"
+      }
+    },
+    {
+      "id": "volume-profile",
+      "titre": {
+        "fr": "Le volume profile par session",
+        "en": "The session volume profile"
+      },
+      "resume": {
+        "fr": "Une bougie écrase qui a acheté, qui a vendu et à quel prix. Le volume profile reconstruit cette dimension depuis les ticks : le volume par niveau de prix, son point de contrôle (POC) et sa value area, ancrés sur les vraies sessions (Asia, London, New York). C'est un outil d'analyse du contexte, pas un générateur de signaux — et le brancher sans casser la causalité est la moitié du travail.",
+        "en": "A candle crushes who bought, who sold and at what price. The volume profile rebuilds that dimension from the ticks: volume per price level, its point of control (POC) and its value area, anchored on the real sessions (Asia, London, New York). It's a context-analysis tool, not a signal generator — and wiring it in without breaking causality is half the job."
+      },
+      "lien": {
+        "p": "formations",
+        "s": "lean",
+        "i": "lecon-09"
+      }
+    }
   ]
 }

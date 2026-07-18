@@ -100,16 +100,34 @@ const Contenu = (function () {
   // paragraphes ; un bloc commençant par « ## » devient un sous-titre (suivi de
   // son paragraphe éventuel). Renvoie "" si le texte est vide.
   // Mise en forme INLINE de la prose : échappe le HTML puis convertit le
-  // gras **…**, le code `…` et les liens [texte](https://…) — le seul
-  // Markdown inline que les contenus des projets utilisent. Liens https
-  // uniquement (le texte est déjà échappé, l'URL ne peut pas fermer l'attribut).
+  // gras **…**, le code `…`, les renvois de concept [[id]] / [[id|libellé]]
+  // (terme souligné pointillé — le clic ouvre la fiche du concept, voir la
+  // section Concepts plus bas) et les liens [texte](url). Deux formes d'URL
+  // seulement : https:// (externe, nouvel onglet) et les pages internes
+  // projet-section.html / projet-item.html — un test du 649 renvoie ainsi à
+  // son document formatif sans quitter le site. Le texte est déjà échappé,
+  // l'URL ne peut pas fermer l'attribut.
   function formaterInline(texte) {
     return echapper(texte)
       .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
       .replace(/`([^`]+)`/g, "<code>$1</code>")
+      .replace(/\[\[([a-z0-9-]+)(?:\|([^\]]+))?\]\]/g, function (m, id, libelle) {
+        return (
+          '<button type="button" class="concept-lien" data-concept="' + id + '">' +
+          (libelle || id) +
+          "</button>"
+        );
+      })
       .replace(
-        /\[([^\]]+)\]\((https:\/\/[^\s)]+)\)/g,
-        '<a href="$2" target="_blank" rel="noopener">$1</a>'
+        /\[([^\]]+)\]\(((?:https:\/\/|projet-(?:section|item)\.html\?)[^\s)]+)\)/g,
+        function (m, texteLien, url) {
+          const externe = url.indexOf("https://") === 0;
+          return (
+            '<a href="' + url + '"' +
+            (externe ? ' target="_blank" rel="noopener"' : "") +
+            ">" + texteLien + "</a>"
+          );
+        }
       );
   }
 
@@ -153,6 +171,116 @@ const Contenu = (function () {
       .join("");
     return '<div class="section-prose">' + html + "</div>";
   }
+
+  // --- Concepts (renvois transversaux vers les formations) -------------------
+
+  // Les concepts sont déclarés UNE fois, dans le squelette Formations (clé
+  // racine "concepts" de data/projets/formations.json, recopiée telle quelle
+  // par sync-site.py) : { id, titre {fr,en}, resume {fr,en}, lien {p, s, i?} }.
+  // Un [[id]] dans la prose ou une clé de section "renvois" y renvoie ; le
+  // clic ouvre une fiche <dialog> (résumé + « Voir la leçon → »). Règle
+  // éditoriale : pop-up pour un concept, lien direct pour un document entier.
+
+  async function chargerConcepts() {
+    try {
+      const bloc = await chargerProjet("formations");
+      const liste = bloc && Array.isArray(bloc.concepts) ? bloc.concepts : [];
+      const parId = {};
+      liste.forEach(function (c) {
+        if (c && c.id) parId[c.id] = c;
+      });
+      return parId;
+    } catch (err) {
+      console.error("[concepts] Échec du chargement :", err);
+      return {};
+    }
+  }
+
+  // Adresse de la leçon d'un concept ({p, s, i?}) : la page item si le
+  // concept pointe une leçon précise, la page section sinon.
+  function hrefConcept(lien) {
+    if (!lien || !lien.p) return "";
+    return (
+      (lien.i ? "projet-item.html" : "projet-section.html") +
+      "?p=" + encodeURIComponent(lien.p) +
+      (lien.s ? "&s=" + encodeURIComponent(lien.s) : "") +
+      (lien.i ? "&i=" + encodeURIComponent(lien.i) : "")
+    );
+  }
+
+  // Rangée de chips « Concepts : … » (clé "renvois" d'une section) : chaque
+  // chip ouvre la même fiche qu'un [[id]] dans la prose.
+  function creerChipsConcepts(renvois, concepts) {
+    return (renvois || [])
+      .map(function (id) {
+        return concepts[id];
+      })
+      .filter(Boolean)
+      .map(function (c) {
+        return (
+          '<button type="button" class="concept-lien concept-chip" data-concept="' +
+          echapper(c.id) + '">' + echapper(texteLocalise(c.titre)) + "</button>"
+        );
+      })
+      .join("");
+  }
+
+  function creerRenvois(renvois, concepts) {
+    const chips = creerChipsConcepts(renvois, concepts);
+    if (!chips) return "";
+    return (
+      '<div class="renvois">' +
+      '<span class="renvois-titre" data-i18n="concept.renvois"></span>' +
+      chips +
+      "</div>"
+    );
+  }
+
+  // Fiche d'un concept : un seul <dialog> réutilisé, rempli au clic.
+  // Fermeture : bouton ×, Échap (natif) et clic sur le fond assombri.
+  function dialogConcept() {
+    let dlg = document.querySelector(".concept-dialog");
+    if (dlg) return dlg;
+    dlg = document.createElement("dialog");
+    dlg.className = "concept-dialog";
+    dlg.addEventListener("click", function (e) {
+      if (e.target === dlg) dlg.close();
+    });
+    document.body.appendChild(dlg);
+    return dlg;
+  }
+
+  async function ouvrirConcept(id) {
+    const concepts = await chargerConcepts();
+    const concept = concepts[id];
+    if (!concept) return; // id inconnu : le terme reste un simple mot.
+    const dlg = dialogConcept();
+    const href = hrefConcept(concept.lien);
+    dlg.innerHTML =
+      '<div class="concept-fiche">' +
+      '<button type="button" class="concept-fermer"' +
+      ' data-i18n="concept.fermer" data-i18n-attr="aria-label">×</button>' +
+      '<h3 class="concept-titre">' + echapper(texteLocalise(concept.titre)) + "</h3>" +
+      '<p class="concept-resume">' + echapper(texteLocalise(concept.resume)) + "</p>" +
+      (href
+        ? '<a class="concept-voir" href="' + href + '">' +
+          '<span data-i18n="concept.voir_lecon"></span> →</a>'
+        : "") +
+      "</div>";
+    window.I18n.appliquerTraductions(dlg);
+    dlg.querySelector(".concept-fermer").addEventListener("click", function () {
+      dlg.close();
+    });
+    dlg.showModal();
+  }
+
+  // Délégation globale : tout .concept-lien (prose, chips, bloc Continuer)
+  // ouvre la fiche — le contenu étant re-rendu à chaque changement de langue,
+  // un écouteur unique sur le document évite de rebrancher chaque terme.
+  document.addEventListener("click", function (e) {
+    const declencheur = e.target.closest && e.target.closest(".concept-lien");
+    if (declencheur) ouvrirConcept(declencheur.getAttribute("data-concept"));
+  });
 
   // Extrait l'identifiant d'une vidéo YouTube depuis différentes formes d'URL.
   function extraireIdYoutube(url) {
@@ -865,6 +993,186 @@ const Contenu = (function () {
     return [];
   }
 
+  // --- Rail de chaîne (hubs crypto / indices et leurs sous-pages) ------------
+
+  // La chaîne HIST·TR → VIEW → TEST → EXEC, toujours à portée : une barre
+  // compacte sous l'en-tête, qui devient une colonne fixe dans la marge
+  // gauche quand la fenêtre est assez large (voir styles.css). Construite
+  // depuis les mêmes étages que la pyramide : seuls les projets à piliers
+  // étagés (crypto, indices) ont une chaîne à montrer. `actifId` — l'id du
+  // pilier racine de la page courante — allume la position.
+
+  // Étiquette mono d'un pilier sur le rail (« HIST », « VIEW »…) : déclarée
+  // dans translations.js (rail.<id>), les deux hubs partageant les mêmes ids.
+  // Un pilier sans étiquette retombe sur son titre tronqué — jamais sur la
+  // clé brute que renverrait I18n.t.
+  function etiquetteRail(section) {
+    const dico = window.TRADUCTIONS[window.I18n.langueActive()] || {};
+    const cle = "rail." + String(section.id || "");
+    if (Object.prototype.hasOwnProperty.call(dico, cle)) return dico[cle];
+    return texteLocalise(section.titre).slice(0, 4).toUpperCase();
+  }
+
+  function rendreRailChaine(bloc, projet, pageSection, actifId) {
+    document.querySelectorAll(".rail-chaine").forEach(function (el) {
+      el.remove();
+    });
+    document.body.classList.remove("avec-rail");
+    const main = document.querySelector("main");
+    if (!main) return;
+    const piliers = sectionsDuBloc(bloc).filter(function (s) {
+      return !s._plat && !s.parent && !s.concept;
+    });
+    const niveaux = etagesDePiliers(piliers);
+    if (!niveaux) return;
+
+    const etages = niveaux
+      .map(function (niveau) {
+        const liens = niveau.sections
+          .map(function (section) {
+            const actif = String(section.id) === String(actifId || "");
+            const href =
+              pageSection +
+              "?p=" + encodeURIComponent(projet) +
+              "&s=" + encodeURIComponent(section.id);
+            return (
+              '<a class="rail-lien' + (actif ? " rail-actif" : "") + '"' +
+              ' href="' + href + '"' +
+              (actif ? ' aria-current="location"' : "") +
+              ' title="' + echapper(texteLocalise(section.titre)) + '">' +
+              echapper(etiquetteRail(section)) +
+              "</a>"
+            );
+          })
+          .join('<span class="rail-point" aria-hidden="true">·</span>');
+        // Le nœud (HIST·TR) vit dans son propre span : en colonne fixe, la
+        // flèche de jonction se place AU-DESSUS du nœud, pas à sa gauche.
+        return (
+          '<li class="rail-etage"><span class="rail-noeud">' + liens + "</span></li>"
+        );
+      })
+      .join("");
+
+    const nav = document.createElement("nav");
+    nav.className = "rail-chaine";
+    nav.setAttribute("aria-label", window.I18n.t("rail.aria"));
+    nav.innerHTML = "<ol>" + etages + "</ol>";
+    main.insertBefore(nav, main.firstChild);
+    // Le drapeau sert au CSS : en colonne fixe, les planches pleine trame
+    // cèdent la marge gauche au rail au lieu de passer dessous.
+    document.body.classList.add("avec-rail");
+  }
+
+  // --- Bloc « Continuer » et miroir crypto ↔ indices -------------------------
+
+  // Aucune page de section ne finit en cul-de-sac : la suite logique, le même
+  // pilier sur l'autre marché (clé racine "jumeau" des squelettes crypto /
+  // indices — recopiée telle quelle par sync-site.py), et les concepts liés
+  // (clé "renvois" de la section, les mêmes chips qu'en tête de page).
+
+  // La section « suivante » dans le sens de lecture : le prochain frère de
+  // même parent, sinon le suivant du parent (récursif) — la dernière
+  // stratégie d'un banc continue ainsi vers l'autre moteur. Les bandeaux
+  // « concept » du hub n'entrent pas dans la marche.
+  function sectionSuivante(sections, section) {
+    let s = section;
+    let garde = 0;
+    while (s && garde++ < 6) {
+      const parent = s.parent || null;
+      const freres = sections.filter(function (f) {
+        return !f._plat && !f.concept && (f.parent || null) === parent;
+      });
+      const idx = freres.indexOf(s);
+      if (idx !== -1 && idx + 1 < freres.length) return freres[idx + 1];
+      s = parent ? trouverSection(sections, parent) : null;
+    }
+    return null;
+  }
+
+  function carteContinuer(etiquetteCle, titre, href) {
+    return (
+      '<a class="carte-portfolio carte-continuer" href="' + href + '">' +
+      '<span class="continuer-etiquette" data-i18n="' + etiquetteCle + '"></span>' +
+      "<h3>" + echapper(titre) + "</h3>" +
+      '<span class="fleche">' + echapper(window.I18n.t("hub.ouvrir")) + " →</span>" +
+      "</a>"
+    );
+  }
+
+  async function creerBlocContinuer(bloc, projet, pageSection, section, sections, concepts) {
+    const cartes = [];
+
+    const suivante = sectionSuivante(sections, section);
+    if (suivante) {
+      cartes.push(
+        carteContinuer(
+          "continuer.suite",
+          texteLocalise(suivante.titre),
+          pageSection +
+            "?p=" + encodeURIComponent(projet) +
+            "&s=" + encodeURIComponent(suivante.id)
+        )
+      );
+    }
+
+    // Le miroir de l'autre marché, au niveau du PILIER racine : depuis une
+    // stratégie du backtesting crypto, le jumeau est le pilier Backtesting
+    // des indices — même chaîne, autre marché. On vérifie que le pilier
+    // existe bien chez le jumeau avant d'offrir la carte.
+    const racine = cheminSections(sections, section)[0] || null;
+    if (bloc && bloc.jumeau && racine && typeof racine.etage === "number") {
+      try {
+        const blocJumeau = await chargerProjet(bloc.jumeau);
+        const pilierJumeau = trouverSection(sectionsDuBloc(blocJumeau), racine.id);
+        if (pilierJumeau) {
+          cartes.push(
+            carteContinuer(
+              "continuer.jumeau",
+              texteLocalise(pilierJumeau.titre) + " — " + titreProjet(bloc.jumeau),
+              pageSection +
+                "?p=" + encodeURIComponent(bloc.jumeau) +
+                "&s=" + encodeURIComponent(racine.id)
+            )
+          );
+        }
+      } catch (err) {
+        console.error("[continuer] Jumeau injoignable :", err);
+      }
+    }
+
+    const chips = creerChipsConcepts(section.renvois, concepts);
+    if (chips) {
+      cartes.push(
+        '<div class="carte-portfolio carte-continuer carte-continuer-concepts">' +
+        '<span class="continuer-etiquette" data-i18n="continuer.concepts"></span>' +
+        '<div class="continuer-chips">' + chips + "</div>" +
+        "</div>"
+      );
+    }
+
+    if (!cartes.length) return "";
+    return (
+      '<aside class="continuer">' +
+      '<h2 class="continuer-titre" data-i18n="continuer.titre"></h2>' +
+      '<div class="continuer-grille">' + cartes.join("") + "</div>" +
+      "</aside>"
+    );
+  }
+
+  // Bandeau-miroir d'un hub (« Même chaîne, autre marché : Indices → ») :
+  // pleine largeur sous la pyramide, depuis la clé racine "jumeau".
+  function creerBandeauMiroir(bloc) {
+    const meta = bloc && bloc.jumeau ? metaProjet(bloc.jumeau) : null;
+    if (!meta) return "";
+    return (
+      '<a class="bandeau-miroir" href="' + meta.href + '">' +
+      '<span class="miroir-etiquette" data-i18n="continuer.jumeau"></span>' +
+      '<span class="miroir-titre" data-i18n="' + meta.titre + '"></span>' +
+      '<span class="fleche">→</span>' +
+      "</a>"
+    );
+  }
+
   // Rendu principal (projet « à plat »). Gère chargement / vide / erreur / contenu.
   async function rendre(options) {
     const conteneur = options.conteneur;
@@ -1047,8 +1355,11 @@ const Contenu = (function () {
             .map(function (section) {
               return creerBandeauConcept(section, projet, pageSection);
             })
-            .join("");
+            .join("") +
+          creerBandeauMiroir(bloc);
       }
+      // Rail de chaîne du hub : la chaîne entière, aucune position allumée.
+      rendreRailChaine(bloc, projet, pageSection, null);
     } catch (err) {
       console.error("[hub] Échec du chargement :", err);
       conteneur.innerHTML =
@@ -1135,9 +1446,13 @@ const Contenu = (function () {
 
       const elTitre = document.querySelector("[data-section-titre]");
       const elIntro = document.querySelector("[data-section-intro]");
+      // Chaîne des parents (fil d'Ariane, rail, bloc Continuer) : son premier
+      // maillon est le pilier RACINE de la page courante.
+      const chemin = cheminSections(sections, section);
+      rendreRailChaine(bloc, projet, pageSection, chemin.length ? chemin[0].id : null);
       // Fil d'Ariane : hub du projet / chaîne des parents / section courante.
       const morceaux = [{ titre: titreProjet(projet), href: hrefProjet(projet) }];
-      cheminSections(sections, section).forEach(function (s) {
+      chemin.forEach(function (s) {
         morceaux.push({
           titre: texteLocalise(s.titre),
           href:
@@ -1187,6 +1502,11 @@ const Contenu = (function () {
       // vivent dans la clé "sources" du projet (squelette du hub).
       const sources = Array.isArray(bloc && bloc.sources) ? bloc.sources : [];
       const marques = creerRangeeMarques(section, sources);
+      // Renvois de concepts (clé "renvois") : la carte des concepts n'est
+      // chargée que si la page en déclare — les autres pages ne paient rien.
+      const concepts =
+        section.renvois && section.renvois.length ? await chargerConcepts() : {};
+      const entete = marques + creerRenvois(section.renvois, concepts);
 
       if (section.sousHub) {
         // Section-hub : ses sous-sections (parent === cette section) forment un
@@ -1216,7 +1536,7 @@ const Contenu = (function () {
         // drapeau, on garde l'ordre habituel (prose puis cartes).
         conteneur.innerHTML =
           avertissementTexteFr(section.texte) +
-          marques +
+          entete +
           (galerie && enfants.length
             ? // --n : le nombre de branches. La fourche et la grille des cartes
               // s'y accordent pour tenir sur une rangée unique (voir styles.css).
@@ -1253,20 +1573,26 @@ const Contenu = (function () {
         conteneur.innerHTML =
           banniereAvertissementPdf(aPdf) +
           avertissementTexteFr(section.texte) +
-          marques +
+          entete +
           (section.sousMenu
             ? rendreProse(texte) + rendreItemsEnPlanches(items, hrefItemDeSection)
             : rendreItemsEnPlanches(items, hrefItemDeSection) + rendreProse(texte));
         marquerPlanchesLarges(conteneur);
       } else if (texte) {
         conteneur.innerHTML =
-          avertissementTexteFr(section.texte) + marques + rendreProse(texte);
-      } else if (marques) {
-        conteneur.innerHTML = marques;
+          avertissementTexteFr(section.texte) + entete + rendreProse(texte);
+      } else if (entete) {
+        conteneur.innerHTML = entete;
       } else {
         conteneur.innerHTML =
           '<div class="galerie"><p class="galerie-message" data-i18n="contenu.vide"></p></div>';
       }
+
+      // Fin de page : le bloc « Continuer » — jamais de cul-de-sac.
+      const continuer = await creerBlocContinuer(
+        bloc, projet, pageSection, section, sections, concepts
+      );
+      if (continuer) conteneur.insertAdjacentHTML("beforeend", continuer);
     } catch (err) {
       console.error("[section] Échec du chargement :", err);
       conteneur.innerHTML =
@@ -1314,10 +1640,15 @@ const Contenu = (function () {
       }
       const item = trouverItem(items, itemId);
 
+      // Rail de chaîne : la position de la page est son pilier racine.
+      const chemin =
+        section && !section._plat ? cheminSections(sections, section) : [];
+      rendreRailChaine(bloc, projet, pageSection, chemin.length ? chemin[0].id : null);
+
       // Fil d'Ariane : hub / chaîne des sections (sauf plat) / item courant.
       const morceaux = [{ titre: titreProjet(projet), href: hrefProjet(projet) }];
       if (section && !section._plat) {
-        cheminSections(sections, section).forEach(function (s) {
+        chemin.forEach(function (s) {
           morceaux.push({
             titre: texteLocalise(s.titre),
             href:
