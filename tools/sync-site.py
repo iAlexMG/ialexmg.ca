@@ -114,7 +114,7 @@ HUBS = {
     },
     "statistiques": {
         "dossiers": ["Statistiques"],
-        "chemins": {"lotto-649": "Lotto 649"},
+        "chemins": {"lotto-649": "Statistiques/Lotto 649"},
         "assets": {"lotto-649": "statistiques/lotto-649"},
     },
 }
