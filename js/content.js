@@ -673,6 +673,18 @@ const Contenu = (function () {
     );
   }
 
+  // Étiquette mono d'un étage du schéma de flux (« 01 · HIST·TR ») : le rang
+  // sur deux chiffres, puis les codes de rail des piliers de l'étage. Décor
+  // pur (les cartes se suffisent) — masquée aux lecteurs d'écran.
+  function etiquetteEtage(niveau, rang) {
+    const codes = niveau.sections.map(etiquetteRail).join("·");
+    return (
+      '<p class="pyramide-etiquette" aria-hidden="true">' +
+      (rang < 10 ? "0" + rang : rang) + " · " + echapper(codes) +
+      "</p>"
+    );
+  }
+
   function construirePyramide(niveaux, projet, pageSection, titresSeuls) {
     return (
       '<div class="pyramide">' +
@@ -686,6 +698,7 @@ const Contenu = (function () {
           // --rang pilote le resserrement de l'étage (voir styles.css).
           return (
             (rang === 0 ? "" : creerJonction(niveaux[rang - 1].sections.length)) +
+            etiquetteEtage(niveau, rang + 1) +
             '<div class="pyramide-etage" style="--rang: ' + (rang + 1) + '">' +
             cartes +
             "</div>"
@@ -1063,6 +1076,207 @@ const Contenu = (function () {
     document.body.classList.add("avec-rail");
   }
 
+  // --- Carte des stratégies (SVG — page moteur-lean du hub crypto) -----------
+
+  // Un SVG inline généré depuis les sous-sections : le banc au centre-gauche
+  // (clé `carteCentre` de la section-hub), une rangée par famille (clé
+  // `familles` : {id, titre, liaison}) et un nœud cliquable par stratégie
+  // (clé `famille` + `carteNom` court ; le numéro et le statut existent
+  // déjà). Les liaisons se lisent sur les arêtes du tronc ; une clé `arete`
+  // {vers, libelle} d'une stratégie trace en plus un renvoi pointillé vers un
+  // nœud superposé (« ajoute des stops à »). Aucune position dans le JSON :
+  // la grille se calcule ici. Au large, la carte remplace les cartes du
+  // sous-hub ; en mobile elles reprennent la main (voir .avec-carte).
+
+  function creerCarteStrategies(section, enfants, projet, pageSection) {
+    const familles = Array.isArray(section.familles) ? section.familles : [];
+    const centre = texteLocalise(section.carteCentre);
+    if (!centre || !familles.length) return "";
+
+    const rangees = familles
+      .map(function (famille) {
+        return {
+          famille: famille,
+          strategies: enfants.filter(function (s) {
+            return s.famille === famille.id;
+          }),
+        };
+      })
+      .filter(function (r) {
+        return r.strategies.length;
+      });
+    if (rangees.length < 2) return "";
+
+    // La grille : nœuds de 200×64, rangées de 92 px, tronc en L à gauche.
+    const NOEUD_L = 200, NOEUD_H = 64, PAS_X = 28, DEPART_X = 268;
+    const RANGEE_H = 92, HAUT = 18, TRONC_X = 224, CENTRE_L = 180;
+    const H = HAUT + rangees.length * RANGEE_H;
+    const centreY = H / 2;
+
+    // Position de chaque nœud (pour les chaînes et les renvois `arete`).
+    const geo = {};
+    rangees.forEach(function (r, i) {
+      const yHaut = HAUT + i * RANGEE_H;
+      r.strategies.forEach(function (s, j) {
+        geo[s.id] = { x: DEPART_X + j * (NOEUD_L + PAS_X), y: yHaut };
+      });
+    });
+
+    function noeud(s) {
+      const g = geo[s.id];
+      const cy = g.y + NOEUD_H / 2;
+      const nom = texteLocalise(s.carteNom) || texteLocalise(s.titre);
+      const verdict = texteLocalise(s.statut);
+      const aria =
+        (s.numero ? s.numero + " · " : "") +
+        texteLocalise(s.titre) +
+        (verdict ? " — " + verdict : "");
+      const href =
+        pageSection +
+        "?p=" + encodeURIComponent(projet) +
+        "&s=" + encodeURIComponent(s.id);
+      return (
+        '<a class="cs-noeud" href="' + href + '" aria-label="' + echapper(aria) + '">' +
+        '<rect x="' + g.x + '" y="' + g.y + '" width="' + NOEUD_L +
+        '" height="' + NOEUD_H + '" rx="4"></rect>' +
+        (s.numero
+          ? '<text class="cs-numero" x="' + (g.x + 14) + '" y="' + (cy - 4) + '">' +
+            echapper(s.numero) + "</text>"
+          : "") +
+        '<text class="cs-nom" x="' + (g.x + (s.numero ? 44 : 14)) + '" y="' + (cy - 2) + '">' +
+        echapper(nom) + "</text>" +
+        (verdict
+          ? '<text class="cs-verdict" x="' + (g.x + 14) + '" y="' + (cy + 20) + '">' +
+            echapper(verdict) + "</text>"
+          : "") +
+        "</a>"
+      );
+    }
+
+    let traits = "";
+    let etiquettes = "";
+    let noeuds = "";
+    let renvois = "";
+
+    // Le tronc : du banc vers la colonne, puis un L par rangée de famille.
+    const premierCy = HAUT + NOEUD_H / 2;
+    const dernierCy = HAUT + (rangees.length - 1) * RANGEE_H + NOEUD_H / 2;
+    traits +=
+      '<path class="cs-tronc" d="M ' + (8 + CENTRE_L) + " " + centreY +
+      " H " + TRONC_X + " M " + TRONC_X + " " + premierCy +
+      " V " + dernierCy + '"></path>';
+
+    rangees.forEach(function (r, i) {
+      const yHaut = HAUT + i * RANGEE_H;
+      const cy = yHaut + NOEUD_H / 2;
+      traits +=
+        '<path class="cs-tronc" d="M ' + TRONC_X + " " + cy +
+        " H " + DEPART_X + '"></path>';
+      // L'étiquette de famille se lit À DROITE de sa rangée, centrée sur elle :
+      // la bande entre deux rangées reste libre pour les renvois `arete`.
+      const titre = texteLocalise(r.famille.titre).toUpperCase();
+      const liaison = texteLocalise(r.famille.liaison);
+      const finRangee =
+        geo[r.strategies[r.strategies.length - 1].id].x + NOEUD_L;
+      etiquettes +=
+        '<text class="cs-famille" x="' + (finRangee + 18) + '" y="' + (cy + 4) + '">' +
+        echapper(titre) +
+        (liaison
+          ? ' <tspan class="cs-liaison">· ' + echapper(liaison) + "</tspan>"
+          : "") +
+        "</text>";
+      // La chaîne entre deux stratégies d'une même famille (SMA — MACD).
+      r.strategies.forEach(function (s, j) {
+        if (j > 0) {
+          const gauche = geo[r.strategies[j - 1].id];
+          traits +=
+            '<path class="cs-chaine" d="M ' + (gauche.x + NOEUD_L) + " " + cy +
+            " H " + geo[s.id].x + '"></path>';
+        }
+        noeuds += noeud(s);
+      });
+    });
+
+    // Renvois pointillés entre nœuds superposés (clé `arete` d'une stratégie).
+    enfants.forEach(function (s) {
+      if (!s.arete || !s.arete.vers || !geo[s.id]) return;
+      const cible = geo[s.arete.vers];
+      if (!cible) return;
+      const g = geo[s.id];
+      const gauche = Math.max(g.x, cible.x);
+      const droite = Math.min(g.x + NOEUD_L, cible.x + NOEUD_L);
+      if (droite - gauche < 40) return; // pas de recouvrement : rien à tracer.
+      const xm = (gauche + droite) / 2;
+      const haut = Math.min(g.y, cible.y) + NOEUD_H;
+      const bas = Math.max(g.y, cible.y);
+      renvois +=
+        '<path class="cs-arete" d="M ' + xm + " " + haut + " V " + bas + '"></path>' +
+        '<text class="cs-libelle" x="' + (xm + 10) + '" y="' +
+        ((haut + bas) / 2 + 4) + '">' +
+        echapper(texteLocalise(s.arete.libelle)) + "</text>";
+    });
+
+    // Le nœud central : la page courante — pas un lien, un repère.
+    const centreHtml =
+      '<g class="cs-noeud cs-centre" aria-hidden="true">' +
+      '<rect x="8" y="' + (centreY - NOEUD_H / 2) + '" width="' + CENTRE_L +
+      '" height="' + NOEUD_H + '" rx="4"></rect>' +
+      '<text class="cs-nom" x="24" y="' + (centreY - 2) + '">' +
+      echapper(centre) + "</text>" +
+      '<text class="cs-verdict" x="24" y="' + (centreY + 20) + '">' +
+      echapper(libelleCarteSection(section)) + "</text>" +
+      "</g>";
+
+    return (
+      '<figure class="carte-strategies">' +
+      '<svg viewBox="0 0 1080 ' + H + '" role="img" aria-label="' +
+      echapper(window.I18n.t("carte.aria")) + '">' +
+      traits + renvois + etiquettes + centreHtml + noeuds +
+      "</svg>" +
+      "</figure>"
+    );
+  }
+
+  // --- Flux d'étapes d'un hub (clé racine "flux" — le parcours du 6/49) ------
+
+  // « Phase 0 → Phase 1 (6 tests) → Phase 2 (4 modèles) → Synthèse » : une
+  // étape cliquable par section listée, son statut en chip. Le titre se coupe
+  // sur son tiret (« Phase 1 — Tests statistiques ») : le début en gros, la
+  // suite en dessous.
+  function creerFluxEtapes(bloc, projet, pageSection) {
+    const ids = Array.isArray(bloc && bloc.flux) ? bloc.flux : [];
+    if (!ids.length) return "";
+    const sections = sectionsDuBloc(bloc);
+    const etapes = ids
+      .map(function (id) {
+        return trouverSection(sections, id);
+      })
+      .filter(Boolean)
+      .map(function (section) {
+        const morceaux = texteLocalise(section.titre).split(/\s+—\s+/);
+        const href =
+          pageSection +
+          "?p=" + encodeURIComponent(projet) +
+          "&s=" + encodeURIComponent(section.id);
+        return (
+          '<a class="flux-etape" href="' + href + '">' +
+          '<span class="flux-titre">' + echapper(morceaux[0]) + "</span>" +
+          (morceaux[1]
+            ? '<span class="flux-sous">' + echapper(morceaux[1]) + "</span>"
+            : "") +
+          '<span class="flux-chip">' + echapper(libelleCarteSection(section)) + "</span>" +
+          "</a>"
+        );
+      });
+    if (!etapes.length) return "";
+    return (
+      '<nav class="flux-etapes" aria-label="' +
+      echapper(window.I18n.t("flux.aria")) + '">' +
+      etapes.join('<span class="flux-fleche" aria-hidden="true">→</span>') +
+      "</nav>"
+    );
+  }
+
   // --- Bloc « Continuer » et miroir crypto ↔ indices -------------------------
 
   // Aucune page de section ne finit en cul-de-sac : la suite logique, le même
@@ -1348,6 +1562,7 @@ const Contenu = (function () {
         }
         conteneur.innerHTML =
           lienCode +
+          creerFluxEtapes(bloc, projet, pageSection) +
           (niveaux
             ? construirePyramide(niveaux, projet, pageSection, titresSeuls)
             : grilleDesPiliers()) +
@@ -1523,6 +1738,12 @@ const Contenu = (function () {
           ? '<div class="galerie galerie-tete">' + items.map(creerCarte).join("") + "</div>"
           : "";
         const sousHub = construireSousHubSections(enfants, projet, pageSection, sources);
+        // Carte SVG des stratégies (clés carteCentre/familles) : au large elle
+        // remplace les cartes du sous-hub, en mobile les cartes restent.
+        const carte = creerCarteStrategies(section, enfants, projet, pageSection);
+        const indexEnfants = carte
+          ? '<div class="avec-carte">' + carte + sousHub + "</div>"
+          : sousHub;
         // Une section-hub illustrée EN TÊTE est une arborescence : l'image
         // générale est la racine, ses sous-sections les branches qui la
         // démontent. Une fourche descend donc de l'image vers les cartes, et la
@@ -1544,8 +1765,8 @@ const Contenu = (function () {
               galerie + creerFourcheArbre(enfants.length) + sousHub +
               "</div>" + rendreProse(texte)
             : section.cartesEnTete
-            ? galerie + sousHub + rendreProse(texte)
-            : galerie + rendreProse(texte) + sousHub);
+            ? galerie + indexEnfants + rendreProse(texte)
+            : galerie + rendreProse(texte) + indexEnfants);
       } else if (items.length) {
         // Les items d'une page de section se lisent hors des cartes : PDF en
         // index de fichiers façon terminal, figures en planches numérotées
