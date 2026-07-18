@@ -318,12 +318,18 @@ const Contenu = (function () {
   // `visuel` (HTML, optionnel) coiffe la carte — une rondelle de marque ou la
   // vignette d'une vue. Il tient alors lieu de description : l'appelant qui
   // passe un visuel passe une desc vide.
-  function creerCarteLien(titre, desc, href, fleche, visuel) {
+  function creerCarteLien(titre, desc, href, fleche, visuel, numero) {
+    // `numero` (optionnel) : suffixe d'index sur le titre — sert à numéroter les
+    // stratégies d'un banc (« 01 », « 02 »…) sans toucher au texte des données.
+    const suffixeNum = numero
+      ? ' <span class="carte-numero">' + echapper(numero) + "</span>"
+      : "";
     return (
-      '<a class="carte-portfolio' + (visuel ? " carte-illustree" : "") + '"' +
+      '<a class="carte-portfolio' + (visuel ? " carte-illustree" : "") +
+      (numero ? " carte-numerotee" : "") + '"' +
       ' href="' + href + '">' +
       (visuel || "") +
-      "  <h3>" + echapper(titre) + "</h3>" +
+      "  <h3>" + echapper(titre) + suffixeNum + "</h3>" +
       (desc ? "  <p>" + echapper(desc) + "</p>" : "") +
       '  <span class="fleche">' + echapper(fleche) + " →</span>" +
       "</a>"
@@ -518,7 +524,7 @@ const Contenu = (function () {
             "?p=" + encodeURIComponent(projet) +
             "&s=" + encodeURIComponent(section.id);
           return creerCarteLien(
-            titre, desc, href, libelleCarteSection(section), visuel
+            titre, desc, href, libelleCarteSection(section), visuel, section.numero
           );
         })
         .join("") +
@@ -1055,6 +1061,10 @@ const Contenu = (function () {
         // est extraite, pas après un paragraphe. Les section-hubs sans
         // illustration (Historiques, Temps réel) n'ont pas de racine à montrer :
         // ils gardent leur prose avant les cartes.
+        // `cartesEnTete` : le sous-hub passe AVANT la prose — la page se lit
+        // alors comme un index navigable (les cartes numérotées d'un banc, avec
+        // leur résultat), le récit détaillé venant en soutien dessous. Sans le
+        // drapeau, on garde l'ordre habituel (prose puis cartes).
         conteneur.innerHTML =
           avertissementTexteFr(section.texte) +
           marques +
@@ -1064,6 +1074,8 @@ const Contenu = (function () {
               '<div class="arborescence" style="--n: ' + enfants.length + '">' +
               galerie + creerFourcheArbre(enfants.length) + sousHub +
               "</div>" + rendreProse(texte)
+            : section.cartesEnTete
+            ? galerie + sousHub + rendreProse(texte)
             : galerie + rendreProse(texte) + sousHub);
       } else if (section.sousMenu && items.length) {
         // Sous-menu : une carte par item (mène à sa page item).
