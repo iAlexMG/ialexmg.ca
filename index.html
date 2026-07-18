@@ -35,19 +35,40 @@
         <p class="sous-titre" data-i18n="accueil.sous_titre"></p>
         <h1 data-i18n="accueil.titre"></h1>
         <p class="intro" data-i18n="accueil.intro"></p>
-        <!-- Appels à l'action : ancre vers la grille des projets + page contact. -->
+        <!-- Appels à l'action : ancre vers les rangées de projets + contact. -->
         <div class="hero-actions">
           <a class="bouton" href="#projets" data-i18n="accueil.cta_projets"></a>
           <a class="bouton bouton-secondaire" href="contact.html" data-i18n="accueil.cta_contact"></a>
         </div>
+        <!-- Les quatre messages au recruteur, en tuiles mono. -->
+        <ul class="tuiles">
+          <li class="tuile">
+            <span class="tuile-titre" data-i18n="accueil.tuile1_titre"></span>
+            <span class="tuile-desc" data-i18n="accueil.tuile1_desc"></span>
+          </li>
+          <li class="tuile">
+            <span class="tuile-titre" data-i18n="accueil.tuile2_titre"></span>
+            <span class="tuile-desc" data-i18n="accueil.tuile2_desc"></span>
+          </li>
+          <li class="tuile">
+            <span class="tuile-titre" data-i18n="accueil.tuile3_titre"></span>
+            <span class="tuile-desc" data-i18n="accueil.tuile3_desc"></span>
+          </li>
+          <li class="tuile">
+            <span class="tuile-titre" data-i18n="accueil.tuile4_titre"></span>
+            <span class="tuile-desc" data-i18n="accueil.tuile4_desc"></span>
+          </li>
+        </ul>
       </div>
     </section>
 
-    <!-- Grille des projets : générée par js/components.js depuis js/projects.js -->
-    <section class="section section-doux" id="projets">
+    <!-- Rangées de projet : générées par js/components.js depuis js/projects.js.
+         Pleine largeur, capture d'un côté et texte de l'autre, en alternance ;
+         un en-tête de groupe coiffe les deux rangées trading. -->
+    <section class="section" id="projets">
       <div class="conteneur">
         <h2 data-i18n="accueil.projets_titre"></h2>
-        <div class="grille-portfolios" data-grille-projets></div>
+        <div class="rangees-projets" data-rangees-projets></div>
       </div>
     </section>
   </main>
