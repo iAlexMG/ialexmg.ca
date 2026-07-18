@@ -117,6 +117,11 @@
   }
 
   function initialiser() {
+    // 0. Accent alternatif : ?accent=vert bascule les variables d'accent du
+    //    thème (voir html[data-accent] dans styles.css) — sert à comparer.
+    const accent = new URLSearchParams(window.location.search).get("accent");
+    if (accent) document.documentElement.setAttribute("data-accent", accent);
+
     // 1. Appliquer la langue mémorisée à l'attribut lang du document.
     document.documentElement.setAttribute("lang", window.I18n.langueActive());
 

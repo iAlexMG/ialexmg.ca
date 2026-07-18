@@ -5,33 +5,81 @@
  * Approche mobile-first : les règles de base ciblent le mobile, les media
  * queries enrichissent pour tablette/desktop.
  *
- * Palette neutre et douce, beaucoup d'espace blanc, contrastes doux,
- * transitions discrètes. Toutes les couleurs sont centralisées dans
- * des variables CSS (:root) pour ajuster le thème facilement.
+ * Thème « dossier de preuve » : éditorial sombre façon terminal. Fond quasi
+ * noir, hiérarchie portée par les bordures hairline et la densité — zéro
+ * ombre portée. Un seul accent (ambre par défaut ; l'alternative verte se
+ * bascule via html[data-accent="vert"]). Le vert/rouge de données reste
+ * réservé aux gains/pertes, jamais décoratif.
+ *
+ * Typo : Inter (variable, auto-hébergée) pour le corps ; JetBrains Mono pour
+ * les chiffres, étiquettes, chips de statut et légendes — jamais pour la
+ * prose. Toutes les couleurs passent par les variables de :root.
  * --------------------------------------------------------------------------
  */
 
+/* ----- Polices auto-hébergées (assets/fonts/, licences OFL à côté) ----- */
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/fonts/InterVariable.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../assets/fonts/JetBrainsMono-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../assets/fonts/JetBrainsMono-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ----- Variables de thème ----- */
 :root {
-  --couleur-fond: #faf9f7;          /* fond général, blanc cassé */
-  --couleur-surface: #ffffff;       /* cartes, en-tête */
-  --couleur-surface-alt: #f1efea;   /* zones douces */
-  --couleur-texte: #2c2a27;         /* texte principal, gris très foncé */
-  --couleur-texte-doux: #6f6a63;    /* texte secondaire */
-  --couleur-bordure: #e6e2db;       /* bordures discrètes */
-  --couleur-accent: #8a7d6b;        /* accent terreux et sobre */
-  --couleur-accent-clair: #b7ad9d;
-  --couleur-lien: #5d6f7a;          /* bleu-gris doux pour les liens */
+  color-scheme: dark;
 
-  --rayon: 12px;                    /* arrondis */
-  --ombre: 0 1px 3px rgba(40, 38, 34, 0.06), 0 6px 24px rgba(40, 38, 34, 0.05);
-  --transition: 180ms ease;
+  --couleur-fond: #0B0E14;          /* fond général, quasi noir bleuté */
+  --couleur-surface: #12161C;       /* cartes, en-tête */
+  --couleur-surface-alt: #171D26;   /* chips, zones légèrement relevées */
+  --couleur-texte: #E6EDF3;         /* texte principal */
+  --couleur-texte-doux: #8B949E;    /* texte secondaire */
+  --couleur-bordure: #1F2630;       /* bordures hairline */
+
+  /* Accent unique. L'alternative verte se choisit en posant
+     data-accent="vert" sur <html> — les trois variables basculent ensemble. */
+  --couleur-accent: #E3B341;        /* ambre */
+  --couleur-accent-clair: #8A6D2F;  /* ambre éteint : connecteurs, filets */
+  --couleur-lien: #E3B341;
+
+  /* Réservées aux DONNÉES (gain/perte) — jamais décoratives. */
+  --couleur-gain: #3FB950;
+  --couleur-perte: #F85149;
+
+  --police-corps: "Inter", system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+  --police-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+
+  --rayon: 4px;                     /* coins nets, façon terminal */
+  --ombre: none;                    /* la hiérarchie passe par les bordures */
+  --transition: 150ms ease;
   --largeur-max: 1100px;
   --espace: 1rem;
   /* Gouttière des grilles de cartes. Variable et non littéral : la fourche de
      l'arborescence rejoue la grille du sous-hub pour tomber pile au centre de
      chaque carte — les deux doivent bouger ensemble. */
   --grille-gouttiere: 1.25rem;
+}
+
+/* Accent alternatif (vert phosphore) — aperçu comparatif de la phase 1. */
+html[data-accent="vert"] {
+  --couleur-accent: #3FB950;
+  --couleur-accent-clair: #27703A;
+  --couleur-lien: #3FB950;
 }
 
 /* ----- Réinitialisation légère ----- */
@@ -47,7 +95,7 @@ html {
 
 body {
   margin: 0;
-  font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+  font-family: var(--police-corps);
   color: var(--couleur-texte);
   background: var(--couleur-fond);
   line-height: 1.65;
@@ -73,9 +121,28 @@ a {
   text-decoration: none;
   transition: color var(--transition);
 }
-a:hover { color: var(--couleur-accent); }
+a:hover { color: var(--couleur-texte); }
 
 img { max-width: 100%; display: block; }
+
+::selection {
+  background: var(--couleur-accent);
+  color: var(--couleur-fond);
+}
+
+/* ----- Étiquette mono (petites capitales espacées, style [EN LIGNE]) -----
+   Base commune des badges, chips et étiquettes du site. */
+.badge,
+.badge-stack,
+.carte-numero,
+.concept-etiquette,
+.marque-item-chip,
+.projet-sommaire-titre,
+.liste-contact .etiquette {
+  font-family: var(--police-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
 
 /* ----- Conteneur centré ----- */
 .conteneur {
@@ -90,7 +157,7 @@ img { max-width: 100%; display: block; }
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(11, 14, 20, 0.88);
   backdrop-filter: saturate(140%) blur(8px);
   border-bottom: 1px solid var(--couleur-bordure);
 }
@@ -103,9 +170,11 @@ img { max-width: 100%; display: block; }
   flex-wrap: wrap;
 }
 
+/* Le mot-symbole passe en mono : c'est la marque d'un site-terminal. */
 .marque {
+  font-family: var(--police-mono);
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   letter-spacing: -0.02em;
   color: var(--couleur-texte);
 }
@@ -132,7 +201,7 @@ img { max-width: 100%; display: block; }
   padding: 0.55rem 0.25rem;
   color: var(--couleur-texte-doux);
   font-size: 0.95rem;
-  border-radius: 8px;
+  border-radius: var(--rayon);
   transition: color var(--transition), background var(--transition);
 }
 .navigation a:hover { color: var(--couleur-texte); }
@@ -147,37 +216,47 @@ img { max-width: 100%; display: block; }
   margin-left: auto;
   background: transparent;
   border: 1px solid var(--couleur-bordure);
-  border-radius: 8px;
+  border-radius: var(--rayon);
   font-size: 1.1rem;
   padding: 0.35rem 0.6rem;
   cursor: pointer;
   color: var(--couleur-texte);
-  transition: background var(--transition);
+  transition: border-color var(--transition), background var(--transition);
 }
-.menu-bascule:hover { background: var(--couleur-surface-alt); }
+.menu-bascule:hover {
+  background: var(--couleur-surface-alt);
+  border-color: var(--couleur-accent-clair);
+}
 
-/* Sélecteur de langue */
+/* Sélecteur de langue : chip mono, comme un raccourci de terminal. */
 .langue-bascule {
   order: 4;
   background: var(--couleur-surface-alt);
   border: 1px solid var(--couleur-bordure);
-  border-radius: 999px;
+  border-radius: var(--rayon);
   padding: 0.35rem 0.8rem;
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
+  font-family: var(--police-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   cursor: pointer;
   color: var(--couleur-texte);
-  transition: background var(--transition), border-color var(--transition);
+  transition: border-color var(--transition), color var(--transition);
 }
 .langue-bascule:hover {
-  background: #fff;
-  border-color: var(--couleur-accent-clair);
+  border-color: var(--couleur-accent);
+  color: var(--couleur-accent);
 }
 
 /* ----- Sections génériques ----- */
 .section { padding: 3rem 0; }
-.section-doux { background: var(--couleur-surface-alt); }
+/* Bande douce : à peine relevée du fond, séparée par les filets. */
+.section-doux {
+  background: var(--couleur-surface);
+  border-top: 1px solid var(--couleur-bordure);
+  border-bottom: 1px solid var(--couleur-bordure);
+}
 
 .entete-page {
   padding: 3rem 0 1.5rem;
@@ -196,10 +275,14 @@ img { max-width: 100%; display: block; }
   text-align: center;
 }
 .hero h1 { font-size: 2.5rem; }
+/* Sur-titre en mono espacé : le « prompt » au-dessus du titre. */
 .hero .sous-titre {
+  font-family: var(--police-mono);
   color: var(--couleur-accent);
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   margin-bottom: 1rem;
 }
 .hero .intro {
@@ -227,30 +310,37 @@ img { max-width: 100%; display: block; }
 .hero-liens a { color: var(--couleur-texte-doux); font-weight: 600; }
 .hero-liens a:hover { color: var(--couleur-accent); }
 
-/* ----- Boutons ----- */
+/* ----- Boutons -----
+   Boutons de commande : cadre accent, texte mono espacé. Le survol inverse
+   (fond accent, texte du fond) — la « bordure qui s'allume ». */
 .bouton {
   display: inline-block;
-  background: var(--couleur-accent);
-  color: #fff;
-  padding: 0.7rem 1.4rem;
-  border-radius: 999px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  transition: background var(--transition), transform var(--transition);
+  background: transparent;
+  color: var(--couleur-accent);
+  border: 1px solid var(--couleur-accent);
+  padding: 0.6rem 1.3rem;
+  border-radius: var(--rayon);
+  font-family: var(--police-mono);
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background var(--transition), color var(--transition),
+              border-color var(--transition);
 }
 .bouton:hover {
-  background: #756a59;
-  color: #fff;
-  transform: translateY(-1px);
+  background: var(--couleur-accent);
+  color: var(--couleur-fond);
 }
 .bouton-secondaire {
   background: transparent;
-  color: var(--couleur-texte);
+  color: var(--couleur-texte-doux);
   border: 1px solid var(--couleur-bordure);
 }
 .bouton-secondaire:hover {
-  background: var(--couleur-surface);
+  background: transparent;
   color: var(--couleur-texte);
+  border-color: var(--couleur-texte-doux);
 }
 
 /* ----- Grille de portfolios (accueil) ----- */
@@ -392,7 +482,7 @@ img { max-width: 100%; display: block; }
   font-weight: 600;
   font-size: 0.9rem;
 }
-.lien-retour:hover { text-decoration: underline; }
+.lien-retour:hover { text-decoration: underline; text-underline-offset: 3px; }
 
 .carte-portfolio {
   display: block;
@@ -402,27 +492,25 @@ img { max-width: 100%; display: block; }
   padding: 1.5rem;
   color: var(--couleur-texte);
   box-shadow: var(--ombre);
-  transition: transform var(--transition), border-color var(--transition);
+  transition: border-color var(--transition), background var(--transition);
 }
 .carte-portfolio:hover {
-  transform: translateY(-3px);
-  border-color: var(--couleur-accent-clair);
+  border-color: var(--couleur-accent);
   color: var(--couleur-texte);
 }
 .carte-portfolio h3 { color: var(--couleur-texte); }
 .carte-portfolio p { color: var(--couleur-texte-doux); margin-bottom: 0.75rem; }
 /* Suffixe d'index d'une carte numérotée (stratégies d'un banc) : petite
-   pastille monospace après le titre, discrète mais lisible d'un coup d'œil. */
+   chip monospace après le titre, discrète mais lisible d'un coup d'œil. */
 .carte-numero {
   display: inline-block;
-  font-family: ui-monospace, "SFMono-Regular", "Consolas", monospace;
   font-size: 0.7rem;
   font-weight: 700;
   line-height: 1;
   color: var(--couleur-accent);
   background: var(--couleur-surface-alt);
   border: 1px solid var(--couleur-bordure);
-  border-radius: 999px;
+  border-radius: var(--rayon);
   padding: 0.18rem 0.42rem;
   margin-left: 0.4rem;
   vertical-align: middle;
@@ -448,7 +536,7 @@ img { max-width: 100%; display: block; }
 .carte-vignette {
   display: block;
   margin: -0.5rem -0.5rem 0.9rem;
-  border-radius: calc(var(--rayon) - 4px);
+  border-radius: calc(var(--rayon) - 2px);
   overflow: hidden;
   background: #0d1117;
   border: 1px solid var(--couleur-bordure);
@@ -518,9 +606,7 @@ img { max-width: 100%; display: block; }
 .marque-item-nom { font-weight: 600; font-size: 0.95rem; }
 .marque-item-chip {
   font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
+  font-weight: 700;
   color: var(--couleur-accent);
 }
 .marque-item-ecartee .pastille { filter: grayscale(1); opacity: 0.5; }
@@ -532,18 +618,15 @@ img { max-width: 100%; display: block; }
    marqué par un filet accent et une étiquette. */
 .carte-concept {
   margin-top: 1.25rem;
-  border-left: 4px solid var(--couleur-accent);
+  border-left: 2px solid var(--couleur-accent);
   background: var(--couleur-surface-alt);
 }
 .concept-etiquette {
   display: inline-block;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
   padding: 0.15rem 0.55rem;
   border: 1px solid var(--couleur-bordure);
-  border-radius: 999px;
+  border-radius: var(--rayon);
   color: var(--couleur-texte-doux);
   margin-bottom: 0.6rem;
 }
@@ -555,7 +638,7 @@ img { max-width: 100%; display: block; }
   height: 160px;
   object-fit: cover;
   border: 1px solid var(--couleur-bordure);
-  border-radius: calc(var(--rayon) - 4px);
+  border-radius: calc(var(--rayon) - 2px);
   margin-bottom: 1rem;
   background: var(--couleur-surface-alt);
 }
@@ -568,11 +651,10 @@ img { max-width: 100%; display: block; }
   margin-bottom: 0.9rem;
 }
 .badge-stack {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 0.72rem;
   padding: 0.15rem 0.55rem;
   border: 1px solid var(--couleur-bordure);
-  border-radius: 999px;
+  border-radius: var(--rayon);
   background: var(--couleur-surface-alt);
   color: var(--couleur-texte-doux);
 }
@@ -611,7 +693,8 @@ img { max-width: 100%; display: block; }
   border: 1px dashed var(--couleur-bordure);
   border-radius: var(--rayon);
 }
-.galerie-message.erreur { color: #a5564f; }
+/* Rouge fonctionnel d'état d'erreur — pas le rouge de données. */
+.galerie-message.erreur { color: #d9776f; }
 
 .carte {
   background: var(--couleur-surface);
@@ -619,9 +702,9 @@ img { max-width: 100%; display: block; }
   border-radius: var(--rayon);
   overflow: hidden;
   box-shadow: var(--ombre);
-  transition: transform var(--transition);
+  transition: border-color var(--transition);
 }
-.carte:hover { transform: translateY(-3px); }
+.carte:hover { border-color: var(--couleur-accent-clair); }
 
 /* Cadre média en ratio 16:9 (images et iframes vidéo) */
 .media-cadre {
@@ -661,12 +744,11 @@ img { max-width: 100%; display: block; }
 .badge {
   display: inline-block;
   font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
   font-weight: 700;
   color: var(--couleur-accent);
   background: var(--couleur-surface-alt);
-  border-radius: 999px;
+  border: 1px solid var(--couleur-bordure);
+  border-radius: var(--rayon);
   padding: 0.15rem 0.6rem;
   margin-bottom: 0.6rem;
 }
@@ -697,7 +779,7 @@ img { max-width: 100%; display: block; }
 }
 .doc-actions .bouton {
   padding: 0.5rem 1.1rem;
-  font-size: 0.9rem;
+  font-size: 0.78rem;
 }
 /* Bouton « Code source (GitHub) » en tête de la page projet. */
 .projet-code-source {
@@ -713,14 +795,16 @@ img { max-width: 100%; display: block; }
   font-weight: 600;
 }
 
-/* Avertissement « PDF en français uniquement » (affiché en anglais). */
+/* Avertissement « PDF en français uniquement » (affiché en anglais).
+   Ambre d'avertissement fixe : un avertissement reste ambre même si
+   l'accent du site passe au vert. */
 .avertissement-langue {
   grid-column: 1 / -1; /* occupe toute la largeur de la grille */
   margin: 0 0 0.5rem;
   padding: 0.75rem 1.1rem;
-  background: #fbf3e2;            /* jaune doux, cohérent avec la bannière accueil */
-  color: #8a6d3b;
-  border: 1px solid #efe0bf;
+  background: rgba(227, 179, 65, 0.08);
+  color: #d4b06a;
+  border: 1px solid rgba(227, 179, 65, 0.35);
   border-radius: var(--rayon);
   font-size: 0.9rem;
   font-weight: 600;
@@ -732,7 +816,7 @@ img { max-width: 100%; display: block; }
 .projet-section-titre {
   font-size: 1.5rem;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--couleur-bordure);
+  border-bottom: 1px solid var(--couleur-bordure);
 }
 .section-intro {
   color: var(--couleur-texte-doux);
@@ -759,12 +843,20 @@ img { max-width: 100%; display: block; }
 }
 .section-prose li { margin-bottom: 0.35rem; }
 .section-prose code {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 0.88em;
+  font-family: var(--police-mono);
+  font-size: 0.85em;
   background: var(--couleur-surface-alt);
   border: 1px solid var(--couleur-bordure);
-  border-radius: 4px;
+  border-radius: var(--rayon);
   padding: 0.05rem 0.3rem;
+}
+/* Les liens dans la prose se soulignent au survol — repère net sans couleur
+   supplémentaire. */
+.section-prose a:hover,
+.prose a:hover,
+.section-intro a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 /* Sommaire cliquable en tête de page de projet. */
@@ -777,9 +869,7 @@ img { max-width: 100%; display: block; }
 }
 .projet-sommaire-titre {
   display: block;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  font-size: 0.72rem;
   font-weight: 700;
   color: var(--couleur-accent);
   margin-bottom: 0.5rem;
@@ -791,12 +881,20 @@ img { max-width: 100%; display: block; }
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 0.3rem 1.5rem;
 }
-.projet-sommaire a { color: var(--couleur-texte); }
+/* Numéros du sommaire en mono : c'est un index. */
+.projet-sommaire ol { font-family: var(--police-mono); font-size: 0.85rem; }
+.projet-sommaire a {
+  color: var(--couleur-texte);
+  font-family: var(--police-corps);
+  font-size: 0.95rem;
+}
 .projet-sommaire a:hover { color: var(--couleur-accent); }
 
 /* ----- Cartes figures (planches « manuel », affichées en entier) ----- */
 /* Contrairement aux cartes image (ratio 16:9 rogné), la figure est montrée
-   intégralement (object-fit: contain), car ce sont des planches denses à lire. */
+   intégralement (object-fit: contain), car ce sont des planches denses à lire.
+   Fond blanc conservé : ces planches sont claires, les noyer dans le sombre
+   les rendrait illisibles. */
 .fig-apercu {
   display: block;
   width: 100%;
@@ -814,13 +912,15 @@ img { max-width: 100%; display: block; }
   display: block;
 }
 
-/* Sous-titres dans un bloc de prose (lignes « ## … »). */
+/* Sous-titres dans un bloc de prose (lignes « ## … ») : étiquette mono. */
 .prose-sous-titre {
-  font-size: 1.05rem;
+  font-family: var(--police-mono);
+  font-size: 0.9rem;
+  font-weight: 700;
   margin: 1.6rem 0 0.5rem;
   color: var(--couleur-accent);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
 }
 .section-prose .prose-sous-titre:first-child { margin-top: 0; }
 
@@ -835,7 +935,7 @@ img { max-width: 100%; display: block; }
 }
 .figure-pleine > a {
   display: block;
-  background: #ffffff;
+  background: #ffffff; /* planches claires — voir .fig-apercu */
   cursor: zoom-in;
 }
 .figure-pleine img {
@@ -843,11 +943,15 @@ img { max-width: 100%; display: block; }
   width: 100%;
   height: auto;
 }
+/* Légende de figure : mono, comme sous une pièce à conviction. */
 .figure-pleine figcaption {
   display: flex;
   justify-content: center;
   padding: 1rem;
   border-top: 1px solid var(--couleur-bordure);
+  font-family: var(--police-mono);
+  font-size: 0.85rem;
+  color: var(--couleur-texte-doux);
 }
 
 /* ----- Page item : visionneuse PDF en grand ----- */
@@ -881,9 +985,7 @@ img { max-width: 100%; display: block; }
 }
 .liste-contact .etiquette {
   display: block;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  font-size: 0.72rem;
   color: var(--couleur-texte-doux);
   margin-bottom: 0.2rem;
 }
@@ -893,7 +995,7 @@ img { max-width: 100%; display: block; }
   border-top: 1px solid var(--couleur-bordure);
   margin-top: 3rem;
   padding: 2rem 0;
-  background: var(--couleur-surface);
+  background: var(--couleur-fond);
 }
 .pied-contenu {
   display: flex;
@@ -908,9 +1010,9 @@ img { max-width: 100%; display: block; }
 /* ----- Accessibilité : focus visible ----- */
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid var(--couleur-lien);
+  outline: 2px solid var(--couleur-accent);
   outline-offset: 2px;
-  border-radius: 6px;
+  border-radius: var(--rayon);
 }
 
 /* --------------------------------------------------------------------------
