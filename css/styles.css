@@ -1532,6 +1532,73 @@ body.lightbox-ouverte { overflow: hidden; }
 .carte-continuer-concepts:hover { border-color: var(--couleur-bordure); }
 .continuer-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 
+/* ----- Fiche mesurée d'une stratégie (clé "fiche") -----
+   Le bloc de métriques mono sous la planche du signal, puis le verdict.
+   Le vert/rouge de données ne sert QUE les valeurs signées (+/−). */
+.fiche-mesuree { margin: 1.5rem 0; }
+.fiche-metriques {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.75rem;
+  margin: 0 0 0.75rem;
+}
+.metrique {
+  background: var(--couleur-surface);
+  border: 1px solid var(--couleur-bordure);
+  border-radius: var(--rayon);
+  padding: 0.7rem 0.9rem;
+}
+.metrique dt {
+  font-family: var(--police-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--couleur-texte-doux);
+  margin: 0 0 0.25rem;
+}
+.metrique dd {
+  margin: 0;
+  font-family: var(--police-mono);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--couleur-texte);
+}
+.metrique-gain dd { color: var(--couleur-gain); }
+.metrique-perte dd { color: var(--couleur-perte); }
+.fiche-verdict {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0.8rem 1.1rem;
+  background: var(--couleur-surface-alt);
+  border-left: 2px solid var(--couleur-accent);
+  border-radius: var(--rayon);
+}
+.verdict-etiquette {
+  font-family: var(--police-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--couleur-accent);
+}
+
+/* Bandeau sobre des pages de résultats (courts historiques + Claude Code) :
+   une note, pas un avertissement — gris, filet ambre éteint. */
+.bandeau-note {
+  margin: 0 0 1.5rem;
+  padding: 0.7rem 1.1rem;
+  background: var(--couleur-surface);
+  border: 1px solid var(--couleur-bordure);
+  border-left: 2px solid var(--couleur-accent-clair);
+  border-radius: var(--rayon);
+  color: var(--couleur-texte-doux);
+  font-size: 0.88rem;
+  max-width: 75ch;
+}
+
 /* ----- Carte des stratégies (SVG inline — page moteur-lean) -----
    Générée par content.js depuis les sous-sections (clés carteCentre /
    familles / famille / carteNom / arete). Masquée en mobile : les cartes du

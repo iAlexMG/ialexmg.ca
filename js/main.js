@@ -19,7 +19,7 @@
   // Date de dernière mise à jour du site (format ISO AAAA-MM-JJ).
   // ⚙️ À METTRE À JOUR à chaque déploiement notable : c'est la seule valeur à
   // changer pour rafraîchir la mention du pied de page.
-  const DATE_MAJ = "2026-07-15";
+  const DATE_MAJ = "2026-07-18";
 
   // Résout un id de projet en tenant compte des anciens ids (projets fusionnés
   // dans les hubs — voir PROJETS_ALIAS dans projects.js). La section demandée
