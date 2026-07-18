@@ -194,24 +194,25 @@ const Contenu = (function () {
     );
   }
 
-  // Carte FIGURE : aperçu de l'image EN ENTIER (object-fit: contain), pensé pour les
-  // planches « manuel scientifique » au format portrait, denses en texte. Bouton
-  // « Voir en grand » qui ouvre le PNG plein écran (lisible) dans un nouvel onglet.
+  // Carte FIGURE : aperçu de l'image EN ENTIER (object-fit: contain), pensé
+  // pour les planches « manuel scientifique » au format portrait, denses en
+  // texte. Ne sert plus qu'aux illustrations de tête (galerie-tete d'une
+  // arborescence) : les listes d'items passent par les planches. Le clic
+  // ouvre la visionneuse ; le href reste en secours sans JavaScript.
   function creerCarteFigure(item, titre, description) {
     const src = encoderChemin(item.miniature || item.url);
     const url = encoderChemin(item.url);
     return (
       '<article class="carte carte-figure">' +
-      '<a class="fig-apercu" href="' + url + '" target="_blank" rel="noopener">' +
-      '  <img src="' + src + '" alt="' + echapper(titre) + '" loading="lazy"' +
-      '       data-lightbox="1" data-url="' + url + '">' +
+      '<a class="fig-apercu" href="' + url + '" data-lightbox="1" data-url="' + url + '">' +
+      '  <img src="' + src + '" alt="' + echapper(titre) + '" loading="lazy">' +
       "</a>" +
       '<div class="carte-corps">' +
       '  <span class="badge" data-i18n="contenu.badge_figure"></span>' +
       '  <h3 class="carte-titre">' + echapper(titre) + "</h3>" +
       '  <p class="carte-desc">' + echapper(description) + "</p>" +
       '  <div class="doc-actions">' +
-      '    <a class="bouton" href="' + url + '" target="_blank" rel="noopener"' +
+      '    <a class="bouton" href="' + url + '" data-lightbox="1" data-url="' + url + '"' +
       '       data-i18n="contenu.voir_figure"></a>' +
       "  </div>" +
       "</div>" +
@@ -220,21 +221,146 @@ const Contenu = (function () {
   }
 
   // Figure affichée EN GRAND sur une page item (pas dans une carte) : l'image
-  // occupe toute la largeur, fond blanc, clic pour ouvrir l'original lisible.
+  // occupe toute la largeur, fond blanc, clic = visionneuse plein écran.
   function creerFigurePleine(item, titre) {
     const src = encoderChemin(item.miniature || item.url);
     const url = encoderChemin(item.url);
     return (
       '<figure class="figure-pleine">' +
-      '  <a href="' + url + '" target="_blank" rel="noopener" data-lightbox="1" data-url="' + url + '">' +
+      '  <a href="' + url + '" data-lightbox="1" data-url="' + url + '">' +
       '    <img src="' + src + '" alt="' + echapper(titre) + '" loading="lazy">' +
       "  </a>" +
       '  <figcaption>' +
-      '    <a class="bouton" href="' + url + '" target="_blank" rel="noopener"' +
+      '    <a class="bouton" href="' + url + '" data-lightbox="1" data-url="' + url + '"' +
       '       data-i18n="contenu.voir_figure"></a>' +
       "  </figcaption>" +
       "</figure>"
     );
+  }
+
+  // --- Planches et index de fichiers (les images hors des cartes) -----------
+
+  // Numéro de planche « FIG. 03 » : zéro devant, pour l'alignement mono.
+  function numeroPlanche(n) {
+    return "FIG. " + (n < 10 ? "0" + n : n);
+  }
+
+  // Planche pleine largeur : l'image entière, jamais rognée, la légende mono
+  // dessous — une pièce à conviction numérotée. `hrefItem` (optionnel) ajoute
+  // « Ouvrir → » vers la page de l'item quand il a un récit à lire. Le clic
+  // sur l'image ouvre la visionneuse (lightbox.js) ; le href reste en secours
+  // sans JavaScript.
+  function creerPlanche(item, numero, hrefItem) {
+    const titre = texteLocalise(item.titre);
+    const desc = texteLocalise(item.description);
+    const legende =
+      '<figcaption class="planche-legende">' +
+      '<span class="planche-numero">' + numeroPlanche(numero) + "</span>" +
+      '<span class="planche-titre">' + echapper(titre) + "</span>" +
+      (hrefItem
+        ? '<a class="planche-lien" href="' + hrefItem + '">' +
+          '<span data-i18n="hub.ouvrir"></span> →</a>'
+        : "") +
+      "</figcaption>" +
+      (desc ? '<p class="planche-desc">' + formaterInline(desc) + "</p>" : "");
+    if (item.type === "video") {
+      return (
+        '<figure class="planche">' +
+        creerEmbedYoutube(item.url, titre) +
+        legende +
+        "</figure>"
+      );
+    }
+    const src = encoderChemin(item.miniature || item.url);
+    const url = encoderChemin(item.url);
+    return (
+      '<figure class="planche">' +
+      '<a href="' + url + '" data-lightbox="1" data-url="' + url + '">' +
+      '<img src="' + src + '" alt="' + echapper(titre) + '" loading="lazy">' +
+      "</a>" +
+      legende +
+      "</figure>"
+    );
+  }
+
+  // Index de fichiers façon terminal pour une liste de PDF : une ligne mono
+  // par document — numéro, titre, description, actions VOIR (la page item, où
+  // vit l'aperçu intégré) et TÉLÉCHARGER. Remplace la grille d'iframes, trop
+  // lourde pour dix documents.
+  function creerIndexFichiers(items, fabriquerHrefItem) {
+    return (
+      '<ol class="index-fichiers">' +
+      items
+        .map(function (item, i) {
+          // Un document déjà numéroté dans son titre (« 01 — Fondations… »)
+          // ferait doublon avec la colonne de numéros : on retire le préfixe
+          // quand il répète exactement le rang de la ligne.
+          const titre = texteLocalise(item.titre).replace(
+            /^\s*0*(\d+)\s*[—–-]\s*/,
+            function (prefixe, n) {
+              return parseInt(n, 10) === i + 1 ? "" : prefixe;
+            }
+          );
+          const desc = texteLocalise(item.description);
+          const url = encoderChemin(item.fichier);
+          const hrefItem = fabriquerHrefItem(item, false);
+          const nom = hrefItem
+            ? '<a class="fichier-nom" href="' + hrefItem + '">' + echapper(titre) + "</a>"
+            : '<span class="fichier-nom">' + echapper(titre) + "</span>";
+          const voir = hrefItem
+            ? '<a href="' + hrefItem + '" data-i18n="documents.voir"></a>'
+            : '<a href="' + url + '" target="_blank" rel="noopener" data-i18n="documents.voir"></a>';
+          return (
+            '<li class="fichier-ligne">' +
+            '<span class="fichier-numero">' + (i + 1 < 10 ? "0" : "") + (i + 1) + "</span>" +
+            nom +
+            '<span class="fichier-actions">' +
+            voir +
+            '<a href="' + url + '" download data-i18n="documents.telecharger"></a>' +
+            "</span>" +
+            (desc ? '<span class="fichier-desc">' + echapper(desc) + "</span>" : "") +
+            "</li>"
+          );
+        })
+        .join("") +
+      "</ol>"
+    );
+  }
+
+  // Rend la liste d'items d'une page de section : les PDF en index de
+  // fichiers, le reste (figures, images, vidéos) en planches numérotées.
+  // `fabriquerHrefItem(item, exigerTexte)` renvoie l'URL de la page item, ou
+  // null quand elle n'apporterait rien de plus.
+  function rendreItemsEnPlanches(items, fabriquerHrefItem) {
+    const pdfs = items.filter(function (it) {
+      return it.type === "pdf";
+    });
+    const autres = items.filter(function (it) {
+      return it.type !== "pdf";
+    });
+    let html = pdfs.length ? creerIndexFichiers(pdfs, fabriquerHrefItem) : "";
+    autres.forEach(function (it, i) {
+      html += creerPlanche(it, i + 1, fabriquerHrefItem(it, true));
+    });
+    return html ? '<div class="planches">' + html + "</div>" : "";
+  }
+
+  // Marque les planches « pleine trame » : une vraie capture d'écran
+  // panoramique (terminal crypto, vues Quantower — ≥1600 px de large, bien
+  // plus large que haute) déborde du conteneur de 1100 px jusqu'à ~1400 px.
+  // Décidé sur la taille NATURELLE de l'image : les charts de signal
+  // (1260 px) restent dans la trame, les captures plein écran en sortent.
+  function marquerPlanchesLarges(conteneur) {
+    conteneur.querySelectorAll(".planche img").forEach(function (img) {
+      function marquer() {
+        if (img.naturalWidth >= 1600 && img.naturalWidth >= 1.6 * img.naturalHeight) {
+          const planche = img.closest(".planche");
+          if (planche) planche.classList.add("planche-large");
+        }
+      }
+      if (img.complete && img.naturalWidth) marquer();
+      else img.addEventListener("load", marquer, { once: true });
+    });
   }
 
   // Visionneuse PDF EN GRAND sur une page item : aperçu large + boutons.
@@ -436,27 +562,6 @@ const Contenu = (function () {
             cartes +
             "</div>"
           );
-        })
-        .join("") +
-      "</div>"
-    );
-  }
-
-  // Sous-hub : une carte par item d'une section (mène à la page item).
-  function construireSousHub(items, projet, sectionId, pageItem) {
-    return (
-      '<div class="grille-hub">' +
-      items
-        .map(function (item) {
-          const titre = texteLocalise(item.titre);
-          const desc = texteLocalise(item.description);
-          const href =
-            pageItem +
-            "?p=" + encodeURIComponent(projet) +
-            "&s=" + encodeURIComponent(sectionId) +
-            "&i=" + encodeURIComponent(item.id);
-          const fleche = window.I18n.t("hub.ouvrir");
-          return creerCarteLien(titre, desc, href, fleche);
         })
         .join("") +
       "</div>"
@@ -1121,14 +1226,27 @@ const Contenu = (function () {
             : section.cartesEnTete
             ? galerie + sousHub + rendreProse(texte)
             : galerie + rendreProse(texte) + sousHub);
-      } else if (section.sousMenu && items.length) {
-        // Sous-menu : une carte par item (mène à sa page item).
-        conteneur.innerHTML =
-          avertissementTexteFr(section.texte) +
-          marques +
-          rendreProse(texte) +
-          construireSousHub(items, projet, section.id || sectionId, pageItem);
       } else if (items.length) {
+        // Les items d'une page de section se lisent hors des cartes : PDF en
+        // index de fichiers façon terminal, figures en planches numérotées
+        // pleine largeur. Une section `sousMenu` (chaque item a sa page) lie
+        // chaque planche/ligne vers sa page item ; sans le drapeau, on ne lie
+        // une planche que si l'item a un récit détaillé à offrir.
+        function hrefItemDeSection(item, exigerTexte) {
+          if (!pageItem || !item.id) return null;
+          if (
+            exigerTexte &&
+            !section.sousMenu &&
+            !(item.texte && texteLocalise(item.texte))
+          )
+            return null;
+          return (
+            pageItem +
+            "?p=" + encodeURIComponent(projet) +
+            "&s=" + encodeURIComponent(section.id || sectionId) +
+            "&i=" + encodeURIComponent(item.id)
+          );
+        }
         const aPdf = items.some(function (it) {
           return it.type === "pdf";
         });
@@ -1136,8 +1254,10 @@ const Contenu = (function () {
           banniereAvertissementPdf(aPdf) +
           avertissementTexteFr(section.texte) +
           marques +
-          '<div class="galerie">' + items.map(creerCarte).join("") + "</div>" +
-          rendreProse(texte);
+          (section.sousMenu
+            ? rendreProse(texte) + rendreItemsEnPlanches(items, hrefItemDeSection)
+            : rendreItemsEnPlanches(items, hrefItemDeSection) + rendreProse(texte));
+        marquerPlanchesLarges(conteneur);
       } else if (texte) {
         conteneur.innerHTML =
           avertissementTexteFr(section.texte) + marques + rendreProse(texte);

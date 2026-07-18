@@ -1051,6 +1051,186 @@ img { max-width: 100%; display: block; }
   display: block;
 }
 
+/* ----- Planches (les images hors des cartes) -----
+   Une figure = une pièce à conviction : l'image entière, jamais rognée, la
+   légende mono dessous (« FIG. 03 — titre »), la description à la suite.
+   Fond blanc sous l'image : les planches claires (649, SVG A/B au fond
+   transparent) restent lisibles, et une capture sombre opaque le recouvre. */
+.planches { margin-top: 1.5rem; }
+.planche { margin: 0 0 2.5rem; }
+.planches .planche:last-child { margin-bottom: 0; }
+.planche > a {
+  display: block;
+  background: #ffffff;
+  border: 1px solid var(--couleur-bordure);
+  border-radius: var(--rayon);
+  overflow: hidden;
+  cursor: zoom-in;
+  transition: border-color var(--transition);
+}
+.planche > a:hover { border-color: var(--couleur-accent-clair); }
+.planche img { display: block; width: 100%; height: auto; }
+.planche .media-cadre {
+  border: 1px solid var(--couleur-bordure);
+  border-radius: var(--rayon);
+  overflow: hidden;
+}
+.planche-legende {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.75rem;
+  margin-top: 0.6rem;
+  font-family: var(--police-mono);
+  font-size: 0.85rem;
+  color: var(--couleur-texte);
+}
+.planche-numero {
+  color: var(--couleur-accent);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+.planche-lien {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--couleur-accent);
+}
+.planche-lien:hover { text-decoration: underline; text-underline-offset: 3px; }
+.planche-desc {
+  color: var(--couleur-texte-doux);
+  font-size: 0.95rem;
+  max-width: 75ch;
+  margin: 0.35rem 0 0;
+}
+
+/* Pleine trame : les captures panoramiques (≥1600 px, marquées par
+   content.js) débordent du conteneur de 1100 px jusqu'à ~1400 px, sans
+   jamais dépasser la fenêtre. Centrées sur le conteneur. */
+.planche-large {
+  width: min(1400px, 100vw - 2.5rem);
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ----- Index de fichiers (listes de PDF) -----
+   Une ligne mono par document — numéro, titre, description, actions VOIR /
+   TÉLÉCHARGER — au lieu d'une grille d'aperçus iframes. L'aperçu intégré
+   vit sur la page item seulement. */
+.index-fichiers {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  background: var(--couleur-surface);
+  border: 1px solid var(--couleur-bordure);
+  border-radius: var(--rayon);
+  font-family: var(--police-mono);
+}
+.fichier-ligne {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.2rem 1rem;
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--couleur-bordure);
+  font-size: 0.85rem;
+}
+.fichier-ligne:last-child { border-bottom: 0; }
+.fichier-numero { color: var(--couleur-accent); font-weight: 700; }
+.fichier-nom { color: var(--couleur-texte); flex: 1 1 auto; min-width: 12ch; }
+a.fichier-nom:hover { color: var(--couleur-accent); }
+.fichier-actions {
+  display: flex;
+  gap: 1rem;
+  margin-left: auto;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.fichier-actions a { color: var(--couleur-texte-doux); }
+.fichier-actions a:hover { color: var(--couleur-accent); }
+/* La description passe sous le titre, en retrait du numéro. */
+.fichier-desc {
+  flex-basis: 100%;
+  padding-left: calc(2ch + 1rem);
+  color: var(--couleur-texte-doux);
+  font-family: var(--police-corps);
+  font-size: 0.85rem;
+}
+
+/* ----- Visionneuse (lightbox.js) -----
+   Plein écran assombri ; l'image garde un fond blanc pour les planches au
+   fond transparent. Aucune animation : rien à désactiver pour
+   prefers-reduced-motion. */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(4, 6, 10, 0.93);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.lightbox[hidden] { display: none; }
+.lightbox-image {
+  max-width: 94vw;
+  max-height: 92vh;
+  background: #ffffff;
+  border: 1px solid var(--couleur-bordure);
+  cursor: zoom-in;
+  touch-action: none;
+  user-select: none;
+}
+.lightbox-bouton {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--couleur-surface);
+  border: 1px solid var(--couleur-bordure);
+  border-radius: var(--rayon);
+  color: var(--couleur-texte);
+  font-family: var(--police-mono);
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color var(--transition), color var(--transition);
+}
+.lightbox-bouton:hover {
+  border-color: var(--couleur-accent);
+  color: var(--couleur-accent);
+}
+.lightbox-fermer { top: 1rem; right: 1rem; }
+.lightbox-prec { left: 1rem; top: 50%; transform: translateY(-50%); }
+.lightbox-suiv { right: 1rem; top: 50%; transform: translateY(-50%); }
+.lightbox-legende {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 80vw;
+  margin: 0;
+  padding: 0.35rem 0.8rem;
+  background: rgba(18, 22, 28, 0.85);
+  border: 1px solid var(--couleur-bordure);
+  border-radius: var(--rayon);
+  font-family: var(--police-mono);
+  font-size: 0.78rem;
+  color: var(--couleur-texte-doux);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* Pas de défilement de page derrière la visionneuse. */
+body.lightbox-ouverte { overflow: hidden; }
+
 /* Sous-titres dans un bloc de prose (lignes « ## … ») : étiquette mono. */
 .prose-sous-titre {
   font-family: var(--police-mono);
