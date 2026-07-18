@@ -108,6 +108,25 @@ marché : … → » sous la pyramide, et chaque page de pilier une carte vers l
 même pilier de l'autre marché dans son bloc « Continuer » (le pilier doit
 exister sous le même id des deux côtés).
 
+## Clé `flux` (squelette d'un hub)
+
+À la racine du squelette : la liste ordonnée d'ids de sections qui forment le
+parcours du hub (« Phase 0 → Phase 1 → Phase 2 → Synthèse » pour le 6/49). Le
+hub la rend en tête, en étapes cliquables — le titre coupé sur son tiret, le
+`statut` de la section en chip. Un id absent est ignoré sans bruit.
+
+## Carte des stratégies (section-hub, page moteur-lean)
+
+Une section-hub qui déclare `carteCentre` {fr,en} (le nœud central — le banc)
+et `familles` (liste `{id, titre {fr,en}, liaison {fr,en}}`) se rend en carte
+SVG cliquable au lieu de ses cartes de sous-hub au large (les cartes
+reprennent en mobile). Chaque sous-section y participe via `famille` (l'id de
+sa famille), `carteNom` {fr,en} (nom court du nœud — le titre complet reste
+sur sa page) ; `numero` et `statut` fournissent le numéro et le mini-verdict.
+Une sous-section peut déclarer `arete` `{vers, libelle {fr,en}}` : un renvoi
+pointillé vers un autre nœud (« ajoute des stops à »). Aucune position dans le
+JSON — la grille se calcule au rendu.
+
 ## Clé `etage` (piliers d'un hub)
 
 Sur une section de pilier : son niveau (1, 2, 3…) dans la chaîne du projet. Dès

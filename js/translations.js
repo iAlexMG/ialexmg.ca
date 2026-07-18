@@ -129,6 +129,10 @@ const TRADUCTIONS = {
     "continuer.jumeau": "Même chaîne, autre marché",
     "continuer.concepts": "Concepts liés",
 
+    // Schémas (phase 5) : carte des stratégies, flux d'étapes d'un hub
+    "carte.aria": "Carte des stratégies",
+    "flux.aria": "Le parcours du projet",
+
     // Documents PDF
     "documents.voir": "Voir le PDF",
     "documents.telecharger": "Télécharger",
@@ -271,6 +275,10 @@ const TRADUCTIONS = {
     "continuer.suite": "Up next",
     "continuer.jumeau": "Same chain, other market",
     "continuer.concepts": "Related concepts",
+
+    // Schemas (phase 5): strategy map, hub step flow
+    "carte.aria": "Strategy map",
+    "flux.aria": "The project's path",
 
     // PDF documents
     "documents.voir": "View PDF",

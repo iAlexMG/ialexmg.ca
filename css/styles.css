@@ -507,6 +507,19 @@ img { max-width: 100%; display: block; }
    étage, et un titre calé à gauche y flotte dans le vide. */
 .pyramide .carte-portfolio { text-align: center; }
 
+/* Étiquette mono d'étage du schéma de flux (« 01 · HIST·TR »), posée par
+   content.js au-dessus de chaque rangée — les mêmes codes que le rail. */
+.pyramide-etiquette {
+  margin: 0 0 0.4rem;
+  text-align: center;
+  font-family: var(--police-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--couleur-texte-doux);
+}
+
 /* Tige verticale terminée par une pointe, entre deux étages. */
 .pyramide-jonction {
   position: relative;
@@ -1519,6 +1532,117 @@ body.lightbox-ouverte { overflow: hidden; }
 .carte-continuer-concepts:hover { border-color: var(--couleur-bordure); }
 .continuer-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 
+/* ----- Carte des stratégies (SVG inline — page moteur-lean) -----
+   Générée par content.js depuis les sous-sections (clés carteCentre /
+   familles / famille / carteNom / arete). Masquée en mobile : les cartes du
+   sous-hub reprennent la main (voir le media query 880px). Le survol d'un
+   nœud l'éclaire et estompe les autres. */
+.carte-strategies { margin: 0.5rem 0 1.5rem; display: none; }
+.carte-strategies svg { display: block; width: 100%; height: auto; }
+.cs-tronc,
+.cs-chaine {
+  stroke: var(--couleur-accent-clair);
+  stroke-width: 1.5;
+  fill: none;
+}
+.cs-arete {
+  stroke: var(--couleur-accent);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
+  fill: none;
+  opacity: 0.8;
+}
+.cs-noeud { transition: opacity var(--transition); }
+.cs-noeud rect {
+  fill: var(--couleur-surface);
+  stroke: var(--couleur-bordure);
+  transition: stroke var(--transition);
+}
+.cs-noeud:hover rect,
+.cs-noeud:focus-visible rect { stroke: var(--couleur-accent); }
+.carte-strategies:has(a.cs-noeud:hover) .cs-noeud:not(:hover) { opacity: 0.45; }
+.cs-numero {
+  font-family: var(--police-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  fill: var(--couleur-accent);
+}
+.cs-nom {
+  font-family: var(--police-corps);
+  font-size: 14px;
+  font-weight: 600;
+  fill: var(--couleur-texte);
+}
+.cs-verdict {
+  font-family: var(--police-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  fill: var(--couleur-texte-doux);
+}
+.cs-famille {
+  font-family: var(--police-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  fill: var(--couleur-texte-doux);
+}
+.cs-liaison { font-weight: 400; letter-spacing: 0.02em; }
+.cs-libelle {
+  font-family: var(--police-mono);
+  font-size: 10.5px;
+  fill: var(--couleur-accent);
+}
+.cs-centre rect {
+  fill: var(--couleur-surface-alt);
+  stroke: var(--couleur-accent-clair);
+}
+.cs-centre .cs-nom { font-size: 15px; }
+
+/* ----- Flux d'étapes d'un hub (clé racine "flux" — le parcours du 6/49) ----- */
+.flux-etapes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0.5rem 0 1.75rem;
+}
+.flux-etape {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.7rem 0.95rem;
+  background: var(--couleur-surface);
+  border: 1px solid var(--couleur-bordure);
+  border-radius: var(--rayon);
+  color: var(--couleur-texte);
+  transition: border-color var(--transition);
+}
+.flux-etape:hover {
+  border-color: var(--couleur-accent);
+  color: var(--couleur-texte);
+}
+.flux-titre { font-weight: 600; line-height: 1.2; }
+.flux-sous {
+  font-size: 0.8rem;
+  color: var(--couleur-texte-doux);
+  line-height: 1.25;
+}
+.flux-chip {
+  margin-top: 0.3rem;
+  font-family: var(--police-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--couleur-accent);
+}
+.flux-fleche {
+  color: var(--couleur-accent-clair);
+  font-family: var(--police-mono);
+  font-weight: 700;
+}
+
 /* ----- Bandeau-miroir d'un hub (« Même chaîne, autre marché : … → ») ----- */
 .bandeau-miroir {
   display: flex;
@@ -1581,7 +1705,8 @@ button:focus-visible {
 
   /* Fourche : deux tiges qui descendent du centre des cartes du socle, un rail
      qui les réunit, puis une tige centrale vers l'étage du dessous. Le rail est
-     le bas d'un « U » — d'où les bordures.
+     le bas d'un « U » — d'où les bordures. Angles DROITS : les connecteurs du
+     schéma de flux se plient en L, pas en courbe (phase 5).
      Le centre d'une carte du socle n'est PAS à 25 % de la rangée : la gouttière
      pousse chaque carte vers l'extérieur d'un quart de sa largeur. Sans ce
      retrait, chaque branche tombe à côté de sa carte. */
@@ -1592,7 +1717,7 @@ button:focus-visible {
     background: none;
     border: 2px solid var(--couleur-accent-clair);
     border-top: none;
-    border-radius: 0 0 10px 10px;
+    border-radius: 0;
   }
   .pyramide-jonction-fourche::before {
     content: "";
@@ -1629,6 +1754,11 @@ button:focus-visible {
   .arbre-branches {
     grid-template-columns: repeat(var(--n, 1), minmax(0, 1fr));
   }
+
+  /* La carte des stratégies remplace les cartes du sous-hub au large ; sous
+     ce seuil un SVG de 1000 pt devient illisible, les cartes reprennent. */
+  .carte-strategies { display: block; }
+  .avec-carte .grille-hub { display: none; }
 
   .navigation {
     flex: 0 1 auto;

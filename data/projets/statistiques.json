@@ -1,4 +1,10 @@
 {
+  "flux": [
+    "phase0",
+    "phase1",
+    "phase2",
+    "synthese"
+  ],
   "sections": [
     {
       "id": "lotto-649",
@@ -186,6 +192,10 @@
         "fr": "Première étape : récupérer les tirages officiels (Loto-Québec, 1982-2025), vérifier qu'ils sont complets et corrects, et les dater.",
         "en": "First step: load the official draws (Loto-Québec, 1982-2025), check that they're complete and correct, and date them."
       },
+      "statut": {
+        "fr": "4377 tirages",
+        "en": "4,377 draws"
+      },
       "texte": {
         "fr": "## Hypothèse\n\nDes données dignes de confiance doivent respecter les règles du jeu — 6 numéros distincts compris entre 1 et 49, une date unique par tirage — tout en couvrant la période sans interruption.\n\n## Démarche\n\nNotre approche a évolué avec nos découvertes. Nous sommes d'abord partis d'un jeu de données public (Kaggle) ; son examen a toutefois révélé des anomalies — de nombreux tirages manquants, surtout avant 1986 et après 2020, ainsi que quelques valeurs erronées. Considérant ces lacunes, nous avons retenu les données de Loto-Québec, officielles et donc exactes par défaut, en les extrayant directement à la source, année par année, et en écartant le tirage « Boule d'or » (introduit en 2022, étranger au 6/49). Le recoupement des deux sources (Figure 1a) illustre ce choix : les valeurs communes concordent à 99,8 %, mais Kaggle laisse de nombreux tirages de côté.\n\n## Résultats\n\nLes 4377 tirages officiels respectent tous l'intervalle [1, 49] et contiennent 6 numéros distincts, sans aucune date dupliquée ; les 49 boules apparaissent toutes (Figure 1b). La cadence se stabilise autour de 104 tirages par an dès 1986, sans aucun creux, là où Kaggle accuse d'importants déficits (Figure 1a).\n\n## Conclusion\n\nAu terme de ces contrôles, le jeu de données officiel se révèle complet, cohérent et corroboré par une source indépendante : c'est la base la plus fiable à notre disposition (4377 tirages, 1982-2025). Comme aucun tirage ne manque après 1986, les analyses temporelles ne risquent pas d'être faussées par des trous artificiels. L'étape suivante consiste à soumettre ces données aux tests d'aléa des Phases 1 et 2, afin de déterminer si elles se distinguent — ou non — d'un pur hasard.",
         "en": "## Hypothesis\n\nTrustworthy data must follow the rules of the game — 6 distinct numbers between 1 and 49, a unique date per draw — while covering the whole period without gaps.\n\n## Method\n\nOur approach evolved as we dug in. We first started from a public dataset (Kaggle); inspecting it revealed anomalies — many missing draws, especially before 1986 and after 2020, plus a few erroneous values. Given those gaps, we settled on the Loto-Québec data, official and therefore correct by default, extracting it directly from the source year by year, and dropping the \"Gold Ball\" draw (introduced in 2022, unrelated to the 6/49). Cross-checking the two sources (Figure 1a) illustrates the choice: shared values agree to 99.8%, but Kaggle leaves out many draws.\n\n## Results\n\nAll 4,377 official draws respect the [1, 49] range and contain 6 distinct numbers, with no duplicated date; all 49 balls appear (Figure 1b). The cadence settles around 104 draws a year from 1986 on, with no dips, whereas Kaggle shows large shortfalls (Figure 1a).\n\n## Conclusion\n\nAfter these checks, the official dataset proves complete, consistent and corroborated by an independent source: it is the most reliable base available (4,377 draws, 1982-2025). Since no draw is missing after 1986, time-based analyses won't be distorted by artificial holes. The next step is to put this data through the randomness tests of Phases 1 and 2, to determine whether it differs — or not — from pure chance."
@@ -220,6 +230,10 @@
       "intro": {
         "fr": "Six tests pour comparer l'historique à ce qu'on attendrait d'un tirage purement aléatoire. À chaque fois, les données restent compatibles avec le hasard.",
         "en": "Six tests comparing the history with what we'd expect from a purely random draw. Each time, the data stays consistent with chance."
+      },
+      "statut": {
+        "fr": "6 tests",
+        "en": "6 tests"
       },
       "sousMenu": true,
       "texte": {
@@ -346,6 +360,10 @@
         "fr": "On laisse des modèles chercher un signal dans l'historique, du plus simple au plus complexe. Aucun ne fait mieux qu'un tirage au hasard sur les données qu'il n'a pas vues.",
         "en": "We let models look for a signal in the history, from the simplest to the most complex. None does better than a random guess on data it hasn't seen."
       },
+      "statut": {
+        "fr": "4 modèles",
+        "en": "4 models"
+      },
       "sousMenu": true,
       "texte": {
         "fr": "On change d'approche : plutôt que de tester des hypothèses, on laisse des modèles d'apprentissage chercher eux-mêmes un signal dans l'historique. Quatre modèles, du réseau de neurones simple au réseau à mémoire (LSTM), en passant par l'estimation bayésienne et la formalisation du « numéro en retard ». Choisissez un modèle ci-dessous pour le détail.\n\nVerdict d'ensemble : aucun ne fait mieux que le hasard sur les données qu'il n'a pas vues. Le plus puissant (LSTM) fait même pire, à force d'apprendre par cœur le passé.",
@@ -436,6 +454,10 @@
       "intro": {
         "fr": "Tous les modèles réunis sur un même graphique. Du plus simple au plus complexe, ils obtiennent le même résultat sur les données qu'ils n'ont pas vues : celui du hasard.",
         "en": "All the models on one chart. From the simplest to the most complex, they reach the same result on unseen data: the result of chance."
+      },
+      "statut": {
+        "fr": "Un seul verdict",
+        "en": "One verdict"
       },
       "texte": {
         "fr": "## Hypothèse\n\nRéunissons toute la Phase 2 sur un même graphique. La synthèse pose une hypothèse claire : du modèle le plus pauvre (la constante 6/49) au plus riche (un LSTM récurrent), chacun ajoute de la capacité. Sous l'hypothèse d'un tirage aléatoire, uniforme et indépendant, aucune de ces capacités ne doit servir : tous les modèles doivent atterrir sur le même plancher d'entropie de Bernoulli (≈ 0.372 nat) hors-échantillon, quelle que soit leur complexité.\n\n## Démarche\n\nOn évalue chaque modèle sur la MÊME période hors-échantillon (tirages > 2020), avec la même log-loss out-of-sample. On les range du plus simple au plus complexe (Figure 12a) et on compare leur log-loss in-sample (sur ce qu'ils peuvent mémoriser) à leur log-loss out-of-sample (Figure 12b).\n\n## Résultats\n\nL'échelle est plate : du constant au LSTM, toutes les log-loss OOS se serrent sur le plancher 0.3718 (la pire ne s'en écarte que de +0.0036 nat, dans le mauvais sens). Aucun modèle ne passe sous la ligne rouge. Le mirage, lui, est net : in-sample, le réseau le plus mémorisant descend jusqu'à 0.3659 (sous le plancher), mais cette « compétence » s'évapore hors-échantillon où il rejoint, voire dépasse, le plancher.\n\n## Conclusion\n\nTout converge vers un seul verdict. La seule structure apprenable est le minuscule penchant statique vers les gros numéros (Phase 1) ; jamais un timing, jamais une mémoire utile. Ajouter de la puissance ne fait qu'amplifier l'illusion sur le passé sans rien gagner sur l'avenir. Empiriquement, à travers six modèles et deux paradigmes, le tirage du Lotto 6/49 est imprévisible.",
