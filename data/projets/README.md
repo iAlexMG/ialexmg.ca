@@ -9,9 +9,10 @@
 > `statistiques.json`) sont **assemblés** : le squelette (une section par
 > pilier) vient de `<racine du hub>/site-content/`, et les sections des piliers
 > qui portent `"inclure"` y sont injectées comme sous-sections (`parent` = le
-> pilier). Un pilier peut vivre hors de la racine du hub (clé `chemins`) : la
-> formation LEAN/vectorbt reste dans le mono-dépôt crypto tout en étant
-> présentée sous Formations. Voir l'en-tête de `tools/sync-site.py`.
+> pilier). Un pilier peut vivre hors de la racine du hub (clé `chemins`) —
+> depuis le 2026-07-19, les trois cours de Formations vivent ensemble sous
+> `Portfolio/Formations` (Python, Github, Trading). Voir l'en-tête de
+> `tools/sync-site.py`.
 
 Chaque fichier `<id>.json` contient le contenu d'UN projet. L'`id` correspond
 au champ `id` défini dans `js/projects.js` et à `data-projet="…"` dans la page.

@@ -75,9 +75,11 @@ PROJETS = {
 #              « Crypto » tant qu'il existe, d'où la priorité au staging.
 #   chemins  : pilier inclus -> son dossier, RELATIF À PORTFOLIO. À défaut, le
 #              pilier est cherché sous la racine du hub (<racine>/<pilier>). Sert
-#              aux hubs dont les piliers vivent ailleurs : Formations rassemble
-#              des cours qui restent chez eux (la formation LEAN/vectorbt reste
-#              dans le mono-dépôt crypto, à côté des backtests qu'elle enseigne).
+#              aux hubs dont les dossiers ne portent pas le nom exact du pilier :
+#              les trois cours de Formations vivent ensemble sous
+#              Portfolio/Formations (la formation LEAN/vectorbt y a déménagé le
+#              2026-07-19 depuis le mono-dépôt crypto ; ses scripts de figures
+#              se lancent toujours depuis crypto/backtesting).
 #              Toujours déclarer la casse exacte du dossier — voir le piège ci-dessus.
 #   assets   : pilier inclus -> dossier assets/<...> du site, au schéma
 #              standard <id-du-hub>/<pilier> (ne pas renommer sans réécrire
@@ -104,7 +106,7 @@ HUBS = {
         "chemins": {
             "python": "Formations/Python",
             "github": "Formations/Github",
-            "trading": "crypto/backtesting/formation",
+            "trading": "Formations/Trading",
         },
         "assets": {
             "python": "formations/python",
