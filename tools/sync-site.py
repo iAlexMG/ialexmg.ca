@@ -91,6 +91,9 @@ HUBS = {
             "historique": "crypto/historique",
             "affichage": "crypto/affichage",
             "backtesting": "crypto/backtesting",
+            # automatisation vit dans le squelette (pas d'"inclure"), mais porte ses
+            # propres assets (boucle H2 + schéma) : on les miroite quand même.
+            "automatisation": "crypto/automatisation",
         },
     },
     "indices": {

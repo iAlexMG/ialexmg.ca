@@ -351,6 +351,17 @@ const Contenu = (function () {
   // Figure affichée EN GRAND sur une page item (pas dans une carte) : l'image
   // occupe toute la largeur, fond blanc, clic = visionneuse plein écran.
   function creerFigurePleine(item, titre) {
+    if (item.type === "boucle") {
+      const vsrc = encoderChemin(item.url);
+      const poster = item.poster ? ' poster="' + encoderChemin(item.poster) + '"' : "";
+      return (
+        '<figure class="figure-pleine">' +
+        '<video class="planche-boucle" src="' + vsrc + '"' + poster +
+        ' autoplay loop muted playsinline controls preload="metadata"' +
+        ' aria-label="' + echapper(titre) + '"></video>' +
+        "</figure>"
+      );
+    }
     const src = encoderChemin(item.miniature || item.url);
     const url = encoderChemin(item.url);
     return (
@@ -395,6 +406,24 @@ const Contenu = (function () {
       return (
         '<figure class="planche">' +
         creerEmbedYoutube(item.url, titre) +
+        legende +
+        "</figure>"
+      );
+    }
+    if (item.type === "boucle") {
+      // Boucle muette auto-jouée, vidéo LOCALE (servie par le site) — ex. la
+      // chaîne d'exécution en action. muted + playsinline : l'autoplay muet est
+      // autorisé partout ; `controls` la rend pausable (WCAG 2.2.2 : un média
+      // qui joue plus de 5 s doit pouvoir s'arrêter). Pas de lightbox : elle
+      // vit dans la planche. La classe planche-large est posée par
+      // marquerPlanchesLarges selon les vraies dimensions de la vidéo.
+      const vsrc = encoderChemin(item.url);
+      const poster = item.poster ? ' poster="' + encoderChemin(item.poster) + '"' : "";
+      return (
+        '<figure class="planche">' +
+        '<video class="planche-boucle" src="' + vsrc + '"' + poster +
+        ' autoplay loop muted playsinline controls preload="metadata"' +
+        ' aria-label="' + echapper(titre) + '"></video>' +
         legende +
         "</figure>"
       );
@@ -488,6 +517,18 @@ const Contenu = (function () {
       }
       if (img.complete && img.naturalWidth) marquer();
       else img.addEventListener("load", marquer, { once: true });
+    });
+    // Même règle pour les boucles vidéo (leurs dimensions arrivent avec les
+    // métadonnées) : une capture panoramique déborde en pleine trame.
+    conteneur.querySelectorAll(".planche video").forEach(function (v) {
+      function marquer() {
+        if (v.videoWidth >= 1600 && v.videoWidth >= 1.6 * v.videoHeight) {
+          const planche = v.closest(".planche");
+          if (planche) planche.classList.add("planche-large");
+        }
+      }
+      if (v.videoWidth) marquer();
+      else v.addEventListener("loadedmetadata", marquer, { once: true });
     });
   }
 

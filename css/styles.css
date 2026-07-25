@@ -1086,6 +1086,18 @@ img { max-width: 100%; display: block; }
 }
 .planche > a:hover { border-color: var(--couleur-accent-clair); }
 .planche img { display: block; width: 100%; height: auto; }
+/* Boucle vidéo locale (type "boucle") : pleine largeur comme une image, mais
+   sans le wrapper <a> — elle porte donc sa propre bordure. Fond noir pour le
+   letterbox éventuel et avant le premier rendu. */
+.planche video,
+.figure-pleine video {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #000;
+  border: 1px solid var(--couleur-bordure);
+  border-radius: var(--rayon);
+}
 .planche .media-cadre {
   border: 1px solid var(--couleur-bordure);
   border-radius: var(--rayon);

@@ -146,6 +146,8 @@ pyramide : elle garde son bandeau pleine largeur, en dessous.
 - `image` → `url` (chemin `assets/<id>/…` ou URL externe)
 - `figure` → `url` (planche affichée en entier)
 - `video` → `url` (lien YouTube)
+- `boucle` → `url` (vidéo LOCALE servie par le site : `<video>` muet en
+  boucle, auto-joué, avec contrôles ; `poster` optionnel = image d'aperçu)
 - `pdf` → `fichier` (chemin `assets/<id>/…`)
 
 Tous acceptent `titre` {fr,en}, `description` {fr,en}, `texte` {fr,en} et
