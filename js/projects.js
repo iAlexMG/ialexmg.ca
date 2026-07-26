@@ -59,9 +59,7 @@ const PROJETS = [
       { i18n: "pilier.backtesting", s: "backtesting" },
       { i18n: "pilier.automatisation", s: "automatisation" },
     ],
-    // Bouton « Code source » désactivé tant que le dépôt est en cours de
-    // modification — décommenter pour le réafficher.
-    // code: "https://github.com/iAlexMG/crypto",
+    code: "https://github.com/iAlexMG/crypto",
   },
   {
     id: "indices",
@@ -78,9 +76,7 @@ const PROJETS = [
       { i18n: "pilier.backtesting", s: "backtesting" },
       { i18n: "pilier.automatisation", s: "automatisation" },
     ],
-    // Bouton « Code source » désactivé tant que le dépôt est en cours de
-    // modification — décommenter pour le réafficher.
-    // code: "https://github.com/iAlexMG/indicesBoursiers",
+    code: "https://github.com/iAlexMG/indicesBoursiers",
   },
   {
     id: "statistiques",
