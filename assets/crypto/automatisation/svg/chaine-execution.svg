@@ -23,7 +23,7 @@
   <text x="332" y="154" fill="#E3B341" font-family="monospace" font-size="14">Le runner</text>
   <text x="332" y="172" fill="#8B949E" font-family="monospace" font-size="10">l'orchestrateur — l'application</text>
   <rect x="332" y="182" width="236" height="28" rx="6" fill="#171D26" stroke="#1F2630"/>
-  <text x="344" y="200" fill="#C9D3DE" font-family="monospace" font-size="9.5">moteur hybride — SMA 2/6 · ATR</text>
+  <text x="344" y="200" fill="#C9D3DE" font-family="monospace" font-size="9.5">moteur hybride — SMA 3/9 · ATR</text>
   <rect x="332" y="216" width="236" height="28" rx="6" fill="#171D26" stroke="#1F2630"/>
   <text x="344" y="234" fill="#C9D3DE" font-family="monospace" font-size="9.5">H1 bracket · H2 suiveur · H3 annule</text>
   <rect x="332" y="250" width="236" height="28" rx="6" fill="#171D26" stroke="#1F2630"/>
