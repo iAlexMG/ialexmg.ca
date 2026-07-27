@@ -102,6 +102,9 @@ HUBS = {
             "historique": "indices/historique",
             "affichage": "indices/affichage",
             "backtesting": "indices/backtesting",
+            # automatisation vit dans le squelette (pas d'"inclure"), mais porte ses
+            # propres assets (boucle H2) : on les miroite quand même.
+            "automatisation": "indices/automatisation",
         },
     },
     "formations": {
