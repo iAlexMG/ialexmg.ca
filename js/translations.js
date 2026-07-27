@@ -27,6 +27,16 @@ const TRADUCTIONS = {
     "site.basculer_langue": "EN",
     "site.basculer_aria": "Passer en anglais",
 
+    // Titres d'onglet des pages statiques (le contenu du <title> HTML sert de
+    // repli pour le no-JS ; ce texte le remplace selon la langue active).
+    "page.accueil.titre": "iAlexMG — Ingénierie & trading quantitatif",
+    "page.crypto.titre": "Crypto — De la donnée à l'exécution | iAlexMG",
+    "page.indices.titre": "Indices boursiers — De la donnée à l'exécution | iAlexMG",
+    "page.statistiques.titre": "Statistiques — Mettre le hasard à l'épreuve | iAlexMG",
+    "page.formations.titre": "Formations — Python, Git & GitHub, backtesting | iAlexMG",
+    "page.apropos.titre": "À propos — iAlexMG",
+    "page.contact.titre": "Contact — iAlexMG",
+
     // Navigation
     "nav.accueil": "Accueil",
     "nav.trading": "Trading",
@@ -44,7 +54,7 @@ const TRADUCTIONS = {
     "projet.statistiques.desc": "Mettre le hasard à l'épreuve : tests statistiques et apprentissage automatique sur des décennies de tirages.",
     "projet.formations.desc": "Ce que j'ai appris, remis au propre : Python, Git & GitHub, et deux moteurs de backtesting.",
     "projet.crypto.desc": "La chaîne complète sur le Bitcoin : données historiques, terminal d'orderflow, backtesting, automatisation.",
-    "projet.indices.desc": "Les futures d'indices du CME (NQ, ES) : données temps réel, backtesting sur historique — jusqu'au trading automatisé en simulation.",
+    "projet.indices.desc": "Les futures d'indices du CME (NQ, ES) : données temps réel, backtesting sur historique — jusqu'au trading automatisé, prouvé en exécution réelle.",
     "projet.detection.desc": "Apprendre à la machine à reconnaître ce qu'elle voit.",
 
     // Accueil
@@ -143,7 +153,7 @@ const TRADUCTIONS = {
     "documents.avertissement_fr": "⚠️ Les documents PDF ne sont disponibles qu'en français.",
 
     // Hub Formations (intro spécifique)
-    "formations.intro": "Ce que j'ai appris, remis au propre. Chaque formation part de zéro et suit le même parcours : les fondements d'abord, puis les concepts, puis un projet qui les met à l'épreuve. Toujours en amélioration constante.",
+    "formations.intro": "Ce que j'ai appris, remis au propre. Chaque formation part de zéro et suit le même parcours : les fondements d'abord, puis les concepts, puis un projet qui les met à l'épreuve. Toujours en chantier.",
 
     // Hub Crypto (intro spécifique)
     "crypto.intro": "Le marché crypto ne dort jamais : le Bitcoin (BTC/USDT) se négocie 24 h sur 24, 7 jours sur 7, et contrairement aux marchés boursiers, les exchanges exposent publiquement des données très détaillées — chaque transaction, chaque mouvement du carnet d'ordres.\n\nL'objectif de ce projet : automatiser le trading. Cela exige d'abord de recevoir et d'afficher les données du marché en temps réel, puis de valider chaque stratégie par un backtesting sur l'historique avant de la laisser tourner. D'où les cinq piliers ci-dessous.",
@@ -178,6 +188,16 @@ const TRADUCTIONS = {
     "site.basculer_langue": "FR",
     "site.basculer_aria": "Switch to French",
 
+    // Static page tab titles (the HTML <title> content is the no-JS fallback;
+    // this text replaces it according to the active language).
+    "page.accueil.titre": "iAlexMG — Quantitative Engineering & Trading",
+    "page.crypto.titre": "Crypto — From Data to Execution | iAlexMG",
+    "page.indices.titre": "Stock Indices — From Data to Execution | iAlexMG",
+    "page.statistiques.titre": "Statistics — Putting Randomness to the Test | iAlexMG",
+    "page.formations.titre": "Courses — Python, Git & GitHub, Backtesting | iAlexMG",
+    "page.apropos.titre": "About — iAlexMG",
+    "page.contact.titre": "Contact — iAlexMG",
+
     // Navigation
     "nav.accueil": "Home",
     "nav.trading": "Trading",
@@ -195,7 +215,7 @@ const TRADUCTIONS = {
     "projet.statistiques.desc": "Putting randomness to the test: statistics and machine learning on decades of draws.",
     "projet.formations.desc": "What I learned, written up properly: Python, Git & GitHub, and two backtesting engines.",
     "projet.crypto.desc": "The full chain on Bitcoin: historical data, orderflow terminal, backtesting, automation.",
-    "projet.indices.desc": "The CME index futures (NQ, ES): real-time data, backtesting on history — all the way to automated trading in simulation.",
+    "projet.indices.desc": "The CME index futures (NQ, ES): real-time data, backtesting on history — all the way to automated trading, proven in live execution.",
     "projet.detection.desc": "Teaching the machine to recognize what it sees.",
 
     // Home
