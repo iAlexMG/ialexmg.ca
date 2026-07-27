@@ -54,7 +54,7 @@ const TRADUCTIONS = {
     "projet.statistiques.desc": "Mettre le hasard à l'épreuve : tests statistiques et apprentissage automatique sur des décennies de tirages.",
     "projet.formations.desc": "Ce que j'ai appris, remis au propre : Python, Git & GitHub, et deux moteurs de backtesting.",
     "projet.crypto.desc": "La chaîne complète sur le Bitcoin : données historiques, terminal d'orderflow, backtesting, automatisation.",
-    "projet.indices.desc": "Les futures d'indices du CME (NQ, ES) : données temps réel, backtesting sur historique — jusqu'au trading automatisé, prouvé en exécution réelle.",
+    "projet.indices.desc": "Les futures d'indices du CME (NQ, ES) : données temps réel, backtesting sur historique — jusqu'au trading automatisé, prouvé en exécution réelle (mode confirmation).",
     "projet.detection.desc": "Apprendre à la machine à reconnaître ce qu'elle voit.",
 
     // Accueil
@@ -173,7 +173,7 @@ const TRADUCTIONS = {
 
     // Contact
     "contact.titre": "Contact",
-    "contact.intro": "N'hésitez pas à me contacter pour toute question ou collaboration.",
+    "contact.intro": "Une question, un poste, une collaboration ? Écrivez-moi.",
     "contact.email_label": "Courriel",
     "contact.github_label": "GitHub",
 
@@ -215,7 +215,7 @@ const TRADUCTIONS = {
     "projet.statistiques.desc": "Putting randomness to the test: statistics and machine learning on decades of draws.",
     "projet.formations.desc": "What I learned, written up properly: Python, Git & GitHub, and two backtesting engines.",
     "projet.crypto.desc": "The full chain on Bitcoin: historical data, orderflow terminal, backtesting, automation.",
-    "projet.indices.desc": "The CME index futures (NQ, ES): real-time data, backtesting on history — all the way to automated trading, proven in live execution.",
+    "projet.indices.desc": "The CME index futures (NQ, ES): real-time data, backtesting on history — all the way to automated trading, proven in live execution (confirmation mode).",
     "projet.detection.desc": "Teaching the machine to recognize what it sees.",
 
     // Home
@@ -334,7 +334,7 @@ const TRADUCTIONS = {
 
     // Contact
     "contact.titre": "Contact",
-    "contact.intro": "Feel free to reach out for any question or collaboration.",
+    "contact.intro": "A question, a role, a collaboration? Write to me.",
     "contact.email_label": "Email",
     "contact.github_label": "GitHub",
 
