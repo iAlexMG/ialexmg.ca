@@ -81,10 +81,11 @@ const Composants = (function () {
 
   // Rangées de projet pour l'accueil, générées depuis window.PROJETS.
   // S'insèrent dans le conteneur [data-rangees-projets] de index.html.
-  // Chaque rangée : grand visuel à GAUCHE (surface uniforme, cadré par le CSS),
-  // titre + accroche + liens directs vers les piliers à droite. Tous les
-  // visuels sont du même côté ; l'en-tête de groupe « Trading » coiffe les deux
-  // rangées crypto et indices sans les fusionner.
+  // Chaque rangée : titre + accroche + liens directs vers les piliers à GAUCHE,
+  // grand visuel à DROITE (surface uniforme, cadré par le CSS). Le visuel reste
+  // le 1er enfant du DOM (ordre de lecture) mais la grille le place à droite.
+  // L'en-tête de groupe « Trading » coiffe les deux rangées crypto et indices
+  // sans les fusionner.
   function construireRangeesProjets() {
     const morceaux = [];
 

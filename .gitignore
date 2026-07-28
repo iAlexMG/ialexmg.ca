@@ -6,6 +6,9 @@ PROMPT*.md
 ANALYSE*.md
 REPRISE*.md
 
+# Outillage Python (bytecode)
+__pycache__/
+
 # Fichiers système
 Thumbs.db
 .DS_Store

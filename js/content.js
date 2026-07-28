@@ -348,19 +348,59 @@ const Contenu = (function () {
     );
   }
 
+  // Une annotation superposée à une boucle vidéo : un cercle (zone à entourer)
+  // ou une flèche (à pointer), visible sur une fenêtre de temps [t0, t1] (en
+  // secondes) de la vidéo. Coordonnées en % du cadre de la vidéo (0-100).
+  //   cercle : x, y = centre ; r = diamètre (% de la largeur du cadre).
+  //   fleche : (x1,y1) -> (x2,y2) ; l'angle et la longueur sont calculés en JS
+  //            (activerBouclesAnnotees), car ils dépendent des pixels du cadre.
+  function creerAnnotation(a) {
+    const t =
+      ' data-t0="' + (a.t0 != null ? a.t0 : 0) +
+      '" data-t1="' + (a.t1 != null ? a.t1 : 1e9) + '"';
+    const lib = a.libelle
+      ? '<span class="annot-libelle">' + echapper(texteLocalise(a.libelle)) + "</span>"
+      : "";
+    if (a.type === "cercle") {
+      const style =
+        "left:" + a.x + "%;top:" + a.y + "%;width:" + (a.r != null ? a.r : 10) + "%";
+      return '<div class="annot annot-cercle" style="' + style + '"' + t + ">" + lib + "</div>";
+    }
+    if (a.type === "fleche") {
+      return (
+        '<div class="annot annot-fleche" data-x1="' + a.x1 + '" data-y1="' + a.y1 +
+        '" data-x2="' + a.x2 + '" data-y2="' + a.y2 + '"' + t + "></div>"
+      );
+    }
+    return "";
+  }
+
+  // Boucle vidéo LOCALE + calque d'annotations synchronisées. Enveloppe la
+  // <video> dans un cadre positionné pour que le calque SVG/CSS se superpose ;
+  // sans clé `annotations`, c'est une simple boucle (aucun surcoût).
+  function creerVideoBoucle(item, titre) {
+    const vsrc = encoderChemin(item.url);
+    const poster = item.poster ? ' poster="' + encoderChemin(item.poster) + '"' : "";
+    const annots = Array.isArray(item.annotations) ? item.annotations : [];
+    const calque = annots.length
+      ? '<div class="boucle-annotations" aria-hidden="true">' +
+        annots.map(creerAnnotation).join("") + "</div>"
+      : "";
+    return (
+      '<div class="boucle-cadre">' +
+      '<video class="planche-boucle" src="' + vsrc + '"' + poster +
+      ' autoplay loop muted playsinline controls preload="metadata"' +
+      ' aria-label="' + echapper(titre) + '"></video>' +
+      calque +
+      "</div>"
+    );
+  }
+
   // Figure affichée EN GRAND sur une page item (pas dans une carte) : l'image
   // occupe toute la largeur, fond blanc, clic = visionneuse plein écran.
   function creerFigurePleine(item, titre) {
     if (item.type === "boucle") {
-      const vsrc = encoderChemin(item.url);
-      const poster = item.poster ? ' poster="' + encoderChemin(item.poster) + '"' : "";
-      return (
-        '<figure class="figure-pleine">' +
-        '<video class="planche-boucle" src="' + vsrc + '"' + poster +
-        ' autoplay loop muted playsinline controls preload="metadata"' +
-        ' aria-label="' + echapper(titre) + '"></video>' +
-        "</figure>"
-      );
+      return '<figure class="figure-pleine">' + creerVideoBoucle(item, titre) + "</figure>";
     }
     const src = encoderChemin(item.miniature || item.url);
     const url = encoderChemin(item.url);
@@ -416,14 +456,11 @@ const Contenu = (function () {
       // autorisé partout ; `controls` la rend pausable (WCAG 2.2.2 : un média
       // qui joue plus de 5 s doit pouvoir s'arrêter). Pas de lightbox : elle
       // vit dans la planche. La classe planche-large est posée par
-      // marquerPlanchesLarges selon les vraies dimensions de la vidéo.
-      const vsrc = encoderChemin(item.url);
-      const poster = item.poster ? ' poster="' + encoderChemin(item.poster) + '"' : "";
+      // marquerPlanchesLarges selon les vraies dimensions de la vidéo. Un calque
+      // d'annotations (clé `annotations`) peut s'y superposer.
       return (
         '<figure class="planche">' +
-        '<video class="planche-boucle" src="' + vsrc + '"' + poster +
-        ' autoplay loop muted playsinline controls preload="metadata"' +
-        ' aria-label="' + echapper(titre) + '"></video>' +
+        creerVideoBoucle(item, titre) +
         legende +
         "</figure>"
       );
@@ -529,6 +566,46 @@ const Contenu = (function () {
       }
       if (v.videoWidth) marquer();
       else v.addEventListener("loadedmetadata", marquer, { once: true });
+    });
+  }
+
+  // Active les boucles vidéo ANNOTÉES : synchronise l'affichage de chaque
+  // annotation sur le temps de lecture (visible sur [t0, t1]) et positionne les
+  // flèches en pixels (angle + longueur dépendent des dimensions du cadre, donc
+  // recalculés au chargement des métadonnées et à chaque redimensionnement).
+  function activerBouclesAnnotees(conteneur) {
+    conteneur.querySelectorAll(".boucle-cadre").forEach(function (cadre) {
+      const video = cadre.querySelector("video");
+      const annots = Array.prototype.slice.call(cadre.querySelectorAll(".annot"));
+      if (!video || !annots.length) return;
+
+      function placerFleches() {
+        const w = cadre.clientWidth, h = cadre.clientHeight;
+        if (!w || !h) return;
+        annots.forEach(function (el) {
+          if (!el.classList.contains("annot-fleche")) return;
+          const x1 = (+el.dataset.x1) / 100 * w, y1 = (+el.dataset.y1) / 100 * h;
+          const x2 = (+el.dataset.x2) / 100 * w, y2 = (+el.dataset.y2) / 100 * h;
+          const dx = x2 - x1, dy = y2 - y1;
+          el.style.left = x1 + "px";
+          el.style.top = y1 + "px";
+          el.style.width = Math.hypot(dx, dy) + "px";
+          el.style.transform = "rotate(" + (Math.atan2(dy, dx) * 180 / Math.PI) + "deg)";
+        });
+      }
+
+      function synchroniser() {
+        const t = video.currentTime;
+        annots.forEach(function (el) {
+          el.classList.toggle("visible", t >= (+el.dataset.t0) && t <= (+el.dataset.t1));
+        });
+      }
+
+      placerFleches();
+      video.addEventListener("loadedmetadata", placerFleches);
+      video.addEventListener("timeupdate", synchroniser);
+      if (window.ResizeObserver) new ResizeObserver(placerFleches).observe(cadre);
+      synchroniser();
     });
   }
 
@@ -838,15 +915,27 @@ const Contenu = (function () {
     // Un monogramme de 3 lettres (VBT) doit tenir dans la même rondelle qu'un
     // monogramme de 2 (BN) : on resserre la fonte plutôt que la rondelle.
     const taille = monogramme.length > 2 ? 14 : 18;
+    // Marque écartée du périmètre (Kraken, Coinbase) : la COULEUR du logo est
+    // conservée, une rature diagonale porte le signal. Deux traits superposés —
+    // un halo à la couleur de la rondelle qui détache la rature du monogramme,
+    // puis la rature à l'encre (contraste garanti sur clair comme sur foncé).
+    const rature = marque.ecarte
+      ? '<line x1="9" y1="39" x2="39" y2="9" stroke="' + couleur +
+        '" stroke-width="7" stroke-linecap="round"></line>' +
+        '<line x1="9" y1="39" x2="39" y2="9" stroke="' + encre +
+        '" stroke-width="3" stroke-linecap="round"></line>'
+      : "";
     return (
       '<svg class="pastille" viewBox="0 0 48 48" role="img"' +
-      ' aria-label="' + echapper(marque.nom) + '">' +
+      ' aria-label="' + echapper(marque.nom) + (marque.ecarte ? " (écarté)" : "") + '">' +
       '<circle cx="24" cy="24" r="24" fill="' + couleur + '"></circle>' +
       '<text x="24" y="24" text-anchor="middle" dominant-baseline="central"' +
       ' font-size="' + taille + '" font-weight="700" fill="' + encre + '"' +
       ' font-family="system-ui, sans-serif">' +
       echapper(monogramme) +
-      "</text></svg>"
+      "</text>" +
+      rature +
+      "</svg>"
     );
   }
 
@@ -1893,6 +1982,7 @@ const Contenu = (function () {
               rendreItemsEnPlanches(items, hrefItemDeSection) + fiche +
               rendreProse(texte));
         marquerPlanchesLarges(conteneur);
+        activerBouclesAnnotees(conteneur);
       } else if (texte) {
         conteneur.innerHTML =
           avertissementTexteFr(section.texte) + entete + fiche + rendreProse(texte);
