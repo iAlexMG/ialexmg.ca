@@ -85,7 +85,7 @@ const PROJETS = [
     titre: "projet.statistiques",
     desc: "projet.statistiques.desc",
     stack: ["Python", "pandas", "scikit-learn"],
-    miniature: "assets/statistiques/lotto-649/figures/fig12_phase2_synthese.png",
+    miniature: "assets/accueil/statistiques.svg",
     piliers: [
       { i18n: "pilier.docs", s: "docs" },
       { i18n: "pilier.phase1", s: "phase1" },
@@ -100,6 +100,7 @@ const PROJETS = [
     titre: "projet.formations",
     desc: "projet.formations.desc",
     stack: ["Python", "Git", "LEAN", "vectorbt"],
+    miniature: "assets/accueil/formations.svg",
     piliers: [
       { i18n: "pilier.python", s: "python" },
       { i18n: "pilier.github", s: "github" },

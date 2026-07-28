@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Livre ouvert avec des lignes de code">
+  <!-- Miniature d'accueil « Formations » — livre ouvert (apprentissage) avec
+       des lignes évoquant du code. Générique, aux couleurs du site. -->
+  <rect width="1600" height="900" fill="#0B0E14"/>
+
+  <!-- Pages du livre -->
+  <path d="M 800 250 C 640 205 470 215 385 300 L 360 615 C 500 560 665 578 800 645 Z"
+        fill="#12161C" stroke="#E3B341" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M 800 250 C 960 205 1130 215 1215 300 L 1240 615 C 1100 560 935 578 800 645 Z"
+        fill="#12161C" stroke="#E3B341" stroke-width="6" stroke-linejoin="round"/>
+
+  <!-- Reliure -->
+  <line x1="800" y1="250" x2="800" y2="645" stroke="#E3B341" stroke-width="6"/>
+
+  <!-- Lignes de « code » -->
+  <g stroke="#3A465C" stroke-width="7" stroke-linecap="round">
+    <line x1="460" y1="356" x2="730" y2="349"/>
+    <line x1="460" y1="404" x2="690" y2="398"/>
+    <line x1="460" y1="500" x2="655" y2="495"/>
+    <line x1="870" y1="349" x2="1140" y2="356"/>
+    <line x1="895" y1="398" x2="1140" y2="404"/>
+    <line x1="870" y1="446" x2="1090" y2="452"/>
+    <line x1="870" y1="495" x2="1140" y2="500"/>
+  </g>
+  <!-- Ligne « active » en ambre -->
+  <line x1="485" y1="452" x2="730" y2="446" stroke="#E3B341" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- Signet -->
+  <path d="M 840 250 L 840 372 L 864 346 L 888 372 L 888 250 Z" fill="#E3B341"/>
+</svg>
