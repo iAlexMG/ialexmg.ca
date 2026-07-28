@@ -372,6 +372,8 @@ img { max-width: 100%; display: block; }
    (cadre 16:9 uniforme) à gauche, le récit et les liens de piliers à droite.
    Un filet sépare les rangées ; l'en-tête de groupe « Trading » coiffe les deux
    rangées de marché. */
+/* Titre « Mes projets » centré au-dessus des rangées de l'accueil. */
+#projets > .conteneur > h2 { text-align: center; }
 .groupe-titre {
   font-family: var(--police-mono);
   font-size: 0.78rem;
@@ -694,7 +696,8 @@ img { max-width: 100%; display: block; }
 .carte-illustree .fleche { margin-top: auto; }
 .carte-pastille { display: block; margin-bottom: 0.9rem; }
 .carte-pastille .pastille { width: 40px; height: 40px; }
-.pastille-ecartee .pastille { filter: grayscale(1); opacity: 0.5; }
+/* Écartée : la COULEUR du logo est conservée ; c'est la rature diagonale
+   (dessinée dans le SVG par content.js) qui porte le signal « hors périmètre ». */
 
 /* Vignette : l'aperçu tient en entier (contain) — une vue rognée ne dit plus
    ce qu'elle montre. Fond sombre fixe : les captures du terminal le sont. */
@@ -747,9 +750,14 @@ img { max-width: 100%; display: block; }
   font-weight: 600;
   color: var(--couleur-texte-doux);
 }
-/* Écartée du périmètre : présente, mais visiblement hors du peloton. */
-.source-ecartee .pastille { filter: grayscale(1); opacity: 0.5; }
-.source-ecartee .source-nom { opacity: 0.6; font-weight: 500; }
+/* Écartée du périmètre : logo en COULEUR (rature diagonale dans le SVG), nom
+   barré — présente, mais visiblement hors du peloton. */
+.source-ecartee .source-nom {
+  opacity: 0.75;
+  font-weight: 500;
+  text-decoration: line-through;
+  text-decoration-color: var(--couleur-texte-doux);
+}
 
 /* ----- Rangée de marques (page section) -----
    Les outils d'une section sans sous-hub — ex. les deux moteurs du
@@ -774,8 +782,8 @@ img { max-width: 100%; display: block; }
   font-weight: 700;
   color: var(--couleur-accent);
 }
-.marque-item-ecartee .pastille { filter: grayscale(1); opacity: 0.5; }
-.marque-item-ecartee .marque-item-nom { color: var(--couleur-texte-doux); }
+/* Écartée : logo en couleur (rature SVG) ; nom barré, puce en gris. */
+.marque-item-ecartee .marque-item-nom { color: var(--couleur-texte-doux); text-decoration: line-through; }
 .marque-item-ecartee .marque-item-chip { color: var(--couleur-texte-doux); }
 
 /* Bandeau « concept transversal » d'un hub (section "concept" du JSON,
@@ -1106,6 +1114,71 @@ img { max-width: 100%; display: block; }
   height: auto;
   background: #000;
   border: 1px solid var(--couleur-bordure);
+  border-radius: var(--rayon);
+}
+
+/* ----- Boucle vidéo ANNOTÉE : calque de repères synchronisés -----
+   Cercles (zones à entourer) et flèches (à pointer) superposés à la boucle,
+   affichés sur une fenêtre de temps de la vidéo (activerBouclesAnnotees). Le
+   calque ne capte pas la souris : les contrôles de la vidéo restent cliquables. */
+.boucle-cadre { position: relative; display: block; line-height: 0; }
+.boucle-annotations {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  border-radius: var(--rayon);
+}
+.annot {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.annot.visible { opacity: 1; }
+/* Cercle : diamètre = width (% du cadre), carré en pixels via aspect-ratio,
+   centré sur (x, y). */
+.annot-cercle {
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border: 3px solid var(--couleur-accent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.45), 0 0 14px rgba(0, 0, 0, 0.35);
+}
+/* Flèche : trait horizontal (border-top) placé et pivoté en JS depuis son
+   origine (0 0) ; la pointe est un triangle en ::after. */
+.annot-fleche {
+  height: 0;
+  border-top: 3px solid var(--couleur-accent);
+  transform-origin: 0 0;
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.6));
+}
+.annot-fleche::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border-left: 13px solid var(--couleur-accent);
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  transform: translateY(-50%);
+}
+/* Étiquette (au-dessus du cercle). Ligne de base normale (le cadre est en
+   line-height:0). */
+.annot-libelle {
+  position: absolute;
+  left: 50%;
+  top: -0.5rem;
+  transform: translate(-50%, -100%);
+  white-space: nowrap;
+  font-family: var(--police-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.72);
+  padding: 0.12rem 0.45rem;
   border-radius: var(--rayon);
 }
 .planche .media-cadre {
@@ -1910,10 +1983,13 @@ button:focus-visible {
 
   .galerie { grid-template-columns: repeat(3, 1fr); }
 
-  /* Rangées de l'accueil : visuel (3fr) à gauche, récit (2fr) à droite, même
-     disposition pour toutes. Une rangée sans visuel reste pleine largeur,
-     bornée par la mesure du texte. */
-  .rangee-projet { grid-template-columns: 3fr 2fr; gap: 2.5rem; }
+  /* Rangées de l'accueil : récit (2fr) à GAUCHE, visuel (3fr) à DROITE, même
+     disposition pour toutes. Le visuel est le 1er enfant du DOM (accessibilité,
+     ordre de lecture) mais placé en 2e colonne par la grille. Une rangée sans
+     visuel reste pleine largeur, bornée par la mesure du texte. */
+  .rangee-projet { grid-template-columns: 2fr 3fr; gap: 2.5rem; }
+  .rangee-projet .rangee-corps { grid-column: 1; grid-row: 1; }
+  .rangee-projet .rangee-visuel { grid-column: 2; grid-row: 1; }
   .rangee-sans-visuel { grid-template-columns: 1fr; }
   .rangee-sans-visuel .rangee-corps { max-width: 70ch; }
 
@@ -1921,13 +1997,15 @@ button:focus-visible {
 }
 
 /* --------------------------------------------------------------------------
- * Très large (≥ 1440px) : le rail de chaîne quitte le flux et devient une
- * colonne fixe dans la marge gauche — un conteneur de 1100 px y laisse au
- * moins 170 px de chaque côté. Les planches pleine trame cèdent alors cette
- * marge au rail (body.avec-rail) au lieu de glisser dessous : à 1440 px la
- * planche reste dans la trame, puis regagne ses 1400 px dès ~1740 px.
+ * Large (≥ 1180px) : le rail de chaîne quitte le flux et devient une colonne
+ * fixe dans la marge gauche — la « légende » de changement de pilier, désormais
+ * présente bien avant le plein écran. Pour qu'elle ne CACHE JAMAIS la page, on
+ * réserve ~340 px (≈170 de chaque côté) : le conteneur ET les planches, centrés,
+ * gardent leur bord gauche au-delà du rail au lieu de glisser dessous. À ≥1440 px
+ * la marge naturelle suffit déjà (min() n'ampute plus rien), le rendu d'avant est
+ * donc préservé ; entre 1180 et 1440 px, le contenu se resserre symétriquement.
  * ------------------------------------------------------------------------ */
-@media (min-width: 1440px) {
+@media (min-width: 1180px) {
   .rail-chaine {
     position: fixed;
     left: 1.25rem;
@@ -1936,6 +2014,8 @@ button:focus-visible {
     z-index: 40;
     border: 1px solid var(--couleur-bordure);
     border-radius: var(--rayon);
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
   }
   .rail-chaine ol {
     flex-direction: column;
@@ -1950,6 +2030,8 @@ button:focus-visible {
     content: "↓";
     margin-right: 0;
   }
+  /* La gouttière gauche réservée au rail : contenu resserré mais jamais masqué. */
+  body.avec-rail .conteneur { max-width: min(var(--largeur-max), 100vw - 340px); }
   body.avec-rail .planche-large {
     width: min(1400px, 100vw - 340px);
   }

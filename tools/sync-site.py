@@ -256,7 +256,14 @@ def assembler_hub(pid, dossier_portfolio, dry_run):
     masquees = 0
     for section in squelette.get("sections", []):
         pilier = section.pop("inclure", None)
-        sections.append(section)
+        # "aplatir": true — les sections du pilier remontent AU PREMIER NIVEAU du
+        # hub (aucun parent) et la section-enveloppe est RETIRÉE. Le hub présente
+        # alors directement le contenu du pilier, sans carte intermédiaire. Sert
+        # quand un hub n'a qu'un seul projet (Statistiques → Lotto 6/49) : on évite
+        # le clic superflu et l'incohérence « choisir une Phase OU le projet ».
+        aplatir = section.pop("aplatir", False)
+        if not aplatir:
+            sections.append(section)
         if not pilier:
             continue
         source = dossier_pilier(hub, racine, dossier_portfolio, pilier) / "site-content" / "contenu.json"
@@ -272,21 +279,23 @@ def assembler_hub(pid, dossier_portfolio, dry_run):
                 # Écartée du site : la source reste, la page disparaît.
                 masquees += 1
                 continue
-            if sous.get("id") == section["id"]:
+            if not aplatir and sous.get("id") == section["id"]:
                 # Pilier « page unique » (ex. historique) : la section homonyme
                 # COMPLÈTE la section du squelette (dont les champs priment)
                 # au lieu de s'y accrocher — sinon doublon d'id.
                 for cle, valeur in sous.items():
                     section.setdefault(cle, valeur)
                 continue
-            # Les sections déjà imbriquées côté pilier (ex. les parties de la
-            # formation) gardent leur parent ; les autres s'accrochent au pilier.
-            sous.setdefault("parent", section["id"])
+            # Aplati : sections au premier niveau (pas de parent). Sinon, les
+            # sections déjà imbriquées côté pilier gardent leur parent ; les
+            # autres s'accrochent au pilier (mécanisme sousHub).
+            if not aplatir:
+                sous.setdefault("parent", section["id"])
             sections.append(sous)
             enfants += 1
         # Sans sous-section injectée, la section n'est pas un sous-hub : sa
         # page (texte + items fusionnés) se rend directement.
-        if not enfants:
+        if not aplatir and not enfants:
             section.pop("sousHub", None)
 
     # Garde-fou : les ids de section doivent rester uniques dans le hub fusionné.
