@@ -173,12 +173,13 @@ img { max-width: 100%; display: block; }
   flex-wrap: wrap;
 }
 
-/* Le mot-symbole passe en mono : c'est la marque d'un site-terminal. */
+/* Le mot-symbole reprend la police du grand titre du hero (Inter),
+   pour une identité visuelle cohérente entre l'en-tête et l'accueil. */
 .marque {
-  font-family: var(--police-mono);
-  font-weight: 700;
+  font-family: var(--police-corps);
+  font-weight: 600;
   font-size: 1.15rem;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   color: var(--couleur-texte);
 }
 .marque:hover { color: var(--couleur-accent); }
