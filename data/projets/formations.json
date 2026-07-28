@@ -284,9 +284,115 @@
         "en": "Eight progressive modules, from Git's internals all the way to automation with GitHub Actions. The through-line is a single example project: a small repository of Python scripts that gets versioned, shared and automated, module after module."
       },
       "texte": {
-        "fr": "## Le parcours\n\n1 — **Les fondements de Git.** Le terminal et Bash, puis les concepts : dépôt, commit, staging. `init`, `add`, `commit`, `status`, `log`, `diff`.\n\n2 — **Branches et fusion.** `branch`, `switch`, `merge`, la résolution de conflits et les stratégies de fusion.\n\n3 — **Les dépôts distants et GitHub.** `clone`, `remote`, `push`, `pull`, `fetch`, et l'authentification SSH ou HTTPS.\n\n4 — **Pull requests et collaboration.** Forks, pull requests, revues de code, issues, protection de branches.\n\n5 — **La maîtrise de l'historique.** `rebase` interactif, `cherry-pick`, `stash`, `reset` contre `revert`, et le filet de sécurité : `reflog`.\n\n6 — **GitHub Actions.** Workflows YAML, déclencheurs, jobs, matrices, secrets — jusqu'à l'intégration continue d'un projet Python.\n\n7 — **Les bonnes pratiques.** Messages de commit conventionnels, `.gitignore`, modèles de branches, tags, releases et SemVer.\n\n8 — **L'écosystème GitHub.** GitHub CLI (`gh`), GitHub Pages, Projects, Dependabot, sécurité.\n\n## Prérequis\n\nGit 2.40 ou plus récent, un compte GitHub gratuit, et un terminal. Aucune connaissance préalable de Git n'est requise.\n\n## Où en est le chantier\n\nLes huit modules sont écrits, en Markdown. Ils passent par la même chaîne d'édition que la formation Python — Markdown, puis Word, puis PDF — et c'est cette dernière étape qui reste à faire : les documents seront publiés ici au fur et à mesure de leur mise au propre.",
-        "en": "## The path\n\n1 — **Git's fundamentals.** The terminal and Bash, then the concepts: repository, commit, staging. `init`, `add`, `commit`, `status`, `log`, `diff`.\n\n2 — **Branches and merging.** `branch`, `switch`, `merge`, conflict resolution and merge strategies.\n\n3 — **Remotes and GitHub.** `clone`, `remote`, `push`, `pull`, `fetch`, and SSH or HTTPS authentication.\n\n4 — **Pull requests and collaboration.** Forks, pull requests, code reviews, issues, branch protection.\n\n5 — **Mastering history.** Interactive `rebase`, `cherry-pick`, `stash`, `reset` versus `revert`, and the safety net: `reflog`.\n\n6 — **GitHub Actions.** YAML workflows, triggers, jobs, matrices, secrets — up to continuous integration for a Python project.\n\n7 — **Good practices.** Conventional commit messages, `.gitignore`, branching models, tags, releases and SemVer.\n\n8 — **The GitHub ecosystem.** GitHub CLI (`gh`), GitHub Pages, Projects, Dependabot, security.\n\n## Prerequisites\n\nGit 2.40 or newer, a free GitHub account, and a terminal. No prior knowledge of Git is required.\n\n## Where the work stands\n\nAll eight modules are written, in Markdown. They go through the same editing chain as the Python course — Markdown, then Word, then PDF — and it's that last step that remains: the documents will be published here as they are polished."
-      }
+        "fr": "## Le parcours\n\n1 — **Les fondements de Git.** Le terminal et Bash, puis les concepts : dépôt, commit, staging. `init`, `add`, `commit`, `status`, `log`, `diff`.\n\n2 — **Branches et fusion.** `branch`, `switch`, `merge`, la résolution de conflits et les stratégies de fusion.\n\n3 — **Les dépôts distants et GitHub.** `clone`, `remote`, `push`, `pull`, `fetch`, et l'authentification SSH ou HTTPS.\n\n4 — **Pull requests et collaboration.** Forks, pull requests, revues de code, issues, protection de branches.\n\n5 — **La maîtrise de l'historique.** `rebase` interactif, `cherry-pick`, `stash`, `reset` contre `revert`, et le filet de sécurité : `reflog`.\n\n6 — **GitHub Actions.** Workflows YAML, déclencheurs, jobs, matrices, secrets — jusqu'à l'intégration continue d'un projet Python.\n\n7 — **Les bonnes pratiques.** Messages de commit conventionnels, `.gitignore`, modèles de branches, tags, releases et SemVer.\n\n8 — **L'écosystème GitHub.** GitHub CLI (`gh`), GitHub Pages, Projects, Dependabot, sécurité.\n\n## Prérequis\n\nGit 2.40 ou plus récent, un compte GitHub gratuit, et un terminal. Aucune connaissance préalable de Git n'est requise.",
+        "en": "## The path\n\n1 — **Git's fundamentals.** The terminal and Bash, then the concepts: repository, commit, staging. `init`, `add`, `commit`, `status`, `log`, `diff`.\n\n2 — **Branches and merging.** `branch`, `switch`, `merge`, conflict resolution and merge strategies.\n\n3 — **Remotes and GitHub.** `clone`, `remote`, `push`, `pull`, `fetch`, and SSH or HTTPS authentication.\n\n4 — **Pull requests and collaboration.** Forks, pull requests, code reviews, issues, branch protection.\n\n5 — **Mastering history.** Interactive `rebase`, `cherry-pick`, `stash`, `reset` versus `revert`, and the safety net: `reflog`.\n\n6 — **GitHub Actions.** YAML workflows, triggers, jobs, matrices, secrets — up to continuous integration for a Python project.\n\n7 — **Good practices.** Conventional commit messages, `.gitignore`, branching models, tags, releases and SemVer.\n\n8 — **The GitHub ecosystem.** GitHub CLI (`gh`), GitHub Pages, Projects, Dependabot, security.\n\n## Prerequisites\n\nGit 2.40 or newer, a free GitHub account, and a terminal. No prior knowledge of Git is required."
+      },
+      "items": [
+        {
+          "id": "gh-1",
+          "type": "pdf",
+          "fichier": "assets/formations/github/Cours 01 - Les fondements de Git.pdf",
+          "titre": {
+            "fr": "Les fondements de Git",
+            "en": "Git's fundamentals"
+          },
+          "description": {
+            "fr": "Le terminal, puis dépôt, commit et zone de staging : init, add, commit, status, log, diff.",
+            "en": "The terminal, then repository, commit and the staging area: init, add, commit, status, log, diff."
+          }
+        },
+        {
+          "id": "gh-2",
+          "type": "pdf",
+          "fichier": "assets/formations/github/Cours 02 - Branches et fusion.pdf",
+          "titre": {
+            "fr": "Branches et fusion",
+            "en": "Branches and merging"
+          },
+          "description": {
+            "fr": "Créer et fusionner des branches, résoudre les conflits, choisir sa stratégie de fusion.",
+            "en": "Creating and merging branches, resolving conflicts, choosing a merge strategy."
+          }
+        },
+        {
+          "id": "gh-3",
+          "type": "pdf",
+          "fichier": "assets/formations/github/Cours 03 - Depots distants.pdf",
+          "titre": {
+            "fr": "Les dépôts distants et GitHub",
+            "en": "Remotes and GitHub"
+          },
+          "description": {
+            "fr": "Travailler avec un dépôt distant : clone, push, pull, fetch, et l'authentification SSH ou HTTPS.",
+            "en": "Working with a remote: clone, push, pull, fetch, and SSH or HTTPS authentication."
+          }
+        },
+        {
+          "id": "gh-4",
+          "type": "pdf",
+          "fichier": "assets/formations/github/Cours 04 - Pull requests.pdf",
+          "titre": {
+            "fr": "Pull requests et collaboration",
+            "en": "Pull requests and collaboration"
+          },
+          "description": {
+            "fr": "Forks, pull requests, revues de code, issues et protection de branches.",
+            "en": "Forks, pull requests, code reviews, issues and branch protection."
+          }
+        },
+        {
+          "id": "gh-5",
+          "type": "pdf",
+          "fichier": "assets/formations/github/Cours 05 - Historique avance.pdf",
+          "titre": {
+            "fr": "La maîtrise de l'historique",
+            "en": "Mastering history"
+          },
+          "description": {
+            "fr": "Rebase interactif, cherry-pick, stash, reset contre revert, et le filet de sécurité reflog.",
+            "en": "Interactive rebase, cherry-pick, stash, reset versus revert, and the reflog safety net."
+          }
+        },
+        {
+          "id": "gh-6",
+          "type": "pdf",
+          "fichier": "assets/formations/github/Cours 06 - GitHub Actions.pdf",
+          "titre": {
+            "fr": "GitHub Actions",
+            "en": "GitHub Actions"
+          },
+          "description": {
+            "fr": "Workflows YAML, déclencheurs, jobs et matrices, jusqu'à l'intégration continue d'un projet Python.",
+            "en": "YAML workflows, triggers, jobs and matrices, up to continuous integration for a Python project."
+          }
+        },
+        {
+          "id": "gh-7",
+          "type": "pdf",
+          "fichier": "assets/formations/github/Cours 07 - Bonnes pratiques.pdf",
+          "titre": {
+            "fr": "Les bonnes pratiques",
+            "en": "Good practices"
+          },
+          "description": {
+            "fr": "Commits conventionnels, fichier .gitignore, modèles de branches, tags, releases et SemVer.",
+            "en": "Conventional commits, the .gitignore file, branching models, tags, releases and SemVer."
+          }
+        },
+        {
+          "id": "gh-8",
+          "type": "pdf",
+          "fichier": "assets/formations/github/Cours 08 - Ecosysteme GitHub.pdf",
+          "titre": {
+            "fr": "L'écosystème GitHub",
+            "en": "The GitHub ecosystem"
+          },
+          "description": {
+            "fr": "GitHub CLI (gh), Pages, Projects, Dependabot et la sécurité du dépôt.",
+            "en": "GitHub CLI (gh), Pages, Projects, Dependabot and repository security."
+          }
+        }
+      ]
     },
     {
       "id": "formation",
