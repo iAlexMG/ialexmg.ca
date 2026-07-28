@@ -368,10 +368,10 @@ img { max-width: 100%; display: block; }
 }
 
 /* ----- Rangées de projet (accueil) -----
-   La grille de cartes cède la place à des rangées pleine largeur : la capture
-   réelle d'un côté, le récit et les liens de piliers de l'autre, en
-   alternance. Un filet sépare les rangées ; l'en-tête de groupe « Trading »
-   coiffe les deux rangées de marché. */
+   La grille de cartes cède la place à des rangées pleine largeur : le visuel
+   (cadre 16:9 uniforme) à gauche, le récit et les liens de piliers à droite.
+   Un filet sépare les rangées ; l'en-tête de groupe « Trading » coiffe les deux
+   rangées de marché. */
 .groupe-titre {
   font-family: var(--police-mono);
   font-size: 0.78rem;
@@ -393,6 +393,10 @@ img { max-width: 100%; display: block; }
 }
 .rangee-visuel {
   display: block;
+  /* Surface uniforme quelle que soit l'image source : toutes les rangées
+     occupent le même cadre 16:9 (une capture paysage, un SVG ou un portrait
+     sont ramenés au même gabarit). */
+  aspect-ratio: 16 / 9;
   background: #0d1117;
   border: 1px solid var(--couleur-bordure);
   border-radius: var(--rayon);
@@ -400,7 +404,12 @@ img { max-width: 100%; display: block; }
   transition: border-color var(--transition);
 }
 .rangee-visuel:hover { border-color: var(--couleur-accent); }
-.rangee-visuel img { display: block; width: 100%; height: auto; }
+.rangee-visuel img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 .rangee-corps h3 { font-size: 1.35rem; margin-bottom: 0.4rem; }
 .rangee-corps h3 a { color: var(--couleur-texte); }
 .rangee-corps h3 a:hover { color: var(--couleur-accent); }
@@ -1901,12 +1910,10 @@ button:focus-visible {
 
   .galerie { grid-template-columns: repeat(3, 1fr); }
 
-  /* Rangées de l'accueil : capture et récit côte à côte, en alternance.
-     La colonne du texte garde la même largeur des deux côtés (2fr) ; une
-     rangée sans visuel reste pleine largeur, bornée par la mesure du texte. */
+  /* Rangées de l'accueil : visuel (3fr) à gauche, récit (2fr) à droite, même
+     disposition pour toutes. Une rangée sans visuel reste pleine largeur,
+     bornée par la mesure du texte. */
   .rangee-projet { grid-template-columns: 3fr 2fr; gap: 2.5rem; }
-  .rangee-inverse { grid-template-columns: 2fr 3fr; }
-  .rangee-inverse .rangee-visuel { order: 2; }
   .rangee-sans-visuel { grid-template-columns: 1fr; }
   .rangee-sans-visuel .rangee-corps { max-width: 70ch; }
 

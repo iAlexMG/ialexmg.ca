@@ -81,13 +81,12 @@ const Composants = (function () {
 
   // Rangées de projet pour l'accueil, générées depuis window.PROJETS.
   // S'insèrent dans le conteneur [data-rangees-projets] de index.html.
-  // Chaque rangée : grande capture réelle d'un côté (quand le projet en a
-  // une), titre + accroche + liens directs vers les piliers de l'autre.
-  // Les visuels alternent gauche/droite ; l'en-tête de groupe « Trading »
-  // coiffe les deux rangées crypto et indices sans les fusionner.
+  // Chaque rangée : grand visuel à GAUCHE (surface uniforme, cadré par le CSS),
+  // titre + accroche + liens directs vers les piliers à droite. Tous les
+  // visuels sont du même côté ; l'en-tête de groupe « Trading » coiffe les deux
+  // rangées crypto et indices sans les fusionner.
   function construireRangeesProjets() {
     const morceaux = [];
-    let visuelADroite = false;
 
     (window.PROJETS || []).forEach(function (p) {
       if (p.id === "crypto") {
@@ -114,7 +113,6 @@ const Composants = (function () {
 
       morceaux.push(
         '<article class="rangee-projet' +
-        (visuel && visuelADroite ? " rangee-inverse" : "") +
         (visuel ? "" : " rangee-sans-visuel") + '">' +
         visuel +
         '<div class="rangee-corps">' +
@@ -126,10 +124,6 @@ const Composants = (function () {
         "</div>" +
         "</article>"
       );
-
-      // On n'alterne que lorsque la rangée a un visuel : une rangée en texte
-      // seul ne « pèse » d'aucun côté.
-      if (visuel) visuelADroite = !visuelADroite;
     });
 
     return morceaux.join("");

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Histogramme surmonté d'une courbe en cloche">
+  <!-- Miniature d'accueil « Statistiques » — histogramme + courbe normale.
+       Générique, sans texte, aux couleurs du site (fond #0B0E14, ambre #E3B341). -->
+  <rect width="1600" height="900" fill="#0B0E14"/>
+
+  <!-- Filets d'axes -->
+  <line x1="160" y1="720" x2="1440" y2="720" stroke="#2A3646" stroke-width="2"/>
+  <line x1="160" y1="170" x2="160" y2="720" stroke="#1F2630" stroke-width="2"/>
+
+  <!-- Barres de l'histogramme (profil gaussien) -->
+  <g fill="#223042">
+    <rect x="200"  y="679" width="90" height="41"  rx="4"/>
+    <rect x="311"  y="616" width="90" height="104" rx="4"/>
+    <rect x="422"  y="507" width="90" height="213" rx="4"/>
+    <rect x="533"  y="362" width="90" height="358" rx="4"/>
+    <rect x="644"  y="233" width="90" height="487" rx="4"/>
+    <rect x="755"  y="180" width="90" height="540" rx="4"/>
+    <rect x="866"  y="233" width="90" height="487" rx="4"/>
+    <rect x="977"  y="362" width="90" height="358" rx="4"/>
+    <rect x="1088" y="507" width="90" height="213" rx="4"/>
+    <rect x="1199" y="616" width="90" height="104" rx="4"/>
+    <rect x="1310" y="679" width="90" height="41"  rx="4"/>
+  </g>
+
+  <!-- Aire sous la courbe (ambre très léger) -->
+  <path d="M 190 705 C 470 705 570 250 800 188 C 1030 250 1130 705 1410 705 L 1410 720 L 190 720 Z"
+        fill="#E3B341" fill-opacity="0.09"/>
+
+  <!-- Courbe en cloche -->
+  <path d="M 190 705 C 470 705 570 250 800 188 C 1030 250 1130 705 1410 705"
+        fill="none" stroke="#E3B341" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- Repère de la moyenne -->
+  <line x1="800" y1="188" x2="800" y2="720" stroke="#8A6D2F" stroke-width="2" stroke-dasharray="6 8"/>
+  <circle cx="800" cy="188" r="9" fill="#E3B341"/>
+</svg>
