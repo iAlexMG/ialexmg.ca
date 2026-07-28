@@ -67,7 +67,7 @@ const PROJETS = [
     page: "indices",
     titre: "projet.indices",
     desc: "projet.indices.desc",
-    stack: ["Python", "PyQt5", "C#", "LEAN"],
+    stack: ["Python", "PySide6", "C#", "LEAN"],
     miniature: "assets/indices/affichage/img/All.PNG",
     piliers: [
       { i18n: "pilier.historique", s: "historique" },
