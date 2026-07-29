@@ -112,12 +112,12 @@ HUBS = {
         "chemins": {
             "python": "Formations/Python",
             "github": "Formations/Github",
-            "trading": "Formations/Trading",
+            "backtesting": "Formations/Backtesting",
         },
         "assets": {
             "python": "formations/python",
             "github": "formations/github",
-            "trading": "formations/trading",
+            "backtesting": "formations/backtesting",
         },
     },
     "statistiques": {
