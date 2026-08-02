@@ -24,13 +24,13 @@
  *
  * L'ordre du tableau = l'ordre des cartes sur l'accueil. Les projets les plus
  * pertinents pour un recruteur « ingénierie / trading » sont placés en tête
- * (les deux hubs Crypto et Indices boursiers), puis Statistiques et Formations.
+ * (les deux hubs Crypto et Indices boursiers), puis Machine Learning et Formations.
  *
  * HUBS : les quatre projets sont des hubs, dont le JSON est ASSEMBLÉ par
  * tools/sync-site.py depuis des site-content sources.
  *   - « crypto » et « indices » couvrent chacun un mono-dépôt GitHub en
  *     4 piliers (historique / affichage / backtesting / automatisation) ;
- *   - « statistiques » et « formations » rassemblent des projets et des cours
+ *   - « machine-learning » et « formations » rassemblent des projets et des cours
  *     qui restent chez eux — un pilier de hub peut vivre hors de la racine du
  *     hub (voir la clé « chemins » de sync-site.py).
  *
@@ -79,13 +79,13 @@ const PROJETS = [
     code: "https://github.com/iAlexMG/indicesBoursiers",
   },
   {
-    id: "statistiques",
-    href: "statistiques.html",
-    page: "statistiques",
-    titre: "projet.statistiques",
-    desc: "projet.statistiques.desc",
+    id: "machine-learning",
+    href: "machine-learning.html",
+    page: "machine-learning",
+    titre: "projet.machine-learning",
+    desc: "projet.machine-learning.desc",
     stack: ["Python", "pandas", "scikit-learn"],
-    miniature: "assets/accueil/statistiques.svg",
+    miniature: "assets/accueil/machine-learning.svg",
     piliers: [
       { i18n: "pilier.docs", s: "docs" },
       { i18n: "pilier.phase1", s: "phase1" },
@@ -127,7 +127,8 @@ const PROJETS_ALIAS = {
   ibkr: "indices",
   quantower: "indices",
   backtesting: "crypto",
-  "649": "statistiques",
+  "649": "machine-learning",
+  statistiques: "machine-learning",
   python: "formations",
 };
 

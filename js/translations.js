@@ -32,7 +32,7 @@ const TRADUCTIONS = {
     "page.accueil.titre": "iAlexMG — Ingénierie & trading quantitatif",
     "page.crypto.titre": "Crypto — De la donnée à l'exécution | iAlexMG",
     "page.indices.titre": "Indices boursiers — De la donnée à l'exécution | iAlexMG",
-    "page.statistiques.titre": "Statistiques — Mettre le hasard à l'épreuve | iAlexMG",
+    "page.machine-learning.titre": "Machine Learning — Des modèles à l'épreuve des données | iAlexMG",
     "page.formations.titre": "Formations — Python, Git & GitHub, backtesting | iAlexMG",
     "page.apropos.titre": "À propos — iAlexMG",
     "page.contact.titre": "Contact — iAlexMG",
@@ -44,14 +44,14 @@ const TRADUCTIONS = {
     "nav.contact": "Contact",
 
     // Projets (titres complets — menu, en-tête de page, cartes d'accueil)
-    "projet.statistiques": "Statistiques",
+    "projet.machine-learning": "Machine Learning",
     "projet.formations": "Formations",
     "projet.crypto": "Crypto",
     "projet.indices": "Indices boursiers",
     "projet.detection": "Détection d'objets",
 
     // Descriptions courtes des projets (cartes d'accueil)
-    "projet.statistiques.desc": "Mettre le hasard à l'épreuve : tests statistiques et apprentissage automatique sur des décennies de tirages.",
+    "projet.machine-learning.desc": "Mettre le hasard à l'épreuve : tests statistiques et apprentissage automatique sur des décennies de tirages.",
     "projet.formations.desc": "Ce que j'ai appris, remis au propre : Python, Git & GitHub, et deux moteurs de backtesting.",
     "projet.crypto.desc": "La chaîne complète sur le Bitcoin : données historiques, terminal d'orderflow, backtesting, automatisation.",
     "projet.indices.desc": "Les futures d'indices du CME (NQ, ES) : données temps réel, backtesting sur historique — jusqu'au trading automatisé, prouvé en exécution réelle (mode confirmation).",
@@ -162,7 +162,7 @@ const TRADUCTIONS = {
     "indices.intro": "Les futures d'indices du CME — le NQ (Nasdaq 100) et l'ES (S&P 500) — jouent sur un terrain différent de la crypto : le marché ouvre et ferme à heures fixes, et les données détaillées y sont plus rares et plus coûteuses.\n\nL'objectif reste le même : automatiser le trading. Cela exige d'abord de recevoir et d'afficher les données du marché en temps réel, puis de valider chaque stratégie par un backtesting sur l'historique avant de la laisser tourner. D'où les cinq piliers ci-dessous.",
 
     // Hub Statistiques (intro spécifique)
-    "statistiques.intro": "Des questions où la réponse se mesure plutôt qu'elle ne s'argumente. On y teste des croyances répandues contre des données longues, avec les outils de la statistique classique d'abord, ceux de l'apprentissage automatique ensuite — et on accepte le verdict, même quand il est négatif.\n\nUn premier projet ci-dessous ; d'autres suivront.",
+    "machine-learning.intro": "Des questions où la réponse se mesure plutôt qu'elle ne s'argumente. On y teste des croyances répandues contre des données longues, avec les outils de la statistique classique d'abord, ceux de l'apprentissage automatique ensuite — et on accepte le verdict, même quand il est négatif.\n\nDeux projets ci-dessous ; d'autres suivront.",
 
     // À propos
     "apropos.titre": "À propos",
@@ -193,7 +193,7 @@ const TRADUCTIONS = {
     "page.accueil.titre": "iAlexMG — Quantitative Engineering & Trading",
     "page.crypto.titre": "Crypto — From Data to Execution | iAlexMG",
     "page.indices.titre": "Stock Indices — From Data to Execution | iAlexMG",
-    "page.statistiques.titre": "Statistics — Putting Randomness to the Test | iAlexMG",
+    "page.machine-learning.titre": "Machine Learning — Models Tested Against Real Data | iAlexMG",
     "page.formations.titre": "Courses — Python, Git & GitHub, Backtesting | iAlexMG",
     "page.apropos.titre": "About — iAlexMG",
     "page.contact.titre": "Contact — iAlexMG",
@@ -205,14 +205,14 @@ const TRADUCTIONS = {
     "nav.contact": "Contact",
 
     // Projects (full titles — menu, page header, home cards)
-    "projet.statistiques": "Statistics",
+    "projet.machine-learning": "Machine Learning",
     "projet.formations": "Courses",
     "projet.crypto": "Crypto",
     "projet.indices": "Stock Indices",
     "projet.detection": "Object Detection",
 
     // Project short descriptions (home cards)
-    "projet.statistiques.desc": "Putting randomness to the test: statistics and machine learning on decades of draws.",
+    "projet.machine-learning.desc": "Putting randomness to the test: statistics and machine learning on decades of draws.",
     "projet.formations.desc": "What I learned, written up properly: Python, Git & GitHub, and two backtesting engines.",
     "projet.crypto.desc": "The full chain on Bitcoin: historical data, orderflow terminal, backtesting, automation.",
     "projet.indices.desc": "The CME index futures (NQ, ES): real-time data, backtesting on history — all the way to automated trading, proven in live execution (confirmation mode).",
@@ -323,7 +323,7 @@ const TRADUCTIONS = {
     "formations.intro": "What I learned, written up properly. Each course starts from zero and follows the same path: the fundamentals first, then the concepts, then a project that puts them to the test. Always a work in progress.",
 
     // Statistics hub (specific intro)
-    "statistiques.intro": "Questions whose answer gets measured rather than argued. Common beliefs are tested against long records, with the tools of classical statistics first, machine learning next — and the verdict is accepted, even when it's negative.\n\nA first project below; more will follow.",
+    "machine-learning.intro": "Questions whose answer gets measured rather than argued. Common beliefs are tested against long records, with the tools of classical statistics first, machine learning next — and the verdict is accepted, even when it's negative.\n\nTwo projects below; more will follow.",
 
     // About
     "apropos.titre": "About",

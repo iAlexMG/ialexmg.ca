@@ -15,9 +15,9 @@ iAlexMG.ca/
 ├── index.html            # Accueil (présentation + cartes des projets)
 ├── crypto.html           # Hub : Crypto (4 piliers + bandeau des exchanges)
 ├── indices.html          # Hub : Indices boursiers (4 piliers)
-├── statistiques.html     # Hub : Statistiques (Lotto 6/49, +à venir)
+├── machine-learning.html # Hub : Machine Learning (Lotto 6/49, +à venir)
 ├── formations.html       # Hub : Formations (Python, Git & GitHub, backtesting)
-├── projet-649.html       # ANCIENNE page -> redirige vers statistiques
+├── projet-649.html       # ANCIENNE page -> redirige vers machine-learning
 ├── python.html           # ANCIENNE page -> redirige vers formations
 ├── apropos.html          # À propos
 ├── contact.html          # Contact

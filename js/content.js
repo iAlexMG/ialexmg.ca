@@ -738,7 +738,7 @@ const Contenu = (function () {
   // (1, 2, 3…) du JSON porte ce niveau ; le rendu empile les étages dans le sens
   // de lecture, du socle le plus large vers l'exécution.
   // Renvoie null dès qu'UN pilier n'a pas d'étage : le hub retombe alors sur la
-  // grille — les autres projets (formations, statistiques, 649) rassemblent des
+  // grille — les autres projets (formations, machine-learning, 649) rassemblent des
   // sections côte à côte, sans chaîne à raconter.
   function etagesDePiliers(piliers) {
     if (!piliers.length) return null;
