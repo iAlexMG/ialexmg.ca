@@ -142,6 +142,32 @@ const Composants = (function () {
     );
   }
 
+  // Bouton flottant « retour en haut » : créé une fois, ajouté au <body>.
+  // Apparaît après un défilement notable, ramène en haut (respecte
+  // prefers-reduced-motion). La visibilité passe par une classe .visible ;
+  // le CSS le rend invisible ET non focalisable (visibility) tant qu'il dort.
+  function brancherHautDePage() {
+    if (document.querySelector(".haut-page")) return;
+    const bouton = document.createElement("button");
+    bouton.type = "button";
+    bouton.className = "haut-page";
+    bouton.setAttribute("data-i18n", "site.haut_page");
+    bouton.setAttribute("data-i18n-attr", "aria-label");
+    bouton.setAttribute("aria-label", "Retour en haut de la page");
+    bouton.textContent = "↑";
+    document.body.appendChild(bouton);
+
+    const reduit = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function basculer() {
+      bouton.classList.toggle("visible", window.scrollY > 600);
+    }
+    bouton.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: reduit ? "auto" : "smooth" });
+    });
+    window.addEventListener("scroll", basculer, { passive: true });
+    basculer();
+  }
+
   // Injecte en-tête et pied, puis branche les interactions et les traductions.
   function initialiser() {
     const pageCourante = document.body.getAttribute("data-page") || "";
@@ -194,6 +220,13 @@ const Composants = (function () {
         boutonMenu.setAttribute("aria-expanded", ouvert ? "true" : "false");
       });
     }
+
+    // Bouton « retour en haut » : chrome commun à toutes les pages, injecté une
+    // seule fois. Masqué (visibility) tant qu'on n'a pas défilé — donc hors de
+    // l'ordre de tabulation et des lecteurs d'écran jusqu'à ce qu'il serve. Le
+    // libellé (aria-label) suit la langue via data-i18n ; changerLangue
+    // ré-applique les traductions sur tout le document.
+    brancherHautDePage();
 
     // Traduit le contenu fraîchement injecté.
     window.I18n.appliquerTraductions(document);

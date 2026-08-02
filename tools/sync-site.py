@@ -113,11 +113,13 @@ HUBS = {
             "python": "Formations/Python",
             "github": "Formations/Github",
             "backtesting": "Formations/Backtesting",
+            "statistiques": "Formations/Statistiques",
         },
         "assets": {
             "python": "formations/python",
             "github": "formations/github",
             "backtesting": "formations/backtesting",
+            "statistiques": "formations/statistiques",
         },
     },
     "machine-learning": {
