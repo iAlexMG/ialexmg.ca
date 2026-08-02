@@ -1971,16 +1971,25 @@ const Contenu = (function () {
         const aPdf = items.some(function (it) {
           return it.type === "pdf";
         });
+        const planches = rendreItemsEnPlanches(items, hrefItemDeSection);
+        // Trois dispositions du corps :
+        //   sousMenu  : prose puis planches (sous-menu géré ailleurs).
+        //   cote      : texte et visuel CÔTE À CÔTE (au large) — le texte a
+        //               quitté l'image, il se lit à côté du graphique (649).
+        //   défaut    : planches, fiche, puis récit (fiches de stratégie).
+        const corpsItems = section.sousMenu
+          ? rendreProse(texte) + planches
+          : section.cote
+          ? '<div class="section-cote">' +
+              '<div class="section-cote-texte">' + rendreProse(texte) + "</div>" +
+              '<div class="section-cote-visuel">' + planches + fiche + "</div>" +
+            "</div>"
+          : planches + fiche + rendreProse(texte);
         conteneur.innerHTML =
           banniereAvertissementPdf(aPdf) +
           avertissementTexteFr(section.texte) +
           entete +
-          (section.sousMenu
-            ? rendreProse(texte) + rendreItemsEnPlanches(items, hrefItemDeSection)
-            : // Fiche stratégie type : la planche du signal, le bloc de
-              // métriques et son verdict, puis le récit détaillé.
-              rendreItemsEnPlanches(items, hrefItemDeSection) + fiche +
-              rendreProse(texte));
+          corpsItems;
         marquerPlanchesLarges(conteneur);
         activerBouclesAnnotees(conteneur);
       } else if (texte) {

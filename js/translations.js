@@ -26,6 +26,7 @@ const TRADUCTIONS = {
     "site.langue_courante": "FR",
     "site.basculer_langue": "EN",
     "site.basculer_aria": "Passer en anglais",
+    "site.haut_page": "Retour en haut de la page",
 
     // Titres d'onglet des pages statiques (le contenu du <title> HTML sert de
     // repli pour le no-JS ; ce texte le remplace selon la langue active).
@@ -187,6 +188,7 @@ const TRADUCTIONS = {
     "site.langue_courante": "EN",
     "site.basculer_langue": "FR",
     "site.basculer_aria": "Switch to French",
+    "site.haut_page": "Back to top",
 
     // Static page tab titles (the HTML <title> content is the no-JS fallback;
     // this text replaces it according to the active language).

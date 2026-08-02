@@ -266,6 +266,154 @@
       ]
     },
     {
+      "id": "statistiques",
+      "titre": {
+        "fr": "Probabilités & statistiques",
+        "en": "Probability & statistics"
+      },
+      "accroche": {
+        "fr": "Le bagage théorique du projet Lotto 6/49 : des fondations probabilistes aux réseaux de neurones.",
+        "en": "The theory behind the Lotto 6/49 project: from probability foundations to neural networks."
+      },
+      "statut": {
+        "fr": "10 documents",
+        "en": "10 documents"
+      },
+      "sousMenu": true,
+      "items": [
+        {
+          "id": "doc-01",
+          "type": "pdf",
+          "fichier": "assets/formations/statistiques/docs/01_fondations.pdf",
+          "titre": {
+            "fr": "01 — Fondations probabilistes",
+            "en": "01 — Probability foundations"
+          },
+          "description": {
+            "fr": "Les notions de base : hasard, événements indépendants, espérance.",
+            "en": "The basics: randomness, independent events, expectation."
+          }
+        },
+        {
+          "id": "doc-02",
+          "type": "pdf",
+          "fichier": "assets/formations/statistiques/docs/02_lois_de_probabilite.pdf",
+          "titre": {
+            "fr": "02 — Les lois de probabilité",
+            "en": "02 — Probability distributions"
+          },
+          "description": {
+            "fr": "Les lois utilisées dans le projet : binomiale, géométrique, hypergéométrique, Beta.",
+            "en": "The distributions used in the project: binomial, geometric, hypergeometric, Beta."
+          }
+        },
+        {
+          "id": "doc-03",
+          "type": "pdf",
+          "fichier": "assets/formations/statistiques/docs/03_inference_frequentiste.pdf",
+          "titre": {
+            "fr": "03 — Inférence fréquentiste",
+            "en": "03 — Frequentist inference"
+          },
+          "description": {
+            "fr": "Tester une hypothèse : p-value, test du χ², puissance, intervalles de confiance.",
+            "en": "Testing a hypothesis: p-value, χ² test, power, confidence intervals."
+          }
+        },
+        {
+          "id": "doc-04",
+          "type": "pdf",
+          "fichier": "assets/formations/statistiques/docs/04_inference_bayesienne.pdf",
+          "titre": {
+            "fr": "04 — Inférence bayésienne",
+            "en": "04 — Bayesian inference"
+          },
+          "description": {
+            "fr": "Le raisonnement bayésien : a priori, a posteriori, intervalle crédible.",
+            "en": "Bayesian reasoning: prior, posterior, credible interval."
+          }
+        },
+        {
+          "id": "doc-05",
+          "type": "pdf",
+          "fichier": "assets/formations/statistiques/docs/05_biais_cognitifs.pdf",
+          "titre": {
+            "fr": "05 — Biais cognitifs",
+            "en": "05 — Cognitive biases"
+          },
+          "description": {
+            "fr": "Pourquoi l'intuition se trompe : numéro « en retard », numéro « en avance », illusion de motif.",
+            "en": "Why intuition misleads us: the \"overdue\" number, the \"hot\" number, seeing patterns that aren't there."
+          }
+        },
+        {
+          "id": "doc-06",
+          "type": "pdf",
+          "fichier": "assets/formations/statistiques/docs/06_tests_phase1.pdf",
+          "titre": {
+            "fr": "06 — Les tests de la Phase 1",
+            "en": "06 — The Phase 1 tests"
+          },
+          "description": {
+            "fr": "Les six tests statistiques du projet, avec leurs hypothèses et leur méthode.",
+            "en": "The project's six statistical tests, with their hypotheses and method."
+          }
+        },
+        {
+          "id": "doc-07",
+          "type": "pdf",
+          "fichier": "assets/formations/statistiques/docs/07_apprentissage_automatique.pdf",
+          "titre": {
+            "fr": "07 — Apprentissage automatique",
+            "en": "07 — Machine learning"
+          },
+          "description": {
+            "fr": "Ce qu'on mesure, comment on évite de se tromper, du modèle simple au réseau de neurones.",
+            "en": "What we measure, how we avoid fooling ourselves, from a simple model to a neural network."
+          }
+        },
+        {
+          "id": "doc-08",
+          "type": "pdf",
+          "fichier": "assets/formations/statistiques/docs/08_cascade_ngrammes.pdf",
+          "titre": {
+            "fr": "08 — Cascade binaire (n-grammes)",
+            "en": "08 — Binary cascade (n-grams)"
+          },
+          "description": {
+            "fr": "Réécrire le « numéro en retard » sous forme de motifs, puis montrer que la règle ne tient pas.",
+            "en": "Rewriting the \"overdue number\" idea as patterns, then showing the rule doesn't hold."
+          }
+        },
+        {
+          "id": "doc-09",
+          "type": "pdf",
+          "fichier": "assets/formations/statistiques/docs/09_donnees_methodologie.pdf",
+          "titre": {
+            "fr": "09 — Données et méthode",
+            "en": "09 — Data and method"
+          },
+          "description": {
+            "fr": "D'où viennent les données, comment elles sont validées, et comment garder des résultats reproductibles.",
+            "en": "Where the data comes from, how it's validated, and how to keep results reproducible."
+          }
+        },
+        {
+          "id": "doc-10",
+          "type": "pdf",
+          "fichier": "assets/formations/statistiques/docs/10_outils_ecosysteme.pdf",
+          "titre": {
+            "fr": "10 — Les outils",
+            "en": "10 — The tools"
+          },
+          "description": {
+            "fr": "Les outils utilisés : Python, pandas, NumPy, SciPy, scikit-learn, PyTorch, Matplotlib.",
+            "en": "The tools used: Python, pandas, NumPy, SciPy, scikit-learn, PyTorch, Matplotlib."
+          }
+        }
+      ]
+    },
+    {
       "id": "github",
       "titre": {
         "fr": "Git & GitHub",
@@ -604,7 +752,7 @@
         {
           "id": "bt-1",
           "type": "pdf",
-          "fichier": "assets/formations/backtesting/01- QuantConnect_LEAN.pdf",
+          "fichier": "assets/formations/backtesting/QuantConnect_LEAN.pdf",
           "titre": {
             "fr": "QuantConnect / LEAN",
             "en": "QuantConnect / LEAN"
@@ -617,7 +765,7 @@
         {
           "id": "bt-2",
           "type": "pdf",
-          "fichier": "assets/formations/backtesting/02- VectorbtPro.pdf",
+          "fichier": "assets/formations/backtesting/VectorbtPro.pdf",
           "titre": {
             "fr": "VectorbtPro",
             "en": "VectorbtPro"
@@ -758,6 +906,86 @@
         "p": "formations",
         "s": "lean",
         "i": "ext-vp"
+      }
+    },
+    {
+      "id": "lois-probabilite",
+      "titre": {
+        "fr": "Les lois de probabilité",
+        "en": "Probability distributions"
+      },
+      "resume": {
+        "fr": "Binomiale, géométrique, hypergéométrique, Beta : chaque loi décrit un mécanisme de comptage précis. La binomiale compte des succès indépendants, la géométrique le temps d'attente « sans mémoire » avant le prochain, l'hypergéométrique un tirage sans remise. Savoir laquelle s'applique répond déjà à la moitié de la question.",
+        "en": "Binomial, geometric, hypergeometric, Beta: each law describes a precise counting mechanism. The binomial counts independent successes, the geometric the \"memoryless\" wait until the next one, the hypergeometric a draw without replacement. Knowing which one applies already answers half the question."
+      },
+      "lien": {
+        "p": "formations",
+        "s": "statistiques",
+        "i": "doc-02"
+      }
+    },
+    {
+      "id": "inference-frequentiste",
+      "titre": {
+        "fr": "L'inférence fréquentiste",
+        "en": "Frequentist inference"
+      },
+      "resume": {
+        "fr": "Tester une hypothèse sans y croire d'avance : on suppose le hasard pur (H0), on mesure à quel point les données s'en écartent, et la p-value dit à quelle fréquence un tel écart surviendrait par pur hasard. Le test du χ², la puissance et les corrections pour comparaisons multiples encadrent la décision — et « ne pas rejeter » n'est pas « prouver ».",
+        "en": "Testing a hypothesis without believing it in advance: assume pure chance (H0), measure how far the data strays, and the p-value says how often such a gap would occur by chance alone. The χ² test, power, and multiple-comparison corrections frame the decision — and \"failing to reject\" is not \"proving\"."
+      },
+      "lien": {
+        "p": "formations",
+        "s": "statistiques",
+        "i": "doc-03"
+      }
+    },
+    {
+      "id": "inference-bayesienne",
+      "titre": {
+        "fr": "L'inférence bayésienne",
+        "en": "Bayesian inference"
+      },
+      "resume": {
+        "fr": "L'autre grande école : au lieu de rejeter ou non une hypothèse, on met à jour une croyance. On part d'un a priori, les données le corrigent, et l'a posteriori quantifie directement l'incertitude — « il y a 95 % de probabilité que le paramètre soit dans cette bande ». Sur le 6/49, la loi Beta conjuguée donne la réponse sans simulation.",
+        "en": "The other great school: instead of rejecting a hypothesis or not, you update a belief. Start from a prior, the data corrects it, and the posterior directly quantifies uncertainty — \"there's a 95% probability the parameter lies in this band.\" On the 6/49, the conjugate Beta law gives the answer with no simulation."
+      },
+      "lien": {
+        "p": "formations",
+        "s": "statistiques",
+        "i": "doc-04"
+      }
+    },
+    {
+      "id": "biais-cognitifs",
+      "titre": {
+        "fr": "Les biais cognitifs face au hasard",
+        "en": "Cognitive biases about randomness"
+      },
+      "resume": {
+        "fr": "Pourquoi l'intuition se trompe face au hasard : le numéro « en retard » qu'on croit « dû », le numéro « en avance » qu'on croit « chaud », le motif qu'on voit dans le bruit. Ces raccourcis mentaux sont universels et faux — un tirage indépendant n'a pas de mémoire. Les nommer, c'est apprendre à s'en méfier.",
+        "en": "Why intuition fails against randomness: the \"overdue\" number we think is \"due,\" the \"hot\" number we think is running, the pattern we see in noise. These mental shortcuts are universal and wrong — an independent draw has no memory. Naming them is learning to distrust them."
+      },
+      "lien": {
+        "p": "formations",
+        "s": "statistiques",
+        "i": "doc-05"
+      }
+    },
+    {
+      "id": "apprentissage-automatique",
+      "titre": {
+        "fr": "L'apprentissage automatique",
+        "en": "Machine learning"
+      },
+      "resume": {
+        "fr": "Laisser un modèle chercher un signal au lieu de tester une hypothèse — mais avec les mêmes garde-fous. On sépare le passé (entraînement) de l'avenir (test hors échantillon), on compare toujours à un témoin, et on se méfie du mirage : un réseau assez gros mémorise n'importe quoi. S'il ne bat pas le hasard hors échantillon, il n'y a rien à apprendre.",
+        "en": "Letting a model hunt for a signal instead of testing a hypothesis — but with the same guardrails. Separate the past (training) from the future (out-of-sample test), always compare to a baseline, and beware the mirage: a big enough network memorizes anything. If it doesn't beat chance out of sample, there's nothing to learn."
+      },
+      "lien": {
+        "p": "formations",
+        "s": "statistiques",
+        "i": "doc-07"
       }
     }
   ]
