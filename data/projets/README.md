@@ -6,7 +6,7 @@
 > pas ce fichier (la prochaine synchro écraserait la modification).
 >
 > Les projets **hub** (`crypto.json`, `indices.json`, `formations.json`,
-> `statistiques.json`) sont **assemblés** : le squelette (une section par
+> `machine-learning.json`) sont **assemblés** : le squelette (une section par
 > pilier) vient de `<racine du hub>/site-content/`, et les sections des piliers
 > qui portent `"inclure"` y sont injectées comme sous-sections (`parent` = le
 > pilier). Un pilier peut vivre hors de la racine du hub (clé `chemins`) —
@@ -138,7 +138,7 @@ l'exécution » de crypto et des indices : Historique et Temps réel (étage 1)
 alimentent les Visualisations (2), qui nourrissent le Backtesting (3), qui mène
 à l'Automatisation (4). Un seul pilier sans `etage` suffit à retomber sur la
 grille — les hubs qui rassemblent des sections sans chaîne (formations,
-statistiques) n'ont donc rien à déclarer. Une section `concept` reste hors
+machine-learning) n'ont donc rien à déclarer. Une section `concept` reste hors
 pyramide : elle garde son bandeau pleine largeur, en dessous.
 
 ## Types d'item

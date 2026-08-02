@@ -120,10 +120,16 @@ HUBS = {
             "backtesting": "formations/backtesting",
         },
     },
-    "statistiques": {
-        "dossiers": ["Statistiques"],
-        "chemins": {"lotto-649": "Statistiques/Lotto 649"},
-        "assets": {"lotto-649": "statistiques/lotto-649"},
+    "machine-learning": {
+        "dossiers": ["Machine Learning"],
+        "chemins": {
+            "lotto-649": "Machine Learning/Lotto 649",
+            "order-flow": "Machine Learning/Order Flow",
+        },
+        "assets": {
+            "lotto-649": "machine-learning/lotto-649",
+            "order-flow": "machine-learning/order-flow",
+        },
     },
 }
 
@@ -259,7 +265,7 @@ def assembler_hub(pid, dossier_portfolio, dry_run):
         # "aplatir": true — les sections du pilier remontent AU PREMIER NIVEAU du
         # hub (aucun parent) et la section-enveloppe est RETIRÉE. Le hub présente
         # alors directement le contenu du pilier, sans carte intermédiaire. Sert
-        # quand un hub n'a qu'un seul projet (Statistiques → Lotto 6/49) : on évite
+        # quand un hub n'a qu'un seul projet (Machine Learning → Lotto 6/49) : on évite
         # le clic superflu et l'incohérence « choisir une Phase OU le projet ».
         aplatir = section.pop("aplatir", False)
         if not aplatir:

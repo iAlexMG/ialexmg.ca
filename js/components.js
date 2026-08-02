@@ -18,7 +18,7 @@
  */
 
 const Composants = (function () {
-  // Navigation complète : Trading ▾ (Crypto, Indices) · Statistiques ·
+  // Navigation complète : Trading ▾ (Crypto, Indices) · Machine Learning ·
   // Formations · À propos · Contact. L'accueil s'atteint par la marque.
   // Le groupe Trading est un menu déroulant sur desktop ; sur mobile ses deux
   // entrées s'affichent à plat (le déclencheur devient une étiquette).
@@ -32,7 +32,7 @@ const Composants = (function () {
           { href: "indices.html", page: "indices", i18n: "projet.indices" },
         ],
       },
-      { href: "statistiques.html", page: "statistiques", i18n: "projet.statistiques" },
+      { href: "machine-learning.html", page: "machine-learning", i18n: "projet.machine-learning" },
       { href: "formations.html", page: "formations", i18n: "projet.formations" },
       { href: "apropos.html", page: "apropos", i18n: "nav.apropos" },
       { href: "contact.html", page: "contact", i18n: "nav.contact" },
