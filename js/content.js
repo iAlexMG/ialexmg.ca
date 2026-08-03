@@ -1505,6 +1505,22 @@ const Contenu = (function () {
             "&s=" + encodeURIComponent(suivante.id)
         )
       );
+    } else if (section.suite && section.suite.s) {
+      // Feuille terminale sans frère suivant : suite déclarée à la main
+      // (clé "suite": { s }) — évite le cul-de-sac du dernier maillon d'un
+      // hub sans jumeau (ex. Order flow -> Lotto 6/49).
+      const cibleSuite = trouverSection(sections, section.suite.s);
+      if (cibleSuite) {
+        cartes.push(
+          carteContinuer(
+            "continuer.suite",
+            texteLocalise(cibleSuite.titre),
+            pageSection +
+              "?p=" + encodeURIComponent(projet) +
+              "&s=" + encodeURIComponent(section.suite.s)
+          )
+        );
+      }
     }
 
     // Le miroir de l'autre marché, au niveau du PILIER racine : depuis une
