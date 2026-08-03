@@ -630,8 +630,8 @@
         "en": "20 measures"
       },
       "texte": {
-        "fr": "L'**order flow** — le footprint — garde ce que la chandelle OHLCV jette : à chaque niveau de prix, qui a été agressif à l'achat, qui à la vente. En crypto, l'exchange publie le côté du preneur (taker), donc ce déséquilibre acheteur-vendeur est **réel**, pas inféré. La question du projet : un modèle d'apprentissage machine y trouve-t-il un signal exploitable sur BTCUSDT, en 1 minute ?\n\nChaque minute est résumée en 20 mesures causales — l'effort du preneur, l'impact sur le prix, la cohérence des deux, le contexte de séance. L'étiquette suit la méthode **triple-barrier** : on pose une cible, un stop et une limite de temps proportionnels à la volatilité récente, et la première barrière touchée décide — hausse, baisse, ou plat. Le modèle (LightGBM) est **toujours** comparé à deux témoins (majorité, hasard), sur une découpe **walk-forward** purgée : on entraîne sur le passé, on teste sur le futur, sans jamais laisser filtrer d'information à venir.",
-        "en": "**Order flow** — the footprint — keeps what an OHLCV candle throws away: at each price level, who was aggressive on the buy side and who on the sell side. In crypto, the exchange publishes the taker's side, so this buy/sell imbalance is **real**, not inferred. The project's question: can a machine-learning model find an exploitable signal in it, on BTCUSDT, at the 1-minute scale?\n\nEach minute is summarized into 20 causal measures — the taker's effort, the price impact, the coherence of the two, the session context. The label follows the **triple-barrier** method: a target, a stop and a time limit, all scaled to recent volatility, and the first barrier hit decides — up, down, or flat. The model (LightGBM) is **always** compared to two baselines (majority, random), on a purged **walk-forward** split: train on the past, test on the future, never letting future information leak in."
+        "fr": "L'**order flow** — le footprint — garde ce que la chandelle OHLCV jette : à chaque niveau de prix, qui a été agressif à l'achat, qui à la vente. En crypto, l'exchange publie le côté du preneur (taker), donc ce déséquilibre acheteur-vendeur est **réel**, pas inféré.\n\nChaque minute est résumée en 20 mesures causales — l'effort du preneur, l'impact sur le prix, la cohérence des deux, le contexte de séance. L'étiquette suit la méthode **triple-barrier** : on pose une cible, un stop et une limite de temps proportionnels à la volatilité récente, et la première barrière touchée décide — hausse, baisse, ou plat. Le modèle (LightGBM) est **toujours** comparé à deux témoins (majorité, hasard), sur une découpe **walk-forward** purgée : on entraîne sur le passé, on teste sur le futur, sans jamais laisser filtrer d'information à venir.",
+        "en": "**Order flow** — the footprint — keeps what an OHLCV candle throws away: at each price level, who was aggressive on the buy side and who on the sell side. In crypto, the exchange publishes the taker's side, so this buy/sell imbalance is **real**, not inferred.\n\nEach minute is summarized into 20 causal measures — the taker's effort, the price impact, the coherence of the two, the session context. The label follows the **triple-barrier** method: a target, a stop and a time limit, all scaled to recent volatility, and the first barrier hit decides — up, down, or flat. The model (LightGBM) is **always** compared to two baselines (majority, random), on a purged **walk-forward** split: train on the past, test on the future, never letting future information leak in."
       },
       "items": [
         {
@@ -758,6 +758,9 @@
       "renvois": [
         "apprentissage-automatique"
       ],
+      "suite": {
+        "s": "lotto-649"
+      },
       "parent": "order-flow"
     }
   ]
