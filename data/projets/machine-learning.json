@@ -606,8 +606,71 @@
         "en": "Complete study"
       },
       "texte": {
-        "fr": "## La démarche\n\nL'**order flow** — le footprint — garde ce que la chandelle OHLCV jette : à chaque niveau de prix, qui a été agressif à l'achat, qui à la vente. En crypto, l'exchange publie le côté du preneur (taker), donc ce déséquilibre acheteur-vendeur est **réel**, pas inféré. La question du projet : un modèle d'apprentissage machine y trouve-t-il un signal exploitable sur BTCUSDT, en 1 minute ?\n\nChaque minute est résumée en 20 mesures causales — l'effort du preneur, l'impact sur le prix, la cohérence des deux, le contexte de séance. L'étiquette suit la méthode **triple-barrier** : on pose une cible, un stop et une limite de temps proportionnels à la volatilité récente, et la première barrière touchée décide — hausse, baisse, ou plat. Le modèle (LightGBM) est **toujours** comparé à deux témoins (majorité, hasard), sur une découpe **walk-forward** purgée : on entraîne sur le passé, on teste sur le futur, sans jamais laisser filtrer d'information à venir.\n\n## Le résultat, dit franchement\n\nSur 12 mois (524 000 minutes, un marché qui glisse de 115 000 à 64 000 $), le modèle bat les témoins de **+0,059** en **balanced accuracy** — un edge réel, stable sur six périodes et robuste au réglage des barrières. Mais tout cet edge est dans une seule classe : « ça ne va pas bouger ». Le modèle sait dire **s'il** y aura un mouvement ; il est incapable de dire **dans quel sens**. Hausse et baisse restent au niveau du hasard, et se confondent l'une avec l'autre.\n\nAutrement dit : l'order flow est ici un **détecteur de volatilité, pas de direction**. C'est un résultat honnête — et le démontrer proprement (bonne représentation, zéro fuite de données, témoins systématiques, métriques qui ne mentent pas) est tout le sujet. « Pas de direction » est une conclusion, pas un échec.\n\n## Et si on ne résume rien ? Le CNN\n\nRésumer chaque minute en 20 mesures, c'est un choix. Et si, au lieu de résumer, on donnait le footprint **entier** — la grille prix × temps, volume acheteur et vendeur à chaque niveau — à un réseau convolutif (CNN), l'outil qui lit les images ? C'est légitime ici : la grille est de la vraie donnée numérique, pas une capture d'écran. Le CNN affronte LightGBM sur exactement les mêmes minutes, les mêmes découpes, les mêmes témoins.\n\nVerdict : le CNN apprend un signal **réel** (+0,037 au-dessus du hasard, stable sur les six périodes), mais il **ne bat pas** le modèle à 20 mesures — **0,371 contre 0,393**. Et il s'enfonce dans le même travers : il détecte « ça bouge » (le « plat », rappel **0,69**) tout en restant **aveugle au sens** — hausse et baisse produisent la même réponse. Donner la grille entière à un modèle plus lourd ne révèle **aucune direction** que les mesures simples auraient ratée. Le mur est le même — et le mesurer, plutôt que de l'affirmer, est tout l'intérêt.",
-        "en": "## The approach\n\n**Order flow** — the footprint — keeps what an OHLCV candle throws away: at each price level, who was aggressive on the buy side and who on the sell side. In crypto, the exchange publishes the taker's side, so this buy/sell imbalance is **real**, not inferred. The project's question: can a machine-learning model find an exploitable signal in it, on BTCUSDT, at the 1-minute scale?\n\nEach minute is summarized into 20 causal measures — the taker's effort, the price impact, the coherence of the two, the session context. The label follows the **triple-barrier** method: a target, a stop and a time limit, all scaled to recent volatility, and the first barrier hit decides — up, down, or flat. The model (LightGBM) is **always** compared to two baselines (majority, random), on a purged **walk-forward** split: train on the past, test on the future, never letting future information leak in.\n\n## The result, stated plainly\n\nOver 12 months (524,000 minutes, a market sliding from $115,000 to $64,000), the model beats the baselines by **+0.059** in balanced accuracy — a real edge, stable across six periods and robust to the barrier setting. But all of that edge sits in a single class: \"it won't move.\" The model can tell you **whether** there will be a move; it cannot tell you **which way**. Up and down stay at chance level, and get confused with one another.\n\nIn other words: order flow here is a **volatility detector, not a direction predictor**. That is an honest result — and demonstrating it cleanly (the right representation, zero data leakage, systematic baselines, metrics that don't lie) is the whole point. \"No direction\" is a conclusion, not a failure.\n\n## What if we summarize nothing? The CNN\n\nSummarizing each minute into 20 measures is a choice. What if, instead of summarizing, we handed the **entire** footprint — the price × time grid, buyer and seller volume at every level — to a convolutional network (CNN), the tool that reads images? It's legitimate here: the grid is real numerical data, not a screenshot. The CNN faces LightGBM on exactly the same minutes, the same splits, the same baselines.\n\nVerdict: the CNN learns a **real** signal (+0.037 above chance, stable across all six periods), but it **does not beat** the 20-measure model — **0.371 vs 0.393**. And it sinks into the same flaw: it detects \"something moves\" (the \"flat\" class, recall **0.69**) while staying **blind to direction** — up and down produce the same answer. Handing the whole grid to a heavier model reveals **no direction** that the simple measures missed. The wall is the same — and measuring it, rather than asserting it, is the whole point."
+        "fr": "## Le parcours\n\nTrois temps, à lire dans l'ordre : **la démarche** et l'étiquetage des minutes, le verdict du modèle **sur mesures** (LightGBM), puis le **contre-essai** sur le footprint entier (CNN). Le même juge partout — des témoins systématiques et une découpe walk-forward purgée, pour qu'aucun résultat ne doive rien au hasard du découpage.\n\nLe fil rouge, donné d'avance : l'order flow détecte **quand** ça bouge, jamais **dans quel sens**. Chaque étape le montre sur des données que le modèle n'a pas vues.",
+        "en": "## The path\n\nThree stages, in order: **the approach** and the labeling of each minute, the model's verdict **on measures** (LightGBM), then the **counter-test** on the whole footprint (CNN). The same judge throughout — systematic baselines and a purged walk-forward split, so no result owes anything to how the data was cut.\n\nThe throughline, stated up front: order flow detects **when** things move, never **which way**. Each stage shows it on data the model hasn't seen."
+      },
+      "sousHub": true
+    },
+    {
+      "id": "of-demarche",
+      "titre": {
+        "fr": "La démarche",
+        "en": "The approach"
+      },
+      "accroche": {
+        "fr": "Vingt mesures causales par minute, un étiquetage triple-barrier calibré, des témoins à chaque pas.",
+        "en": "Twenty causal measures per minute, a calibrated triple-barrier labeling, baselines at every step."
+      },
+      "intro": {
+        "fr": "Comment on transforme l'order flow d'une minute en données exploitables — et comment on étiquette ce qui s'est passé ensuite, sans jamais tricher avec le futur.",
+        "en": "How a minute of order flow becomes usable data — and how we label what happened next, without ever cheating with the future."
+      },
+      "statut": {
+        "fr": "20 mesures",
+        "en": "20 measures"
+      },
+      "texte": {
+        "fr": "L'**order flow** — le footprint — garde ce que la chandelle OHLCV jette : à chaque niveau de prix, qui a été agressif à l'achat, qui à la vente. En crypto, l'exchange publie le côté du preneur (taker), donc ce déséquilibre acheteur-vendeur est **réel**, pas inféré. La question du projet : un modèle d'apprentissage machine y trouve-t-il un signal exploitable sur BTCUSDT, en 1 minute ?\n\nChaque minute est résumée en 20 mesures causales — l'effort du preneur, l'impact sur le prix, la cohérence des deux, le contexte de séance. L'étiquette suit la méthode **triple-barrier** : on pose une cible, un stop et une limite de temps proportionnels à la volatilité récente, et la première barrière touchée décide — hausse, baisse, ou plat. Le modèle (LightGBM) est **toujours** comparé à deux témoins (majorité, hasard), sur une découpe **walk-forward** purgée : on entraîne sur le passé, on teste sur le futur, sans jamais laisser filtrer d'information à venir.",
+        "en": "**Order flow** — the footprint — keeps what an OHLCV candle throws away: at each price level, who was aggressive on the buy side and who on the sell side. In crypto, the exchange publishes the taker's side, so this buy/sell imbalance is **real**, not inferred. The project's question: can a machine-learning model find an exploitable signal in it, on BTCUSDT, at the 1-minute scale?\n\nEach minute is summarized into 20 causal measures — the taker's effort, the price impact, the coherence of the two, the session context. The label follows the **triple-barrier** method: a target, a stop and a time limit, all scaled to recent volatility, and the first barrier hit decides — up, down, or flat. The model (LightGBM) is **always** compared to two baselines (majority, random), on a purged **walk-forward** split: train on the past, test on the future, never letting future information leak in."
+      },
+      "items": [
+        {
+          "id": "calibration",
+          "type": "figure",
+          "url": "assets/machine-learning/order-flow/figures/step0_class_calibration.png",
+          "titre": {
+            "fr": "Un étiquetage calibré",
+            "en": "A calibrated labeling"
+          },
+          "description": {
+            "fr": "Avant de modéliser : régler la largeur des barrières (k) pour qu'aucune classe ne soit écrasée. À k = 2, les trois classes s'équilibrent — et ce réglage, calibré sur 40 jours, tient sur 12 mois entiers.",
+            "en": "Before modeling: set the barrier width (k) so no class is crushed. At k = 2, the three classes balance out — and that setting, calibrated on 40 days, holds over a full 12 months."
+          }
+        }
+      ],
+      "parent": "order-flow"
+    },
+    {
+      "id": "of-lightgbm",
+      "titre": {
+        "fr": "Volatilité, pas direction",
+        "en": "Volatility, not direction"
+      },
+      "accroche": {
+        "fr": "Le modèle bat les témoins de +0,059 — mais tout l'edge tient dans une seule classe : « ça ne bougera pas ».",
+        "en": "The model beats the baselines by +0.059 — but all the edge sits in a single class: \"it won't move.\""
+      },
+      "intro": {
+        "fr": "Le verdict du LightGBM sur les 20 mesures : un edge réel et stable, entièrement logé dans la volatilité — jamais dans le sens du mouvement.",
+        "en": "The LightGBM verdict on the 20 measures: a real, stable edge, entirely lodged in volatility — never in the direction of the move."
+      },
+      "statut": {
+        "fr": "+0,059 bal-acc",
+        "en": "+0.059 bal-acc"
+      },
+      "texte": {
+        "fr": "Sur 12 mois (524 000 minutes, un marché qui glisse de 115 000 à 64 000 $), le modèle bat les témoins de **+0,059** en **balanced accuracy** — un edge réel, stable sur six périodes et robuste au réglage des barrières. Mais tout cet edge est dans une seule classe : « ça ne va pas bouger ». Le modèle sait dire **s'il** y aura un mouvement ; il est incapable de dire **dans quel sens**. Hausse et baisse restent au niveau du hasard, et se confondent l'une avec l'autre.\n\nAutrement dit : l'order flow est ici un **détecteur de volatilité, pas de direction**. C'est un résultat honnête — et le démontrer proprement (bonne représentation, zéro fuite de données, témoins systématiques, métriques qui ne mentent pas) est tout le sujet. « Pas de direction » est une conclusion, pas un échec.",
+        "en": "Over 12 months (524,000 minutes, a market sliding from $115,000 to $64,000), the model beats the baselines by **+0.059** in balanced accuracy — a real edge, stable across six periods and robust to the barrier setting. But all of that edge sits in a single class: \"it won't move.\" The model can tell you **whether** there will be a move; it cannot tell you **which way**. Up and down stay at chance level, and get confused with one another.\n\nIn other words: order flow here is a **volatility detector, not a direction predictor**. That is an honest result — and demonstrating it cleanly (the right representation, zero data leakage, systematic baselines, metrics that don't lie) is the whole point. \"No direction\" is a conclusion, not a failure."
       },
       "items": [
         {
@@ -635,20 +698,36 @@
             "fr": "Les mesures qui pèsent sont de la volatilité et du contexte (volume anormal, timing de séance, largeur de la value area). En rouge, les mesures directionnelles fines du footprint : elles pèsent peu — cohérent avec l'absence de direction.",
             "en": "The measures that matter are volatility and context (abnormal volume, session timing, value-area width). In red, the fine directional footprint measures: they barely register — consistent with the absence of direction."
           }
-        },
-        {
-          "id": "calibration",
-          "type": "figure",
-          "url": "assets/machine-learning/order-flow/figures/step0_class_calibration.png",
-          "titre": {
-            "fr": "Un étiquetage calibré",
-            "en": "A calibrated labeling"
-          },
-          "description": {
-            "fr": "Avant de modéliser : régler la largeur des barrières (k) pour qu'aucune classe ne soit écrasée. À k = 2, les trois classes s'équilibrent — et ce réglage, calibré sur 40 jours, tient sur 12 mois entiers.",
-            "en": "Before modeling: set the barrier width (k) so no class is crushed. At k = 2, the three classes balance out — and that setting, calibrated on 40 days, holds over a full 12 months."
-          }
-        },
+        }
+      ],
+      "renvois": [
+        "apprentissage-automatique"
+      ],
+      "parent": "order-flow"
+    },
+    {
+      "id": "of-cnn",
+      "titre": {
+        "fr": "Le duel CNN",
+        "en": "The CNN duel"
+      },
+      "accroche": {
+        "fr": "Le footprint entier donné à un réseau convolutif : un vrai signal, mais il ne bat pas les 20 mesures — et reste aveugle au sens.",
+        "en": "The whole footprint handed to a convolutional network: a real signal, but it doesn't beat the 20 measures — and stays blind to direction."
+      },
+      "intro": {
+        "fr": "Et si on ne résume rien ? On donne la grille prix × temps entière à un CNN, sur exactement les mêmes minutes — et on regarde s'il trouve la direction que les mesures ont ratée.",
+        "en": "What if we summarize nothing? We hand the whole price × time grid to a CNN, on exactly the same minutes — and see whether it finds the direction the measures missed."
+      },
+      "statut": {
+        "fr": "0,371 vs 0,393",
+        "en": "0.371 vs 0.393"
+      },
+      "texte": {
+        "fr": "Résumer chaque minute en 20 mesures, c'est un choix. Et si, au lieu de résumer, on donnait le footprint **entier** — la grille prix × temps, volume acheteur et vendeur à chaque niveau — à un réseau convolutif (CNN), l'outil qui lit les images ? C'est légitime ici : la grille est de la vraie donnée numérique, pas une capture d'écran. Le CNN affronte LightGBM sur exactement les mêmes minutes, les mêmes découpes, les mêmes témoins.\n\nVerdict : le CNN apprend un signal **réel** (+0,037 au-dessus du hasard, stable sur les six périodes), mais il **ne bat pas** le modèle à 20 mesures — **0,371 contre 0,393**. Et il s'enfonce dans le même travers : il détecte « ça bouge » (le « plat », rappel **0,69**) tout en restant **aveugle au sens** — hausse et baisse produisent la même réponse. Donner la grille entière à un modèle plus lourd ne révèle **aucune direction** que les mesures simples auraient ratée. Le mur est le même — et le mesurer, plutôt que de l'affirmer, est tout l'intérêt.",
+        "en": "Summarizing each minute into 20 measures is a choice. What if, instead of summarizing, we handed the **entire** footprint — the price × time grid, buyer and seller volume at every level — to a convolutional network (CNN), the tool that reads images? It's legitimate here: the grid is real numerical data, not a screenshot. The CNN faces LightGBM on exactly the same minutes, the same splits, the same baselines.\n\nVerdict: the CNN learns a **real** signal (+0.037 above chance, stable across all six periods), but it **does not beat** the 20-measure model — **0.371 vs 0.393**. And it sinks into the same flaw: it detects \"something moves\" (the \"flat\" class, recall **0.69**) while staying **blind to direction** — up and down produce the same answer. Handing the whole grid to a heavier model reveals **no direction** that the simple measures missed. The wall is the same — and measuring it, rather than asserting it, is the whole point."
+      },
+      "items": [
         {
           "id": "duel",
           "type": "figure",
@@ -675,7 +754,11 @@
             "en": "CNN predictions. The \"flat\" column is dark throughout: the network detects volatility (recall 0.69). But the \"down\" and \"up\" rows are nearly identical — it cannot tell the two directions apart (up recall 0.11). Volatility, not direction, confirmed by a heavier model."
           }
         }
-      ]
+      ],
+      "renvois": [
+        "apprentissage-automatique"
+      ],
+      "parent": "order-flow"
     }
   ]
 }
