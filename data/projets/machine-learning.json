@@ -708,24 +708,24 @@
     {
       "id": "of-cnn",
       "titre": {
-        "fr": "Le duel CNN",
-        "en": "The CNN duel"
+        "fr": "Le footprint entier",
+        "en": "The whole footprint"
       },
       "accroche": {
-        "fr": "Le footprint entier donné à un réseau convolutif : un vrai signal, mais il ne bat pas les 20 mesures — et reste aveugle au sens.",
-        "en": "The whole footprint handed to a convolutional network: a real signal, but it doesn't beat the 20 measures — and stays blind to direction."
+        "fr": "Le footprint entier donné à un CNN — en duel, puis à toute résolution intra-barre. Le même mur : de la volatilité, jamais de direction.",
+        "en": "The whole footprint handed to a CNN — in a duel, then at every intra-bar resolution. The same wall: volatility, never direction."
       },
       "intro": {
-        "fr": "Et si on ne résume rien ? On donne la grille prix × temps entière à un CNN, sur exactement les mêmes minutes — et on regarde s'il trouve la direction que les mesures ont ratée.",
-        "en": "What if we summarize nothing? We hand the whole price × time grid to a CNN, on exactly the same minutes — and see whether it finds the direction the measures missed."
+        "fr": "Et si on ne résume rien ? On donne la grille entière à un CNN — d'abord en duel contre les 20 mesures, puis en isolant proprement la seule résolution intra-barre. La direction apparaît-elle au grain fin ?",
+        "en": "What if we summarize nothing? We hand the whole grid to a CNN — first in a duel against the 20 measures, then by cleanly isolating intra-bar resolution alone. Does direction show up at the fine grain?"
       },
       "statut": {
-        "fr": "0,371 vs 0,393",
-        "en": "0.371 vs 0.393"
+        "fr": "Courbe plate",
+        "en": "Flat curve"
       },
       "texte": {
-        "fr": "Résumer chaque minute en 20 mesures, c'est un choix. Et si, au lieu de résumer, on donnait le footprint **entier** — la grille prix × temps, volume acheteur et vendeur à chaque niveau — à un réseau convolutif (CNN), l'outil qui lit les images ? C'est légitime ici : la grille est de la vraie donnée numérique, pas une capture d'écran. Le CNN affronte LightGBM sur exactement les mêmes minutes, les mêmes découpes, les mêmes témoins.\n\nVerdict : le CNN apprend un signal **réel** (+0,037 au-dessus du hasard, stable sur les six périodes), mais il **ne bat pas** le modèle à 20 mesures — **0,371 contre 0,393**. Et il s'enfonce dans le même travers : il détecte « ça bouge » (le « plat », rappel **0,69**) tout en restant **aveugle au sens** — hausse et baisse produisent la même réponse. Donner la grille entière à un modèle plus lourd ne révèle **aucune direction** que les mesures simples auraient ratée. Le mur est le même — et le mesurer, plutôt que de l'affirmer, est tout l'intérêt.",
-        "en": "Summarizing each minute into 20 measures is a choice. What if, instead of summarizing, we handed the **entire** footprint — the price × time grid, buyer and seller volume at every level — to a convolutional network (CNN), the tool that reads images? It's legitimate here: the grid is real numerical data, not a screenshot. The CNN faces LightGBM on exactly the same minutes, the same splits, the same baselines.\n\nVerdict: the CNN learns a **real** signal (+0.037 above chance, stable across all six periods), but it **does not beat** the 20-measure model — **0.371 vs 0.393**. And it sinks into the same flaw: it detects \"something moves\" (the \"flat\" class, recall **0.69**) while staying **blind to direction** — up and down produce the same answer. Handing the whole grid to a heavier model reveals **no direction** that the simple measures missed. The wall is the same — and measuring it, rather than asserting it, is the whole point."
+        "fr": "Résumer chaque minute en 20 mesures, c'est un choix. Et si, au lieu de résumer, on donnait le footprint **entier** — la grille prix × temps, volume acheteur et vendeur à chaque niveau — à un réseau convolutif (CNN), l'outil qui lit les images ? C'est légitime ici : la grille est de la vraie donnée numérique, pas une capture d'écran.\n\n**Le duel.** Le CNN affronte LightGBM sur exactement les mêmes minutes, les mêmes découpes, les mêmes témoins. Il apprend un signal **réel** (+0,037 au-dessus du hasard, stable sur les six périodes), mais il **ne bat pas** le modèle à 20 mesures — **0,371 contre 0,393** — et reste aveugle au sens, tout comme lui.\n\n**Mais ce duel change deux choses à la fois** : la représentation (résumé contre grille entière) *et* la période (une minute contre 32 minutes d'historique). Il répond donc à « l'historique inter-barres aide-t-il ? », pas à la vraie question : *la même minute, deux représentations*. Pour la trancher, on gèle la minute, le label et les découpes, et on ne fait varier qu'une seule chose — la **résolution DANS la barre**, du footprint agrégé de 60 s au scatter seconde par seconde.\n\n**Le résultat : une courbe plate.** D'un bout à l'autre de l'échelle, la performance reste au même niveau (~0,365) et la direction colle au hasard (0,50). Donner la micro-structure la plus fine ne révèle **aucune direction** que les 20 mesures auraient ratée. Le mur est le même, mesuré au grain le plus fin — et le mesurer, plutôt que de l'affirmer, est tout l'intérêt.",
+        "en": "Summarizing each minute into 20 measures is a choice. What if, instead of summarizing, we handed the **entire** footprint — the price × time grid, buyer and seller volume at every level — to a convolutional network (CNN), the tool that reads images? It's legitimate here: the grid is real numerical data, not a screenshot.\n\n**The duel.** The CNN faces LightGBM on exactly the same minutes, the same splits, the same baselines. It learns a **real** signal (+0.037 above chance, stable across all six periods), but it **does not beat** the 20-measure model — **0.371 vs 0.393** — and stays blind to direction, just like it.\n\n**But that duel changes two things at once**: the representation (summary vs whole grid) *and* the window (one minute vs 32 minutes of history). So it answers \"does inter-bar history help?\", not the real question: *the same minute, two representations*. To settle that one, we freeze the minute, the label and the splits, and vary only one thing — the **resolution WITHIN the bar**, from the aggregated 60-second footprint down to a second-by-second scatter.\n\n**The result: a flat curve.** From one end of the scale to the other, performance stays at the same level (~0.365) and direction sits at chance (0.50). Handing over the finest micro-structure reveals **no direction** that the 20 measures missed. The wall is the same, measured at the finest grain — and measuring it, rather than asserting it, is the whole point."
       },
       "items": [
         {
@@ -742,16 +742,16 @@
           }
         },
         {
-          "id": "cnn-confusion",
+          "id": "intrabar",
           "type": "figure",
-          "url": "assets/machine-learning/order-flow/figures/cnn_confusion.png",
+          "url": "assets/machine-learning/order-flow/figures/intrabar_resolution.png",
           "titre": {
-            "fr": "Le CNN, aveugle au sens",
-            "en": "The CNN, blind to direction"
+            "fr": "La courbe plate",
+            "en": "The flat curve"
           },
           "description": {
-            "fr": "Prédictions du CNN. La colonne « plat » est sombre partout : le réseau détecte la volatilité (rappel 0,69). Mais les lignes « baisse » et « hausse » sont quasi identiques — il ne distingue pas les deux sens (rappel hausse 0,11). Volatilité, pas direction, confirmé par un modèle plus lourd.",
-            "en": "CNN predictions. The \"flat\" column is dark throughout: the network detects volatility (recall 0.69). But the \"down\" and \"up\" rows are nearly identical — it cannot tell the two directions apart (up recall 0.11). Volatility, not direction, confirmed by a heavier model."
+            "fr": "Balanced accuracy (à gauche) et justesse directionnelle (à droite) selon la résolution intra-barre, du footprint 60 s (K=1) au scatter 1 s (K=60), à minute et label gelés. La performance reste plate à ~0,365 — CNN et LightGBM aplati confondus, bien au-dessus du témoin — et la direction colle au hasard (0,50). La micro-structure la plus fine n'ajoute aucune direction.",
+            "en": "Balanced accuracy (left) and directional accuracy (right) by intra-bar resolution, from the 60 s footprint (K=1) to the 1 s scatter (K=60), with the minute and label frozen. Performance stays flat at ~0.365 — CNN and flattened LightGBM on top of each other, well above the baseline — and direction sits at chance (0.50). The finest micro-structure adds no direction."
           }
         }
       ],
