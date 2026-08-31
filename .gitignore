@@ -12,3 +12,6 @@ __pycache__/
 # Fichiers système
 Thumbs.db
 .DS_Store
+
+# Boite d entree de travail, note privee : le depot est PUBLIC
+zzz_siteweb.txt
