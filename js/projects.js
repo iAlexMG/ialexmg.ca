@@ -92,6 +92,7 @@ const PROJETS = [
       { i18n: "pilier.phase2", s: "phase2" },
       { i18n: "pilier.synthese", s: "synthese" },
     ],
+    code: "https://github.com/iAlexMG/iAlexMG_649",
   },
   {
     id: "formations",

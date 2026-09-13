@@ -295,7 +295,7 @@ img { max-width: 100%; display: block; }
   text-align: center;
 }
 .hero h1 { font-size: 2.5rem; }
-/* Sur-titre en mono espacé : le « note » au-dessus du titre. */
+/* Sur-titre en mono espacé : l'invite de commande au-dessus du titre. */
 .hero .sous-titre {
   font-family: var(--police-mono);
   color: var(--couleur-accent);
