@@ -1415,6 +1415,219 @@ const Contenu = (function () {
     );
   }
 
+  // --- Carte du domaine des données (SVG — page « Le domaine des données ») --
+
+  // Même principe que la carte des stratégies : les ids des sous-sections dans
+  // le JSON (clé `carteDomaine` de la section-hub), la géométrie ici. Elle
+  // redessine la carte des métiers du parcours : le bandeau de gouvernance qui
+  // surplombe, la chaîne des trois métiers avec sous chacun la bande des
+  // couches qu'il possède, la fourche des trois dérivations qui sortent de la
+  // chaîne et y reviennent, les deux fondations en socle, et le poste de
+  // travail. Les deux repères numérotés marquent les frontières où naissent
+  // les malentendus ; la prose sous la carte les explique. Au large, la carte
+  // remplace les cartes du sous-hub ; en mobile elles reprennent la main.
+  function creerCarteDomaine(section, enfants, projet, pageSection) {
+    const plan = section.carteDomaine;
+    if (!plan || !Array.isArray(plan.chaine) || !plan.chaine.length) return "";
+
+    const parId = {};
+    enfants.forEach(function (s) {
+      if (s && s.id) parId[s.id] = s;
+    });
+
+    // La grille. Trois colonnes de 286 pour la chaîne, le nœud de fin à droite,
+    // et une rangée par étage. Rien de tout cela ne vient du JSON.
+    const M = 8, W = 1064;
+    const COL_W = 286, COL_PAS = 310;
+    const FIN_X = 938, FIN_W = 134;
+    const GOUV_Y = 8, GOUV_H = 60;
+    const CH_Y = 104, CH_H = 86;
+    const CO_Y = 200, CO_H = 46;
+    const NOTE_FOURCHE_Y = 276;
+    const FO_TOP = 292, FO_Y = 312, FO_H = 86, FO_BAS = 418;
+    const NOTE_RETOUR_Y = 440;
+    const FD_ETIQ_Y = 474, FD_Y = 486, FD_H = 86;
+    const SO_Y = 600, SO_H = 60;
+    const H = 670;
+    const FOURCHE_L = 906; // la fourche court sous les trois colonnes
+    const colX = function (i) { return M + i * COL_PAS; };
+    const arrondi = function (n) { return Math.round(n * 10) / 10; };
+
+    function lien(id) {
+      return (
+        pageSection +
+        "?p=" + encodeURIComponent(projet) +
+        "&s=" + encodeURIComponent(id)
+      );
+    }
+
+    // Un nœud de formation : cliquable, nom, rôle d'une ligne, statut. En
+    // bandeau (`large`), le statut se range à droite au lieu de passer dessous.
+    function noeud(id, x, y, w, h, large) {
+      const s = parId[id];
+      if (!s) return "";
+      const nom = texteLocalise(s.carteNom) || texteLocalise(s.titre);
+      const role = texteLocalise(s.carteRole);
+      const statut = texteLocalise(s.statut);
+      const aria = texteLocalise(s.titre) + (statut ? " — " + statut : "");
+      let dedans =
+        '<text class="cd-nom" x="' + (x + 16) + '" y="' + (y + (large ? 26 : 30)) + '">' +
+        echapper(nom) + "</text>";
+      if (role) {
+        dedans +=
+          '<text class="cd-role" x="' + (x + 16) + '" y="' + (y + (large ? 46 : 52)) + '">' +
+          echapper(role) + "</text>";
+      }
+      if (statut) {
+        dedans += large
+          ? '<text class="cd-statut" x="' + (x + w - 16) + '" y="' +
+            (y + h / 2 + 4) + '" text-anchor="end">' + echapper(statut) + "</text>"
+          : '<text class="cd-statut" x="' + (x + 16) + '" y="' + (y + 73) + '">' +
+            echapper(statut) + "</text>";
+      }
+      return (
+        '<a class="cd-noeud" href="' + lien(id) + '" aria-label="' + echapper(aria) + '">' +
+        '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" rx="5"></rect>' +
+        dedans +
+        "</a>"
+      );
+    }
+
+    // Un chevron plein, au milieu de l'espace entre deux nœuds.
+    function chevron(xFin, xDebut, cy) {
+      const x = (xFin + xDebut) / 2 - 5;
+      return (
+        '<path class="cd-fleche" d="M ' + x + " " + (cy - 6) +
+        " L " + (x + 10) + " " + cy + " L " + x + " " + (cy + 6) + ' Z"></path>'
+      );
+    }
+
+    let sortie = "";
+
+    // Le bandeau de gouvernance, au-dessus de tout : elle ne construit rien.
+    if (plan.gouvernance) sortie += noeud(plan.gouvernance, M, GOUV_Y, W, GOUV_H, true);
+
+    // La chaîne, et la bande des couches que chaque métier possède.
+    const couches = Array.isArray(plan.couches) ? plan.couches : [];
+    plan.chaine.forEach(function (id, i) {
+      const x = colX(i);
+      sortie += noeud(id, x, CH_Y, COL_W, CH_H, false);
+      if (i > 0) sortie += chevron(colX(i - 1) + COL_W, x, CH_Y + CH_H / 2);
+      const boites = Array.isArray(couches[i]) ? couches[i] : [];
+      if (!boites.length) return;
+      const l = (COL_W - (boites.length - 1) * 6) / boites.length;
+      boites.forEach(function (libelle, j) {
+        const bx = arrondi(x + j * (l + 6));
+        sortie +=
+          '<g class="cd-couche"><rect x="' + bx + '" y="' + CO_Y + '" width="' +
+          arrondi(l) + '" height="' + CO_H + '" rx="3"></rect>' +
+          '<text class="cd-couche-nom" x="' + arrondi(bx + l / 2) + '" y="' +
+          (CO_Y + CO_H / 2 + 4) + '" text-anchor="middle">' +
+          echapper(texteLocalise(libelle)) + "</text></g>";
+      });
+    });
+
+    // Le nœud de fin : la décision. Un repère, pas un lien.
+    if (plan.fin) {
+      const dernier = colX(plan.chaine.length - 1) + COL_W;
+      sortie +=
+        chevron(dernier, FIN_X, CH_Y + CH_H / 2) +
+        '<g class="cd-noeud cd-fin" aria-hidden="true">' +
+        '<rect x="' + FIN_X + '" y="' + CH_Y + '" width="' + FIN_W +
+        '" height="' + CH_H + '" rx="5"></rect>' +
+        // Sans note, le nom se centre : un bandeau de 134 unités n'a pas la
+        // place d'une seconde ligne, et un titre collé en haut fait bancal.
+        '<text class="cd-nom" x="' + (FIN_X + 16) + '" y="' +
+        (CH_Y + (plan.finNote ? 38 : CH_H / 2 + 5)) + '">' +
+        echapper(texteLocalise(plan.fin)) + "</text>" +
+        (plan.finNote
+          ? '<text class="cd-role" x="' + (FIN_X + 16) + '" y="' + (CH_Y + 58) + '">' +
+            echapper(texteLocalise(plan.finNote)) + "</text>"
+          : "") +
+        "</g>";
+    }
+
+    // Les deux repères : les frontières où naissent les malentendus. Ils se
+    // posent sur la couture de la bande des couches, là où elle passe d'un
+    // propriétaire à l'autre.
+    const reperes = Array.isArray(plan.reperes) ? plan.reperes : [];
+    reperes.forEach(function (libelle, i) {
+      const cx = colX(i + 1) - 12;
+      const cy = CO_Y + CO_H / 2;
+      sortie +=
+        '<g class="cd-repere"><title>' + echapper(texteLocalise(libelle)) + "</title>" +
+        '<circle cx="' + cx + '" cy="' + cy + '" r="11"></circle>' +
+        '<text x="' + cx + '" y="' + (cy + 4) + '" text-anchor="middle">' +
+        (i + 1) + "</text></g>";
+    });
+
+    // La fourche : trois métiers qui sortent de la chaîne à l'étoile et y
+    // reviennent par la décision.
+    const derivations = Array.isArray(plan.derivations) ? plan.derivations : [];
+    if (derivations.length) {
+      const colonnes = Array.isArray(couches[1]) ? couches[1].length : 3;
+      const lCouche = (COL_W - (colonnes - 1) * 6) / colonnes;
+      const depart = arrondi(colX(1) + (colonnes - 1) * (lCouche + 6) + lCouche / 2);
+      sortie +=
+        '<path class="cd-lien-doux" d="M ' + depart + " " + (CO_Y + CO_H) +
+        " V " + FO_TOP + '"></path>' +
+        '<rect class="cd-groupe" x="' + M + '" y="' + FO_TOP + '" width="' + FOURCHE_L +
+        '" height="' + (FO_BAS - FO_TOP) + '" rx="6"></rect>';
+      if (plan.noteFourche) {
+        sortie +=
+          '<text class="cd-note" x="' + (depart + 14) + '" y="' + NOTE_FOURCHE_Y + '">' +
+          echapper(texteLocalise(plan.noteFourche)) + "</text>";
+      }
+      const l = (FOURCHE_L - 32 - (derivations.length - 1) * 20) / derivations.length;
+      derivations.forEach(function (id, i) {
+        const x = arrondi(M + 16 + i * (l + 20));
+        sortie += noeud(id, x, FO_Y, arrondi(l), FO_H, false);
+        if (i > 0) sortie += chevron(x - 20, x, FO_Y + FO_H / 2);
+      });
+      // Le retour : la dérivation nourrit la décision, elle ne la remplace pas.
+      if (plan.fin) {
+        const xr = (FIN_X + FIN_W / 2 + M + FOURCHE_L) / 2;
+        sortie +=
+          '<path class="cd-lien-doux" d="M ' + (M + FOURCHE_L) + " " + (FO_Y + FO_H / 2) +
+          " H " + xr + " V " + (CH_Y + CH_H + 7) + '"></path>' +
+          '<path class="cd-fleche" d="M ' + (xr - 5) + " " + (CH_Y + CH_H + 9) +
+          " L " + xr + " " + (CH_Y + CH_H - 1) + " L " + (xr + 5) + " " +
+          (CH_Y + CH_H + 9) + ' Z"></path>';
+      }
+      if (plan.noteRetour) {
+        sortie +=
+          '<text class="cd-note" x="' + (M + FOURCHE_L) + '" y="' + NOTE_RETOUR_Y +
+          '" text-anchor="end">' + echapper(texteLocalise(plan.noteRetour)) + "</text>";
+      }
+    }
+
+    // Les deux fondations, sous la chaîne.
+    const fondations = Array.isArray(plan.fondations) ? plan.fondations : [];
+    if (fondations.length) {
+      if (plan.noteFondations) {
+        sortie +=
+          '<text class="cd-etiquette" x="' + M + '" y="' + FD_ETIQ_Y + '">' +
+          echapper(texteLocalise(plan.noteFondations).toUpperCase()) + "</text>";
+      }
+      const l = (W - (fondations.length - 1) * 24) / fondations.length;
+      fondations.forEach(function (id, i) {
+        sortie += noeud(id, arrondi(M + i * (l + 24)), FD_Y, arrondi(l), FD_H, false);
+      });
+    }
+
+    // Le poste de travail, tout en bas : il porte les neuf.
+    if (plan.socle) sortie += noeud(plan.socle, M, SO_Y, W, SO_H, true);
+
+    return (
+      '<figure class="carte-domaine">' +
+      '<svg viewBox="0 0 1080 ' + H + '" role="img" aria-label="' +
+      echapper(texteLocalise(plan.aria) || texteLocalise(section.titre)) + '">' +
+      sortie +
+      "</svg>" +
+      "</figure>"
+    );
+  }
+
   // --- Flux d'étapes d'un hub (clé racine "flux" — le parcours du 6/49) ------
 
   // « Phase 0 → Phase 1 (6 tests) → Phase 2 (4 modèles) → Synthèse » : une
@@ -1934,9 +2147,12 @@ const Contenu = (function () {
           ? '<div class="galerie galerie-tete">' + items.map(creerCarte).join("") + "</div>"
           : "";
         const sousHub = construireSousHubSections(enfants, projet, pageSection, sources);
-        // Carte SVG des stratégies (clés carteCentre/familles) : au large elle
-        // remplace les cartes du sous-hub, en mobile les cartes restent.
-        const carte = creerCarteStrategies(section, enfants, projet, pageSection);
+        // Carte SVG du sous-hub : les stratégies (clés carteCentre/familles) ou
+        // le domaine des données (clé carteDomaine). Au large elle remplace les
+        // cartes du sous-hub, en mobile les cartes restent.
+        const carte =
+          creerCarteStrategies(section, enfants, projet, pageSection) ||
+          creerCarteDomaine(section, enfants, projet, pageSection);
         const indexEnfants = carte
           ? '<div class="avec-carte">' + carte + sousHub + "</div>"
           : sousHub;
