@@ -150,6 +150,10 @@ const TRADUCTIONS = {
     "fiche.verdict": "Verdict",
     "avertissement.resultats": "Résultats obtenus sur de courts historiques — l'objectif est la chaîne fonctionnelle et réutilisable, pas des rendements crédibles. Développé avec l'assistance de Claude Code (voir À propos).",
 
+    // Index des cours d'une formation (les deux légendes de la page)
+    "cours.legende_cours": "Les cours",
+    "cours.legende_cadrage": "Les documents de cadrage",
+
     // Documents PDF
     "documents.voir": "Voir le PDF",
     "documents.telecharger": "Télécharger",
@@ -313,6 +317,10 @@ const TRADUCTIONS = {
     // Strategy fact sheet + results-page note
     "fiche.verdict": "Verdict",
     "avertissement.resultats": "Results obtained on short histories — the goal is the working, reusable pipeline, not credible returns. Built with the assistance of Claude Code (see About).",
+
+    // Course index of a training path (the page's two captions)
+    "cours.legende_cours": "The modules",
+    "cours.legende_cadrage": "Framing documents",
 
     // PDF documents
     "documents.voir": "View PDF",
