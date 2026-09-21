@@ -1886,6 +1886,93 @@ body.lightbox-ouverte { overflow: hidden; }
 }
 .cs-centre .cs-nom { font-size: 15px; }
 
+/* ----- Carte du domaine des données (SVG inline — page domaine-donnees) -----
+   Générée par content.js depuis la clé `carteDomaine` de la section-hub et les
+   clés carteNom / carteRole de ses sous-sections. Même contrat que la carte
+   des stratégies : masquée en mobile, où les cartes du sous-hub reprennent la
+   main (voir le media query 880px). Le survol d'un nœud l'éclaire et estompe
+   les autres. */
+.carte-domaine { margin: 0.5rem 0 1.75rem; display: none; }
+.carte-domaine svg { display: block; width: 100%; height: auto; }
+.cd-noeud { transition: opacity var(--transition); }
+.cd-noeud rect {
+  fill: var(--couleur-surface);
+  stroke: var(--couleur-bordure);
+  transition: stroke var(--transition);
+}
+.cd-noeud:hover rect,
+.cd-noeud:focus-visible rect { stroke: var(--couleur-accent); }
+.carte-domaine:has(a.cd-noeud:hover) .cd-noeud:not(:hover) { opacity: 0.45; }
+.cd-nom {
+  font-family: var(--police-corps);
+  font-size: 15.5px;
+  font-weight: 600;
+  fill: var(--couleur-texte);
+}
+.cd-role {
+  font-family: var(--police-corps);
+  font-size: 12.5px;
+  fill: var(--couleur-texte-doux);
+}
+.cd-statut {
+  font-family: var(--police-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  fill: var(--couleur-accent);
+}
+/* La bande des couches : ce que chaque métier possède, sous son nœud. */
+.cd-couche rect {
+  fill: var(--couleur-surface-alt);
+  stroke: var(--couleur-bordure);
+}
+.cd-couche-nom {
+  font-family: var(--police-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  fill: var(--couleur-texte-doux);
+}
+.cd-fleche { fill: var(--couleur-accent-clair); }
+.cd-lien-doux {
+  stroke: var(--couleur-accent-clair);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
+  fill: none;
+  opacity: 0.8;
+}
+/* La fourche : les trois métiers qui sortent de la chaîne et y reviennent. */
+.cd-groupe {
+  fill: none;
+  stroke: var(--couleur-bordure);
+  stroke-dasharray: 6 5;
+}
+.cd-note {
+  font-family: var(--police-mono);
+  font-size: 10.5px;
+  fill: var(--couleur-accent);
+}
+.cd-etiquette {
+  font-family: var(--police-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  fill: var(--couleur-texte-doux);
+}
+/* Les deux frontières où naissent les malentendus. */
+.cd-repere circle {
+  fill: var(--couleur-accent);
+  stroke: none;
+}
+.cd-repere text {
+  font-family: var(--police-mono);
+  font-size: 11px;
+  font-weight: 700;
+  fill: var(--couleur-fond);
+}
+.cd-fin rect {
+  fill: var(--couleur-surface-alt);
+  stroke: var(--couleur-accent-clair);
+}
+
 /* ----- Flux d'étapes d'un hub (clé racine "flux" — le parcours du 6/49) ----- */
 .flux-etapes {
   display: flex;
@@ -2042,9 +2129,11 @@ button:focus-visible {
     grid-template-columns: repeat(var(--n, 1), minmax(0, 1fr));
   }
 
-  /* La carte des stratégies remplace les cartes du sous-hub au large ; sous
-     ce seuil un SVG de 1000 pt devient illisible, les cartes reprennent. */
-  .carte-strategies { display: block; }
+  /* La carte d'un sous-hub (stratégies, domaine des données) remplace ses
+     cartes au large ; sous ce seuil un SVG de 1000 pt devient illisible, les
+     cartes reprennent. */
+  .carte-strategies,
+  .carte-domaine { display: block; }
   .avec-carte .grille-hub { display: none; }
 
   .navigation {

@@ -7,8 +7,8 @@
         "en": "The data domain"
       },
       "accroche": {
-        "fr": "Neuf formations qui suivent la chaîne de la donnée, de la source à la décision : quatre-vingt-dix cours planifiés, trente-sept écrits, 159 documents en ligne.",
-        "en": "Nine courses following the data chain, from source to decision: ninety planned modules, thirty-seven written, 159 documents online."
+        "fr": "Neuf formations qui suivent la chaîne de la donnée, de la source à la décision : quatre-vingt-neuf cours planifiés, trente-sept écrits, 159 documents en ligne.",
+        "en": "Nine courses following the data chain, from source to decision: eighty-nine planned modules, thirty-seven written, 159 documents online."
       },
       "statut": {
         "fr": "159 documents",
@@ -16,13 +16,101 @@
       },
       "sousHub": true,
       "cartesEnTete": true,
+      "carteDomaine": {
+        "aria": {
+          "fr": "Carte du domaine des données : la chaîne, ses couches et ses dérivations",
+          "en": "Map of the data domain: the chain, its layers and its derivations"
+        },
+        "gouvernance": "dd-architecture-gouvernance",
+        "chaine": [
+          "dd-data-engineering",
+          "dd-analytics-engineering",
+          "dd-business-intelligence"
+        ],
+        "couches": [
+          [
+            {
+              "fr": "Sources",
+              "en": "Sources"
+            },
+            {
+              "fr": "Ingestion",
+              "en": "Ingestion"
+            },
+            {
+              "fr": "RAW",
+              "en": "RAW"
+            }
+          ],
+          [
+            {
+              "fr": "STAGING",
+              "en": "STAGING"
+            },
+            {
+              "fr": "INTERMEDIATE",
+              "en": "INTERMEDIATE"
+            },
+            {
+              "fr": "MARTS",
+              "en": "MARTS"
+            }
+          ],
+          [
+            {
+              "fr": "Couche sémantique",
+              "en": "Semantic layer"
+            },
+            {
+              "fr": "Rapport",
+              "en": "Report"
+            }
+          ]
+        ],
+        "fin": {
+          "fr": "Décision",
+          "en": "Decision"
+        },
+        "reperes": [
+          {
+            "fr": "Première frontière : la couche RAW. L'un la livre, l'autre la reprend, et personne ne transforme dans le couloir.",
+            "en": "First border: the RAW layer. One delivers it, the other picks it up, and nobody transforms in the hallway."
+          },
+          {
+            "fr": "Seconde frontière : la définition d'un indicateur. Dans les MARTS ou dans le modèle sémantique, jamais aux deux endroits.",
+            "en": "Second border: a metric's definition. In the MARTS layer or in the semantic model, never in both."
+          }
+        ],
+        "derivations": [
+          "dd-data-science",
+          "dd-machine-learning-engineering",
+          "dd-ai-engineering"
+        ],
+        "noteFourche": {
+          "fr": "la chaîne bifurque ici",
+          "en": "the chain forks here"
+        },
+        "noteRetour": {
+          "fr": "ces trois métiers sortent de la chaîne et y reviennent",
+          "en": "these three trades leave the chain and come back to it"
+        },
+        "fondations": [
+          "dd-sql",
+          "dd-snowflake"
+        ],
+        "noteFondations": {
+          "fr": "Les deux fondations, sous la chaîne",
+          "en": "The two foundations, under the chain"
+        },
+        "socle": "dd-guide-installation"
+      },
       "intro": {
         "fr": "Un parcours d'autoformation sur les métiers de la donnée, suivi et écrit en même temps. On y descend la chaîne d'un bout à l'autre, de la source jusqu'à la décision, un métier à la fois, sur les mêmes données du début à la fin. Les supports sont ceux que j'ai écrits pour apprendre : théorie, laboratoire, exercices et corrigé pour chaque module.",
         "en": "A self-taught path through the data trades, followed and written at the same time. It walks the chain end to end, from the source to the decision, one trade at a time, on the same data from start to finish. The material is what I wrote in order to learn: theory, lab, exercises and answer key for every module."
       },
       "texte": {
-        "fr": "## La chaîne, métier par métier\n\nUne donnée traverse sept métiers entre le système qui la produit et la décision qui s'appuie dessus. Le parcours suit cet ordre, et chaque formation reprend là où la précédente s'arrête : source, ingestion, couche `RAW`, transformation, couche `MARTS`, restitution, décision.\n\n1 — **Data Engineering** reçoit les systèmes source, les API et les fichiers. Il possède l'ingestion, le stockage et l'orchestration, et il livre une couche `RAW` fiable et à l'heure.\n\n2 — **Analytics Engineering** reprend cette couche `RAW`. Il possède la transformation et la modélisation, et il livre une étoile testée et documentée.\n\n3 — **Business Intelligence** part de l'étoile livrée. Elle possède le modèle sémantique et la restitution, et elle livre un rapport qui répond à une question.\n\n4 — **Data Science** part de données propres. Elle possède la modélisation statistique, et elle livre un modèle défendable avec son incertitude.\n\n5 — **Machine Learning Engineering** part d'un modèle validé. Il possède sa mise en production, et il livre un modèle servi, versionné et surveillé.\n\n6 — **AI Engineering** part d'un corpus et d'un modèle de langue. Il possède la récupération augmentée et les agents, et il livre un système qui répond et qui s'évalue.\n\n7 — **Architecture et gouvernance** reprend tout ce qui précède. Elle possède les règles, les choix et la séquence, et elle livre une cible défendable et une feuille de route.\n\nDeux malentendus naissent toujours aux jointures, et le parcours les traite de front. Entre 01 et 02, la frontière est la couche `RAW` : l'un la livre, l'autre la reprend, et personne ne transforme dans le couloir. Entre 02 et 03, la frontière est la définition d'un indicateur, qui vit dans les `MARTS` ou dans le modèle sémantique, jamais aux deux endroits.\n\nDeux titres courants du marché tombent dans ces formations sans porter le même nom. Analyste de données, c'est la Business Intelligence. MLOps, c'est le Machine Learning Engineering.\n\n## Les deux fondations\n\nSQL avancé et Snowflake ne sont pas des étapes de la chaîne : ce sont les fondations sur lesquelles les sept reposent. La première tient le langage, la seconde une plateforme d'entrepôt et sa certification. Elles se suivent quand on en a besoin, pas à un rang précis.\n\n## Ce qui est écrit à ce jour\n\nTrente-sept cours sur quatre-vingt-dix ont leurs supports : Data Engineering en a huit sur douze, Analytics Engineering sept sur neuf, SQL avancé et Snowflake sont complètes. Les cinquante-trois autres sont nommés, à leur place, dans le parcours de leur formation, avec la mention « En construction, à venir ». Les cinq formations qui n'ont que leur plan des modules le publient tel quel.\n\nTout est en français, au format PDF, et chaque page porte sa mention de droit d'auteur.",
-        "en": "## The chain, trade by trade\n\nData crosses seven trades between the system that produces it and the decision that rests on it. The path follows that order, and each course picks up where the previous one stops: source, ingestion, the `RAW` layer, transformation, the `MARTS` layer, reporting, decision.\n\n1 — **Data Engineering** receives source systems, APIs and files. It owns ingestion, storage and orchestration, and it delivers a `RAW` layer that is reliable and on time.\n\n2 — **Analytics Engineering** picks up that `RAW` layer. It owns transformation and modelling, and it delivers a tested, documented star schema.\n\n3 — **Business Intelligence** starts from the delivered star. It owns the semantic model and reporting, and it delivers a report that answers a question.\n\n4 — **Data Science** starts from clean data. It owns statistical modelling, and it delivers a defensible model along with its uncertainty.\n\n5 — **Machine Learning Engineering** starts from a validated model. It owns putting it into production, and it delivers a model that is served, versioned and monitored.\n\n6 — **AI Engineering** starts from a corpus and a language model. It owns retrieval augmentation and agents, and it delivers a system that answers and that evaluates itself.\n\n7 — **Architecture and governance** takes in everything above. It owns the rules, the choices and the sequencing, and it delivers a defensible target and a roadmap.\n\nTwo misunderstandings always appear at the seams, and the path tackles both head on. Between 01 and 02, the border is the `RAW` layer: one delivers it, the other picks it up, and nobody transforms in the hallway. Between 02 and 03, the border is a metric's definition, which lives either in the `MARTS` layer or in the semantic model, never in both.\n\nTwo common job titles land inside these courses under another name. Data analyst is Business Intelligence. MLOps is Machine Learning Engineering.\n\n## The two foundations\n\nAdvanced SQL and Snowflake are not steps in the chain: they are the foundations the seven others rest on. The first holds the language, the second a warehouse platform and its certification. You take them when you need them, not at a fixed rank.\n\n## What is written so far\n\nThirty-seven courses out of ninety have their material: Data Engineering has eight of twelve, Analytics Engineering seven of nine, and Advanced SQL and Snowflake are complete. The other fifty-three are named, in place, in their course's module list, marked \"Under construction, still to come\". The five courses that only have their module plan publish it as is.\n\nAll of it is in French, as PDF, and every page carries its copyright notice."
+        "fr": "## La chaîne, métier par métier\n\nUne donnée traverse sept métiers entre le système qui la produit et la décision qui s'appuie dessus. Le parcours suit cet ordre, et chaque formation reprend là où la précédente s'arrête : source, ingestion, couche `RAW`, transformation, couche `MARTS`, restitution, décision.\n\n1 — **Data Engineering** reçoit les systèmes source, les API et les fichiers. Il possède l'ingestion, le stockage et l'orchestration, et il livre une couche `RAW` fiable et à l'heure.\n\n2 — **Analytics Engineering** reprend cette couche `RAW`. Il possède la transformation et la modélisation, et il livre une étoile testée et documentée.\n\n3 — **Business Intelligence** part de l'étoile livrée. Elle possède le modèle sémantique et la restitution, et elle livre un rapport qui répond à une question.\n\n4 — **Data Science** part de données propres. Elle possède la modélisation statistique, et elle livre un modèle défendable avec son incertitude.\n\n5 — **Machine Learning Engineering** part d'un modèle validé. Il possède sa mise en production, et il livre un modèle servi, versionné et surveillé.\n\n6 — **AI Engineering** part d'un corpus et d'un modèle de langue. Il possède la récupération augmentée et les agents, et il livre un système qui répond et qui s'évalue.\n\n7 — **Architecture et gouvernance** reprend tout ce qui précède. Elle possède les règles, les choix et la séquence, et elle livre une cible défendable et une feuille de route.\n\nDeux malentendus naissent toujours aux jointures, et le parcours les traite de front. Entre 01 et 02, la frontière est la couche `RAW` : l'un la livre, l'autre la reprend, et personne ne transforme dans le couloir. Entre 02 et 03, la frontière est la définition d'un indicateur, qui vit dans les `MARTS` ou dans le modèle sémantique, jamais aux deux endroits.\n\nDeux titres courants du marché tombent dans ces formations sans porter le même nom. Analyste de données, c'est la Business Intelligence. MLOps, c'est le Machine Learning Engineering.\n\n## Les deux fondations\n\nSQL avancé et Snowflake ne sont pas des étapes de la chaîne : ce sont les fondations sur lesquelles les sept reposent. La première tient le langage, la seconde une plateforme d'entrepôt et sa certification. Elles se suivent quand on en a besoin, pas à un rang précis.\n\n## Ce qui est écrit à ce jour\n\nTrente-sept cours sur quatre-vingt-neuf ont leurs supports : Data Engineering en a huit sur douze, Analytics Engineering sept sur neuf, SQL avancé et Snowflake sont complètes. Les cinquante-deux autres sont nommés, à leur place, dans le parcours de leur formation, avec la mention « En construction, à venir ». Les cinq formations qui n'ont que leur plan des modules le publient tel quel.\n\nTout est en français, au format PDF, et chaque page porte sa mention de droit d'auteur.",
+        "en": "## The chain, trade by trade\n\nData crosses seven trades between the system that produces it and the decision that rests on it. The path follows that order, and each course picks up where the previous one stops: source, ingestion, the `RAW` layer, transformation, the `MARTS` layer, reporting, decision.\n\n1 — **Data Engineering** receives source systems, APIs and files. It owns ingestion, storage and orchestration, and it delivers a `RAW` layer that is reliable and on time.\n\n2 — **Analytics Engineering** picks up that `RAW` layer. It owns transformation and modelling, and it delivers a tested, documented star schema.\n\n3 — **Business Intelligence** starts from the delivered star. It owns the semantic model and reporting, and it delivers a report that answers a question.\n\n4 — **Data Science** starts from clean data. It owns statistical modelling, and it delivers a defensible model along with its uncertainty.\n\n5 — **Machine Learning Engineering** starts from a validated model. It owns putting it into production, and it delivers a model that is served, versioned and monitored.\n\n6 — **AI Engineering** starts from a corpus and a language model. It owns retrieval augmentation and agents, and it delivers a system that answers and that evaluates itself.\n\n7 — **Architecture and governance** takes in everything above. It owns the rules, the choices and the sequencing, and it delivers a defensible target and a roadmap.\n\nTwo misunderstandings always appear at the seams, and the path tackles both head on. Between 01 and 02, the border is the `RAW` layer: one delivers it, the other picks it up, and nobody transforms in the hallway. Between 02 and 03, the border is a metric's definition, which lives either in the `MARTS` layer or in the semantic model, never in both.\n\nTwo common job titles land inside these courses under another name. Data analyst is Business Intelligence. MLOps is Machine Learning Engineering.\n\n## The two foundations\n\nAdvanced SQL and Snowflake are not steps in the chain: they are the foundations the seven others rest on. The first holds the language, the second a warehouse platform and its certification. You take them when you need them, not at a fixed rank.\n\n## What is written so far\n\nThirty-seven courses out of eighty-nine have their material: Data Engineering has eight of twelve, Analytics Engineering seven of nine, and Advanced SQL and Snowflake are complete. The other fifty-two are named, in place, in their course's module list, marked \"Under construction, still to come\". The five courses that only have their module plan publish it as is.\n\nAll of it is in French, as PDF, and every page carries its copyright notice."
       }
     },
     {
@@ -438,6 +526,14 @@
           }
         }
       ],
+      "carteNom": {
+        "fr": "Data Engineering",
+        "en": "Data Engineering"
+      },
+      "carteRole": {
+        "fr": "Ingestion, stockage, orchestration.",
+        "en": "Ingestion, storage, orchestration."
+      },
       "items": [
         {
           "id": "de-readme",
@@ -849,6 +945,14 @@
           }
         }
       ],
+      "carteNom": {
+        "fr": "Analytics Engineering",
+        "en": "Analytics Engineering"
+      },
+      "carteRole": {
+        "fr": "Transformation et modélisation.",
+        "en": "Transformation and modelling."
+      },
       "items": [
         {
           "id": "ae-readme",
@@ -1113,6 +1217,14 @@
           }
         }
       ],
+      "carteNom": {
+        "fr": "Business Intelligence",
+        "en": "Business Intelligence"
+      },
+      "carteRole": {
+        "fr": "Modèle sémantique et restitution.",
+        "en": "Semantic model and reporting."
+      },
       "items": [
         {
           "id": "bi-plan-modules",
@@ -1316,6 +1428,14 @@
           }
         }
       ],
+      "carteNom": {
+        "fr": "Data Science",
+        "en": "Data Science"
+      },
+      "carteRole": {
+        "fr": "Modélisation statistique et incertitude.",
+        "en": "Statistical modelling and uncertainty."
+      },
       "items": [
         {
           "id": "ds-plan-modules",
@@ -1489,6 +1609,14 @@
           }
         }
       ],
+      "carteNom": {
+        "fr": "ML Engineering",
+        "en": "ML Engineering"
+      },
+      "carteRole": {
+        "fr": "Un modèle servi, versionné, surveillé.",
+        "en": "A model served, versioned, monitored."
+      },
       "items": [
         {
           "id": "mle-plan-modules",
@@ -1662,6 +1790,14 @@
           }
         }
       ],
+      "carteNom": {
+        "fr": "AI Engineering",
+        "en": "AI Engineering"
+      },
+      "carteRole": {
+        "fr": "Récupération augmentée et agents.",
+        "en": "Retrieval augmentation and agents."
+      },
       "items": [
         {
           "id": "ai-plan-modules",
@@ -1835,6 +1971,14 @@
           }
         }
       ],
+      "carteNom": {
+        "fr": "Architecture et gouvernance",
+        "en": "Architecture and governance"
+      },
+      "carteRole": {
+        "fr": "La vue de dessus : règles, cible, séquence. Elle ne construit rien.",
+        "en": "The view from above: rules, target, sequence. It builds nothing."
+      },
       "items": [
         {
           "id": "arch-plan-modules",
@@ -2459,6 +2603,14 @@
           ]
         }
       ],
+      "carteNom": {
+        "fr": "SQL avancé",
+        "en": "Advanced SQL"
+      },
+      "carteRole": {
+        "fr": "Le langage, socle commun aux huit autres.",
+        "en": "The language, the base under the other eight."
+      },
       "items": [
         {
           "id": "sql-readme",
@@ -2717,6 +2869,14 @@
           ]
         }
       ],
+      "carteNom": {
+        "fr": "Snowflake (SnowPro Core)",
+        "en": "Snowflake (SnowPro Core)"
+      },
+      "carteRole": {
+        "fr": "Une plateforme d'entrepôt, et sa certification.",
+        "en": "A warehouse platform, and its certification."
+      },
       "items": [
         {
           "id": "sf-readme",
@@ -2765,6 +2925,14 @@
       "intro": {
         "fr": "Le parcours entier tourne sur un poste ordinaire, sans compte infonuagique et sans carte de crédit : Python, Git, DuckDB, Docker dans WSL 2, PostgreSQL et les pilotes. Le guide monte ce socle une fois pour toutes ; chaque formation n'allume ensuite que ce qui lui est propre, au début du cours qui s'en sert.",
         "en": "The whole path runs on an ordinary workstation, with no cloud account and no credit card: Python, Git, DuckDB, Docker inside WSL 2, PostgreSQL and the drivers. The guide sets that base up once and for all; each course then turns on only what is its own, at the start of the module that uses it."
+      },
+      "carteNom": {
+        "fr": "Le socle technique",
+        "en": "The technical base"
+      },
+      "carteRole": {
+        "fr": "Un poste monté une fois, en local, pour les neuf formations.",
+        "en": "One workstation, set up once, locally, for all nine courses."
       },
       "items": [
         {
