@@ -1,6 +1,2363 @@
 {
   "sections": [
     {
+      "id": "domaine-donnees",
+      "titre": {
+        "fr": "Le domaine des données",
+        "en": "The data domain"
+      },
+      "accroche": {
+        "fr": "Neuf formations qui suivent la chaîne de la donnée, de la source à la décision : quatre-vingt-dix cours planifiés, trente-sept écrits, 159 documents en ligne.",
+        "en": "Nine courses following the data chain, from source to decision: ninety planned modules, thirty-seven written, 159 documents online."
+      },
+      "statut": {
+        "fr": "159 documents",
+        "en": "159 documents"
+      },
+      "sousHub": true,
+      "intro": {
+        "fr": "Un parcours d'autoformation sur les métiers de la donnée, suivi et écrit en même temps. On y descend la chaîne d'un bout à l'autre, de la source jusqu'à la décision, un métier à la fois, sur les mêmes données du début à la fin. Les supports sont ceux que j'ai écrits pour apprendre : théorie, laboratoire, exercices et corrigé pour chaque module.",
+        "en": "A self-taught path through the data trades, followed and written at the same time. It walks the chain end to end, from the source to the decision, one trade at a time, on the same data from start to finish. The material is what I wrote in order to learn: theory, lab, exercises and answer key for every module."
+      },
+      "texte": {
+        "fr": "## La chaîne, et qui possède quoi\n\nUne donnée traverse sept métiers entre le système qui la produit et la décision qui s'appuie dessus. Le parcours suit cet ordre, et chaque formation reprend là où la précédente s'arrête : source, ingestion, couche `RAW`, transformation, couche `MARTS`, restitution, décision.\n\n1 — **Data Engineering** reçoit les systèmes source, les API et les fichiers. Il possède l'ingestion, le stockage et l'orchestration, et il livre une couche `RAW` fiable et à l'heure.\n\n2 — **Analytics Engineering** reprend cette couche `RAW`. Il possède la transformation et la modélisation, et il livre une étoile testée et documentée.\n\n3 — **Business Intelligence** part de l'étoile livrée. Elle possède le modèle sémantique et la restitution, et elle livre un rapport qui répond à une question.\n\n4 — **Data Science** part de données propres. Elle possède la modélisation statistique, et elle livre un modèle défendable avec son incertitude.\n\n5 — **Machine Learning Engineering** part d'un modèle validé. Il possède sa mise en production, et il livre un modèle servi, versionné et surveillé.\n\n6 — **AI Engineering** part d'un corpus et d'un modèle de langue. Il possède la récupération augmentée et les agents, et il livre un système qui répond et qui s'évalue.\n\n7 — **Architecture et gouvernance** reprend tout ce qui précède. Elle possède les règles, les choix et la séquence, et elle livre une cible défendable et une feuille de route.\n\nDeux malentendus naissent toujours aux jointures, et le parcours les traite de front. Entre 01 et 02, la frontière est la couche `RAW` : l'un la livre, l'autre la reprend, et personne ne transforme dans le couloir. Entre 02 et 03, la frontière est la définition d'un indicateur, qui vit dans les `MARTS` ou dans le modèle sémantique, jamais aux deux endroits.\n\nDeux titres courants du marché tombent dans ces formations sans porter le même nom. Analyste de données, c'est la Business Intelligence. MLOps, c'est le Machine Learning Engineering.\n\n## Les deux fondations\n\nSQL avancé et Snowflake ne sont pas des étapes de la chaîne : ce sont les fondations sur lesquelles les sept reposent. La première tient le langage, la seconde une plateforme d'entrepôt et sa certification. Elles se suivent quand on en a besoin, pas à un rang précis.\n\n## Ce qui est écrit à ce jour\n\nTrente-sept cours sur quatre-vingt-dix ont leurs supports : Data Engineering en a huit sur douze, Analytics Engineering sept sur neuf, SQL avancé et Snowflake sont complètes. Les cinquante-trois autres sont nommés, à leur place, dans le parcours de leur formation, avec la mention « En construction, à venir ». Les cinq formations qui n'ont que leur plan des modules le publient tel quel.\n\nTout est en français, au format PDF, et chaque page porte sa mention de droit d'auteur.",
+        "en": "## The chain, and who owns what\n\nData crosses seven trades between the system that produces it and the decision that rests on it. The path follows that order, and each course picks up where the previous one stops: source, ingestion, the `RAW` layer, transformation, the `MARTS` layer, reporting, decision.\n\n1 — **Data Engineering** receives source systems, APIs and files. It owns ingestion, storage and orchestration, and it delivers a `RAW` layer that is reliable and on time.\n\n2 — **Analytics Engineering** picks up that `RAW` layer. It owns transformation and modelling, and it delivers a tested, documented star schema.\n\n3 — **Business Intelligence** starts from the delivered star. It owns the semantic model and reporting, and it delivers a report that answers a question.\n\n4 — **Data Science** starts from clean data. It owns statistical modelling, and it delivers a defensible model along with its uncertainty.\n\n5 — **Machine Learning Engineering** starts from a validated model. It owns putting it into production, and it delivers a model that is served, versioned and monitored.\n\n6 — **AI Engineering** starts from a corpus and a language model. It owns retrieval augmentation and agents, and it delivers a system that answers and that evaluates itself.\n\n7 — **Architecture and governance** takes in everything above. It owns the rules, the choices and the sequencing, and it delivers a defensible target and a roadmap.\n\nTwo misunderstandings always appear at the seams, and the path tackles both head on. Between 01 and 02, the border is the `RAW` layer: one delivers it, the other picks it up, and nobody transforms in the hallway. Between 02 and 03, the border is a metric's definition, which lives either in the `MARTS` layer or in the semantic model, never in both.\n\nTwo common job titles land inside these courses under another name. Data analyst is Business Intelligence. MLOps is Machine Learning Engineering.\n\n## The two foundations\n\nAdvanced SQL and Snowflake are not steps in the chain: they are the foundations the seven others rest on. The first holds the language, the second a warehouse platform and its certification. You take them when you need them, not at a fixed rank.\n\n## What is written so far\n\nThirty-seven courses out of ninety have their material: Data Engineering has eight of twelve, Analytics Engineering seven of nine, and Advanced SQL and Snowflake are complete. The other fifty-three are named, in place, in their course's module list, marked \"Under construction, still to come\". The five courses that only have their module plan publish it as is.\n\nAll of it is in French, as PDF, and every page carries its copyright notice."
+      }
+    },
+    {
+      "id": "dd-data-engineering",
+      "titre": {
+        "fr": "Data Engineering",
+        "en": "Data Engineering"
+      },
+      "accroche": {
+        "fr": "L'ingestion, le stockage et l'orchestration : douze modules qui montent la couche RAW d'une entreprise manufacturière, des fichiers de l'ERP aux capteurs de l'usine.",
+        "en": "Ingestion, storage and orchestration: twelve modules that build the RAW layer of a manufacturing company, from ERP files to plant sensors."
+      },
+      "statut": {
+        "fr": "8 cours sur 12",
+        "en": "8 of 12 courses"
+      },
+      "sousMenu": true,
+      "intro": {
+        "fr": "La première formation de la chaîne, et la plus longue. Elle monte le pipeline de Boréal, un fabricant fictif mais complet : six sources, deux chemins (le froid par lots, le chaud en continu), et une couche RAW qu'Analytics Engineering reprendra telle quelle. La pile est locale et gratuite : DuckDB, Docker, Airflow, Spark, PostgreSQL, TimescaleDB.",
+        "en": "The first course of the chain, and the longest. It builds Boréal's pipeline, a fictional but complete manufacturer: six sources, two paths (the cold one in batches, the hot one streaming), and a RAW layer that Analytics Engineering will pick up as is. The stack is local and free: DuckDB, Docker, Airflow, Spark, PostgreSQL, TimescaleDB."
+      },
+      "texte": {
+        "fr": "## Le parcours\n\n01 — **Le métier, les sources et le premier regard.** Ce que le métier produit et à qui il le livre, l'architecture de référence et ses deux chemins, puis Boréal et ses six sources vues depuis l'amont.\n\n02 — **Les formats de fichiers et le lac bronze.** Ligne contre colonne : ce que CSV, JSON, Avro, Parquet et ORC coûtent et rendent, le partitionnement par chemin et le piège des petits fichiers.\n\n03 — **Charger des fichiers dans la couche `RAW`.** Chargement complet contre incrémental, et la propriété qui gouverne tout : l'idempotence, tenue par un journal de chargement.\n\n04 — **Lire une base et une API.** Extraire d'une base par ODBC et d'une vraie API publique, avec sa pagination, sa limitation de débit et ses pannes.\n\n05 — **Le code d'un pipeline robuste.** Ce qui sépare un script d'un pipeline : configuration hors du code, secrets hors du dépôt, journalisation exploitable, reprises et tests.\n\n06 — **Orchestration avec Airflow.** Le graphe acyclique dirigé comme façon de penser, et pourquoi un DAG qui n'est pas idempotent est une bombe à retardement.\n\n07 — **Traitement distribué avec Spark.** Quand une machine ne suffit plus, et surtout quand elle suffit encore. Le premier module du parcours qui conclut contre l'outil qu'il enseigne.\n\n08 — **Données de terrain : SCADA, historien et séries temporelles.** D'où vient la donnée industrielle : capteur, automate, SCADA, OPC UA, l'historien et ses pièges, puis les bases de séries temporelles.\n\n09 — **Streaming et événements : MQTT et Kafka.** En construction, à venir. Ce que le temps réel apporte et ce qu'il coûte : MQTT, le protocole léger du terrain, et Kafka, quand le flux doit être conservé et relu.\n\n10 — **Formats de table ouverts, lakehouse et médaillon.** En construction, à venir. Iceberg et Delta, des transactions ACID sur des fichiers, et l'architecture médaillon mise en regard de `RAW`, `STAGING` et `MARTS`.\n\n11 — **Qualité, contrats et observabilité.** En construction, à venir. Le contrat de données entre producteur et consommateur, et le choix qui revient à chaque règle : bloquer, ou avertir.\n\n12 — **Capstone : un pipeline de bout en bout.** En construction, à venir. Les deux chemins de Boréal, montés de bout en bout sur les sources générées, sans rien de neuf à apprendre.\n\n## Où en est la rédaction\n\nLes cours 01 à 08 sont écrits, vérifiés et versionnés, chacun avec ses quatre supports et sa part du code de solution. Tous leurs chiffres sortent d'une exécution réelle sur une génération des données de Boréal. Les cours 09 à 12 sont planifiés mais pas rédigés : les huit premiers forment un tout qui se suit et se rejoue sans eux.",
+        "en": "## The modules\n\n01 — **The trade, the sources and the first look.** What the trade produces and who it delivers to, the reference architecture and its two paths, then Boréal and its six sources seen from upstream.\n\n02 — **File formats and the bronze lake.** Row versus column: what CSV, JSON, Avro, Parquet and ORC cost and give back, path partitioning and the small-file trap.\n\n03 — **Loading files into the `RAW` layer.** Full versus incremental loading, and the property that governs everything: idempotence, held by a load journal.\n\n04 — **Reading a database and an API.** Extracting from a database over ODBC and from a real public API, with its pagination, rate limits and outages.\n\n05 — **The code of a robust pipeline.** What separates a script from a pipeline: configuration out of the code, secrets out of the repository, usable logging, retries and tests.\n\n06 — **Orchestration with Airflow.** The directed acyclic graph as a way of thinking, and why a DAG that is not idempotent is a time bomb.\n\n07 — **Distributed processing with Spark.** When one machine is no longer enough, and above all when it still is. The first module of the path that concludes against the tool it teaches.\n\n08 — **Field data: SCADA, historian and time series.** Where industrial data comes from: sensor, PLC, SCADA, OPC UA, the historian and its traps, then time-series databases.\n\n09 — **Streaming and events: MQTT and Kafka.** Under construction, still to come. What real time brings and what it costs: MQTT, the light protocol of the field, and Kafka, when the stream has to be kept and replayed.\n\n10 — **Open table formats, lakehouse and medallion.** Under construction, still to come. Iceberg and Delta, ACID transactions over files, and the medallion architecture set against `RAW`, `STAGING` and `MARTS`.\n\n11 — **Quality, contracts and observability.** Under construction, still to come. The data contract between producer and consumer, and the choice each rule forces: block, or warn.\n\n12 — **Capstone: an end-to-end pipeline.** Under construction, still to come. Boréal's two paths, built end to end on the generated sources, with nothing new to learn.\n\n## Where the writing stands\n\nCourses 01 to 08 are written, verified and versioned, each with its four documents and its share of the solution code. Every figure in them comes from a real run on a generation of Boréal's data. Courses 09 to 12 are planned but not written: the first eight stand on their own and can be replayed without them."
+      },
+      "items": [
+        {
+          "id": "de-readme",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/README.pdf",
+          "titre": {
+            "fr": "La formation en un coup d'œil",
+            "en": "The course at a glance"
+          },
+          "description": {
+            "fr": "À qui elle s'adresse, ce qu'elle suppose acquis, la pile et l'ordre des modules.",
+            "en": "Who it is for, what it assumes, the stack and the order of the modules."
+          }
+        },
+        {
+          "id": "de-plan-modules",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/PLAN_MODULES.pdf",
+          "titre": {
+            "fr": "Le plan des modules",
+            "en": "The module plan"
+          },
+          "description": {
+            "fr": "Le cahier de charges de la formation : les douze cours, ce que chacun tient, et les frontières avec les formations voisines.",
+            "en": "The course's specification: the twelve modules, what each one holds, and the borders with the neighbouring courses."
+          }
+        },
+        {
+          "id": "de-mise-en-situation-boreal",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Mise_en_situation_Boreal.pdf",
+          "titre": {
+            "fr": "La mise en situation : Boréal",
+            "en": "The case: Boréal"
+          },
+          "description": {
+            "fr": "L'entreprise, ses six sources et le mandat confié à l'ingénieur de données.",
+            "en": "The company, its six sources and the mandate handed to the data engineer."
+          }
+        },
+        {
+          "id": "de-01-theorie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_01_Le_metier_les_sources_et_le_premier_regard/Theorie_01.pdf",
+          "titre": {
+            "fr": "Cours 01 — Le métier, les sources et le premier regard",
+            "en": "Course 01 — The trade, the sources and the first look"
+          },
+          "description": {
+            "fr": "Ce que le métier produit et à qui il le livre, l'architecture de référence et ses deux chemins, puis Boréal et ses six sources vues depuis l'amont.",
+            "en": "What the trade produces and who it delivers to, the reference architecture and its two paths, then Boréal and its six sources seen from upstream."
+          }
+        },
+        {
+          "id": "de-01-labo",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_01_Le_metier_les_sources_et_le_premier_regard/Labo_01.pdf",
+          "titre": {
+            "fr": "Cours 01 — Laboratoire",
+            "en": "Course 01 — Lab"
+          },
+          "description": {
+            "fr": "Le laboratoire guidé, à faire après la théorie.",
+            "en": "The guided lab, to be done after the theory."
+          }
+        },
+        {
+          "id": "de-01-exercices",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_01_Le_metier_les_sources_et_le_premier_regard/Exercices_01.pdf",
+          "titre": {
+            "fr": "Cours 01 — Exercices",
+            "en": "Course 01 — Exercises"
+          },
+          "description": {
+            "fr": "Les questions du module, sans les réponses.",
+            "en": "The module's questions, without the answers."
+          }
+        },
+        {
+          "id": "de-01-corrige",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_01_Le_metier_les_sources_et_le_premier_regard/Corrige_01.pdf",
+          "titre": {
+            "fr": "Cours 01 — Corrigé",
+            "en": "Course 01 — Answer key"
+          },
+          "description": {
+            "fr": "Les réponses, avec le raisonnement qui y mène.",
+            "en": "The answers, with the reasoning that leads to them."
+          }
+        },
+        {
+          "id": "de-02-theorie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_02_Les_formats_de_fichiers_et_le_lac_bronze/Theorie_02.pdf",
+          "titre": {
+            "fr": "Cours 02 — Les formats de fichiers et le lac bronze",
+            "en": "Course 02 — File formats and the bronze lake"
+          },
+          "description": {
+            "fr": "Ligne contre colonne : ce que CSV, JSON, Avro, Parquet et ORC coûtent et rendent, le partitionnement par chemin et le piège des petits fichiers.",
+            "en": "Row versus column: what CSV, JSON, Avro, Parquet and ORC cost and give back, path partitioning and the small-file trap."
+          }
+        },
+        {
+          "id": "de-02-labo",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_02_Les_formats_de_fichiers_et_le_lac_bronze/Labo_02.pdf",
+          "titre": {
+            "fr": "Cours 02 — Laboratoire",
+            "en": "Course 02 — Lab"
+          },
+          "description": {
+            "fr": "Le laboratoire guidé, à faire après la théorie.",
+            "en": "The guided lab, to be done after the theory."
+          }
+        },
+        {
+          "id": "de-02-exercices",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_02_Les_formats_de_fichiers_et_le_lac_bronze/Exercices_02.pdf",
+          "titre": {
+            "fr": "Cours 02 — Exercices",
+            "en": "Course 02 — Exercises"
+          },
+          "description": {
+            "fr": "Les questions du module, sans les réponses.",
+            "en": "The module's questions, without the answers."
+          }
+        },
+        {
+          "id": "de-02-corrige",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_02_Les_formats_de_fichiers_et_le_lac_bronze/Corrige_02.pdf",
+          "titre": {
+            "fr": "Cours 02 — Corrigé",
+            "en": "Course 02 — Answer key"
+          },
+          "description": {
+            "fr": "Les réponses, avec le raisonnement qui y mène.",
+            "en": "The answers, with the reasoning that leads to them."
+          }
+        },
+        {
+          "id": "de-03-theorie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_03_Charger_des_fichiers_dans_la_couche_RAW/Theorie_03.pdf",
+          "titre": {
+            "fr": "Cours 03 — Charger des fichiers dans la couche RAW",
+            "en": "Course 03 — Loading files into the RAW layer"
+          },
+          "description": {
+            "fr": "Chargement complet contre incrémental, et la propriété qui gouverne tout : l'idempotence, tenue par un journal de chargement.",
+            "en": "Full versus incremental loading, and the property that governs everything: idempotence, held by a load journal."
+          }
+        },
+        {
+          "id": "de-03-labo",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_03_Charger_des_fichiers_dans_la_couche_RAW/Labo_03.pdf",
+          "titre": {
+            "fr": "Cours 03 — Laboratoire",
+            "en": "Course 03 — Lab"
+          },
+          "description": {
+            "fr": "Le laboratoire guidé, à faire après la théorie.",
+            "en": "The guided lab, to be done after the theory."
+          }
+        },
+        {
+          "id": "de-03-exercices",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_03_Charger_des_fichiers_dans_la_couche_RAW/Exercices_03.pdf",
+          "titre": {
+            "fr": "Cours 03 — Exercices",
+            "en": "Course 03 — Exercises"
+          },
+          "description": {
+            "fr": "Les questions du module, sans les réponses.",
+            "en": "The module's questions, without the answers."
+          }
+        },
+        {
+          "id": "de-03-corrige",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_03_Charger_des_fichiers_dans_la_couche_RAW/Corrige_03.pdf",
+          "titre": {
+            "fr": "Cours 03 — Corrigé",
+            "en": "Course 03 — Answer key"
+          },
+          "description": {
+            "fr": "Les réponses, avec le raisonnement qui y mène.",
+            "en": "The answers, with the reasoning that leads to them."
+          }
+        },
+        {
+          "id": "de-04-theorie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_04_Lire_une_base_et_une_API/Theorie_04.pdf",
+          "titre": {
+            "fr": "Cours 04 — Lire une base et une API",
+            "en": "Course 04 — Reading a database and an API"
+          },
+          "description": {
+            "fr": "Extraire d'une base par ODBC et d'une vraie API publique, avec sa pagination, sa limitation de débit et ses pannes.",
+            "en": "Extracting from a database over ODBC and from a real public API, with its pagination, rate limits and outages."
+          }
+        },
+        {
+          "id": "de-04-labo",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_04_Lire_une_base_et_une_API/Labo_04.pdf",
+          "titre": {
+            "fr": "Cours 04 — Laboratoire",
+            "en": "Course 04 — Lab"
+          },
+          "description": {
+            "fr": "Le laboratoire guidé, à faire après la théorie.",
+            "en": "The guided lab, to be done after the theory."
+          }
+        },
+        {
+          "id": "de-04-exercices",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_04_Lire_une_base_et_une_API/Exercices_04.pdf",
+          "titre": {
+            "fr": "Cours 04 — Exercices",
+            "en": "Course 04 — Exercises"
+          },
+          "description": {
+            "fr": "Les questions du module, sans les réponses.",
+            "en": "The module's questions, without the answers."
+          }
+        },
+        {
+          "id": "de-04-corrige",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_04_Lire_une_base_et_une_API/Corrige_04.pdf",
+          "titre": {
+            "fr": "Cours 04 — Corrigé",
+            "en": "Course 04 — Answer key"
+          },
+          "description": {
+            "fr": "Les réponses, avec le raisonnement qui y mène.",
+            "en": "The answers, with the reasoning that leads to them."
+          }
+        },
+        {
+          "id": "de-05-theorie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_05_Le_code_d_un_pipeline_robuste/Theorie_05.pdf",
+          "titre": {
+            "fr": "Cours 05 — Le code d'un pipeline robuste",
+            "en": "Course 05 — The code of a robust pipeline"
+          },
+          "description": {
+            "fr": "Ce qui sépare un script d'un pipeline : configuration hors du code, secrets hors du dépôt, journalisation exploitable, reprises et tests.",
+            "en": "What separates a script from a pipeline: configuration out of the code, secrets out of the repository, usable logging, retries and tests."
+          }
+        },
+        {
+          "id": "de-05-labo",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_05_Le_code_d_un_pipeline_robuste/Labo_05.pdf",
+          "titre": {
+            "fr": "Cours 05 — Laboratoire",
+            "en": "Course 05 — Lab"
+          },
+          "description": {
+            "fr": "Le laboratoire guidé, à faire après la théorie.",
+            "en": "The guided lab, to be done after the theory."
+          }
+        },
+        {
+          "id": "de-05-exercices",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_05_Le_code_d_un_pipeline_robuste/Exercices_05.pdf",
+          "titre": {
+            "fr": "Cours 05 — Exercices",
+            "en": "Course 05 — Exercises"
+          },
+          "description": {
+            "fr": "Les questions du module, sans les réponses.",
+            "en": "The module's questions, without the answers."
+          }
+        },
+        {
+          "id": "de-05-corrige",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_05_Le_code_d_un_pipeline_robuste/Corrige_05.pdf",
+          "titre": {
+            "fr": "Cours 05 — Corrigé",
+            "en": "Course 05 — Answer key"
+          },
+          "description": {
+            "fr": "Les réponses, avec le raisonnement qui y mène.",
+            "en": "The answers, with the reasoning that leads to them."
+          }
+        },
+        {
+          "id": "de-06-theorie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_06_Orchestration_avec_Airflow/Theorie_06.pdf",
+          "titre": {
+            "fr": "Cours 06 — Orchestration avec Airflow",
+            "en": "Course 06 — Orchestration with Airflow"
+          },
+          "description": {
+            "fr": "Le graphe acyclique dirigé comme façon de penser, et pourquoi un DAG qui n'est pas idempotent est une bombe à retardement.",
+            "en": "The directed acyclic graph as a way of thinking, and why a DAG that is not idempotent is a time bomb."
+          }
+        },
+        {
+          "id": "de-06-labo",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_06_Orchestration_avec_Airflow/Labo_06.pdf",
+          "titre": {
+            "fr": "Cours 06 — Laboratoire",
+            "en": "Course 06 — Lab"
+          },
+          "description": {
+            "fr": "Le laboratoire guidé, à faire après la théorie.",
+            "en": "The guided lab, to be done after the theory."
+          }
+        },
+        {
+          "id": "de-06-exercices",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_06_Orchestration_avec_Airflow/Exercices_06.pdf",
+          "titre": {
+            "fr": "Cours 06 — Exercices",
+            "en": "Course 06 — Exercises"
+          },
+          "description": {
+            "fr": "Les questions du module, sans les réponses.",
+            "en": "The module's questions, without the answers."
+          }
+        },
+        {
+          "id": "de-06-corrige",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_06_Orchestration_avec_Airflow/Corrige_06.pdf",
+          "titre": {
+            "fr": "Cours 06 — Corrigé",
+            "en": "Course 06 — Answer key"
+          },
+          "description": {
+            "fr": "Les réponses, avec le raisonnement qui y mène.",
+            "en": "The answers, with the reasoning that leads to them."
+          }
+        },
+        {
+          "id": "de-07-theorie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_07_Traitement_distribue_avec_Spark/Theorie_07.pdf",
+          "titre": {
+            "fr": "Cours 07 — Traitement distribué avec Spark",
+            "en": "Course 07 — Distributed processing with Spark"
+          },
+          "description": {
+            "fr": "Quand une machine ne suffit plus, et surtout quand elle suffit encore. Le premier module du parcours qui conclut contre l'outil qu'il enseigne.",
+            "en": "When one machine is no longer enough, and above all when it still is. The first module of the path that concludes against the tool it teaches."
+          }
+        },
+        {
+          "id": "de-07-labo",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_07_Traitement_distribue_avec_Spark/Labo_07.pdf",
+          "titre": {
+            "fr": "Cours 07 — Laboratoire",
+            "en": "Course 07 — Lab"
+          },
+          "description": {
+            "fr": "Le laboratoire guidé, à faire après la théorie.",
+            "en": "The guided lab, to be done after the theory."
+          }
+        },
+        {
+          "id": "de-07-exercices",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_07_Traitement_distribue_avec_Spark/Exercices_07.pdf",
+          "titre": {
+            "fr": "Cours 07 — Exercices",
+            "en": "Course 07 — Exercises"
+          },
+          "description": {
+            "fr": "Les questions du module, sans les réponses.",
+            "en": "The module's questions, without the answers."
+          }
+        },
+        {
+          "id": "de-07-corrige",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_07_Traitement_distribue_avec_Spark/Corrige_07.pdf",
+          "titre": {
+            "fr": "Cours 07 — Corrigé",
+            "en": "Course 07 — Answer key"
+          },
+          "description": {
+            "fr": "Les réponses, avec le raisonnement qui y mène.",
+            "en": "The answers, with the reasoning that leads to them."
+          }
+        },
+        {
+          "id": "de-08-theorie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_08_Donnees_de_terrain_SCADA_historien_et_series_temporelles/Theorie_08.pdf",
+          "titre": {
+            "fr": "Cours 08 — Données de terrain : SCADA, historien et séries temporelles",
+            "en": "Course 08 — Field data: SCADA, historian and time series"
+          },
+          "description": {
+            "fr": "D'où vient la donnée industrielle : capteur, automate, SCADA, OPC UA, l'historien et ses pièges, puis les bases de séries temporelles.",
+            "en": "Where industrial data comes from: sensor, PLC, SCADA, OPC UA, the historian and its traps, then time-series databases."
+          }
+        },
+        {
+          "id": "de-08-labo",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_08_Donnees_de_terrain_SCADA_historien_et_series_temporelles/Labo_08.pdf",
+          "titre": {
+            "fr": "Cours 08 — Laboratoire",
+            "en": "Course 08 — Lab"
+          },
+          "description": {
+            "fr": "Le laboratoire guidé, à faire après la théorie.",
+            "en": "The guided lab, to be done after the theory."
+          }
+        },
+        {
+          "id": "de-08-exercices",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_08_Donnees_de_terrain_SCADA_historien_et_series_temporelles/Exercices_08.pdf",
+          "titre": {
+            "fr": "Cours 08 — Exercices",
+            "en": "Course 08 — Exercises"
+          },
+          "description": {
+            "fr": "Les questions du module, sans les réponses.",
+            "en": "The module's questions, without the answers."
+          }
+        },
+        {
+          "id": "de-08-corrige",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_08_Donnees_de_terrain_SCADA_historien_et_series_temporelles/Corrige_08.pdf",
+          "titre": {
+            "fr": "Cours 08 — Corrigé",
+            "en": "Course 08 — Answer key"
+          },
+          "description": {
+            "fr": "Les réponses, avec le raisonnement qui y mène.",
+            "en": "The answers, with the reasoning that leads to them."
+          }
+        }
+      ],
+      "parent": "domaine-donnees"
+    },
+    {
+      "id": "dd-analytics-engineering",
+      "titre": {
+        "fr": "Analytics Engineering",
+        "en": "Analytics Engineering"
+      },
+      "accroche": {
+        "fr": "La couche du milieu : neuf modules qui transforment la couche RAW reçue en trois étoiles testées et documentées, avec dbt sur DuckDB.",
+        "en": "The middle layer: nine modules that turn the RAW layer received into three tested, documented star schemas, with dbt on DuckDB."
+      },
+      "statut": {
+        "fr": "7 cours sur 9",
+        "en": "7 of 9 courses"
+      },
+      "sousMenu": true,
+      "intro": {
+        "fr": "La formation reprend la couche RAW que Data Engineering a livrée et n'y touche plus : elle modélise. Modélisation dimensionnelle à la Kimball d'abord, sur papier, puis dbt pour l'exécuter, la tester, la documenter et la rejouer. Elle a été refondue en septembre 2026, de Snowflake vers dbt-duckdb, pour tourner en local sans compte ni carte de crédit.",
+        "en": "The course picks up the RAW layer Data Engineering delivered and leaves it alone: it models. Kimball-style dimensional modelling first, on paper, then dbt to run it, test it, document it and replay it. It was rebuilt in September 2026, from Snowflake to dbt-duckdb, so it runs locally with no account and no credit card."
+      },
+      "texte": {
+        "fr": "## Le parcours\n\n01 — **Le métier, la chaîne et la couche `RAW` reçue.** Ce que l'ingénieur analytique possède, reçoit et livre, et l'architecture en couches de `RAW` jusqu'aux `MARTS`.\n\n02 — **Modélisation dimensionnelle et matrice de bus.** La conception avant tout outil : la recette de Kimball en quatre temps, le grain le plus fin, l'étoile contre le flocon.\n\n03 — **dbt et la couche `STAGING`.** Ce qu'est un modèle, un `SELECT` versionné que dbt exécute, puis la première couche : une vue par table livrée.\n\n04 — **Bâtir l'étoile des ventes.** La première étoile en dbt : la couche intermédiaire, les clés de substitution, la dimension date et le fait des lignes de vente.\n\n05 — **Fiabiliser l'étoile : tests, snapshots, documentation.** Prouver que l'étoile dit vrai et la rendre utilisable par d'autres : tests génériques et unitaires, sévérité, seuils, snapshots.\n\n06 — **Les faits que la vente ne montre pas.** Trois formes de fait de plus, chacune sur un processus qui l'exige : instantané périodique, instantané cumulatif, fait sans mesure.\n\n07 — **ELT en régime permanent : incrémental et orchestration.** Ce qui change quand le pipeline n'est plus monté mais rejoué : le modèle incrémental, sa clé unique, et le filtre naïf qui perd des lignes.\n\n08 — **CI/CD et qualité analytique (support d'avant la refonte).** Travailler par branche et par demande de tirage sur un projet analytique, et ce que l'intégration continue protège. Ce support porte l'ancienne pile Snowflake et l'ancienne numérotation : il le dit en tête de chaque page, et sert de matière au cours 08 à écrire.\n\n09 — **Capstone : le projet dbt complet.** En construction, à venir. Les trois étoiles, les dimensions conformes, l'incrémental, les tests, la documentation et la CI, assemblés sans rien découvrir de neuf.\n\n## Où en est la rédaction\n\nLes cours 01 à 07 sont écrits dans leur version refondue. Le cours 08, l'intégration continue, est publié ici dans son support d'avant la refonte : il porte encore l'ancienne pile et le dit en tête de chaque page. Il sert de matière au cours à écrire. Le capstone, cours 09, est planifié et pas rédigé.",
+        "en": "## The modules\n\n01 — **The trade, the chain and the `RAW` layer received.** What the analytics engineer owns, receives and delivers, and the layered architecture from `RAW` to `MARTS`.\n\n02 — **Dimensional modelling and the bus matrix.** Design before any tool: Kimball's four-step recipe, the finest grain, star versus snowflake.\n\n03 — **dbt and the `STAGING` layer.** What a model is, a versioned `SELECT` that dbt runs, then the first layer: one view per delivered table.\n\n04 — **Building the sales star schema.** The first star in dbt: the intermediate layer, surrogate keys, the date dimension and the sales-line fact table.\n\n05 — **Making the star trustworthy: tests, snapshots, documentation.** Proving the star tells the truth and making it usable by others: generic and unit tests, severity, thresholds, snapshots.\n\n06 — **The facts that sales don't show.** Three more fact-table shapes, each on a process that demands it: periodic snapshot, accumulating snapshot, factless fact.\n\n07 — **ELT in steady state: incremental models and orchestration.** What changes once the pipeline is no longer being built but replayed: the incremental model, its unique key, and the naive filter that drops rows.\n\n08 — **CI/CD and analytics quality (pre-rebuild material).** Working by branch and pull request on an analytics project, and what continuous integration protects. This material still carries the old Snowflake stack and the old numbering: it says so at the top of every page, and serves as raw material for course 08, still to be written.\n\n09 — **Capstone: the complete dbt project.** Under construction, still to come. The three stars, the conformed dimensions, the incremental models, the tests, the documentation and the CI, assembled with nothing new to discover.\n\n## Where the writing stands\n\nCourses 01 to 07 are written in their rebuilt version. Course 08, continuous integration, is published here in its pre-rebuild form: it still carries the old stack and says so at the top of every page. It is the raw material for the course still to be written. The capstone, course 09, is planned and not written."
+      },
+      "items": [
+        {
+          "id": "ae-readme",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/README.pdf",
+          "titre": {
+            "fr": "La formation en un coup d'œil",
+            "en": "The course at a glance"
+          },
+          "description": {
+            "fr": "À qui elle s'adresse, la pile dbt-duckdb, et la frontière avec les formations voisines.",
+            "en": "Who it is for, the dbt-duckdb stack, and the border with the neighbouring courses."
+          }
+        },
+        {
+          "id": "ae-plan-modules",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/PLAN_MODULES.pdf",
+          "titre": {
+            "fr": "Le plan des modules",
+            "en": "The module plan"
+          },
+          "description": {
+            "fr": "Le cahier de charges de la refonte : les neuf cours, ce que chacun tient, et le sort réservé à chaque pièce de l'ancienne version.",
+            "en": "The specification for the rebuild: the nine modules, what each one holds, and what happens to every piece of the old version."
+          }
+        },
+        {
+          "id": "ae-aide-memoire",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Aide_memoire.pdf",
+          "titre": {
+            "fr": "L'aide-mémoire",
+            "en": "The cheat sheet"
+          },
+          "description": {
+            "fr": "Les commandes dbt réellement enseignées, et le vocabulaire des couches.",
+            "en": "The dbt commands actually taught, and the vocabulary of the layers."
+          }
+        },
+        {
+          "id": "ae-mise-en-situation-boreal",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Mise_en_situation_Boreal.pdf",
+          "titre": {
+            "fr": "La mise en situation : Boréal",
+            "en": "The case: Boréal"
+          },
+          "description": {
+            "fr": "Le mandat confié à l'ingénieur analytique sur les données de Boréal.",
+            "en": "The mandate handed to the analytics engineer on Boréal's data."
+          }
+        },
+        {
+          "id": "ae-mise-en-situation-la-brulerie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Synthese_La_Brulerie_facile/Mise_en_situation_La_Brulerie.pdf",
+          "titre": {
+            "fr": "Synthèse facile : la mise en situation",
+            "en": "Easy synthesis: the case"
+          },
+          "description": {
+            "fr": "Un mini-cas figé, sur une brûlerie de café : l'énoncé.",
+            "en": "A small frozen case, on a coffee roastery: the brief."
+          }
+        },
+        {
+          "id": "ae-synthese-brulerie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Synthese_La_Brulerie_facile/Synthese_brulerie.pdf",
+          "titre": {
+            "fr": "Synthèse facile : le corrigé",
+            "en": "Easy synthesis: the answer key"
+          },
+          "description": {
+            "fr": "La chaîne complète montée sur le mini-cas, du staging à l'étoile.",
+            "en": "The full chain built on the small case, from staging to the star schema."
+          }
+        },
+        {
+          "id": "ae-mise-en-situation-aurore",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Synthese_Aurore_avancee/Mise_en_situation_Aurore.pdf",
+          "titre": {
+            "fr": "Synthèse avancée : la mise en situation",
+            "en": "Advanced synthesis: the case"
+          },
+          "description": {
+            "fr": "Un second univers de données, plus retors, avec son propre énoncé.",
+            "en": "A second data universe, trickier, with its own brief."
+          }
+        },
+        {
+          "id": "ae-synthese-aurore",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Synthese_Aurore_avancee/Synthese_aurore.pdf",
+          "titre": {
+            "fr": "Synthèse avancée : le corrigé",
+            "en": "Advanced synthesis: the answer key"
+          },
+          "description": {
+            "fr": "La réponse complète, sur un cas où les pièges sont ceux du terrain.",
+            "en": "The complete answer, on a case whose traps are the ones you meet in the field."
+          }
+        },
+        {
+          "id": "ae-01-theorie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_01_Le_metier_la_chaine_et_la_RAW_recue/Theorie_01.pdf",
+          "titre": {
+            "fr": "Cours 01 — Le métier, la chaîne et la couche RAW reçue",
+            "en": "Course 01 — The trade, the chain and the RAW layer received"
+          },
+          "description": {
+            "fr": "Ce que l'ingénieur analytique possède, reçoit et livre, et l'architecture en couches de RAW jusqu'aux MARTS.",
+            "en": "What the analytics engineer owns, receives and delivers, and the layered architecture from RAW to MARTS."
+          }
+        },
+        {
+          "id": "ae-01-labo",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_01_Le_metier_la_chaine_et_la_RAW_recue/Labo_01.pdf",
+          "titre": {
+            "fr": "Cours 01 — Laboratoire",
+            "en": "Course 01 — Lab"
+          },
+          "description": {
+            "fr": "Le laboratoire guidé, à faire après la théorie.",
+            "en": "The guided lab, to be done after the theory."
+          }
+        },
+        {
+          "id": "ae-01-exercices",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_01_Le_metier_la_chaine_et_la_RAW_recue/Exercices_01.pdf",
+          "titre": {
+            "fr": "Cours 01 — Exercices",
+            "en": "Course 01 — Exercises"
+          },
+          "description": {
+            "fr": "Les questions du module, sans les réponses.",
+            "en": "The module's questions, without the answers."
+          }
+        },
+        {
+          "id": "ae-01-corrige",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_01_Le_metier_la_chaine_et_la_RAW_recue/Corrige_01.pdf",
+          "titre": {
+            "fr": "Cours 01 — Corrigé",
+            "en": "Course 01 — Answer key"
+          },
+          "description": {
+            "fr": "Les réponses, avec le raisonnement qui y mène.",
+            "en": "The answers, with the reasoning that leads to them."
+          }
+        },
+        {
+          "id": "ae-02-theorie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_02_Modelisation_dimensionnelle_et_matrice_de_bus/Theorie_02.pdf",
+          "titre": {
+            "fr": "Cours 02 — Modélisation dimensionnelle et matrice de bus",
+            "en": "Course 02 — Dimensional modelling and the bus matrix"
+          },
+          "description": {
+            "fr": "La conception avant tout outil : la recette de Kimball en quatre temps, le grain le plus fin, l'étoile contre le flocon.",
+            "en": "Design before any tool: Kimball's four-step recipe, the finest grain, star versus snowflake."
+          }
+        },
+        {
+          "id": "ae-02-labo",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_02_Modelisation_dimensionnelle_et_matrice_de_bus/Labo_02.pdf",
+          "titre": {
+            "fr": "Cours 02 — Laboratoire",
+            "en": "Course 02 — Lab"
+          },
+          "description": {
+            "fr": "Le laboratoire guidé, à faire après la théorie.",
+            "en": "The guided lab, to be done after the theory."
+          }
+        },
+        {
+          "id": "ae-02-exercices",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_02_Modelisation_dimensionnelle_et_matrice_de_bus/Exercices_02.pdf",
+          "titre": {
+            "fr": "Cours 02 — Exercices",
+            "en": "Course 02 — Exercises"
+          },
+          "description": {
+            "fr": "Les questions du module, sans les réponses.",
+            "en": "The module's questions, without the answers."
+          }
+        },
+        {
+          "id": "ae-02-corrige",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_02_Modelisation_dimensionnelle_et_matrice_de_bus/Corrige_02.pdf",
+          "titre": {
+            "fr": "Cours 02 — Corrigé",
+            "en": "Course 02 — Answer key"
+          },
+          "description": {
+            "fr": "Les réponses, avec le raisonnement qui y mène.",
+            "en": "The answers, with the reasoning that leads to them."
+          }
+        },
+        {
+          "id": "ae-03-theorie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_03_dbt_et_la_couche_STAGING/Theorie_03.pdf",
+          "titre": {
+            "fr": "Cours 03 — dbt et la couche STAGING",
+            "en": "Course 03 — dbt and the STAGING layer"
+          },
+          "description": {
+            "fr": "Ce qu'est un modèle, un SELECT versionné que dbt exécute, puis la première couche : une vue par table livrée.",
+            "en": "What a model is, a versioned SELECT that dbt runs, then the first layer: one view per delivered table."
+          }
+        },
+        {
+          "id": "ae-03-labo",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_03_dbt_et_la_couche_STAGING/Labo_03.pdf",
+          "titre": {
+            "fr": "Cours 03 — Laboratoire",
+            "en": "Course 03 — Lab"
+          },
+          "description": {
+            "fr": "Le laboratoire guidé, à faire après la théorie.",
+            "en": "The guided lab, to be done after the theory."
+          }
+        },
+        {
+          "id": "ae-03-exercices",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_03_dbt_et_la_couche_STAGING/Exercices_03.pdf",
+          "titre": {
+            "fr": "Cours 03 — Exercices",
+            "en": "Course 03 — Exercises"
+          },
+          "description": {
+            "fr": "Les questions du module, sans les réponses.",
+            "en": "The module's questions, without the answers."
+          }
+        },
+        {
+          "id": "ae-03-corrige",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_03_dbt_et_la_couche_STAGING/Corrige_03.pdf",
+          "titre": {
+            "fr": "Cours 03 — Corrigé",
+            "en": "Course 03 — Answer key"
+          },
+          "description": {
+            "fr": "Les réponses, avec le raisonnement qui y mène.",
+            "en": "The answers, with the reasoning that leads to them."
+          }
+        },
+        {
+          "id": "ae-04-theorie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_04_Batir_l_etoile_des_ventes/Theorie_04.pdf",
+          "titre": {
+            "fr": "Cours 04 — Bâtir l'étoile des ventes",
+            "en": "Course 04 — Building the sales star schema"
+          },
+          "description": {
+            "fr": "La première étoile en dbt : la couche intermédiaire, les clés de substitution, la dimension date et le fait des lignes de vente.",
+            "en": "The first star in dbt: the intermediate layer, surrogate keys, the date dimension and the sales-line fact table."
+          }
+        },
+        {
+          "id": "ae-04-labo",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_04_Batir_l_etoile_des_ventes/Labo_04.pdf",
+          "titre": {
+            "fr": "Cours 04 — Laboratoire",
+            "en": "Course 04 — Lab"
+          },
+          "description": {
+            "fr": "Le laboratoire guidé, à faire après la théorie.",
+            "en": "The guided lab, to be done after the theory."
+          }
+        },
+        {
+          "id": "ae-04-exercices",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_04_Batir_l_etoile_des_ventes/Exercices_04.pdf",
+          "titre": {
+            "fr": "Cours 04 — Exercices",
+            "en": "Course 04 — Exercises"
+          },
+          "description": {
+            "fr": "Les questions du module, sans les réponses.",
+            "en": "The module's questions, without the answers."
+          }
+        },
+        {
+          "id": "ae-04-corrige",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_04_Batir_l_etoile_des_ventes/Corrige_04.pdf",
+          "titre": {
+            "fr": "Cours 04 — Corrigé",
+            "en": "Course 04 — Answer key"
+          },
+          "description": {
+            "fr": "Les réponses, avec le raisonnement qui y mène.",
+            "en": "The answers, with the reasoning that leads to them."
+          }
+        },
+        {
+          "id": "ae-05-theorie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_05_Fiabiliser_l_etoile_tests_snapshots_documentation/Theorie_05.pdf",
+          "titre": {
+            "fr": "Cours 05 — Fiabiliser l'étoile : tests, snapshots, documentation",
+            "en": "Course 05 — Making the star trustworthy: tests, snapshots, documentation"
+          },
+          "description": {
+            "fr": "Prouver que l'étoile dit vrai et la rendre utilisable par d'autres : tests génériques et unitaires, sévérité, seuils, snapshots.",
+            "en": "Proving the star tells the truth and making it usable by others: generic and unit tests, severity, thresholds, snapshots."
+          }
+        },
+        {
+          "id": "ae-05-labo",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_05_Fiabiliser_l_etoile_tests_snapshots_documentation/Labo_05.pdf",
+          "titre": {
+            "fr": "Cours 05 — Laboratoire",
+            "en": "Course 05 — Lab"
+          },
+          "description": {
+            "fr": "Le laboratoire guidé, à faire après la théorie.",
+            "en": "The guided lab, to be done after the theory."
+          }
+        },
+        {
+          "id": "ae-05-exercices",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_05_Fiabiliser_l_etoile_tests_snapshots_documentation/Exercices_05.pdf",
+          "titre": {
+            "fr": "Cours 05 — Exercices",
+            "en": "Course 05 — Exercises"
+          },
+          "description": {
+            "fr": "Les questions du module, sans les réponses.",
+            "en": "The module's questions, without the answers."
+          }
+        },
+        {
+          "id": "ae-05-corrige",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_05_Fiabiliser_l_etoile_tests_snapshots_documentation/Corrige_05.pdf",
+          "titre": {
+            "fr": "Cours 05 — Corrigé",
+            "en": "Course 05 — Answer key"
+          },
+          "description": {
+            "fr": "Les réponses, avec le raisonnement qui y mène.",
+            "en": "The answers, with the reasoning that leads to them."
+          }
+        },
+        {
+          "id": "ae-06-theorie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_06_Les_faits_que_la_vente_ne_montre_pas/Theorie_06.pdf",
+          "titre": {
+            "fr": "Cours 06 — Les faits que la vente ne montre pas",
+            "en": "Course 06 — The facts that sales don't show"
+          },
+          "description": {
+            "fr": "Trois formes de fait de plus, chacune sur un processus qui l'exige : instantané périodique, instantané cumulatif, fait sans mesure.",
+            "en": "Three more fact-table shapes, each on a process that demands it: periodic snapshot, accumulating snapshot, factless fact."
+          }
+        },
+        {
+          "id": "ae-06-labo",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_06_Les_faits_que_la_vente_ne_montre_pas/Labo_06.pdf",
+          "titre": {
+            "fr": "Cours 06 — Laboratoire",
+            "en": "Course 06 — Lab"
+          },
+          "description": {
+            "fr": "Le laboratoire guidé, à faire après la théorie.",
+            "en": "The guided lab, to be done after the theory."
+          }
+        },
+        {
+          "id": "ae-06-exercices",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_06_Les_faits_que_la_vente_ne_montre_pas/Exercices_06.pdf",
+          "titre": {
+            "fr": "Cours 06 — Exercices",
+            "en": "Course 06 — Exercises"
+          },
+          "description": {
+            "fr": "Les questions du module, sans les réponses.",
+            "en": "The module's questions, without the answers."
+          }
+        },
+        {
+          "id": "ae-06-corrige",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_06_Les_faits_que_la_vente_ne_montre_pas/Corrige_06.pdf",
+          "titre": {
+            "fr": "Cours 06 — Corrigé",
+            "en": "Course 06 — Answer key"
+          },
+          "description": {
+            "fr": "Les réponses, avec le raisonnement qui y mène.",
+            "en": "The answers, with the reasoning that leads to them."
+          }
+        },
+        {
+          "id": "ae-07-theorie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_07_ELT_en_regime_permanent/Theorie_07.pdf",
+          "titre": {
+            "fr": "Cours 07 — ELT en régime permanent : incrémental et orchestration",
+            "en": "Course 07 — ELT in steady state: incremental models and orchestration"
+          },
+          "description": {
+            "fr": "Ce qui change quand le pipeline n'est plus monté mais rejoué : le modèle incrémental, sa clé unique, et le filtre naïf qui perd des lignes.",
+            "en": "What changes once the pipeline is no longer being built but replayed: the incremental model, its unique key, and the naive filter that drops rows."
+          }
+        },
+        {
+          "id": "ae-07-labo",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_07_ELT_en_regime_permanent/Labo_07.pdf",
+          "titre": {
+            "fr": "Cours 07 — Laboratoire",
+            "en": "Course 07 — Lab"
+          },
+          "description": {
+            "fr": "Le laboratoire guidé, à faire après la théorie.",
+            "en": "The guided lab, to be done after the theory."
+          }
+        },
+        {
+          "id": "ae-07-exercices",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_07_ELT_en_regime_permanent/Exercices_07.pdf",
+          "titre": {
+            "fr": "Cours 07 — Exercices",
+            "en": "Course 07 — Exercises"
+          },
+          "description": {
+            "fr": "Les questions du module, sans les réponses.",
+            "en": "The module's questions, without the answers."
+          }
+        },
+        {
+          "id": "ae-07-corrige",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_07_ELT_en_regime_permanent/Corrige_07.pdf",
+          "titre": {
+            "fr": "Cours 07 — Corrigé",
+            "en": "Course 07 — Answer key"
+          },
+          "description": {
+            "fr": "Les réponses, avec le raisonnement qui y mène.",
+            "en": "The answers, with the reasoning that leads to them."
+          }
+        },
+        {
+          "id": "ae-08-theorie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_07_CI_CD_et_qualite_analytique/Theorie_07.pdf",
+          "titre": {
+            "fr": "Cours 08 — CI/CD et qualité analytique (support d'avant la refonte)",
+            "en": "Course 08 — CI/CD and analytics quality (pre-rebuild material)"
+          },
+          "description": {
+            "fr": "Travailler par branche et par demande de tirage sur un projet analytique, et ce que l'intégration continue protège. Ce support porte l'ancienne pile Snowflake et l'ancienne numérotation : il le dit en tête de chaque page, et sert de matière au cours 08 à écrire.",
+            "en": "Working by branch and pull request on an analytics project, and what continuous integration protects. This material still carries the old Snowflake stack and the old numbering: it says so at the top of every page, and serves as raw material for course 08, still to be written."
+          }
+        },
+        {
+          "id": "ae-08-labo",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_07_CI_CD_et_qualite_analytique/Labo_07.pdf",
+          "titre": {
+            "fr": "Cours 08 — Laboratoire",
+            "en": "Course 08 — Lab"
+          },
+          "description": {
+            "fr": "Le laboratoire guidé, à faire après la théorie.",
+            "en": "The guided lab, to be done after the theory."
+          }
+        },
+        {
+          "id": "ae-08-exercices",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_07_CI_CD_et_qualite_analytique/Exercices_07.pdf",
+          "titre": {
+            "fr": "Cours 08 — Exercices",
+            "en": "Course 08 — Exercises"
+          },
+          "description": {
+            "fr": "Les questions du module, sans les réponses.",
+            "en": "The module's questions, without the answers."
+          }
+        },
+        {
+          "id": "ae-08-corrige",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_07_CI_CD_et_qualite_analytique/Corrige_07.pdf",
+          "titre": {
+            "fr": "Cours 08 — Corrigé",
+            "en": "Course 08 — Answer key"
+          },
+          "description": {
+            "fr": "Les réponses, avec le raisonnement qui y mène.",
+            "en": "The answers, with the reasoning that leads to them."
+          }
+        }
+      ],
+      "parent": "domaine-donnees"
+    },
+    {
+      "id": "dd-business-intelligence",
+      "titre": {
+        "fr": "Business Intelligence",
+        "en": "Business Intelligence"
+      },
+      "accroche": {
+        "fr": "La restitution : neuf modules qui partent de l'étoile livrée et mènent au rapport qui répond à une question, en Power BI.",
+        "en": "Reporting: nine modules that start from the delivered star schema and lead to the report that answers a question, in Power BI."
+      },
+      "statut": {
+        "fr": "En construction, à venir",
+        "en": "Under construction"
+      },
+      "sousMenu": true,
+      "intro": {
+        "fr": "La troisième formation de la chaîne. Elle part de l'étoile qu'Analytics Engineering a livrée et ne la conçoit pas : elle construit le modèle sémantique, les mesures et le rapport. Le plan des modules est validé ; les supports restent à écrire.",
+        "en": "The third course of the chain. It starts from the star schema Analytics Engineering delivered and does not design it: it builds the semantic model, the measures and the report. The module plan is validated; the material is still to be written."
+      },
+      "texte": {
+        "fr": "## Le parcours\n\n00 — **Mise en place et rôle de la restitution.** En construction, à venir. Ce que la restitution possède, et où la chaîne s'arrête chez Analytics Engineering pour repartir ici.\n\n01 — **Le modèle sémantique et l'étoile.** En construction, à venir. Relations, cardinalité, direction de filtre, et pourquoi un modèle plat rend le DAX impossible.\n\n02 — **Préparation des données avec Power Query.** En construction, à venir. Le langage M et le pliage de requête, puis la question honnête : chaque transformation faite ici échappe au dépôt, aux tests et au lignage.\n\n03 — **DAX fondations.** En construction, à venir. Colonne calculée contre mesure, contexte de ligne et contexte de filtre, la notion qui bloque tout le monde.\n\n04 — **DAX avancé et intelligence temporelle.** En construction, à venir. Cumul annuel, comparaison à l'année précédente, moyennes mobiles, et les pièges de la table de dates incomplète.\n\n05 — **Conception visuelle et narration.** En construction, à venir. Choisir le graphique selon la question, et repérer ce qui ment sans le vouloir : l'axe tronqué, le camembert à douze parts, la double échelle.\n\n06 — **Métriques métier et définitions partagées.** En construction, à venir. Le problème du chiffre qui diffère selon le rapport, et où vit la définition : dans les `MARTS`, ou dans le modèle sémantique.\n\n07 — **Publication, sécurité et actualisation.** En construction, à venir. Espaces de travail, sécurité au niveau des lignes, passerelles, actualisation incrémentale, et ce que coûte une capacité.\n\n08 — **Gouvernance du libre-service et capstone.** En construction, à venir. Certifier un jeu de données, encadrer le libre-service sans l'étouffer, retirer un rapport mort. Puis un rapport complet sur les `MARTS` de Boréal.",
+        "en": "## The modules\n\n00 — **Setup and the role of reporting.** Under construction, still to come. What reporting owns, and where the chain stops at Analytics Engineering to start again here.\n\n01 — **The semantic model and the star schema.** Under construction, still to come. Relationships, cardinality, filter direction, and why a flat model makes DAX impossible.\n\n02 — **Data preparation with Power Query.** Under construction, still to come. The M language and query folding, then the honest question: every transformation done here escapes the repository, the tests and the lineage.\n\n03 — **DAX foundations.** Under construction, still to come. Calculated column versus measure, row context and filter context, the notion that stops everyone.\n\n04 — **Advanced DAX and time intelligence.** Under construction, still to come. Year-to-date, year-over-year, moving averages, and the traps of an incomplete date table.\n\n05 — **Visual design and storytelling.** Under construction, still to come. Choosing the chart by the question, and spotting what lies without meaning to: the truncated axis, the twelve-slice pie, the dual scale.\n\n06 — **Business metrics and shared definitions.** Under construction, still to come. The problem of the number that differs from report to report, and where the definition lives: in the `MARTS` layer, or in the semantic model.\n\n07 — **Publishing, security and refresh.** Under construction, still to come. Workspaces, row-level security, gateways, incremental refresh, and what a capacity costs.\n\n08 — **Self-service governance and capstone.** Under construction, still to come. Certifying a dataset, framing self-service without smothering it, retiring a dead report. Then a full report on Boréal's `MARTS` layer."
+      },
+      "items": [
+        {
+          "id": "bi-plan-modules",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/03_Business_Intelligence/PLAN_MODULES.pdf",
+          "titre": {
+            "fr": "Le plan des modules",
+            "en": "The module plan"
+          },
+          "description": {
+            "fr": "Le cahier de charges de la formation : les neuf cours, la pile, et les frontières avec Analytics Engineering, SQL et la gouvernance.",
+            "en": "The course's specification: the nine modules, the stack, and the borders with Analytics Engineering, SQL and governance."
+          }
+        }
+      ],
+      "parent": "domaine-donnees"
+    },
+    {
+      "id": "dd-data-science",
+      "titre": {
+        "fr": "Data Science",
+        "en": "Data Science"
+      },
+      "accroche": {
+        "fr": "La modélisation statistique : onze modules qui partent de données propres et mènent à un modèle défendable, avec son incertitude.",
+        "en": "Statistical modelling: eleven modules that start from clean data and lead to a defensible model, along with its uncertainty."
+      },
+      "statut": {
+        "fr": "En construction, à venir",
+        "en": "Under construction"
+      },
+      "sousMenu": true,
+      "intro": {
+        "fr": "La quatrième formation de la chaîne. Elle traite la fuite de données tôt et l'évaluation avant les modèles, parce qu'on ne juge pas un modèle qu'on ne sait pas évaluer. Le plan des modules est validé ; les supports restent à écrire.",
+        "en": "The fourth course of the chain. It covers data leakage early and evaluation before the models, because you do not judge a model you cannot evaluate. The module plan is validated; the material is still to be written."
+      },
+      "texte": {
+        "fr": "## Le parcours\n\n00 — **Mise en place et démarche du projet.** En construction, à venir. La démarche d'un projet de science des données, de la question métier au modèle livré.\n\n01 — **Manipulation et exploration avec pandas.** En construction, à venir. Séries et cadres, jointures, remodelage, et la figure qui sert à comprendre plutôt qu'à décorer. Le pont explicite avec le SQL déjà appris.\n\n02 — **Nettoyage, valeurs manquantes et fuite de données.** En construction, à venir. Les trois régimes de valeur manquante, puis le piège central du métier : la fuite de données, sous ses formes ordinaires.\n\n03 — **Statistique inférentielle et tests A/B.** En construction, à venir. Le test d'hypothèse, ce qu'il dit et surtout ce qu'il ne dit pas, et le protocole d'un test A/B honnête.\n\n04 — **Régression linéaire et interprétation.** En construction, à venir. Lire un coefficient et son incertitude, la colinéarité, les interactions. Le module où l'on apprend à expliquer, pas seulement à prédire.\n\n05 — **Évaluation, validation et sélection de modèles.** En construction, à venir. Placé tôt, et volontairement : validation croisée, compromis biais-variance, et la métrique choisie selon le coût réel d'une erreur.\n\n06 — **Classification et modèles à base d'arbres.** En construction, à venir. Régression logistique, arbre, forêt aléatoire, gradient boosté : ce que chacun capte et ce qu'il rate.\n\n07 — **Ingénierie des caractéristiques et pipelines.** En construction, à venir. Encodages, mise à l'échelle, agrégats par groupe, puis l'outil qui empêche la fuite par construction.\n\n08 — **Apprentissage non supervisé et réduction de dimension.** En construction, à venir. k-moyennes, DBSCAN, analyse en composantes principales, et la difficulté honnête d'évaluer un regroupement.\n\n09 — **Séries temporelles et prévision.** En construction, à venir. Décomposition, stationnarité, lissage exponentiel, SARIMA, puis l'approche par apprentissage. Validation glissante et intervalles de prévision.\n\n10 — **Mise en production, dérive et cycle de vie.** En construction, à venir. Dérive de données contre dérive de concept, quand réentraîner, et ce qui appartient à l'ingénieur de données plutôt qu'au scientifique.",
+        "en": "## The modules\n\n00 — **Setup and the project's method.** Under construction, still to come. The method of a data science project, from the business question to the delivered model.\n\n01 — **Wrangling and exploration with pandas.** Under construction, still to come. Series and frames, joins, reshaping, and the figure that helps you understand rather than decorate. The explicit bridge to the SQL already learned.\n\n02 — **Cleaning, missing values and data leakage.** Under construction, still to come. The three regimes of missing data, then the trade's central trap: data leakage, in its everyday forms.\n\n03 — **Inferential statistics and A/B testing.** Under construction, still to come. The hypothesis test, what it says and above all what it does not, and the protocol of an honest A/B test.\n\n04 — **Linear regression and interpretation.** Under construction, still to come. Reading a coefficient and its uncertainty, collinearity, interactions. The module where you learn to explain, not only to predict.\n\n05 — **Evaluation, validation and model selection.** Under construction, still to come. Placed early, and on purpose: cross-validation, the bias-variance trade-off, and the metric chosen by the real cost of an error.\n\n06 — **Classification and tree-based models.** Under construction, still to come. Logistic regression, decision tree, random forest, gradient boosting: what each one catches and what it misses.\n\n07 — **Feature engineering and pipelines.** Under construction, still to come. Encodings, scaling, group aggregates, then the tool that prevents leakage by construction.\n\n08 — **Unsupervised learning and dimensionality reduction.** Under construction, still to come. k-means, DBSCAN, principal component analysis, and the honest difficulty of evaluating a clustering.\n\n09 — **Time series and forecasting.** Under construction, still to come. Decomposition, stationarity, exponential smoothing, SARIMA, then the learning approach. Rolling validation and prediction intervals.\n\n10 — **Production, drift and the life cycle.** Under construction, still to come. Data drift versus concept drift, when to retrain, and what belongs to the data engineer rather than to the scientist."
+      },
+      "items": [
+        {
+          "id": "ds-plan-modules",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/04_Data_Science/PLAN_MODULES.pdf",
+          "titre": {
+            "fr": "Le plan des modules",
+            "en": "The module plan"
+          },
+          "description": {
+            "fr": "Le cahier de charges de la formation : les onze cours, la pile, et la frontière avec le Machine Learning Engineering.",
+            "en": "The course's specification: the eleven modules, the stack, and the border with Machine Learning Engineering."
+          }
+        }
+      ],
+      "parent": "domaine-donnees"
+    },
+    {
+      "id": "dd-machine-learning-engineering",
+      "titre": {
+        "fr": "Machine Learning Engineering",
+        "en": "Machine Learning Engineering"
+      },
+      "accroche": {
+        "fr": "La mise en production d'un modèle : neuf modules qui mènent du carnet jetable au modèle servi, versionné et surveillé. Ce que le marché appelle MLOps.",
+        "en": "Putting a model into production: nine modules that lead from a throwaway notebook to a model served, versioned and monitored. What the market calls MLOps."
+      },
+      "statut": {
+        "fr": "En construction, à venir",
+        "en": "Under construction"
+      },
+      "sousMenu": true,
+      "intro": {
+        "fr": "La cinquième formation de la chaîne. Elle part d'un modèle validé par la science des données et s'occupe de tout ce qui vient après : le suivi des expériences, la reproductibilité, le service, la surveillance. Le plan des modules est validé ; les supports restent à écrire.",
+        "en": "The fifth course of the chain. It starts from a model validated by data science and handles everything that comes after: experiment tracking, reproducibility, serving, monitoring. The module plan is validated; the material is still to be written."
+      },
+      "texte": {
+        "fr": "## Le parcours\n\n00 — **Mise en place et frontière avec le scientifique de données.** En construction, à venir. Qui possède quoi entre le scientifique et l'ingénieur, et où passe exactement la frontière.\n\n01 — **Du carnet au dépôt versionné.** En construction, à venir. Sortir de Jupyter sans perdre la trace : structure, configuration, journalisation, tests. Le carnet redevient un brouillon.\n\n02 — **Suivi des expériences et registre de modèles.** En construction, à venir. Comparer cinquante essais sans se mentir, puis répondre en audit : quel modèle exact tournait le 12 mars, sur quelles données.\n\n03 — **Versionnage des données et reproductibilité.** En construction, à venir. Ce que veut dire reproductible, les trois degrés auxquels on peut prétendre, et le coût de chacun.\n\n04 — **Chaînes d'entraînement automatisées.** En construction, à venir. Le pipeline d'entraînement comme graphe, et la porte de qualité qui empêche un mauvais modèle d'être promu tout seul.\n\n05 — **Magasin de caractéristiques et cohérence du service.** En construction, à venir. Le décalage entre entraînement et service, la faute la plus coûteuse du métier, et la version économique du magasin de caractéristiques.\n\n06 — **Servir un modèle, par lots et en ligne.** En construction, à venir. Prédiction par lots écrite dans l'entrepôt contre service en ligne derrière une API, et pourquoi le second est presque toujours choisi trop vite.\n\n07 — **Surveillance, dérive et boucle de retour.** En construction, à venir. Journaliser les prédictions et, plus dur, récupérer la vérité terrain. Fixer un seuil qui déclenche une action plutôt qu'une alerte de plus.\n\n08 — **CI/CD pour le ML et capstone.** En construction, à venir. Ce qu'on peut tester automatiquement sur un modèle et ce qu'on ne peut pas, puis un modèle mené de bout en bout, avec sa procédure de retour arrière.",
+        "en": "## The modules\n\n00 — **Setup and the boundary with the data scientist.** Under construction, still to come. Who owns what between the scientist and the engineer, and exactly where the boundary runs.\n\n01 — **From the notebook to a versioned repository.** Under construction, still to come. Leaving Jupyter without losing the trail: structure, configuration, logging, tests. The notebook goes back to being a draft.\n\n02 — **Experiment tracking and the model registry.** Under construction, still to come. Comparing fifty runs without fooling yourself, then answering in an audit: which exact model ran on March 12, on what data.\n\n03 — **Data versioning and reproducibility.** Under construction, still to come. What reproducible means, the three degrees you can claim, and what each one costs.\n\n04 — **Automated training pipelines.** Under construction, still to come. The training pipeline as a graph, and the quality gate that stops a bad model from being promoted on its own.\n\n05 — **Feature store and training/serving consistency.** Under construction, still to come. The training/serving skew, the trade's costliest mistake, and the cheap version of a feature store.\n\n06 — **Serving a model, in batch and online.** Under construction, still to come. Batch prediction written to the warehouse versus online serving behind an API, and why the second is almost always chosen too fast.\n\n07 — **Monitoring, drift and the feedback loop.** Under construction, still to come. Logging predictions and, harder, recovering ground truth. Setting a threshold that triggers an action rather than one more alert.\n\n08 — **CI/CD for ML and capstone.** Under construction, still to come. What can be tested automatically on a model and what cannot, then a model taken end to end, with its rollback procedure."
+      },
+      "items": [
+        {
+          "id": "mle-plan-modules",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/05_Machine_Learning_Engineering/PLAN_MODULES.pdf",
+          "titre": {
+            "fr": "Le plan des modules",
+            "en": "The module plan"
+          },
+          "description": {
+            "fr": "Le cahier de charges de la formation : les neuf cours, la pile, et la frontière avec la science des données.",
+            "en": "The course's specification: the nine modules, the stack, and the border with data science."
+          }
+        }
+      ],
+      "parent": "domaine-donnees"
+    },
+    {
+      "id": "dd-ai-engineering",
+      "titre": {
+        "fr": "AI Engineering",
+        "en": "AI Engineering"
+      },
+      "accroche": {
+        "fr": "Les systèmes bâtis sur un modèle de langue : neuf modules qui mènent du prompt à un système qui répond, qui cite ses sources et qui s'évalue.",
+        "en": "Systems built on a language model: nine modules that lead from the prompt to a system that answers, cites its sources and evaluates itself."
+      },
+      "statut": {
+        "fr": "En construction, à venir",
+        "en": "Under construction"
+      },
+      "sousMenu": true,
+      "intro": {
+        "fr": "La sixième formation de la chaîne. Elle prend le sujet par l'ingénierie plutôt que par la démonstration : la récupération augmentée, les appels d'outils, l'évaluation, le coût et la sécurité. Le plan des modules est validé ; les supports restent à écrire.",
+        "en": "The sixth course of the chain. It takes the subject from the engineering side rather than the demo side: retrieval augmentation, tool calls, evaluation, cost and security. The module plan is validated; the material is still to be written."
+      },
+      "texte": {
+        "fr": "## Le parcours\n\n00 — **Mise en place et paysage des modèles de langue.** En construction, à venir. Ce qui existe, ce que ça coûte, et ce qu'on peut faire tourner en local.\n\n01 — **Prompt, contexte et limites du modèle.** En construction, à venir. Jetons, fenêtre de contexte, température. Ce qui marche vraiment dans un prompt et ce qui relève du folklore.\n\n02 — **Récupération augmentée : les fondations.** En construction, à venir. Pourquoi la récupération plutôt que le réglage fin, et le montage minimal construit à la main pour voir chaque pièce.\n\n03 — **Récupération augmentée en pratique.** En construction, à venir. Là où le montage minimal se casse : recherche hybride, reclassement, découpage qui respecte la structure, réponses vérifiables.\n\n04 — **Appels d'outils et agents.** En construction, à venir. L'appel de fonction décrit honnêtement, le modèle propose et le code dispose, avec les garde-fous obligatoires : budget, étapes, confirmation.\n\n05 — **Évaluation des systèmes d'IA.** En construction, à venir. Le module qui sépare un prototype d'un produit : jeu d'évaluation, critères observables, et pourquoi la démonstration qui marche ne prouve rien.\n\n06 — **Coût, latence et choix de modèle.** En construction, à venir. Le coût par appel et par utilisateur, la mise en cache, le routage entre petit et grand modèle. Des arbitrages d'ingénieur, chiffres à l'appui.\n\n07 — **Sécurité, injection et confidentialité.** En construction, à venir. L'injection de prompt directe et indirecte, la frontière entre instruction et donnée, et ce qu'on a le droit d'envoyer à un tiers.\n\n08 — **Mise en production et capstone.** En construction, à venir. Observer un système non déterministe, tracer une conversation, puis un assistant qui répond sur l'entrepôt construit dans les formations précédentes.",
+        "en": "## The modules\n\n00 — **Setup and the language-model landscape.** Under construction, still to come. What exists, what it costs, and what can be run locally.\n\n01 — **Prompt, context and the model's limits.** Under construction, still to come. Tokens, context window, temperature. What actually works in a prompt and what is folklore.\n\n02 — **Retrieval-augmented generation: the foundations.** Under construction, still to come. Why retrieval rather than fine-tuning, and the minimal setup built by hand so you see every part.\n\n03 — **Retrieval-augmented generation in practice.** Under construction, still to come. Where the minimal setup breaks: hybrid search, reranking, chunking that respects structure, verifiable answers.\n\n04 — **Tool calls and agents.** Under construction, still to come. Function calling described honestly, the model proposes and the code disposes, with the mandatory guardrails: budget, step count, confirmation.\n\n05 — **Evaluating AI systems.** Under construction, still to come. The module that separates a prototype from a product: an evaluation set, observable criteria, and why a demo that works proves nothing.\n\n06 — **Cost, latency and model choice.** Under construction, still to come. Cost per call and per user, caching, routing between a small and a large model. Engineering trade-offs, with the numbers.\n\n07 — **Security, injection and privacy.** Under construction, still to come. Direct and indirect prompt injection, the border between instruction and data, and what you are allowed to send to a third party.\n\n08 — **Going to production, and capstone.** Under construction, still to come. Observing a non-deterministic system, tracing a conversation, then an assistant that answers on the warehouse built in the earlier courses."
+      },
+      "items": [
+        {
+          "id": "ai-plan-modules",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/06_AI_Engineering/PLAN_MODULES.pdf",
+          "titre": {
+            "fr": "Le plan des modules",
+            "en": "The module plan"
+          },
+          "description": {
+            "fr": "Le cahier de charges de la formation : les neuf cours, la pile, et ce qui reste hors du périmètre.",
+            "en": "The course's specification: the nine modules, the stack, and what stays out of scope."
+          }
+        }
+      ],
+      "parent": "domaine-donnees"
+    },
+    {
+      "id": "dd-architecture-gouvernance",
+      "titre": {
+        "fr": "Architecture et gouvernance",
+        "en": "Architecture and governance"
+      },
+      "accroche": {
+        "fr": "La formation qui referme la chaîne : neuf modules sur les règles, les choix et la séquence, jusqu'à une cible défendable et sa feuille de route.",
+        "en": "The course that closes the chain: nine modules on rules, choices and sequencing, up to a defensible target and its roadmap."
+      },
+      "statut": {
+        "fr": "En construction, à venir",
+        "en": "Under construction"
+      },
+      "sousMenu": true,
+      "intro": {
+        "fr": "La septième formation, celle qui reprend tout ce qui précède. Son cours 00, la carte du domaine, sert autant d'entrée au parcours entier que de conclusion. Le plan des modules est validé ; les supports restent à écrire.",
+        "en": "The seventh course, the one that takes in everything above. Its course 00, the map of the domain, works as an entry point to the whole path as much as a conclusion. The module plan is validated; the material is still to be written."
+      },
+      "texte": {
+        "fr": "## Le parcours\n\n00 — **La carte du domaine des données.** En construction, à venir. Les rôles, la chaîne, qui fait quoi et où sont les frontières, avec les malentendus classiques qui naissent aux jointures.\n\n01 — **Architectures de référence.** En construction, à venir. Entrepôt, lac, lakehouse, maillage de données : ce que chacun résout, ce qu'il coûte, et dans quelle taille d'entreprise il a du sens.\n\n02 — **Modélisation à l'échelle de l'entreprise.** En construction, à venir. La matrice de bus comme outil de cadrage, et Kimball, Inmon et Data Vault comparés sur des critères vérifiables plutôt que sur des convictions.\n\n03 — **Choisir sa pile, construire ou acheter.** En construction, à venir. Une grille de décision utilisable : coût total de possession, verrouillage fournisseur, coût de sortie, compétence de l'équipe.\n\n04 — **Gouvernance, catalogue et lignage.** En construction, à venir. Ce qui fonctionne et ce qui devient une réunion de plus, et comment on répond à « d'où vient ce chiffre » en moins de dix minutes.\n\n05 — **Qualité et contrats de données.** En construction, à venir. Le contrat comme engagement entre un producteur et un consommateur, et la conduite d'un incident de données, du signalement au post-mortem.\n\n06 — **Sécurité, confidentialité et conformité.** En construction, à venir. Masquage, anonymisation et pseudonymisation, avec ce que chacune garantit vraiment. La Loi 25 en pratique, comparée au RGPD.\n\n07 — **Coût et FinOps des données.** En construction, à venir. Les postes qui explosent en silence : la requête planifiée devenue inutile, le tableau de bord que personne n'ouvre, la rétention jamais révisée.\n\n08 — **Feuille de route et capstone.** En construction, à venir. Choisir la prochaine marche plutôt que la cible idéale, et séquencer une migration sans arrêter l'entreprise.",
+        "en": "## The modules\n\n00 — **The map of the data domain.** Under construction, still to come. The roles, the chain, who does what and where the borders are, with the classic misunderstandings that appear at the seams.\n\n01 — **Reference architectures.** Under construction, still to come. Warehouse, lake, lakehouse, data mesh: what each one solves, what it costs, and at what company size it makes sense.\n\n02 — **Enterprise-scale modelling.** Under construction, still to come. The bus matrix as a framing tool, and Kimball, Inmon and Data Vault compared on verifiable criteria rather than convictions.\n\n03 — **Choosing a stack, build or buy.** Under construction, still to come. A usable decision grid: total cost of ownership, vendor lock-in, exit cost, team skills.\n\n04 — **Governance, catalogue and lineage.** Under construction, still to come. What works and what turns into one more meeting, and how you answer « where does this number come from » in under ten minutes.\n\n05 — **Data quality and data contracts.** Under construction, still to come. The contract as a commitment between a producer and a consumer, and how a data incident is run, from the report to the post-mortem.\n\n06 — **Security, privacy and compliance.** Under construction, still to come. Masking, anonymization and pseudonymization, with what each really guarantees. Quebec's Law 25 in practice, compared with the GDPR.\n\n07 — **Cost and data FinOps.** Under construction, still to come. The line items that quietly explode: the scheduled query nobody needs any more, the dashboard nobody opens, the retention never revisited.\n\n08 — **Roadmap and capstone.** Under construction, still to come. Choosing the next step rather than the ideal target, and sequencing a migration without stopping the business."
+      },
+      "items": [
+        {
+          "id": "arch-plan-modules",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/07_Data_Architecture_et_Gouvernance/PLAN_MODULES.pdf",
+          "titre": {
+            "fr": "Le plan des modules",
+            "en": "The module plan"
+          },
+          "description": {
+            "fr": "Le cahier de charges de la formation : les neuf cours, et ce que chacun tranche.",
+            "en": "The course's specification: the nine modules, and what each one settles."
+          }
+        }
+      ],
+      "parent": "domaine-donnees"
+    },
+    {
+      "id": "dd-sql",
+      "titre": {
+        "fr": "SQL avancé",
+        "en": "Advanced SQL"
+      },
+      "accroche": {
+        "fr": "La fondation « langage » du parcours : le SQL de l'analyse d'abord, le SQL du moteur ensuite, avec deux laboratoires jumeaux par module, sur DuckDB et sur PostgreSQL.",
+        "en": "The path's language foundation: the SQL of analysis first, the SQL of the engine after, with twin labs for every module, on DuckDB and on PostgreSQL."
+      },
+      "statut": {
+        "fr": "12 modules, complète",
+        "en": "12 modules, complete"
+      },
+      "sousMenu": true,
+      "intro": {
+        "fr": "Douze modules rangés en trois parties. La partie A tient tout ce qui sert à répondre à une question analytique, du langage lui-même aux séries temporelles. La partie B descend sous le capot, du côté des index, des plans d'exécution et des transactions. La partie C est un cas complet qui remobilise tout.",
+        "en": "Twelve modules in three parts. Part A holds everything needed to answer an analytical question, from the language itself to time series. Part B goes under the hood, into indexes, execution plans and transactions. Part C is a full case that puts everything back to work."
+      },
+      "texte": {
+        "fr": "## Le parcours\n\n00 — **Installation.** Monter l'entrepôt dans DuckDB et la base transactionnelle dans PostgreSQL. Une seule fois, avant le cours 01.\n\n01 — **Paysage SQL et modèle relationnel.** Cinq mots qu'on confond, les cinq familles de commandes, l'ordre d'exécution logique d'une requête, la logique ternaire de `NULL`, et l'étoile située parmi les autres modèles.\n\n02 — **Le langage SQL : lire et calculer.** L'anatomie d'une requête, les filtres, `CASE`, les types et les conversions, le texte, les dates, les agrégats et les règles du `GROUP BY`.\n\n03 — **Écrire dans la base : DML et DDL.** `CREATE TABLE`, types et contraintes, `INSERT`, `UPDATE`, `DELETE`, `MERGE`, les vues, et ce qu'une transaction annule ou non.\n\n04 — **Fonctions de fenêtrage.** `OVER`, `PARTITION BY`, les fonctions de rang, `LAG` et `LEAD`, cumuls et moyennes mobiles, les cadres `ROWS` contre `RANGE`.\n\n05 — **CTE et récursivité.** `WITH` et le chaînage lisible, les CTE récursives (séries générées, organigramme, nomenclature de fabrication) et les pièges de matérialisation.\n\n06 — **Agrégation avancée et pivots.** `GROUPING SETS`, `ROLLUP`, `CUBE`, agrégats conditionnels, `FILTER`, `PIVOT` et `UNPIVOT`, et ce qu'on fait quand `PIVOT` n'existe pas.\n\n07 — **Sous-requêtes, corrélation et ensembles.** Sous-requêtes corrélées, `EXISTS`, `IN`, `ANY` et `ALL`, `UNION`, `INTERSECT` et `EXCEPT`, et les jointures latérales.\n\n08 — **Données semi-structurées.** Le JSON en base : extraire, aplatir, typer et indexer le semi-structuré, des deux côtés du double chemin.\n\n09 — **Séries temporelles et as-of joins.** Le grain temporel et les trous, les fenêtres en intervalle de temps, le rééchantillonnage, l'as-of join, et les îlots et lacunes.\n\n10 — **Index, plans d'exécution et optimisation.** Index B-tree, composites et couvrants, lire un plan avec `EXPLAIN`, la sargabilité, et quand un index nuit au lieu d'aider.\n\n11 — **Transactions et concurrence.** ACID, les niveaux d'isolation, les anomalies de lecture, les verrous et le MVCC de PostgreSQL.\n\n12 — **SQL analytique appliqué.** Un cas complet mené du chargement au rapport, qui remobilise les onze modules précédents, mesure ce qu'il coûte et se rejoue.\n\n## Le double chemin OLAP et OLTP\n\nÀ partir du cours 02, chaque module de la partie A a deux laboratoires jumeaux qui posent les mêmes questions sur deux schémas opposés : DuckDB sur l'entrepôt AdventureWorks DW, rangé en étoile, et PostgreSQL sur la version normalisée de la même entreprise. La théorie, elle, reste unique, parce que le langage ne change pas d'un monde à l'autre. On y découvre que la syntaxe bouge peu, mais que le chemin pour atteindre les données change tout : une dimension temps d'un côté, un `EXTRACT` de l'autre ; `QUALIFY` d'un côté, une sous-requête de l'autre.\n\nLa voie analytique tournait sur Snowflake ; elle tourne sur DuckDB depuis septembre 2026, pour qu'aucun compte ni aucune carte de crédit ne soit nécessaire. Snowflake reste présente en encadrés de portabilité.\n\n## Prérequis\n\nAucun prérequis de langage : la formation part de zéro, et les cours 02 et 03 font le tour du SQL, lire puis écrire. Deux moteurs, tous deux gratuits et locaux, mis en place au cours 00.",
+        "en": "## The modules\n\n00 — **Setup.** Building the warehouse in DuckDB and the transactional database in PostgreSQL. Once, before course 01.\n\n01 — **The SQL landscape and the relational model.** Five words people confuse, the five command families, a query's logical execution order, the three-valued logic of `NULL`, and the star schema placed among the other models.\n\n02 — **The SQL language: reading and computing.** The anatomy of a query, filters, `CASE`, types and conversions, text, dates, aggregates and the rules of `GROUP BY`.\n\n03 — **Writing to the database: DML and DDL.** `CREATE TABLE`, types and constraints, `INSERT`, `UPDATE`, `DELETE`, `MERGE`, views, and what a transaction rolls back or not.\n\n04 — **Window functions.** `OVER`, `PARTITION BY`, ranking functions, `LAG` and `LEAD`, running totals and moving averages, `ROWS` versus `RANGE` frames.\n\n05 — **CTEs and recursion.** `WITH` and readable chaining, recursive CTEs (generated series, org charts, bills of materials) and materialization traps.\n\n06 — **Advanced aggregation and pivots.** `GROUPING SETS`, `ROLLUP`, `CUBE`, conditional aggregates, `FILTER`, `PIVOT` and `UNPIVOT`, and what you do when `PIVOT` does not exist.\n\n07 — **Subqueries, correlation and set operations.** Correlated subqueries, `EXISTS`, `IN`, `ANY` and `ALL`, `UNION`, `INTERSECT` and `EXCEPT`, and lateral joins.\n\n08 — **Semi-structured data.** JSON in the database: extracting, flattening, typing and indexing semi-structured data, on both sides of the twin paths.\n\n09 — **Time series and as-of joins.** Time grain and gaps, time-interval windows, resampling, the as-of join, and islands and gaps.\n\n10 — **Indexes, execution plans and optimization.** B-tree, composite and covering indexes, reading a plan with `EXPLAIN`, sargability, and when an index hurts instead of helping.\n\n11 — **Transactions and concurrency.** ACID, isolation levels, read anomalies, locks and PostgreSQL's MVCC.\n\n12 — **Applied analytical SQL.** A full case taken from load to report, putting the previous eleven modules back to work, measuring what it costs and replaying cleanly.\n\n## The OLAP and OLTP twin paths\n\nFrom course 02 on, every module in part A has twin labs asking the same questions on two opposite schemas: DuckDB on the AdventureWorks DW warehouse, laid out as a star, and PostgreSQL on the normalized version of the same company. The theory stays single, because the language does not change from one world to the other. You discover that the syntax barely moves, but that the path to the data changes everything: a date dimension on one side, an `EXTRACT` on the other; `QUALIFY` on one side, a subquery on the other.\n\nThe analytical path used to run on Snowflake; it has run on DuckDB since September 2026, so that no account and no credit card are needed. Snowflake is still there, in portability call-outs.\n\n## Prerequisites\n\nNo language prerequisite: the course starts from zero, and courses 02 and 03 cover SQL end to end, reading then writing. Two engines, both free and local, set up in course 00."
+      },
+      "items": [
+        {
+          "id": "sql-readme",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/README.pdf",
+          "titre": {
+            "fr": "La formation en un coup d'œil",
+            "en": "The course at a glance"
+          },
+          "description": {
+            "fr": "À qui elle s'adresse, les deux moteurs, le double chemin, et sa place parmi les autres formations.",
+            "en": "Who it is for, the two engines, the twin paths, and where it sits among the other courses."
+          }
+        },
+        {
+          "id": "sql-00-labo",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_00_Installation/Labo_00.pdf",
+          "titre": {
+            "fr": "Cours 00 — Installation (Laboratoire)",
+            "en": "Course 00 — Setup (Lab)"
+          },
+          "description": {
+            "fr": "Monter l'entrepôt dans DuckDB et la base transactionnelle dans PostgreSQL. Une seule fois, avant le cours 01.",
+            "en": "Building the warehouse in DuckDB and the transactional database in PostgreSQL. Once, before course 01."
+          }
+        },
+        {
+          "id": "sql-00-exercices",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_00_Installation/Exercices_00.pdf",
+          "titre": {
+            "fr": "Cours 00 — Exercices",
+            "en": "Course 00 — Exercises"
+          },
+          "description": {
+            "fr": "Les questions du module, sans les réponses.",
+            "en": "The module's questions, without the answers."
+          }
+        },
+        {
+          "id": "sql-00-corrige",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_00_Installation/Corrige_00.pdf",
+          "titre": {
+            "fr": "Cours 00 — Corrigé",
+            "en": "Course 00 — Answer key"
+          },
+          "description": {
+            "fr": "Les réponses, avec le raisonnement qui y mène.",
+            "en": "The answers, with the reasoning that leads to them."
+          }
+        },
+        {
+          "id": "sql-01-theorie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_01_Paysage_SQL_et_modele_relationnel/Theorie_01.pdf",
+          "titre": {
+            "fr": "Cours 01 — Paysage SQL et modèle relationnel",
+            "en": "Course 01 — The SQL landscape and the relational model"
+          },
+          "description": {
+            "fr": "Cinq mots qu'on confond, les cinq familles de commandes, l'ordre d'exécution logique d'une requête, la logique ternaire de NULL, et l'étoile située parmi les autres modèles.",
+            "en": "Five words people confuse, the five command families, a query's logical execution order, the three-valued logic of NULL, and the star schema placed among the other models."
+          }
+        },
+        {
+          "id": "sql-01-labo",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_01_Paysage_SQL_et_modele_relationnel/Labo_01.pdf",
+          "titre": {
+            "fr": "Cours 01 — Laboratoire",
+            "en": "Course 01 — Lab"
+          },
+          "description": {
+            "fr": "Le laboratoire guidé, à faire après la théorie.",
+            "en": "The guided lab, to be done after the theory."
+          }
+        },
+        {
+          "id": "sql-01-exercices",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_01_Paysage_SQL_et_modele_relationnel/Exercices_01.pdf",
+          "titre": {
+            "fr": "Cours 01 — Exercices",
+            "en": "Course 01 — Exercises"
+          },
+          "description": {
+            "fr": "Les questions du module, sans les réponses.",
+            "en": "The module's questions, without the answers."
+          }
+        },
+        {
+          "id": "sql-01-corrige",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_01_Paysage_SQL_et_modele_relationnel/Corrige_01.pdf",
+          "titre": {
+            "fr": "Cours 01 — Corrigé",
+            "en": "Course 01 — Answer key"
+          },
+          "description": {
+            "fr": "Les réponses, avec le raisonnement qui y mène.",
+            "en": "The answers, with the reasoning that leads to them."
+          }
+        },
+        {
+          "id": "sql-02-theorie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_02_Le_langage_SQL/Theorie_02.pdf",
+          "titre": {
+            "fr": "Cours 02 — Le langage SQL : lire et calculer",
+            "en": "Course 02 — The SQL language: reading and computing"
+          },
+          "description": {
+            "fr": "L'anatomie d'une requête, les filtres, CASE, les types et les conversions, le texte, les dates, les agrégats et les règles du GROUP BY.",
+            "en": "The anatomy of a query, filters, CASE, types and conversions, text, dates, aggregates and the rules of GROUP BY."
+          }
+        },
+        {
+          "id": "sql-02-labo-olap",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_02_Le_langage_SQL/Labo_02_OLAP.pdf",
+          "titre": {
+            "fr": "Cours 02 — Laboratoire OLAP",
+            "en": "Course 02 — OLAP lab"
+          },
+          "description": {
+            "fr": "Le laboratoire sur l'entrepôt en étoile, dans DuckDB.",
+            "en": "The lab on the star-schema warehouse, in DuckDB."
+          }
+        },
+        {
+          "id": "sql-02-labo-oltp",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_02_Le_langage_SQL/Labo_02_OLTP.pdf",
+          "titre": {
+            "fr": "Cours 02 — Laboratoire OLTP",
+            "en": "Course 02 — OLTP lab"
+          },
+          "description": {
+            "fr": "Le laboratoire jumeau : les mêmes questions, sur la base normalisée dans PostgreSQL.",
+            "en": "The twin lab: the same questions, on the normalized database in PostgreSQL."
+          }
+        },
+        {
+          "id": "sql-02-exercices",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_02_Le_langage_SQL/Exercices_02.pdf",
+          "titre": {
+            "fr": "Cours 02 — Exercices",
+            "en": "Course 02 — Exercises"
+          },
+          "description": {
+            "fr": "Les questions du module, sans les réponses.",
+            "en": "The module's questions, without the answers."
+          }
+        },
+        {
+          "id": "sql-02-corrige",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_02_Le_langage_SQL/Corrige_02.pdf",
+          "titre": {
+            "fr": "Cours 02 — Corrigé",
+            "en": "Course 02 — Answer key"
+          },
+          "description": {
+            "fr": "Les réponses, avec le raisonnement qui y mène.",
+            "en": "The answers, with the reasoning that leads to them."
+          }
+        },
+        {
+          "id": "sql-03-theorie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_03_Ecrire_dans_la_base/Theorie_03.pdf",
+          "titre": {
+            "fr": "Cours 03 — Écrire dans la base : DML et DDL",
+            "en": "Course 03 — Writing to the database: DML and DDL"
+          },
+          "description": {
+            "fr": "CREATE TABLE, types et contraintes, INSERT, UPDATE, DELETE, MERGE, les vues, et ce qu'une transaction annule ou non.",
+            "en": "CREATE TABLE, types and constraints, INSERT, UPDATE, DELETE, MERGE, views, and what a transaction rolls back or not."
+          }
+        },
+        {
+          "id": "sql-03-labo-olap",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_03_Ecrire_dans_la_base/Labo_03_OLAP.pdf",
+          "titre": {
+            "fr": "Cours 03 — Laboratoire OLAP",
+            "en": "Course 03 — OLAP lab"
+          },
+          "description": {
+            "fr": "Le laboratoire sur l'entrepôt en étoile, dans DuckDB.",
+            "en": "The lab on the star-schema warehouse, in DuckDB."
+          }
+        },
+        {
+          "id": "sql-03-labo-oltp",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_03_Ecrire_dans_la_base/Labo_03_OLTP.pdf",
+          "titre": {
+            "fr": "Cours 03 — Laboratoire OLTP",
+            "en": "Course 03 — OLTP lab"
+          },
+          "description": {
+            "fr": "Le laboratoire jumeau : les mêmes questions, sur la base normalisée dans PostgreSQL.",
+            "en": "The twin lab: the same questions, on the normalized database in PostgreSQL."
+          }
+        },
+        {
+          "id": "sql-03-exercices",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_03_Ecrire_dans_la_base/Exercices_03.pdf",
+          "titre": {
+            "fr": "Cours 03 — Exercices",
+            "en": "Course 03 — Exercises"
+          },
+          "description": {
+            "fr": "Les questions du module, sans les réponses.",
+            "en": "The module's questions, without the answers."
+          }
+        },
+        {
+          "id": "sql-03-corrige",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_03_Ecrire_dans_la_base/Corrige_03.pdf",
+          "titre": {
+            "fr": "Cours 03 — Corrigé",
+            "en": "Course 03 — Answer key"
+          },
+          "description": {
+            "fr": "Les réponses, avec le raisonnement qui y mène.",
+            "en": "The answers, with the reasoning that leads to them."
+          }
+        },
+        {
+          "id": "sql-04-theorie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_04_Fonctions_de_fenetrage/Theorie_04.pdf",
+          "titre": {
+            "fr": "Cours 04 — Fonctions de fenêtrage",
+            "en": "Course 04 — Window functions"
+          },
+          "description": {
+            "fr": "OVER, PARTITION BY, les fonctions de rang, LAG et LEAD, cumuls et moyennes mobiles, les cadres ROWS contre RANGE.",
+            "en": "OVER, PARTITION BY, ranking functions, LAG and LEAD, running totals and moving averages, ROWS versus RANGE frames."
+          }
+        },
+        {
+          "id": "sql-04-labo-olap",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_04_Fonctions_de_fenetrage/Labo_04_OLAP.pdf",
+          "titre": {
+            "fr": "Cours 04 — Laboratoire OLAP",
+            "en": "Course 04 — OLAP lab"
+          },
+          "description": {
+            "fr": "Le laboratoire sur l'entrepôt en étoile, dans DuckDB.",
+            "en": "The lab on the star-schema warehouse, in DuckDB."
+          }
+        },
+        {
+          "id": "sql-04-labo-oltp",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_04_Fonctions_de_fenetrage/Labo_04_OLTP.pdf",
+          "titre": {
+            "fr": "Cours 04 — Laboratoire OLTP",
+            "en": "Course 04 — OLTP lab"
+          },
+          "description": {
+            "fr": "Le laboratoire jumeau : les mêmes questions, sur la base normalisée dans PostgreSQL.",
+            "en": "The twin lab: the same questions, on the normalized database in PostgreSQL."
+          }
+        },
+        {
+          "id": "sql-04-exercices",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_04_Fonctions_de_fenetrage/Exercices_04.pdf",
+          "titre": {
+            "fr": "Cours 04 — Exercices",
+            "en": "Course 04 — Exercises"
+          },
+          "description": {
+            "fr": "Les questions du module, sans les réponses.",
+            "en": "The module's questions, without the answers."
+          }
+        },
+        {
+          "id": "sql-04-corrige",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_04_Fonctions_de_fenetrage/Corrige_04.pdf",
+          "titre": {
+            "fr": "Cours 04 — Corrigé",
+            "en": "Course 04 — Answer key"
+          },
+          "description": {
+            "fr": "Les réponses, avec le raisonnement qui y mène.",
+            "en": "The answers, with the reasoning that leads to them."
+          }
+        },
+        {
+          "id": "sql-05-theorie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_05_CTE_et_recursivite/Theorie_05.pdf",
+          "titre": {
+            "fr": "Cours 05 — CTE et récursivité",
+            "en": "Course 05 — CTEs and recursion"
+          },
+          "description": {
+            "fr": "WITH et le chaînage lisible, les CTE récursives (séries générées, organigramme, nomenclature de fabrication) et les pièges de matérialisation.",
+            "en": "WITH and readable chaining, recursive CTEs (generated series, org charts, bills of materials) and materialization traps."
+          }
+        },
+        {
+          "id": "sql-05-labo-olap",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_05_CTE_et_recursivite/Labo_05_OLAP.pdf",
+          "titre": {
+            "fr": "Cours 05 — Laboratoire OLAP",
+            "en": "Course 05 — OLAP lab"
+          },
+          "description": {
+            "fr": "Le laboratoire sur l'entrepôt en étoile, dans DuckDB.",
+            "en": "The lab on the star-schema warehouse, in DuckDB."
+          }
+        },
+        {
+          "id": "sql-05-labo-oltp",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_05_CTE_et_recursivite/Labo_05_OLTP.pdf",
+          "titre": {
+            "fr": "Cours 05 — Laboratoire OLTP",
+            "en": "Course 05 — OLTP lab"
+          },
+          "description": {
+            "fr": "Le laboratoire jumeau : les mêmes questions, sur la base normalisée dans PostgreSQL.",
+            "en": "The twin lab: the same questions, on the normalized database in PostgreSQL."
+          }
+        },
+        {
+          "id": "sql-05-exercices",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_05_CTE_et_recursivite/Exercices_05.pdf",
+          "titre": {
+            "fr": "Cours 05 — Exercices",
+            "en": "Course 05 — Exercises"
+          },
+          "description": {
+            "fr": "Les questions du module, sans les réponses.",
+            "en": "The module's questions, without the answers."
+          }
+        },
+        {
+          "id": "sql-05-corrige",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_05_CTE_et_recursivite/Corrige_05.pdf",
+          "titre": {
+            "fr": "Cours 05 — Corrigé",
+            "en": "Course 05 — Answer key"
+          },
+          "description": {
+            "fr": "Les réponses, avec le raisonnement qui y mène.",
+            "en": "The answers, with the reasoning that leads to them."
+          }
+        },
+        {
+          "id": "sql-06-theorie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_06_Agregation_avancee_et_pivots/Theorie_06.pdf",
+          "titre": {
+            "fr": "Cours 06 — Agrégation avancée et pivots",
+            "en": "Course 06 — Advanced aggregation and pivots"
+          },
+          "description": {
+            "fr": "GROUPING SETS, ROLLUP, CUBE, agrégats conditionnels, FILTER, PIVOT et UNPIVOT, et ce qu'on fait quand PIVOT n'existe pas.",
+            "en": "GROUPING SETS, ROLLUP, CUBE, conditional aggregates, FILTER, PIVOT and UNPIVOT, and what you do when PIVOT does not exist."
+          }
+        },
+        {
+          "id": "sql-06-labo-olap",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_06_Agregation_avancee_et_pivots/Labo_06_OLAP.pdf",
+          "titre": {
+            "fr": "Cours 06 — Laboratoire OLAP",
+            "en": "Course 06 — OLAP lab"
+          },
+          "description": {
+            "fr": "Le laboratoire sur l'entrepôt en étoile, dans DuckDB.",
+            "en": "The lab on the star-schema warehouse, in DuckDB."
+          }
+        },
+        {
+          "id": "sql-06-labo-oltp",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_06_Agregation_avancee_et_pivots/Labo_06_OLTP.pdf",
+          "titre": {
+            "fr": "Cours 06 — Laboratoire OLTP",
+            "en": "Course 06 — OLTP lab"
+          },
+          "description": {
+            "fr": "Le laboratoire jumeau : les mêmes questions, sur la base normalisée dans PostgreSQL.",
+            "en": "The twin lab: the same questions, on the normalized database in PostgreSQL."
+          }
+        },
+        {
+          "id": "sql-06-exercices",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_06_Agregation_avancee_et_pivots/Exercices_06.pdf",
+          "titre": {
+            "fr": "Cours 06 — Exercices",
+            "en": "Course 06 — Exercises"
+          },
+          "description": {
+            "fr": "Les questions du module, sans les réponses.",
+            "en": "The module's questions, without the answers."
+          }
+        },
+        {
+          "id": "sql-06-corrige",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_06_Agregation_avancee_et_pivots/Corrige_06.pdf",
+          "titre": {
+            "fr": "Cours 06 — Corrigé",
+            "en": "Course 06 — Answer key"
+          },
+          "description": {
+            "fr": "Les réponses, avec le raisonnement qui y mène.",
+            "en": "The answers, with the reasoning that leads to them."
+          }
+        },
+        {
+          "id": "sql-07-theorie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_07_Sous_requetes_correlation_et_ensembles/Theorie_07.pdf",
+          "titre": {
+            "fr": "Cours 07 — Sous-requêtes, corrélation et ensembles",
+            "en": "Course 07 — Subqueries, correlation and set operations"
+          },
+          "description": {
+            "fr": "Sous-requêtes corrélées, EXISTS, IN, ANY et ALL, UNION, INTERSECT et EXCEPT, et les jointures latérales.",
+            "en": "Correlated subqueries, EXISTS, IN, ANY and ALL, UNION, INTERSECT and EXCEPT, and lateral joins."
+          }
+        },
+        {
+          "id": "sql-07-labo-olap",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_07_Sous_requetes_correlation_et_ensembles/Labo_07_OLAP.pdf",
+          "titre": {
+            "fr": "Cours 07 — Laboratoire OLAP",
+            "en": "Course 07 — OLAP lab"
+          },
+          "description": {
+            "fr": "Le laboratoire sur l'entrepôt en étoile, dans DuckDB.",
+            "en": "The lab on the star-schema warehouse, in DuckDB."
+          }
+        },
+        {
+          "id": "sql-07-labo-oltp",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_07_Sous_requetes_correlation_et_ensembles/Labo_07_OLTP.pdf",
+          "titre": {
+            "fr": "Cours 07 — Laboratoire OLTP",
+            "en": "Course 07 — OLTP lab"
+          },
+          "description": {
+            "fr": "Le laboratoire jumeau : les mêmes questions, sur la base normalisée dans PostgreSQL.",
+            "en": "The twin lab: the same questions, on the normalized database in PostgreSQL."
+          }
+        },
+        {
+          "id": "sql-07-exercices",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_07_Sous_requetes_correlation_et_ensembles/Exercices_07.pdf",
+          "titre": {
+            "fr": "Cours 07 — Exercices",
+            "en": "Course 07 — Exercises"
+          },
+          "description": {
+            "fr": "Les questions du module, sans les réponses.",
+            "en": "The module's questions, without the answers."
+          }
+        },
+        {
+          "id": "sql-07-corrige",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_07_Sous_requetes_correlation_et_ensembles/Corrige_07.pdf",
+          "titre": {
+            "fr": "Cours 07 — Corrigé",
+            "en": "Course 07 — Answer key"
+          },
+          "description": {
+            "fr": "Les réponses, avec le raisonnement qui y mène.",
+            "en": "The answers, with the reasoning that leads to them."
+          }
+        },
+        {
+          "id": "sql-08-theorie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_08_Donnees_semi_structurees/Theorie_08.pdf",
+          "titre": {
+            "fr": "Cours 08 — Données semi-structurées",
+            "en": "Course 08 — Semi-structured data"
+          },
+          "description": {
+            "fr": "Le JSON en base : extraire, aplatir, typer et indexer le semi-structuré, des deux côtés du double chemin.",
+            "en": "JSON in the database: extracting, flattening, typing and indexing semi-structured data, on both sides of the twin paths."
+          }
+        },
+        {
+          "id": "sql-08-labo-olap",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_08_Donnees_semi_structurees/Labo_08_OLAP.pdf",
+          "titre": {
+            "fr": "Cours 08 — Laboratoire OLAP",
+            "en": "Course 08 — OLAP lab"
+          },
+          "description": {
+            "fr": "Le laboratoire sur l'entrepôt en étoile, dans DuckDB.",
+            "en": "The lab on the star-schema warehouse, in DuckDB."
+          }
+        },
+        {
+          "id": "sql-08-labo-oltp",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_08_Donnees_semi_structurees/Labo_08_OLTP.pdf",
+          "titre": {
+            "fr": "Cours 08 — Laboratoire OLTP",
+            "en": "Course 08 — OLTP lab"
+          },
+          "description": {
+            "fr": "Le laboratoire jumeau : les mêmes questions, sur la base normalisée dans PostgreSQL.",
+            "en": "The twin lab: the same questions, on the normalized database in PostgreSQL."
+          }
+        },
+        {
+          "id": "sql-08-exercices",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_08_Donnees_semi_structurees/Exercices_08.pdf",
+          "titre": {
+            "fr": "Cours 08 — Exercices",
+            "en": "Course 08 — Exercises"
+          },
+          "description": {
+            "fr": "Les questions du module, sans les réponses.",
+            "en": "The module's questions, without the answers."
+          }
+        },
+        {
+          "id": "sql-08-corrige",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_08_Donnees_semi_structurees/Corrige_08.pdf",
+          "titre": {
+            "fr": "Cours 08 — Corrigé",
+            "en": "Course 08 — Answer key"
+          },
+          "description": {
+            "fr": "Les réponses, avec le raisonnement qui y mène.",
+            "en": "The answers, with the reasoning that leads to them."
+          }
+        },
+        {
+          "id": "sql-09-theorie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_09_Series_temporelles_et_as_of_joins/Theorie_09.pdf",
+          "titre": {
+            "fr": "Cours 09 — Séries temporelles et as-of joins",
+            "en": "Course 09 — Time series and as-of joins"
+          },
+          "description": {
+            "fr": "Le grain temporel et les trous, les fenêtres en intervalle de temps, le rééchantillonnage, l'as-of join, et les îlots et lacunes.",
+            "en": "Time grain and gaps, time-interval windows, resampling, the as-of join, and islands and gaps."
+          }
+        },
+        {
+          "id": "sql-09-labo-olap",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_09_Series_temporelles_et_as_of_joins/Labo_09_OLAP.pdf",
+          "titre": {
+            "fr": "Cours 09 — Laboratoire OLAP",
+            "en": "Course 09 — OLAP lab"
+          },
+          "description": {
+            "fr": "Le laboratoire sur l'entrepôt en étoile, dans DuckDB.",
+            "en": "The lab on the star-schema warehouse, in DuckDB."
+          }
+        },
+        {
+          "id": "sql-09-labo-oltp",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_09_Series_temporelles_et_as_of_joins/Labo_09_OLTP.pdf",
+          "titre": {
+            "fr": "Cours 09 — Laboratoire OLTP",
+            "en": "Course 09 — OLTP lab"
+          },
+          "description": {
+            "fr": "Le laboratoire jumeau : les mêmes questions, sur la base normalisée dans PostgreSQL.",
+            "en": "The twin lab: the same questions, on the normalized database in PostgreSQL."
+          }
+        },
+        {
+          "id": "sql-09-exercices",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_09_Series_temporelles_et_as_of_joins/Exercices_09.pdf",
+          "titre": {
+            "fr": "Cours 09 — Exercices",
+            "en": "Course 09 — Exercises"
+          },
+          "description": {
+            "fr": "Les questions du module, sans les réponses.",
+            "en": "The module's questions, without the answers."
+          }
+        },
+        {
+          "id": "sql-09-corrige",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_09_Series_temporelles_et_as_of_joins/Corrige_09.pdf",
+          "titre": {
+            "fr": "Cours 09 — Corrigé",
+            "en": "Course 09 — Answer key"
+          },
+          "description": {
+            "fr": "Les réponses, avec le raisonnement qui y mène.",
+            "en": "The answers, with the reasoning that leads to them."
+          }
+        },
+        {
+          "id": "sql-10-theorie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_10_Index_et_optimisation/Theorie_10.pdf",
+          "titre": {
+            "fr": "Cours 10 — Index, plans d'exécution et optimisation",
+            "en": "Course 10 — Indexes, execution plans and optimization"
+          },
+          "description": {
+            "fr": "Index B-tree, composites et couvrants, lire un plan avec EXPLAIN, la sargabilité, et quand un index nuit au lieu d'aider.",
+            "en": "B-tree, composite and covering indexes, reading a plan with EXPLAIN, sargability, and when an index hurts instead of helping."
+          }
+        },
+        {
+          "id": "sql-10-labo-oltp",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_10_Index_et_optimisation/Labo_10_OLTP.pdf",
+          "titre": {
+            "fr": "Cours 10 — Laboratoire OLTP",
+            "en": "Course 10 — OLTP lab"
+          },
+          "description": {
+            "fr": "Le laboratoire jumeau : les mêmes questions, sur la base normalisée dans PostgreSQL.",
+            "en": "The twin lab: the same questions, on the normalized database in PostgreSQL."
+          }
+        },
+        {
+          "id": "sql-10-exercices",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_10_Index_et_optimisation/Exercices_10.pdf",
+          "titre": {
+            "fr": "Cours 10 — Exercices",
+            "en": "Course 10 — Exercises"
+          },
+          "description": {
+            "fr": "Les questions du module, sans les réponses.",
+            "en": "The module's questions, without the answers."
+          }
+        },
+        {
+          "id": "sql-10-corrige",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_10_Index_et_optimisation/Corrige_10.pdf",
+          "titre": {
+            "fr": "Cours 10 — Corrigé",
+            "en": "Course 10 — Answer key"
+          },
+          "description": {
+            "fr": "Les réponses, avec le raisonnement qui y mène.",
+            "en": "The answers, with the reasoning that leads to them."
+          }
+        },
+        {
+          "id": "sql-11-theorie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_11_Transactions_et_concurrence/Theorie_11.pdf",
+          "titre": {
+            "fr": "Cours 11 — Transactions et concurrence",
+            "en": "Course 11 — Transactions and concurrency"
+          },
+          "description": {
+            "fr": "ACID, les niveaux d'isolation, les anomalies de lecture, les verrous et le MVCC de PostgreSQL.",
+            "en": "ACID, isolation levels, read anomalies, locks and PostgreSQL's MVCC."
+          }
+        },
+        {
+          "id": "sql-11-labo-oltp",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_11_Transactions_et_concurrence/Labo_11_OLTP.pdf",
+          "titre": {
+            "fr": "Cours 11 — Laboratoire OLTP",
+            "en": "Course 11 — OLTP lab"
+          },
+          "description": {
+            "fr": "Le laboratoire jumeau : les mêmes questions, sur la base normalisée dans PostgreSQL.",
+            "en": "The twin lab: the same questions, on the normalized database in PostgreSQL."
+          }
+        },
+        {
+          "id": "sql-11-exercices",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_11_Transactions_et_concurrence/Exercices_11.pdf",
+          "titre": {
+            "fr": "Cours 11 — Exercices",
+            "en": "Course 11 — Exercises"
+          },
+          "description": {
+            "fr": "Les questions du module, sans les réponses.",
+            "en": "The module's questions, without the answers."
+          }
+        },
+        {
+          "id": "sql-11-corrige",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_11_Transactions_et_concurrence/Corrige_11.pdf",
+          "titre": {
+            "fr": "Cours 11 — Corrigé",
+            "en": "Course 11 — Answer key"
+          },
+          "description": {
+            "fr": "Les réponses, avec le raisonnement qui y mène.",
+            "en": "The answers, with the reasoning that leads to them."
+          }
+        },
+        {
+          "id": "sql-12-theorie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_12_SQL_analytique_applique/Theorie_12.pdf",
+          "titre": {
+            "fr": "Cours 12 — SQL analytique appliqué",
+            "en": "Course 12 — Applied analytical SQL"
+          },
+          "description": {
+            "fr": "Un cas complet mené du chargement au rapport, qui remobilise les onze modules précédents, mesure ce qu'il coûte et se rejoue.",
+            "en": "A full case taken from load to report, putting the previous eleven modules back to work, measuring what it costs and replaying cleanly."
+          }
+        },
+        {
+          "id": "sql-12-labo-olap",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_12_SQL_analytique_applique/Labo_12_OLAP.pdf",
+          "titre": {
+            "fr": "Cours 12 — Laboratoire OLAP",
+            "en": "Course 12 — OLAP lab"
+          },
+          "description": {
+            "fr": "Le laboratoire sur l'entrepôt en étoile, dans DuckDB.",
+            "en": "The lab on the star-schema warehouse, in DuckDB."
+          }
+        },
+        {
+          "id": "sql-12-exercices",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_12_SQL_analytique_applique/Exercices_12.pdf",
+          "titre": {
+            "fr": "Cours 12 — Exercices",
+            "en": "Course 12 — Exercises"
+          },
+          "description": {
+            "fr": "Les questions du module, sans les réponses.",
+            "en": "The module's questions, without the answers."
+          }
+        },
+        {
+          "id": "sql-12-corrige",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/SQL/Cours_12_SQL_analytique_applique/Corrige_12.pdf",
+          "titre": {
+            "fr": "Cours 12 — Corrigé",
+            "en": "Course 12 — Answer key"
+          },
+          "description": {
+            "fr": "Les réponses, avec le raisonnement qui y mène.",
+            "en": "The answers, with the reasoning that leads to them."
+          }
+        }
+      ],
+      "parent": "domaine-donnees"
+    },
+    {
+      "id": "dd-snowflake",
+      "titre": {
+        "fr": "Snowflake (SnowPro Core)",
+        "en": "Snowflake (SnowPro Core)"
+      },
+      "accroche": {
+        "fr": "La fondation « plateforme » : huit modules calibrés sur les cinq domaines de la certification SnowPro Core, examen blanc compris.",
+        "en": "The platform foundation: eight modules calibrated on the five domains of the SnowPro Core certification, mock exam included."
+      },
+      "statut": {
+        "fr": "8 modules, complète",
+        "en": "8 modules, complete"
+      },
+      "sousMenu": true,
+      "intro": {
+        "fr": "Une formation à double usage : apprendre la plateforme, ou préparer la certification. Les modules suivent la pondération officielle de l'examen, du plus rentable au moins rentable, et le dernier est un examen blanc de cent questions, chronométré et corrigé. Elle est complète et en pause depuis septembre 2026.",
+        "en": "A course with two uses: learning the platform, or preparing for the certification. The modules follow the exam's official weighting, from the highest-yield domain to the lowest, and the last one is a hundred-question mock exam, timed and corrected. It is complete and on hold since September 2026."
+      },
+      "texte": {
+        "fr": "## Le parcours\n\n00 — **Mise en place et stratégie d'examen.** Ce qu'est la certification et comment elle se lit, le compte d'essai, Snowsight, un premier entrepôt et une première base.\n\n01 — **L'architecture de l'AI Data Cloud.** Les trois couches découplées, les entrepôts virtuels et leur coût, les micro-partitions, les types de tables et de vues.\n\n02 — **Fonctionnalités AI, ML et développement.** Snowpark, les carnets, Streamlit et Cortex : ce qu'il faut en reconnaître, sans en faire des experts.\n\n03 — **Gestion du compte et gouvernance.** Le RBAC et la hiérarchie des objets sécurisables, l'authentification, le masquage, les tags, et la maîtrise des coûts.\n\n04 — **Chargement, déchargement et connectivité.** Formats de fichier, stages, `COPY INTO` dans les deux sens, l'ingestion continue, les connecteurs et les pilotes.\n\n05 — **Performance, requêtes et transformation.** Lire un profil de requête, les vues d'usage du compte, les leviers de performance et les trois caches.\n\n06 — **Collaboration de données.** Réplication et bascule, partage sécurisé, clonage, voyage dans le temps, salles blanches et place de marché.\n\n07 — **Révision et examen blanc.** Une synthèse pondérée par domaine, les pièges classiques, et un examen blanc de cent questions chronométré, corrigé et expliqué.\n\n## Deux parcours dans le même dossier\n\nQui veut la plateforme lit les modules 00, 01, 03 et 04 et leurs laboratoires, en quatre heures environ. Qui vise la certification les fait tous, dans l'ordre, et termine par l'examen blanc. Chaque module porte sa théorie, son laboratoire et son questionnaire de fin.\n\n## Ce que la formation ne fait pas\n\nElle n'enseigne pas le SQL, qui a sa propre formation, et elle n'est pas une formation d'ingénierie analytique : elle tient la plateforme, ses objets, son modèle de coût et sa gouvernance.",
+        "en": "## The modules\n\n00 — **Setup and exam strategy.** What the certification is and how to read it, the trial account, Snowsight, a first warehouse and a first database.\n\n01 — **The AI Data Cloud architecture.** The three decoupled layers, virtual warehouses and their cost, micro-partitions, table and view types.\n\n02 — **AI, ML and development features.** Snowpark, notebooks, Streamlit and Cortex: what you need to recognize, without becoming an expert.\n\n03 — **Account management and governance.** RBAC and the hierarchy of securable objects, authentication, masking, tags, and cost control.\n\n04 — **Loading, unloading and connectivity.** File formats, stages, `COPY INTO` both ways, continuous ingestion, connectors and drivers.\n\n05 — **Performance, queries and transformation.** Reading a query profile, the account usage views, the performance levers and the three caches.\n\n06 — **Data collaboration.** Replication and failover, secure sharing, cloning, time travel, clean rooms and the marketplace.\n\n07 — **Review and mock exam.** A review weighted by domain, the classic traps, and a hundred-question mock exam, timed, corrected and explained.\n\n## Two paths in the same folder\n\nWhoever wants the platform reads modules 00, 01, 03 and 04 and their labs, in about four hours. Whoever is after the certification does all of them, in order, and finishes with the mock exam. Every module carries its theory, its lab and its end-of-module quiz.\n\n## What the course does not do\n\nIt does not teach SQL, which has its own course, and it is not an analytics engineering course: it holds the platform, its objects, its cost model and its governance."
+      },
+      "items": [
+        {
+          "id": "sf-readme",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/Snowflake/README.pdf",
+          "titre": {
+            "fr": "La formation en un coup d'œil",
+            "en": "The course at a glance"
+          },
+          "description": {
+            "fr": "L'examen en chiffres, les cinq domaines et leur pondération, et les deux façons de suivre la formation.",
+            "en": "The exam in numbers, the five domains and their weights, and the two ways to take the course."
+          }
+        },
+        {
+          "id": "sf-aide-memoire",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/Snowflake/Aide_memoire.pdf",
+          "titre": {
+            "fr": "L'aide-mémoire",
+            "en": "The cheat sheet"
+          },
+          "description": {
+            "fr": "Le vocabulaire et les objets de la plateforme, à garder ouvert pendant les laboratoires.",
+            "en": "The platform's vocabulary and objects, to keep open during the labs."
+          }
+        },
+        {
+          "id": "sf-00-theorie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/Snowflake/Cours_00_Mise_en_place_et_strategie_examen/Theorie_00.pdf",
+          "titre": {
+            "fr": "Cours 00 — Mise en place et stratégie d'examen",
+            "en": "Course 00 — Setup and exam strategy"
+          },
+          "description": {
+            "fr": "Ce qu'est la certification et comment elle se lit, le compte d'essai, Snowsight, un premier entrepôt et une première base.",
+            "en": "What the certification is and how to read it, the trial account, Snowsight, a first warehouse and a first database."
+          }
+        },
+        {
+          "id": "sf-00-labo",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/Snowflake/Cours_00_Mise_en_place_et_strategie_examen/Labo_00.pdf",
+          "titre": {
+            "fr": "Cours 00 — Laboratoire",
+            "en": "Course 00 — Lab"
+          },
+          "description": {
+            "fr": "Le laboratoire guidé, à faire après la théorie.",
+            "en": "The guided lab, to be done after the theory."
+          }
+        },
+        {
+          "id": "sf-01-theorie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/Snowflake/Cours_01_Architecture_AI_Data_Cloud/Theorie_01.pdf",
+          "titre": {
+            "fr": "Cours 01 — L'architecture de l'AI Data Cloud",
+            "en": "Course 01 — The AI Data Cloud architecture"
+          },
+          "description": {
+            "fr": "Les trois couches découplées, les entrepôts virtuels et leur coût, les micro-partitions, les types de tables et de vues.",
+            "en": "The three decoupled layers, virtual warehouses and their cost, micro-partitions, table and view types."
+          }
+        },
+        {
+          "id": "sf-01-labo",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/Snowflake/Cours_01_Architecture_AI_Data_Cloud/Labo_01.pdf",
+          "titre": {
+            "fr": "Cours 01 — Laboratoire",
+            "en": "Course 01 — Lab"
+          },
+          "description": {
+            "fr": "Le laboratoire guidé, à faire après la théorie.",
+            "en": "The guided lab, to be done after the theory."
+          }
+        },
+        {
+          "id": "sf-02-theorie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/Snowflake/Cours_02_Fonctionnalites_AI_ML_et_developpement/Theorie_02.pdf",
+          "titre": {
+            "fr": "Cours 02 — Fonctionnalités AI, ML et développement",
+            "en": "Course 02 — AI, ML and development features"
+          },
+          "description": {
+            "fr": "Snowpark, les carnets, Streamlit et Cortex : ce qu'il faut en reconnaître, sans en faire des experts.",
+            "en": "Snowpark, notebooks, Streamlit and Cortex: what you need to recognize, without becoming an expert."
+          }
+        },
+        {
+          "id": "sf-02-labo",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/Snowflake/Cours_02_Fonctionnalites_AI_ML_et_developpement/Labo_02.pdf",
+          "titre": {
+            "fr": "Cours 02 — Laboratoire",
+            "en": "Course 02 — Lab"
+          },
+          "description": {
+            "fr": "Le laboratoire guidé, à faire après la théorie.",
+            "en": "The guided lab, to be done after the theory."
+          }
+        },
+        {
+          "id": "sf-03-theorie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/Snowflake/Cours_03_Gestion_du_compte_et_gouvernance/Theorie_03.pdf",
+          "titre": {
+            "fr": "Cours 03 — Gestion du compte et gouvernance",
+            "en": "Course 03 — Account management and governance"
+          },
+          "description": {
+            "fr": "Le RBAC et la hiérarchie des objets sécurisables, l'authentification, le masquage, les tags, et la maîtrise des coûts.",
+            "en": "RBAC and the hierarchy of securable objects, authentication, masking, tags, and cost control."
+          }
+        },
+        {
+          "id": "sf-03-labo",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/Snowflake/Cours_03_Gestion_du_compte_et_gouvernance/Labo_03.pdf",
+          "titre": {
+            "fr": "Cours 03 — Laboratoire",
+            "en": "Course 03 — Lab"
+          },
+          "description": {
+            "fr": "Le laboratoire guidé, à faire après la théorie.",
+            "en": "The guided lab, to be done after the theory."
+          }
+        },
+        {
+          "id": "sf-04-theorie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/Snowflake/Cours_04_Chargement_dechargement_et_connectivite/Theorie_04.pdf",
+          "titre": {
+            "fr": "Cours 04 — Chargement, déchargement et connectivité",
+            "en": "Course 04 — Loading, unloading and connectivity"
+          },
+          "description": {
+            "fr": "Formats de fichier, stages, COPY INTO dans les deux sens, l'ingestion continue, les connecteurs et les pilotes.",
+            "en": "File formats, stages, COPY INTO both ways, continuous ingestion, connectors and drivers."
+          }
+        },
+        {
+          "id": "sf-04-labo",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/Snowflake/Cours_04_Chargement_dechargement_et_connectivite/Labo_04.pdf",
+          "titre": {
+            "fr": "Cours 04 — Laboratoire",
+            "en": "Course 04 — Lab"
+          },
+          "description": {
+            "fr": "Le laboratoire guidé, à faire après la théorie.",
+            "en": "The guided lab, to be done after the theory."
+          }
+        },
+        {
+          "id": "sf-05-theorie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/Snowflake/Cours_05_Performance_requetes_et_transformation/Theorie_05.pdf",
+          "titre": {
+            "fr": "Cours 05 — Performance, requêtes et transformation",
+            "en": "Course 05 — Performance, queries and transformation"
+          },
+          "description": {
+            "fr": "Lire un profil de requête, les vues d'usage du compte, les leviers de performance et les trois caches.",
+            "en": "Reading a query profile, the account usage views, the performance levers and the three caches."
+          }
+        },
+        {
+          "id": "sf-05-labo",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/Snowflake/Cours_05_Performance_requetes_et_transformation/Labo_05.pdf",
+          "titre": {
+            "fr": "Cours 05 — Laboratoire",
+            "en": "Course 05 — Lab"
+          },
+          "description": {
+            "fr": "Le laboratoire guidé, à faire après la théorie.",
+            "en": "The guided lab, to be done after the theory."
+          }
+        },
+        {
+          "id": "sf-06-theorie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/Snowflake/Cours_06_Collaboration_de_donnees/Theorie_06.pdf",
+          "titre": {
+            "fr": "Cours 06 — Collaboration de données",
+            "en": "Course 06 — Data collaboration"
+          },
+          "description": {
+            "fr": "Réplication et bascule, partage sécurisé, clonage, voyage dans le temps, salles blanches et place de marché.",
+            "en": "Replication and failover, secure sharing, cloning, time travel, clean rooms and the marketplace."
+          }
+        },
+        {
+          "id": "sf-06-labo",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/Snowflake/Cours_06_Collaboration_de_donnees/Labo_06.pdf",
+          "titre": {
+            "fr": "Cours 06 — Laboratoire",
+            "en": "Course 06 — Lab"
+          },
+          "description": {
+            "fr": "Le laboratoire guidé, à faire après la théorie.",
+            "en": "The guided lab, to be done after the theory."
+          }
+        },
+        {
+          "id": "sf-07-theorie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/Snowflake/Cours_07_Revision_et_examen_blanc/Theorie_07.pdf",
+          "titre": {
+            "fr": "Cours 07 — Révision et examen blanc",
+            "en": "Course 07 — Review and mock exam"
+          },
+          "description": {
+            "fr": "Une synthèse pondérée par domaine, les pièges classiques, et un examen blanc de cent questions chronométré, corrigé et expliqué.",
+            "en": "A review weighted by domain, the classic traps, and a hundred-question mock exam, timed, corrected and explained."
+          }
+        },
+        {
+          "id": "sf-07-labo",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/Snowflake/Cours_07_Revision_et_examen_blanc/Labo_07.pdf",
+          "titre": {
+            "fr": "Cours 07 — Laboratoire",
+            "en": "Course 07 — Lab"
+          },
+          "description": {
+            "fr": "Le laboratoire guidé, à faire après la théorie.",
+            "en": "The guided lab, to be done after the theory."
+          }
+        }
+      ],
+      "parent": "domaine-donnees"
+    },
+    {
+      "id": "dd-guide-installation",
+      "titre": {
+        "fr": "Le socle technique",
+        "en": "The technical base"
+      },
+      "accroche": {
+        "fr": "Un seul guide d'installation pour les neuf formations : la pile est montée une fois, en local, et sert du premier cours au dernier.",
+        "en": "A single installation guide for all nine courses: the stack is set up once, locally, and serves from the first course to the last."
+      },
+      "statut": {
+        "fr": "1 document",
+        "en": "1 document"
+      },
+      "sousMenu": true,
+      "intro": {
+        "fr": "Le parcours entier tourne sur un poste ordinaire, sans compte infonuagique et sans carte de crédit : Python, Git, DuckDB, Docker dans WSL 2, PostgreSQL et les pilotes. Le guide monte ce socle une fois pour toutes ; chaque formation n'allume ensuite que ce qui lui est propre, au début du cours qui s'en sert.",
+        "en": "The whole path runs on an ordinary workstation, with no cloud account and no credit card: Python, Git, DuckDB, Docker inside WSL 2, PostgreSQL and the drivers. The guide sets that base up once and for all; each course then turns on only what is its own, at the start of the module that uses it."
+      },
+      "items": [
+        {
+          "id": "guide-guide-installation",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/GUIDE_INSTALLATION.pdf",
+          "titre": {
+            "fr": "Le guide d'installation",
+            "en": "The installation guide"
+          },
+          "description": {
+            "fr": "Le socle commun aux neuf formations, étape par étape, avec les vérifications qui prouvent que chaque pièce répond.",
+            "en": "The base shared by the nine courses, step by step, with the checks that prove every piece answers."
+          }
+        }
+      ],
+      "parent": "domaine-donnees"
+    },
+    {
       "id": "python",
       "titre": {
         "fr": "Python",
@@ -409,135 +2766,6 @@
           "description": {
             "fr": "Les outils utilisés : Python, pandas, NumPy, SciPy, scikit-learn, PyTorch, Matplotlib.",
             "en": "The tools used: Python, pandas, NumPy, SciPy, scikit-learn, PyTorch, Matplotlib."
-          }
-        }
-      ]
-    },
-    {
-      "id": "github",
-      "titre": {
-        "fr": "Git & GitHub",
-        "en": "Git & GitHub"
-      },
-      "accroche": {
-        "fr": "Huit modules, du fonctionnement interne de Git jusqu'à l'automatisation par GitHub Actions.",
-        "en": "Eight modules, from Git's internals all the way to automation with GitHub Actions."
-      },
-      "statut": {
-        "fr": "En attente",
-        "en": "Pending"
-      },
-      "intro": {
-        "fr": "Huit modules progressifs, du fonctionnement interne de Git jusqu'à l'automatisation par GitHub Actions. Le fil conducteur est un même projet d'exemple : un petit dépôt de scripts Python que l'on versionne, partage et automatise, module après module.",
-        "en": "Eight progressive modules, from Git's internals all the way to automation with GitHub Actions. The through-line is a single example project: a small repository of Python scripts that gets versioned, shared and automated, module after module."
-      },
-      "texte": {
-        "fr": "## Le parcours\n\n1 — **Les fondements de Git.** Le terminal et Bash, puis les concepts : dépôt, commit, staging. `init`, `add`, `commit`, `status`, `log`, `diff`.\n\n2 — **Branches et fusion.** `branch`, `switch`, `merge`, la résolution de conflits et les stratégies de fusion.\n\n3 — **Les dépôts distants et GitHub.** `clone`, `remote`, `push`, `pull`, `fetch`, et l'authentification SSH ou HTTPS.\n\n4 — **Pull requests et collaboration.** Forks, pull requests, revues de code, issues, protection de branches.\n\n5 — **La maîtrise de l'historique.** `rebase` interactif, `cherry-pick`, `stash`, `reset` contre `revert`, et le filet de sécurité : `reflog`.\n\n6 — **GitHub Actions.** Workflows YAML, déclencheurs, jobs, matrices, secrets — jusqu'à l'intégration continue d'un projet Python.\n\n7 — **Les bonnes pratiques.** Messages de commit conventionnels, `.gitignore`, modèles de branches, tags, releases et SemVer.\n\n8 — **L'écosystème GitHub.** GitHub CLI (`gh`), GitHub Pages, Projects, Dependabot, sécurité.\n\n## Prérequis\n\nGit 2.40 ou plus récent, un compte GitHub gratuit, et un terminal. Aucune connaissance préalable de Git n'est requise.",
-        "en": "## The path\n\n1 — **Git's fundamentals.** The terminal and Bash, then the concepts: repository, commit, staging. `init`, `add`, `commit`, `status`, `log`, `diff`.\n\n2 — **Branches and merging.** `branch`, `switch`, `merge`, conflict resolution and merge strategies.\n\n3 — **Remotes and GitHub.** `clone`, `remote`, `push`, `pull`, `fetch`, and SSH or HTTPS authentication.\n\n4 — **Pull requests and collaboration.** Forks, pull requests, code reviews, issues, branch protection.\n\n5 — **Mastering history.** Interactive `rebase`, `cherry-pick`, `stash`, `reset` versus `revert`, and the safety net: `reflog`.\n\n6 — **GitHub Actions.** YAML workflows, triggers, jobs, matrices, secrets — up to continuous integration for a Python project.\n\n7 — **Good practices.** Conventional commit messages, `.gitignore`, branching models, tags, releases and SemVer.\n\n8 — **The GitHub ecosystem.** GitHub CLI (`gh`), GitHub Pages, Projects, Dependabot, security.\n\n## Prerequisites\n\nGit 2.40 or newer, a free GitHub account, and a terminal. No prior knowledge of Git is required."
-      },
-      "items": [
-        {
-          "id": "gh-1",
-          "type": "pdf",
-          "fichier": "assets/formations/github/Cours 01 - Les fondements de Git.pdf",
-          "titre": {
-            "fr": "Les fondements de Git",
-            "en": "Git's fundamentals"
-          },
-          "description": {
-            "fr": "Le terminal, puis dépôt, commit et zone de staging : init, add, commit, status, log, diff.",
-            "en": "The terminal, then repository, commit and the staging area: init, add, commit, status, log, diff."
-          }
-        },
-        {
-          "id": "gh-2",
-          "type": "pdf",
-          "fichier": "assets/formations/github/Cours 02 - Branches et fusion.pdf",
-          "titre": {
-            "fr": "Branches et fusion",
-            "en": "Branches and merging"
-          },
-          "description": {
-            "fr": "Créer et fusionner des branches, résoudre les conflits, choisir sa stratégie de fusion.",
-            "en": "Creating and merging branches, resolving conflicts, choosing a merge strategy."
-          }
-        },
-        {
-          "id": "gh-3",
-          "type": "pdf",
-          "fichier": "assets/formations/github/Cours 03 - Depots distants.pdf",
-          "titre": {
-            "fr": "Les dépôts distants et GitHub",
-            "en": "Remotes and GitHub"
-          },
-          "description": {
-            "fr": "Travailler avec un dépôt distant : clone, push, pull, fetch, et l'authentification SSH ou HTTPS.",
-            "en": "Working with a remote: clone, push, pull, fetch, and SSH or HTTPS authentication."
-          }
-        },
-        {
-          "id": "gh-4",
-          "type": "pdf",
-          "fichier": "assets/formations/github/Cours 04 - Pull requests.pdf",
-          "titre": {
-            "fr": "Pull requests et collaboration",
-            "en": "Pull requests and collaboration"
-          },
-          "description": {
-            "fr": "Forks, pull requests, revues de code, issues et protection de branches.",
-            "en": "Forks, pull requests, code reviews, issues and branch protection."
-          }
-        },
-        {
-          "id": "gh-5",
-          "type": "pdf",
-          "fichier": "assets/formations/github/Cours 05 - Historique avance.pdf",
-          "titre": {
-            "fr": "La maîtrise de l'historique",
-            "en": "Mastering history"
-          },
-          "description": {
-            "fr": "Rebase interactif, cherry-pick, stash, reset contre revert, et le filet de sécurité reflog.",
-            "en": "Interactive rebase, cherry-pick, stash, reset versus revert, and the reflog safety net."
-          }
-        },
-        {
-          "id": "gh-6",
-          "type": "pdf",
-          "fichier": "assets/formations/github/Cours 06 - GitHub Actions.pdf",
-          "titre": {
-            "fr": "GitHub Actions",
-            "en": "GitHub Actions"
-          },
-          "description": {
-            "fr": "Workflows YAML, déclencheurs, jobs et matrices, jusqu'à l'intégration continue d'un projet Python.",
-            "en": "YAML workflows, triggers, jobs and matrices, up to continuous integration for a Python project."
-          }
-        },
-        {
-          "id": "gh-7",
-          "type": "pdf",
-          "fichier": "assets/formations/github/Cours 07 - Bonnes pratiques.pdf",
-          "titre": {
-            "fr": "Les bonnes pratiques",
-            "en": "Good practices"
-          },
-          "description": {
-            "fr": "Commits conventionnels, fichier .gitignore, modèles de branches, tags, releases et SemVer.",
-            "en": "Conventional commits, the .gitignore file, branching models, tags, releases and SemVer."
-          }
-        },
-        {
-          "id": "gh-8",
-          "type": "pdf",
-          "fichier": "assets/formations/github/Cours 08 - Ecosysteme GitHub.pdf",
-          "titre": {
-            "fr": "L'écosystème GitHub",
-            "en": "The GitHub ecosystem"
-          },
-          "description": {
-            "fr": "GitHub CLI (gh), Pages, Projects, Dependabot et la sécurité du dépôt.",
-            "en": "GitHub CLI (gh), Pages, Projects, Dependabot and repository security."
           }
         }
       ]

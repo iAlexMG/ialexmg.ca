@@ -34,7 +34,7 @@ const TRADUCTIONS = {
     "page.crypto.titre": "Crypto — De la donnée à l'exécution | iAlexMG",
     "page.indices.titre": "Indices boursiers — De la donnée à l'exécution | iAlexMG",
     "page.machine-learning.titre": "Machine Learning — Des modèles à l'épreuve des données | iAlexMG",
-    "page.formations.titre": "Formations — Python, Git & GitHub, backtesting | iAlexMG",
+    "page.formations.titre": "Formations — Le domaine des données, Python, backtesting | iAlexMG",
     "page.apropos.titre": "À propos — iAlexMG",
     "page.contact.titre": "Contact — iAlexMG",
 
@@ -53,7 +53,7 @@ const TRADUCTIONS = {
 
     // Descriptions courtes des projets (cartes d'accueil)
     "projet.machine-learning.desc": "Mettre le hasard à l'épreuve : tests statistiques et apprentissage automatique sur des décennies de tirages.",
-    "projet.formations.desc": "Ce que j'ai appris, remis au propre : Python, Git & GitHub, et deux moteurs de backtesting.",
+    "projet.formations.desc": "Ce que j'ai appris, remis au propre : le domaine des données en neuf formations, Python, les probabilités et deux moteurs de backtesting.",
     "projet.crypto.desc": "La chaîne complète sur le Bitcoin : données historiques, terminal d'orderflow, backtesting, automatisation.",
     "projet.indices.desc": "Les futures d'indices du CME (NQ, ES) : données temps réel, backtesting sur historique — jusqu'au trading automatisé, prouvé en exécution réelle (mode confirmation).",
     "projet.detection.desc": "Apprendre à la machine à reconnaître ce qu'elle voit.",
@@ -90,7 +90,9 @@ const TRADUCTIONS = {
     "pilier.phase1": "Phase 1 — six tests",
     "pilier.phase2": "Phase 2 — modèles",
     "pilier.synthese": "Synthèse",
+    "pilier.domaine-donnees": "Le domaine des données",
     "pilier.python": "Python",
+    // « pilier.github » sert encore le jour où la section masquée revient en ligne.
     "pilier.github": "Git & GitHub",
     "pilier.formation": "Formation backtesting",
 
@@ -168,7 +170,7 @@ const TRADUCTIONS = {
     // À propos
     "apropos.titre": "À propos",
     "apropos.p1": "Je travaille sous le nom iAlexMG, à l'intersection de la science des données, des statistiques et des marchés financiers.",
-    "apropos.p2": "Ce site rassemble mes projets : deux chaînes de trading complètes — crypto (BTC) et indices boursiers (ES/NQ) — de l'extraction des données à l'affichage orderflow, au backtesting (LEAN, vectorbt) et à l'automatisation. S'y ajoutent des travaux de statistique, à commencer par le 6/49, et mes formations : Python, Git & GitHub, et les deux moteurs de backtesting.",
+    "apropos.p2": "Ce site rassemble mes projets : deux chaînes de trading complètes — crypto (BTC) et indices boursiers (ES/NQ) — de l'extraction des données à l'affichage orderflow, au backtesting (LEAN, vectorbt) et à l'automatisation. S'y ajoutent des travaux de statistique, à commencer par le 6/49, et mes formations : le parcours du domaine des données, Python, les probabilités et les deux moteurs de backtesting.",
     "apropos.p3": "Mon approche : des méthodes rigoureuses, des résultats mesurables et des outils réutilisables.",
     "apropos.p4": "Ces projets ont été développés avec l'assistance de Claude Code (Anthropic), employé comme outil de programmation et de rédaction — la conception, les décisions et la validation restent les miennes.",
 
@@ -196,7 +198,7 @@ const TRADUCTIONS = {
     "page.crypto.titre": "Crypto — From Data to Execution | iAlexMG",
     "page.indices.titre": "Stock Indices — From Data to Execution | iAlexMG",
     "page.machine-learning.titre": "Machine Learning — Models Tested Against Real Data | iAlexMG",
-    "page.formations.titre": "Courses — Python, Git & GitHub, Backtesting | iAlexMG",
+    "page.formations.titre": "Courses — The data domain, Python, backtesting | iAlexMG",
     "page.apropos.titre": "About — iAlexMG",
     "page.contact.titre": "Contact — iAlexMG",
 
@@ -215,7 +217,7 @@ const TRADUCTIONS = {
 
     // Project short descriptions (home cards)
     "projet.machine-learning.desc": "Putting randomness to the test: statistics and machine learning on decades of draws.",
-    "projet.formations.desc": "What I learned, written up properly: Python, Git & GitHub, and two backtesting engines.",
+    "projet.formations.desc": "What I learned, written up properly: the data domain in nine courses, Python, probability and two backtesting engines.",
     "projet.crypto.desc": "The full chain on Bitcoin: historical data, orderflow terminal, backtesting, automation.",
     "projet.indices.desc": "The CME index futures (NQ, ES): real-time data, backtesting on history — all the way to automated trading, proven in live execution (confirmation mode).",
     "projet.detection.desc": "Teaching the machine to recognize what it sees.",
@@ -252,7 +254,9 @@ const TRADUCTIONS = {
     "pilier.phase1": "Phase 1 — six tests",
     "pilier.phase2": "Phase 2 — models",
     "pilier.synthese": "Synthesis",
+    "pilier.domaine-donnees": "The data domain",
     "pilier.python": "Python",
+    // "pilier.github" still serves the day the masked section comes back online.
     "pilier.github": "Git & GitHub",
     "pilier.formation": "Backtesting course",
 
@@ -330,7 +334,7 @@ const TRADUCTIONS = {
     // About
     "apropos.titre": "About",
     "apropos.p1": "I work under the name iAlexMG, at the intersection of data science, statistics and financial markets.",
-    "apropos.p2": "This site brings together my projects: two complete trading chains — crypto (BTC) and stock indices (ES/NQ) — from data extraction to orderflow display, backtesting (LEAN, vectorbt) and automation. Alongside them: statistical work, starting with the 6/49, and my courses — Python, Git & GitHub, and both backtesting engines.",
+    "apropos.p2": "This site brings together my projects: two complete trading chains — crypto (BTC) and stock indices (ES/NQ) — from data extraction to orderflow display, backtesting (LEAN, vectorbt) and automation. Alongside them: statistical work, starting with the 6/49, and my courses — the data domain path, Python, probability and both backtesting engines.",
     "apropos.p3": "My approach: rigorous methods, measurable results and reusable tools.",
     "apropos.p4": "These projects were developed with the assistance of Claude Code (Anthropic), used as a programming and writing tool — the design, decisions and validation remain my own.",
 

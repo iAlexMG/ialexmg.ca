@@ -25,6 +25,9 @@ PROJETS « HUB » (crypto, indices) — un mono-dépôt en 4 piliers
     sa source reste versionnée (l'évaluation qui a mené au rejet d'un exchange
     garde sa trace) mais elle ne paraît plus dans le sous-hub. Le hub la
     présente à sa façon — voir la clé "sources" du squelette crypto.
+    Le même "masque": true sur une section du SQUELETTE retire la carte du hub
+    et n'assemble pas le pilier qu'elle inclut, tout en gardant sa prose et ses
+    assets : c'est ainsi que « Git & GitHub » est hors ligne sans être effacé.
   - Cas particulier « pilier page unique » (ex. crypto/historique) : une section
     du pilier qui porte le MÊME id que la section du squelette la COMPLÈTE
     (texte, items… ; les champs du squelette priment) au lieu de s'y accrocher ;
@@ -114,12 +117,19 @@ HUBS = {
             "github": "Formations/Github",
             "backtesting": "Formations/Backtesting",
             "statistiques": "Formations/Statistiques",
+            # Le parcours du domaine des données : un seul pilier pour ses neuf
+            # formations, qui sont les sous-sections d'une même carte du hub. Ses
+            # assets sont mis en scène par _commun/outils/preparer_assets_site.py,
+            # qui les prend au dépôt formation_demo — voir ce script avant toute
+            # synchro, sinon le miroir croit à 159 orphelins.
+            "data-domain": "Formations/Data_Domain",
         },
         "assets": {
             "python": "formations/python",
             "github": "formations/github",
             "backtesting": "formations/backtesting",
             "statistiques": "formations/statistiques",
+            "data-domain": "formations/data-domain",
         },
     },
     "machine-learning": {
@@ -263,6 +273,16 @@ def assembler_hub(pid, dossier_portfolio, dry_run):
     sections = []
     masquees = 0
     for section in squelette.get("sections", []):
+        # "masque": true sur une section du SQUELETTE — la carte disparaît du hub,
+        # et le pilier qu'elle inclut n'est pas assemblé. Le squelette garde la
+        # section entière (prose comprise) et le pilier garde sa source : remettre
+        # la formation en ligne, c'est retirer ce seul booléen. Les assets déclarés
+        # plus bas continuent d'être miroités, donc les fichiers restent en place
+        # sur le site — plus rien n'y mène, rien n'est supprimé. Même mot que le
+        # "masque" d'une section de pilier, même intention.
+        if section.get("masque"):
+            masquees += 1
+            continue
         pilier = section.pop("inclure", None)
         # "aplatir": true — les sections du pilier remontent AU PREMIER NIVEAU du
         # hub (aucun parent) et la section-enveloppe est RETIRÉE. Le hub présente

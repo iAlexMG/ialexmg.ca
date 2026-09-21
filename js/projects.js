@@ -100,11 +100,14 @@ const PROJETS = [
     page: "formations",
     titre: "projet.formations",
     desc: "projet.formations.desc",
-    stack: ["Python", "Git", "LEAN", "vectorbt"],
+    stack: ["Python", "SQL", "dbt", "LEAN"],
     miniature: "assets/accueil/formations.svg",
+    // La puce « Git & GitHub » est retirée depuis le 2026-09-21 : la section est masquée
+    // dans le squelette du hub (Portfolio/Formations/site-content/contenu.json), pas
+    // supprimée. La remettre ici le jour où le masque tombe.
     piliers: [
+      { i18n: "pilier.domaine-donnees", s: "domaine-donnees" },
       { i18n: "pilier.python", s: "python" },
-      { i18n: "pilier.github", s: "github" },
       { i18n: "pilier.formation", s: "formation" },
     ],
   },
