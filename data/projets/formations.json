@@ -1063,6 +1063,81 @@
           }
         }
       ],
+      "phases": {
+        "colonnes": [
+          {
+            "nom": {
+              "fr": "STAGING",
+              "en": "STAGING"
+            },
+            "role": {
+              "fr": "Reprendre la RAW, une vue par table",
+              "en": "Picking up RAW, one view per table"
+            },
+            "cours": [
+              "01",
+              "03"
+            ]
+          },
+          {
+            "nom": {
+              "fr": "INTERMEDIATE",
+              "en": "INTERMEDIATE"
+            },
+            "role": {
+              "fr": "Joindre, clarifier, préparer l'étoile",
+              "en": "Joining, clarifying, preparing the star"
+            },
+            "cours": [
+              "04"
+            ]
+          },
+          {
+            "nom": {
+              "fr": "MARTS",
+              "en": "MARTS"
+            },
+            "role": {
+              "fr": "Concevoir et livrer les étoiles",
+              "en": "Designing and delivering the stars"
+            },
+            "cours": [
+              "02",
+              "06"
+            ]
+          }
+        ],
+        "bandes": [
+          {
+            "nom": {
+              "fr": "Fiabiliser et faire tourner",
+              "en": "Making it reliable and keeping it running"
+            },
+            "role": {
+              "fr": "Ce qui traverse les trois couches : les tests, l'incrémental, l'intégration continue.",
+              "en": "What runs through all three layers: tests, incremental runs, continuous integration."
+            },
+            "cours": [
+              "05",
+              "07",
+              "08"
+            ]
+          },
+          {
+            "nom": {
+              "fr": "De bout en bout",
+              "en": "End to end"
+            },
+            "role": {
+              "fr": "Le projet dbt complet, assemblé.",
+              "en": "The complete dbt project, assembled."
+            },
+            "cours": [
+              "09"
+            ]
+          }
+        ]
+      },
       "carteNom": {
         "fr": "Analytics Engineering",
         "en": "Analytics Engineering"
@@ -1335,6 +1410,57 @@
           }
         }
       ],
+      "phases": {
+        "colonnes": [
+          {
+            "nom": {
+              "fr": "Couche sémantique",
+              "en": "Semantic layer"
+            },
+            "role": {
+              "fr": "Modéliser, préparer, mesurer",
+              "en": "Modelling, preparing, measuring"
+            },
+            "cours": [
+              "00",
+              "01",
+              "02",
+              "03",
+              "04"
+            ]
+          },
+          {
+            "nom": {
+              "fr": "Rapport",
+              "en": "Report"
+            },
+            "role": {
+              "fr": "Le montrer, puis le publier",
+              "en": "Showing it, then publishing it"
+            },
+            "cours": [
+              "05",
+              "07"
+            ]
+          }
+        ],
+        "bandes": [
+          {
+            "nom": {
+              "fr": "Gouverner la restitution",
+              "en": "Governing reporting"
+            },
+            "role": {
+              "fr": "Une définition par indicateur, un libre-service encadré, puis le rapport complet de Boréal.",
+              "en": "One definition per metric, a supervised self-service, then Boréal's full report."
+            },
+            "cours": [
+              "06",
+              "08"
+            ]
+          }
+        ]
+      },
       "carteNom": {
         "fr": "Business Intelligence",
         "en": "Business Intelligence"
