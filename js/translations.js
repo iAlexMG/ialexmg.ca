@@ -77,8 +77,8 @@ const TRADUCTIONS = {
     "accueil.tuile4_titre": "Marchés",
     "accueil.tuile4_desc": "Crypto & indices CME",
 
-    // Rangées de projet de l'accueil
-    "accueil.groupe_trading": "Trading — deux marchés, une même chaîne",
+    // Carte Trading de l'accueil (Crypto et Indices réunis)
+    "accueil.trading_desc": "Deux marchés, une même chaîne : le Bitcoin et les futures d'indices américains (NQ, ES), de la donnée historique jusqu'au trading automatisé.",
 
     // Liens de piliers dans les rangées (crypto / indices partagent les ids)
     "pilier.historique": "Historique",
@@ -245,8 +245,8 @@ const TRADUCTIONS = {
     "accueil.tuile4_titre": "Markets",
     "accueil.tuile4_desc": "Crypto & CME indices",
 
-    // Home project rows
-    "accueil.groupe_trading": "Trading — two markets, one chain",
+    // Home Trading card (Crypto and Indices together)
+    "accueil.trading_desc": "Two markets, one chain: Bitcoin and US index futures (NQ, ES), from historical data all the way to automated trading.",
 
     // Pillar links in the rows (crypto / indices share the ids)
     "pilier.historique": "History",

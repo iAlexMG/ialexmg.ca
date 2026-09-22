@@ -367,60 +367,87 @@ img { max-width: 100%; display: block; }
   color: var(--couleur-texte-doux);
 }
 
-/* ----- Rangées de projet (accueil) -----
-   La grille de cartes cède la place à des rangées pleine largeur : le visuel
-   (cadre 16:9 uniforme) à gauche, le récit et les liens de piliers à droite.
-   Un filet sépare les rangées ; l'en-tête de groupe « Trading » coiffe les deux
-   rangées de marché. */
-/* Titre « Mes projets » centré au-dessus des rangées de l'accueil. */
+/* ----- Cartes de projet (accueil) -----
+   Trois cartes côte à côte au large (Trading, Machine Learning, Formations),
+   empilées en mobile. Le visuel occupe un cadre 16:9 uniforme en tête ; la
+   carte Trading y loge deux miniatures, une par hub. Le lien de bas de carte
+   est poussé au pied pour que les trois s'alignent malgré des accroches de
+   longueurs différentes. */
+/* Titre « Mes projets » centré au-dessus des cartes de l'accueil. */
 #projets > .conteneur > h2 { text-align: center; }
-.groupe-titre {
-  font-family: var(--police-mono);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--couleur-texte-doux);
-  margin: 2.25rem 0 0;
-  padding-bottom: 0.6rem;
-  border-bottom: 1px solid var(--couleur-bordure);
-}
-.rangee-projet {
+.cartes-accueil {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.25rem;
-  align-items: center;
-  padding: 2rem 0;
-  border-bottom: 1px solid var(--couleur-bordure);
+  gap: var(--grille-gouttiere);
+  margin-top: 1.75rem;
 }
-.rangee-visuel {
-  display: block;
-  /* Surface uniforme quelle que soit l'image source : toutes les rangées
-     occupent le même cadre 16:9 (une capture paysage, un SVG ou un portrait
-     sont ramenés au même gabarit). */
-  aspect-ratio: 16 / 9;
-  background: #0d1117;
+.carte-accueil {
+  display: flex;
+  flex-direction: column;
+  background: var(--couleur-surface);
   border: 1px solid var(--couleur-bordure);
   border-radius: var(--rayon);
   overflow: hidden;
   transition: border-color var(--transition);
 }
-.rangee-visuel:hover { border-color: var(--couleur-accent); }
-.rangee-visuel img {
+.carte-accueil:hover { border-color: var(--couleur-accent-clair); }
+.carte-accueil-visuel {
+  display: block;
+  /* Surface uniforme quelle que soit l'image source : toutes les cartes
+     occupent le même cadre 16:9. */
+  aspect-ratio: 16 / 9;
+  background: var(--couleur-fond);
+  border-bottom: 1px solid var(--couleur-bordure);
+  overflow: hidden;
+}
+.carte-accueil-visuel a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.carte-accueil-visuel img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  opacity: 0.85;
+  transition: opacity var(--transition);
 }
-.rangee-corps h3 { font-size: 1.35rem; margin-bottom: 0.4rem; }
-.rangee-corps h3 a { color: var(--couleur-texte); }
-.rangee-corps h3 a:hover { color: var(--couleur-accent); }
-.rangee-accroche { color: var(--couleur-texte-doux); margin-bottom: 0; }
-.rangee-piliers {
+.carte-accueil-visuel a:hover img { opacity: 1; }
+/* Carte d'un groupe : une miniature par hub, séparées d'un filet. Les SVG de
+   l'accueil tiennent leur motif dans les 800 px du centre, que « cover »
+   garde entiers dans chaque moitié. */
+.carte-accueil-duo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.carte-accueil-duo a + a { border-left: 1px solid var(--couleur-bordure); }
+.carte-accueil-corps {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.25rem 1.25rem 1.4rem;
+}
+.carte-accueil-corps h3 { font-size: 1.3rem; margin-bottom: 0.45rem; }
+.carte-accueil-corps h3 a { color: var(--couleur-texte); }
+.carte-accueil-corps h3 a:hover { color: var(--couleur-accent); }
+.carte-accueil-accroche {
+  color: var(--couleur-texte-doux);
+  font-size: 0.95rem;
+  margin-bottom: 0;
+}
+.carte-accueil-piliers {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 1rem 0 1.1rem;
+  gap: 0.45rem;
+  margin-top: 1rem;
+}
+.carte-accueil-liens {
+  margin-top: auto;
+  padding-top: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
 }
 .pilier-chip {
   font-family: var(--police-mono);
@@ -439,12 +466,12 @@ img { max-width: 100%; display: block; }
   color: var(--couleur-accent);
   border-color: var(--couleur-accent);
 }
-.rangee-voir {
+.carte-accueil-voir {
   font-size: 0.9rem;
   font-weight: 600;
   color: var(--couleur-accent);
 }
-.rangee-voir:hover { text-decoration: underline; text-underline-offset: 3px; }
+.carte-accueil-voir:hover { text-decoration: underline; text-underline-offset: 3px; }
 
 /* ----- Boutons -----
    Boutons de commande : cadre accent, texte mono espacé. Le survol inverse
@@ -2197,15 +2224,8 @@ button:focus-visible {
 
   .galerie { grid-template-columns: repeat(3, 1fr); }
 
-  /* Rangées de l'accueil : récit (2fr) à GAUCHE, visuel (3fr) à DROITE, même
-     disposition pour toutes. Le visuel est le 1er enfant du DOM (accessibilité,
-     ordre de lecture) mais placé en 2e colonne par la grille. Une rangée sans
-     visuel reste pleine largeur, bornée par la mesure du texte. */
-  .rangee-projet { grid-template-columns: 2fr 3fr; gap: 2.5rem; }
-  .rangee-projet .rangee-corps { grid-column: 1; grid-row: 1; }
-  .rangee-projet .rangee-visuel { grid-column: 2; grid-row: 1; }
-  .rangee-sans-visuel { grid-template-columns: 1fr; }
-  .rangee-sans-visuel .rangee-corps { max-width: 70ch; }
+  /* Cartes de l'accueil : les trois côte à côte. */
+  .cartes-accueil { grid-template-columns: repeat(3, 1fr); }
 
   .tuiles { grid-template-columns: repeat(4, 1fr); }
 }

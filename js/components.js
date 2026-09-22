@@ -79,55 +79,88 @@ const Composants = (function () {
     );
   }
 
-  // Rangées de projet pour l'accueil, générées depuis window.PROJETS.
-  // S'insèrent dans le conteneur [data-rangees-projets] de index.html.
-  // Chaque rangée : titre + accroche + liens directs vers les piliers à GAUCHE,
-  // grand visuel à DROITE (surface uniforme, cadré par le CSS). Le visuel reste
-  // le 1er enfant du DOM (ordre de lecture) mais la grille le place à droite.
-  // L'en-tête de groupe « Trading » coiffe les deux rangées crypto et indices
-  // sans les fusionner.
-  function construireRangeesProjets() {
-    const morceaux = [];
+  // Cartes de projet pour l'accueil, générées depuis window.PROJETS et
+  // s'insérant dans le conteneur [data-cartes-accueil] de index.html. Trois
+  // cartes côte à côte au large, empilées en mobile : visuel 16:9 en tête,
+  // puis titre, accroche, liens directs vers les piliers et « Voir le projet ».
+  // Les projets d'un même groupe (GROUPES_ACCUEIL) partagent une carte : leurs
+  // miniatures s'y côtoient, chacune menant à son hub, et un lien par hub
+  // remplace « Voir le projet ».
+  function miniature(p) {
+    return (
+      '<a href="' + p.href + '" tabindex="-1" aria-hidden="true">' +
+      '<img src="' + encodeURI(p.miniature) + '" alt="" loading="lazy">' +
+      "</a>"
+    );
+  }
 
-    (window.PROJETS || []).forEach(function (p) {
-      if (p.id === "crypto") {
-        morceaux.push(
-          '<p class="groupe-titre" data-i18n="accueil.groupe_trading"></p>'
+  function carteProjet(p) {
+    const piliers = (p.piliers || [])
+      .map(function (pilier) {
+        return (
+          '<a class="pilier-chip" href="projet-section.html?p=' +
+          encodeURIComponent(p.id) + "&s=" + encodeURIComponent(pilier.s) +
+          '" data-i18n="' + pilier.i18n + '"></a>'
         );
-      }
+      })
+      .join("");
 
-      const visuel = p.miniature
-        ? '<a class="rangee-visuel" href="' + p.href + '" tabindex="-1" aria-hidden="true">' +
-          '<img src="' + encodeURI(p.miniature) + '" alt="" loading="lazy">' +
-          "</a>"
-        : "";
+    return (
+      '<article class="carte-accueil">' +
+      (p.miniature ? '<div class="carte-accueil-visuel">' + miniature(p) + "</div>" : "") +
+      '<div class="carte-accueil-corps">' +
+      '  <h3><a href="' + p.href + '" data-i18n="' + p.titre + '"></a></h3>' +
+      '  <p class="carte-accueil-accroche" data-i18n="' + p.desc + '"></p>' +
+      (piliers ? '<div class="carte-accueil-piliers">' + piliers + "</div>" : "") +
+      '  <div class="carte-accueil-liens">' +
+      '    <a class="carte-accueil-voir" href="' + p.href + '">' +
+      '<span data-i18n="accueil.voir_projet"></span> →</a>' +
+      "  </div>" +
+      "</div>" +
+      "</article>"
+    );
+  }
 
-      const piliers = (p.piliers || [])
-        .map(function (pilier) {
-          return (
-            '<a class="pilier-chip" href="projet-section.html?p=' +
-            encodeURIComponent(p.id) + "&s=" + encodeURIComponent(pilier.s) +
-            '" data-i18n="' + pilier.i18n + '"></a>'
-          );
-        })
-        .join("");
+  function carteGroupe(groupe, membres) {
+    const visuels = membres.filter(function (p) { return p.miniature; }).map(miniature).join("");
+    const liens = membres
+      .map(function (p) {
+        return (
+          '<a class="carte-accueil-voir" href="' + p.href + '">' +
+          '<span data-i18n="' + p.titre + '"></span> →</a>'
+        );
+      })
+      .join("");
 
-      morceaux.push(
-        '<article class="rangee-projet' +
-        (visuel ? "" : " rangee-sans-visuel") + '">' +
-        visuel +
-        '<div class="rangee-corps">' +
-        '  <h3><a href="' + p.href + '" data-i18n="' + p.titre + '"></a></h3>' +
-        '  <p class="rangee-accroche" data-i18n="' + p.desc + '"></p>' +
-        (piliers ? '<div class="rangee-piliers">' + piliers + "</div>" : "") +
-        '  <a class="rangee-voir" href="' + p.href + '">' +
-        '<span data-i18n="accueil.voir_projet"></span> →</a>' +
-        "</div>" +
-        "</article>"
-      );
-    });
+    return (
+      '<article class="carte-accueil">' +
+      (visuels ? '<div class="carte-accueil-visuel carte-accueil-duo">' + visuels + "</div>" : "") +
+      '<div class="carte-accueil-corps">' +
+      '  <h3 data-i18n="' + groupe.titre + '"></h3>' +
+      '  <p class="carte-accueil-accroche" data-i18n="' + groupe.desc + '"></p>' +
+      '  <div class="carte-accueil-liens">' + liens + "</div>" +
+      "</div>" +
+      "</article>"
+    );
+  }
 
-    return morceaux.join("");
+  function construireCartesAccueil() {
+    const projets = window.PROJETS || [];
+    const groupes = window.GROUPES_ACCUEIL || {};
+    const dejaRendus = {};
+
+    return projets
+      .map(function (p) {
+        const groupe = p.groupe && groupes[p.groupe];
+        if (!groupe) return carteProjet(p);
+        if (dejaRendus[p.groupe]) return "";
+        dejaRendus[p.groupe] = true;
+        return carteGroupe(
+          groupe,
+          projets.filter(function (q) { return q.groupe === p.groupe; })
+        );
+      })
+      .join("");
   }
 
   function construirePied() {
@@ -178,9 +211,9 @@ const Composants = (function () {
     const pied = document.getElementById("pied");
     if (pied) pied.innerHTML = construirePied();
 
-    // Rangées de projets (présentes uniquement sur l'accueil).
-    const rangeesProjets = document.querySelector("[data-rangees-projets]");
-    if (rangeesProjets) rangeesProjets.innerHTML = construireRangeesProjets();
+    // Cartes de projets (présentes uniquement sur l'accueil).
+    const cartesAccueil = document.querySelector("[data-cartes-accueil]");
+    if (cartesAccueil) cartesAccueil.innerHTML = construireCartesAccueil();
 
     // Menu déroulant Trading : clic pour ouvrir/fermer (touche), fermeture au
     // clic hors du groupe et à Échap. Le survol l'ouvre aussi, en CSS.

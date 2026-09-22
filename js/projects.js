@@ -21,10 +21,14 @@
  *               sections du hub : { i18n: clé du libellé, s: id de section }.
  *   code      : (optionnel) URL du dépôt GitHub du projet — affiche un bouton
  *               « Code source » en tête de la page du projet (content.js).
+ *   groupe    : (optionnel) clé de GROUPES_ACCUEIL. Les projets d'un même
+ *               groupe partagent UNE carte sur l'accueil, placée au rang du
+ *               premier d'entre eux ; leurs miniatures s'y côtoient.
  *
  * L'ordre du tableau = l'ordre des cartes sur l'accueil. Les projets les plus
  * pertinents pour un recruteur « ingénierie / trading » sont placés en tête
- * (les deux hubs Crypto et Indices boursiers), puis Machine Learning et Formations.
+ * (les deux hubs Crypto et Indices boursiers, réunis sous Trading), puis
+ * Machine Learning et Formations : trois cartes côte à côte.
  *
  * HUBS : les quatre projets sont des hubs, dont le JSON est ASSEMBLÉ par
  * tools/sync-site.py depuis des site-content sources.
@@ -51,7 +55,8 @@ const PROJETS = [
     titre: "projet.crypto",
     desc: "projet.crypto.desc",
     stack: ["Python", "asyncio", "WebSocket", "LEAN"],
-    miniature: "assets/crypto/affichage/img/Hybride.PNG",
+    groupe: "trading",
+    miniature: "assets/accueil/crypto.svg",
     piliers: [
       { i18n: "pilier.historique", s: "historique" },
       { i18n: "pilier.temps-reel", s: "temps-reel" },
@@ -68,7 +73,8 @@ const PROJETS = [
     titre: "projet.indices",
     desc: "projet.indices.desc",
     stack: ["Python", "PySide6", "C#", "LEAN"],
-    miniature: "assets/indices/affichage/img/All.PNG",
+    groupe: "trading",
+    miniature: "assets/accueil/indices.svg",
     piliers: [
       { i18n: "pilier.historique", s: "historique" },
       { i18n: "pilier.temps-reel", s: "temps-reel" },
@@ -123,6 +129,13 @@ const PROJETS = [
   // },
 ];
 
+// Cartes de l'accueil qui réunissent plusieurs hubs (champ « groupe » d'un
+// projet) : titre et accroche i18n de la carte commune. Le groupe n'a pas de
+// page à lui ; la carte mène à chacun de ses hubs.
+const GROUPES_ACCUEIL = {
+  trading: { titre: "nav.trading", desc: "accueil.trading_desc" },
+};
+
 // Anciens ids de projet (avant la refonte en hubs, 2026-07) -> hub qui héberge
 // désormais leur contenu. Sert à honorer les anciennes URL profondes
 // (projet-section.html?p=backtesting&s=lean, …) : les ids de section ont été
@@ -164,5 +177,6 @@ const SECTIONS_ALIAS = {
 
 // Exposition globale (pas de modules pour rester compatible file:// et GitHub Pages).
 window.PROJETS = PROJETS;
+window.GROUPES_ACCUEIL = GROUPES_ACCUEIL;
 window.PROJETS_ALIAS = PROJETS_ALIAS;
 window.SECTIONS_ALIAS = SECTIONS_ALIAS;

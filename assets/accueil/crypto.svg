@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Pièce frappée du symbole du bitcoin">
+  <!-- Miniature d'accueil « Crypto » — une pièce au symbole du bitcoin, dessinée
+       à la main (aucun logo repris). Générique, sans texte, aux couleurs du site.
+       Le motif tient dans les 800 px du centre : la carte Trading de l'accueil
+       n'en montre que la moitié centrale. -->
+  <rect width="1600" height="900" fill="#0B0E14"/>
+
+  <!-- Tranche et face de la pièce -->
+  <circle cx="800" cy="450" r="262" fill="#12161C" stroke="#E3B341" stroke-width="6"/>
+  <circle cx="800" cy="450" r="224" fill="none" stroke="#2A3646" stroke-width="3" stroke-dasharray="4 14"/>
+
+  <!-- Symbole ₿, incliné comme sur les pièces -->
+  <g transform="rotate(14 800 450)" fill="none" stroke="#E3B341" stroke-width="30"
+     stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 735 325 V 575"/>
+    <path d="M 700 325 H 830 C 900 325 900 445 830 445 H 735"/>
+    <path d="M 735 445 H 845 C 925 445 925 575 845 575 H 700"/>
+    <path d="M 765 290 V 325 M 815 290 V 325 M 765 575 V 610 M 815 575 V 610"/>
+  </g>
+</svg>
