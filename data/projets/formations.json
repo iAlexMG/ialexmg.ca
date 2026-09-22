@@ -570,6 +570,84 @@
           }
         }
       ],
+      "phases": {
+        "colonnes": [
+          {
+            "nom": {
+              "fr": "Sources",
+              "en": "Sources"
+            },
+            "role": {
+              "fr": "D'où vient la donnée",
+              "en": "Where the data comes from"
+            },
+            "cours": [
+              "01",
+              "08"
+            ]
+          },
+          {
+            "nom": {
+              "fr": "Ingestion",
+              "en": "Ingestion"
+            },
+            "role": {
+              "fr": "Aller la chercher, et la charger",
+              "en": "Fetching it, and loading it"
+            },
+            "cours": [
+              "03",
+              "04",
+              "09"
+            ]
+          },
+          {
+            "nom": {
+              "fr": "RAW",
+              "en": "RAW"
+            },
+            "role": {
+              "fr": "La déposer, la ranger, la traiter",
+              "en": "Landing, storing, processing it"
+            },
+            "cours": [
+              "02",
+              "07",
+              "10"
+            ]
+          }
+        ],
+        "bandes": [
+          {
+            "nom": {
+              "fr": "Tenir le pipeline",
+              "en": "Keeping the pipeline running"
+            },
+            "role": {
+              "fr": "Ce qui traverse les trois étapes : le code, l'orchestration, la qualité.",
+              "en": "What runs through all three steps: code, orchestration, quality."
+            },
+            "cours": [
+              "05",
+              "06",
+              "11"
+            ]
+          },
+          {
+            "nom": {
+              "fr": "De bout en bout",
+              "en": "End to end"
+            },
+            "role": {
+              "fr": "Les deux chemins de Boréal, montés en entier.",
+              "en": "Boréal's two paths, built whole."
+            },
+            "cours": [
+              "12"
+            ]
+          }
+        ]
+      },
       "carteNom": {
         "fr": "Data Engineering",
         "en": "Data Engineering"

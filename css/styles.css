@@ -1387,6 +1387,119 @@ a.fichier-nom:hover { color: var(--couleur-accent); }
   font-family: var(--police-corps);
   font-size: 0.85rem;
 }
+/* Le rôle d'une étape, à la suite de son nom dans la légende du groupe. */
+.index-legende-role {
+  font-family: var(--police-corps);
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+/* Une ligne visée depuis le schéma : elle se dégage de l'en-tête collant et
+   s'allume un instant. */
+.cours-ligne { scroll-margin-top: 88px; }
+.cours-ligne:target { animation: cours-vise 1.8s ease-out; }
+@keyframes cours-vise {
+  from { background: var(--couleur-surface-alt); box-shadow: inset 3px 0 0 var(--couleur-accent); }
+  to { background: transparent; box-shadow: inset 3px 0 0 transparent; }
+}
+
+/* ----- Schéma des étapes d'une formation (clé `phases`) -----
+   Les étapes que la formation possède, en colonnes reliées par des chevrons,
+   les cours rangés dessous ; les bandes pleine largeur tiennent ce qui
+   traverse les colonnes. Même grammaire que la carte du domaine, en HTML pour
+   que les titres se coupent. Empilé en mobile, chevrons tournés vers le bas. */
+.schema-cours { margin: 1.5rem 0 0.5rem; }
+.sc-colonnes {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.6rem;
+}
+.sc-colonne {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1 1 0;
+  min-width: 0;
+}
+.sc-chevron {
+  align-self: center;
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 9px solid var(--couleur-accent-clair);
+}
+.sc-phase {
+  margin: 0;
+  padding: 0.55rem 0.75rem;
+  background: var(--couleur-surface-alt);
+  border: 1px solid var(--couleur-bordure);
+  border-radius: var(--rayon);
+}
+.sc-phase-nom {
+  display: block;
+  font-family: var(--police-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--couleur-texte);
+}
+.sc-phase-role {
+  display: block;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--couleur-texte-doux);
+}
+.sc-noeud {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.1rem 0.6rem;
+  align-items: baseline;
+  padding: 0.6rem 0.75rem;
+  background: var(--couleur-surface);
+  border: 1px solid var(--couleur-bordure);
+  border-radius: 5px;
+  color: var(--couleur-texte);
+  transition: border-color var(--transition);
+}
+.sc-noeud:hover,
+.sc-noeud:focus-visible { border-color: var(--couleur-accent); color: var(--couleur-texte); }
+.sc-num {
+  font-family: var(--police-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--couleur-accent);
+}
+.sc-titre { font-size: 0.88rem; font-weight: 600; line-height: 1.35; }
+.sc-etat {
+  grid-column: 2;
+  font-family: var(--police-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--couleur-texte-doux);
+}
+/* Un cours pas encore écrit : cadre pointillé, encre baissée. */
+.sc-attente { border-style: dashed; }
+.sc-attente .sc-num,
+.sc-attente .sc-titre { opacity: 0.6; }
+.sc-bande {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border: 1px dashed var(--couleur-bordure);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.sc-bande .sc-phase { background: transparent; border: 0; padding: 0; }
+.sc-bande-noeuds {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+}
 
 /* ----- Visionneuse (lightbox.js) -----
    Plein écran assombri ; l'image garde un fond blanc pour les planches au
@@ -2155,6 +2268,19 @@ button:focus-visible {
  * ------------------------------------------------------------------------ */
 @media (min-width: 880px) {
   .menu-bascule { display: none; }
+
+  /* Schéma des étapes d'une formation : les colonnes côte à côte, chevrons
+     tournés vers la droite ; les cours d'une bande sur une rangée. */
+  .sc-colonnes { flex-direction: row; gap: 0.75rem; }
+  .sc-chevron {
+    margin-top: 1.4rem;
+    align-self: flex-start;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-left: 9px solid var(--couleur-accent-clair);
+    border-right: 0;
+  }
+  .sc-bande-noeuds { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
 
   /* L'arborescence des Visualisations ne diverge qu'ici : c'est la largeur à
      partir de laquelle une colonne par vue tient au large (≈265px pour trois).

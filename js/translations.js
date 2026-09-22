@@ -152,6 +152,7 @@ const TRADUCTIONS = {
 
     // Index des cours d'une formation (les deux légendes de la page)
     "cours.legende_cours": "Les cours",
+    "cours.schema_aria": "Les cours rangés par étape de la chaîne",
     "cours.legende_cadrage": "Les documents de cadrage",
 
     // Documents PDF
@@ -320,6 +321,7 @@ const TRADUCTIONS = {
 
     // Course index of a training path (the page's two captions)
     "cours.legende_cours": "The modules",
+    "cours.schema_aria": "The modules arranged by step of the chain",
     "cours.legende_cadrage": "Framing documents",
 
     // PDF documents
