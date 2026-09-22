@@ -153,6 +153,12 @@ const TRADUCTIONS = {
     // Index des cours d'une formation (les deux légendes de la page)
     "cours.legende_cours": "Les cours",
     "cours.schema_aria": "Les cours rangés par étape de la chaîne",
+    "cours.etapes_labo": "étapes du labo",
+    "cours.une_fois": "une seule fois",
+    "cours.vise_consigne": "Cliquez une étape de la chaîne pour allumer les étapes de labo qui la touchent.",
+    "cours.vise": "{n} étapes de labo touchent « {etape} »",
+    "cours.vise_un": "1 étape de labo touche « {etape} »",
+    "cours.vise_voir": "voir ↓",
     "cours.legende_cadrage": "Les documents de cadrage",
 
     // Documents PDF
@@ -322,6 +328,12 @@ const TRADUCTIONS = {
     // Course index of a training path (the page's two captions)
     "cours.legende_cours": "The modules",
     "cours.schema_aria": "The modules arranged by step of the chain",
+    "cours.etapes_labo": "lab steps",
+    "cours.une_fois": "once only",
+    "cours.vise_consigne": "Click a step of the chain to light up the lab steps that touch it.",
+    "cours.vise": "{n} lab steps touch “{etape}”",
+    "cours.vise_un": "1 lab step touches “{etape}”",
+    "cours.vise_voir": "show ↓",
     "cours.legende_cadrage": "Framing documents",
 
     // PDF documents

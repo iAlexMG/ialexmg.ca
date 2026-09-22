@@ -571,6 +571,7 @@ const Contenu = (function () {
             (resume || puce
               ? '<span class="cours-resume">' + puce + echapper(resume) + "</span>"
               : "") +
+            creerEtapesDuLabo(c) +
             "</li>"
           );
         })
@@ -578,6 +579,123 @@ const Contenu = (function () {
       "</ol>"
     );
   }
+
+  // Les étapes du labo d'un cours (clé `etapes` d'un cours), repliées sous sa
+  // ligne : le repère « cours.étape », la tâche réelle, une conduite
+  // pointillée, puis où elle se fait ; un clic sur l'étape déplie pourquoi elle
+  // existe. Une étape de montage (une seule fois) porte sa mention et
+  // s'estompe. `data-touche` porte les ids des étapes de la chaîne qu'elle
+  // touche : le schéma s'en sert pour les allumer (voir brancherEtapes).
+  function creerEtapesDuLabo(c) {
+    const etapes = Array.isArray(c.etapes) ? c.etapes : [];
+    if (!etapes.length || !c.numero) return "";
+    const id = "etapes-" + c.numero;
+    return (
+      '<span class="cours-plus"><button type="button" class="cours-deplier"' +
+      ' aria-expanded="false" aria-controls="' + echapper(id) + '">' +
+      etapes.length + " " + echapper(window.I18n.t("cours.etapes_labo")) +
+      "</button></span>" +
+      '<ol class="cours-etapes" id="' + echapper(id) + '" hidden>' +
+      etapes
+        .map(function (e) {
+          const note = texteLocalise(e.note);
+          return (
+            '<li class="etape' + (e.montage ? " etape-montage" : "") +
+            '" data-touche="' + echapper((e.touche || []).join(" ")) + '">' +
+            '<button type="button" class="etape-rangee" aria-expanded="false">' +
+            '<span class="etape-ref">' + echapper(e.ref || "") + "</span>" +
+            '<span class="etape-quoi">' + echapper(texteLocalise(e.quoi)) +
+            (e.montage
+              ? ' <span class="etape-une-fois">' +
+                echapper(window.I18n.t("cours.une_fois")) + "</span>"
+              : "") +
+            "</span>" +
+            '<span class="etape-conduite" aria-hidden="true"></span>' +
+            '<span class="etape-ou">' + echapper(texteLocalise(e.ou)) + "</span>" +
+            "</button>" +
+            (note ? '<p class="etape-note" hidden>' + echapper(note) + "</p>" : "") +
+            "</li>"
+          );
+        })
+        .join("") +
+      "</ol>"
+    );
+  }
+
+  // Délégation globale, comme les fiches de concepts : le contenu se re-rend
+  // à chaque changement de langue. Trois gestes : déplier les étapes d'un
+  // cours, déplier la note d'une étape, et viser une étape de la chaîne dans
+  // le schéma, ce qui allume les étapes de labo qui la touchent et déplie
+  // leurs cours (repliés de nouveau quand on relâche).
+  function basculer(bouton, cible) {
+    const ouvert = bouton.getAttribute("aria-expanded") === "true";
+    bouton.setAttribute("aria-expanded", ouvert ? "false" : "true");
+    if (cible) cible.hidden = ouvert;
+  }
+
+  function viserEtape(bouton) {
+    const portee = bouton.closest("[data-projet-section]") || document;
+    const id = bouton.getAttribute("data-phase");
+    const relache = bouton.getAttribute("aria-pressed") === "true";
+    portee.querySelectorAll(".sc-phase[data-phase]").forEach(function (b) {
+      b.setAttribute("aria-pressed", !relache && b === bouton ? "true" : "false");
+    });
+    // Les cours dépliés par une visée précédente se replient d'abord.
+    portee.querySelectorAll(".cours-deplier[data-par-visee]").forEach(function (b) {
+      b.removeAttribute("data-par-visee");
+      basculer(b, portee.querySelector("#" + b.getAttribute("aria-controls")));
+    });
+    let n = 0;
+    let premier = null;
+    portee.querySelectorAll(".etape").forEach(function (li) {
+      const visee = !relache && (li.getAttribute("data-touche") || "").split(" ").indexOf(id) !== -1;
+      li.classList.toggle("etape-visee", visee);
+      if (!visee) return;
+      n += 1;
+      const liste = li.closest(".cours-etapes");
+      const deplier = liste && portee.querySelector('[aria-controls="' + liste.id + '"]');
+      if (deplier && deplier.getAttribute("aria-expanded") !== "true") {
+        deplier.setAttribute("data-par-visee", "");
+        basculer(deplier, liste);
+      }
+      if (!premier) premier = li.closest(".cours-ligne");
+    });
+    const statut = portee.querySelector(".sc-statut");
+    if (!statut) return;
+    if (relache) {
+      statut.textContent = window.I18n.t("cours.vise_consigne");
+      return;
+    }
+    const nom = bouton.querySelector(".sc-phase-nom").textContent;
+    statut.textContent = window.I18n
+      .t(n === 1 ? "cours.vise_un" : "cours.vise")
+      .replace("{n}", n)
+      .replace("{etape}", nom);
+    if (premier) {
+      const lien = document.createElement("a");
+      lien.href = "#" + premier.id;
+      lien.textContent = window.I18n.t("cours.vise_voir");
+      statut.appendChild(document.createTextNode(" · "));
+      statut.appendChild(lien);
+    }
+  }
+
+  document.addEventListener("click", function (e) {
+    if (!e.target.closest) return;
+    const deplier = e.target.closest(".cours-deplier");
+    if (deplier) {
+      deplier.removeAttribute("data-par-visee");
+      basculer(deplier, document.getElementById(deplier.getAttribute("aria-controls")));
+      return;
+    }
+    const rangee = e.target.closest(".etape-rangee");
+    if (rangee) {
+      basculer(rangee, rangee.parentNode.querySelector(".etape-note"));
+      return;
+    }
+    const phase = e.target.closest(".sc-phase[data-phase]");
+    if (phase) viserEtape(phase);
+  });
 
   // L'étape de chaque cours, par numéro : { nom, role, colonne (index 0…,
   // ou -1 pour une bande, qui traverse toutes les colonnes) }.
@@ -620,17 +738,38 @@ const Contenu = (function () {
     // étapes. Pas de chevron entre leurs en-têtes.
     const enchainees = phases.enchainees !== false;
 
+    // Une étape de la chaîne que des étapes de labo touchent devient un bouton :
+    // la viser les allume dans l'index (voir viserEtape).
+    const touchees = {};
+    cours.forEach(function (c) {
+      (c.etapes || []).forEach(function (e) {
+        (e.touche || []).forEach(function (id) {
+          touchees[id] = true;
+        });
+      });
+    });
     const entetes = colonnes
       .map(function (g, i) {
         const role = texteLocalise(g.role);
+        const visable = g.id && touchees[g.id];
+        const balise = visable ? "button" : "p";
         return (
-          '<p class="sc-phase" style="grid-column:' + (i + 1) + '">' +
+          "<" + balise + ' class="sc-phase' +
+          (i === colonnes.length - 1 ? " sc-phase-derniere" : "") + '"' +
+          (visable
+            ? ' type="button" data-phase="' + echapper(g.id) + '" aria-pressed="false"'
+            : "") +
+          ' style="grid-column:' + (i + 1) + '">' +
           '<span class="sc-phase-nom">' + echapper(texteLocalise(g.nom)) + "</span>" +
           (role ? '<span class="sc-phase-role">' + echapper(role) + "</span>" : "") +
-          "</p>"
+          "</" + balise + ">"
         );
       })
       .join("");
+    const statut = Object.keys(touchees).length
+      ? '<p class="sc-statut" aria-live="polite">' +
+        echapper(window.I18n.t("cours.vise_consigne")) + "</p>"
+      : "";
 
     const couloirs = colonnes
       .map(function (g, i) {
@@ -685,6 +824,7 @@ const Contenu = (function () {
       '" style="--n:' + n + '">' +
       entetes + couloirs + noeuds +
       "</div>" +
+      statut +
       (legendeBandes ? '<div class="sc-legendes">' + legendeBandes + "</div>" : "") +
       "</figure>"
     );

@@ -1387,6 +1387,108 @@ a.fichier-nom:hover { color: var(--couleur-accent); }
   font-family: var(--police-corps);
   font-size: 0.85rem;
 }
+/* Les étapes du labo d'un cours, repliées sous sa ligne : le repère, la
+   tâche réelle, une conduite pointillée jusqu'à l'endroit où elle se fait ;
+   un clic déplie pourquoi elle existe. Une étape de montage s'estompe, une
+   étape visée depuis le schéma s'allume d'un filet accent. */
+.cours-plus {
+  flex-basis: 100%;
+  padding-left: calc(2ch + 1rem);
+}
+.cours-deplier {
+  background: none;
+  border: 0;
+  padding: 0.15rem 0;
+  font-family: var(--police-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--couleur-accent);
+  cursor: pointer;
+}
+.cours-deplier::after { content: " ▾"; }
+.cours-deplier[aria-expanded="true"]::after { content: " ▴"; }
+.cours-deplier:hover { text-decoration: underline; text-underline-offset: 3px; }
+.cours-etapes {
+  flex-basis: 100%;
+  list-style: none;
+  margin: 0.3rem 0 0.2rem;
+  padding: 0 0 0 calc(2ch + 1rem);
+}
+.etape {
+  margin-left: -0.6rem;
+  padding-left: 0.6rem;
+  border-radius: 2px;
+  transition: box-shadow var(--transition);
+}
+.etape-visee { box-shadow: inset 2px 0 0 var(--couleur-accent); }
+.etape-rangee {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.15rem 0.6rem;
+  width: 100%;
+  padding: 0.3rem 0;
+  background: none;
+  border: 0;
+  font: inherit;
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+}
+.etape-ref {
+  flex: none;
+  width: 3rem;
+  font-size: 0.72rem;
+  color: var(--couleur-texte-doux);
+  font-variant-numeric: tabular-nums;
+}
+.etape-quoi {
+  flex: 1 1 0;
+  min-width: 0;
+  font-family: var(--police-corps);
+  font-size: 0.86rem;
+  line-height: 1.4;
+  color: var(--couleur-texte);
+}
+.etape-rangee:hover .etape-quoi { color: var(--couleur-accent); }
+.etape-conduite { display: none; }
+.etape-ou {
+  flex-basis: 100%;
+  padding-left: calc(3rem + 0.6rem);
+  font-size: 0.7rem;
+  color: var(--couleur-texte-doux);
+}
+.etape-une-fois {
+  font-family: var(--police-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--couleur-texte-doux);
+  white-space: nowrap;
+}
+.etape-montage .etape-quoi { color: var(--couleur-texte-doux); }
+.etape-note {
+  margin: 0.1rem 0 0.6rem calc(3rem + 0.6rem);
+  padding-left: 0.8rem;
+  border-left: 1px solid var(--couleur-bordure);
+  max-width: 70ch;
+  font-family: var(--police-corps);
+  font-size: 0.84rem;
+  color: var(--couleur-texte-doux);
+}
+/* Au large, l'endroit se range à droite, au bout de la conduite. */
+@media (min-width: 640px) {
+  .etape-quoi { flex: 0 1 auto; max-width: 68%; }
+  .etape-conduite {
+    display: block;
+    flex: 1 1 1.5rem;
+    border-bottom: 1px dotted var(--couleur-bordure);
+    transform: translateY(-4px);
+  }
+  .etape-ou { flex-basis: auto; padding-left: 0; white-space: nowrap; }
+}
 /* L'étape que le cours touche, en tête de son résumé. */
 .cours-etape {
   display: inline-block;
@@ -1495,6 +1597,28 @@ a.fichier-nom:hover { color: var(--couleur-accent); }
 .sc-attente { border-style: dashed; }
 .sc-attente .sc-num,
 .sc-attente .sc-titre { opacity: 0.6; }
+/* Une étape de la chaîne que des étapes de labo touchent : un bouton, qui
+   allume ces étapes dans l'index. Pressé, il garde son cadre accent. */
+button.sc-phase {
+  width: 100%;
+  font: inherit;
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+  transition: border-color var(--transition);
+}
+button.sc-phase:hover,
+button.sc-phase:focus-visible { border-color: var(--couleur-accent-clair); }
+button.sc-phase[aria-pressed="true"] { border-color: var(--couleur-accent); }
+.sc-statut {
+  margin: 0.7rem 0 0;
+  font-size: 0.82rem;
+  color: var(--couleur-texte-doux);
+}
+.sc-statut a { color: var(--couleur-accent); }
+/* En mobile, les en-têtes d'étape tombent avec les couloirs : la consigne
+   n'aurait plus rien à viser. */
+@media (max-width: 879px) { .sc-statut { display: none; } }
 /* Ce que disent les bandes, sous la grille. */
 .sc-legendes { margin-top: 0.8rem; }
 .sc-legende {
@@ -2291,7 +2415,7 @@ button:focus-visible {
     row-gap: 0.45rem;
   }
   .sc-phase { display: block; grid-row: 1; position: relative; }
-  .sc-enchainees .sc-phase:not(:last-of-type)::after {
+  .sc-enchainees .sc-phase:not(.sc-phase-derniere)::after {
     content: "";
     position: absolute;
     top: 50%;

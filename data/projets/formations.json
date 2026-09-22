@@ -220,6 +220,60 @@
               },
               "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_01_Le_metier_les_sources_et_le_premier_regard/Corrige_01.pdf"
             }
+          ],
+          "etapes": [
+            {
+              "ref": "01.1",
+              "quoi": {
+                "fr": "Créer le dépôt de code, et fermer sa porte aux mots de passe",
+                "en": "Create the code repository, and shut its door to passwords"
+              },
+              "ou": {
+                "fr": "Anaconda Prompt, Git",
+                "en": "Anaconda Prompt, Git"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Le code vit dans son dépôt, les données à côté : elles se reconstruisent, lui non. Le .gitignore prévoit dès maintenant la place du mot de passe du Cours 04.",
+                "en": "Code lives in its repository, data next to it: data can be rebuilt, code cannot. The .gitignore already makes room for the password of course 04."
+              }
+            },
+            {
+              "ref": "01.2",
+              "quoi": {
+                "fr": "Compter, sonder et peser les fichiers reçus sans en charger un seul",
+                "en": "Count, probe and weigh the delivered files without loading a single one"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [
+                "sources"
+              ],
+              "note": {
+                "fr": "On apprend l'ordre de grandeur, qu'un historien n'est pas une grille régulière, et qu'un extrait mensuel n'est pas une copie de la base : un mois est même livré deux fois. Les poids mesurés ici servent d'étalon au Cours 02.",
+                "en": "You learn the order of magnitude, that a historian is not a regular grid, and that a monthly extract is not a copy of the database: one month is even delivered twice. The weights measured here are the yardstick for course 02."
+              }
+            },
+            {
+              "ref": "01.3",
+              "quoi": {
+                "fr": "Voir ce que coûte un type deviné : une date prise pour un nombre, un décalage perdu",
+                "en": "See what a guessed type costs: a date read as a number, a lost offset"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [
+                "sources"
+              ],
+              "note": {
+                "fr": "DuckDB calcule 20251232 sans broncher. Rien ne plante, et tout est faux en aval : c'est pourquoi la couche RAW gardera l'ERP en texte.",
+                "en": "DuckDB computes 20251232 without a blink. Nothing crashes, and everything downstream is wrong: that is why the RAW layer will keep the ERP as text."
+              }
+            }
           ]
         },
         {
@@ -260,6 +314,78 @@
                 "en": "Answer key"
               },
               "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_02_Les_formats_de_fichiers_et_le_lac_bronze/Corrige_02.pdf"
+            }
+          ],
+          "etapes": [
+            {
+              "ref": "02.1",
+              "quoi": {
+                "fr": "Convertir l'archive de l'usine en Parquet, un dossier par jour livré",
+                "en": "Convert the plant's archive to Parquet, one folder per delivered day"
+              },
+              "ou": {
+                "fr": "script SQL, DuckDB",
+                "en": "SQL script, DuckDB"
+              },
+              "touche": [
+                "raw"
+              ],
+              "note": {
+                "fr": "Premier code du projet, rangé dans le dépôt. Types déclarés, rangement par jour : 13,7 Mo de CSV deviennent 1,5 Mo, et la même commande relancée refait le dossier de zéro.",
+                "en": "The project's first code, kept in the repository. Declared types, one folder per day: 13.7 MB of CSV become 1.5 MB, and running the same command again rebuilds the folder from scratch."
+              }
+            },
+            {
+              "ref": "02.2",
+              "quoi": {
+                "fr": "Lire ce que les fichiers Parquet savent d'eux-mêmes",
+                "en": "Read what Parquet files know about themselves"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [
+                "raw"
+              ],
+              "note": {
+                "fr": "Un fichier à colonnes porte ses types et ses bornes : une requête sur une journée ne lit plus qu'un fichier sur 92.",
+                "en": "A columnar file carries its types and its bounds: a query on one day now reads a single file out of 92."
+              }
+            },
+            {
+              "ref": "02.3",
+              "quoi": {
+                "fr": "Convertir les messages des véhicules, structures emboîtées comprises",
+                "en": "Convert the vehicle messages, nested structures included"
+              },
+              "ou": {
+                "fr": "script SQL, DuckDB",
+                "en": "SQL script, DuckDB"
+              },
+              "touche": [
+                "raw"
+              ],
+              "note": {
+                "fr": "Plus retors : la même température du moteur porte deux noms, avant et depuis le micrologiciel 2.0, et les deux doivent survivre.",
+                "en": "Trickier: the same engine temperature carries two names, before and since firmware 2.0, and both must survive."
+              }
+            },
+            {
+              "ref": "02.4",
+              "quoi": {
+                "fr": "Versionner les scripts, jamais le lac",
+                "en": "Version the scripts, never the lake"
+              },
+              "ou": {
+                "fr": "Git",
+                "en": "Git"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Ce qui se reconstruit ne se sauvegarde pas : on garde la recette, pas le plat.",
+                "en": "What can be rebuilt is not backed up: you keep the recipe, not the dish."
+              }
             }
           ]
         },
@@ -302,6 +428,97 @@
               },
               "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_03_Charger_des_fichiers_dans_la_couche_RAW/Corrige_03.pdf"
             }
+          ],
+          "etapes": [
+            {
+              "ref": "03.1",
+              "quoi": {
+                "fr": "Créer l'entrepôt, et voir un fichier chargé deux fois compter double",
+                "en": "Create the warehouse, and watch a file loaded twice count double"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [
+                "raw"
+              ],
+              "note": {
+                "fr": "La démonstration qui justifie tout le cours : sans mémoire de ce qui a été chargé, rejouer duplique. 854 lignes pour 427 commandes.",
+                "en": "The demonstration that justifies the whole course: without a memory of what was loaded, replaying duplicates. 854 rows for 427 orders."
+              }
+            },
+            {
+              "ref": "03.2",
+              "quoi": {
+                "fr": "Écrire le chargeur qui ne prend que le neuf, et marque son lot",
+                "en": "Write the loader that takes only what is new, and tags its batch"
+              },
+              "ou": {
+                "fr": "Python",
+                "en": "Python"
+              },
+              "touche": [
+                "ingestion",
+                "raw"
+              ],
+              "note": {
+                "fr": "Le cœur du cours : un journal des chargements, et chaque ligne qui se souvient du lot dont elle vient. Au second passage, rien ne se charge.",
+                "en": "The heart of the course: a load journal, and every row remembering the batch it came from. On the second run, nothing loads."
+              }
+            },
+            {
+              "ref": "03.3",
+              "quoi": {
+                "fr": "Retrouver dans la RAW les pièges connus : le mois livré deux fois, les doublons, le client effacé",
+                "en": "Find the known traps in RAW: the month delivered twice, the duplicates, the erased customer"
+              },
+              "ou": {
+                "fr": "DuckDB, lecture seule",
+                "en": "DuckDB, read-only"
+              },
+              "touche": [
+                "raw"
+              ],
+              "note": {
+                "fr": "La RAW les garde visibles plutôt que de les corriger en douce : les nettoyer appartient à Analytics Engineering.",
+                "en": "RAW keeps them visible instead of quietly fixing them: cleaning them belongs to Analytics Engineering."
+              }
+            },
+            {
+              "ref": "03.4",
+              "quoi": {
+                "fr": "Déposer la documentation telle quelle, avec son catalogue",
+                "en": "Land the documentation as is, with its catalogue"
+              },
+              "ou": {
+                "fr": "Python",
+                "en": "Python"
+              },
+              "touche": [
+                "raw"
+              ],
+              "note": {
+                "fr": "Tout n'est pas une table. 35 documents se déposent sans transformation, avec de quoi les retrouver ; AI Engineering les découpera.",
+                "en": "Not everything is a table. 35 documents are landed untransformed, with what it takes to find them; AI Engineering will split them."
+              }
+            },
+            {
+              "ref": "03.5",
+              "quoi": {
+                "fr": "Versionner le chargeur, laisser dehors données et entrepôt",
+                "en": "Version the loader, leave data and warehouse out"
+              },
+              "ou": {
+                "fr": "Git",
+                "en": "Git"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Le geste de fin de chaque cours, et de chaque journée de travail.",
+                "en": "The closing move of every course, and of every working day."
+              }
+            }
           ]
         },
         {
@@ -342,6 +559,113 @@
                 "en": "Answer key"
               },
               "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_04_Lire_une_base_et_une_API/Corrige_04.pdf"
+            }
+          ],
+          "etapes": [
+            {
+              "ref": "04.0",
+              "quoi": {
+                "fr": "Recevoir la plateforme, puis démarrer et remplir la base de l'ERP",
+                "en": "Receive the platform, then start and fill the ERP database"
+              },
+              "ou": {
+                "fr": "Ubuntu de WSL 2, Docker",
+                "en": "WSL 2 Ubuntu, Docker"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Il faut une vraie base au bout du fil pour apprendre à en tirer de la donnée. En entreprise, c'est la production, et l'équipe de la plateforme en tient les fichiers : on les copie sans les modifier.",
+                "en": "You need a real database at the end of the line to learn how to pull data from it. At work, that is production, and the platform team owns its files: you copy them without changing them."
+              },
+              "montage": true
+            },
+            {
+              "ref": "04.1",
+              "quoi": {
+                "fr": "Interroger la base de l'ERP : ce qui a bougé depuis la dernière fois, et ce que la lecture lui coûte",
+                "en": "Query the ERP database: what changed since last time, and what the read costs it"
+              },
+              "ou": {
+                "fr": "psql, dans le conteneur",
+                "en": "psql, in the container"
+              },
+              "touche": [
+                "sources"
+              ],
+              "note": {
+                "fr": "Le filigrane, la date de la dernière modification lue, décide de ce qu'on relira. Le plan de requête dit ce que coûte une lecture à une base qui sert aussi la production.",
+                "en": "The watermark, the date of the last change read, decides what gets read again. The query plan tells what a read costs a database that also serves production."
+              }
+            },
+            {
+              "ref": "04.2",
+              "quoi": {
+                "fr": "Tirer les neuf tables de l'ERP par ODBC, puis prouver qu'elles égalent la RAW",
+                "en": "Pull the ERP's nine tables over ODBC, then prove they match RAW"
+              },
+              "ou": {
+                "fr": "Python, pilote ODBC",
+                "en": "Python, ODBC driver"
+              },
+              "touche": [
+                "ingestion"
+              ],
+              "note": {
+                "fr": "Deuxième façon d'aller chercher, et la première avec un mot de passe : il vit dans un .env hors du dépôt. Zéro écart sur neuf tables : les extraits racontent la même histoire que la base.",
+                "en": "Second way of fetching, and the first with a password: it lives in a .env outside the repository. Zero gaps over nine tables: the extracts tell the same story as the database."
+              }
+            },
+            {
+              "ref": "04.3",
+              "quoi": {
+                "fr": "Vérifier le filigrane de décembre contre l'extrait",
+                "en": "Check December's watermark against the extract"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [
+                "ingestion"
+              ],
+              "note": {
+                "fr": "Ne relire que ce qui a bougé suppose de savoir où on s'est arrêté. Ce repère se vérifie, il ne se croit pas : 427 commandes des deux côtés.",
+                "en": "Rereading only what changed assumes you know where you stopped. That marker is checked, not trusted: 427 orders on both sides."
+              }
+            },
+            {
+              "ref": "04.4",
+              "quoi": {
+                "fr": "Appeler la vraie API météo page par page, limites et pannes comprises",
+                "en": "Call the real weather API page by page, limits and outages included"
+              },
+              "ou": {
+                "fr": "Python",
+                "en": "Python"
+              },
+              "touche": [
+                "ingestion"
+              ],
+              "note": {
+                "fr": "Troisième façon d'aller chercher : la pagination, le débit bridé et les pannes passagères se gèrent dans le code. 92 jours reçus sur 92, comparés à l'instantané.",
+                "en": "Third way of fetching: pagination, throttling and transient outages are handled in code. 92 days received out of 92, compared with the snapshot."
+              }
+            },
+            {
+              "ref": "04.5",
+              "quoi": {
+                "fr": "Versionner le code, laisser dehors données et mots de passe",
+                "en": "Version the code, leave data and passwords out"
+              },
+              "ou": {
+                "fr": "Git",
+                "en": "Git"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Le .env.exemple entre dans le dépôt, le .env jamais.",
+                "en": "The .env.exemple goes into the repository, the .env never does."
+              }
             }
           ]
         },
@@ -573,6 +897,7 @@
       "phases": {
         "colonnes": [
           {
+            "id": "sources",
             "nom": {
               "fr": "Sources",
               "en": "Sources"
@@ -587,6 +912,7 @@
             ]
           },
           {
+            "id": "ingestion",
             "nom": {
               "fr": "Ingestion",
               "en": "Ingestion"
@@ -602,6 +928,7 @@
             ]
           },
           {
+            "id": "raw",
             "nom": {
               "fr": "RAW",
               "en": "RAW"
@@ -619,6 +946,7 @@
         ],
         "bandes": [
           {
+            "id": "tenir-le-pipeline",
             "nom": {
               "fr": "Tenir le pipeline",
               "en": "Keeping the pipeline running"
@@ -634,6 +962,7 @@
             ]
           },
           {
+            "id": "de-bout-en-bout",
             "nom": {
               "fr": "De bout en bout",
               "en": "End to end"
@@ -1066,6 +1395,7 @@
       "phases": {
         "colonnes": [
           {
+            "id": "staging",
             "nom": {
               "fr": "STAGING",
               "en": "STAGING"
@@ -1080,6 +1410,7 @@
             ]
           },
           {
+            "id": "intermediate",
             "nom": {
               "fr": "INTERMEDIATE",
               "en": "INTERMEDIATE"
@@ -1093,6 +1424,7 @@
             ]
           },
           {
+            "id": "marts",
             "nom": {
               "fr": "MARTS",
               "en": "MARTS"
@@ -1109,6 +1441,7 @@
         ],
         "bandes": [
           {
+            "id": "fiabiliser-et-faire-tourner",
             "nom": {
               "fr": "Fiabiliser et faire tourner",
               "en": "Making it reliable and keeping it running"
@@ -1124,6 +1457,7 @@
             ]
           },
           {
+            "id": "de-bout-en-bout",
             "nom": {
               "fr": "De bout en bout",
               "en": "End to end"
@@ -1413,6 +1747,7 @@
       "phases": {
         "colonnes": [
           {
+            "id": "couche-semantique",
             "nom": {
               "fr": "Couche sémantique",
               "en": "Semantic layer"
@@ -1430,6 +1765,7 @@
             ]
           },
           {
+            "id": "rapport",
             "nom": {
               "fr": "Rapport",
               "en": "Report"
@@ -1446,6 +1782,7 @@
         ],
         "bandes": [
           {
+            "id": "gouverner-la-restitution",
             "nom": {
               "fr": "Gouverner la restitution",
               "en": "Governing reporting"
@@ -1675,6 +2012,7 @@
       "phases": {
         "colonnes": [
           {
+            "id": "preparer",
             "nom": {
               "fr": "Préparer",
               "en": "Preparing"
@@ -1691,6 +2029,7 @@
             ]
           },
           {
+            "id": "expliquer",
             "nom": {
               "fr": "Expliquer",
               "en": "Explaining"
@@ -1705,6 +2044,7 @@
             ]
           },
           {
+            "id": "predire",
             "nom": {
               "fr": "Prédire",
               "en": "Predicting"
@@ -1722,6 +2062,7 @@
         ],
         "bandes": [
           {
+            "id": "valider-et-livrer",
             "nom": {
               "fr": "Valider et livrer",
               "en": "Validating and delivering"
@@ -1921,6 +2262,7 @@
       "phases": {
         "colonnes": [
           {
+            "id": "reproduire",
             "nom": {
               "fr": "Reproduire",
               "en": "Reproducing"
@@ -1937,6 +2279,7 @@
             ]
           },
           {
+            "id": "entrainer",
             "nom": {
               "fr": "Entraîner",
               "en": "Training"
@@ -1951,6 +2294,7 @@
             ]
           },
           {
+            "id": "servir-et-surveiller",
             "nom": {
               "fr": "Servir et surveiller",
               "en": "Serving and monitoring"
@@ -1967,6 +2311,7 @@
         ],
         "bandes": [
           {
+            "id": "de-bout-en-bout",
             "nom": {
               "fr": "De bout en bout",
               "en": "End to end"
@@ -2165,6 +2510,7 @@
       "phases": {
         "colonnes": [
           {
+            "id": "le-modele",
             "nom": {
               "fr": "Le modèle",
               "en": "The model"
@@ -2179,6 +2525,7 @@
             ]
           },
           {
+            "id": "la-recuperation",
             "nom": {
               "fr": "La récupération",
               "en": "Retrieval"
@@ -2193,6 +2540,7 @@
             ]
           },
           {
+            "id": "les-agents",
             "nom": {
               "fr": "Les agents",
               "en": "Agents"
@@ -2208,6 +2556,7 @@
         ],
         "bandes": [
           {
+            "id": "evaluer,-maitriser,-securiser",
             "nom": {
               "fr": "Évaluer, maîtriser, sécuriser",
               "en": "Evaluating, controlling, securing"
@@ -2223,6 +2572,7 @@
             ]
           },
           {
+            "id": "de-bout-en-bout",
             "nom": {
               "fr": "De bout en bout",
               "en": "End to end"
@@ -2868,6 +3218,7 @@
       "phases": {
         "colonnes": [
           {
+            "id": "les-fondations",
             "nom": {
               "fr": "Les fondations",
               "en": "Foundations"
@@ -2884,6 +3235,7 @@
             ]
           },
           {
+            "id": "l-analyse-avancee",
             "nom": {
               "fr": "L'analyse avancée",
               "en": "Advanced analysis"
@@ -2902,6 +3254,7 @@
             ]
           },
           {
+            "id": "sous-la-requete",
             "nom": {
               "fr": "Sous la requête",
               "en": "Under the query"
@@ -2918,6 +3271,7 @@
         ],
         "bandes": [
           {
+            "id": "de-bout-en-bout",
             "nom": {
               "fr": "De bout en bout",
               "en": "End to end"
@@ -3197,6 +3551,7 @@
       "phases": {
         "colonnes": [
           {
+            "id": "la-plateforme",
             "nom": {
               "fr": "La plateforme",
               "en": "The platform"
@@ -3211,6 +3566,7 @@
             ]
           },
           {
+            "id": "le-compte",
             "nom": {
               "fr": "Le compte",
               "en": "The account"
@@ -3224,6 +3580,7 @@
             ]
           },
           {
+            "id": "la-donnee",
             "nom": {
               "fr": "La donnée",
               "en": "The data"
@@ -3241,6 +3598,7 @@
         ],
         "bandes": [
           {
+            "id": "l-examen",
             "nom": {
               "fr": "L'examen",
               "en": "The exam"
@@ -3454,6 +3812,7 @@
       "phases": {
         "colonnes": [
           {
+            "id": "concevoir-la-cible",
             "nom": {
               "fr": "Concevoir la cible",
               "en": "Designing the target"
@@ -3470,6 +3829,7 @@
             ]
           },
           {
+            "id": "encadrer",
             "nom": {
               "fr": "Encadrer",
               "en": "Governing"
@@ -3485,6 +3845,7 @@
             ]
           },
           {
+            "id": "piloter",
             "nom": {
               "fr": "Piloter",
               "en": "Steering"
@@ -3500,6 +3861,7 @@
         ],
         "bandes": [
           {
+            "id": "la-feuille-de-route",
             "nom": {
               "fr": "La feuille de route",
               "en": "The roadmap"
