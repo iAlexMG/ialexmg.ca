@@ -708,6 +708,141 @@
               },
               "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_05_Le_code_d_un_pipeline_robuste/Corrige_05.pdf"
             }
+          ],
+          "etapes": [
+            {
+              "ref": "05.1",
+              "quoi": {
+                "fr": "Ranger les scripts des cours précédents dans un paquet Python",
+                "en": "Gather the previous courses' scripts into a Python package"
+              },
+              "ou": {
+                "fr": "Anaconda Prompt, Git",
+                "en": "Anaconda Prompt, Git"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Un dossier de scripts lancés chacun de leur côté devient un seul programme. Tant que l'étape 5 n'a pas repris les quatre scripts, le paquet ne s'importe pas : c'est prévu.",
+                "en": "A folder of scripts, each launched on its own, becomes a single program. Until step 5 has reworked the four scripts, the package will not import: that is expected."
+              }
+            },
+            {
+              "ref": "05.2",
+              "quoi": {
+                "fr": "Sortir la configuration du code, et le mot de passe du dépôt",
+                "en": "Move configuration out of the code, and the password out of the repository"
+              },
+              "ou": {
+                "fr": "Python",
+                "en": "Python"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Deux choses différentes : un port ou une station changent d'un poste à l'autre, un mot de passe ne se versionne jamais. Une variable d'environnement remplace une valeur sans toucher au fichier, et le port reste un entier.",
+                "en": "Two different things: a port or a station changes from one machine to another, a password is never versioned. An environment variable overrides a value without touching the file, and the port stays an integer."
+              }
+            },
+            {
+              "ref": "05.3",
+              "quoi": {
+                "fr": "Journaliser deux fois : un fichier par jour pour comprendre, une table des exécutions pour compter",
+                "en": "Log twice: a file per day to understand, a runs table to count"
+              },
+              "ou": {
+                "fr": "Python",
+                "en": "Python"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Une exécution écrit toujours sa ligne de bilan, même quand elle tombe : c'est ce qui permet de répondre « combien, et quand » sans relire des pages de texte.",
+                "en": "A run always writes its summary line, even when it fails: that is what lets you answer “how many, and when” without rereading pages of text."
+              }
+            },
+            {
+              "ref": "05.4",
+              "quoi": {
+                "fr": "Faire des reprises de l'API un outil commun à tout le pipeline",
+                "en": "Turn the API retries into a tool shared by the whole pipeline"
+              },
+              "ou": {
+                "fr": "Python",
+                "en": "Python"
+              },
+              "touche": [
+                "ingestion"
+              ],
+              "note": {
+                "fr": "Ce qui se répète dans deux étapes n'appartient à aucune des deux. Le courtier MQTT du Cours 09 et les tâches d'Airflow s'en serviront.",
+                "en": "What repeats in two steps belongs to neither. Course 09's MQTT broker and Airflow's tasks will use it."
+              }
+            },
+            {
+              "ref": "05.5",
+              "quoi": {
+                "fr": "Brancher les cinq étapes sur une seule porte d'entrée, et tout charger d'une commande",
+                "en": "Wire the five steps to a single entry point, and load everything with one command"
+              },
+              "ou": {
+                "fr": "python -m pipeline",
+                "en": "python -m pipeline"
+              },
+              "touche": [
+                "ingestion",
+                "raw"
+              ],
+              "note": {
+                "fr": "433 582 lignes de bronze et 513 857 de RAW, puis rien au second passage. Le contrôle du SQL devient une condition : un écart arrête le pipeline au lieu de défiler à l'écran.",
+                "en": "433,582 bronze rows and 513,857 RAW rows, then nothing on the second run. The SQL check becomes a condition: a gap stops the pipeline instead of scrolling past on screen."
+              }
+            },
+            {
+              "ref": "05.6",
+              "quoi": {
+                "fr": "Écrire trois tests, un par promesse du pipeline",
+                "en": "Write three tests, one per pipeline promise"
+              },
+              "ou": {
+                "fr": "pytest",
+                "en": "pytest"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Le journal refuse un extrait déjà chargé, la conversion garde le compte des lignes, la reprise s'arrête après le nombre d'essais prévu. Sur des données qu'ils fabriquent, en moins d'une seconde.",
+                "en": "The journal refuses an extract already loaded, the conversion keeps the row count, the retry stops after the planned number of attempts. On data they build themselves, in under a second."
+              }
+            },
+            {
+              "ref": "05.7",
+              "quoi": {
+                "fr": "Mettre le pipeline dans une image Docker, et la lancer sur le projet",
+                "en": "Put the pipeline into a Docker image, and run it on the project"
+              },
+              "ou": {
+                "fr": "Ubuntu de WSL 2, Docker",
+                "en": "WSL 2 Ubuntu, Docker"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Les mêmes comptes qu'à l'étape 5, mais l'étape raw prend 6,5 s contre 0,1 s sous Windows : les fichiers de Windows vus depuis un conteneur Linux passent par une couche de traduction, et ça se mesure.",
+                "en": "The same counts as in step 5, but the raw step takes 6.5 s against 0.1 s on Windows: Windows files seen from a Linux container go through a translation layer, and it shows."
+              }
+            },
+            {
+              "ref": "05.8",
+              "quoi": {
+                "fr": "Versionner le code, et vérifier que le .env n'y est pas",
+                "en": "Version the code, and check that the .env is not in it"
+              },
+              "ou": {
+                "fr": "Git",
+                "en": "Git"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Un mot de passe validé une fois reste dans l'historique, même retiré au commit suivant.",
+                "en": "A password committed once stays in history, even if removed in the next commit."
+              }
+            }
           ]
         },
         {
@@ -748,6 +883,220 @@
                 "en": "Answer key"
               },
               "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_06_Orchestration_avec_Airflow/Corrige_06.pdf"
+            }
+          ],
+          "etapes": [
+            {
+              "ref": "06.0",
+              "quoi": {
+                "fr": "Construire l'image d'Airflow, et démarrer sa pile",
+                "en": "Build Airflow's image, and start its stack"
+              },
+              "ou": {
+                "fr": "Ubuntu de WSL 2, Docker",
+                "en": "WSL 2 Ubuntu, Docker"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Le seul service de la formation qui ne soit pas encore là : 3,18 Go téléchargés une fois. En entreprise, l'équipe de la plateforme l'exploite.",
+                "en": "The only service in the course not yet there: 3.18 GB downloaded once. At work, the platform team runs it."
+              },
+              "montage": true
+            },
+            {
+              "ref": "06.1",
+              "quoi": {
+                "fr": "Faire avancer Boréal de trois mois : régénérer les sources jusqu'à mars 2026",
+                "en": "Move Boréal three months ahead: regenerate the sources up to March 2026"
+              },
+              "ou": {
+                "fr": "Anaconda Prompt, générateur",
+                "en": "Anaconda Prompt, generator"
+              },
+              "touche": [
+                "sources"
+              ],
+              "note": {
+                "fr": "Les mois déjà livrés reviennent identiques au bit près : le générateur est déterministe, et c'est ce qui rend le rattrapage vérifiable.",
+                "en": "The months already delivered come back identical to the bit: the generator is deterministic, and that is what makes the backfill verifiable."
+              }
+            },
+            {
+              "ref": "06.2",
+              "quoi": {
+                "fr": "Écrire la fenêtre de temps : ce lot tombe-t-il dans ma tranche ?",
+                "en": "Write the time window: does this batch fall within my slice?"
+              },
+              "ou": {
+                "fr": "Python",
+                "en": "Python"
+              },
+              "touche": [
+                "ingestion"
+              ],
+              "note": {
+                "fr": "Un module qui ne touche ni l'entrepôt ni les fichiers, et répond à une seule question. C'est lui qui laisse une exécution d'Airflow traiter sa tranche, et rien d'autre.",
+                "en": "A module that touches neither the warehouse nor the files, and answers a single question. It is what lets an Airflow run process its slice, and nothing else."
+              }
+            },
+            {
+              "ref": "06.3",
+              "quoi": {
+                "fr": "Brancher la fenêtre sur les étapes, et partager les livraisons entre les deux rythmes",
+                "en": "Wire the window into the steps, and share deliveries between the two cadences"
+              },
+              "ou": {
+                "fr": "Python",
+                "en": "Python"
+              },
+              "touche": [
+                "ingestion"
+              ],
+              "note": {
+                "fr": "Une fenêtre de mars attrape aussi les archives quotidiennes de mars : sans partage, le DAG mensuel et le quotidien se disputeraient le même travail. 14 livraisons au mensuel, 8 au quotidien.",
+                "en": "A March window also catches March's daily archives: without sharing, the monthly and daily DAGs would fight over the same work. 14 deliveries for the monthly one, 8 for the daily one."
+              }
+            },
+            {
+              "ref": "06.4",
+              "quoi": {
+                "fr": "Charger une seule journée, puis voir les garde-fous répondre aux commandes fautives",
+                "en": "Load a single day, then watch the guardrails answer bad commands"
+              },
+              "ou": {
+                "fr": "python -m pipeline",
+                "en": "python -m pipeline"
+              },
+              "touche": [
+                "ingestion",
+                "raw"
+              ],
+              "note": {
+                "fr": "Un fichier, 222 messages, un dixième de seconde ; relancé, rien. C'est le journal des chargements qui répond, pas la fenêtre : le fichier est dans la tranche, mais déjà connu.",
+                "en": "One file, 222 messages, a tenth of a second; run again, nothing. The load journal answers, not the window: the file is in the slice, but already known."
+              }
+            },
+            {
+              "ref": "06.5",
+              "quoi": {
+                "fr": "Tester le rattrapage sans Airflow : deux tests de plus",
+                "en": "Test the backfill without Airflow: two more tests"
+              },
+              "ou": {
+                "fr": "pytest",
+                "en": "pytest"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Cinq tests en une demi-seconde, sans les données de Boréal ni conteneur. Le rattrapage est prouvé avant qu'Airflow n'entre en scène.",
+                "en": "Five tests in half a second, without Boréal's data or a container. The backfill is proven before Airflow comes on stage."
+              }
+            },
+            {
+              "ref": "06.6",
+              "quoi": {
+                "fr": "Allumer Airflow, et lire les fichiers qui le composent",
+                "en": "Turn Airflow on, and read the files it is made of"
+              },
+              "ou": {
+                "fr": "Ubuntu de WSL 2, Docker",
+                "en": "WSL 2 Ubuntu, Docker"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Cinq services, chacun avec son contrôle de santé. On les lit sans les modifier : ils appartiennent à la plateforme, pas à votre dépôt.",
+                "en": "Five services, each with its health check. You read them without changing them: they belong to the platform, not to your repository."
+              }
+            },
+            {
+              "ref": "06.7",
+              "quoi": {
+                "fr": "Vérifier le verrou de l'entrepôt, et voir ce que coûte son oubli",
+                "en": "Check the warehouse lock, and see what forgetting it costs"
+              },
+              "ou": {
+                "fr": "Ubuntu, Airflow",
+                "en": "Ubuntu, Airflow"
+              },
+              "touche": [
+                "raw"
+              ],
+              "note": {
+                "fr": "Deux DAG écrivent le même fichier DuckDB, et aucun graphe ne voit l'autre. Un pool d'une seule place les fait attendre leur tour ; sans lui, une tâche meurt et le DAG passe au rouge.",
+                "en": "Two DAGs write the same DuckDB file, and neither graph sees the other. A one-slot pool makes them wait their turn; without it, a task dies and the DAG turns red."
+              }
+            },
+            {
+              "ref": "06.8",
+              "quoi": {
+                "fr": "Écrire le DAG quotidien, et lui faire charger une journée",
+                "en": "Write the daily DAG, and have it load one day"
+              },
+              "ou": {
+                "fr": "Python, Airflow",
+                "en": "Python, Airflow"
+              },
+              "touche": [
+                "ingestion",
+                "raw"
+              ],
+              "note": {
+                "fr": "Le chemin froid du Cours 05, découpé en tâches, avec une alerte de retard. Un DAG neuf met jusqu'à cinq minutes à apparaître : Airflow ne cherche les nouveaux fichiers que toutes les cinq minutes.",
+                "en": "Course 05's cold path, split into tasks, with a lateness alert. A new DAG takes up to five minutes to appear: Airflow only looks for new files every five minutes."
+              }
+            },
+            {
+              "ref": "06.9",
+              "quoi": {
+                "fr": "Écrire le DAG mensuel, préparer un témoin, puis laisser rattraper les trois mois",
+                "en": "Write the monthly DAG, prepare a control copy, then let it backfill the three months"
+              },
+              "ou": {
+                "fr": "Python, Airflow",
+                "en": "Python, Airflow"
+              },
+              "touche": [
+                "ingestion",
+                "raw"
+              ],
+              "note": {
+                "fr": "Le témoin reçoit les trois mois d'un seul bloc : 42 fichiers, 20 664 lignes. Le DAG, lui, les rattrape mois par mois, comme le temps qui passe chez Boréal.",
+                "en": "The control copy receives the three months in one block: 42 files, 20,664 rows. The DAG backfills them month by month, like time passing at Boréal."
+              }
+            },
+            {
+              "ref": "06.10",
+              "quoi": {
+                "fr": "Prouver que le rattrapage égale le chargement d'un bloc",
+                "en": "Prove that the backfill equals the one-block load"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [
+                "raw"
+              ],
+              "note": {
+                "fr": "Quatorze tables comparées ligne à ligne, hors l'heure de chargement : zéro écart. La promesse d'un DAG idempotent, vérifiée plutôt que crue.",
+                "en": "Fourteen tables compared row by row, load time excluded: zero gaps. The promise of an idempotent DAG, checked rather than trusted."
+              }
+            },
+            {
+              "ref": "06.11",
+              "quoi": {
+                "fr": "Versionner les DAG, la fenêtre et les tests, jamais la plateforme",
+                "en": "Version the DAGs, the window and the tests, never the platform"
+              },
+              "ou": {
+                "fr": "Git",
+                "en": "Git"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Le docker-compose.yml et les journaux d'Airflow vivent hors du dépôt : en entreprise, dans celui de l'équipe qui exploite la plateforme.",
+                "en": "The docker-compose.yml and Airflow's logs live outside the repository: at work, in the platform team's."
+              }
             }
           ]
         },
@@ -790,6 +1139,168 @@
               },
               "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_07_Traitement_distribue_avec_Spark/Corrige_07.pdf"
             }
+          ],
+          "etapes": [
+            {
+              "ref": "07.0",
+              "quoi": {
+                "fr": "Tirer l'image de Spark, une fois pour toutes",
+                "en": "Pull the Spark image, once and for all"
+              },
+              "ou": {
+                "fr": "Ubuntu de WSL 2, Docker",
+                "en": "WSL 2 Ubuntu, Docker"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Rien ne s'installe : une image de 2,22 Go, et un conteneur qui disparaît à la fin de chaque lancement.",
+                "en": "Nothing gets installed: a 2.22 GB image, and a container that disappears at the end of each run."
+              },
+              "montage": true
+            },
+            {
+              "ref": "07.1",
+              "quoi": {
+                "fr": "Demander à l'usine tout son historien, puis refaire le bronze avec votre pipeline",
+                "en": "Ask the plant for its whole historian, then rebuild bronze with your pipeline"
+              },
+              "ou": {
+                "fr": "Anaconda Prompt, python -m pipeline",
+                "en": "Anaconda Prompt, python -m pipeline"
+              },
+              "touche": [
+                "sources",
+                "raw"
+              ],
+              "note": {
+                "fr": "821 jours au lieu de 182 : 2,4 millions de points, 117 Mo de CSV. Le pipeline du Cours 05 les range en une trentaine de secondes, sur une seule machine.",
+                "en": "821 days instead of 182: 2.4 million points, 117 MB of CSV. Course 05's pipeline stores them in about thirty seconds, on a single machine."
+              }
+            },
+            {
+              "ref": "07.2",
+              "quoi": {
+                "fr": "Calculer les agrégats sur une machine, et lire le plan qui explique la vitesse",
+                "en": "Compute the aggregates on one machine, and read the plan that explains the speed"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [
+                "raw"
+              ],
+              "note": {
+                "fr": "Deux dixièmes de seconde pour 2,4 millions de points et 47 618 agrégats. Le plan montre la lecture du Parquet avec son filtre poussé : c'est la mesure étalon du cours.",
+                "en": "Two tenths of a second for 2.4 million points and 47,618 aggregates. The plan shows the Parquet scan with its pushed-down filter: it is the course's yardstick."
+              }
+            },
+            {
+              "ref": "07.3",
+              "quoi": {
+                "fr": "Écrire le même bronze en PySpark, et le lancer dans un conteneur à usage unique",
+                "en": "Write the same bronze in PySpark, and run it in a single-use container"
+              },
+              "ou": {
+                "fr": "PySpark, Ubuntu de WSL 2",
+                "en": "PySpark, WSL 2 Ubuntu"
+              },
+              "touche": [
+                "raw"
+              ],
+              "note": {
+                "fr": "Le lanceur décide de tout ce qui entoure Spark. Un fichier lu par bash ne supporte pas les fins de ligne de Windows : on les retire.",
+                "en": "The launcher decides everything around Spark. A file read by bash cannot take Windows line endings: you strip them."
+              }
+            },
+            {
+              "ref": "07.4",
+              "quoi": {
+                "fr": "Comparer ce que les deux moteurs ont écrit sur le disque",
+                "en": "Compare what the two engines wrote on disk"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [
+                "raw"
+              ],
+              "note": {
+                "fr": "Mêmes lignes, mais 14 Mo contre 24 Mo : zstd d'un côté, parce que le script le demande, snappy de l'autre, parce que c'est le défaut de Spark.",
+                "en": "Same rows, but 14 MB against 24 MB: zstd on one side, because the script asks for it, snappy on the other, because it is Spark's default."
+              }
+            },
+            {
+              "ref": "07.5",
+              "quoi": {
+                "fr": "Refaire les agrégats en Spark, trouver le brassage dans le plan, comparer ligne à ligne",
+                "en": "Redo the aggregates in Spark, find the shuffle in the plan, compare row by row"
+              },
+              "ou": {
+                "fr": "PySpark, Ubuntu de WSL 2",
+                "en": "PySpark, WSL 2 Ubuntu"
+              },
+              "touche": [
+                "raw"
+              ],
+              "note": {
+                "fr": "Les mêmes 47 618 lignes, et six moyennes qui diffèrent d'un millième. La ligne de plus dans le plan, l'Exchange, est le brassage qu'une seule machine n'a pas à faire.",
+                "en": "The same 47,618 rows, and six averages that differ by a thousandth. The extra line in the plan, the Exchange, is the shuffle a single machine never has to do."
+              }
+            },
+            {
+              "ref": "07.6",
+              "quoi": {
+                "fr": "Dédoublonner la télémétrie, le pire cas pour Spark",
+                "en": "Deduplicate the telemetry, the worst case for Spark"
+              },
+              "ou": {
+                "fr": "DuckDB, puis PySpark",
+                "en": "DuckDB, then PySpark"
+              },
+              "touche": [
+                "raw"
+              ],
+              "note": {
+                "fr": "Le courtier livre « au moins une fois » : 2 943 messages en double. Une fonction de fenêtrage les écarte, et une fenêtre brasse tout.",
+                "en": "The broker delivers “at least once”: 2,943 duplicate messages. A window function removes them, and a window shuffles everything."
+              }
+            },
+            {
+              "ref": "07.7",
+              "quoi": {
+                "fr": "Provoquer les trois pièges classiques, et les mesurer",
+                "en": "Trigger the three classic traps, and measure them"
+              },
+              "ou": {
+                "fr": "PySpark, Ubuntu de WSL 2",
+                "en": "PySpark, WSL 2 Ubuntu"
+              },
+              "touche": [
+                "raw"
+              ],
+              "note": {
+                "fr": "Un brassage de trop double la durée, 18 s contre 8,8 ; des partitions déséquilibrées, 247 879 lignes contre 1 833 ; et tout ramené au pilote. Ce qu'on passe sa carrière à éviter.",
+                "en": "One shuffle too many doubles the time, 18 s against 8.8; skewed partitions, 247,879 rows against 1,833; and everything pulled back to the driver. What you spend a career avoiding."
+              }
+            },
+            {
+              "ref": "07.8",
+              "quoi": {
+                "fr": "Conclure, remettre le projet dans l'état du Cours 06, versionner",
+                "en": "Conclude, put the project back as course 06 left it, version"
+              },
+              "ou": {
+                "fr": "Anaconda Prompt, Git",
+                "en": "Anaconda Prompt, Git"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Sur ce volume, une machine gagne de deux ordres de grandeur. Spark reste dans le dépôt parce qu'il faut savoir l'écrire, pas parce que Boréal en a besoin.",
+                "en": "At this volume, one machine wins by two orders of magnitude. Spark stays in the repository because you need to know how to write it, not because Boréal needs it."
+              }
+            }
           ]
         },
         {
@@ -830,6 +1341,276 @@
                 "en": "Answer key"
               },
               "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_08_Donnees_de_terrain_SCADA_historien_et_series_temporelles/Corrige_08.pdf"
+            }
+          ],
+          "etapes": [
+            {
+              "ref": "08.0",
+              "quoi": {
+                "fr": "Tirer l'image de la base de séries temporelles, et la démarrer",
+                "en": "Pull the time-series database image, and start it"
+              },
+              "ou": {
+                "fr": "Ubuntu de WSL 2, Docker",
+                "en": "WSL 2 Ubuntu, Docker"
+              },
+              "touche": [],
+              "note": {
+                "fr": "TimescaleDB est une extension de PostgreSQL : le même serveur, le même SQL, des tables découpées par tranche de temps. 2,17 Go, tirés une fois.",
+                "en": "TimescaleDB is a PostgreSQL extension: same server, same SQL, tables split into time slices. 2.17 GB, pulled once."
+              },
+              "montage": true
+            },
+            {
+              "ref": "08.1",
+              "quoi": {
+                "fr": "Lire le référentiel de l'usine : de l'étiquette du capteur à l'équipement",
+                "en": "Read the plant's reference data: from sensor tag to equipment"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [
+                "sources"
+              ],
+              "note": {
+                "fr": "L'usine ne donne pas accès à son réseau de contrôle, elle dépose des fichiers. On lit d'abord ceux qui décrivent le terrain : 6 zones, 17 équipements, 58 étiquettes, et le seul pont vers l'ERP.",
+                "en": "The plant gives no access to its control network, it drops files. You first read those that describe the ground: 6 zones, 17 pieces of equipment, 58 tags, and the only bridge to the ERP."
+              }
+            },
+            {
+              "ref": "08.2",
+              "quoi": {
+                "fr": "Lire les bons de maintenance, et voir des dates qui se trient de travers",
+                "en": "Read the maintenance work orders, and watch dates sort the wrong way"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [
+                "sources"
+              ],
+              "note": {
+                "fr": "JJ/MM/AAAA n'est reconnu comme date par personne : le plus ancien bon, trié en texte, est faux. Déclarer le format remet tout en ordre.",
+                "en": "DD/MM/YYYY is recognised as a date by nobody: the oldest work order, sorted as text, is wrong. Declaring the format puts everything back in order."
+              }
+            },
+            {
+              "ref": "08.3",
+              "quoi": {
+                "fr": "Lire le compteur électrique, dont l'horodatage marque la fin de l'intervalle",
+                "en": "Read the electricity meter, whose timestamp marks the end of the interval"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [
+                "sources"
+              ],
+              "note": {
+                "fr": "247 relevés estimés, pas faux mais pas mesurés, et 27 116 relevés qui changent de jour selon le fuseau : le décalage à UTC est dans la colonne, et l'ignorer coûte cher.",
+                "en": "247 estimated readings, not wrong but not measured, and 27,116 readings that change day with the time zone: the UTC offset is in the column, and ignoring it is costly."
+              }
+            },
+            {
+              "ref": "08.4",
+              "quoi": {
+                "fr": "Compter dans le bronze de l'historien les lignes qui ne sont pas des mesures",
+                "en": "Count the historian bronze rows that are not measurements"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [
+                "sources",
+                "raw"
+              ],
+              "note": {
+                "fr": "10 556 valeurs de départ et 10 525 points d'archivage de minuit : des lignes que l'historien écrit pour lui, pas des mesures. On les compte avant tout calcul.",
+                "en": "10,556 starting values and 10,525 midnight archive points: rows the historian writes for itself, not measurements. You count them before any computation."
+              }
+            },
+            {
+              "ref": "08.5",
+              "quoi": {
+                "fr": "Voir les deux jours où l'horloge ment : une heure en double, une heure qui n'existe pas",
+                "en": "See the two days the clock lies: an hour twice over, an hour that does not exist"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [
+                "sources"
+              ],
+              "note": {
+                "fr": "49 paires en double le 2 novembre, aucun point entre 2 h et 3 h le 8 mars. Ce ne sont pas des doublons : deux mesures réelles, à une heure d'écart, que l'horloge a rendues identiques.",
+                "en": "49 duplicate pairs on November 2, no point between 2 and 3 a.m. on March 8. They are not duplicates: two real measurements an hour apart, made identical by the clock."
+              }
+            },
+            {
+              "ref": "08.6",
+              "quoi": {
+                "fr": "Compter la qualité et les coupures, puis trouver le capteur figé sans accuser un équipement arrêté",
+                "en": "Count quality and outages, then find the stuck sensor without blaming a stopped machine"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [
+                "sources"
+              ],
+              "note": {
+                "fr": "Sous le code 0, l'historien n'écrit aucune valeur. La requête naïve du capteur figé accuse des équipements simplement arrêtés ; le vrai coupable est l'humidité de la cabine, 49,8 heures à 54,52 %.",
+                "en": "Under code 0, the historian writes no value. The naive stuck-sensor query blames machines that are merely stopped; the real culprit is the booth humidity, 49.8 hours at 54.52%."
+              }
+            },
+            {
+              "ref": "08.7",
+              "quoi": {
+                "fr": "Lire l'incident du compresseur 2 dans les points, treize jours avant la maintenance",
+                "en": "Read compressor 2's incident in the points, thirteen days before maintenance"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [
+                "sources"
+              ],
+              "note": {
+                "fr": "Une moyenne quotidienne noie le signal. En ne gardant que les mesures prises en marche, par une jointure as-of, la vibration passe de 2,6 à 8,9 pendant que le couple de vissage tombe.",
+                "en": "A daily average drowns the signal. Keeping only measurements taken while running, through an as-of join, vibration goes from 2.6 to 8.9 while the screwing torque drops."
+              }
+            },
+            {
+              "ref": "08.8",
+              "quoi": {
+                "fr": "Rassembler les contrôles dans un script de diagnostic, et le versionner",
+                "en": "Gather the checks into a diagnostic script, and version it"
+              },
+              "ou": {
+                "fr": "script SQL, Git",
+                "en": "SQL script, Git"
+              },
+              "touche": [
+                "sources"
+              ],
+              "note": {
+                "fr": "Les neuf contrôles valent d'être rejoués à chaque livraison de l'usine, pas seulement aujourd'hui.",
+                "en": "The nine checks are worth replaying at every plant delivery, not only today."
+              }
+            },
+            {
+              "ref": "08.9",
+              "quoi": {
+                "fr": "Résoudre l'heure en instants absolus, et prouver qu'il ne reste aucun doublon",
+                "en": "Resolve local time into absolute instants, and prove no duplicate is left"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [
+                "raw"
+              ],
+              "note": {
+                "fr": "DuckDB tranche l'heure doublée en silence, en faveur de l'heure normale. Le fichier sait pourtant laquelle est laquelle : l'horodatage recule une seule fois, et ce recul est la bascule.",
+                "en": "DuckDB settles the doubled hour silently, in favour of standard time. Yet the file knows which is which: the timestamp steps back once, and that step is the switch."
+              }
+            },
+            {
+              "ref": "08.10",
+              "quoi": {
+                "fr": "Écrire l'argent : découper chaque point aux frontières d'heure, pondérer, écrire trois tables",
+                "en": "Write silver: cut every point at hour boundaries, weight, write three tables"
+              },
+              "ou": {
+                "fr": "script SQL, DuckDB",
+                "en": "SQL script, DuckDB"
+              },
+              "touche": [
+                "raw"
+              ],
+              "note": {
+                "fr": "Chaque point vaut jusqu'au suivant : on découpe cette validité à chaque heure, et on pondère par la durée. 240 240 lignes horaires, plus la production et l'énergie, dans l'entrepôt et dans le lac.",
+                "en": "Each point holds until the next: that validity is cut at every hour and weighted by duration. 240,240 hourly rows, plus production and energy, in the warehouse and in the lake."
+              }
+            },
+            {
+              "ref": "08.11",
+              "quoi": {
+                "fr": "Mesurer ce que la pondération change sur l'heure où le compresseur déclenche",
+                "en": "Measure what weighting changes on the hour the compressor trips"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [
+                "raw"
+              ],
+              "note": {
+                "fr": "Déclenché à 10 h 44 : la moyenne simple compte l'arrêt pour une ligne sur neuf, la pondérée pour le quart d'heure qu'il a vraiment duré.",
+                "en": "Tripped at 10:44: the simple average counts the stop as one row in nine, the weighted one as the quarter hour it really lasted."
+              }
+            },
+            {
+              "ref": "08.12",
+              "quoi": {
+                "fr": "Documenter ce que l'argent livre, et à qui",
+                "en": "Document what silver delivers, and to whom"
+              },
+              "ou": {
+                "fr": "LIVRAISON.md",
+                "en": "LIVRAISON.md"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Le second produit de Data Engineering après la RAW : Analytics Engineering en tirera l'étoile de l'usine, Data Science la maintenance prédictive et la prévision de la demande.",
+                "en": "Data Engineering's second product after RAW: Analytics Engineering will build the plant's star from it, Data Science predictive maintenance and demand forecasting."
+              }
+            },
+            {
+              "ref": "08.13",
+              "quoi": {
+                "fr": "Charger la base de séries temporelles, en tranches de sept jours",
+                "en": "Load the time-series database, in seven-day chunks"
+              },
+              "ou": {
+                "fr": "script SQL, TimescaleDB",
+                "en": "SQL script, TimescaleDB"
+              },
+              "touche": [
+                "raw"
+              ],
+              "note": {
+                "fr": "Une hypertable découpée par semaine : 671 057 morceaux, 55 étiquettes. C'est elle que le tableau de bord de Business Intelligence lira.",
+                "en": "A hypertable split by week: 671,057 pieces, 55 tags. It is what Business Intelligence's dashboard will read."
+              }
+            },
+            {
+              "ref": "08.14",
+              "quoi": {
+                "fr": "Poser l'agrégat continu, et prouver qu'il égale le calcul de DuckDB",
+                "en": "Set up the continuous aggregate, and prove it equals DuckDB's computation"
+              },
+              "ou": {
+                "fr": "TimescaleDB, puis DuckDB",
+                "en": "TimescaleDB, then DuckDB"
+              },
+              "touche": [
+                "raw"
+              ],
+              "note": {
+                "fr": "La moyenne simple ment plus d'une heure sur trois. La pondérée tombe exactement sur celle de DuckDB : 239 816 lignes, zéro écart, la preuve de fin du cours.",
+                "en": "The simple average lies more than one hour in three. The weighted one lands exactly on DuckDB's: 239,816 rows, zero gaps, the course's closing proof."
+              }
             }
           ]
         },
