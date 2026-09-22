@@ -119,9 +119,9 @@ HUBS = {
             "statistiques": "Formations/Statistiques",
             # Le parcours du domaine des données : un seul pilier pour ses neuf
             # formations, qui sont les sous-sections d'une même carte du hub. Ses
-            # assets sont mis en scène par _commun/outils/preparer_assets_site.py,
-            # qui les prend au dépôt formation_demo — voir ce script avant toute
-            # synchro, sinon le miroir croit à 159 orphelins.
+            # PDF s'exportent directement dans Data_Domain/site-content/assets/, et
+            # _commun/outils/preparer_site_data_domain.py écrit son contenu.json. Voir
+            # ce script avant toute synchro, sinon le miroir croit à 159 orphelins.
             "data-domain": "Formations/Data_Domain",
         },
         "assets": {
