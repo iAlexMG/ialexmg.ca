@@ -1441,7 +1441,7 @@ a.fichier-nom:hover { color: var(--couleur-accent); }
   transition: border-color var(--transition);
 }
 .sc-noeud:hover,
-.sc-noeud:focus-visible { border-color: var(--couleur-accent); color: var(--couleur-texte); }
+.sc-noeud:has(.sc-titre:focus-visible) { border-color: var(--couleur-accent); }
 /* Le cours dont la fiche est ouverte sous la carte : cadre accent doublé. */
 .sc-choisi {
   border-color: var(--couleur-accent);
@@ -1453,7 +1453,46 @@ a.fichier-nom:hover { color: var(--couleur-accent); }
   font-weight: 700;
   color: var(--couleur-accent);
 }
-.sc-titre { font-size: 0.88rem; font-weight: 600; line-height: 1.35; }
+/* Le titre est le lien vers la fiche du cours, et son pseudo-élément couvre
+   tout le nœud : un clic n'importe où l'ouvre. Les documents se posent
+   au-dessus et gardent leur propre clic. */
+.sc-titre {
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--couleur-texte);
+}
+.sc-titre:hover { color: var(--couleur-texte); }
+.sc-titre:focus-visible { outline: none; }
+.sc-titre::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+/* Les documents du cours, en rang sous le titre : chacun ouvre son PDF. */
+.sc-docs {
+  grid-column: 2 / -1;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  margin-top: 0.3rem;
+  font-family: var(--police-mono);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.sc-docs a { color: var(--couleur-texte-doux); white-space: nowrap; }
+.sc-docs a:hover,
+.sc-docs a:focus-visible {
+  color: var(--couleur-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.sc-sep { margin: 0 0.45rem; font-weight: 400; color: var(--couleur-texte-doux); }
 /* L'étape du nœud : toujours dite en mobile ; au large, seulement pour un
    cours de bande, que son couloir ne nomme pas. */
 .sc-tag {
@@ -2453,26 +2492,16 @@ button:focus-visible {
   .menu-bascule { display: none; }
 
   /* Schéma des étapes d'une formation : la grille en couloirs. Les en-têtes
-     d'étape en première rangée (chevron entre eux quand les étapes
-     s'enchaînent), un couloir par colonne derrière les nœuds, placés par
-     content.js (grid-column, grid-row) dans l'ordre des cours. */
+     d'étape en première rangée, sans chevron entre eux, un couloir par
+     colonne derrière les nœuds, placés par content.js (grid-column,
+     grid-row) dans l'ordre des cours. */
   .sc-grille {
     display: grid;
     grid-template-columns: repeat(var(--n, 1), minmax(0, 1fr));
     column-gap: 1.5rem;
     row-gap: 0.45rem;
   }
-  .sc-phase { display: block; grid-row: 1; position: relative; }
-  .sc-enchainees .sc-phase:not(.sc-phase-derniere)::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: calc(-0.75rem - 5px);
-    transform: translateY(-50%);
-    border-top: 7px solid transparent;
-    border-bottom: 7px solid transparent;
-    border-left: 9px solid var(--couleur-accent-clair);
-  }
+  .sc-phase { display: block; grid-row: 1; }
   .sc-couloir {
     display: block;
     margin: -0.3rem -0.45rem;

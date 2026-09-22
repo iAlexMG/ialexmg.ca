@@ -600,7 +600,11 @@ const Contenu = (function () {
   // d'y loger) prend la rangée entière et porte le nom de sa bande ; les
   // bandes s'expliquent sous la grille. En mobile, les couloirs tombent : la
   // liste reste dans l'ordre et chaque nœud nomme son étape. C'est la carte de
-  // la page : un nœud ouvre la fiche de son cours, juste dessous.
+  // la page : chaque nœud porte les documents de son cours, qui ouvrent
+  // chacun leur PDF, et un clic ailleurs dans le nœud ouvre la fiche du cours,
+  // juste dessous. Aucun chevron entre les en-têtes : le parcours passe d'un
+  // couloir à l'autre dans les deux sens, et une flèche de gauche à droite le
+  // contredirait.
   function creerSchemaCours(section) {
     const phases = section.phases || {};
     const colonnes = Array.isArray(phases.colonnes) ? phases.colonnes : [];
@@ -609,16 +613,12 @@ const Contenu = (function () {
     if ((!colonnes.length && !bandes.length) || !cours.length) return "";
     const etapes = etapesDesCours(section);
     const n = Math.max(colonnes.length, 1);
-    // `enchainees: false` : des familles (les domaines d'un examen) et non des
-    // étapes. Pas de chevron entre leurs en-têtes.
-    const enchainees = phases.enchainees !== false;
 
     const entetes = colonnes
       .map(function (g, i) {
         const role = texteLocalise(g.role);
         return (
-          '<p class="sc-phase' + (i === colonnes.length - 1 ? " sc-phase-derniere" : "") +
-          '" style="grid-column:' + (i + 1) + '">' +
+          '<p class="sc-phase" style="grid-column:' + (i + 1) + '">' +
           '<span class="sc-phase-nom">' + echapper(texteLocalise(g.nom)) + "</span>" +
           (role ? '<span class="sc-phase-role">' + echapper(role) + "</span>" : "") +
           "</p>"
@@ -642,18 +642,23 @@ const Contenu = (function () {
         const ecrit = Array.isArray(c.documents) && c.documents.length;
         const etat = ecrit ? "" : texteLocalise(c.etat);
         const place = traverse ? "1 / -1" : String(etape.colonne + 1);
+        const docs = liensDocuments(c, '<span class="sc-sep" aria-hidden="true">·</span>');
         return (
-          '<a class="sc-noeud' + (traverse ? " sc-traverse" : "") +
-          (ecrit ? "" : " sc-attente") + '" href="#cours-' +
-          encodeURIComponent(c.numero) + '" data-numero="' + echapper(c.numero) +
+          '<div class="sc-noeud' + (traverse ? " sc-traverse" : "") +
+          (ecrit ? "" : " sc-attente") + '" data-numero="' + echapper(c.numero) +
           '" style="grid-column:' + place + ";grid-row:" + (rang + 2) + '">' +
           '<span class="sc-num">' + echapper(c.numero) + "</span>" +
-          '<span class="sc-titre">' + echapper(texteLocalise(c.titre)) + "</span>" +
+          '<a class="sc-titre" href="#cours-' + encodeURIComponent(c.numero) + '">' +
+          echapper(texteLocalise(c.titre)) + "</a>" +
           (etape
             ? '<span class="sc-tag">' + echapper(texteLocalise(etape.nom)) + "</span>"
             : "") +
-          (etat ? '<span class="sc-etat">' + echapper(etat) + "</span>" : "") +
-          "</a>"
+          (docs
+            ? '<span class="sc-docs">' + docs + "</span>"
+            : etat
+            ? '<span class="sc-etat">' + echapper(etat) + "</span>"
+            : "") +
+          "</div>"
         );
       })
       .join("");
@@ -675,8 +680,7 @@ const Contenu = (function () {
     return (
       '<figure class="schema-cours" aria-label="' +
       echapper(window.I18n.t("cours.schema_aria")) + '">' +
-      '<div class="sc-grille' + (enchainees ? " sc-enchainees" : "") +
-      '" style="--n:' + n + '">' +
+      '<div class="sc-grille" style="--n:' + n + '">' +
       entetes + couloirs + noeuds +
       "</div>" +
       (legendeBandes ? '<div class="sc-legendes">' + legendeBandes + "</div>" : "") +
@@ -712,6 +716,8 @@ const Contenu = (function () {
       );
     }
 
+    // Sans étape qui touche la chaîne (un cours d'outillage, ou une formation
+    // rangée par familles), il n'y aurait rien à cliquer : pas de chaîne.
     function chaine(liste) {
       if (!liste.length || !colonnes.length) return "";
       const touchees = {};
@@ -720,6 +726,7 @@ const Contenu = (function () {
           touchees[id] = true;
         });
       });
+      if (!Object.keys(touchees).length) return "";
       return (
         '<p class="fiche-chaine">' +
         colonnes
@@ -827,11 +834,13 @@ const Contenu = (function () {
       f.hidden = f !== cible;
     });
     const numero = cible.getAttribute("data-numero");
-    portee.querySelectorAll(".sc-noeud").forEach(function (a) {
-      const choisi = a.getAttribute("data-numero") === numero;
-      a.classList.toggle("sc-choisi", choisi);
-      if (choisi) a.setAttribute("aria-current", "true");
-      else a.removeAttribute("aria-current");
+    portee.querySelectorAll(".sc-noeud").forEach(function (noeud) {
+      const choisi = noeud.getAttribute("data-numero") === numero;
+      const lien = noeud.querySelector(".sc-titre");
+      noeud.classList.toggle("sc-choisi", choisi);
+      if (!lien) return;
+      if (choisi) lien.setAttribute("aria-current", "true");
+      else lien.removeAttribute("aria-current");
     });
     if (defiler) {
       const reduit = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
