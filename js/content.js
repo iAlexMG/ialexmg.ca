@@ -669,16 +669,22 @@ const Contenu = (function () {
         .join("");
     }
 
+    // `enchainees: false` : des familles (les domaines d'un examen) et non des
+    // étapes. Pas de chevron entre elles, un simple écart.
+    const enchainees = phases.enchainees !== false;
     const rangee = colonnes
       .map(function (g) {
         return '<div class="sc-colonne">' + entete(g) + noeuds(g) + "</div>";
       })
-      .join('<span class="sc-chevron" aria-hidden="true"></span>');
+      .join(enchainees ? '<span class="sc-chevron" aria-hidden="true"></span>' : "");
 
     return (
       '<figure class="schema-cours" aria-label="' +
       echapper(window.I18n.t("cours.schema_aria")) + '">' +
-      (rangee ? '<div class="sc-colonnes">' + rangee + "</div>" : "") +
+      (rangee
+        ? '<div class="sc-colonnes' + (enchainees ? "" : " sc-familles") + '">' +
+          rangee + "</div>"
+        : "") +
       bandes
         .map(function (g) {
           return (

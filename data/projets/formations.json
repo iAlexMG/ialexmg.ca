@@ -1672,6 +1672,71 @@
           }
         }
       ],
+      "phases": {
+        "colonnes": [
+          {
+            "nom": {
+              "fr": "Préparer",
+              "en": "Preparing"
+            },
+            "role": {
+              "fr": "Explorer, nettoyer, construire les variables",
+              "en": "Exploring, cleaning, building features"
+            },
+            "cours": [
+              "00",
+              "01",
+              "02",
+              "07"
+            ]
+          },
+          {
+            "nom": {
+              "fr": "Expliquer",
+              "en": "Explaining"
+            },
+            "role": {
+              "fr": "Inférer et interpréter",
+              "en": "Inferring and interpreting"
+            },
+            "cours": [
+              "03",
+              "04"
+            ]
+          },
+          {
+            "nom": {
+              "fr": "Prédire",
+              "en": "Predicting"
+            },
+            "role": {
+              "fr": "Classer, regrouper, prévoir",
+              "en": "Classifying, clustering, forecasting"
+            },
+            "cours": [
+              "06",
+              "08",
+              "09"
+            ]
+          }
+        ],
+        "bandes": [
+          {
+            "nom": {
+              "fr": "Valider et livrer",
+              "en": "Validating and delivering"
+            },
+            "role": {
+              "fr": "Ce qui traverse la modélisation : juger un modèle honnêtement, puis le garder en vie.",
+              "en": "What runs through modelling: judging a model honestly, then keeping it alive."
+            },
+            "cours": [
+              "05",
+              "10"
+            ]
+          }
+        ]
+      },
       "carteNom": {
         "fr": "Data Science",
         "en": "Data Science"
@@ -1853,6 +1918,69 @@
           }
         }
       ],
+      "phases": {
+        "colonnes": [
+          {
+            "nom": {
+              "fr": "Reproduire",
+              "en": "Reproducing"
+            },
+            "role": {
+              "fr": "Du carnet au dépôt, chaque essai retrouvable",
+              "en": "From notebook to repository, every run traceable"
+            },
+            "cours": [
+              "00",
+              "01",
+              "02",
+              "03"
+            ]
+          },
+          {
+            "nom": {
+              "fr": "Entraîner",
+              "en": "Training"
+            },
+            "role": {
+              "fr": "Une chaîne automatisée, cohérente avec le service",
+              "en": "An automated pipeline, consistent with serving"
+            },
+            "cours": [
+              "04",
+              "05"
+            ]
+          },
+          {
+            "nom": {
+              "fr": "Servir et surveiller",
+              "en": "Serving and monitoring"
+            },
+            "role": {
+              "fr": "Le modèle en service, et la boucle de retour",
+              "en": "The model in service, and the feedback loop"
+            },
+            "cours": [
+              "06",
+              "07"
+            ]
+          }
+        ],
+        "bandes": [
+          {
+            "nom": {
+              "fr": "De bout en bout",
+              "en": "End to end"
+            },
+            "role": {
+              "fr": "La CI/CD d'un modèle, jusqu'au retour arrière.",
+              "en": "A model's CI/CD, down to the rollback."
+            },
+            "cours": [
+              "08"
+            ]
+          }
+        ]
+      },
       "carteNom": {
         "fr": "ML Engineering",
         "en": "ML Engineering"
@@ -2034,6 +2162,81 @@
           }
         }
       ],
+      "phases": {
+        "colonnes": [
+          {
+            "nom": {
+              "fr": "Le modèle",
+              "en": "The model"
+            },
+            "role": {
+              "fr": "Ce qu'il sait faire, et ce qu'on lui dit",
+              "en": "What it can do, and what we tell it"
+            },
+            "cours": [
+              "00",
+              "01"
+            ]
+          },
+          {
+            "nom": {
+              "fr": "La récupération",
+              "en": "Retrieval"
+            },
+            "role": {
+              "fr": "Répondre à partir de ses documents",
+              "en": "Answering from one's own documents"
+            },
+            "cours": [
+              "02",
+              "03"
+            ]
+          },
+          {
+            "nom": {
+              "fr": "Les agents",
+              "en": "Agents"
+            },
+            "role": {
+              "fr": "Le modèle propose, le code dispose",
+              "en": "The model proposes, the code decides"
+            },
+            "cours": [
+              "04"
+            ]
+          }
+        ],
+        "bandes": [
+          {
+            "nom": {
+              "fr": "Évaluer, maîtriser, sécuriser",
+              "en": "Evaluating, controlling, securing"
+            },
+            "role": {
+              "fr": "Ce qui sépare un prototype d'un produit : la mesure, le coût, la sécurité.",
+              "en": "What separates a prototype from a product: measurement, cost, security."
+            },
+            "cours": [
+              "05",
+              "06",
+              "07"
+            ]
+          },
+          {
+            "nom": {
+              "fr": "De bout en bout",
+              "en": "End to end"
+            },
+            "role": {
+              "fr": "Un assistant en production, sur l'entrepôt des formations précédentes.",
+              "en": "An assistant in production, on the warehouse from the previous courses."
+            },
+            "cours": [
+              "08"
+            ]
+          }
+        ]
+      },
       "carteNom": {
         "fr": "AI Engineering",
         "en": "AI Engineering"
@@ -2662,6 +2865,73 @@
           ]
         }
       ],
+      "phases": {
+        "colonnes": [
+          {
+            "nom": {
+              "fr": "Les fondations",
+              "en": "Foundations"
+            },
+            "role": {
+              "fr": "Lire, calculer, écrire",
+              "en": "Reading, computing, writing"
+            },
+            "cours": [
+              "00",
+              "01",
+              "02",
+              "03"
+            ]
+          },
+          {
+            "nom": {
+              "fr": "L'analyse avancée",
+              "en": "Advanced analysis"
+            },
+            "role": {
+              "fr": "Fenêtres, CTE, pivots, JSON, séries temporelles",
+              "en": "Windows, CTEs, pivots, JSON, time series"
+            },
+            "cours": [
+              "04",
+              "05",
+              "06",
+              "07",
+              "08",
+              "09"
+            ]
+          },
+          {
+            "nom": {
+              "fr": "Sous la requête",
+              "en": "Under the query"
+            },
+            "role": {
+              "fr": "Index, plans, transactions",
+              "en": "Indexes, plans, transactions"
+            },
+            "cours": [
+              "10",
+              "11"
+            ]
+          }
+        ],
+        "bandes": [
+          {
+            "nom": {
+              "fr": "De bout en bout",
+              "en": "End to end"
+            },
+            "role": {
+              "fr": "Un cas complet, du chargement au rapport.",
+              "en": "A complete case, from loading to report."
+            },
+            "cours": [
+              "12"
+            ]
+          }
+        ]
+      },
       "carteNom": {
         "fr": "SQL avancé",
         "en": "Advanced SQL"
@@ -2924,6 +3194,69 @@
           ]
         }
       ],
+      "phases": {
+        "colonnes": [
+          {
+            "nom": {
+              "fr": "La plateforme",
+              "en": "The platform"
+            },
+            "role": {
+              "fr": "L'architecture, et ce qu'on y construit",
+              "en": "The architecture, and what gets built on it"
+            },
+            "cours": [
+              "01",
+              "02"
+            ]
+          },
+          {
+            "nom": {
+              "fr": "Le compte",
+              "en": "The account"
+            },
+            "role": {
+              "fr": "Rôles, sécurité, coûts",
+              "en": "Roles, security, costs"
+            },
+            "cours": [
+              "03"
+            ]
+          },
+          {
+            "nom": {
+              "fr": "La donnée",
+              "en": "The data"
+            },
+            "role": {
+              "fr": "La charger, l'interroger, la partager",
+              "en": "Loading, querying, sharing it"
+            },
+            "cours": [
+              "04",
+              "05",
+              "06"
+            ]
+          }
+        ],
+        "bandes": [
+          {
+            "nom": {
+              "fr": "L'examen",
+              "en": "The exam"
+            },
+            "role": {
+              "fr": "La stratégie au départ, l'examen blanc à la fin.",
+              "en": "The strategy at the start, the mock exam at the end."
+            },
+            "cours": [
+              "00",
+              "07"
+            ]
+          }
+        ],
+        "enchainees": false
+      },
       "carteNom": {
         "fr": "Snowflake (SnowPro Core)",
         "en": "Snowflake (SnowPro Core)"
@@ -3118,6 +3451,69 @@
           }
         }
       ],
+      "phases": {
+        "colonnes": [
+          {
+            "nom": {
+              "fr": "Concevoir la cible",
+              "en": "Designing the target"
+            },
+            "role": {
+              "fr": "Architectures, modélisation, choix de pile",
+              "en": "Architectures, modelling, stack choice"
+            },
+            "cours": [
+              "00",
+              "01",
+              "02",
+              "03"
+            ]
+          },
+          {
+            "nom": {
+              "fr": "Encadrer",
+              "en": "Governing"
+            },
+            "role": {
+              "fr": "Catalogue, contrats, conformité",
+              "en": "Catalogue, contracts, compliance"
+            },
+            "cours": [
+              "04",
+              "05",
+              "06"
+            ]
+          },
+          {
+            "nom": {
+              "fr": "Piloter",
+              "en": "Steering"
+            },
+            "role": {
+              "fr": "Ce que ça coûte, et ce qui dort",
+              "en": "What it costs, and what lies idle"
+            },
+            "cours": [
+              "07"
+            ]
+          }
+        ],
+        "bandes": [
+          {
+            "nom": {
+              "fr": "La feuille de route",
+              "en": "The roadmap"
+            },
+            "role": {
+              "fr": "La prochaine marche, et une migration qui n'arrête pas l'entreprise.",
+              "en": "The next step, and a migration that doesn't stop the business."
+            },
+            "cours": [
+              "08"
+            ]
+          }
+        ]
+      },
       "carteNom": {
         "fr": "Architecture et gouvernance",
         "en": "Architecture and governance"

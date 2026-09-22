@@ -1422,6 +1422,8 @@ a.fichier-nom:hover { color: var(--couleur-accent); }
   flex: 1 1 0;
   min-width: 0;
 }
+/* Des familles empilées en mobile : sans chevron, un écart les sépare. */
+.sc-familles { gap: 1.1rem; }
 .sc-chevron {
   align-self: center;
   width: 0;
@@ -2272,6 +2274,7 @@ button:focus-visible {
   /* Schéma des étapes d'une formation : les colonnes côte à côte, chevrons
      tournés vers la droite ; les cours d'une bande sur une rangée. */
   .sc-colonnes { flex-direction: row; gap: 0.75rem; }
+  .sc-familles { gap: 1.25rem; }
   .sc-chevron {
     margin-top: 1.4rem;
     align-self: flex-start;
