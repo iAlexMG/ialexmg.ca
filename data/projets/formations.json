@@ -4929,6 +4929,76 @@
               },
               "fichier": "assets/formations/data-domain/SQL/Cours_00_Installation/Corrige_00.pdf"
             }
+          ],
+          "etapes": [
+            {
+              "ref": "00.1",
+              "quoi": {
+                "fr": "Comprendre les deux versions d'AdventureWorks avant de taper",
+                "en": "Understand the two versions of AdventureWorks before typing"
+              },
+              "ou": {
+                "fr": "lecture",
+                "en": "reading"
+              },
+              "touche": [],
+              "note": {
+                "fr": "La même entreprise de vélos, rangée deux fois : en étoile pour l'analyser, en 68 tables normalisées pour la faire tourner. Passer de l'une à l'autre est le cœur du métier.",
+                "en": "The same bicycle company, stored twice: as a star to analyse it, as 68 normalized tables to run it. Moving from one to the other is the core of the trade."
+              },
+              "montage": true
+            },
+            {
+              "ref": "00.2",
+              "quoi": {
+                "fr": "Monter l'entrepôt AdventureWorks DW dans DuckDB, en une commande",
+                "en": "Set up the AdventureWorks DW warehouse in DuckDB, in one command"
+              },
+              "ou": {
+                "fr": "Anaconda Prompt, DuckDB",
+                "en": "Anaconda Prompt, DuckDB"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Les fichiers de Microsoft n'ont pas d'en-tête : le script déclare les huit tables avec leurs vrais noms, puis charge par position. Un fichier de 25 Mo, sans serveur, sans compte ni mot de passe.",
+                "en": "Microsoft's files have no header: the script declares the eight tables with their real names, then loads by position. A 25 MB file, with no server, no account and no password."
+              },
+              "montage": true
+            },
+            {
+              "ref": "00.3",
+              "quoi": {
+                "fr": "Vérifier les comptes qui serviront de repère",
+                "en": "Check the counts that will serve as landmarks"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [],
+              "note": {
+                "fr": "606 produits, 60 398 ventes. Si un cours rend plus tard un compte très différent, c'est souvent qu'une jointure a éclaté les lignes. Le script se rejoue sans danger.",
+                "en": "606 products, 60,398 sales. If a later course returns a very different count, a join has often exploded the rows. The script can be replayed safely."
+              },
+              "montage": true
+            },
+            {
+              "ref": "00.4",
+              "quoi": {
+                "fr": "Charger AdventureWorks OLTP dans PostgreSQL, et lui rendre sa colonne calculée",
+                "en": "Load AdventureWorks OLTP into PostgreSQL, and give it back its computed column"
+              },
+              "ou": {
+                "fr": "Anaconda Prompt, psql",
+                "en": "Anaconda Prompt, psql"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Le piège ne dit rien : sans l'encodage posé d'abord, un François entre dans la base abîmé, et le contrôle final en cherche deux. Ce script-là ne se rejoue pas, il suppose une base vide : c'est la notion d'idempotence.",
+                "en": "The trap says nothing: without the encoding set first, a François enters the database garbled, and the final check looks for two of them. This script cannot be replayed, it assumes an empty database: that is the notion of idempotence."
+              },
+              "montage": true
+            }
           ]
         },
         {
@@ -4969,6 +5039,104 @@
                 "en": "Answer key"
               },
               "fichier": "assets/formations/data-domain/SQL/Cours_01_Paysage_SQL_et_modele_relationnel/Corrige_01.pdf"
+            }
+          ],
+          "etapes": [
+            {
+              "ref": "01.1",
+              "quoi": {
+                "fr": "Prendre la base en main : le schéma, les tables, les premières lignes",
+                "en": "Get to know the database: the schema, the tables, the first rows"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Sans USE dbo, le schéma courant est vide et chaque table semble absente. Première surprise : un prix manquant vaut NULL, une couleur manquante vaut « NA ».",
+                "en": "Without USE dbo, the current schema is empty and every table seems missing. First surprise: a missing price is NULL, a missing colour is “NA”."
+              }
+            },
+            {
+              "ref": "01.2",
+              "quoi": {
+                "fr": "Filtrer, joindre, agréger, et voir le moteur refuser une somme dans le WHERE",
+                "en": "Filter, join, aggregate, and watch the engine refuse a sum in the WHERE"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Une condition sur un total va dans le HAVING : au moment du WHERE, aucune somme n'est encore calculée. L'erreur du moteur est la leçon de l'ordre d'exécution.",
+                "en": "A condition on a total goes in the HAVING: at WHERE time, no sum has been computed yet. The engine's error is the lesson on execution order."
+              }
+            },
+            {
+              "ref": "01.3",
+              "quoi": {
+                "fr": "Voir un LEFT JOIN perdre ses lignes par un WHERE mal placé",
+                "en": "Watch a LEFT JOIN lose its rows through a misplaced WHERE"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Les produits sans sous-catégorie disparaissent sans qu'on ait touché à la jointure : le WHERE a rejeté leurs NULL. Déplacée dans le ON, la condition les rend.",
+                "en": "Products without a subcategory vanish although the join was not touched: the WHERE rejected their NULLs. Moved into the ON, the condition brings them back."
+              }
+            },
+            {
+              "ref": "01.4",
+              "quoi": {
+                "fr": "Compter les prix absents, et voir « = NULL » répondre zéro",
+                "en": "Count the missing prices, and watch “= NULL” answer zero"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [],
+              "note": {
+                "fr": "IS NULL trouve 211 produits sans prix ; = NULL n'en trouve aucun, et zéro est une réponse plausible. C'est le piège numéro un de NULL.",
+                "en": "IS NULL finds 211 products without a price; = NULL finds none, and zero is a plausible answer. It is NULL's number one trap."
+              }
+            },
+            {
+              "ref": "01.5",
+              "quoi": {
+                "fr": "Démasquer « NA », une absence déguisée en couleur",
+                "en": "Unmask “NA”, an absence disguised as a colour"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Aucun NULL, mais 254 produits « NA », et près de la moitié des lignes de vente pour 435 117 $ sur 29,4 millions. Un tableau de bord titrerait « NA, notre couleur la plus vendue ».",
+                "en": "No NULLs, but 254 “NA” products, and nearly half the sales lines for $435,117 out of 29.4 million. A dashboard would headline “NA, our best-selling colour”."
+              }
+            },
+            {
+              "ref": "01.6",
+              "quoi": {
+                "fr": "Lire la même question écrite pour la base normalisée",
+                "en": "Read the same question written for the normalized database"
+              },
+              "ou": {
+                "fr": "lecture, PostgreSQL",
+                "en": "reading, PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Le même SQL, d'autres tables et d'autres clés. Le seuil passe de 200 à 1 000 unités parce que la base transactionnelle porte aussi les revendeurs, pas parce que le langage change.",
+                "en": "The same SQL, other tables and other keys. The threshold goes from 200 to 1,000 units because the transactional database also holds the resellers, not because the language changes."
+              }
             }
           ]
         },
@@ -5018,6 +5186,120 @@
               },
               "fichier": "assets/formations/data-domain/SQL/Cours_02_Le_langage_SQL/Corrige_02.pdf"
             }
+          ],
+          "etapes": [
+            {
+              "ref": "02.1",
+              "quoi": {
+                "fr": "Lire, calculer et trier, en disant soi-même où vont les NULL",
+                "en": "Read, compute and sort, stating yourself where the NULLs go"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Sur l'entrepôt, 211 produits sans prix se rangent en dernier ; PostgreSQL les aurait mis en tête d'un palmarès décroissant. Même piège pour un texte trié caractère par caractère : « 10+ Miles » passe avant « 2-5 Miles ».",
+                "en": "On the warehouse, 211 products without a price sort last; PostgreSQL would have put them at the top of a descending ranking. Same trap for text sorted character by character: “10+ Miles” comes before “2-5 Miles”."
+              }
+            },
+            {
+              "ref": "02.2",
+              "quoi": {
+                "fr": "Filtrer sans se faire prendre par AND, BETWEEN, la casse et un code complété d'espaces",
+                "en": "Filter without being caught by AND, BETWEEN, case and a space-padded code"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "104 lignes sans parenthèses, 71 avec : deux réponses plausibles. Et ProductLine = 'R' rend zéro sur l'entrepôt, parce que la valeur rangée est « R » suivi d'une espace : avant de filtrer sur un code, on vérifie sa longueur.",
+                "en": "104 rows without parentheses, 71 with: two plausible answers. And ProductLine = 'R' returns zero on the warehouse, because the stored value is “R” followed by a space: before filtering on a code, check its length."
+              }
+            },
+            {
+              "ref": "02.3",
+              "quoi": {
+                "fr": "Décider avec CASE, et convertir sans tout faire planter",
+                "en": "Decide with CASE, and convert without crashing everything"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "TRY_CAST sauve la moyenne des tailles et fait disparaître 45 tailles en lettres sans rien dire. Un TRIM oublié fait peser 1 050 livres à une roue de 1 050 grammes : le piège fausse un calcul, pas seulement un filtre.",
+                "en": "TRY_CAST saves the average size and silently drops 45 sizes written as letters. A forgotten TRIM makes a 1,050-gram wheel weigh 1,050 pounds: the trap skews a calculation, not just a filter."
+              }
+            },
+            {
+              "ref": "02.4",
+              "quoi": {
+                "fr": "Assembler, normaliser et découper du texte",
+                "en": "Assemble, normalize and split text"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Concaténer avec un second prénom absent efface 7 830 noms de clients. Deux formats de téléphone se ramènent à un seul ; une règle de découpage tirée de quelques lignes se trompe sur 10 noms de produits sur 308.",
+                "en": "Concatenating with a missing middle name wipes out 7,830 customer names. Two phone formats come down to one; a splitting rule drawn from a few rows gets 10 product names out of 308 wrong."
+              }
+            },
+            {
+              "ref": "02.5",
+              "quoi": {
+                "fr": "Mesurer des délais, tronquer au mois, calculer un âge",
+                "en": "Measure delays, truncate to the month, compute an age"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Trois conventions pour le numéro du dimanche. DATEDIFF en années compte les 1er janvier, pas les anniversaires : 111 employés sur 296 ont un an de trop à l'embauche. La fonction AGE de PostgreSQL tombe juste d'emblée.",
+                "en": "Three conventions for Sunday's number. DATEDIFF in years counts January firsts, not birthdays: 111 employees out of 296 are one year too old at hiring. PostgreSQL's AGE function gets it right from the start."
+              }
+            },
+            {
+              "ref": "02.6",
+              "quoi": {
+                "fr": "Distinguer lignes, valeurs et commandes, et respecter les règles du GROUP BY",
+                "en": "Tell rows, values and orders apart, and follow the rules of GROUP BY"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "60 398 lignes, 27 659 commandes : un rapport qui annoncerait 60 398 commandes se tromperait du simple au double. GROUP BY ALL ne devine rien, il regroupe sur tout ce qui n'est pas agrégé.",
+                "en": "60,398 rows, 27,659 orders: a report announcing 60,398 orders would be off by a factor of two. GROUP BY ALL guesses nothing, it groups on everything that is not aggregated."
+              }
+            },
+            {
+              "ref": "02.7",
+              "quoi": {
+                "fr": "Tirer le bilan du contraste entre les deux terrains",
+                "en": "Take stock of the contrast between the two engines"
+              },
+              "ou": {
+                "fr": "labo OLTP, lecture",
+                "en": "OLTP lab, reading"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Le langage est le même, et les écarts les plus dangereux ne lèvent aucune erreur : le TRIM oublié, la division entière qui rend 0 sur PostgreSQL, l'âge un an trop vieux. Avant de comparer deux résultats, on compare les deux terrains.",
+                "en": "The language is the same, and the most dangerous differences raise no error: the forgotten TRIM, integer division returning 0 on PostgreSQL, the age one year too old. Before comparing two results, compare the two engines."
+              }
+            }
           ]
         },
         {
@@ -5065,6 +5347,152 @@
                 "en": "Answer key"
               },
               "fichier": "assets/formations/data-domain/SQL/Cours_03_Ecrire_dans_la_base/Corrige_03.pdf"
+            }
+          ],
+          "etapes": [
+            {
+              "ref": "03.1",
+              "quoi": {
+                "fr": "Copier un extrait dans un bac à sable, et voir ce qu'une recréation efface",
+                "en": "Copy an extract into a sandbox, and see what recreating it wipes out"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "506 clients de janvier 2014. Une copie reprend les noms et les types, jamais une clé ni un NOT NULL. CREATE OR REPLACE est un DROP TABLE sous un autre nom : aucune question, aucune version gardée.",
+                "en": "506 customers from January 2014. A copy keeps names and types, never a key or a NOT NULL. CREATE OR REPLACE is a DROP TABLE by another name: no question asked, no version kept."
+              }
+            },
+            {
+              "ref": "03.2",
+              "quoi": {
+                "fr": "Créer une table, et voir ce que chaque type refuse ou transforme en silence",
+                "en": "Create a table, and see what each type rejects or silently changes"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "12,345 devient 12,35 et 12,6 devient 13 sans un mot. DuckDB accepte ABCD dans un VARCHAR(3) : il oublie la longueur déclarée. PostgreSQL la refuse.",
+                "en": "12.345 becomes 12.35 and 12.6 becomes 13 without a word. DuckDB accepts ABCD in a VARCHAR(3): it forgets the declared length. PostgreSQL rejects it."
+              }
+            },
+            {
+              "ref": "03.3",
+              "quoi": {
+                "fr": "Violer chaque contrainte, une à la fois, et lire les messages",
+                "en": "Violate each constraint, one at a time, and read the messages"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Clé primaire, UNIQUE, NOT NULL, CHECK, clé étrangère : les deux moteurs les appliquent toutes, et un CHECK laisse passer le NULL. Snowflake enregistre une clé primaire sans l'appliquer : la requête de contrôle des doublons reste le réflexe.",
+                "en": "Primary key, UNIQUE, NOT NULL, CHECK, foreign key: both engines enforce them all, and a CHECK lets NULL through. Snowflake records a primary key without enforcing it: the duplicate-check query remains the reflex."
+              }
+            },
+            {
+              "ref": "03.4",
+              "quoi": {
+                "fr": "Insérer en nommant les colonnes, et voir le compteur buter sur l'historique",
+                "en": "Insert naming the columns, and watch the counter trip over the history"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Le compteur parti de 1 heurte les trois envois chargés avec leur numéro, et 67 numéros sont perdus : une séquence ne recule jamais. RETURNING est le seul moyen sûr de connaître le numéro que le moteur a donné.",
+                "en": "The counter starting at 1 collides with the three sends loaded with their numbers, and 67 numbers are lost: a sequence never goes back. RETURNING is the only safe way to know the number the engine assigned."
+              }
+            },
+            {
+              "ref": "03.5",
+              "quoi": {
+                "fr": "Modifier et supprimer, en comptant avant d'écrire",
+                "en": "Update and delete, counting before writing"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Un UPDATE sans WHERE touche 506 lignes, et seul un BEGIN posé avant permet de les rendre. Une correction tirée d'une source en double touche deux fois la même cliente, qui reçoit l'une des deux adresses au hasard.",
+                "en": "An UPDATE without WHERE touches 506 rows, and only a BEGIN issued before lets you give them back. A fix drawn from a duplicated source hits the same customer twice, who gets one of the two addresses at random."
+              }
+            },
+            {
+              "ref": "03.6",
+              "quoi": {
+                "fr": "Fusionner une mise à jour avec MERGE, puis la rejouer",
+                "en": "Merge an update with MERGE, then replay it"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Rejouée, la fusion ne crée pas de doublon. Mais sur DuckDB, une source qui propose deux revenus pour la même cliente passe sans erreur, alors que PostgreSQL la refuse : on contrôle la source avant de fusionner.",
+                "en": "Replayed, the merge creates no duplicate. But on DuckDB, a source offering two incomes for the same customer goes through without error, while PostgreSQL rejects it: check the source before merging."
+              }
+            },
+            {
+              "ref": "03.7",
+              "quoi": {
+                "fr": "Comparer une vue et une colonne calculée une fois",
+                "en": "Compare a view and a column computed once"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "La vue suit les données, la colonne garde une photo qui vieillit. Une vue en SELECT * prend en silence une colonne ajoutée sur DuckDB et se fige sur PostgreSQL. DuckDB laisse aussi supprimer une table sous une vue.",
+                "en": "The view follows the data, the column keeps a snapshot that ages. A SELECT * view silently picks up an added column on DuckDB and stays frozen on PostgreSQL. DuckDB also lets you drop a table under a view."
+              }
+            },
+            {
+              "ref": "03.8",
+              "quoi": {
+                "fr": "Annuler une transaction qui contient un DDL, puis un DROP",
+                "en": "Roll back a transaction that holds DDL, then a DROP"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Sur les deux terrains, le ROLLBACK défait même une création ou une suppression de table. Snowflake valide la transaction en cours dès qu'un DDL arrive. Le filet ne vaut que si le BEGIN est venu avant.",
+                "en": "On both engines, ROLLBACK undoes even the creation or deletion of a table. Snowflake commits the open transaction as soon as DDL arrives. The safety net only works if BEGIN came first."
+              }
+            },
+            {
+              "ref": "03.9",
+              "quoi": {
+                "fr": "Tirer le bilan du contraste",
+                "en": "Take stock of the contrast"
+              },
+              "ou": {
+                "fr": "labo OLTP, lecture",
+                "en": "OLTP lab, reading"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Les deux moteurs appliquent les mêmes contraintes ; ils divergent sur les types, la fusion et les vues. Les erreurs d'écriture les plus coûteuses ne lèvent rien : seul le compte rendu du moteur les trahit, à condition de le lire.",
+                "en": "Both engines enforce the same constraints; they differ on types, merges and views. The costliest write errors raise nothing: only the engine's row count gives them away, provided you read it."
+              }
             }
           ]
         },
@@ -5114,6 +5542,88 @@
               },
               "fichier": "assets/formations/data-domain/SQL/Cours_04_Fonctions_de_fenetrage/Corrige_04.pdf"
             }
+          ],
+          "etapes": [
+            {
+              "ref": "04.1",
+              "quoi": {
+                "fr": "Voir la différence entre un GROUP BY et une fenêtre",
+                "en": "See the difference between a GROUP BY and a window"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Même total, deux usages : une ligne par produit d'un côté, toutes les ventes gardées avec le total en face de l'autre.",
+                "en": "Same total, two uses: one row per product on one side, every sale kept with the total next to it on the other."
+              }
+            },
+            {
+              "ref": "04.2",
+              "quoi": {
+                "fr": "Classer, et voir comment chaque fonction traite les égalités",
+                "en": "Rank, and see how each function handles ties"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Au même prix, ROW_NUMBER numérote tout, RANK répète puis saute, DENSE_RANK répète sans sauter.",
+                "en": "At the same price, ROW_NUMBER numbers everything, RANK repeats then skips, DENSE_RANK repeats without skipping."
+              }
+            },
+            {
+              "ref": "04.3",
+              "quoi": {
+                "fr": "Garder les trois produits les plus chers de chaque sous-catégorie",
+                "en": "Keep the three most expensive products of each subcategory"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "QUALIFY en une ligne sur l'entrepôt, une sous-requête sur PostgreSQL. Sans colonne de départage, le top est juste en compte et instable d'une exécution à l'autre. Et une dimension à historique classe des versions, pas des produits.",
+                "en": "QUALIFY in one line on the warehouse, a subquery on PostgreSQL. Without a tie-breaking column, the top is right in count and unstable from one run to the next. And a dimension with history ranks versions, not products."
+              }
+            },
+            {
+              "ref": "04.4",
+              "quoi": {
+                "fr": "Comparer chaque mois au précédent, puis cumuler et lisser",
+                "en": "Compare each month with the previous one, then accumulate and smooth"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "38 mois, 29 358 677,22 $ en tout, et des parts qui somment à 1. Sans son cadre ROWS BETWEEN, la moyenne mobile devient un cumul divisé : le cadre compte.",
+                "en": "38 months, $29,358,677.22 in all, and shares that add up to 1. Without its ROWS BETWEEN frame, the moving average becomes a divided running total: the frame matters."
+              }
+            },
+            {
+              "ref": "04.5",
+              "quoi": {
+                "fr": "Tirer le bilan du contraste",
+                "en": "Take stock of the contrast"
+              },
+              "ou": {
+                "fr": "labo OLTP, lecture",
+                "en": "OLTP lab, reading"
+              },
+              "touche": [],
+              "note": {
+                "fr": "La grammaire des fenêtres est identique au caractère près. Ce qui ralentit d'un terrain à l'autre, c'est la forme du schéma : une dimension des dates prête d'un côté, un EXTRACT et une jointure en-tête et lignes de l'autre.",
+                "en": "Window grammar is identical down to the character. What slows you down from one engine to the other is the shape of the schema: a ready date dimension on one side, an EXTRACT and a header-to-lines join on the other."
+              }
+            }
           ]
         },
         {
@@ -5161,6 +5671,104 @@
                 "en": "Answer key"
               },
               "fichier": "assets/formations/data-domain/SQL/Cours_05_CTE_et_recursivite/Corrige_05.pdf"
+            }
+          ],
+          "etapes": [
+            {
+              "ref": "05.1",
+              "quoi": {
+                "fr": "Réécrire une sous-requête imbriquée en CTE",
+                "en": "Rewrite a nested subquery as a CTE"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Même résultat, lu dans l'ordre où l'on pense. Remplacer le SELECT final par la CTE seule est le geste de débogage.",
+                "en": "Same result, read in the order you think. Replacing the final SELECT with the CTE alone is the debugging move."
+              }
+            },
+            {
+              "ref": "05.2",
+              "quoi": {
+                "fr": "Chaîner deux CTE pour comparer chaque mois à la moyenne",
+                "en": "Chain two CTEs to compare each month with the average"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "La seconde CTE part de la première, et un CROSS JOIN colle l'unique moyenne à chaque mois.",
+                "en": "The second CTE builds on the first, and a CROSS JOIN attaches the single average to every month."
+              }
+            },
+            {
+              "ref": "05.3",
+              "quoi": {
+                "fr": "Générer une série pour combler les mois sans vente",
+                "en": "Generate a series to fill in the months with no sales"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "En 2010, un rapport brut n'a qu'une ligne, décembre. Les douze mois générés, puis un LEFT JOIN, font réapparaître les onze autres à zéro.",
+                "en": "In 2010, a raw report has a single row, December. The twelve generated months, then a LEFT JOIN, bring the other eleven back at zero."
+              }
+            },
+            {
+              "ref": "05.4",
+              "quoi": {
+                "fr": "Dérouler un arbre par une CTE récursive",
+                "en": "Walk a tree with a recursive CTE"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "L'organigramme sur l'entrepôt, 296 lignes sur cinq niveaux ; la nomenclature de fabrication sur PostgreSQL. 100 000 tours de récursion prennent 9,5 s sur l'un et 42 ms sur l'autre.",
+                "en": "The org chart on the warehouse, 296 rows over five levels; the bill of materials on PostgreSQL. 100,000 recursion rounds take 9.5 s on one and 42 ms on the other."
+              }
+            },
+            {
+              "ref": "05.5",
+              "quoi": {
+                "fr": "Compter les personnes et non les versions, et voir un filtre couper une branche",
+                "en": "Count people rather than versions, and watch a filter cut off a branch"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "296 lignes, 290 personnes : la dimension historise. Filtrer sur l'état courant des deux côtés de la récursion fait tomber l'organigramme à 254 : 23 employés pendent sous une version périmée de leur supérieur.",
+                "en": "296 rows, 290 people: the dimension keeps history. Filtering on current status on both sides of the recursion drops the org chart to 254: 23 employees hang under an outdated version of their manager."
+              }
+            },
+            {
+              "ref": "05.6",
+              "quoi": {
+                "fr": "Tirer le bilan du contraste",
+                "en": "Take stock of the contrast"
+              },
+              "ou": {
+                "fr": "labo OLTP, lecture",
+                "en": "OLTP lab, reading"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Sur les CTE, presque aucun dialecte. L'entrepôt n'a pas fait disparaître l'historique de la hiérarchie, il l'a déplacé du lien vers la dimension, où rien ne rappelle qu'il existe.",
+                "en": "For CTEs, almost no dialect. The warehouse did not make the hierarchy's history disappear, it moved it from the link into the dimension, where nothing reminds you it exists."
+              }
             }
           ]
         },
@@ -5210,6 +5818,104 @@
               },
               "fichier": "assets/formations/data-domain/SQL/Cours_06_Agregation_avancee_et_pivots/Corrige_06.pdf"
             }
+          ],
+          "etapes": [
+            {
+              "ref": "06.1",
+              "quoi": {
+                "fr": "Passer du GROUP BY au ROLLUP : le détail et ses totaux en une requête",
+                "en": "Go from GROUP BY to ROLLUP: detail and totals in one query"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Les sous-totaux par année arrivent avec le pays à NULL, le total général avec les deux à NULL. C'est le morceau le plus portable de la formation.",
+                "en": "Yearly subtotals arrive with the country as NULL, the grand total with both as NULL. It is the most portable piece of the course."
+              }
+            },
+            {
+              "ref": "06.2",
+              "quoi": {
+                "fr": "Choisir ses niveaux avec GROUPING SETS, ou tout croiser avec CUBE",
+                "en": "Pick your levels with GROUPING SETS, or cross everything with CUBE"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "CUBE ajoute les totaux par pays toutes années confondues, la combinaison que la cascade du ROLLUP ne donnait pas.",
+                "en": "CUBE adds totals by country across all years, the combination the ROLLUP cascade did not give."
+              }
+            },
+            {
+              "ref": "06.3",
+              "quoi": {
+                "fr": "Étiqueter les totaux avec GROUPING()",
+                "en": "Label the totals with GROUPING()"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Plus aucun NULL ambigu : « Toutes années », « Tous pays ». Trier sur GROUPING d'abord range chaque sous-total sous son détail.",
+                "en": "No more ambiguous NULLs: “All years”, “All countries”. Sorting on GROUPING first puts each subtotal under its detail."
+              }
+            },
+            {
+              "ref": "06.4",
+              "quoi": {
+                "fr": "Mettre un continent par colonne, par agrégat conditionnel",
+                "en": "Put one continent per column, with a conditional aggregate"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Le CASE dans le SUM ne garde que les ventes du bon continent. C'est l'écriture qui marche partout, y compris là où PIVOT n'existe pas.",
+                "en": "The CASE inside the SUM keeps only the right continent's sales. It is the form that works everywhere, including where PIVOT does not exist."
+              }
+            },
+            {
+              "ref": "06.5",
+              "quoi": {
+                "fr": "Croiser avec PIVOT, replier avec UNPIVOT, et compter ce qui manque",
+                "en": "Cross-tab with PIVOT, fold back with UNPIVOT, and count what is missing"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Une colonne de trop dans la source du PIVOT fait éclater le grain sans erreur. UNPIVOT rend 19 lignes au lieu de 20 : l'Allemagne de 2010 disparaît, et la remettre à zéro affirme une vente nulle là où la donnée disait « rien ».",
+                "en": "One column too many in the PIVOT's source blows up the grain without an error. UNPIVOT returns 19 rows instead of 20: Germany in 2010 disappears, and putting it back at zero claims a zero sale where the data said “nothing”."
+              }
+            },
+            {
+              "ref": "06.6",
+              "quoi": {
+                "fr": "Tirer le bilan du contraste",
+                "en": "Take stock of the contrast"
+              },
+              "ou": {
+                "fr": "labo OLTP, lecture",
+                "en": "OLTP lab, reading"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Les extensions du GROUP BY passent partout à l'identique ; le pivot est le seul écart de syntaxe que le cours laisse debout. La parade est d'architecture : livrer au format long et laisser l'outil d'affichage croiser.",
+                "en": "GROUP BY extensions work identically everywhere; the pivot is the only syntax gap the course leaves standing. The answer is architectural: deliver in long format and let the display tool cross-tab."
+              }
+            }
           ]
         },
         {
@@ -5257,6 +5963,136 @@
                 "en": "Answer key"
               },
               "fichier": "assets/formations/data-domain/SQL/Cours_07_Sous_requetes_correlation_et_ensembles/Corrige_07.pdf"
+            }
+          ],
+          "etapes": [
+            {
+              "ref": "07.1",
+              "quoi": {
+                "fr": "Écrire la même question en sous-requête scalaire, puis en fenêtre",
+                "en": "Write the same question as a scalar subquery, then as a window"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Même résultat. La sous-requête relit la table pour calculer la moyenne, la fenêtre n'y passe qu'une fois, et le profil de la requête le montre.",
+                "en": "Same result. The subquery rereads the table to compute the average, the window goes through it only once, and the query profile shows it."
+              }
+            },
+            {
+              "ref": "07.2",
+              "quoi": {
+                "fr": "Voir le moteur décorréler une sous-requête corrélée",
+                "en": "Watch the engine decorrelate a correlated subquery"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL, EXPLAIN",
+                "en": "DuckDB · PostgreSQL, EXPLAIN"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Aucune boucle dans le plan de DuckDB : la sous-requête exécutée « pour chaque produit » est devenue une jointure avec agrégation.",
+                "en": "No loop in DuckDB's plan: the subquery run “for each product” has become a join with an aggregation."
+              }
+            },
+            {
+              "ref": "07.3",
+              "quoi": {
+                "fr": "Chercher les produits jamais vendus, de trois façons",
+                "en": "Find the products never sold, in three ways"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "NOT EXISTS, NOT IN et LEFT JOIN tombent d'accord ici. Mais la dimension historise : 19 versions « jamais vendues » appartiennent à 11 produits bel et bien vendus sous leur version courante.",
+                "en": "NOT EXISTS, NOT IN and LEFT JOIN agree here. But the dimension keeps history: 19 “never sold” versions belong to 11 products that were indeed sold under their current version."
+              }
+            },
+            {
+              "ref": "07.4",
+              "quoi": {
+                "fr": "Provoquer le piège de NOT IN avec un NULL dans la liste",
+                "en": "Trigger the NOT IN trap with a NULL in the list"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "604 produits hors de la liste (1, 2) ; zéro dès qu'un NULL s'y glisse, sans erreur ni avertissement. NOT EXISTS reste juste. C'est le résultat le plus important du labo.",
+                "en": "604 products outside the list (1, 2); zero as soon as a NULL slips in, with no error and no warning. NOT EXISTS stays right. It is the lab's most important result."
+              }
+            },
+            {
+              "ref": "07.5",
+              "quoi": {
+                "fr": "Trouver les clients d'une catégorie mais pas d'une autre",
+                "en": "Find the customers of one category but not another"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "EXCEPT donne les acheteurs de vélo qui n'ont jamais pris d'accessoire, une population à rappeler. L'écart entre UNION ALL et UNION est exactement le nombre de doublons supprimés, et ce tri a un coût.",
+                "en": "EXCEPT gives the bike buyers who never bought an accessory, a population worth calling back. The gap between UNION ALL and UNION is exactly the number of duplicates removed, and that sort has a cost."
+              }
+            },
+            {
+              "ref": "07.6",
+              "quoi": {
+                "fr": "Écrire le top 3 par sous-catégorie de trois façons",
+                "en": "Write the top 3 by subcategory in three ways"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "LATERAL, QUALIFY, fenêtre et CTE rendent la même chose. Avec la virgule, LATERAL perd les sous-catégories sans produit ; seul LEFT JOIN LATERAL … ON true les garde. C'est déjà le geste de l'as-of join du Cours 09.",
+                "en": "LATERAL, QUALIFY, window plus CTE return the same thing. With the comma, LATERAL drops subcategories with no product; only LEFT JOIN LATERAL … ON true keeps them. It is already the move behind the as-of join of course 09."
+              }
+            },
+            {
+              "ref": "07.7",
+              "quoi": {
+                "fr": "Chercher les lignes de fait orphelines de leur dimension",
+                "en": "Look for fact rows orphaned from their dimension"
+              },
+              "ou": {
+                "fr": "DuckDB",
+                "en": "DuckDB"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Zéro, et c'est le résultat qu'on espère : le contrôle se pose avant d'en avoir besoin. Une vente dont le produit manque disparaît d'un rapport sans laisser de trace.",
+                "en": "Zero, and it is the result you hope for: the check is set up before you need it. A sale whose product is missing vanishes from a report without a trace."
+              }
+            },
+            {
+              "ref": "07.8",
+              "quoi": {
+                "fr": "Tirer le bilan du contraste",
+                "en": "Take stock of the contrast"
+              },
+              "ou": {
+                "fr": "labo OLTP, lecture",
+                "en": "OLTP lab, reading"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Le transactionnel protège par ses contraintes et complique par sa normalisation ; l'entrepôt simplifie les jointures et laisse seul responsable de la cohérence. L'anti-jointure de contrôle compense cette seconde moitié du marché.",
+                "en": "The transactional side protects through its constraints and complicates through normalization; the warehouse simplifies joins and leaves you alone responsible for consistency. The checking anti-join makes up for that second half of the deal."
+              }
             }
           ]
         },
@@ -5306,6 +6142,136 @@
               },
               "fichier": "assets/formations/data-domain/SQL/Cours_08_Donnees_semi_structurees/Corrige_08.pdf"
             }
+          ],
+          "etapes": [
+            {
+              "ref": "08.1",
+              "quoi": {
+                "fr": "Fabriquer un document JSON imbriqué à partir des tables",
+                "en": "Build a nested JSON document from the tables"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "27 659 commandes, chacune avec son tableau de lignes. Une clé à NULL est gardée, avec la valeur null de JSON, sur les deux terrains ; Snowflake l'écarte, et un test de présence de clé change de réponse.",
+                "en": "27,659 orders, each with its array of lines. A key set to NULL is kept, with JSON's null value, on both engines; Snowflake drops it, and a key-presence test changes its answer."
+              }
+            },
+            {
+              "ref": "08.2",
+              "quoi": {
+                "fr": "Écrire les documents dans un fichier, puis les recharger comme s'ils venaient d'une API",
+                "en": "Write the documents to a file, then reload them as if they came from an API"
+              },
+              "ou": {
+                "fr": "DuckDB",
+                "en": "DuckDB"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Une table d'accueil à une seule colonne JSON, dont personne n'a eu à connaître le schéma. Un fichier en un seul tableau, lu dans le mauvais format, donne une ligne unique sans rien dire.",
+                "en": "A landing table with a single JSON column, whose schema nobody had to know. A file holding a single array, read in the wrong format, gives a single row without a word."
+              }
+            },
+            {
+              "ref": "08.3",
+              "quoi": {
+                "fr": "Extraire des valeurs, et voir LIKE comparer les guillemets",
+                "en": "Extract values, and watch LIKE compare the quotation marks"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "La flèche simple rend du JSON, guillemets compris : LIKE 'SO437%' rend zéro au lieu de cent, sans erreur. Et un filtre -> … IS NULL rate toutes les valeurs présentes à null.",
+                "en": "The single arrow returns JSON, quotation marks included: LIKE 'SO437%' returns zero instead of a hundred, with no error. And a -> … IS NULL filter misses every value present as null."
+              }
+            },
+            {
+              "ref": "08.4",
+              "quoi": {
+                "fr": "Trier et convertir sans se faire piéger par le texte",
+                "en": "Sort and convert without being tricked by text"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Un JSON se trie comme du texte : 9,99 $ passe devant 3 578,27 $. TRY_CAST change une valeur invalide en NULL et continue ; la conversion ordinaire fait tomber tout le lot.",
+                "en": "JSON sorts like text: $9.99 comes before $3,578.27. TRY_CAST turns an invalid value into NULL and carries on; the ordinary conversion brings down the whole batch."
+              }
+            },
+            {
+              "ref": "08.5",
+              "quoi": {
+                "fr": "Aplatir le tableau des lignes, en gardant les documents vides",
+                "en": "Flatten the array of lines, keeping the empty documents"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "60 398 lignes aplaties, autant que dans la table de faits. Avec une virgule, un document au tableau vide disparaît ; LEFT JOIN LATERAL … ON true le garde.",
+                "en": "60,398 flattened lines, as many as in the fact table. With a comma, a document with an empty array vanishes; LEFT JOIN LATERAL … ON true keeps it."
+              }
+            },
+            {
+              "ref": "08.6",
+              "quoi": {
+                "fr": "Indexer le document sur PostgreSQL, et voir l'index qui ne sert pas",
+                "en": "Index the document on PostgreSQL, and see the index that does not help"
+              },
+              "ou": {
+                "fr": "PostgreSQL, EXPLAIN ANALYZE",
+                "en": "PostgreSQL, EXPLAIN ANALYZE"
+              },
+              "touche": [],
+              "note": {
+                "fr": "L'index GIN sert l'opérateur de contenance @>, pas la flèche ->> : la même question écrite autrement repasse au parcours séquentiel. Un index aide parce que la requête est écrite pour l'employer.",
+                "en": "The GIN index serves the containment operator @>, not the ->> arrow: the same question written differently falls back to a sequential scan. An index helps because the query is written to use it."
+              }
+            },
+            {
+              "ref": "08.7",
+              "quoi": {
+                "fr": "Poser la même question au document et au relationnel, chronomètre en main",
+                "en": "Ask the document and the relational tables the same question, stopwatch in hand"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Mêmes totaux au dix-millième, à condition de garder le type de la source : en DECIMAL(18,2), 2 449 lignes perdent des cents. Le document est une trentaine de fois plus lent sur l'entrepôt, deux fois sur PostgreSQL.",
+                "en": "Same totals to the ten-thousandth, provided the source type is kept: in DECIMAL(18,2), 2,449 lines lose cents. The document is about thirty times slower on the warehouse, twice as slow on PostgreSQL."
+              }
+            },
+            {
+              "ref": "08.8",
+              "quoi": {
+                "fr": "Tirer le bilan du contraste",
+                "en": "Take stock of the contrast"
+              },
+              "ou": {
+                "fr": "labo OLTP, lecture",
+                "en": "OLTP lab, reading"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Sur le transactionnel comme sur DuckDB, le semi-structuré reste un corps étranger : relu à chaque requête, indexé à la main quand il l'est. Snowflake va plus loin en analysant son VARIANT à l'écriture.",
+                "en": "On the transactional side as on DuckDB, semi-structured data stays a foreign body: reread on every query, indexed by hand when it is at all. Snowflake goes further by parsing its VARIANT on write."
+              }
+            }
           ]
         },
         {
@@ -5354,6 +6320,136 @@
               },
               "fichier": "assets/formations/data-domain/SQL/Cours_09_Series_temporelles_et_as_of_joins/Corrige_09.pdf"
             }
+          ],
+          "etapes": [
+            {
+              "ref": "09.1",
+              "quoi": {
+                "fr": "Fixer le grain et les bornes de la série avant tout calcul",
+                "en": "Pin down the grain and the edges of the series before any calculation"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Du 29 décembre 2010 au 28 janvier 2014 : le premier et le dernier mois sont tronqués, et tout graphique mensuel commence et finit par une falaise qui n'est pas un fait économique. Une clé de date entière n'est pas une date.",
+                "en": "From December 29, 2010 to January 28, 2014: the first and last months are truncated, and every monthly chart starts and ends with a cliff that is not an economic fact. An integer date key is not a date."
+              }
+            },
+            {
+              "ref": "09.2",
+              "quoi": {
+                "fr": "Contrôler les intervalles de validité de la dimension produit",
+                "en": "Check the validity intervals of the product dimension"
+              },
+              "ou": {
+                "fr": "DuckDB",
+                "en": "DuckDB"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Les 200 dates de fin de l'entrepôt précèdent toutes leur date de début, dans la base publiée par l'éditeur. La jointure par intervalle fermé rend alors zéro ligne, sans erreur. La table d'historique du transactionnel, elle, est saine.",
+                "en": "All 200 end dates in the warehouse come before their start date, in the database as published by the vendor. A closed-interval join then returns zero rows, with no error. The transactional history table, for its part, is sound."
+              }
+            },
+            {
+              "ref": "09.3",
+              "quoi": {
+                "fr": "Écrire l'as-of join par la seule date de début",
+                "en": "Write the as-of join on the start date alone"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "« La dernière version dont le début précède la vente » : une écriture insensible aux fins cassées comme aux fins absentes. Le LEFT rend visibles 18 410 ventes sans version valide, qu'une jointure interne aurait effacées, trente pour cent du total.",
+                "en": "“The latest version whose start precedes the sale”: a form immune to broken end dates and missing ones alike. The LEFT makes visible 18,410 sales with no valid version, which an inner join would have erased, thirty percent of the total."
+              }
+            },
+            {
+              "ref": "09.4",
+              "quoi": {
+                "fr": "Recalculer la version de chaque vente et la comparer à celle que porte le fait",
+                "en": "Recompute each sale's version and compare it with the one the fact carries"
+              },
+              "ou": {
+                "fr": "DuckDB",
+                "en": "DuckDB"
+              },
+              "touche": [],
+              "note": {
+                "fr": "6 899 lignes sur 60 398 pointent vers une autre version que celle que les dates désignent. Trois lectures se défendent, et les départager vaut mieux que d'avoir raison tout de suite. La ligne n'est pas absente, elle est présente et fausse.",
+                "en": "6,899 rows out of 60,398 point to a different version than the dates designate. Three readings can be defended, and telling them apart is worth more than being right straight away. The row is not missing, it is present and wrong."
+              }
+            },
+            {
+              "ref": "09.5",
+              "quoi": {
+                "fr": "Calculer la marge au coût du moment, par deux as-of joins",
+                "en": "Compute the margin at the cost of the day, with two as-of joins"
+              },
+              "ou": {
+                "fr": "PostgreSQL",
+                "en": "PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Le prix et le coût ont chacun leur historique. Calculée sur le coût d'aujourd'hui, la marge de 2022 porte trois années d'inflation attribuées à un exercice clos : un chiffre qui passe une revue et ne devrait pas.",
+                "en": "Price and cost each have their own history. Computed on today's cost, the 2022 margin carries three years of inflation charged to a closed fiscal year: a figure that passes a review and should not."
+              }
+            },
+            {
+              "ref": "09.6",
+              "quoi": {
+                "fr": "Compléter l'axe des jours, puis lisser, rééchantillonner et mesurer la variation",
+                "en": "Complete the day axis, then smooth, resample and measure change"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Trois jours sans vente, invisibles tant qu'on ne les cherche pas. Sur un axe complet, ROWS suffit à une moyenne mobile. Le rendement logarithmique s'additionne d'un mois à l'autre, le rendement simple non.",
+                "en": "Three days with no sales, invisible until you look for them. On a complete axis, ROWS is enough for a moving average. Log returns add up from one month to the next, simple returns do not."
+              }
+            },
+            {
+              "ref": "09.7",
+              "quoi": {
+                "fr": "Mesurer la médiane, puis découper les sessions et les cohortes de clients",
+                "en": "Measure the median, then split customer sessions and cohorts"
+              },
+              "ou": {
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "La moyenne dépasse de loin la médiane : les vélos tirent la distribution, les accessoires font la masse. Sans DISTINCT, une commande de trois articles compterait trois événements. La date du premier achat, précalculée dans la dimension, peut dériver du fait.",
+                "en": "The mean is far above the median: bikes pull the distribution, accessories make up the bulk. Without DISTINCT, a three-item order would count as three events. The first-purchase date, precomputed in the dimension, can drift from the fact."
+              }
+            },
+            {
+              "ref": "09.8",
+              "quoi": {
+                "fr": "Tirer le bilan du contraste",
+                "en": "Take stock of the contrast"
+              },
+              "ou": {
+                "fr": "labo OLTP, lecture",
+                "en": "OLTP lab, reading"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Le transactionnel confie l'historique à une table dédiée qu'une contrainte surveille ; l'entrepôt le replie dans la dimension, et ce repliement est un traitement où des erreurs se logent. L'écriture par la date de début survit aux deux : à connaître par cœur.",
+                "en": "The transactional side entrusts history to a dedicated table watched by a constraint; the warehouse folds it into the dimension, and that folding is a process where errors hide. The start-date form survives both: worth knowing by heart."
+              }
+            }
           ]
         },
         {
@@ -5394,6 +6490,136 @@
                 "en": "Answer key"
               },
               "fichier": "assets/formations/data-domain/SQL/Cours_10_Index_et_optimisation/Corrige_10.pdf"
+            }
+          ],
+          "etapes": [
+            {
+              "ref": "10.1",
+              "quoi": {
+                "fr": "Fabriquer un terrain sans index, puis mesurer et lire le plan",
+                "en": "Build a ground with no index, then measure and read the plan"
+              },
+              "ou": {
+                "fr": "PostgreSQL, EXPLAIN ANALYZE",
+                "en": "PostgreSQL, EXPLAIN ANALYZE"
+              },
+              "touche": [],
+              "note": {
+                "fr": "1 213 170 lignes copiées sans aucun index, pour pouvoir mesurer avant et après. Le filtre garde 46 880 lignes, et le moteur lit pourtant les 13 824 pages de la table.",
+                "en": "1,213,170 rows copied with no index at all, so you can measure before and after. The filter keeps 46,880 rows, and yet the engine reads all 13,824 pages of the table."
+              }
+            },
+            {
+              "ref": "10.2",
+              "quoi": {
+                "fr": "Créer un index et remesurer, selon la sélectivité et la colonne demandée",
+                "en": "Create an index and measure again, by selectivity and by the column requested"
+              },
+              "ou": {
+                "fr": "PostgreSQL, EXPLAIN ANALYZE",
+                "en": "PostgreSQL, EXPLAIN ANALYZE"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Les pages lues tombent de 13 824 à 43. Quand la condition garde toute la table, le planificateur ignore l'index, et il a raison. Un index couvrant évite même d'ouvrir la table.",
+                "en": "Pages read drop from 13,824 to 43. When the condition keeps the whole table, the planner ignores the index, and it is right. A covering index even avoids opening the table."
+              }
+            },
+            {
+              "ref": "10.3",
+              "quoi": {
+                "fr": "Casser la sargabilité exprès, cinq fois",
+                "en": "Break sargability on purpose, five times"
+              },
+              "ou": {
+                "fr": "PostgreSQL, EXPLAIN ANALYZE",
+                "en": "PostgreSQL, EXPLAIN ANALYZE"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Une fonction, un calcul ou une conversion sur la colonne filtrée : cinq requêtes qui rendent le bon résultat et renoncent à l'index. La correction qui fait taire une erreur de type peut tuer l'index, et seul le plan le dit.",
+                "en": "A function, a calculation or a cast on the filtered column: five queries that return the right result and give up the index. The fix that silences a type error can kill the index, and only the plan says so."
+              }
+            },
+            {
+              "ref": "10.4",
+              "quoi": {
+                "fr": "Ordonner les colonnes d'un index composite",
+                "en": "Order the columns of a composite index"
+              },
+              "ou": {
+                "fr": "PostgreSQL, EXPLAIN ANALYZE",
+                "en": "PostgreSQL, EXPLAIN ANALYZE"
+              },
+              "touche": [],
+              "note": {
+                "fr": "L'égalité en premier, la plage en second : une descente et six pages, contre 398 descentes et 1 300 pages dans l'ordre inverse. Sans la première colonne, PostgreSQL 18 saute d'un groupe à l'autre, 247 fois.",
+                "en": "Equality first, range second: one descent and six pages, against 398 descents and 1,300 pages the other way round. Without the first column, PostgreSQL 18 skips from one group to the next, 247 times."
+              }
+            },
+            {
+              "ref": "10.5",
+              "quoi": {
+                "fr": "Chiffrer ce que les index coûtent : l'espace, les écritures, les index jamais lus",
+                "en": "Put a figure on what indexes cost: space, writes, indexes never read"
+              },
+              "ou": {
+                "fr": "PostgreSQL",
+                "en": "PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Les index pèsent une part importante de la table, et chaque insertion paie pour eux, pour toujours. Un index partiel sur une ligne sur cent répond à la vraie question pour une fraction de la place.",
+                "en": "Indexes weigh a large share of the table, and every insert pays for them, forever. A partial index on one row in a hundred answers the real question for a fraction of the space."
+              }
+            },
+            {
+              "ref": "10.6",
+              "quoi": {
+                "fr": "Voir le planificateur se tromper, puis lui dire la vérité",
+                "en": "Watch the planner get it wrong, then tell it the truth"
+              },
+              "ou": {
+                "fr": "PostgreSQL, EXPLAIN",
+                "en": "PostgreSQL, EXPLAIN"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Sans ANALYZE, deux produits de 46 880 et de 20 lignes reçoivent la même estimation. Deux colonnes corrélées font sous-estimer lourdement, et une statistique étendue corrige. Forcer un plan sert à comprendre, jamais à corriger.",
+                "en": "Without ANALYZE, two products of 46,880 and 20 rows get the same estimate. Two correlated columns lead to a heavy underestimate, and an extended statistic fixes it. Forcing a plan helps you understand, never to fix."
+              }
+            },
+            {
+              "ref": "10.7",
+              "quoi": {
+                "fr": "Mesurer l'élagage sur l'entrepôt, où il n'y a aucun index",
+                "en": "Measure pruning on the warehouse, where there is no index"
+              },
+              "ou": {
+                "fr": "DuckDB, EXPLAIN ANALYZE",
+                "en": "DuckDB, EXPLAIN ANALYZE"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Même contenu, deux rangements : la table mêlée prend quatre fois le temps de la table triée pour les mêmes 66 480 lignes, avec un plan identique au mot près. Sur un entrepôt, l'ordre d'écriture est une décision de performance.",
+                "en": "Same content, two layouts: the shuffled table takes four times as long as the sorted one for the same 66,480 rows, with a plan identical word for word. On a warehouse, write order is a performance decision."
+              }
+            },
+            {
+              "ref": "10.8",
+              "quoi": {
+                "fr": "Tirer le bilan du contraste",
+                "en": "Take stock of the contrast"
+              },
+              "ou": {
+                "fr": "lecture",
+                "en": "reading"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Sur le transactionnel, on optimise en ajoutant une structure ; sur l'entrepôt, en rangeant les données et en écrivant la requête autrement. Une seule règle commune : ne pas toucher à la colonne qu'on filtre.",
+                "en": "On the transactional side, you optimize by adding a structure; on the warehouse, by laying out the data and writing the query differently. One shared rule: do not touch the column you filter on."
+              }
             }
           ]
         },
@@ -5436,6 +6662,152 @@
               },
               "fichier": "assets/formations/data-domain/SQL/Cours_11_Transactions_et_concurrence/Corrige_11.pdf"
             }
+          ],
+          "etapes": [
+            {
+              "ref": "11.1",
+              "quoi": {
+                "fr": "Ouvrir deux sessions, puis annuler, reprendre, et voir un DDL verrouiller",
+                "en": "Open two sessions, then roll back, resume, and watch DDL take a lock"
+              },
+              "ou": {
+                "fr": "PostgreSQL, deux sessions",
+                "en": "PostgreSQL, two sessions"
+              },
+              "touche": [],
+              "note": {
+                "fr": "B ne voit jamais le travail non validé de A. Une transaction en échec refuse tout jusqu'au point de reprise. Un ALTER TABLE dans une transaction ouverte fait attendre même les lectures de l'autre session, sans aucune erreur.",
+                "en": "B never sees A's uncommitted work. A failed transaction refuses everything until the savepoint. An ALTER TABLE in an open transaction makes even the other session's reads wait, with no error at all."
+              }
+            },
+            {
+              "ref": "11.2",
+              "quoi": {
+                "fr": "Produire une lecture non répétable et un fantôme, puis les faire disparaître",
+                "en": "Produce a non-repeatable read and a phantom, then make them go away"
+              },
+              "ou": {
+                "fr": "PostgreSQL, deux sessions",
+                "en": "PostgreSQL, two sessions"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Deux lectures de la même ligne dans la même transaction rendent deux valeurs au niveau par défaut. En lecture répétable, la session travaille sur un instantané : c'est le mode d'un rapport en plusieurs requêtes.",
+                "en": "Two reads of the same row in the same transaction return two values at the default level. In repeatable read, the session works on a snapshot: it is the mode for a multi-query report."
+              }
+            },
+            {
+              "ref": "11.3",
+              "quoi": {
+                "fr": "Perdre une mise à jour, puis la corriger de deux façons",
+                "en": "Lose an update, then fix it in two ways"
+              },
+              "ou": {
+                "fr": "PostgreSQL, deux sessions",
+                "en": "PostgreSQL, two sessions"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Deux retraits, un seul visible : trente dollars disparus sans erreur ni conflit. Laisser le moteur calculer le nouveau solde, ou verrouiller dès la lecture par FOR UPDATE quand l'application doit décider.",
+                "en": "Two withdrawals, only one visible: thirty dollars gone with no error and no conflict. Let the engine compute the new balance, or lock at read time with FOR UPDATE when the application must decide."
+              }
+            },
+            {
+              "ref": "11.4",
+              "quoi": {
+                "fr": "Violer une règle collective en lecture répétable, et la voir refusée en sérialisable",
+                "en": "Break a collective rule in repeatable read, and see it refused in serializable"
+              },
+              "ou": {
+                "fr": "PostgreSQL, deux sessions",
+                "en": "PostgreSQL, two sessions"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Deux médecins se retirent chacun en vérifiant qu'il en reste un, et plus personne n'est de garde. Le niveau sérialisable annule la seconde au moment de valider : l'application doit savoir la rejouer.",
+                "en": "Two doctors each step down after checking one remains, and nobody is on call any more. The serializable level cancels the second at commit time: the application must be able to replay it."
+              }
+            },
+            {
+              "ref": "11.5",
+              "quoi": {
+                "fr": "Lire un blocage, puis provoquer un interblocage",
+                "en": "Read a block, then cause a deadlock"
+              },
+              "ou": {
+                "fr": "PostgreSQL, deux sessions",
+                "en": "PostgreSQL, two sessions"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Un blocage n'est pas une erreur : la session attend, indéfiniment s'il le faut. Une requête sur pg_blocking_pids nomme la session responsable en une ligne. L'interblocage vient de deux verrous pris dans l'ordre inverse.",
+                "en": "A block is not an error: the session waits, indefinitely if need be. A query on pg_blocking_pids names the session responsible in one line. The deadlock comes from two locks taken in opposite order."
+              }
+            },
+            {
+              "ref": "11.6",
+              "quoi": {
+                "fr": "Voir le MVCC de l'intérieur : les versions, le gonflement, le nettoyage",
+                "en": "See MVCC from the inside: versions, bloat, cleanup"
+              },
+              "ou": {
+                "fr": "PostgreSQL",
+                "en": "PostgreSQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Une mise à jour qui ne change rien écrit une nouvelle version ailleurs. Trois mises à jour à vide font grossir la table de plusieurs fois sa taille. C'est aussi pourquoi le parcours d'index seul du Cours 10 dépend du VACUUM.",
+                "en": "An update that changes nothing writes a new version elsewhere. Three empty updates make the table grow several times its size. It is also why course 10's index-only scan depends on VACUUM."
+              }
+            },
+            {
+              "ref": "11.7",
+              "quoi": {
+                "fr": "Rendre un chargement rejouable : transaction, tranche, fusion par clé",
+                "en": "Make a load replayable: transaction, slice, merge by key"
+              },
+              "ou": {
+                "fr": "PostgreSQL, deux sessions",
+                "en": "PostgreSQL, two sessions"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Hors transaction, un rapport lancé entre la suppression et la réinsertion affiche zéro sans rien signaler ; dans une transaction, il voit l'état d'avant. MERGE refuse une source en double : le contrôle d'unicité appartient au chargement.",
+                "en": "Outside a transaction, a report run between the delete and the reinsert shows zero without a word; inside one, it sees the previous state. MERGE rejects a duplicated source: the uniqueness check belongs to the load."
+              }
+            },
+            {
+              "ref": "11.8",
+              "quoi": {
+                "fr": "Refaire l'essai sur l'entrepôt, où un seul processus écrit",
+                "en": "Redo the test on the warehouse, where a single process writes"
+              },
+              "ou": {
+                "fr": "DuckDB",
+                "en": "DuckDB"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Les transactions et le DDL s'y annulent comme sur PostgreSQL. Mais une seconde session ne peut même pas ouvrir le fichier pendant une écriture : ni verrou de ligne, ni niveau d'isolation. Le filet avant une opération risquée est une copie du fichier.",
+                "en": "Transactions and DDL roll back there as on PostgreSQL. But a second session cannot even open the file during a write: no row lock, no isolation level. The safety net before a risky operation is a copy of the file."
+              }
+            },
+            {
+              "ref": "11.9",
+              "quoi": {
+                "fr": "Tirer le bilan du contraste",
+                "en": "Take stock of the contrast"
+              },
+              "ou": {
+                "fr": "lecture",
+                "en": "reading"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Le transactionnel se protège des conflits ligne à ligne, l'entrepôt local en n'en ayant presque jamais. Les deux ont besoin d'un chargement atomique et rejouable, la seule partie du module qui suit partout.",
+                "en": "The transactional side guards against conflicts row by row, the local warehouse by hardly ever having any. Both need an atomic, replayable load, the one part of the module that follows you everywhere."
+              }
+            }
           ]
         },
         {
@@ -5476,6 +6848,152 @@
                 "en": "Answer key"
               },
               "fichier": "assets/formations/data-domain/SQL/Cours_12_SQL_analytique_applique/Corrige_12.pdf"
+            }
+          ],
+          "etapes": [
+            {
+              "ref": "12.1",
+              "quoi": {
+                "fr": "Cadrer la demande avant d'écrire une ligne de SQL",
+                "en": "Frame the request before writing a line of SQL"
+              },
+              "ou": {
+                "fr": "papier, client DuckDB",
+                "en": "paper, DuckDB CLI"
+              },
+              "touche": [],
+              "note": {
+                "fr": "« Un tableau de bord avec la tendance et les meilleurs produits » : cinq questions à trancher. Une ligne de fait est un article, pas une commande, et la période est tronquée à ses deux bords. La note de cadrage est le premier livrable.",
+                "en": "“A dashboard with the trend and the best products”: five questions to settle. A fact row is an item, not an order, and the period is truncated at both ends. The framing note is the first deliverable."
+              }
+            },
+            {
+              "ref": "12.2",
+              "quoi": {
+                "fr": "Reconstituer la série quotidienne sans trous",
+                "en": "Rebuild the daily series with no gaps"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [],
+              "note": {
+                "fr": "1 096 jours sur trois années pleines, dont 3 reconstitués et marqués comme tels. La dimension des dates couvre 2005 à 2014 : jointe sans filtre, elle ouvrirait la série sur six ans de zéros.",
+                "en": "1,096 days over three full years, 3 of them rebuilt and flagged as such. The date dimension covers 2005 to 2014: joined without a filter, it would open the series with six years of zeros."
+              }
+            },
+            {
+              "ref": "12.3",
+              "quoi": {
+                "fr": "Poser les mesures de tendance et le classement mensuel des produits",
+                "en": "Set up the trend measures and the monthly product ranking"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Des cadres écrits partout, un cumul remis à zéro au 1er janvier. Le classement se fait sur la clé métier, sinon un produit à deux versions se classe deux fois moins bien, et RANK garde l'égalité de deux Road-150 à 78 721,94 $.",
+                "en": "Frames written everywhere, a running total reset on January 1. The ranking uses the business key, otherwise a two-version product ranks half as well, and RANK keeps two Road-150s tied at $78,721.94."
+              }
+            },
+            {
+              "ref": "12.4",
+              "quoi": {
+                "fr": "Contrôler la qualité, et ranger les contrôles dans le livrable",
+                "en": "Check quality, and put the checks in the deliverable"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Des contrôles qui ne trouvent rien, et c'est une preuve à garder. D'autres trouvent 448 produits jamais vendus en ligne et un territoire sans vente, sans que ce soient des anomalies, et 200 intervalles de validité cassés, qui en sont une.",
+                "en": "Checks that find nothing, and that is evidence worth keeping. Others find 448 products never sold online and a territory with no sales, which are not anomalies, and 200 broken validity intervals, which are."
+              }
+            },
+            {
+              "ref": "12.5",
+              "quoi": {
+                "fr": "Recalculer la marge au coût du jour, et mesurer l'écart avec le fait",
+                "en": "Recompute the margin at the cost of the day, and measure the gap with the fact"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Trois populations : accord, aucune version valide, désaccord. Sur les lignes comparables, la marge recalculée dépasse celle du fait de 312 319,33 $, soit 3,65 % : le rapport ne se publie pas avant que quelqu'un ait tranché laquelle fait foi.",
+                "en": "Three populations: agreement, no valid version, disagreement. On the comparable rows, the recomputed margin exceeds the fact's by $312,319.33, or 3.65%: the report is not published until someone decides which one is authoritative."
+              }
+            },
+            {
+              "ref": "12.6",
+              "quoi": {
+                "fr": "Produire le rapport avec ses sous-totaux, et le livrer au format long",
+                "en": "Produce the report with its subtotals, and deliver it in long format"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [],
+              "note": {
+                "fr": "ROLLUP en cascade, et les colonnes GROUPING pour distinguer un sous-total d'une catégorie inconnue. Le format long accepte une mesure de plus sans changer de structure ; le tableau croisé se fait dans l'outil qui affiche.",
+                "en": "ROLLUP as a cascade, and the GROUPING columns to tell a subtotal from an unknown category. The long format takes one more measure without changing structure; the cross-tab is done in the tool that displays it."
+              }
+            },
+            {
+              "ref": "12.7",
+              "quoi": {
+                "fr": "Mesurer ce que coûte chaque vue, puis matérialiser",
+                "en": "Measure what each view costs, then materialize"
+              },
+              "ou": {
+                "fr": "DuckDB, EXPLAIN ANALYZE",
+                "en": "DuckDB, EXPLAIN ANALYZE"
+              },
+              "touche": [],
+              "note": {
+                "fr": "La vue qu'on croyait la plus chère, l'as-of join, est déjà décorrélée par le moteur, et la variante « optimisée » est plus lente. Sur vingt millions de lignes, le filtre non sargable prend au moins dix fois plus de temps.",
+                "en": "The view you thought was the most expensive, the as-of join, is already decorrelated by the engine, and the “optimized” variant is slower. On twenty million rows, the non-sargable filter takes at least ten times as long."
+              }
+            },
+            {
+              "ref": "12.8",
+              "quoi": {
+                "fr": "Rendre le rafraîchissement atomique, par tranche, et journalisé",
+                "en": "Make the refresh atomic, sliced and logged"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Hors transaction, la table est vide entre la suppression et la réinsertion, et un rapport affiche zéro sans erreur. Recharger la seule journée concernée, dans une transaction, passe à l'échelle et se rejoue sans dommage.",
+                "en": "Outside a transaction, the table is empty between the delete and the reinsert, and a report shows zero with no error. Reloading only the day concerned, inside a transaction, scales and replays without harm."
+              }
+            },
+            {
+              "ref": "12.9",
+              "quoi": {
+                "fr": "Tirer le bilan du projet",
+                "en": "Take stock of the project"
+              },
+              "ou": {
+                "fr": "lecture",
+                "en": "reading"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Chaque module a servi. La partie sous la requête, plans, transactions et idempotence, est celle qui transforme un ensemble de requêtes justes en quelque chose qu'on peut confier à quelqu'un d'autre.",
+                "en": "Every module was used. The part under the query, plans, transactions and idempotence, is what turns a set of correct queries into something you can hand over to someone else."
+              }
             }
           ]
         }
