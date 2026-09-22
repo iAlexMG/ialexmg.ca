@@ -7139,6 +7139,139 @@
               },
               "fichier": "assets/formations/data-domain/Snowflake/Cours_00_Mise_en_place_et_strategie_examen/Labo_00.pdf"
             }
+          ],
+          "etapes": [
+            {
+              "ref": "00.1",
+              "quoi": {
+                "fr": "Ouvrir un compte d'essai en édition Enterprise, second facteur compris",
+                "en": "Open an Enterprise-edition trial account, second factor included"
+              },
+              "ou": {
+                "fr": "navigateur",
+                "en": "browser"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Enterprise est le seul choix de la page qui compte : le masquage et les politiques de ligne du Cours 03 l'exigent. Depuis septembre 2025, le second facteur est obligatoire, et un essai dont on perd l'accès ne se réinitialise pas.",
+                "en": "Enterprise is the only choice on the page that matters: the masking and row policies of course 03 require it. Since September 2025, the second factor is mandatory, and a trial you lose access to cannot be reset."
+              },
+              "montage": true
+            },
+            {
+              "ref": "00.2",
+              "quoi": {
+                "fr": "Se repérer dans Snowsight",
+                "en": "Find your way around Snowsight"
+              },
+              "ou": {
+                "fr": "Snowsight",
+                "en": "Snowsight"
+              },
+              "touche": [],
+              "note": {
+                "fr": "L'éditeur, l'explorateur d'objets, les entrepôts, les rôles et les coûts. Les sélecteurs en haut d'un worksheet sont les trois questions de l'aide-mémoire : le rôle, l'entrepôt, la base et le schéma.",
+                "en": "The editor, the object explorer, warehouses, roles and costs. The selectors at the top of a worksheet are the cheat sheet's three questions: role, warehouse, database and schema."
+              },
+              "montage": true
+            },
+            {
+              "ref": "00.3",
+              "quoi": {
+                "fr": "Lancer la première requête : qui suis-je, et sur quel moteur",
+                "en": "Run the first query: who am I, and on which engine"
+              },
+              "ou": {
+                "fr": "Snowsight, SQL",
+                "en": "Snowsight, SQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Un SELECT sans FROM évalue des fonctions sans lire de table. Le rôle actif est ACCOUNTADMIN, et aucun entrepôt n'est encore choisi.",
+                "en": "A SELECT without FROM evaluates functions without reading a table. The active role is ACCOUNTADMIN, and no warehouse is chosen yet."
+              }
+            },
+            {
+              "ref": "00.4",
+              "quoi": {
+                "fr": "Créer un entrepôt minuscule qui s'endort tout seul",
+                "en": "Create a tiny warehouse that falls asleep on its own"
+              },
+              "ou": {
+                "fr": "Snowsight, SQL",
+                "en": "Snowsight, SQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Sous SYSADMIN et non ACCOUNTADMIN, la bonne habitude avant le RBAC du Cours 03. XSMALL, arrêt après 60 secondes, et pas de démarrage à la création : l'entrepôt ne consomme que pendant qu'il calcule.",
+                "en": "Under SYSADMIN rather than ACCOUNTADMIN, the right habit before course 03's RBAC. XSMALL, suspended after 60 seconds, and not started at creation: the warehouse only consumes while it computes."
+              }
+            },
+            {
+              "ref": "00.5",
+              "quoi": {
+                "fr": "Créer une base et un schéma de pratique, et fixer le contexte en SQL",
+                "en": "Create a practice database and schema, and set the context in SQL"
+              },
+              "ou": {
+                "fr": "Snowsight, SQL",
+                "en": "Snowsight, SQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Rôle, moteur, adresse : le trio fixé en SQL est plus reproductible que les sélecteurs, et il ouvre chaque worksheet de la formation.",
+                "en": "Role, engine, address: the trio set in SQL is more reproducible than the selectors, and it opens every worksheet of the course."
+              }
+            },
+            {
+              "ref": "00.6",
+              "quoi": {
+                "fr": "Faire calculer l'entrepôt sur la base d'exemple TPC-H",
+                "en": "Make the warehouse compute on the TPC-H sample database"
+              },
+              "ou": {
+                "fr": "Snowsight, SQL",
+                "en": "Snowsight, SQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Cinq segments d'environ 30 000 clients chacun. La première exécution réveille l'entrepôt ; la seconde revient instantanément, par le cache de résultats du Cours 05.",
+                "en": "Five segments of about 30,000 customers each. The first run wakes the warehouse up; the second comes back instantly, through course 05's result cache."
+              }
+            },
+            {
+              "ref": "00.7",
+              "quoi": {
+                "fr": "Installer la ligne de commande Snowflake (facultatif)",
+                "en": "Install the Snowflake command line (optional)"
+              },
+              "ou": {
+                "fr": "Anaconda Prompt, snow",
+                "en": "Anaconda Prompt, snow"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Le mot de passe seul ne suffit plus en ligne de commande : une paire de clés ou un jeton d'accès. La connexion vit dans le répertoire personnel, jamais dans un dépôt.",
+                "en": "A password alone is no longer enough on the command line: a key pair or an access token. The connection lives in the home directory, never in a repository."
+              },
+              "montage": true
+            },
+            {
+              "ref": "00.8",
+              "quoi": {
+                "fr": "Garder sous la main le portail de la certification",
+                "en": "Keep the certification portal at hand"
+              },
+              "ou": {
+                "fr": "navigateur",
+                "en": "browser"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Le guide d'examen officiel, l'examen d'entraînement et l'inscription vivent là, et on y revient au Cours 07.",
+                "en": "The official exam guide, the practice exam and registration live there, and you come back to it in course 07."
+              }
+            }
           ]
         },
         {
@@ -7165,6 +7298,136 @@
                 "en": "Lab"
               },
               "fichier": "assets/formations/data-domain/Snowflake/Cours_01_Architecture_AI_Data_Cloud/Labo_01.pdf"
+            }
+          ],
+          "etapes": [
+            {
+              "ref": "01.1",
+              "quoi": {
+                "fr": "Fixer le contexte, et voir la précédence des paramètres",
+                "en": "Set the context, and see parameter precedence"
+              },
+              "ou": {
+                "fr": "Snowsight, SQL",
+                "en": "Snowsight, SQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Un délai de requête fixé pour la session l'emporte sur celui de l'utilisateur, qui l'emporte sur celui du compte. La colonne level de SHOW PARAMETERS dit où la valeur a été fixée.",
+                "en": "A query timeout set for the session wins over the user's, which wins over the account's. The level column of SHOW PARAMETERS says where the value was set."
+              }
+            },
+            {
+              "ref": "01.2",
+              "quoi": {
+                "fr": "Faire lire la même table par deux entrepôts",
+                "en": "Have two warehouses read the same table"
+              },
+              "ou": {
+                "fr": "Snowsight, SQL",
+                "en": "Snowsight, SQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Environ 1,5 million de commandes, deux fois, sans copie : une seule donnée dans le stockage, lue par deux calculs séparés. C'est le découplage de l'architecture.",
+                "en": "About 1.5 million orders, twice, with no copy: a single piece of data in storage, read by two separate compute clusters. That is the architecture's decoupling."
+              }
+            },
+            {
+              "ref": "01.3",
+              "quoi": {
+                "fr": "Voir le cache de résultats servir une requête sans l'entrepôt",
+                "en": "Watch the result cache serve a query without the warehouse"
+              },
+              "ou": {
+                "fr": "Snowsight, historique des requêtes",
+                "en": "Snowsight, query history"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Relancée sans rien changer, la requête revient en un éclair : les services cloud ressortent le résultat sans rallumer l'entrepôt, et l'historique des requêtes le dit.",
+                "en": "Rerun unchanged, the query comes back in a flash: cloud services hand back the result without restarting the warehouse, and the query history says so."
+              }
+            },
+            {
+              "ref": "01.4",
+              "quoi": {
+                "fr": "Mesurer l'élagage des micro-partitions, avant et après un tri",
+                "en": "Measure micro-partition pruning, before and after a sort"
+              },
+              "ou": {
+                "fr": "Snowsight, Query Profile",
+                "en": "Snowsight, Query Profile"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Sur la table d'exemple, toutes les partitions sont lues. Recopiée triée par date, la même requête en saute la plupart. L'élagage dépend du rangement : il n'a rien d'automatique sur n'importe quelle colonne.",
+                "en": "On the sample table, every partition is read. Copied sorted by date, the same query skips most of them. Pruning depends on layout: there is nothing automatic about it on just any column."
+              }
+            },
+            {
+              "ref": "01.5",
+              "quoi": {
+                "fr": "Créer une table permanente, transitoire et temporaire",
+                "en": "Create a permanent, a transient and a temporary table"
+              },
+              "ou": {
+                "fr": "Snowsight, SQL",
+                "en": "Snowsight, SQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Même syntaxe, trois durées de vie et trois filets : la transitoire n'a pas de Fail-safe, la temporaire disparaît avec la session.",
+                "en": "Same syntax, three lifetimes and three safety nets: the transient one has no Fail-safe, the temporary one disappears with the session."
+              }
+            },
+            {
+              "ref": "01.6",
+              "quoi": {
+                "fr": "Mêler une colonne structurée et une colonne VARIANT dans la même table",
+                "en": "Mix a structured column and a VARIANT column in the same table"
+              },
+              "ou": {
+                "fr": "Snowsight, SQL",
+                "en": "Snowsight, SQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Le JSON se lit par « : » et « [ ] », puis se type. Type de donnée et type de table sont deux axes indépendants.",
+                "en": "JSON is read with “:” and “[ ]”, then typed. Data type and table type are two independent axes."
+              }
+            },
+            {
+              "ref": "01.7",
+              "quoi": {
+                "fr": "Créer une vue standard et une vue sécurisée",
+                "en": "Create a standard view and a secure view"
+              },
+              "ou": {
+                "fr": "Snowsight, SQL",
+                "en": "Snowsight, SQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "La vue standard recalcule à chaque lecture et montre sa définition ; la vue sécurisée la cache et bride certaines optimisations qui pourraient faire fuir des données. La vue matérialisée, elle, stocke son résultat.",
+                "en": "The standard view recomputes on every read and shows its definition; the secure view hides it and restrains some optimizations that could leak data. The materialized view, for its part, stores its result."
+              }
+            },
+            {
+              "ref": "01.8",
+              "quoi": {
+                "fr": "Parcourir la hiérarchie des objets",
+                "en": "Walk the object hierarchy"
+              },
+              "ou": {
+                "fr": "Snowsight, SQL",
+                "en": "Snowsight, SQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Deux branches : le calcul, avec les entrepôts, et les données, base, schéma et objet. Un nom qualifié à trois niveaux l'emporte sur le contexte de la session.",
+                "en": "Two branches: compute, with the warehouses, and data, database, schema and object. A three-level qualified name wins over the session context."
+              }
             }
           ]
         },
@@ -7193,6 +7456,72 @@
               },
               "fichier": "assets/formations/data-domain/Snowflake/Cours_02_Fonctionnalites_AI_ML_et_developpement/Labo_02.pdf"
             }
+          ],
+          "etapes": [
+            {
+              "ref": "02.1",
+              "quoi": {
+                "fr": "Écrire une fonction Python qui tourne dans Snowflake, et l'appeler en SQL",
+                "en": "Write a Python function that runs inside Snowflake, and call it from SQL"
+              },
+              "ou": {
+                "fr": "Snowsight, SQL et Python",
+                "en": "Snowsight, SQL and Python"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Le code s'exécute sur l'entrepôt, pas sur le poste : c'est Snowpark sous sa forme la plus simple. La fonction s'appelle comme une fonction SQL native, NULL compris.",
+                "en": "The code runs on the warehouse, not on your machine: it is Snowpark in its simplest form. The function is called like a native SQL function, NULL included."
+              }
+            },
+            {
+              "ref": "02.2",
+              "quoi": {
+                "fr": "Appeler les fonctions de langage de Cortex en une ligne de SQL",
+                "en": "Call Cortex language functions in one line of SQL"
+              },
+              "ou": {
+                "fr": "Snowsight, lecture",
+                "en": "Snowsight, reading"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Sentiment, traduction, résumé : SNOWFLAKE.CORTEX.<FONCTION>(…). Un compte d'essai les bloque, et l'étape se lit : l'examen demande de reconnaître la forme, pas de l'exécuter. Changer de région n'y change rien.",
+                "en": "Sentiment, translation, summary: SNOWFLAKE.CORTEX.<FUNCTION>(…). A trial account blocks them, and the step is read: the exam asks you to recognize the form, not to run it. Changing region changes nothing."
+              }
+            },
+            {
+              "ref": "02.3",
+              "quoi": {
+                "fr": "Obtenir une prévision sans écrire de code de data science (facultatif)",
+                "en": "Get a forecast without writing data science code (optional)"
+              },
+              "ou": {
+                "fr": "Snowsight, SQL",
+                "en": "Snowsight, SQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Quatorze jours de ventes fabriqués, un modèle entraîné et sept jours prévus avec leur intervalle, le tout en SQL. C'est le rôle des fonctions ML de Cortex.",
+                "en": "Fourteen days of made-up sales, a trained model and seven forecast days with their interval, all in SQL. That is the role of Cortex ML functions."
+              }
+            },
+            {
+              "ref": "02.4",
+              "quoi": {
+                "fr": "Survoler les carnets et Streamlit (facultatif)",
+                "en": "Skim the notebooks and Streamlit (optional)"
+              },
+              "ou": {
+                "fr": "Snowsight",
+                "en": "Snowsight"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Un carnet mêle SQL, Python et texte sur le même moteur ; Streamlit héberge une petite application de données dans le compte. Il suffit de les reconnaître.",
+                "en": "A notebook mixes SQL, Python and text on the same engine; Streamlit hosts a small data app inside the account. Recognizing them is enough."
+              }
+            }
           ]
         },
         {
@@ -7219,6 +7548,104 @@
                 "en": "Lab"
               },
               "fichier": "assets/formations/data-domain/Snowflake/Cours_03_Gestion_du_compte_et_gouvernance/Labo_03.pdf"
+            }
+          ],
+          "etapes": [
+            {
+              "ref": "03.1",
+              "quoi": {
+                "fr": "Lire les rôles système et leur héritage",
+                "en": "Read the system roles and their inheritance"
+              },
+              "ou": {
+                "fr": "Snowsight, SQL",
+                "en": "Snowsight, SQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "ACCOUNTADMIN a reçu SECURITYADMIN et SYSADMIN, et SECURITYADMIN a reçu USERADMIN : la hiérarchie du cours se lit dans SHOW GRANTS.",
+                "en": "ACCOUNTADMIN was granted SECURITYADMIN and SYSADMIN, and SECURITYADMIN was granted USERADMIN: the course's hierarchy can be read in SHOW GRANTS."
+              }
+            },
+            {
+              "ref": "03.2",
+              "quoi": {
+                "fr": "Créer un rôle métier, l'outiller et le rattacher à SYSADMIN",
+                "en": "Create a business role, equip it and attach it to SYSADMIN"
+              },
+              "ou": {
+                "fr": "Snowsight, SQL",
+                "en": "Snowsight, SQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Créé sous USERADMIN, outillé de USAGE sur l'entrepôt, la base et le schéma, puis de SELECT sur la table. Qu'un seul USAGE manque dans la chaîne des conteneurs, et l'accès s'effondre.",
+                "en": "Created under USERADMIN, equipped with USAGE on the warehouse, database and schema, then SELECT on the table. Let a single USAGE be missing from the chain of containers, and access collapses."
+              }
+            },
+            {
+              "ref": "03.3",
+              "quoi": {
+                "fr": "Masquer une colonne selon le rôle",
+                "en": "Mask a column depending on the role"
+              },
+              "ou": {
+                "fr": "Snowsight, SQL",
+                "en": "Snowsight, SQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Même table, même requête, deux résultats : ACCOUNTADMIN lit les courriels, le rôle métier voit une valeur masquée. La colonne existe toujours, sa valeur est brouillée à la lecture. L'édition Enterprise est requise.",
+                "en": "Same table, same query, two results: ACCOUNTADMIN reads the emails, the business role sees a masked value. The column still exists, its value is scrambled on read. Enterprise edition is required."
+              }
+            },
+            {
+              "ref": "03.4",
+              "quoi": {
+                "fr": "Filtrer des lignes selon le rôle",
+                "en": "Filter rows depending on the role"
+              },
+              "ou": {
+                "fr": "Snowsight, SQL",
+                "en": "Snowsight, SQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Le rôle métier ne voit que le Québec : l'employé de l'Ontario disparaît. Le masque cache une valeur, la politique de ligne fait disparaître des lignes entières.",
+                "en": "The business role only sees Québec: the Ontario employee disappears. The mask hides a value, the row policy makes whole rows disappear."
+              }
+            },
+            {
+              "ref": "03.5",
+              "quoi": {
+                "fr": "Étiqueter une colonne sensible",
+                "en": "Tag a sensitive column"
+              },
+              "ou": {
+                "fr": "Snowsight, SQL",
+                "en": "Snowsight, SQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Seule, une étiquette ne masque rien. Sa force est d'y accrocher une politique de masquage qui s'applique d'un coup à toutes les colonnes étiquetées, présentes et futures.",
+                "en": "On its own, a tag masks nothing. Its strength is that a masking policy can be attached to it, applying at once to every tagged column, present and future."
+              }
+            },
+            {
+              "ref": "03.6",
+              "quoi": {
+                "fr": "Poser un garde-fou sur les crédits",
+                "en": "Put a guardrail on credits"
+              },
+              "ou": {
+                "fr": "Snowsight, SQL",
+                "en": "Snowsight, SQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Un quota de 5 crédits par mois, qui avertit à 75 et à 100 %. En production, le déclencheur suspendrait l'entrepôt ; ici, il se contente d'avertir, pour ne pas couper le labo.",
+                "en": "A quota of 5 credits a month, warning at 75 and 100%. In production, the trigger would suspend the warehouse; here it only warns, so as not to cut the lab short."
+              }
             }
           ]
         },
@@ -7247,6 +7674,120 @@
               },
               "fichier": "assets/formations/data-domain/Snowflake/Cours_04_Chargement_dechargement_et_connectivite/Labo_04.pdf"
             }
+          ],
+          "etapes": [
+            {
+              "ref": "04.1",
+              "quoi": {
+                "fr": "Créer un format de fichier et un stage interne",
+                "en": "Create a file format and an internal stage"
+              },
+              "ou": {
+                "fr": "Snowsight, SQL",
+                "en": "Snowsight, SQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Le format dit comment lire le CSV : délimiteur, en-tête, guillemets. Le stage est l'aire d'atterrissage des fichiers, remplie ici depuis Snowflake même, sans aucun fichier sur le poste.",
+                "en": "The format says how to read the CSV: delimiter, header, quotes. The stage is the files' landing area, filled here from Snowflake itself, with no file on your machine."
+              }
+            },
+            {
+              "ref": "04.2",
+              "quoi": {
+                "fr": "Décharger un échantillon vers le stage",
+                "en": "Unload a sample to the stage"
+              },
+              "ou": {
+                "fr": "Snowsight, SQL",
+                "en": "Snowsight, SQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Une requête devient des fichiers, compressés d'office : 1 000 clients d'exemple en CSV.",
+                "en": "A query becomes files, compressed by default: 1,000 sample customers as CSV."
+              }
+            },
+            {
+              "ref": "04.3",
+              "quoi": {
+                "fr": "Recharger les fichiers dans une table",
+                "en": "Load the files back into a table"
+              },
+              "ou": {
+                "fr": "Snowsight, SQL",
+                "en": "Snowsight, SQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "1 000 lignes, rangées par position de colonne. CREATE TABLE fait la coquille, COPY la remplit.",
+                "en": "1,000 rows, mapped by column position. CREATE TABLE makes the shell, COPY fills it."
+              }
+            },
+            {
+              "ref": "04.4",
+              "quoi": {
+                "fr": "Rejouer le même chargement, puis le forcer",
+                "en": "Replay the same load, then force it"
+              },
+              "ou": {
+                "fr": "Snowsight, SQL",
+                "en": "Snowsight, SQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Le second COPY ne charge rien : Snowflake se souvient environ 64 jours des fichiers déjà chargés. FORCE = TRUE recharge tout et double la table. C'est ce qui rend un pipeline rejouable sans danger.",
+                "en": "The second COPY loads nothing: Snowflake remembers already-loaded files for about 64 days. FORCE = TRUE reloads everything and doubles the table. That is what makes a pipeline safe to replay."
+              }
+            },
+            {
+              "ref": "04.5",
+              "quoi": {
+                "fr": "Charger des lignes fautives : les valider à blanc, puis les sauter",
+                "en": "Load faulty rows: validate them dry, then skip them"
+              },
+              "ou": {
+                "fr": "Snowsight, SQL",
+                "en": "Snowsight, SQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "VALIDATION_MODE liste les erreurs sans rien écrire ; ON_ERROR = 'CONTINUE' saute les lignes fautives au lieu d'annuler tout le chargement, ce que fait le comportement par défaut.",
+                "en": "VALIDATION_MODE lists the errors without writing anything; ON_ERROR = 'CONTINUE' skips the faulty rows instead of cancelling the whole load, which is what the default does."
+              }
+            },
+            {
+              "ref": "04.6",
+              "quoi": {
+                "fr": "Suivre les changements d'une table avec un stream",
+                "en": "Track a table's changes with a stream"
+              },
+              "ou": {
+                "fr": "Snowsight, SQL",
+                "en": "Snowsight, SQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Le stream expose le résultat net des changements, action et mise à jour comprises. Le lire ne le consomme pas ; seule une écriture qui le lit fait avancer son curseur.",
+                "en": "The stream exposes the net result of the changes, action and update flag included. Reading it does not consume it; only a write that reads it moves its cursor forward."
+              }
+            },
+            {
+              "ref": "04.7",
+              "quoi": {
+                "fr": "Déclarer une table dynamique qui se tient à jour seule (aperçu)",
+                "en": "Declare a dynamic table that keeps itself up to date (preview)"
+              },
+              "ou": {
+                "fr": "Snowsight, SQL",
+                "en": "Snowsight, SQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "On écrit la requête cible et un retard toléré ; Snowflake la recalcule, sans stream ni tâche à écrire.",
+                "en": "You write the target query and a tolerated lag; Snowflake recomputes it, with no stream or task to write."
+              }
+            }
           ]
         },
         {
@@ -7273,6 +7814,104 @@
                 "en": "Lab"
               },
               "fichier": "assets/formations/data-domain/Snowflake/Cours_05_Performance_requetes_et_transformation/Labo_05.pdf"
+            }
+          ],
+          "etapes": [
+            {
+              "ref": "05.1",
+              "quoi": {
+                "fr": "Voir le cache de résultats, puis le désactiver",
+                "en": "See the result cache, then turn it off"
+              },
+              "ou": {
+                "fr": "Snowsight, SQL",
+                "en": "Snowsight, SQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Relancée à l'identique, la requête revient en un éclair ; sans le cache, elle recalcule. Il ressert une requête identique tant que les données ne changent pas.",
+                "en": "Rerun identically, the query comes back in a flash; without the cache, it recomputes. It serves an identical query again as long as the data does not change."
+              }
+            },
+            {
+              "ref": "05.2",
+              "quoi": {
+                "fr": "Compter sans lire, par le cache des métadonnées",
+                "en": "Count without reading, through the metadata cache"
+              },
+              "ou": {
+                "fr": "Snowsight, SQL",
+                "en": "Snowsight, SQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Un COUNT(*) pur répond par les métadonnées des micro-partitions, sans parcours ; filtré, il doit lire.",
+                "en": "A plain COUNT(*) answers from the micro-partitions' metadata, with no scan; filtered, it has to read."
+              }
+            },
+            {
+              "ref": "05.3",
+              "quoi": {
+                "fr": "Provoquer un débordement sur disque, et le lire dans le profil",
+                "en": "Cause a spill to disk, and read it in the profile"
+              },
+              "ou": {
+                "fr": "Snowsight, Query Profile",
+                "en": "Snowsight, Query Profile"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Un gros GROUP BY sur 60 millions de lignes dépasse la mémoire d'un entrepôt XSMALL : des octets se déversent sur disque. Le remède direct est de grossir l'entrepôt.",
+                "en": "A big GROUP BY over 60 million rows exceeds the memory of an XSMALL warehouse: bytes spill to disk. The direct remedy is a bigger warehouse."
+              }
+            },
+            {
+              "ref": "05.4",
+              "quoi": {
+                "fr": "Observer en temps réel, puis dans l'historique long",
+                "en": "Observe in real time, then in the long history"
+              },
+              "ou": {
+                "fr": "Snowsight, SQL",
+                "en": "Snowsight, SQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "INFORMATION_SCHEMA répond tout de suite ; ACCOUNT_USAGE garde un an, avec du retard, et les requêtes du labo peuvent ne pas y figurer encore. C'est un piège d'examen classique.",
+                "en": "INFORMATION_SCHEMA answers right away; ACCOUNT_USAGE keeps a year, with a delay, and the lab's queries may not show up there yet. It is a classic exam trap."
+              }
+            },
+            {
+              "ref": "05.5",
+              "quoi": {
+                "fr": "Transformer par fenêtrage et par FLATTEN",
+                "en": "Transform with windowing and FLATTEN"
+              },
+              "ou": {
+                "fr": "Snowsight, SQL",
+                "en": "Snowsight, SQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Un rang par région sans replier les lignes, puis un tableau JSON éclaté en une ligne par élément.",
+                "en": "A rank per region without collapsing rows, then a JSON array split into one row per element."
+              }
+            },
+            {
+              "ref": "05.6",
+              "quoi": {
+                "fr": "Créer une vue matérialisée (aperçu)",
+                "en": "Create a materialized view (preview)"
+              },
+              "ou": {
+                "fr": "Snowsight, SQL",
+                "en": "Snowsight, SQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Elle stocke l'agrégat, et Snowflake la rafraîchit quand la table change : utile pour une agrégation coûteuse relue souvent. L'édition Enterprise est requise.",
+                "en": "It stores the aggregate, and Snowflake refreshes it when the table changes: useful for a costly aggregation read often. Enterprise edition is required."
+              }
             }
           ]
         },
@@ -7301,6 +7940,72 @@
               },
               "fichier": "assets/formations/data-domain/Snowflake/Cours_06_Collaboration_de_donnees/Labo_06.pdf"
             }
+          ],
+          "etapes": [
+            {
+              "ref": "06.1",
+              "quoi": {
+                "fr": "Annuler une suppression par le voyage dans le temps, puis ressusciter la table",
+                "en": "Undo a delete with Time Travel, then bring the table back to life"
+              },
+              "ou": {
+                "fr": "Snowsight, SQL",
+                "en": "Snowsight, SQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "BEFORE(STATEMENT => …) relit la table telle qu'avant le DELETE, et on réinsère depuis ce passé. UNDROP rend une table supprimée. Le filet ne vaut que dans la fenêtre de rétention.",
+                "en": "BEFORE(STATEMENT => …) rereads the table as it was before the DELETE, and you reinsert from that past. UNDROP brings back a dropped table. The safety net only holds within the retention window."
+              }
+            },
+            {
+              "ref": "06.2",
+              "quoi": {
+                "fr": "Cloner une table sans rien copier, et la faire diverger",
+                "en": "Clone a table without copying anything, and let it diverge"
+              },
+              "ou": {
+                "fr": "Snowsight, SQL",
+                "en": "Snowsight, SQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Le clone est instantané parce qu'il pointe vers les mêmes micro-partitions ; seules celles qu'on modifie sont réécrites. L'original garde 3 lignes, le clone passe à 5.",
+                "en": "The clone is instant because it points to the same micro-partitions; only the ones you change are rewritten. The original keeps 3 rows, the clone goes to 5."
+              }
+            },
+            {
+              "ref": "06.3",
+              "quoi": {
+                "fr": "Lire la rétention, et situer le Fail-safe",
+                "en": "Read the retention, and place Fail-safe"
+              },
+              "ou": {
+                "fr": "Snowsight, SQL",
+                "en": "Snowsight, SQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "La profondeur du voyage dans le temps se règle, jusqu'à 90 jours en Enterprise. Le Fail-safe ne se règle pas : 7 jours fixes ensuite, par le seul support, et jamais pour une table transitoire ou temporaire.",
+                "en": "Time Travel depth can be set, up to 90 days in Enterprise. Fail-safe cannot: 7 fixed days afterwards, through support only, and never for a transient or temporary table."
+              }
+            },
+            {
+              "ref": "06.4",
+              "quoi": {
+                "fr": "Préparer un partage sortant",
+                "en": "Prepare an outbound share"
+              },
+              "ou": {
+                "fr": "Snowsight, SQL",
+                "en": "Snowsight, SQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "USAGE sur la base et le schéma, SELECT sur la table, accordés au partage : un consommateur lirait la table en direct, sans copie. Le consommer demanderait un second compte.",
+                "en": "USAGE on the database and schema, SELECT on the table, granted to the share: a consumer would read the table live, with no copy. Consuming it would take a second account."
+              }
+            }
           ]
         },
         {
@@ -7327,6 +8032,56 @@
                 "en": "Lab"
               },
               "fichier": "assets/formations/data-domain/Snowflake/Cours_07_Revision_et_examen_blanc/Labo_07.pdf"
+            }
+          ],
+          "etapes": [
+            {
+              "ref": "07.1",
+              "quoi": {
+                "fr": "Se mettre en conditions, chronomètre réglé à 115 minutes",
+                "en": "Set up exam conditions, timer at 115 minutes"
+              },
+              "ou": {
+                "fr": "papier, chronomètre",
+                "en": "paper, timer"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Aucune aide, ni notes, ni Snowsight, et aucune case vide : rien n'est retiré pour une mauvaise réponse. Une question à choix multiple annonce combien de réponses cocher, et le bon compte fait partie de la réponse.",
+                "en": "No help, no notes, no Snowsight, and no blank answer: nothing is deducted for a wrong one. A multiple-choice question says how many answers to tick, and the right count is part of the answer."
+              }
+            },
+            {
+              "ref": "07.2",
+              "quoi": {
+                "fr": "Répondre aux 100 questions, domaine par domaine",
+                "en": "Answer the 100 questions, domain by domain"
+              },
+              "ou": {
+                "fr": "papier",
+                "en": "paper"
+              },
+              "touche": [],
+              "note": {
+                "fr": "31 questions d'architecture, 20 de gouvernance, 18 de chargement, 21 de performance et 10 de collaboration : la pondération de l'examen, mais groupée par domaine, ce que le vrai examen ne fait pas.",
+                "en": "31 architecture questions, 20 on governance, 18 on loading, 21 on performance and 10 on collaboration: the exam's weighting, but grouped by domain, which the real exam does not do."
+              }
+            },
+            {
+              "ref": "07.3",
+              "quoi": {
+                "fr": "Se corriger, et lire le résultat domaine par domaine",
+                "en": "Mark yourself, and read the result domain by domain"
+              },
+              "ou": {
+                "fr": "corrigé",
+                "en": "answer key"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Le score brut ne se convertit pas vers l'échelle de 1 000 de l'examen : il mesure la couverture de la matière, rien d'autre. Un total honnête peut cacher un domaine à moitié raté, et le corrigé dit pourquoi chaque leurre tombe.",
+                "en": "The raw score does not convert to the exam's 1,000-point scale: it measures coverage of the material, nothing more. An honest total can hide a half-failed domain, and the answer key says why each decoy falls."
+              }
             }
           ]
         }
