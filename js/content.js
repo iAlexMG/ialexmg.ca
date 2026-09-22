@@ -522,68 +522,20 @@ const Contenu = (function () {
   }
 
   // Index des cours d'une formation (clé `cours` d'une section). Une ligne par
-  // cours PLANIFIÉ, écrit ou non : le numéro, le titre, les documents du cours
-  // en rang (théorie, labo, exercices, corrigé) qui ouvrent le PDF directement,
-  // et le résumé dessous. Un cours sans support garde sa ligne et porte sa
-  // mention d'attente à la place des liens — la forme du parcours se voit en
-  // entier, et ce qui manque se dit au lieu de se taire.
-  // Avec un schéma des étapes (clé `phases`), l'index se regroupe sous les
-  // mêmes étapes que le schéma, chaque groupe coiffé de sa légende ; un cours
-  // qu'aucune étape ne réclame tombe dans un dernier groupe, sans se perdre.
-  // Chaque ligne porte l'ancre « cours-NN » que visent les nœuds du schéma.
+  // cours PLANIFIÉ, écrit ou non, dans l'ordre où ils se suivent : le numéro,
+  // le titre, les documents du cours en rang (théorie, labo, exercices,
+  // corrigé) qui ouvrent le PDF directement, et le résumé dessous. Un cours
+  // sans support garde sa ligne et porte sa mention d'attente à la place des
+  // liens — la forme du parcours se voit en entier, et ce qui manque se dit au
+  // lieu de se taire. Avec un schéma des étapes (clé `phases`), chaque ligne
+  // porte en tête de son résumé l'étape qu'elle touche ; l'ordre, lui, ne
+  // bouge pas. Chaque ligne porte l'ancre « cours-NN » que visent les nœuds.
   function creerIndexCours(section) {
     const cours = Array.isArray(section.cours) ? section.cours : [];
     if (!cours.length) return "";
-    const groupes = groupesDesPhases(section);
-    if (!groupes.length) {
-      return (
-        '<p class="index-legende" data-i18n="cours.legende_cours"></p>' +
-        listeDeCours(cours)
-      );
-    }
-    const parNumero = {};
-    cours.forEach(function (c) {
-      parNumero[c.numero] = c;
-    });
-    const ranges = {};
-    let sortie = groupes
-      .map(function (g) {
-        const membres = (g.cours || [])
-          .map(function (n) {
-            ranges[n] = true;
-            return parNumero[n];
-          })
-          .filter(Boolean);
-        if (!membres.length) return "";
-        const role = texteLocalise(g.role);
-        return (
-          '<p class="index-legende">' + echapper(texteLocalise(g.nom)) +
-          (role ? '<span class="index-legende-role"> · ' + echapper(role) + "</span>" : "") +
-          "</p>" +
-          listeDeCours(membres)
-        );
-      })
-      .join("");
-    const restes = cours.filter(function (c) {
-      return !ranges[c.numero];
-    });
-    if (restes.length) {
-      sortie +=
-        '<p class="index-legende" data-i18n="cours.legende_cours"></p>' + listeDeCours(restes);
-    }
-    return sortie;
-  }
-
-  // Les groupes d'étapes d'une section, colonnes puis bandes, à plat.
-  function groupesDesPhases(section) {
-    const phases = section.phases || {};
-    return []
-      .concat(Array.isArray(phases.colonnes) ? phases.colonnes : [])
-      .concat(Array.isArray(phases.bandes) ? phases.bandes : []);
-  }
-
-  function listeDeCours(cours) {
+    const etapes = etapesDesCours(section);
     return (
+      '<p class="index-legende" data-i18n="cours.legende_cours"></p>' +
       '<ol class="index-cours">' +
       cours
         .map(function (c) {
@@ -602,6 +554,10 @@ const Contenu = (function () {
             .join("");
           const etat = texteLocalise(c.etat);
           const resume = texteLocalise(c.resume);
+          const etape = etapes[c.numero];
+          const puce = etape
+            ? '<span class="cours-etape">' + echapper(texteLocalise(etape.nom)) + "</span>"
+            : "";
           return (
             '<li class="cours-ligne' + (liens ? "" : " cours-attente") + '"' +
             (c.numero ? ' id="cours-' + echapper(c.numero) + '"' : "") + ">" +
@@ -612,8 +568,8 @@ const Contenu = (function () {
               : etat
               ? '<span class="cours-etat">' + echapper(etat) + "</span>"
               : "") +
-            (resume
-              ? '<span class="cours-resume">' + echapper(resume) + "</span>"
+            (resume || puce
+              ? '<span class="cours-resume">' + puce + echapper(resume) + "</span>"
               : "") +
             "</li>"
           );
@@ -623,76 +579,113 @@ const Contenu = (function () {
     );
   }
 
-  // Schéma des étapes d'une formation (clé `phases`) : les étapes de la chaîne
-  // qu'elle possède, en colonnes reliées par des chevrons, chaque cours rangé
-  // sous la sienne ; puis les bandes, pleine largeur, pour ce qui traverse les
-  // colonnes. Même grammaire que la carte du domaine (boîtes, filets,
-  // pointillés), mais en HTML : les titres de cours sont longs et doivent
-  // pouvoir se couper. Un nœud mène à la ligne de son cours dans l'index ; un
-  // cours pas encore écrit s'estompe et porte sa mention.
+  // L'étape de chaque cours, par numéro : { nom, role, colonne (index 0…,
+  // ou -1 pour une bande, qui traverse toutes les colonnes) }.
+  function etapesDesCours(section) {
+    const phases = section.phases || {};
+    const etapes = {};
+    (Array.isArray(phases.colonnes) ? phases.colonnes : []).forEach(function (g, i) {
+      (g.cours || []).forEach(function (n) {
+        etapes[n] = { nom: g.nom, role: g.role, colonne: i };
+      });
+    });
+    (Array.isArray(phases.bandes) ? phases.bandes : []).forEach(function (g) {
+      (g.cours || []).forEach(function (n) {
+        etapes[n] = { nom: g.nom, role: g.role, colonne: -1 };
+      });
+    });
+    return etapes;
+  }
+
+  // Schéma des étapes d'une formation (clé `phases`), en couloirs : une
+  // colonne par étape de la chaîne qu'elle possède, coiffée de son nom, et une
+  // rangée par cours, dans l'ORDRE où ils se suivent. Chaque cours se pose
+  // dans le couloir de son étape : on lit les numéros de haut en bas, et l'œil
+  // passe d'un couloir à l'autre au fil du parcours, qui traverse la chaîne
+  // plus d'une fois. Un cours d'une bande (ce qui traverse les étapes au lieu
+  // d'y loger) prend la rangée entière et porte le nom de sa bande ; les
+  // bandes s'expliquent sous la grille. En mobile, les couloirs tombent : la
+  // liste reste dans l'ordre et chaque nœud nomme son étape. Même grammaire
+  // que la carte du domaine (boîtes, filets, pointillés), en HTML pour que les
+  // titres se coupent. Un nœud mène à la ligne de son cours dans l'index.
   function creerSchemaCours(section) {
     const phases = section.phases || {};
     const colonnes = Array.isArray(phases.colonnes) ? phases.colonnes : [];
     const bandes = Array.isArray(phases.bandes) ? phases.bandes : [];
-    if (!colonnes.length && !bandes.length) return "";
-    const parNumero = {};
-    (section.cours || []).forEach(function (c) {
-      parNumero[c.numero] = c;
-    });
-
-    function entete(g) {
-      const role = texteLocalise(g.role);
-      return (
-        '<p class="sc-phase"><span class="sc-phase-nom">' + echapper(texteLocalise(g.nom)) +
-        "</span>" +
-        (role ? '<span class="sc-phase-role">' + echapper(role) + "</span>" : "") +
-        "</p>"
-      );
-    }
-
-    function noeuds(g) {
-      return (g.cours || [])
-        .map(function (n) {
-          const c = parNumero[n];
-          if (!c) return "";
-          const ecrit = Array.isArray(c.documents) && c.documents.length;
-          const etat = ecrit ? "" : texteLocalise(c.etat);
-          return (
-            '<a class="sc-noeud' + (ecrit ? "" : " sc-attente") + '" href="#cours-' +
-            encodeURIComponent(n) + '">' +
-            '<span class="sc-num">' + echapper(n) + "</span>" +
-            '<span class="sc-titre">' + echapper(texteLocalise(c.titre)) + "</span>" +
-            (etat ? '<span class="sc-etat">' + echapper(etat) + "</span>" : "") +
-            "</a>"
-          );
-        })
-        .join("");
-    }
-
+    const cours = Array.isArray(section.cours) ? section.cours : [];
+    if ((!colonnes.length && !bandes.length) || !cours.length) return "";
+    const etapes = etapesDesCours(section);
+    const n = Math.max(colonnes.length, 1);
     // `enchainees: false` : des familles (les domaines d'un examen) et non des
-    // étapes. Pas de chevron entre elles, un simple écart.
+    // étapes. Pas de chevron entre leurs en-têtes.
     const enchainees = phases.enchainees !== false;
-    const rangee = colonnes
-      .map(function (g) {
-        return '<div class="sc-colonne">' + entete(g) + noeuds(g) + "</div>";
+
+    const entetes = colonnes
+      .map(function (g, i) {
+        const role = texteLocalise(g.role);
+        return (
+          '<p class="sc-phase" style="grid-column:' + (i + 1) + '">' +
+          '<span class="sc-phase-nom">' + echapper(texteLocalise(g.nom)) + "</span>" +
+          (role ? '<span class="sc-phase-role">' + echapper(role) + "</span>" : "") +
+          "</p>"
+        );
       })
-      .join(enchainees ? '<span class="sc-chevron" aria-hidden="true"></span>' : "");
+      .join("");
+
+    const couloirs = colonnes
+      .map(function (g, i) {
+        return (
+          '<span class="sc-couloir" aria-hidden="true" style="grid-column:' + (i + 1) +
+          ";grid-row:2 / span " + cours.length + '"></span>'
+        );
+      })
+      .join("");
+
+    const noeuds = cours
+      .map(function (c, rang) {
+        const etape = etapes[c.numero];
+        const traverse = !etape || etape.colonne < 0;
+        const ecrit = Array.isArray(c.documents) && c.documents.length;
+        const etat = ecrit ? "" : texteLocalise(c.etat);
+        const place = traverse ? "1 / -1" : String(etape.colonne + 1);
+        return (
+          '<a class="sc-noeud' + (traverse ? " sc-traverse" : "") +
+          (ecrit ? "" : " sc-attente") + '" href="#cours-' +
+          encodeURIComponent(c.numero) + '" style="grid-column:' + place +
+          ";grid-row:" + (rang + 2) + '">' +
+          '<span class="sc-num">' + echapper(c.numero) + "</span>" +
+          '<span class="sc-titre">' + echapper(texteLocalise(c.titre)) + "</span>" +
+          (etape
+            ? '<span class="sc-tag">' + echapper(texteLocalise(etape.nom)) + "</span>"
+            : "") +
+          (etat ? '<span class="sc-etat">' + echapper(etat) + "</span>" : "") +
+          "</a>"
+        );
+      })
+      .join("");
+
+    const legendeBandes = bandes
+      .filter(function (g) {
+        return (g.cours || []).length;
+      })
+      .map(function (g) {
+        const role = texteLocalise(g.role);
+        return (
+          '<p class="sc-legende"><span class="sc-legende-nom">' +
+          echapper(texteLocalise(g.nom)) + "</span>" +
+          (role ? " " + echapper(role) : "") + "</p>"
+        );
+      })
+      .join("");
 
     return (
       '<figure class="schema-cours" aria-label="' +
       echapper(window.I18n.t("cours.schema_aria")) + '">' +
-      (rangee
-        ? '<div class="sc-colonnes' + (enchainees ? "" : " sc-familles") + '">' +
-          rangee + "</div>"
-        : "") +
-      bandes
-        .map(function (g) {
-          return (
-            '<div class="sc-bande">' + entete(g) +
-            '<div class="sc-bande-noeuds">' + noeuds(g) + "</div></div>"
-          );
-        })
-        .join("") +
+      '<div class="sc-grille' + (enchainees ? " sc-enchainees" : "") +
+      '" style="--n:' + n + '">' +
+      entetes + couloirs + noeuds +
+      "</div>" +
+      (legendeBandes ? '<div class="sc-legendes">' + legendeBandes + "</div>" : "") +
       "</figure>"
     );
   }
