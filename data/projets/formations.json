@@ -1868,6 +1868,121 @@
               },
               "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_01_Le_metier_la_chaine_et_la_RAW_recue/Corrige_01.pdf"
             }
+          ],
+          "etapes": [
+            {
+              "ref": "01.1",
+              "quoi": {
+                "fr": "Monter la couche RAW, par le pipeline de Data Engineering ou par le kit de départ",
+                "en": "Set up the RAW layer, through Data Engineering's pipeline or the starter kit"
+              },
+              "ou": {
+                "fr": "Anaconda Prompt",
+                "en": "Anaconda Prompt"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Deux voies mènent au même entrepôt. Rejouer le pipeline ne recharge rien s'il est à jour ; le kit le reconstruit en une minute et demie pour qui n'a pas suivi Data Engineering.",
+                "en": "Two paths lead to the same warehouse. Replaying the pipeline reloads nothing if it is up to date; the kit rebuilds it in a minute and a half for anyone who skipped Data Engineering."
+              },
+              "montage": true
+            },
+            {
+              "ref": "01.2",
+              "quoi": {
+                "fr": "Compter la livraison, table par table, contre le document qui l'annonce",
+                "en": "Count the delivery, table by table, against the document that announces it"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Le geste à refaire devant chaque livraison neuve. 22 tables, 513 857 lignes, 1 572 fichiers lus, zéro écart : sinon, tout ce qu'on bâtit ensuite hérite de l'écart.",
+                "en": "The move to repeat in front of every new delivery. 22 tables, 513,857 rows, 1,572 files read, zero gaps: otherwise everything built afterwards inherits the gap."
+              }
+            },
+            {
+              "ref": "01.3",
+              "quoi": {
+                "fr": "Voir que tout est du texte, et d'où vient chaque ligne",
+                "en": "See that everything is text, and where each row comes from"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [],
+              "note": {
+                "fr": "250 colonnes en VARCHAR : un fichier CSV ne transporte aucun type. Trois colonnes de lignage disent le fichier, le lot et l'heure du chargement, et le lot servira à choisir entre deux versions d'une commande.",
+                "en": "250 VARCHAR columns: a CSV file carries no types. Three lineage columns give the file, the batch and the load time, and the batch will be used to choose between two versions of an order."
+              }
+            },
+            {
+              "ref": "01.4",
+              "quoi": {
+                "fr": "Trouver la même commande livrée deux ou trois fois, et comprendre pourquoi",
+                "en": "Find the same order delivered two or three times, and understand why"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [],
+              "note": {
+                "fr": "26 538 lignes pour 25 483 commandes : un mois livré deux fois, et surtout l'ERP qui renvoie une commande modifiée. La RAW garde toutes les versions, sans quoi la valeur d'hier ne se retrouverait plus.",
+                "en": "26,538 rows for 25,483 orders: a month delivered twice, and above all the ERP resending a modified order. RAW keeps every version, or yesterday's value could never be found again."
+              }
+            },
+            {
+              "ref": "01.5",
+              "quoi": {
+                "fr": "Chercher ce que valent les codes du palier commercial",
+                "en": "Look up what the dealer tier codes mean"
+              },
+              "ou": {
+                "fr": "client DuckDB, dictionnaire",
+                "en": "DuckDB CLI, data dictionary"
+              },
+              "touche": [],
+              "note": {
+                "fr": "01, 02 et 03 ne veulent rien dire dans la donnée. Or, Argent et Bronze sont écrits dans le dictionnaire de l'univers, seule source des correspondances : un code s'écrit d'après lui, jamais de mémoire.",
+                "en": "01, 02 and 03 mean nothing in the data. The labels Or, Argent and Bronze are written in the universe's data dictionary, the only source of the mappings: a code is written from it, never from memory."
+              }
+            },
+            {
+              "ref": "01.6",
+              "quoi": {
+                "fr": "Voir un maximum faux d'un facteur trente sur un montant rangé en texte",
+                "en": "Watch a maximum go wrong by a factor of thirty on an amount stored as text"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [],
+              "note": {
+                "fr": "9 996,26 au lieu de 293 478,95, sans erreur ni message : le texte se compare caractère par caractère. Même piège pour la date vide de SAP, huit zéros et pas NULL. Le typage sera le travail du STAGING.",
+                "en": "9,996.26 instead of 293,478.95, with no error and no message: text compares character by character. Same trap for SAP's empty date, eight zeros and not NULL. Typing will be the STAGING layer's job."
+              }
+            },
+            {
+              "ref": "01.7",
+              "quoi": {
+                "fr": "Créer le dépôt 02_ae, et fermer sa porte aux artefacts et à la connexion",
+                "en": "Create the 02_ae repository, and shut its door to artefacts and the connection file"
+              },
+              "ou": {
+                "fr": "Anaconda Prompt, Git",
+                "en": "Anaconda Prompt, Git"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Le dépôt de l'apprenant vit à côté de celui de Data Engineering, jamais dans celui des supports. Le fichier de connexion en reste dehors : il portera un mot de passe dès que la cible sera en nuage.",
+                "en": "The learner's repository lives next to Data Engineering's, never inside the course material's. The connection file stays out: it will carry a password as soon as the target is in the cloud."
+              }
+            }
           ]
         },
         {
@@ -1908,6 +2023,137 @@
                 "en": "Answer key"
               },
               "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_02_Modelisation_dimensionnelle_et_matrice_de_bus/Corrige_02.pdf"
+            }
+          ],
+          "etapes": [
+            {
+              "ref": "02.1",
+              "quoi": {
+                "fr": "Écrire le grain des six processus de Boréal, une phrase chacun, avant toute requête",
+                "en": "Write the grain of Boréal's six processes, one sentence each, before any query"
+              },
+              "ou": {
+                "fr": "papier, puis client DuckDB",
+                "en": "paper, then DuckDB CLI"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "« Une ligne représente… » Pour les ventes, deux grains possibles : 25 483 commandes ou 77 732 lignes de commande, et on prend le plus fin. Les 81 292 lignes de la RAW ne sont qu'un compte de livraisons.",
+                "en": "“One row represents…” For sales, two possible grains: 25,483 orders or 77,732 order lines, and you take the finer one. The 81,292 rows in RAW are only a count of deliveries."
+              }
+            },
+            {
+              "ref": "02.2",
+              "quoi": {
+                "fr": "Fabriquer la dimension des dates, libellés en français compris",
+                "en": "Build the date dimension, French labels included"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "DuckDB ne parle qu'anglais : January, Saturday. On décode une fois, à l'endroit unique qui fabrique la dimension, plutôt que dans chaque rapport. 1 551 jours, du 2022-01-01 au 2026-03-31.",
+                "en": "DuckDB only speaks English: January, Saturday. You decode once, in the single place that builds the dimension, rather than in every report. 1,551 days, from 2022-01-01 to 2026-03-31."
+              }
+            },
+            {
+              "ref": "02.3",
+              "quoi": {
+                "fr": "Tirer la dimension des concessionnaires : état courant, clé, palier décodé",
+                "en": "Derive the dealer dimension: current state, key, decoded tier"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [
+                "staging",
+                "marts"
+              ],
+              "note": {
+                "fr": "Trois gestes que dbt séparera, faits ici dans un seul SELECT. 156 lignes, zéro palier non décodé : un CASE sans branche rend NULL sans rien dire. En type 1, elle perd l'histoire des 49 paliers révisés en 2024.",
+                "en": "Three moves that dbt will separate, done here in a single SELECT. 156 rows, zero undecoded tiers: a CASE with no matching branch returns NULL without a word. As type 1, it loses the history of the 49 tiers revised in 2024."
+              }
+            },
+            {
+              "ref": "02.4",
+              "quoi": {
+                "fr": "Tirer la dimension des produits, la gamme en colonne plutôt qu'en table",
+                "en": "Derive the product dimension, the product line as a column rather than a table"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [
+                "staging",
+                "marts"
+              ],
+              "note": {
+                "fr": "68 articles, quatre gammes. Pas de table des gammes à quatre lignes à côté : l'étoile plutôt que le flocon.",
+                "en": "68 items, four product lines. No four-row product-line table next to it: star rather than snowflake."
+              }
+            },
+            {
+              "ref": "02.5",
+              "quoi": {
+                "fr": "Bâtir le fait des ventes au grain de la ligne, et prouver le grain",
+                "en": "Build the sales fact at the line grain, and prove the grain"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [
+                "staging",
+                "marts"
+              ],
+              "note": {
+                "fr": "75 652 lignes pour 75 652 couples commande-poste, 430 148 012,16 $. Il manque 2 080 postes refusés et 227 commandes entières, et il faut savoir l'expliquer avant qu'un rapport ne le découvre.",
+                "en": "75,652 rows for 75,652 order-line pairs, $430,148,012.16. 2,080 rejected lines and 227 whole orders are missing, and you must be able to explain it before a report finds out."
+              }
+            },
+            {
+              "ref": "02.6",
+              "quoi": {
+                "fr": "Répondre à la question du métier en une seule requête",
+                "en": "Answer the business question in a single query"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "Quelle gamme se vend le mieux au Québec, par trimestre, chez les concessionnaires Or ? Trois jointures sur des clés au lieu de cinq tables brutes, et la saisonnalité saute aux yeux : les motoneiges se commandent l'été.",
+                "en": "Which product line sells best in Québec, by quarter, among Gold dealers? Three joins on keys instead of five raw tables, and the seasonality jumps out: snowmobiles are ordered in summer."
+              }
+            },
+            {
+              "ref": "02.7",
+              "quoi": {
+                "fr": "Remplir la matrice de bus des six processus et des huit dimensions",
+                "en": "Fill in the bus matrix of the six processes and eight dimensions"
+              },
+              "ou": {
+                "fr": "papier",
+                "en": "paper"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "Les colonnes les plus chargées sont les dimensions à bâtir d'abord : celle des dates les porte toutes. Une case vide n'est pas une erreur, elle dit une question qu'on ne peut pas poser.",
+                "en": "The busiest columns are the dimensions to build first: the date dimension carries them all. An empty cell is not a mistake, it states a question that cannot be asked."
+              }
             }
           ]
         },
@@ -1950,6 +2196,146 @@
               },
               "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_03_dbt_et_la_couche_STAGING/Corrige_03.pdf"
             }
+          ],
+          "etapes": [
+            {
+              "ref": "03.1",
+              "quoi": {
+                "fr": "Écrire le fichier de connexion hors du dépôt, avec un chemin absolu",
+                "en": "Write the connection file outside the repository, with an absolute path"
+              },
+              "ou": {
+                "fr": "Anaconda Prompt, Bloc-notes",
+                "en": "Anaconda Prompt, Notepad"
+              },
+              "touche": [],
+              "note": {
+                "fr": "dbt le cherche dans le répertoire personnel, jamais dans le projet : il portera un mot de passe le jour où la cible sera en nuage. Un fichier vide fait planter dbt 1.12.3 sur un message qui ne dit rien.",
+                "en": "dbt looks for it in the home directory, never in the project: it will carry a password the day the target moves to the cloud. An empty file crashes dbt 1.12.3 with a message that says nothing."
+              }
+            },
+            {
+              "ref": "03.2",
+              "quoi": {
+                "fr": "Poser le projet dbt à la racine du dépôt, puis le vérifier",
+                "en": "Set up the dbt project at the root of the repository, then check it"
+              },
+              "ou": {
+                "fr": "Anaconda Prompt, dbt debug",
+                "en": "Anaconda Prompt, dbt debug"
+              },
+              "touche": [],
+              "note": {
+                "fr": "dbt init refuserait un nom qui commence par un chiffre, et créerait un sous-dossier : le fichier du projet s'écrit à la main. Le dossier du staging hérite en cascade de sa matérialisation et de son schéma.",
+                "en": "dbt init would refuse a name starting with a digit, and would create a subfolder: the project file is written by hand. The staging folder inherits its materialization and schema by cascade."
+              }
+            },
+            {
+              "ref": "03.3",
+              "quoi": {
+                "fr": "Poser la macro qui décide dans quel schéma dbt écrit",
+                "en": "Add the macro that decides which schema dbt writes to"
+              },
+              "ou": {
+                "fr": "dbt, macro Jinja",
+                "en": "dbt, Jinja macro"
+              },
+              "touche": [
+                "staging"
+              ],
+              "note": {
+                "fr": "Sans elle, les vues atterrissent dans staging_staging, par concaténation du schéma du profil et de celui du dossier. Les trois projets de la formation partagent la même.",
+                "en": "Without it, views land in staging_staging, by concatenating the profile's schema and the folder's. The course's three projects share the same one."
+              }
+            },
+            {
+              "ref": "03.4",
+              "quoi": {
+                "fr": "Déclarer comme sources les deux tables que les modèles liront, pas une de plus",
+                "en": "Declare as sources the two tables the models will read, not one more"
+              },
+              "ou": {
+                "fr": "dbt, YAML",
+                "en": "dbt, YAML"
+              },
+              "touche": [
+                "staging"
+              ],
+              "note": {
+                "fr": "Une source qu'aucun modèle ne lit est une promesse que rien ne vérifie. Les articles arrivent avec les exercices, les postes de commande au Cours 04.",
+                "en": "A source no model reads is a promise nothing checks. Items arrive with the exercises, order lines in course 04."
+              }
+            },
+            {
+              "ref": "03.5",
+              "quoi": {
+                "fr": "Demander à dbt ce qu'il connaît",
+                "en": "Ask dbt what it knows"
+              },
+              "ou": {
+                "fr": "Anaconda Prompt, dbt ls",
+                "en": "Anaconda Prompt, dbt ls"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Deux sources, aucun modèle. C'est la commande à relancer quand un chiffre surprend : elle dit exactement ce que dbt connaît, dans l'ordre où il le connaît.",
+                "en": "Two sources, no models. It is the command to rerun when a figure surprises you: it says exactly what dbt knows, in the order it knows it."
+              }
+            },
+            {
+              "ref": "03.6",
+              "quoi": {
+                "fr": "Écrire la première vue de staging : renommer, typer, décoder, tirer l'état courant",
+                "en": "Write the first staging view: rename, type, decode, take the current state"
+              },
+              "ou": {
+                "fr": "dbt, SQL",
+                "en": "dbt, SQL"
+              },
+              "touche": [
+                "staging"
+              ],
+              "note": {
+                "fr": "Les quatre gestes du staging, et aucune jointure. 156 concessionnaires, zéro palier vide, quatre fiches fermées, dans le schéma staging et non staging_staging.",
+                "en": "The four staging moves, and no join. 156 dealers, zero empty tiers, four closed records, in the staging schema and not staging_staging."
+              }
+            },
+            {
+              "ref": "03.7",
+              "quoi": {
+                "fr": "Écrire la vue qui retrouve les 25 483 commandes malgré la livraison en double",
+                "en": "Write the view that recovers the 25,483 orders despite the double delivery"
+              },
+              "ou": {
+                "fr": "dbt, SQL",
+                "en": "dbt, SQL"
+              },
+              "touche": [
+                "staging"
+              ],
+              "note": {
+                "fr": "26 538 lignes dans la RAW, 25 483 commandes dans le staging : les 1 055 lignes en trop ont disparu sans qu'une commande se perde. Un montant se type en decimal, jamais en double.",
+                "en": "26,538 rows in RAW, 25,483 orders in staging: the 1,055 extra rows are gone without losing a single order. An amount is typed as decimal, never as double."
+              }
+            },
+            {
+              "ref": "03.8",
+              "quoi": {
+                "fr": "Relier deux vues par un modèle de contrôle, et voir le graphe",
+                "en": "Link two views through a check model, and see the graph"
+              },
+              "ou": {
+                "fr": "dbt, SQL",
+                "en": "dbt, SQL"
+              },
+              "touche": [
+                "staging"
+              ],
+              "note": {
+                "fr": "Zéro commande sans concessionnaire, mais par choix : une commande de mai 2024 précédait la fiche de son concessionnaire, et l'état courant a effacé le problème. Au Cours 05, la même question rendra une autre réponse, et les deux seront justes.",
+                "en": "Zero orders without a dealer, but by choice: an order from May 2024 came before its dealer's record, and the current state erased the problem. In course 05 the same question will get another answer, and both will be right."
+              }
+            }
           ]
         },
         {
@@ -1990,6 +2376,187 @@
                 "en": "Answer key"
               },
               "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_04_Batir_l_etoile_des_ventes/Corrige_04.pdf"
+            }
+          ],
+          "etapes": [
+            {
+              "ref": "04.1",
+              "quoi": {
+                "fr": "Installer le seul paquet de la formation, et versionner sa version exacte",
+                "en": "Install the course's only package, and version its exact release"
+              },
+              "ou": {
+                "fr": "Anaconda Prompt, dbt deps",
+                "en": "Anaconda Prompt, dbt deps"
+              },
+              "touche": [],
+              "note": {
+                "fr": "La fourchette accepte toute version 1 de dbt_utils, jamais une 2 : une version majeure change les signatures. Le fichier de verrou se versionne, le code téléchargé jamais.",
+                "en": "The range accepts any version 1 of dbt_utils, never a 2: a major version changes signatures. The lock file is versioned, the downloaded code never is."
+              }
+            },
+            {
+              "ref": "04.2",
+              "quoi": {
+                "fr": "Écrire la vue des postes de commande, refus rendus reconnaissables",
+                "en": "Write the order-line view, with rejections made recognizable"
+              },
+              "ou": {
+                "fr": "dbt, SQL",
+                "en": "dbt, SQL"
+              },
+              "touche": [
+                "staging"
+              ],
+              "note": {
+                "fr": "77 732 postes, dont 2 080 refusés. Le staging ne décide pas quoi faire des refus, il les rend reconnaissables. Retenir 448 149 563,37 $ : le total qu'on obtient en les oubliant, et il est crédible.",
+                "en": "77,732 lines, 2,080 of them rejected. Staging does not decide what to do with rejections, it makes them recognizable. Remember $448,149,563.37: the total you get by forgetting them, and it looks credible."
+              }
+            },
+            {
+              "ref": "04.3",
+              "quoi": {
+                "fr": "Ouvrir les couches INTERMEDIATE et MARTS dans le projet",
+                "en": "Open the INTERMEDIATE and MARTS layers in the project"
+              },
+              "ou": {
+                "fr": "dbt_project.yml",
+                "en": "dbt_project.yml"
+              },
+              "touche": [
+                "intermediate",
+                "marts"
+              ],
+              "note": {
+                "fr": "Les MARTS se calculent une fois, en tables, parce qu'on les lit souvent. L'intermédiaire, éphémère, ne crée aucun objet : lui déclarer un schéma ferait croire le contraire.",
+                "en": "MARTS are computed once, as tables, because they are read often. The ephemeral intermediate layer creates no object: giving it a schema would suggest otherwise."
+              }
+            },
+            {
+              "ref": "04.4",
+              "quoi": {
+                "fr": "Fabriquer la dimension des dates par une macro, sans aucune source",
+                "en": "Build the date dimension with a macro, from no source at all"
+              },
+              "ou": {
+                "fr": "dbt, SQL",
+                "en": "dbt, SQL"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "1 551 jours, zéro libellé nul, douze mois et sept jours distincts. Une liste trop courte d'un élément ne planterait pas : elle laisserait un NULL un jour sur sept.",
+                "en": "1,551 days, zero null labels, twelve distinct months and seven distinct days. A list one element short would not crash: it would leave a NULL one day in seven."
+              }
+            },
+            {
+              "ref": "04.5",
+              "quoi": {
+                "fr": "Bâtir la dimension des concessionnaires sur le staging, et recalculer sa clé à la main",
+                "en": "Build the dealer dimension on staging, and recompute its key by hand"
+              },
+              "ou": {
+                "fr": "dbt, client DuckDB",
+                "en": "dbt, DuckDB CLI"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "Le modèle est court parce que le staging a fait son travail : la dimension n'ajoute qu'une clé. 156 lignes, 156 clés, et la clé égale le md5 calculé à la main.",
+                "en": "The model is short because staging did its job: the dimension only adds a key. 156 rows, 156 keys, and the key equals the md5 computed by hand."
+              }
+            },
+            {
+              "ref": "04.6",
+              "quoi": {
+                "fr": "Bâtir la dimension des produits",
+                "en": "Build the product dimension"
+              },
+              "ou": {
+                "fr": "dbt, SQL",
+                "en": "dbt, SQL"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "68 articles, 68 clés, zéro gamme nulle. Toujours pas de table des gammes à côté : la décision du Cours 02 tient.",
+                "en": "68 items, 68 keys, zero null product lines. Still no product-line table next to it: the course 02 decision holds."
+              }
+            },
+            {
+              "ref": "04.7",
+              "quoi": {
+                "fr": "Écrire la règle de métier une seule fois, dans un modèle qui n'existera pas dans la base",
+                "en": "Write the business rule once, in a model that will not exist in the database"
+              },
+              "ou": {
+                "fr": "dbt, SQL",
+                "en": "dbt, SQL"
+              },
+              "touche": [
+                "intermediate"
+              ],
+              "note": {
+                "fr": "Le filtre des postes refusés et le calcul de la marge vivent ici. Le modèle est éphémère : dbt run ne crée rien et ne dit rien, et dbt ls le montre quand même.",
+                "en": "The filter on rejected lines and the margin calculation live here. The model is ephemeral: dbt run creates nothing and says nothing, and dbt ls still shows it."
+              }
+            },
+            {
+              "ref": "04.8",
+              "quoi": {
+                "fr": "Bâtir le fait des ventes sans une seule jointure, puis lire ce que dbt a envoyé",
+                "en": "Build the sales fact without a single join, then read what dbt sent"
+              },
+              "ou": {
+                "fr": "dbt, dbt compile",
+                "en": "dbt, dbt compile"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "Douze lignes de SQL : l'intermédiaire a tout préparé. Le code compilé montre l'éphémère devenu une CTE en tête de requête, et la macro de clé devenue un md5.",
+                "en": "Twelve lines of SQL: the intermediate model prepared everything. The compiled code shows the ephemeral model turned into a CTE at the top of the query, and the key macro turned into an md5."
+              }
+            },
+            {
+              "ref": "04.9",
+              "quoi": {
+                "fr": "Prouver le grain, puis réconcilier le fait avec les en-têtes de l'ERP",
+                "en": "Prove the grain, then reconcile the fact with the ERP headers"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "75 652 lignes pour 75 652 couples, 430 148 012,16 $ des deux côtés : 0,00 $ d'écart, sans tolérance. La question du métier du Cours 02 rend les mêmes chiffres qu'au prototype.",
+                "en": "75,652 rows for 75,652 pairs, $430,148,012.16 on both sides: a $0.00 gap, with no tolerance. The business question from course 02 returns the same figures as the prototype."
+              }
+            },
+            {
+              "ref": "04.10",
+              "quoi": {
+                "fr": "Écrire la livraison, y compris ce qu'elle ne porte pas encore",
+                "en": "Write the delivery note, including what it does not carry yet"
+              },
+              "ou": {
+                "fr": "LIVRAISON.md",
+                "en": "LIVRAISON.md"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "Le document que les formations en aval liront. Sa ligne la plus importante dit que la dimension des concessionnaires perd l'histoire des paliers : un lecteur qui le découvre seul le découvre dans un rapport.",
+                "en": "The document the downstream courses will read. Its most important line says that the dealer dimension loses the tier history: a reader who finds out alone finds out in a report."
+              }
             }
           ]
         },
@@ -2032,6 +2599,219 @@
               },
               "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_05_Fiabiliser_l_etoile_tests_snapshots_documentation/Corrige_05.pdf"
             }
+          ],
+          "etapes": [
+            {
+              "ref": "05.1",
+              "quoi": {
+                "fr": "Poser les tests génériques des dimensions",
+                "en": "Add the generic tests on the dimensions"
+              },
+              "ou": {
+                "fr": "dbt test, YAML",
+                "en": "dbt test, YAML"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "Sept tests au vert. Le nom que dbt donne à chacun n'est pas beau, et il dit à lui seul quelle colonne de quel modèle a fauté dans une exécution de quarante.",
+                "en": "Seven green tests. The name dbt gives each one is not pretty, and on its own it says which column of which model failed in a run of forty."
+              }
+            },
+            {
+              "ref": "05.2",
+              "quoi": {
+                "fr": "Saboter le décodage des gammes, et voir un test passer au vert sur le désastre",
+                "en": "Sabotage the product-line decoding, and watch a test pass green on the disaster"
+              },
+              "ou": {
+                "fr": "dbt run, dbt test",
+                "en": "dbt run, dbt test"
+              },
+              "touche": [
+                "staging",
+                "marts"
+              ],
+              "note": {
+                "fr": "68 gammes vides, et accepted_values passe : il vérifie ce qui est là, et rien n'y est. C'est le not_null posé à côté qui échoue. Un accepted_values seul ne vérifie rien.",
+                "en": "68 empty product lines, and accepted_values passes: it checks what is there, and nothing is. The not_null next to it is what fails. An accepted_values on its own checks nothing."
+              }
+            },
+            {
+              "ref": "05.3",
+              "quoi": {
+                "fr": "Tester le fait : son grain, et ses clés vers les dimensions",
+                "en": "Test the fact: its grain, and its keys to the dimensions"
+              },
+              "ou": {
+                "fr": "dbt test, YAML",
+                "en": "dbt test, YAML"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "Le contrôle du grain qu'on lançait à la main au Cours 04 s'écrit une fois pour toutes, sur le modèle entier. Six tests au vert.",
+                "en": "The grain check run by hand in course 04 is written once and for all, on the whole model. Six green tests."
+              }
+            },
+            {
+              "ref": "05.4",
+              "quoi": {
+                "fr": "Écrire la réconciliation en test, par une jointure externe complète",
+                "en": "Write the reconciliation as a test, with a full outer join"
+              },
+              "ou": {
+                "fr": "dbt, SQL",
+                "en": "dbt, SQL"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "Sur un fait amputé de janvier 2022, la jointure interne ne voit rien et l'externe voit 518 commandes disparues. Écarter les commandes entièrement refusées évite un échec quotidien sur un écart qui n'en est pas un.",
+                "en": "On a fact missing January 2022, the inner join sees nothing and the outer join sees 518 vanished orders. Leaving out fully rejected orders avoids a daily failure on a gap that is not one."
+              }
+            },
+            {
+              "ref": "05.5",
+              "quoi": {
+                "fr": "Tolérer 23 années-modèles vides, et savoir si le nombre change",
+                "en": "Tolerate 23 empty model years, and know if the number changes"
+              },
+              "ou": {
+                "fr": "dbt test, YAML",
+                "en": "dbt test, YAML"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "Les pièces n'ont pas d'année-modèle. Un seuil n'assouplit pas le test : il affirme qu'il y en a 23, daté et versionné, et il avertit à la vingt-quatrième.",
+                "en": "Parts have no model year. A threshold does not soften the test: it states there are 23, dated and versioned, and it warns at the twenty-fourth."
+              }
+            },
+            {
+              "ref": "05.6",
+              "quoi": {
+                "fr": "Rejouer deux ans de révisions de paliers dans un snapshot, en quatre commandes",
+                "en": "Replay two years of tier revisions in a snapshot, in four commands"
+              },
+              "ou": {
+                "fr": "dbt snapshot",
+                "en": "dbt snapshot"
+              },
+              "touche": [],
+              "note": {
+                "fr": "205 lignes, dont 49 versions fermées au 31 juillet 2024 : la révision des paliers, retrouvée sans la chercher. Elle date pourtant du 1er juillet, et 4 314 525,62 $ de ventes restent à l'ancien palier : un snapshot n'est pas plus précis que la fréquence de son regard.",
+                "en": "205 rows, 49 of them versions closed on July 31, 2024: the tier revision, found without looking for it. Yet it took effect on July 1, and $4,314,525.62 of sales stay on the old tier: a snapshot is no more precise than how often it looks."
+              }
+            },
+            {
+              "ref": "05.7",
+              "quoi": {
+                "fr": "Réécrire la dimension des concessionnaires en type 2",
+                "en": "Rewrite the dealer dimension as type 2"
+              },
+              "ou": {
+                "fr": "dbt, SQL",
+                "en": "dbt, SQL"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "205 versions, 156 courantes. La clé se hache sur le code et la date d'ouverture, le palier est historisé et le nom ne l'est pas, et la première version s'ouvre en 1900 : trois décisions à défendre.",
+                "en": "205 versions, 156 current. The key hashes the code and the opening date, the tier is tracked and the name is not, and the first version opens in 1900: three decisions to defend."
+              }
+            },
+            {
+              "ref": "05.8",
+              "quoi": {
+                "fr": "Joindre le fait à la version d'époque, et le casser deux fois avant de réussir",
+                "en": "Join the fact to the period version, and break it twice before getting it right"
+              },
+              "ou": {
+                "fr": "dbt, client DuckDB",
+                "en": "dbt, DuckDB CLI"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "Un intervalle fermé dédouble seize lignes, et le contrôle du grain l'attrape. Sans plancher, 1 894 lignes ne trouvent aucune version, et seule la réconciliation le voit. À la fin, 0,00 $ d'écart : l'historique change l'attribution, jamais le total.",
+                "en": "A closed interval duplicates sixteen rows, and the grain check catches it. Without a floor, 1,894 rows find no version, and only the reconciliation sees it. In the end, a $0.00 gap: history changes the attribution, never the total."
+              }
+            },
+            {
+              "ref": "05.9",
+              "quoi": {
+                "fr": "Écrire le test unitaire de la jointure temporelle, à ses trois bornes",
+                "en": "Write the unit test of the time-based join, at its three edges"
+              },
+              "ou": {
+                "fr": "dbt test, YAML",
+                "en": "dbt test, YAML"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "Avant le changement, le jour même, avant la première version : aucun test de données ne vérifie une logique. L'entrée éphémère se donne en SQL typé, sinon dbt ne trouve pas ses colonnes.",
+                "en": "Before the change, on the day itself, before the first version: no data test checks logic. The ephemeral input is given as typed SQL, or dbt cannot find its columns."
+              }
+            },
+            {
+              "ref": "05.10",
+              "quoi": {
+                "fr": "Générer la documentation, et lire le lignage dans le manifeste",
+                "en": "Generate the documentation, and read the lineage in the manifest"
+              },
+              "ou": {
+                "fr": "dbt docs, navigateur",
+                "en": "dbt docs, browser"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Le graphe n'a été écrit nulle part : dbt l'a déduit des ref et des source. Le manifest.json, environ 870 Ko, est la seule forme du lignage qu'un programme peut lire, et deux cours s'en serviront.",
+                "en": "The graph was written nowhere: dbt inferred it from the ref and source calls. manifest.json, about 870 KB, is the only form of lineage a program can read, and two courses will use it."
+              }
+            },
+            {
+              "ref": "05.11",
+              "quoi": {
+                "fr": "Déclarer qui consomme l'étoile",
+                "en": "Declare who consumes the star"
+              },
+              "ou": {
+                "fr": "dbt, YAML",
+                "en": "dbt, YAML"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "Le tableau de bord de la BI, au nom d'une équipe et d'une adresse de groupe, jamais d'une personne : un nom propre périme au premier départ.",
+                "en": "The BI dashboard, under a team name and a group address, never a person's: a personal name expires at the first departure."
+              }
+            },
+            {
+              "ref": "05.12",
+              "quoi": {
+                "fr": "Écrire le résumé mensuel par palier, sans y stocker de taux",
+                "en": "Write the monthly summary by tier, without storing any rate"
+              },
+              "ou": {
+                "fr": "dbt, SQL",
+                "en": "dbt, SQL"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Une couche de plus, la présentation : 144 lignes, 48 mois par trois paliers. Le taux de marge se calcule à la lecture, parce qu'une moyenne de taux ne veut rien dire, et l'arbitrage s'écrit dans la description du modèle.",
+                "en": "One more layer, presentation: 144 rows, 48 months by three tiers. The margin rate is computed on read, because an average of rates means nothing, and the trade-off is written in the model's description."
+              }
+            }
           ]
         },
         {
@@ -2073,6 +2853,369 @@
               },
               "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_06_Les_faits_que_la_vente_ne_montre_pas/Corrige_06.pdf"
             }
+          ],
+          "etapes": [
+            {
+              "ref": "06.1",
+              "quoi": {
+                "fr": "Déclarer les quatre sources de l'après-vente, et pas celles qu'aucun modèle ne lit",
+                "en": "Declare the four after-sales sources, and not the ones no model reads"
+              },
+              "ou": {
+                "fr": "dbt, YAML",
+                "en": "dbt, YAML"
+              },
+              "touche": [
+                "staging"
+              ],
+              "note": {
+                "fr": "Neuf sources en tout. Les visites d'entretien et les consentements restent dehors tant qu'aucun modèle ne les lit.",
+                "en": "Nine sources in all. Service visits and consents stay out as long as no model reads them."
+              }
+            },
+            {
+              "ref": "06.2",
+              "quoi": {
+                "fr": "Mesurer comment chaque source se comporte avant d'écrire une ligne de staging",
+                "en": "Measure how each source behaves before writing a line of staging"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [
+                "staging"
+              ],
+              "note": {
+                "fr": "Trois comportements dans un même dossier : l'enregistrement ne revient jamais, la fiche client revient quand elle change, la réclamation revient à chaque statut avec un historique cumulatif. 5 623 lignes pour 3 348 réclamations.",
+                "en": "Three behaviours in the same delivery: a registration never comes back, a customer record comes back when it changes, a claim comes back at every status with a cumulative history. 5,623 rows for 3,348 claims."
+              }
+            },
+            {
+              "ref": "06.3",
+              "quoi": {
+                "fr": "Écrire le staging des véhicules et des clients, sans aucune donnée personnelle",
+                "en": "Write the vehicle and customer staging, with no personal data at all"
+              },
+              "ou": {
+                "fr": "dbt, SQL",
+                "en": "dbt, SQL"
+              },
+              "touche": [
+                "staging"
+              ],
+              "note": {
+                "fr": "Prénom, nom, courriel, téléphone, adresse : aucun ne monte. Une colonne personnelle ne monte que si une analyse devient impossible sans elle. 27 775 véhicules, 23 527 clients.",
+                "en": "First name, last name, email, phone, address: none goes up. A personal column only goes up if an analysis becomes impossible without it. 27,775 vehicles, 23,527 customers."
+              }
+            },
+            {
+              "ref": "06.4",
+              "quoi": {
+                "fr": "Écrire le staging des enregistrements et des réclamations, JSON aplati",
+                "en": "Write the registration and claim staging, with the JSON flattened"
+              },
+              "ou": {
+                "fr": "dbt, SQL",
+                "en": "dbt, SQL"
+              },
+              "touche": [
+                "staging"
+              ],
+              "note": {
+                "fr": "L'un sans déduplication, puisque rien n'y revient ; l'autre dédoublonné, puis aplati champ par champ. L'opérateur -> rend du JSON, ->> du texte, et les parenthèses avant un :: ne sont pas décoratives.",
+                "en": "One with no deduplication, since nothing comes back; the other deduplicated, then flattened field by field. The -> operator returns JSON, ->> returns text, and the parentheses before a :: are not decoration."
+              }
+            },
+            {
+              "ref": "06.5",
+              "quoi": {
+                "fr": "Déplier l'historique de chaque réclamation en jalons, une colonne par statut",
+                "en": "Unfold each claim's history into milestones, one column per status"
+              },
+              "ou": {
+                "fr": "dbt, SQL",
+                "en": "dbt, SQL"
+              },
+              "touche": [
+                "intermediate"
+              ],
+              "note": {
+                "fr": "9 447 étapes pour 3 348 réclamations. Sur la RAW non dédoublonnée, 13 455 : les 4 008 étapes des versions intermédiaires donneraient un compte faux avec des dates justes.",
+                "en": "9,447 steps for 3,348 claims. On the non-deduplicated RAW, 13,455: the 4,008 steps from intermediate versions would give a wrong count with correct dates."
+              }
+            },
+            {
+              "ref": "06.6",
+              "quoi": {
+                "fr": "Bâtir la dimension conforme du véhicule",
+                "en": "Build the conformed vehicle dimension"
+              },
+              "ou": {
+                "fr": "dbt, SQL",
+                "en": "dbt, SQL"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "27 775 véhicules, zéro sans gamme. Elle servira à l'après-vente, à l'usine et à la télémétrie. La gamme y est recopiée depuis l'article : une dénormalisation voulue, qui évite une jointure à tous ses lecteurs.",
+                "en": "27,775 vehicles, none without a product line. It will serve after-sales, the plant and telemetry. The product line is copied from the item: a deliberate denormalization that spares every reader a join."
+              }
+            },
+            {
+              "ref": "06.7",
+              "quoi": {
+                "fr": "Bâtir la dimension du client, huit colonnes et pas une de plus",
+                "en": "Build the customer dimension, eight columns and not one more"
+              },
+              "ou": {
+                "fr": "dbt, SQL",
+                "en": "dbt, SQL"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "Le client qui a exercé son droit à l'effacement en septembre 2025 garde sa ligne : l'entrepôt n'avait rien de personnel à effacer.",
+                "en": "The customer who exercised the right to erasure in September 2025 keeps a row: the warehouse had nothing personal to erase."
+              }
+            },
+            {
+              "ref": "06.8",
+              "quoi": {
+                "fr": "Bâtir le fait des enregistrements sur la version d'époque du concessionnaire",
+                "en": "Build the registration fact on the dealer's period version"
+              },
+              "ou": {
+                "fr": "dbt, SQL",
+                "en": "dbt, SQL"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "26 732 ventes au détail, aucune sans concessionnaire. La politique de garantie révisée en août 2024, de 12 à 24 mois, se lit dans les données sans qu'on l'ait écrite nulle part.",
+                "en": "26,732 retail sales, none without a dealer. The warranty policy revised in August 2024, from 12 to 24 months, shows in the data without being written anywhere."
+              }
+            },
+            {
+              "ref": "06.9",
+              "quoi": {
+                "fr": "Bâtir le premier fait d'accumulation, dont la ligne se met à jour à chaque jalon",
+                "en": "Build the first accumulating fact, whose row updates at every milestone"
+              },
+              "ou": {
+                "fr": "dbt, SQL",
+                "en": "dbt, SQL"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "3 348 réclamations, quatre dates de jalons, trois durées. Le montant des pièces se déduit du total plutôt que de s'additionner : recalculer les composantes donnerait 1,69 $ d'écart.",
+                "en": "3,348 claims, four milestone dates, three durations. The parts amount is derived from the total rather than summed: recomputing the components would give a $1.69 gap."
+              }
+            },
+            {
+              "ref": "06.10",
+              "quoi": {
+                "fr": "Tester la nouvelle étoile, ordre des jalons compris",
+                "en": "Test the new star, milestone order included"
+              },
+              "ou": {
+                "fr": "dbt build, YAML",
+                "en": "dbt build, YAML"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "35 tests de plus. La date de paiement porte une relation sans not_null, et c'est le seul endroit du projet où ce n'est pas un oubli : un jalon vide est un dossier en cours.",
+                "en": "35 more tests. The payment date carries a relationship test without not_null, and it is the only place in the project where that is not an oversight: an empty milestone is a claim still in progress."
+              }
+            },
+            {
+              "ref": "06.11",
+              "quoi": {
+                "fr": "Recalculer une règle de métier comme témoin, faute de total indépendant",
+                "en": "Recompute a business rule as a control, for lack of an independent total"
+              },
+              "ou": {
+                "fr": "dbt test, client DuckDB",
+                "en": "dbt test, DuckDB CLI"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "329 réclamations hors garantie, 329 refus pour ce motif : le calcul de la couverture et la décision du portail tombent sur les mêmes dossiers. Un témoin n'a pas à tout couvrir, il doit être indépendant.",
+                "en": "329 claims outside warranty, 329 rejections for that reason: the coverage calculation and the portal's decision land on the same claims. A control does not need to cover everything, it needs to be independent."
+              }
+            },
+            {
+              "ref": "06.12",
+              "quoi": {
+                "fr": "Répondre au directeur de la qualité, puis forer à travers deux faits",
+                "en": "Answer the quality director, then drill across two facts"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "L'inspection renforcée fait passer les réclamations de livraison de 3,0 % à 1,7 %, réserve comprise. Le taux de réclamation par gamme sort de deux faits qui ne la portent pas, reliés par la dimension qu'ils partagent.",
+                "en": "Reinforced inspection brings delivery claims down from 3.0% to 1.7%, caveat included. The claim rate by product line comes out of two facts that do not carry it, linked by the dimension they share."
+              }
+            },
+            {
+              "ref": "06.13",
+              "quoi": {
+                "fr": "Délimiter ce qu'on prend de l'usine, et déclarer la source des séries horaires",
+                "en": "Draw the line on what is taken from the plant, and declare the hourly series source"
+              },
+              "ou": {
+                "fr": "dbt, client DuckDB",
+                "en": "dbt, DuckDB CLI"
+              },
+              "touche": [
+                "staging"
+              ],
+              "note": {
+                "fr": "Les points bruts de l'historien restent chez Data Engineering ; l'étoile lit ses séries régulières. 2 209 heures en 92 jours, et non 2 208 : la nuit du retour à l'heure normale en compte 25.",
+                "en": "The historian's raw points stay with Data Engineering; the star reads its regular series. 2,209 hours in 92 days, not 2,208: the night the clocks go back has 25."
+              }
+            },
+            {
+              "ref": "06.14",
+              "quoi": {
+                "fr": "Bâtir la dimension des actifs à deux niveaux, zone et équipement",
+                "en": "Build the two-level asset dimension, zone and equipment"
+              },
+              "ou": {
+                "fr": "dbt, SQL",
+                "en": "dbt, SQL"
+              },
+              "touche": [
+                "staging",
+                "marts"
+              ],
+              "note": {
+                "fr": "Le modèle se joint à lui-même pour donner à chaque équipement le nom de sa zone, et le code de l'ERP descend de la zone vers ses équipements. 23 actifs : 6 zones, 17 équipements.",
+                "en": "The model joins itself to give each piece of equipment its zone's name, and the ERP code flows down from the zone to its equipment. 23 assets: 6 zones, 17 pieces of equipment."
+              }
+            },
+            {
+              "ref": "06.15",
+              "quoi": {
+                "fr": "Pivoter les étiquettes en une ligne par actif et par heure",
+                "en": "Pivot the tags into one row per asset and hour"
+              },
+              "ou": {
+                "fr": "dbt, SQL",
+                "en": "dbt, SQL"
+              },
+              "touche": [
+                "intermediate"
+              ],
+              "note": {
+                "fr": "Dix actifs sur dix-sept ont un état de marche ; inventer une disponibilité aux autres serait fabriquer une mesure. Le nom d'une étiquette ne se découpe jamais : c'est une convention, pas une clé.",
+                "en": "Ten assets out of seventeen have a running state; inventing availability for the others would be fabricating a measure. A tag name is never split: it is a convention, not a key."
+              }
+            },
+            {
+              "ref": "06.16",
+              "quoi": {
+                "fr": "Bâtir l'instantané périodique de l'usine, heure par heure",
+                "en": "Build the plant's periodic snapshot, hour by hour"
+              },
+              "ou": {
+                "fr": "dbt, SQL",
+                "en": "dbt, SQL"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "22 090 lignes, dix actifs par 2 209 heures, sans trou. La date se calcule dans un fuseau écrit : laissée à celui de la session, elle changerait de jour pour 4 280 heures selon la machine qui lance le modèle.",
+                "en": "22,090 rows, ten assets by 2,209 hours, no gaps. The date is computed in an explicit time zone: left to the session's, it would shift days for 4,280 hours depending on the machine running the model."
+              }
+            },
+            {
+              "ref": "06.17",
+              "quoi": {
+                "fr": "Bâtir le fait sans mesure de la production",
+                "en": "Build the factless production fact"
+              },
+              "ou": {
+                "fr": "dbt, SQL",
+                "en": "dbt, SQL"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "27 775 véhicules et aucune quantité : son compte est son information. Il remonte à 2022, l'instantané à octobre 2025 seulement : 1 833 véhicules sur la fenêtre commune.",
+                "en": "27,775 vehicles and no quantity: its count is its information. It goes back to 2022, the snapshot only to October 2025: 1,833 vehicles in the shared window."
+              }
+            },
+            {
+              "ref": "06.18",
+              "quoi": {
+                "fr": "Réconcilier le compteur des convoyeurs avec les numéros de série de l'ERP",
+                "en": "Reconcile the conveyor counters with the ERP serial numbers"
+              },
+              "ou": {
+                "fr": "dbt test, SQL",
+                "en": "dbt test, SQL"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "Deux systèmes qui ne se parlent pas, 1 833 véhicules des deux côtés sur 92 jours. Jointure externe complète, comparaison bornée à la fenêtre de l'historien, jour de production pris en heure locale.",
+                "en": "Two systems that never talk to each other, 1,833 vehicles on both sides over 92 days. Full outer join, comparison limited to the historian's window, production day taken in local time."
+              }
+            },
+            {
+              "ref": "06.19",
+              "quoi": {
+                "fr": "Lire l'incident du compresseur 2 dans quatre faits",
+                "en": "Read the compressor 2 incident across four facts"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "La vibration monte pendant une semaine, un bon de travail s'était refermé six jours plus tôt sans rien constater, 240 motoneiges sont exposées. Cinq réclamations sur 201 : rien à conclure encore, et c'est la bonne réponse.",
+                "en": "Vibration climbs for a week, a work order had been closed six days earlier with nothing found, 240 snowmobiles are exposed. Five claims out of 201: nothing to conclude yet, and that is the right answer."
+              }
+            },
+            {
+              "ref": "06.20",
+              "quoi": {
+                "fr": "Vérifier la matrice de bus dans le graphe plutôt que la croire",
+                "en": "Check the bus matrix in the graph instead of trusting it"
+              },
+              "ou": {
+                "fr": "Anaconda Prompt, dbt ls",
+                "en": "Anaconda Prompt, dbt ls"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "Aucun fait n'apparaît sous les dimensions : ils recalculent leurs clés au lieu de les joindre. La matrice n'existe dans le projet que par ses tests de relation.",
+                "en": "No fact shows up under the dimensions: they recompute their keys instead of joining. The matrix exists in the project only through its relationship tests."
+              }
+            }
           ]
         },
         {
@@ -2113,6 +3256,347 @@
                 "en": "Answer key"
               },
               "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_07_ELT_en_regime_permanent/Corrige_07.pdf"
+            }
+          ],
+          "etapes": [
+            {
+              "ref": "07.1",
+              "quoi": {
+                "fr": "Générer trois mois de plus, et laisser Data Engineering charger janvier",
+                "en": "Generate three more months, and let Data Engineering load January"
+              },
+              "ou": {
+                "fr": "Anaconda Prompt, pipeline de DE",
+                "en": "Anaconda Prompt, DE pipeline"
+              },
+              "touche": [],
+              "note": {
+                "fr": "L'ingestion n'appartient pas à l'ingénieur analytique : son travail commence à la RAW. 47 fichiers, 23 387 lignes ; les exports inchangés sont reconnus à leur empreinte et ne sont pas relus.",
+                "en": "Ingestion does not belong to the analytics engineer: the job starts at RAW. 47 files, 23,387 rows; unchanged exports are recognized by their fingerprint and not reread."
+              }
+            },
+            {
+              "ref": "07.2",
+              "quoi": {
+                "fr": "Reconstruire sans toucher un modèle, et mesurer ce qu'un lot a changé",
+                "en": "Rebuild without touching a model, and measure what one batch changed"
+              },
+              "ou": {
+                "fr": "dbt build, client DuckDB",
+                "en": "dbt build, DuckDB CLI"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "Quatre faits grossissent, celui de l'usine ne bouge pas : sa livraison n'a pas suivi. Et 154 réclamations déjà écrites ont changé : le neuf n'est pas seulement ce qui s'ajoute, et l'ignorer fausserait le fait de 4,6 %.",
+                "en": "Four facts grow, the plant's does not move: its delivery did not follow. And 154 claims already written have changed: what is new is not only what is added, and ignoring it would skew the fact by 4.6%."
+              }
+            },
+            {
+              "ref": "07.3",
+              "quoi": {
+                "fr": "Constater les doublons, la dérive de schéma et les retards de la télémétrie",
+                "en": "Observe the telemetry's duplicates, schema drift and late arrivals"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [
+                "staging"
+              ],
+              "note": {
+                "fr": "2 523 doublons, toujours du même jour ; une température qui change de nom avec le micrologiciel 2.0 ; 6 844 messages en retard, jusqu'à 96 heures. Chaque constat décidera d'une ligne du modèle.",
+                "en": "2,523 duplicates, always on the same day; a temperature that changes name with firmware 2.0; 6,844 late messages, up to 96 hours. Each finding will decide a line of the model."
+              }
+            },
+            {
+              "ref": "07.4",
+              "quoi": {
+                "fr": "Écrire le staging des sorties : dédoublonner, puis réunir les deux noms du champ",
+                "en": "Write the trip staging: deduplicate, then merge the field's two names"
+              },
+              "ou": {
+                "fr": "dbt, SQL",
+                "en": "dbt, SQL"
+              },
+              "touche": [
+                "staging"
+              ],
+              "note": {
+                "fr": "171 699 sorties, aucun message perdu. Le coalesce est la seule ligne du projet qui sache qu'il y a eu deux micrologiciels. Deux horloges sont gardées : la réception chez Boréal, et l'écriture dans la RAW.",
+                "en": "171,699 trips, no message lost. The coalesce is the only line in the project that knows there were two firmwares. Two clocks are kept: receipt at Boréal, and the write into RAW."
+              }
+            },
+            {
+              "ref": "07.5",
+              "quoi": {
+                "fr": "Bâtir le sixième fait, d'abord en table",
+                "en": "Build the sixth fact, as a table first"
+              },
+              "ou": {
+                "fr": "dbt, SQL",
+                "en": "dbt, SQL"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "Une ligne par sortie. La date se prend en heure locale : 34 558 sorties sur 201 542 changent de jour selon le fuseau, parce qu'une sortie finit souvent le soir.",
+                "en": "One row per trip. The date is taken in local time: 34,558 trips out of 201,542 change day depending on the time zone, because a trip often ends in the evening."
+              }
+            },
+            {
+              "ref": "07.6",
+              "quoi": {
+                "fr": "Rendre le fait incrémental avec le filtre que tout le monde écrit",
+                "en": "Make the fact incremental with the filter everyone writes"
+              },
+              "ou": {
+                "fr": "dbt, SQL",
+                "en": "dbt, SQL"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "Ne prendre que ce qui est plus récent que la dernière date de sortie chargée. Il s'écrit tel quel exprès : une faute qu'on a faite soi-même ne se réapprend pas. La bascule vers l'incrémental ne reconstruit rien.",
+                "en": "Take only what is newer than the last trip date loaded. It is written as is on purpose: a mistake you made yourself never needs relearning. Switching to incremental rebuilds nothing."
+              }
+            },
+            {
+              "ref": "07.7",
+              "quoi": {
+                "fr": "Charger février, puis mars, et tenir le journal des passes",
+                "en": "Load February, then March, and keep the log of runs"
+              },
+              "ou": {
+                "fr": "pipeline de DE, dbt build",
+                "en": "DE pipeline, dbt build"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "Tout est au vert à chaque passe, sur 106 nœuds. La dernière colonne du journal est fausse, et rien ne le dit.",
+                "en": "Everything is green on every run, across 106 nodes. The last column of the log is wrong, and nothing says so."
+              }
+            },
+            {
+              "ref": "07.8",
+              "quoi": {
+                "fr": "Comparer le fait à sa source, et trouver les sorties perdues",
+                "en": "Compare the fact with its source, and find the lost trips"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [
+                "staging",
+                "marts"
+              ],
+              "note": {
+                "fr": "47 sorties manquent, toujours des deux derniers jours d'un mois, toutes reçues après la coupure. Deux centièmes de pour cent : trop peu pour un contrôle de bon sens, assez systématique pour fausser chaque fin de mois.",
+                "en": "47 trips are missing, always from the last two days of a month, all received after the cutoff. Two hundredths of a percent: too little for a sanity check, systematic enough to skew every month-end."
+              }
+            },
+            {
+              "ref": "07.9",
+              "quoi": {
+                "fr": "Filtrer sur la date de réception plutôt que sur la date de sortie",
+                "en": "Filter on the receipt date rather than the trip date"
+              },
+              "ou": {
+                "fr": "dbt, SQL",
+                "en": "dbt, SQL"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "Un retardataire garde une date de sortie ancienne, mais sa date de réception est celle de son arrivée. C'est la seule différence entre les deux filtres, et toute la leçon du cours.",
+                "en": "A late message keeps an old trip date, but its receipt date is the day it arrived. It is the only difference between the two filters, and the whole lesson of the course."
+              }
+            },
+            {
+              "ref": "07.10",
+              "quoi": {
+                "fr": "Poser une fenêtre de reprise de trois jours, et reconstruire de zéro",
+                "en": "Add a three-day lookback window, and rebuild from scratch"
+              },
+              "ou": {
+                "fr": "dbt, --full-refresh",
+                "en": "dbt, --full-refresh"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "Trois jours, parce que le plus long retard mesuré est de 96 heures ; une variable l'élargit sans toucher au modèle. 201 542 sorties, autant de messages distincts.",
+                "en": "Three days, because the longest measured delay is 96 hours; a variable widens it without touching the model. 201,542 trips, as many distinct messages."
+              }
+            },
+            {
+              "ref": "07.11",
+              "quoi": {
+                "fr": "Rejouer deux fois de suite, puis sans clé unique",
+                "en": "Replay twice in a row, then without a unique key"
+              },
+              "ou": {
+                "fr": "dbt, client DuckDB",
+                "en": "dbt, DuckDB CLI"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "Avec la clé, rien ne bouge. Sans elle, 788 doublons, exactement les lignes que la fenêtre a relues. Le filtre sert la vitesse, la clé sert la justesse.",
+                "en": "With the key, nothing moves. Without it, 788 duplicates, exactly the rows the window reread. The filter serves speed, the key serves correctness."
+              }
+            },
+            {
+              "ref": "07.12",
+              "quoi": {
+                "fr": "Fabriquer un témoin dans la source : le compteur d'heures moteur",
+                "en": "Build a control from the source itself: the engine-hour counter"
+              },
+              "ou": {
+                "fr": "dbt test, SQL",
+                "en": "dbt test, SQL"
+              },
+              "touche": [
+                "staging"
+              ],
+              "note": {
+                "fr": "Personne ne tient ailleurs le compte des kilomètres. Le compteur cumulatif du micrologiciel 2.0 doit monter de la durée de chaque sortie : 106 636 couples, zéro recul, 0,1 heure d'écart au pire. Comparer les totaux aurait inventé un défaut.",
+                "en": "Nobody keeps a count of kilometres elsewhere. Firmware 2.0's cumulative counter must rise by the length of each trip: 106,636 pairs, zero rollbacks, 0.1 hour off at worst. Comparing totals would have invented a defect."
+              }
+            },
+            {
+              "ref": "07.13",
+              "quoi": {
+                "fr": "Séparer le développement de la production",
+                "en": "Separate development from production"
+              },
+              "ou": {
+                "fr": "profiles.yml, macro Jinja",
+                "en": "profiles.yml, Jinja macro"
+              },
+              "touche": [],
+              "note": {
+                "fr": "Même code, même dépôt, deux endroits : dev_staging et dev_marts d'un côté, staging et marts de l'autre. C'est la seule retouche de la macro des schémas dans tout le parcours.",
+                "en": "Same code, same repository, two places: dev_staging and dev_marts on one side, staging and marts on the other. It is the only change to the schema macro in the whole path."
+              }
+            },
+            {
+              "ref": "07.14",
+              "quoi": {
+                "fr": "Rebâtir d'un bloc, et comparer aux quatre passes par tranches",
+                "en": "Rebuild in one go, and compare with the four incremental runs"
+              },
+              "ou": {
+                "fr": "dbt build --full-refresh",
+                "en": "dbt build --full-refresh"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "201 542 des deux côtés. C'est le seul contrôle sérieux d'un modèle incrémental, à refaire après toute retouche : un incrémental jamais comparé à son plein rebâti est une promesse que personne n'a vérifiée.",
+                "en": "201,542 on both sides. It is the only serious check of an incremental model, to redo after every change: an incremental model never compared with its full rebuild is a promise nobody has checked."
+              }
+            },
+            {
+              "ref": "07.15",
+              "quoi": {
+                "fr": "Charger les libellés des codes d'anomalie depuis un fichier versionné",
+                "en": "Load the fault-code labels from a versioned file"
+              },
+              "ou": {
+                "fr": "dbt seed",
+                "en": "dbt seed"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "Les libellés ne vivent dans aucune table, seulement dans un guide du portail. Un seed les porte, et un modèle par-dessus leur donne un nom de dimension : le jour où un système les livrera, une seule ligne changera.",
+                "en": "The labels live in no table, only in a portal guide. A seed carries them, and a model on top gives them a dimension's name: the day a system delivers them, a single line will change."
+              }
+            },
+            {
+              "ref": "07.16",
+              "quoi": {
+                "fr": "Déplier les codes de chaque sortie dans leur propre fait, et reprendre la seconde livraison",
+                "en": "Unfold each trip's codes into their own fact, and pick up the second delivery"
+              },
+              "ou": {
+                "fr": "dbt, pipeline de DE",
+                "en": "dbt, DE pipeline"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "Une sortie peut lever plusieurs codes : le grain change, le fait aussi. 1 155 codes sur 1 140 sorties. L'usine, enfin rafraîchie, passe à 4 368 heures.",
+                "en": "A trip can raise several codes: the grain changes, so does the fact. 1,155 codes over 1,140 trips. The plant, finally refreshed, moves to 4,368 hours."
+              }
+            },
+            {
+              "ref": "07.17",
+              "quoi": {
+                "fr": "Compter ensemble ce que deux faits comptent séparément",
+                "en": "Count together what two facts count separately"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "211 véhicules signalent en roulant un liquide de refroidissement bas, et pas une réclamation ne porte ce code. Sans la dimension, ce zéro n'aurait nulle part où s'afficher.",
+                "en": "211 vehicles report low coolant while driving, and not one claim carries that code. Without the dimension, that zero would have nowhere to show."
+              }
+            },
+            {
+              "ref": "07.18",
+              "quoi": {
+                "fr": "Rendre le verdict de l'incident du compresseur, dans deux sources indépendantes",
+                "en": "Deliver the verdict on the compressor incident, from two independent sources"
+              },
+              "ou": {
+                "fr": "client DuckDB",
+                "en": "DuckDB CLI"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "La cohorte exposée réclame douze fois plus pour le refroidissement, et la télémétrie diverge sur les deux codes de ce circuit, et sur rien d'autre. Pas une preuve, mais assez pour un rappel ciblé : c'est ce qu'on demande à un entrepôt.",
+                "en": "The exposed cohort claims twelve times more for cooling, and telemetry diverges on that circuit's two codes and on nothing else. Not proof, but enough for a targeted recall: that is what you ask of a warehouse."
+              }
+            },
+            {
+              "ref": "07.19",
+              "quoi": {
+                "fr": "Compléter la livraison",
+                "en": "Complete the delivery note"
+              },
+              "ou": {
+                "fr": "LIVRAISON.md",
+                "en": "LIVRAISON.md"
+              },
+              "touche": [
+                "marts"
+              ],
+              "note": {
+                "fr": "Deux sections de plus. La ligne qui craignait l'incrémental pour le fait d'accumulation reçoit sa mesure : 154 réclamations réécrites sur 3 348, d'où la table.",
+                "en": "Two more sections. The line that worried about incremental loading for the accumulating fact gets its measure: 154 claims rewritten out of 3,348, hence the table."
+              }
             }
           ]
         },
