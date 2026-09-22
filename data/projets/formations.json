@@ -18,8 +18,8 @@
       "cartesEnTete": true,
       "carteDomaine": {
         "aria": {
-          "fr": "Carte du domaine des données : la chaîne, ses couches et ses dérivations",
-          "en": "Map of the data domain: the chain, its layers and its derivations"
+          "fr": "Carte du domaine des données : le socle, la chaîne, ses couches et ses dérivations, puis la gouvernance qui englobe le tout",
+          "en": "Map of the data domain: the base, the chain, its layers and its derivations, then the governance that takes in the whole"
         },
         "gouvernance": "dd-architecture-gouvernance",
         "chaine": [
@@ -71,6 +71,10 @@
           "fr": "Décision",
           "en": "Decision"
         },
+        "finNote": {
+          "fr": "Le but de la chaîne,\npas une formation.",
+          "en": "The chain's purpose,\nnot a course."
+        },
         "reperes": [
           {
             "fr": "Première frontière : la couche RAW. L'un la livre, l'autre la reprend, et personne ne transforme dans le couloir.",
@@ -109,9 +113,53 @@
         "en": "A self-taught path through the data trades, followed and written at the same time. It walks the chain end to end, from the source to the decision, one trade at a time, on the same data from start to finish. The material is what I wrote in order to learn: theory, lab, exercises and answer key for every module."
       },
       "texte": {
-        "fr": "## La chaîne, métier par métier\n\nUne donnée traverse sept métiers entre le système qui la produit et la décision qui s'appuie dessus. Le parcours suit cet ordre, et chaque formation reprend là où la précédente s'arrête : source, ingestion, couche `RAW`, transformation, couche `MARTS`, restitution, décision.\n\n1 — **Data Engineering** reçoit les systèmes source, les API et les fichiers. Il possède l'ingestion, le stockage et l'orchestration, et il livre une couche `RAW` fiable et à l'heure.\n\n2 — **Analytics Engineering** reprend cette couche `RAW`. Il possède la transformation et la modélisation, et il livre une étoile testée et documentée.\n\n3 — **Business Intelligence** part de l'étoile livrée. Elle possède le modèle sémantique et la restitution, et elle livre un rapport qui répond à une question.\n\n4 — **Data Science** part de données propres. Elle possède la modélisation statistique, et elle livre un modèle défendable avec son incertitude.\n\n5 — **Machine Learning Engineering** part d'un modèle validé. Il possède sa mise en production, et il livre un modèle servi, versionné et surveillé.\n\n6 — **AI Engineering** part d'un corpus et d'un modèle de langue. Il possède la récupération augmentée et les agents, et il livre un système qui répond et qui s'évalue.\n\n7 — **Architecture et gouvernance** reprend tout ce qui précède. Elle possède les règles, les choix et la séquence, et elle livre une cible défendable et une feuille de route.\n\nDeux malentendus naissent toujours aux jointures, et le parcours les traite de front. Entre 01 et 02, la frontière est la couche `RAW` : l'un la livre, l'autre la reprend, et personne ne transforme dans le couloir. Entre 02 et 03, la frontière est la définition d'un indicateur, qui vit dans les `MARTS` ou dans le modèle sémantique, jamais aux deux endroits.\n\nDeux titres courants du marché tombent dans ces formations sans porter le même nom. Analyste de données, c'est la Business Intelligence. MLOps, c'est le Machine Learning Engineering.\n\n## Les deux fondations\n\nSQL avancé et Snowflake ne sont pas des étapes de la chaîne : ce sont les fondations sur lesquelles les sept reposent. La première tient le langage, la seconde une plateforme d'entrepôt et sa certification. Elles se suivent quand on en a besoin, pas à un rang précis.\n\n## Ce qui est écrit à ce jour\n\nTrente-sept cours sur quatre-vingt-neuf ont leurs supports : Data Engineering en a huit sur douze, Analytics Engineering sept sur neuf, SQL avancé et Snowflake sont complètes. Les cinquante-deux autres sont nommés, à leur place, dans le parcours de leur formation, avec la mention « En construction, à venir ». Les cinq formations qui n'ont que leur plan des modules le publient tel quel.\n\nTout est en français, au format PDF, et chaque page porte sa mention de droit d'auteur.",
-        "en": "## The chain, trade by trade\n\nData crosses seven trades between the system that produces it and the decision that rests on it. The path follows that order, and each course picks up where the previous one stops: source, ingestion, the `RAW` layer, transformation, the `MARTS` layer, reporting, decision.\n\n1 — **Data Engineering** receives source systems, APIs and files. It owns ingestion, storage and orchestration, and it delivers a `RAW` layer that is reliable and on time.\n\n2 — **Analytics Engineering** picks up that `RAW` layer. It owns transformation and modelling, and it delivers a tested, documented star schema.\n\n3 — **Business Intelligence** starts from the delivered star. It owns the semantic model and reporting, and it delivers a report that answers a question.\n\n4 — **Data Science** starts from clean data. It owns statistical modelling, and it delivers a defensible model along with its uncertainty.\n\n5 — **Machine Learning Engineering** starts from a validated model. It owns putting it into production, and it delivers a model that is served, versioned and monitored.\n\n6 — **AI Engineering** starts from a corpus and a language model. It owns retrieval augmentation and agents, and it delivers a system that answers and that evaluates itself.\n\n7 — **Architecture and governance** takes in everything above. It owns the rules, the choices and the sequencing, and it delivers a defensible target and a roadmap.\n\nTwo misunderstandings always appear at the seams, and the path tackles both head on. Between 01 and 02, the border is the `RAW` layer: one delivers it, the other picks it up, and nobody transforms in the hallway. Between 02 and 03, the border is a metric's definition, which lives either in the `MARTS` layer or in the semantic model, never in both.\n\nTwo common job titles land inside these courses under another name. Data analyst is Business Intelligence. MLOps is Machine Learning Engineering.\n\n## The two foundations\n\nAdvanced SQL and Snowflake are not steps in the chain: they are the foundations the seven others rest on. The first holds the language, the second a warehouse platform and its certification. You take them when you need them, not at a fixed rank.\n\n## What is written so far\n\nThirty-seven courses out of eighty-nine have their material: Data Engineering has eight of twelve, Analytics Engineering seven of nine, and Advanced SQL and Snowflake are complete. The other fifty-two are named, in place, in their course's module list, marked \"Under construction, still to come\". The five courses that only have their module plan publish it as is.\n\nAll of it is in French, as PDF, and every page carries its copyright notice."
+        "fr": "## La chaîne, métier par métier\n\nUne donnée traverse sept métiers entre le système qui la produit et la décision qui s'appuie dessus. Le parcours suit cet ordre, et chaque formation reprend là où la précédente s'arrête : source, ingestion, couche `RAW`, transformation, couche `MARTS`, restitution, décision.\n\n1 — **Data Engineering** reçoit les systèmes source, les API et les fichiers. Il possède l'ingestion, le stockage et l'orchestration, et il livre une couche `RAW` fiable et à l'heure.\n\n2 — **Analytics Engineering** reprend cette couche `RAW`. Il possède la transformation et la modélisation, et il livre une étoile testée et documentée.\n\n3 — **Business Intelligence** part de l'étoile livrée. Elle possède le modèle sémantique et la restitution, et elle livre un rapport qui répond à une question.\n\n4 — **Data Science** part de données propres. Elle possède la modélisation statistique, et elle livre un modèle défendable avec son incertitude.\n\n5 — **Machine Learning Engineering** part d'un modèle validé. Il possède sa mise en production, et il livre un modèle servi, versionné et surveillé.\n\n6 — **AI Engineering** part d'un corpus et d'un modèle de langue. Il possède la récupération augmentée et les agents, et il livre un système qui répond et qui s'évalue.\n\n7 — **Architecture et gouvernance** reprend tout ce qui précède. Elle possède les règles, les choix et la séquence, et elle livre une cible défendable et une feuille de route.\n\nDeux malentendus naissent toujours aux jointures, et le parcours les traite de front. Entre 01 et 02, la frontière est la couche `RAW` : l'un la livre, l'autre la reprend, et personne ne transforme dans le couloir. Entre 02 et 03, la frontière est la définition d'un indicateur, qui vit dans les `MARTS` ou dans le modèle sémantique, jamais aux deux endroits.\n\nDeux titres courants du marché tombent dans ces formations sans porter le même nom. Analyste de données, c'est la Business Intelligence. MLOps, c'est le Machine Learning Engineering.\n\n## Les deux fondations\n\nSQL avancé et Snowflake ne sont pas des étapes de la chaîne : ce sont les fondations sur lesquelles les sept reposent. La première tient le langage, la seconde une plateforme d'entrepôt et sa certification. Elles se suivent quand on en a besoin, pas à un rang précis.\n\n## Ce qui est écrit à ce jour\n\nTrente-sept cours sur quatre-vingt-neuf ont leurs supports : Data Engineering en a huit sur douze, Analytics Engineering sept sur neuf, SQL avancé et Snowflake sont complètes. Les cinquante-deux autres sont nommés, à leur place, dans le parcours de leur formation, avec la mention « En construction ». Les cinq formations qui n'ont que leur plan des modules le publient tel quel.\n\nTout est en français, au format PDF, et chaque page porte sa mention de droit d'auteur.",
+        "en": "## The chain, trade by trade\n\nData crosses seven trades between the system that produces it and the decision that rests on it. The path follows that order, and each course picks up where the previous one stops: source, ingestion, the `RAW` layer, transformation, the `MARTS` layer, reporting, decision.\n\n1 — **Data Engineering** receives source systems, APIs and files. It owns ingestion, storage and orchestration, and it delivers a `RAW` layer that is reliable and on time.\n\n2 — **Analytics Engineering** picks up that `RAW` layer. It owns transformation and modelling, and it delivers a tested, documented star schema.\n\n3 — **Business Intelligence** starts from the delivered star. It owns the semantic model and reporting, and it delivers a report that answers a question.\n\n4 — **Data Science** starts from clean data. It owns statistical modelling, and it delivers a defensible model along with its uncertainty.\n\n5 — **Machine Learning Engineering** starts from a validated model. It owns putting it into production, and it delivers a model that is served, versioned and monitored.\n\n6 — **AI Engineering** starts from a corpus and a language model. It owns retrieval augmentation and agents, and it delivers a system that answers and that evaluates itself.\n\n7 — **Architecture and governance** takes in everything above. It owns the rules, the choices and the sequencing, and it delivers a defensible target and a roadmap.\n\nTwo misunderstandings always appear at the seams, and the path tackles both head on. Between 01 and 02, the border is the `RAW` layer: one delivers it, the other picks it up, and nobody transforms in the hallway. Between 02 and 03, the border is a metric's definition, which lives either in the `MARTS` layer or in the semantic model, never in both.\n\nTwo common job titles land inside these courses under another name. Data analyst is Business Intelligence. MLOps is Machine Learning Engineering.\n\n## The two foundations\n\nAdvanced SQL and Snowflake are not steps in the chain: they are the foundations the seven others rest on. The first holds the language, the second a warehouse platform and its certification. You take them when you need them, not at a fixed rank.\n\n## What is written so far\n\nThirty-seven courses out of eighty-nine have their material: Data Engineering has eight of twelve, Analytics Engineering seven of nine, and Advanced SQL and Snowflake are complete. The other fifty-two are named, in place, in their course's module list, marked \"Under construction\". The five courses that only have their module plan publish it as is.\n\nAll of it is in French, as PDF, and every page carries its copyright notice."
       }
+    },
+    {
+      "id": "dd-guide-installation",
+      "titre": {
+        "fr": "Le socle technique",
+        "en": "The technical base"
+      },
+      "accroche": {
+        "fr": "Un seul guide d'installation pour les neuf formations : la pile est montée une fois, en local, et sert du premier cours au dernier.",
+        "en": "A single installation guide for all nine courses: the stack is set up once, locally, and serves from the first course to the last."
+      },
+      "statut": {
+        "fr": "À faire en premier",
+        "en": "Do this first"
+      },
+      "sousMenu": true,
+      "intro": {
+        "fr": "Le parcours entier tourne sur un poste ordinaire, sans compte infonuagique et sans carte de crédit : Python, Git, DuckDB, Docker dans WSL 2, PostgreSQL et les pilotes. Le guide monte ce socle une fois pour toutes ; chaque formation n'allume ensuite que ce qui lui est propre, au début du cours qui s'en sert.",
+        "en": "The whole path runs on an ordinary workstation, with no cloud account and no credit card: Python, Git, DuckDB, Docker inside WSL 2, PostgreSQL and the drivers. The guide sets that base up once and for all; each course then turns on only what is its own, at the start of the module that uses it."
+      },
+      "carteNom": {
+        "fr": "Le socle technique",
+        "en": "The technical base"
+      },
+      "carteRole": {
+        "fr": "Un poste monté une fois, en local, pour les neuf formations.",
+        "en": "One workstation, set up once, locally, for all nine courses."
+      },
+      "items": [
+        {
+          "id": "guide-guide-installation",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/GUIDE_INSTALLATION.pdf",
+          "titre": {
+            "fr": "Le guide d'installation",
+            "en": "The installation guide"
+          },
+          "description": {
+            "fr": "Le socle commun aux neuf formations, étape par étape, avec les vérifications qui prouvent que chaque pièce répond.",
+            "en": "The base shared by the nine courses, step by step, with the checks that prove every piece answers."
+          }
+        }
+      ],
+      "parent": "domaine-donnees"
     },
     {
       "id": "dd-data-engineering",
@@ -122,10 +170,6 @@
       "accroche": {
         "fr": "L'ingestion, le stockage et l'orchestration : douze modules qui montent la couche RAW d'une entreprise manufacturière, des fichiers de l'ERP aux capteurs de l'usine.",
         "en": "Ingestion, storage and orchestration: twelve modules that build the RAW layer of a manufacturing company, from ERP files to plant sensors."
-      },
-      "statut": {
-        "fr": "8 cours sur 12",
-        "en": "8 of 12 courses"
       },
       "sousMenu": true,
       "intro": {
@@ -476,8 +520,8 @@
             "en": "What real time brings and what it costs: MQTT, the light protocol of the field, and Kafka, when the stream has to be kept and replayed."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -491,8 +535,8 @@
             "en": "Iceberg and Delta, ACID transactions over files, and the medallion architecture set against RAW, STAGING and MARTS."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -506,8 +550,8 @@
             "en": "The data contract between producer and consumer, and the choice each rule forces: block, or warn."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -521,8 +565,8 @@
             "en": "Boréal's two paths, built end to end on the generated sources, with nothing new to learn."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         }
       ],
@@ -586,10 +630,6 @@
       "accroche": {
         "fr": "La couche du milieu : neuf modules qui transforment la couche RAW reçue en trois étoiles testées et documentées, avec dbt sur DuckDB.",
         "en": "The middle layer: nine modules that turn the RAW layer received into three tested, documented star schemas, with dbt on DuckDB."
-      },
-      "statut": {
-        "fr": "7 cours sur 9",
-        "en": "7 of 9 courses"
       },
       "sousMenu": true,
       "intro": {
@@ -940,8 +980,8 @@
             "en": "The three stars, the conformed dimensions, the incremental models, the tests, the documentation and the CI, assembled with nothing new to discover."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         }
       ],
@@ -1072,7 +1112,7 @@
         "en": "Reporting: nine modules that start from the delivered star schema and lead to the report that answers a question, in Power BI."
       },
       "statut": {
-        "fr": "En construction, à venir",
+        "fr": "En construction",
         "en": "Under construction"
       },
       "sousMenu": true,
@@ -1092,8 +1132,8 @@
             "en": "What reporting owns, and where the chain stops at Analytics Engineering to start again here."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -1107,8 +1147,8 @@
             "en": "Relationships, cardinality, filter direction, and why a flat model makes DAX impossible."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -1122,8 +1162,8 @@
             "en": "The M language and query folding, then the honest question: every transformation done here escapes the repository, the tests and the lineage."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -1137,8 +1177,8 @@
             "en": "Calculated column versus measure, row context and filter context, the notion that stops everyone."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -1152,8 +1192,8 @@
             "en": "Year-to-date, year-over-year, moving averages, and the traps of an incomplete date table."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -1167,8 +1207,8 @@
             "en": "Choosing the chart by the question, and spotting what lies without meaning to: the truncated axis, the twelve-slice pie, the dual scale."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -1182,8 +1222,8 @@
             "en": "The problem of the number that differs from report to report, and where the definition lives: in the MARTS layer, or in the semantic model."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -1197,8 +1237,8 @@
             "en": "Workspaces, row-level security, gateways, incremental refresh, and what a capacity costs."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -1212,8 +1252,8 @@
             "en": "Certifying a dataset, framing self-service without smothering it, retiring a dead report. Then a full report on Boréal's MARTS layer."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         }
       ],
@@ -1253,7 +1293,7 @@
         "en": "Statistical modelling: eleven modules that start from clean data and lead to a defensible model, along with its uncertainty."
       },
       "statut": {
-        "fr": "En construction, à venir",
+        "fr": "En construction",
         "en": "Under construction"
       },
       "sousMenu": true,
@@ -1273,8 +1313,8 @@
             "en": "The method of a data science project, from the business question to the delivered model."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -1288,8 +1328,8 @@
             "en": "Series and frames, joins, reshaping, and the figure that helps you understand rather than decorate. The explicit bridge to the SQL already learned."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -1303,8 +1343,8 @@
             "en": "The three regimes of missing data, then the trade's central trap: data leakage, in its everyday forms."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -1318,8 +1358,8 @@
             "en": "The hypothesis test, what it says and above all what it does not, and the protocol of an honest A/B test."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -1333,8 +1373,8 @@
             "en": "Reading a coefficient and its uncertainty, collinearity, interactions. The module where you learn to explain, not only to predict."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -1348,8 +1388,8 @@
             "en": "Placed early, and on purpose: cross-validation, the bias-variance trade-off, and the metric chosen by the real cost of an error."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -1363,8 +1403,8 @@
             "en": "Logistic regression, decision tree, random forest, gradient boosting: what each one catches and what it misses."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -1378,8 +1418,8 @@
             "en": "Encodings, scaling, group aggregates, then the tool that prevents leakage by construction."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -1393,8 +1433,8 @@
             "en": "k-means, DBSCAN, principal component analysis, and the honest difficulty of evaluating a clustering."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -1408,8 +1448,8 @@
             "en": "Decomposition, stationarity, exponential smoothing, SARIMA, then the learning approach. Rolling validation and prediction intervals."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -1423,8 +1463,8 @@
             "en": "Data drift versus concept drift, when to retrain, and what belongs to the data engineer rather than to the scientist."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         }
       ],
@@ -1464,7 +1504,7 @@
         "en": "Putting a model into production: nine modules that lead from a throwaway notebook to a model served, versioned and monitored. What the market calls MLOps."
       },
       "statut": {
-        "fr": "En construction, à venir",
+        "fr": "En construction",
         "en": "Under construction"
       },
       "sousMenu": true,
@@ -1484,8 +1524,8 @@
             "en": "Who owns what between the scientist and the engineer, and exactly where the boundary runs."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -1499,8 +1539,8 @@
             "en": "Leaving Jupyter without losing the trail: structure, configuration, logging, tests. The notebook goes back to being a draft."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -1514,8 +1554,8 @@
             "en": "Comparing fifty runs without fooling yourself, then answering in an audit: which exact model ran on March 12, on what data."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -1529,8 +1569,8 @@
             "en": "What reproducible means, the three degrees you can claim, and what each one costs."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -1544,8 +1584,8 @@
             "en": "The training pipeline as a graph, and the quality gate that stops a bad model from being promoted on its own."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -1559,8 +1599,8 @@
             "en": "The training/serving skew, the trade's costliest mistake, and the cheap version of a feature store."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -1574,8 +1614,8 @@
             "en": "Batch prediction written to the warehouse versus online serving behind an API, and why the second is almost always chosen too fast."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -1589,8 +1629,8 @@
             "en": "Logging predictions and, harder, recovering ground truth. Setting a threshold that triggers an action rather than one more alert."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -1604,8 +1644,8 @@
             "en": "What can be tested automatically on a model and what cannot, then a model taken end to end, with its rollback procedure."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         }
       ],
@@ -1645,7 +1685,7 @@
         "en": "Systems built on a language model: nine modules that lead from the prompt to a system that answers, cites its sources and evaluates itself."
       },
       "statut": {
-        "fr": "En construction, à venir",
+        "fr": "En construction",
         "en": "Under construction"
       },
       "sousMenu": true,
@@ -1665,8 +1705,8 @@
             "en": "What exists, what it costs, and what can be run locally."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -1680,8 +1720,8 @@
             "en": "Tokens, context window, temperature. What actually works in a prompt and what is folklore."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -1695,8 +1735,8 @@
             "en": "Why retrieval rather than fine-tuning, and the minimal setup built by hand so you see every part."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -1710,8 +1750,8 @@
             "en": "Where the minimal setup breaks: hybrid search, reranking, chunking that respects structure, verifiable answers."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -1725,8 +1765,8 @@
             "en": "Function calling described honestly, the model proposes and the code disposes, with the mandatory guardrails: budget, step count, confirmation."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -1740,8 +1780,8 @@
             "en": "The module that separates a prototype from a product: an evaluation set, observable criteria, and why a demo that works proves nothing."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -1755,8 +1795,8 @@
             "en": "Cost per call and per user, caching, routing between a small and a large model. Engineering trade-offs, with the numbers."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -1770,8 +1810,8 @@
             "en": "Direct and indirect prompt injection, the border between instruction and data, and what you are allowed to send to a third party."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         },
         {
@@ -1785,8 +1825,8 @@
             "en": "Observing a non-deterministic system, tracing a conversation, then an assistant that answers on the warehouse built in the earlier courses."
           },
           "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
+            "fr": "En construction",
+            "en": "Under construction"
           }
         }
       ],
@@ -1816,187 +1856,6 @@
       "parent": "domaine-donnees"
     },
     {
-      "id": "dd-architecture-gouvernance",
-      "titre": {
-        "fr": "Architecture et gouvernance",
-        "en": "Architecture and governance"
-      },
-      "accroche": {
-        "fr": "La formation qui referme la chaîne : neuf modules sur les règles, les choix et la séquence, jusqu'à une cible défendable et sa feuille de route.",
-        "en": "The course that closes the chain: nine modules on rules, choices and sequencing, up to a defensible target and its roadmap."
-      },
-      "statut": {
-        "fr": "En construction, à venir",
-        "en": "Under construction"
-      },
-      "sousMenu": true,
-      "intro": {
-        "fr": "La septième formation, celle qui reprend tout ce qui précède. Son cours 00, la carte du domaine, sert autant d'entrée au parcours entier que de conclusion. Le plan des modules est validé ; les supports restent à écrire.",
-        "en": "The seventh course, the one that takes in everything above. Its course 00, the map of the domain, works as an entry point to the whole path as much as a conclusion. The module plan is validated; the material is still to be written."
-      },
-      "cours": [
-        {
-          "numero": "00",
-          "titre": {
-            "fr": "La carte du domaine des données",
-            "en": "The map of the data domain"
-          },
-          "resume": {
-            "fr": "Les rôles, la chaîne, qui fait quoi et où sont les frontières, avec les malentendus classiques qui naissent aux jointures.",
-            "en": "The roles, the chain, who does what and where the borders are, with the classic misunderstandings that appear at the seams."
-          },
-          "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
-          }
-        },
-        {
-          "numero": "01",
-          "titre": {
-            "fr": "Architectures de référence",
-            "en": "Reference architectures"
-          },
-          "resume": {
-            "fr": "Entrepôt, lac, lakehouse, maillage de données : ce que chacun résout, ce qu'il coûte, et dans quelle taille d'entreprise il a du sens.",
-            "en": "Warehouse, lake, lakehouse, data mesh: what each one solves, what it costs, and at what company size it makes sense."
-          },
-          "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
-          }
-        },
-        {
-          "numero": "02",
-          "titre": {
-            "fr": "Modélisation à l'échelle de l'entreprise",
-            "en": "Enterprise-scale modelling"
-          },
-          "resume": {
-            "fr": "La matrice de bus comme outil de cadrage, et Kimball, Inmon et Data Vault comparés sur des critères vérifiables plutôt que sur des convictions.",
-            "en": "The bus matrix as a framing tool, and Kimball, Inmon and Data Vault compared on verifiable criteria rather than convictions."
-          },
-          "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
-          }
-        },
-        {
-          "numero": "03",
-          "titre": {
-            "fr": "Choisir sa pile, construire ou acheter",
-            "en": "Choosing a stack, build or buy"
-          },
-          "resume": {
-            "fr": "Une grille de décision utilisable : coût total de possession, verrouillage fournisseur, coût de sortie, compétence de l'équipe.",
-            "en": "A usable decision grid: total cost of ownership, vendor lock-in, exit cost, team skills."
-          },
-          "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
-          }
-        },
-        {
-          "numero": "04",
-          "titre": {
-            "fr": "Gouvernance, catalogue et lignage",
-            "en": "Governance, catalogue and lineage"
-          },
-          "resume": {
-            "fr": "Ce qui fonctionne et ce qui devient une réunion de plus, et comment on répond à « d'où vient ce chiffre » en moins de dix minutes.",
-            "en": "What works and what turns into one more meeting, and how you answer « where does this number come from » in under ten minutes."
-          },
-          "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
-          }
-        },
-        {
-          "numero": "05",
-          "titre": {
-            "fr": "Qualité et contrats de données",
-            "en": "Data quality and data contracts"
-          },
-          "resume": {
-            "fr": "Le contrat comme engagement entre un producteur et un consommateur, et la conduite d'un incident de données, du signalement au post-mortem.",
-            "en": "The contract as a commitment between a producer and a consumer, and how a data incident is run, from the report to the post-mortem."
-          },
-          "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
-          }
-        },
-        {
-          "numero": "06",
-          "titre": {
-            "fr": "Sécurité, confidentialité et conformité",
-            "en": "Security, privacy and compliance"
-          },
-          "resume": {
-            "fr": "Masquage, anonymisation et pseudonymisation, avec ce que chacune garantit vraiment. La Loi 25 en pratique, comparée au RGPD.",
-            "en": "Masking, anonymization and pseudonymization, with what each really guarantees. Quebec's Law 25 in practice, compared with the GDPR."
-          },
-          "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
-          }
-        },
-        {
-          "numero": "07",
-          "titre": {
-            "fr": "Coût et FinOps des données",
-            "en": "Cost and data FinOps"
-          },
-          "resume": {
-            "fr": "Les postes qui explosent en silence : la requête planifiée devenue inutile, le tableau de bord que personne n'ouvre, la rétention jamais révisée.",
-            "en": "The line items that quietly explode: the scheduled query nobody needs any more, the dashboard nobody opens, the retention never revisited."
-          },
-          "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
-          }
-        },
-        {
-          "numero": "08",
-          "titre": {
-            "fr": "Feuille de route et capstone",
-            "en": "Roadmap and capstone"
-          },
-          "resume": {
-            "fr": "Choisir la prochaine marche plutôt que la cible idéale, et séquencer une migration sans arrêter l'entreprise.",
-            "en": "Choosing the next step rather than the ideal target, and sequencing a migration without stopping the business."
-          },
-          "etat": {
-            "fr": "En construction, à venir",
-            "en": "Under construction, still to come"
-          }
-        }
-      ],
-      "carteNom": {
-        "fr": "Architecture et gouvernance",
-        "en": "Architecture and governance"
-      },
-      "carteRole": {
-        "fr": "La vue de dessus : règles, cible, séquence. Elle ne construit rien.",
-        "en": "The view from above: rules, target, sequence. It builds nothing."
-      },
-      "items": [
-        {
-          "id": "arch-plan-modules",
-          "type": "pdf",
-          "fichier": "assets/formations/data-domain/07_Data_Architecture_et_Gouvernance/PLAN_MODULES.pdf",
-          "titre": {
-            "fr": "Le plan des modules",
-            "en": "The module plan"
-          },
-          "description": {
-            "fr": "Le cahier de charges de la formation : les neuf cours, et ce que chacun tranche.",
-            "en": "The course's specification: the nine modules, and what each one settles."
-          }
-        }
-      ],
-      "parent": "domaine-donnees"
-    },
-    {
       "id": "dd-sql",
       "titre": {
         "fr": "SQL avancé",
@@ -2005,10 +1864,6 @@
       "accroche": {
         "fr": "La fondation « langage » du parcours : le SQL de l'analyse d'abord, le SQL du moteur ensuite, avec deux laboratoires jumeaux par module, sur DuckDB et sur PostgreSQL.",
         "en": "The path's language foundation: the SQL of analysis first, the SQL of the engine after, with twin labs for every module, on DuckDB and on PostgreSQL."
-      },
-      "statut": {
-        "fr": "12 modules, complète",
-        "en": "12 modules, complete"
       },
       "sousMenu": true,
       "intro": {
@@ -2638,10 +2493,6 @@
         "fr": "La fondation « plateforme » : huit modules calibrés sur les cinq domaines de la certification SnowPro Core, examen blanc compris.",
         "en": "The platform foundation: eight modules calibrated on the five domains of the SnowPro Core certification, mock exam included."
       },
-      "statut": {
-        "fr": "8 modules, complète",
-        "en": "8 modules, complete"
-      },
       "sousMenu": true,
       "intro": {
         "fr": "Une formation à double usage : apprendre la plateforme, ou préparer la certification. Les modules suivent la pondération officielle de l'examen, du plus rentable au moins rentable, et le dernier est un examen blanc de cent questions, chronométré et corrigé. Elle est complète et en pause depuis septembre 2026.",
@@ -2908,44 +2759,181 @@
       "parent": "domaine-donnees"
     },
     {
-      "id": "dd-guide-installation",
+      "id": "dd-architecture-gouvernance",
       "titre": {
-        "fr": "Le socle technique",
-        "en": "The technical base"
+        "fr": "Architecture et gouvernance",
+        "en": "Architecture and governance"
       },
       "accroche": {
-        "fr": "Un seul guide d'installation pour les neuf formations : la pile est montée une fois, en local, et sert du premier cours au dernier.",
-        "en": "A single installation guide for all nine courses: the stack is set up once, locally, and serves from the first course to the last."
+        "fr": "La formation qui referme la chaîne : neuf modules sur les règles, les choix et la séquence, jusqu'à une cible défendable et sa feuille de route.",
+        "en": "The course that closes the chain: nine modules on rules, choices and sequencing, up to a defensible target and its roadmap."
       },
       "statut": {
-        "fr": "1 document",
-        "en": "1 document"
+        "fr": "En construction",
+        "en": "Under construction"
       },
       "sousMenu": true,
       "intro": {
-        "fr": "Le parcours entier tourne sur un poste ordinaire, sans compte infonuagique et sans carte de crédit : Python, Git, DuckDB, Docker dans WSL 2, PostgreSQL et les pilotes. Le guide monte ce socle une fois pour toutes ; chaque formation n'allume ensuite que ce qui lui est propre, au début du cours qui s'en sert.",
-        "en": "The whole path runs on an ordinary workstation, with no cloud account and no credit card: Python, Git, DuckDB, Docker inside WSL 2, PostgreSQL and the drivers. The guide sets that base up once and for all; each course then turns on only what is its own, at the start of the module that uses it."
+        "fr": "La septième formation, celle qui reprend tout ce qui précède. Son cours 00, la carte du domaine, sert autant d'entrée au parcours entier que de conclusion. Le plan des modules est validé ; les supports restent à écrire.",
+        "en": "The seventh course, the one that takes in everything above. Its course 00, the map of the domain, works as an entry point to the whole path as much as a conclusion. The module plan is validated; the material is still to be written."
       },
+      "cours": [
+        {
+          "numero": "00",
+          "titre": {
+            "fr": "La carte du domaine des données",
+            "en": "The map of the data domain"
+          },
+          "resume": {
+            "fr": "Les rôles, la chaîne, qui fait quoi et où sont les frontières, avec les malentendus classiques qui naissent aux jointures.",
+            "en": "The roles, the chain, who does what and where the borders are, with the classic misunderstandings that appear at the seams."
+          },
+          "etat": {
+            "fr": "En construction",
+            "en": "Under construction"
+          }
+        },
+        {
+          "numero": "01",
+          "titre": {
+            "fr": "Architectures de référence",
+            "en": "Reference architectures"
+          },
+          "resume": {
+            "fr": "Entrepôt, lac, lakehouse, maillage de données : ce que chacun résout, ce qu'il coûte, et dans quelle taille d'entreprise il a du sens.",
+            "en": "Warehouse, lake, lakehouse, data mesh: what each one solves, what it costs, and at what company size it makes sense."
+          },
+          "etat": {
+            "fr": "En construction",
+            "en": "Under construction"
+          }
+        },
+        {
+          "numero": "02",
+          "titre": {
+            "fr": "Modélisation à l'échelle de l'entreprise",
+            "en": "Enterprise-scale modelling"
+          },
+          "resume": {
+            "fr": "La matrice de bus comme outil de cadrage, et Kimball, Inmon et Data Vault comparés sur des critères vérifiables plutôt que sur des convictions.",
+            "en": "The bus matrix as a framing tool, and Kimball, Inmon and Data Vault compared on verifiable criteria rather than convictions."
+          },
+          "etat": {
+            "fr": "En construction",
+            "en": "Under construction"
+          }
+        },
+        {
+          "numero": "03",
+          "titre": {
+            "fr": "Choisir sa pile, construire ou acheter",
+            "en": "Choosing a stack, build or buy"
+          },
+          "resume": {
+            "fr": "Une grille de décision utilisable : coût total de possession, verrouillage fournisseur, coût de sortie, compétence de l'équipe.",
+            "en": "A usable decision grid: total cost of ownership, vendor lock-in, exit cost, team skills."
+          },
+          "etat": {
+            "fr": "En construction",
+            "en": "Under construction"
+          }
+        },
+        {
+          "numero": "04",
+          "titre": {
+            "fr": "Gouvernance, catalogue et lignage",
+            "en": "Governance, catalogue and lineage"
+          },
+          "resume": {
+            "fr": "Ce qui fonctionne et ce qui devient une réunion de plus, et comment on répond à « d'où vient ce chiffre » en moins de dix minutes.",
+            "en": "What works and what turns into one more meeting, and how you answer « where does this number come from » in under ten minutes."
+          },
+          "etat": {
+            "fr": "En construction",
+            "en": "Under construction"
+          }
+        },
+        {
+          "numero": "05",
+          "titre": {
+            "fr": "Qualité et contrats de données",
+            "en": "Data quality and data contracts"
+          },
+          "resume": {
+            "fr": "Le contrat comme engagement entre un producteur et un consommateur, et la conduite d'un incident de données, du signalement au post-mortem.",
+            "en": "The contract as a commitment between a producer and a consumer, and how a data incident is run, from the report to the post-mortem."
+          },
+          "etat": {
+            "fr": "En construction",
+            "en": "Under construction"
+          }
+        },
+        {
+          "numero": "06",
+          "titre": {
+            "fr": "Sécurité, confidentialité et conformité",
+            "en": "Security, privacy and compliance"
+          },
+          "resume": {
+            "fr": "Masquage, anonymisation et pseudonymisation, avec ce que chacune garantit vraiment. La Loi 25 en pratique, comparée au RGPD.",
+            "en": "Masking, anonymization and pseudonymization, with what each really guarantees. Quebec's Law 25 in practice, compared with the GDPR."
+          },
+          "etat": {
+            "fr": "En construction",
+            "en": "Under construction"
+          }
+        },
+        {
+          "numero": "07",
+          "titre": {
+            "fr": "Coût et FinOps des données",
+            "en": "Cost and data FinOps"
+          },
+          "resume": {
+            "fr": "Les postes qui explosent en silence : la requête planifiée devenue inutile, le tableau de bord que personne n'ouvre, la rétention jamais révisée.",
+            "en": "The line items that quietly explode: the scheduled query nobody needs any more, the dashboard nobody opens, the retention never revisited."
+          },
+          "etat": {
+            "fr": "En construction",
+            "en": "Under construction"
+          }
+        },
+        {
+          "numero": "08",
+          "titre": {
+            "fr": "Feuille de route et capstone",
+            "en": "Roadmap and capstone"
+          },
+          "resume": {
+            "fr": "Choisir la prochaine marche plutôt que la cible idéale, et séquencer une migration sans arrêter l'entreprise.",
+            "en": "Choosing the next step rather than the ideal target, and sequencing a migration without stopping the business."
+          },
+          "etat": {
+            "fr": "En construction",
+            "en": "Under construction"
+          }
+        }
+      ],
       "carteNom": {
-        "fr": "Le socle technique",
-        "en": "The technical base"
+        "fr": "Architecture et gouvernance",
+        "en": "Architecture and governance"
       },
       "carteRole": {
-        "fr": "Un poste monté une fois, en local, pour les neuf formations.",
-        "en": "One workstation, set up once, locally, for all nine courses."
+        "fr": "Elle englobe tout ce qui précède et se suit en dernier : règles, cible, séquence.",
+        "en": "It takes in everything above and comes last: rules, target, sequence."
       },
       "items": [
         {
-          "id": "guide-guide-installation",
+          "id": "arch-plan-modules",
           "type": "pdf",
-          "fichier": "assets/formations/data-domain/GUIDE_INSTALLATION.pdf",
+          "fichier": "assets/formations/data-domain/07_Data_Architecture_et_Gouvernance/PLAN_MODULES.pdf",
           "titre": {
-            "fr": "Le guide d'installation",
-            "en": "The installation guide"
+            "fr": "Le plan des modules",
+            "en": "The module plan"
           },
           "description": {
-            "fr": "Le socle commun aux neuf formations, étape par étape, avec les vérifications qui prouvent que chaque pièce répond.",
-            "en": "The base shared by the nine courses, step by step, with the checks that prove every piece answers."
+            "fr": "Le cahier de charges de la formation : les neuf cours, et ce que chacun tranche.",
+            "en": "The course's specification: the nine modules, and what each one settles."
           }
         }
       ],

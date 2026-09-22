@@ -1467,11 +1467,13 @@ const Contenu = (function () {
 
   // Même principe que la carte des stratégies : les ids des sous-sections dans
   // le JSON (clé `carteDomaine` de la section-hub), la géométrie ici. Elle
-  // redessine la carte des métiers du parcours : le bandeau de gouvernance qui
-  // surplombe, la chaîne des trois métiers avec sous chacun la bande des
-  // couches qu'il possède, la fourche des trois dérivations qui sortent de la
-  // chaîne et y reviennent, les deux fondations en socle, et le poste de
-  // travail. Les deux repères numérotés marquent les frontières où naissent
+  // redessine la carte des métiers du parcours dans l'ordre où il se suit :
+  // le poste de travail en haut, à monter avant tout le reste ; puis un cadre
+  // qui tient la chaîne des trois métiers (sous chacun la bande des couches
+  // qu'il possède), la fourche des trois dérivations qui sortent de la chaîne
+  // et y reviennent, et les deux fondations ; la gouvernance ferme ce cadre
+  // par le bas, parce qu'elle englobe tout ce qu'il contient et se suit en
+  // dernier. Les deux repères numérotés marquent les frontières où naissent
   // les malentendus ; la prose sous la carte les explique. Au large, la carte
   // remplace les cartes du sous-hub ; en mobile elles reprennent la main.
   function creerCarteDomaine(section, enfants, projet, pageSection) {
@@ -1483,20 +1485,25 @@ const Contenu = (function () {
       if (s && s.id) parId[s.id] = s;
     });
 
-    // La grille. Trois colonnes de 286 pour la chaîne, le nœud de fin à droite,
-    // et une rangée par étage. Rien de tout cela ne vient du JSON.
-    const M = 8, W = 1064;
+    // La grille. Le cadre de la gouvernance (ENV) court sur toute la largeur ;
+    // le contenu s'y retire de 16 unités (M). Trois colonnes de 286 pour la
+    // chaîne, le nœud de fin à droite, et une rangée par étage. Rien de tout
+    // cela ne vient du JSON.
+    const L = 1140;
+    const ENV_X = 8, ENV_W = L - 2 * ENV_X;
+    const M = ENV_X + 16, W = ENV_W - 32;
     const COL_W = 286, COL_PAS = 310;
-    const FIN_X = 938, FIN_W = 134;
-    const GOUV_Y = 8, GOUV_H = 60;
-    const CH_Y = 104, CH_H = 86;
-    const CO_Y = 200, CO_H = 46;
-    const NOTE_FOURCHE_Y = 276;
-    const FO_TOP = 292, FO_Y = 312, FO_H = 86, FO_BAS = 418;
-    const NOTE_RETOUR_Y = 440;
-    const FD_ETIQ_Y = 474, FD_Y = 486, FD_H = 86;
-    const SO_Y = 600, SO_H = 60;
-    const H = 670;
+    const FIN_X = M + 930, FIN_W = M + W - (M + 930);
+    const SO_Y = 8, SO_H = 60;
+    const ENV_Y = 92;
+    const CH_Y = 116, CH_H = 86;
+    const CO_Y = 212, CO_H = 46;
+    const NOTE_FOURCHE_Y = 288;
+    const FO_TOP = 304, FO_Y = 324, FO_H = 86, FO_BAS = 430;
+    const NOTE_RETOUR_Y = 452;
+    const FD_ETIQ_Y = 486, FD_Y = 498, FD_H = 86;
+    const GOUV_Y = 608, GOUV_H = 60;
+    const H = GOUV_Y + GOUV_H + 8;
     const FOURCHE_L = 906; // la fourche court sous les trois colonnes
     const colX = function (i) { return M + i * COL_PAS; };
     const arrondi = function (n) { return Math.round(n * 10) / 10; };
@@ -1552,8 +1559,24 @@ const Contenu = (function () {
 
     let sortie = "";
 
-    // Le bandeau de gouvernance, au-dessus de tout : elle ne construit rien.
-    if (plan.gouvernance) sortie += noeud(plan.gouvernance, M, GOUV_Y, W, GOUV_H, true);
+    // Le poste de travail, tout en haut : il se monte avant tout le reste et
+    // porte les neuf formations. Un chevron descend vers le cadre.
+    if (plan.socle) {
+      const cx = L / 2;
+      sortie +=
+        noeud(plan.socle, ENV_X, SO_Y, ENV_W, SO_H, true) +
+        '<path class="cd-fleche" d="M ' + (cx - 7) + " " + (SO_Y + SO_H + 9) +
+        " L " + (cx + 7) + " " + (SO_Y + SO_H + 9) + " L " + cx + " " +
+        (ENV_Y - 7) + ' Z"></path>';
+    }
+
+    // Le cadre de la gouvernance : il entoure tout ce qui suit, et le bandeau
+    // de la gouvernance le ferme par le bas (dessiné en dernier, par-dessus).
+    if (plan.gouvernance) {
+      sortie +=
+        '<rect class="cd-enveloppe" x="' + ENV_X + '" y="' + ENV_Y + '" width="' + ENV_W +
+        '" height="' + (GOUV_Y + GOUV_H - ENV_Y) + '" rx="6"></rect>';
+    }
 
     // La chaîne, et la bande des couches que chaque métier possède.
     const couches = Array.isArray(plan.couches) ? plan.couches : [];
@@ -1575,23 +1598,29 @@ const Contenu = (function () {
       });
     });
 
-    // Le nœud de fin : la décision. Un repère, pas un lien.
+    // Le nœud de fin : la décision. Un repère, pas un lien : pas de classe
+    // cd-noeud, donc ni survol ni estompage, et un cadre pointillé qui le dit
+    // passif. La note (une ligne par saut de ligne) précise pourquoi.
     if (plan.fin) {
       const dernier = colX(plan.chaine.length - 1) + COL_W;
+      const lignesNote = (texteLocalise(plan.finNote) || "").split("\n").filter(Boolean);
+      // Sans note, le nom se centre ; avec, il monte pour laisser la place.
+      const yNom = lignesNote.length ? CH_Y + 30 : CH_Y + CH_H / 2 + 5;
       sortie +=
         chevron(dernier, FIN_X, CH_Y + CH_H / 2) +
-        '<g class="cd-noeud cd-fin" aria-hidden="true">' +
+        '<g class="cd-fin" aria-hidden="true">' +
         '<rect x="' + FIN_X + '" y="' + CH_Y + '" width="' + FIN_W +
         '" height="' + CH_H + '" rx="5"></rect>' +
-        // Sans note, le nom se centre : un bandeau de 134 unités n'a pas la
-        // place d'une seconde ligne, et un titre collé en haut fait bancal.
-        '<text class="cd-nom" x="' + (FIN_X + 16) + '" y="' +
-        (CH_Y + (plan.finNote ? 38 : CH_H / 2 + 5)) + '">' +
+        '<text class="cd-nom" x="' + (FIN_X + 16) + '" y="' + yNom + '">' +
         echapper(texteLocalise(plan.fin)) + "</text>" +
-        (plan.finNote
-          ? '<text class="cd-role" x="' + (FIN_X + 16) + '" y="' + (CH_Y + 58) + '">' +
-            echapper(texteLocalise(plan.finNote)) + "</text>"
-          : "") +
+        lignesNote
+          .map(function (ligne, i) {
+            return (
+              '<text class="cd-role" x="' + (FIN_X + 16) + '" y="' +
+              (CH_Y + 52 + i * 16) + '">' + echapper(ligne) + "</text>"
+            );
+          })
+          .join("") +
         "</g>";
     }
 
@@ -1663,12 +1692,14 @@ const Contenu = (function () {
       });
     }
 
-    // Le poste de travail, tout en bas : il porte les neuf.
-    if (plan.socle) sortie += noeud(plan.socle, M, SO_Y, W, SO_H, true);
+    // La gouvernance, en dernier : son bandeau ferme le cadre par le bas.
+    if (plan.gouvernance) {
+      sortie += noeud(plan.gouvernance, ENV_X, GOUV_Y, ENV_W, GOUV_H, true);
+    }
 
     return (
       '<figure class="carte-domaine">' +
-      '<svg viewBox="0 0 1080 ' + H + '" role="img" aria-label="' +
+      '<svg viewBox="0 0 ' + L + " " + H + '" role="img" aria-label="' +
       echapper(texteLocalise(plan.aria) || texteLocalise(section.titre)) + '">' +
       sortie +
       "</svg>" +
@@ -1909,7 +1940,14 @@ const Contenu = (function () {
   // d'items. Permet à une section-hub (sans items) ou en attente d'annoncer son
   // état plutôt qu'un décompte trompeur.
   function libelleCarteSection(section) {
-    return texteLocalise(section.statut) || libelleCompte(section);
+    const statut = texteLocalise(section.statut);
+    if (statut) return statut;
+    // Une formation à index de cours (clé `cours`) : ses items ne sont que
+    // ses documents de cadrage, et leur compte tromperait sur sa taille.
+    if (Array.isArray(section.cours) && section.cours.length) {
+      return window.I18n.t("hub.ouvrir");
+    }
+    return libelleCompte(section);
   }
 
   // Carte d'un pilier dans la table des matières d'un hub — grille OU pyramide.
