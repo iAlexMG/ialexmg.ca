@@ -1387,130 +1387,6 @@ a.fichier-nom:hover { color: var(--couleur-accent); }
   font-family: var(--police-corps);
   font-size: 0.85rem;
 }
-/* Les étapes du labo d'un cours, repliées sous sa ligne : le repère, la
-   tâche réelle, une conduite pointillée jusqu'à l'endroit où elle se fait ;
-   un clic déplie pourquoi elle existe. Une étape de montage s'estompe, une
-   étape visée depuis le schéma s'allume d'un filet accent. */
-.cours-plus {
-  flex-basis: 100%;
-  padding-left: calc(2ch + 1rem);
-}
-.cours-deplier {
-  background: none;
-  border: 0;
-  padding: 0.15rem 0;
-  font-family: var(--police-mono);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--couleur-accent);
-  cursor: pointer;
-}
-.cours-deplier::after { content: " ▾"; }
-.cours-deplier[aria-expanded="true"]::after { content: " ▴"; }
-.cours-deplier:hover { text-decoration: underline; text-underline-offset: 3px; }
-.cours-etapes {
-  flex-basis: 100%;
-  list-style: none;
-  margin: 0.3rem 0 0.2rem;
-  padding: 0 0 0 calc(2ch + 1rem);
-}
-.etape {
-  margin-left: -0.6rem;
-  padding-left: 0.6rem;
-  border-radius: 2px;
-  transition: box-shadow var(--transition);
-}
-.etape-visee { box-shadow: inset 2px 0 0 var(--couleur-accent); }
-.etape-rangee {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.15rem 0.6rem;
-  width: 100%;
-  padding: 0.3rem 0;
-  background: none;
-  border: 0;
-  font: inherit;
-  text-align: left;
-  color: inherit;
-  cursor: pointer;
-}
-.etape-ref {
-  flex: none;
-  width: 3rem;
-  font-size: 0.72rem;
-  color: var(--couleur-texte-doux);
-  font-variant-numeric: tabular-nums;
-}
-.etape-quoi {
-  flex: 1 1 0;
-  min-width: 0;
-  font-family: var(--police-corps);
-  font-size: 0.86rem;
-  line-height: 1.4;
-  color: var(--couleur-texte);
-}
-.etape-rangee:hover .etape-quoi { color: var(--couleur-accent); }
-.etape-conduite { display: none; }
-.etape-ou {
-  flex-basis: 100%;
-  padding-left: calc(3rem + 0.6rem);
-  font-size: 0.7rem;
-  color: var(--couleur-texte-doux);
-}
-.etape-une-fois {
-  font-family: var(--police-mono);
-  font-size: 0.64rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--couleur-texte-doux);
-  white-space: nowrap;
-}
-.etape-montage .etape-quoi { color: var(--couleur-texte-doux); }
-.etape-note {
-  margin: 0.1rem 0 0.6rem calc(3rem + 0.6rem);
-  padding-left: 0.8rem;
-  border-left: 1px solid var(--couleur-bordure);
-  max-width: 70ch;
-  font-family: var(--police-corps);
-  font-size: 0.84rem;
-  color: var(--couleur-texte-doux);
-}
-/* Au large, l'endroit se range à droite, au bout de la conduite. */
-@media (min-width: 640px) {
-  .etape-quoi { flex: 0 1 auto; max-width: 68%; }
-  .etape-conduite {
-    display: block;
-    flex: 1 1 1.5rem;
-    border-bottom: 1px dotted var(--couleur-bordure);
-    transform: translateY(-4px);
-  }
-  .etape-ou { flex-basis: auto; padding-left: 0; white-space: nowrap; }
-}
-/* L'étape que le cours touche, en tête de son résumé. */
-.cours-etape {
-  display: inline-block;
-  margin-right: 0.55rem;
-  padding: 0 0.4rem;
-  border: 1px solid var(--couleur-bordure);
-  border-radius: var(--rayon);
-  font-family: var(--police-mono);
-  font-size: 0.64rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--couleur-texte-doux);
-  vertical-align: 1px;
-}
-/* Une ligne visée depuis le schéma : elle se dégage de l'en-tête collant et
-   s'allume un instant. */
-.cours-ligne { scroll-margin-top: 88px; }
-.cours-ligne:target { animation: cours-vise 1.8s ease-out; }
-@keyframes cours-vise {
-  from { background: var(--couleur-surface-alt); box-shadow: inset 3px 0 0 var(--couleur-accent); }
-  to { background: transparent; box-shadow: inset 3px 0 0 transparent; }
-}
 
 /* ----- Schéma des étapes d'une formation (clé `phases`), en couloirs -----
    Une colonne par étape, coiffée de son nom, et une rangée par cours dans
@@ -1566,6 +1442,11 @@ a.fichier-nom:hover { color: var(--couleur-accent); }
 }
 .sc-noeud:hover,
 .sc-noeud:focus-visible { border-color: var(--couleur-accent); color: var(--couleur-texte); }
+/* Le cours dont la fiche est ouverte sous la carte : cadre accent doublé. */
+.sc-choisi {
+  border-color: var(--couleur-accent);
+  box-shadow: 0 0 0 1px var(--couleur-accent);
+}
 .sc-num {
   font-family: var(--police-mono);
   font-size: 0.8rem;
@@ -1597,28 +1478,6 @@ a.fichier-nom:hover { color: var(--couleur-accent); }
 .sc-attente { border-style: dashed; }
 .sc-attente .sc-num,
 .sc-attente .sc-titre { opacity: 0.6; }
-/* Une étape de la chaîne que des étapes de labo touchent : un bouton, qui
-   allume ces étapes dans l'index. Pressé, il garde son cadre accent. */
-button.sc-phase {
-  width: 100%;
-  font: inherit;
-  text-align: left;
-  color: inherit;
-  cursor: pointer;
-  transition: border-color var(--transition);
-}
-button.sc-phase:hover,
-button.sc-phase:focus-visible { border-color: var(--couleur-accent-clair); }
-button.sc-phase[aria-pressed="true"] { border-color: var(--couleur-accent); }
-.sc-statut {
-  margin: 0.7rem 0 0;
-  font-size: 0.82rem;
-  color: var(--couleur-texte-doux);
-}
-.sc-statut a { color: var(--couleur-accent); }
-/* En mobile, les en-têtes d'étape tombent avec les couloirs : la consigne
-   n'aurait plus rien à viser. */
-@media (max-width: 879px) { .sc-statut { display: none; } }
 /* Ce que disent les bandes, sous la grille. */
 .sc-legendes { margin-top: 0.8rem; }
 .sc-legende {
@@ -1634,6 +1493,195 @@ button.sc-phase[aria-pressed="true"] { border-color: var(--couleur-accent); }
   text-transform: uppercase;
   color: var(--couleur-texte);
   margin-right: 0.4rem;
+}
+
+/* ----- La fiche d'un cours, sous la carte (formation à `phases`) -----
+   Une seule fiche visible à la fois, celle que vise l'adresse (#cours-NN).
+   Dans l'esprit de la maquette de la carte du parcours : pas de boîte, de
+   l'air, la typographie porte la structure. En tête, les cours voisins ;
+   puis le titre, le résumé, les documents ; puis la chaîne en mots et les
+   étapes du labo, une ligne chacune : repère, tâche, conduite pointillée,
+   endroit. Aucune règle `display` sur la fiche ni sur la note : c'est
+   l'attribut `hidden` qui les montre ou les cache. */
+.fiches-cours {
+  margin: 2.2rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--couleur-bordure);
+  scroll-margin-top: 88px;
+}
+/* En mobile, le rang prend sa rangée et les voisins passent dessous ; au
+   large, les trois tiennent sur une ligne (voir le media query 640px). */
+.fiche-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: baseline;
+  gap: 0.4rem 1rem;
+  font-family: var(--police-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.fiche-prec,
+.fiche-suiv { color: var(--couleur-texte-doux); }
+.fiche-suiv { text-align: right; }
+.fiche-prec:hover,
+.fiche-suiv:hover { color: var(--couleur-accent); }
+.fiche-rang {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  color: var(--couleur-accent);
+  font-weight: 700;
+  text-align: center;
+}
+.fiche-rang-etape { color: var(--couleur-texte-doux); font-weight: 400; }
+.fiche-titre { margin: 1.8rem 0 0.5rem; font-size: 1.6rem; }
+.fiche-resume { max-width: 70ch; color: var(--couleur-texte-doux); }
+.fiche-docs,
+.fiche-etat {
+  margin: 0 0 2rem;
+  font-family: var(--police-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.fiche-docs { font-weight: 700; }
+.fiche-docs a { color: var(--couleur-accent); white-space: nowrap; }
+.fiche-docs a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.fiche-sep { margin: 0 0.6rem; font-weight: 400; color: var(--couleur-texte-doux); }
+.fiche-etat { color: var(--couleur-texte-doux); }
+/* La chaîne en mots : ceux que les étapes du cours touchent se cliquent et
+   se soulignent ; les autres restent en retrait. */
+.fiche-chaine {
+  margin: 0;
+  padding: 0 0 0.9rem;
+  border-bottom: 1px solid var(--couleur-bordure);
+  font-size: 0.95rem;
+  line-height: 1.9;
+}
+.fiche-mot {
+  padding: 0.1rem 0.25rem;
+  background: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  font: inherit;
+  color: var(--couleur-texte);
+}
+button.fiche-mot {
+  cursor: pointer;
+  transition: border-color var(--transition), color var(--transition);
+}
+button.fiche-mot:hover,
+button.fiche-mot:focus-visible { border-bottom-color: var(--couleur-accent-clair); }
+button.fiche-mot[aria-pressed="true"] {
+  border-bottom-color: var(--couleur-accent);
+  color: var(--couleur-accent);
+}
+.fiche-mot-hors { color: var(--couleur-texte-doux); opacity: 0.6; }
+.fiche-fleche { padding: 0 0.25rem; color: var(--couleur-texte-doux); }
+.fiche-chaine-aide {
+  display: block;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--couleur-texte-doux);
+}
+/* Les étapes du labo. Une étape allumée par la chaîne prend un filet accent
+   à gauche, et les autres s'estompent le temps de la visée. */
+.fiche-etapes {
+  list-style: none;
+  margin: 0.6rem 0 0;
+  padding: 0;
+}
+.etape {
+  margin-left: calc(-0.75rem - 2px);
+  padding-left: 0.75rem;
+  border-left: 2px solid transparent;
+  transition: border-color var(--transition), opacity var(--transition);
+}
+.etape-visee { border-left-color: var(--couleur-accent); }
+.fiche-etapes:has(.etape-visee) .etape:not(.etape-visee) { opacity: 0.4; }
+.etape-rangee {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.1rem 0.6rem;
+  width: 100%;
+  padding: 0.4rem 0;
+  background: none;
+  border: 0;
+  font: inherit;
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+}
+.etape-ref {
+  flex: none;
+  width: 3.2rem;
+  font-family: var(--police-mono);
+  font-size: 0.74rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--couleur-texte-doux);
+}
+.etape-quoi {
+  flex: 1 1 0;
+  min-width: 0;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: var(--couleur-texte);
+  transition: color var(--transition);
+}
+.etape-rangee:hover .etape-quoi,
+.etape-rangee:focus-visible .etape-quoi { color: var(--couleur-accent); }
+.etape-conduite { display: none; }
+/* En mobile, l'endroit passe sous la tâche, aligné sur elle. */
+.etape-ou {
+  flex-basis: 100%;
+  padding-left: calc(3.2rem + 0.6rem);
+  font-family: var(--police-mono);
+  font-size: 0.72rem;
+  color: var(--couleur-texte-doux);
+}
+.etape-une-fois {
+  margin-left: 0.3rem;
+  font-family: var(--police-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--couleur-texte-doux);
+}
+.etape-montage .etape-quoi { color: var(--couleur-texte-doux); }
+.etape-note {
+  margin: 0.1rem 0 0.8rem calc(3.2rem + 0.6rem);
+  padding-left: 0.9rem;
+  border-left: 1px solid var(--couleur-bordure);
+  max-width: 70ch;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--couleur-texte-doux);
+}
+/* Au large, les voisins encadrent le rang, et l'endroit d'une étape se range
+   à droite, au bout de la conduite. */
+@media (min-width: 640px) {
+  .fiche-nav { grid-template-columns: 1fr auto 1fr; }
+  .fiche-rang { grid-column: 2; }
+  /* Une seule ligne : c'est la tâche qui se coupe, jamais l'endroit qui
+     tombe dessous. */
+  .etape-rangee { flex-wrap: nowrap; }
+  .etape-quoi { flex: 0 1 auto; max-width: 66%; }
+  .etape-conduite {
+    display: block;
+    flex: 1 1 1.5rem;
+    min-width: 1.5rem;
+    border-bottom: 1px dotted color-mix(in srgb, var(--couleur-texte-doux) 45%, transparent);
+    transform: translateY(-0.3rem);
+  }
+  .etape-ou {
+    flex-basis: auto;
+    margin-left: auto;
+    padding-left: 0;
+    white-space: nowrap;
+    text-align: right;
+  }
 }
 
 /* ----- Visionneuse (lightbox.js) -----

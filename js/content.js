@@ -521,46 +521,26 @@ const Contenu = (function () {
     );
   }
 
-  // Index des cours d'une formation (clé `cours` d'une section). Une ligne par
-  // cours PLANIFIÉ, écrit ou non, dans l'ordre où ils se suivent : le numéro,
-  // le titre, les documents du cours en rang (théorie, labo, exercices,
-  // corrigé) qui ouvrent le PDF directement, et le résumé dessous. Un cours
-  // sans support garde sa ligne et porte sa mention d'attente à la place des
-  // liens — la forme du parcours se voit en entier, et ce qui manque se dit au
-  // lieu de se taire. Avec un schéma des étapes (clé `phases`), chaque ligne
-  // porte en tête de son résumé l'étape qu'elle touche ; l'ordre, lui, ne
-  // bouge pas. Chaque ligne porte l'ancre « cours-NN » que visent les nœuds.
+  // Index des cours d'une formation (clé `cours` d'une section), pour une
+  // formation SANS schéma des étapes : une ligne par cours planifié, écrit ou
+  // non, dans l'ordre, ses documents en rang (théorie, labo, exercices,
+  // corrigé) qui ouvrent chacun leur PDF, et le résumé dessous. Un cours sans
+  // support garde sa ligne et dit son attente. Une formation qui a ses
+  // étapes (clé `phases`) se lit autrement : la carte, puis la fiche d'un
+  // seul cours à la fois (voir creerFichesCours).
   function creerIndexCours(section) {
     const cours = Array.isArray(section.cours) ? section.cours : [];
     if (!cours.length) return "";
-    const etapes = etapesDesCours(section);
     return (
       '<p class="index-legende" data-i18n="cours.legende_cours"></p>' +
       '<ol class="index-cours">' +
       cours
         .map(function (c) {
-          const documents = Array.isArray(c.documents) ? c.documents : [];
-          const liens = documents
-            .filter(function (d) {
-              return d && d.fichier;
-            })
-            .map(function (d) {
-              return (
-                '<a href="' + encoderChemin(d.fichier) +
-                '" target="_blank" rel="noopener">' +
-                echapper(texteLocalise(d.libelle)) + "</a>"
-              );
-            })
-            .join("");
+          const liens = liensDocuments(c, "");
           const etat = texteLocalise(c.etat);
           const resume = texteLocalise(c.resume);
-          const etape = etapes[c.numero];
-          const puce = etape
-            ? '<span class="cours-etape">' + echapper(texteLocalise(etape.nom)) + "</span>"
-            : "";
           return (
-            '<li class="cours-ligne' + (liens ? "" : " cours-attente") + '"' +
-            (c.numero ? ' id="cours-' + echapper(c.numero) + '"' : "") + ">" +
+            '<li class="cours-ligne' + (liens ? "" : " cours-attente") + '">' +
             '<span class="cours-numero">' + echapper(c.numero || "") + "</span>" +
             '<span class="cours-titre">' + echapper(texteLocalise(c.titre)) + "</span>" +
             (liens
@@ -568,10 +548,7 @@ const Contenu = (function () {
               : etat
               ? '<span class="cours-etat">' + echapper(etat) + "</span>"
               : "") +
-            (resume || puce
-              ? '<span class="cours-resume">' + puce + echapper(resume) + "</span>"
-              : "") +
-            creerEtapesDuLabo(c) +
+            (resume ? '<span class="cours-resume">' + echapper(resume) + "</span>" : "") +
             "</li>"
           );
         })
@@ -580,122 +557,21 @@ const Contenu = (function () {
     );
   }
 
-  // Les étapes du labo d'un cours (clé `etapes` d'un cours), repliées sous sa
-  // ligne : le repère « cours.étape », la tâche réelle, une conduite
-  // pointillée, puis où elle se fait ; un clic sur l'étape déplie pourquoi elle
-  // existe. Une étape de montage (une seule fois) porte sa mention et
-  // s'estompe. `data-touche` porte les ids des étapes de la chaîne qu'elle
-  // touche : le schéma s'en sert pour les allumer (voir brancherEtapes).
-  function creerEtapesDuLabo(c) {
-    const etapes = Array.isArray(c.etapes) ? c.etapes : [];
-    if (!etapes.length || !c.numero) return "";
-    const id = "etapes-" + c.numero;
-    return (
-      '<span class="cours-plus"><button type="button" class="cours-deplier"' +
-      ' aria-expanded="false" aria-controls="' + echapper(id) + '">' +
-      etapes.length + " " + echapper(window.I18n.t("cours.etapes_labo")) +
-      "</button></span>" +
-      '<ol class="cours-etapes" id="' + echapper(id) + '" hidden>' +
-      etapes
-        .map(function (e) {
-          const note = texteLocalise(e.note);
-          return (
-            '<li class="etape' + (e.montage ? " etape-montage" : "") +
-            '" data-touche="' + echapper((e.touche || []).join(" ")) + '">' +
-            '<button type="button" class="etape-rangee" aria-expanded="false">' +
-            '<span class="etape-ref">' + echapper(e.ref || "") + "</span>" +
-            '<span class="etape-quoi">' + echapper(texteLocalise(e.quoi)) +
-            (e.montage
-              ? ' <span class="etape-une-fois">' +
-                echapper(window.I18n.t("cours.une_fois")) + "</span>"
-              : "") +
-            "</span>" +
-            '<span class="etape-conduite" aria-hidden="true"></span>' +
-            '<span class="etape-ou">' + echapper(texteLocalise(e.ou)) + "</span>" +
-            "</button>" +
-            (note ? '<p class="etape-note" hidden>' + echapper(note) + "</p>" : "") +
-            "</li>"
-          );
-        })
-        .join("") +
-      "</ol>"
-    );
+  // Les documents d'un cours, en liens qui ouvrent chacun leur PDF ; `sep`
+  // s'intercale entre eux (rien dans l'index, un point médian dans la fiche).
+  function liensDocuments(c, sep) {
+    return (Array.isArray(c.documents) ? c.documents : [])
+      .filter(function (d) {
+        return d && d.fichier;
+      })
+      .map(function (d) {
+        return (
+          '<a href="' + encoderChemin(d.fichier) + '" target="_blank" rel="noopener">' +
+          echapper(texteLocalise(d.libelle)) + "</a>"
+        );
+      })
+      .join(sep);
   }
-
-  // Délégation globale, comme les fiches de concepts : le contenu se re-rend
-  // à chaque changement de langue. Trois gestes : déplier les étapes d'un
-  // cours, déplier la note d'une étape, et viser une étape de la chaîne dans
-  // le schéma, ce qui allume les étapes de labo qui la touchent et déplie
-  // leurs cours (repliés de nouveau quand on relâche).
-  function basculer(bouton, cible) {
-    const ouvert = bouton.getAttribute("aria-expanded") === "true";
-    bouton.setAttribute("aria-expanded", ouvert ? "false" : "true");
-    if (cible) cible.hidden = ouvert;
-  }
-
-  function viserEtape(bouton) {
-    const portee = bouton.closest("[data-projet-section]") || document;
-    const id = bouton.getAttribute("data-phase");
-    const relache = bouton.getAttribute("aria-pressed") === "true";
-    portee.querySelectorAll(".sc-phase[data-phase]").forEach(function (b) {
-      b.setAttribute("aria-pressed", !relache && b === bouton ? "true" : "false");
-    });
-    // Les cours dépliés par une visée précédente se replient d'abord.
-    portee.querySelectorAll(".cours-deplier[data-par-visee]").forEach(function (b) {
-      b.removeAttribute("data-par-visee");
-      basculer(b, portee.querySelector("#" + b.getAttribute("aria-controls")));
-    });
-    let n = 0;
-    let premier = null;
-    portee.querySelectorAll(".etape").forEach(function (li) {
-      const visee = !relache && (li.getAttribute("data-touche") || "").split(" ").indexOf(id) !== -1;
-      li.classList.toggle("etape-visee", visee);
-      if (!visee) return;
-      n += 1;
-      const liste = li.closest(".cours-etapes");
-      const deplier = liste && portee.querySelector('[aria-controls="' + liste.id + '"]');
-      if (deplier && deplier.getAttribute("aria-expanded") !== "true") {
-        deplier.setAttribute("data-par-visee", "");
-        basculer(deplier, liste);
-      }
-      if (!premier) premier = li.closest(".cours-ligne");
-    });
-    const statut = portee.querySelector(".sc-statut");
-    if (!statut) return;
-    if (relache) {
-      statut.textContent = window.I18n.t("cours.vise_consigne");
-      return;
-    }
-    const nom = bouton.querySelector(".sc-phase-nom").textContent;
-    statut.textContent = window.I18n
-      .t(n === 1 ? "cours.vise_un" : "cours.vise")
-      .replace("{n}", n)
-      .replace("{etape}", nom);
-    if (premier) {
-      const lien = document.createElement("a");
-      lien.href = "#" + premier.id;
-      lien.textContent = window.I18n.t("cours.vise_voir");
-      statut.appendChild(document.createTextNode(" · "));
-      statut.appendChild(lien);
-    }
-  }
-
-  document.addEventListener("click", function (e) {
-    if (!e.target.closest) return;
-    const deplier = e.target.closest(".cours-deplier");
-    if (deplier) {
-      deplier.removeAttribute("data-par-visee");
-      basculer(deplier, document.getElementById(deplier.getAttribute("aria-controls")));
-      return;
-    }
-    const rangee = e.target.closest(".etape-rangee");
-    if (rangee) {
-      basculer(rangee, rangee.parentNode.querySelector(".etape-note"));
-      return;
-    }
-    const phase = e.target.closest(".sc-phase[data-phase]");
-    if (phase) viserEtape(phase);
-  });
 
   // L'étape de chaque cours, par numéro : { nom, role, colonne (index 0…,
   // ou -1 pour une bande, qui traverse toutes les colonnes) }.
@@ -723,9 +599,8 @@ const Contenu = (function () {
   // plus d'une fois. Un cours d'une bande (ce qui traverse les étapes au lieu
   // d'y loger) prend la rangée entière et porte le nom de sa bande ; les
   // bandes s'expliquent sous la grille. En mobile, les couloirs tombent : la
-  // liste reste dans l'ordre et chaque nœud nomme son étape. Même grammaire
-  // que la carte du domaine (boîtes, filets, pointillés), en HTML pour que les
-  // titres se coupent. Un nœud mène à la ligne de son cours dans l'index.
+  // liste reste dans l'ordre et chaque nœud nomme son étape. C'est la carte de
+  // la page : un nœud ouvre la fiche de son cours, juste dessous.
   function creerSchemaCours(section) {
     const phases = section.phases || {};
     const colonnes = Array.isArray(phases.colonnes) ? phases.colonnes : [];
@@ -738,38 +613,18 @@ const Contenu = (function () {
     // étapes. Pas de chevron entre leurs en-têtes.
     const enchainees = phases.enchainees !== false;
 
-    // Une étape de la chaîne que des étapes de labo touchent devient un bouton :
-    // la viser les allume dans l'index (voir viserEtape).
-    const touchees = {};
-    cours.forEach(function (c) {
-      (c.etapes || []).forEach(function (e) {
-        (e.touche || []).forEach(function (id) {
-          touchees[id] = true;
-        });
-      });
-    });
     const entetes = colonnes
       .map(function (g, i) {
         const role = texteLocalise(g.role);
-        const visable = g.id && touchees[g.id];
-        const balise = visable ? "button" : "p";
         return (
-          "<" + balise + ' class="sc-phase' +
-          (i === colonnes.length - 1 ? " sc-phase-derniere" : "") + '"' +
-          (visable
-            ? ' type="button" data-phase="' + echapper(g.id) + '" aria-pressed="false"'
-            : "") +
-          ' style="grid-column:' + (i + 1) + '">' +
+          '<p class="sc-phase' + (i === colonnes.length - 1 ? " sc-phase-derniere" : "") +
+          '" style="grid-column:' + (i + 1) + '">' +
           '<span class="sc-phase-nom">' + echapper(texteLocalise(g.nom)) + "</span>" +
           (role ? '<span class="sc-phase-role">' + echapper(role) + "</span>" : "") +
-          "</" + balise + ">"
+          "</p>"
         );
       })
       .join("");
-    const statut = Object.keys(touchees).length
-      ? '<p class="sc-statut" aria-live="polite">' +
-        echapper(window.I18n.t("cours.vise_consigne")) + "</p>"
-      : "";
 
     const couloirs = colonnes
       .map(function (g, i) {
@@ -790,8 +645,8 @@ const Contenu = (function () {
         return (
           '<a class="sc-noeud' + (traverse ? " sc-traverse" : "") +
           (ecrit ? "" : " sc-attente") + '" href="#cours-' +
-          encodeURIComponent(c.numero) + '" style="grid-column:' + place +
-          ";grid-row:" + (rang + 2) + '">' +
+          encodeURIComponent(c.numero) + '" data-numero="' + echapper(c.numero) +
+          '" style="grid-column:' + place + ";grid-row:" + (rang + 2) + '">' +
           '<span class="sc-num">' + echapper(c.numero) + "</span>" +
           '<span class="sc-titre">' + echapper(texteLocalise(c.titre)) + "</span>" +
           (etape
@@ -824,11 +679,206 @@ const Contenu = (function () {
       '" style="--n:' + n + '">' +
       entetes + couloirs + noeuds +
       "</div>" +
-      statut +
       (legendeBandes ? '<div class="sc-legendes">' + legendeBandes + "</div>" : "") +
       "</figure>"
     );
   }
+
+  // La fiche d'un cours, sous la carte : UNE seule visible à la fois, celle
+  // que vise l'adresse (#cours-NN), ou la première. La carte sert de sommaire :
+  // un nœud change l'adresse et la fiche suit (voir afficherFiche). Dans
+  // l'esprit de la maquette de la carte du parcours : pas de boîte, de l'air,
+  // la typographie porte la structure. En tête, le cours d'avant et celui
+  // d'après ; puis le titre, le résumé, les documents ; puis, pour un cours
+  // écrit, la chaîne en mots (ceux que ses étapes touchent se cliquent et les
+  // allument) et les étapes du labo, une ligne chacune : repère, tâche
+  // réelle, conduite pointillée, endroit. Un clic sur une étape déplie
+  // pourquoi elle existe.
+  function creerFichesCours(section) {
+    const phases = section.phases || {};
+    const colonnes = Array.isArray(phases.colonnes) ? phases.colonnes : [];
+    const cours = Array.isArray(section.cours) ? section.cours : [];
+    if (!cours.length) return "";
+    const etapes = etapesDesCours(section);
+    const fleche = phases.enchainees !== false ? "→" : "·";
+    const libelle = window.I18n.t("cours.libelle");
+
+    function voisin(c, sens) {
+      if (!c) return '<span class="fiche-' + sens + '"></span>';
+      const texte = echapper(libelle + " " + c.numero);
+      return (
+        '<a class="fiche-' + sens + '" href="#cours-' + encodeURIComponent(c.numero) + '">' +
+        (sens === "prec" ? "← " + texte : texte + " →") + "</a>"
+      );
+    }
+
+    function chaine(liste) {
+      if (!liste.length || !colonnes.length) return "";
+      const touchees = {};
+      liste.forEach(function (e) {
+        (e.touche || []).forEach(function (id) {
+          touchees[id] = true;
+        });
+      });
+      return (
+        '<p class="fiche-chaine">' +
+        colonnes
+          .map(function (g) {
+            const nom = echapper(texteLocalise(g.nom));
+            return touchees[g.id]
+              ? '<button type="button" class="fiche-mot" data-phase="' + echapper(g.id) +
+                  '" aria-pressed="false">' + nom + "</button>"
+              : '<span class="fiche-mot fiche-mot-hors">' + nom + "</span>";
+          })
+          .join('<span class="fiche-fleche" aria-hidden="true">' + fleche + "</span>") +
+        '<span class="fiche-chaine-aide">' +
+        echapper(window.I18n.t("cours.chaine_aide")) + "</span>" +
+        "</p>"
+      );
+    }
+
+    return (
+      '<section class="fiches-cours" data-fiches>' +
+      cours
+        .map(function (c, i) {
+          const etape = etapes[c.numero];
+          const liens = liensDocuments(c, '<span class="fiche-sep" aria-hidden="true">·</span>');
+          const etat = texteLocalise(c.etat);
+          const resume = texteLocalise(c.resume);
+          const liste = Array.isArray(c.etapes) ? c.etapes : [];
+          return (
+            '<article class="fiche-cours" id="fiche-' + echapper(c.numero) +
+            '" data-numero="' + echapper(c.numero) + '"' + (i === 0 ? "" : " hidden") + ">" +
+            '<nav class="fiche-nav" aria-label="' +
+            echapper(window.I18n.t("cours.fiche_nav")) + '">' +
+            voisin(cours[i - 1], "prec") +
+            '<span class="fiche-rang">' + echapper(libelle + " " + c.numero) +
+            (etape
+              ? '<span class="fiche-rang-etape"> · ' +
+                echapper(texteLocalise(etape.nom)) + "</span>"
+              : "") +
+            "</span>" +
+            voisin(cours[i + 1], "suiv") +
+            "</nav>" +
+            '<h2 class="fiche-titre">' + echapper(texteLocalise(c.titre)) + "</h2>" +
+            (resume ? '<p class="fiche-resume">' + echapper(resume) + "</p>" : "") +
+            (liens
+              ? '<p class="fiche-docs">' + liens + "</p>"
+              : etat
+              ? '<p class="fiche-etat">' + echapper(etat) + "</p>"
+              : "") +
+            chaine(liste) +
+            (liste.length
+              ? '<ol class="fiche-etapes">' + liste.map(ligneEtape).join("") + "</ol>"
+              : "") +
+            "</article>"
+          );
+        })
+        .join("") +
+      "</section>"
+    );
+  }
+
+  // Une étape de labo : le repère « cours.étape », la tâche réelle, une
+  // conduite pointillée jusqu'à l'endroit où elle se fait ; la note, repliée,
+  // dit pourquoi elle existe. Une étape de montage (une seule fois) porte sa
+  // mention et s'estompe. `data-touche` porte les ids des étapes de la chaîne
+  // qu'elle touche, que les mots de la chaîne allument.
+  function ligneEtape(e) {
+    const note = texteLocalise(e.note);
+    return (
+      '<li class="etape' + (e.montage ? " etape-montage" : "") +
+      '" data-touche="' + echapper((e.touche || []).join(" ")) + '">' +
+      '<button type="button" class="etape-rangee" aria-expanded="false">' +
+      '<span class="etape-ref">' + echapper(e.ref || "") + "</span>" +
+      '<span class="etape-quoi">' + echapper(texteLocalise(e.quoi)) +
+      (e.montage
+        ? ' <span class="etape-une-fois">' + echapper(window.I18n.t("cours.une_fois")) +
+          "</span>"
+        : "") +
+      "</span>" +
+      '<span class="etape-conduite" aria-hidden="true"></span>' +
+      '<span class="etape-ou">' + echapper(texteLocalise(e.ou)) + "</span>" +
+      "</button>" +
+      (note ? '<p class="etape-note" hidden>' + echapper(note) + "</p>" : "") +
+      "</li>"
+    );
+  }
+
+  // Le cours que vise l'adresse, « #cours-NN », ou null.
+  function numeroDansAdresse() {
+    const m = /^#cours-(.+)$/.exec(window.location.hash || "");
+    return m ? decodeURIComponent(m[1]) : null;
+  }
+
+  // Montre la fiche du cours visé (la première à défaut), cache les autres, et
+  // marque son nœud sur la carte. `defiler` amène la fiche sous l'en-tête.
+  function afficherFiche(portee, defiler) {
+    const zone = portee.querySelector("[data-fiches]");
+    if (!zone) return;
+    const fiches = Array.prototype.slice.call(zone.querySelectorAll(".fiche-cours"));
+    if (!fiches.length) return;
+    const voulu = numeroDansAdresse();
+    const cible =
+      fiches.filter(function (f) {
+        return f.getAttribute("data-numero") === voulu;
+      })[0] || fiches[0];
+    fiches.forEach(function (f) {
+      f.hidden = f !== cible;
+    });
+    const numero = cible.getAttribute("data-numero");
+    portee.querySelectorAll(".sc-noeud").forEach(function (a) {
+      const choisi = a.getAttribute("data-numero") === numero;
+      a.classList.toggle("sc-choisi", choisi);
+      if (choisi) a.setAttribute("aria-current", "true");
+      else a.removeAttribute("aria-current");
+    });
+    if (defiler) {
+      const reduit = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      zone.scrollIntoView({ behavior: reduit ? "auto" : "smooth", block: "start" });
+    }
+  }
+
+  window.addEventListener("hashchange", function () {
+    if (!numeroDansAdresse()) return;
+    document.querySelectorAll("[data-fiches]").forEach(function (zone) {
+      afficherFiche(zone.closest("[data-projet-section]") || document, true);
+    });
+  });
+
+  // Délégation globale, comme les fiches de concepts : le contenu se re-rend
+  // à chaque changement de langue. Deux gestes : déplier la note d'une étape,
+  // et allumer, dans la fiche, les étapes qui touchent un mot de la chaîne
+  // (les autres s'estompent ; un second clic relâche).
+  function basculer(bouton, cible) {
+    const ouvert = bouton.getAttribute("aria-expanded") === "true";
+    bouton.setAttribute("aria-expanded", ouvert ? "false" : "true");
+    if (cible) cible.hidden = ouvert;
+  }
+
+  function allumerEtapes(mot) {
+    const fiche = mot.closest(".fiche-cours");
+    const id = mot.getAttribute("data-phase");
+    const relache = mot.getAttribute("aria-pressed") === "true";
+    fiche.querySelectorAll(".fiche-mot[data-phase]").forEach(function (b) {
+      b.setAttribute("aria-pressed", !relache && b === mot ? "true" : "false");
+    });
+    fiche.querySelectorAll(".etape").forEach(function (li) {
+      const touche = (li.getAttribute("data-touche") || "").split(" ");
+      li.classList.toggle("etape-visee", !relache && touche.indexOf(id) !== -1);
+    });
+  }
+
+  document.addEventListener("click", function (e) {
+    if (!e.target.closest) return;
+    const rangee = e.target.closest(".etape-rangee");
+    if (rangee) {
+      basculer(rangee, rangee.parentNode.querySelector(".etape-note"));
+      return;
+    }
+    const mot = e.target.closest(".fiche-mot[data-phase]");
+    if (mot) allumerEtapes(mot);
+  });
 
   // Rend la liste d'items d'une page de section : les PDF en index de
   // fichiers, le reste (figures, images, vidéos) en planches numérotées.
@@ -2556,16 +2606,17 @@ const Contenu = (function () {
         //   cote      : texte et visuel CÔTE À CÔTE (au large) — le texte a
         //               quitté l'image, il se lit à côté du graphique (649).
         //   défaut    : planches, fiche, puis récit (fiches de stratégie).
-        // Une formation du parcours (clé `cours`) se lit par ses cours : leur
-        // index d'abord, puis les documents de cadrage (README, plan, mise en
-        // situation), la prose en dernier. Les deux listes portent leur
-        // légende, sans quoi on ne sait pas ce qu'on regarde.
-        // Avec des étapes (clé `phases`), le schéma ouvre la page et l'index
-        // se regroupe sous les mêmes étapes (voir creerIndexCours).
-        const indexCours = creerIndexCours(section);
+        // Une formation du parcours (clé `cours`) se lit par ses cours, puis
+        // les documents de cadrage (README, plan, mise en situation), la prose
+        // en dernier. Avec des étapes (clé `phases`) : la carte en couloirs,
+        // et sous elle la fiche d'UN cours, celui que vise l'adresse ; sans
+        // étapes, l'index de tous les cours. Les listes portent leur légende,
+        // sans quoi on ne sait pas ce qu'on regarde.
+        const indexCours = section.phases
+          ? creerSchemaCours(section) + creerFichesCours(section)
+          : creerIndexCours(section);
         const corpsItems = indexCours
-          ? creerSchemaCours(section) +
-            indexCours +
+          ? indexCours +
             (planches
               ? '<p class="index-legende" data-i18n="cours.legende_cadrage"></p>' + planches
               : "") +
@@ -2585,6 +2636,11 @@ const Contenu = (function () {
           corpsItems;
         marquerPlanchesLarges(conteneur);
         activerBouclesAnnotees(conteneur);
+        // La fiche du cours visé. On ne défile vers elle qu'au premier rendu
+        // d'une adresse qui en vise une, pas à chaque changement de langue.
+        const premierRendu = !conteneur.hasAttribute("data-fiches-vues");
+        conteneur.setAttribute("data-fiches-vues", "");
+        afficherFiche(conteneur, premierRendu && !!numeroDansAdresse());
       } else if (texte) {
         conteneur.innerHTML =
           avertissementTexteFr(section.texte) + entete + fiche + rendreProse(texte);
