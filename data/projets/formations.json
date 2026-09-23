@@ -109,8 +109,8 @@
         "socle": "dd-guide-installation"
       },
       "intro": {
-        "fr": "Un parcours d'autoformation sur les métiers de la donnée, suivi et écrit en même temps. On y descend la chaîne d'un bout à l'autre, de la source jusqu'à la décision, un métier à la fois, sur les mêmes données du début à la fin. Les supports sont ceux que j'ai écrits pour apprendre : théorie, laboratoire, exercices et corrigé pour chaque module.",
-        "en": "A self-taught path through the data trades, followed and written at the same time. It walks the chain end to end, from the source to the decision, one trade at a time, on the same data from start to finish. The material is what I wrote in order to learn: theory, lab, exercises and answer key for every module."
+        "fr": "Un parcours d'autoformation sur les métiers de la donnée, suivi et écrit en même temps. On y descend la chaîne d'un bout à l'autre, de la source jusqu'à la décision, un métier à la fois, sur les mêmes données du début à la fin. Les supports sont ceux que j'ai écrits pour apprendre : théorie, laboratoire et exercices corrigés pour chaque module.",
+        "en": "A self-taught path through the data trades, followed and written at the same time. It walks the chain end to end, from the source to the decision, one trade at a time, on the same data from start to finish. The material is what I wrote in order to learn: theory, lab, and exercises with their answers for every module."
       },
       "texte": {
         "fr": "## La chaîne, métier par métier\n\nUne donnée traverse sept métiers entre le système qui la produit et la décision qui s'appuie dessus. Le parcours suit cet ordre, et chaque formation reprend là où la précédente s'arrête : source, ingestion, couche `RAW`, transformation, couche `MARTS`, restitution, décision.\n\n1 — **Data Engineering** reçoit les systèmes source, les API et les fichiers. Il possède l'ingestion, le stockage et l'orchestration, et il livre une couche `RAW` fiable et à l'heure.\n\n2 — **Analytics Engineering** reprend cette couche `RAW`. Il possède la transformation et la modélisation, et il livre une étoile testée et documentée.\n\n3 — **Business Intelligence** part de l'étoile livrée. Elle possède le modèle sémantique et la restitution, et elle livre un rapport qui répond à une question.\n\n4 — **Data Science** part de données propres. Elle possède la modélisation statistique, et elle livre un modèle défendable avec son incertitude.\n\n5 — **Machine Learning Engineering** part d'un modèle validé. Il possède sa mise en production, et il livre un modèle servi, versionné et surveillé.\n\n6 — **AI Engineering** part d'un corpus et d'un modèle de langue. Il possède la récupération augmentée et les agents, et il livre un système qui répond et qui s'évalue.\n\n7 — **Architecture et gouvernance** reprend tout ce qui précède. Elle possède les règles, les choix et la séquence, et elle livre une cible défendable et une feuille de route.\n\nDeux malentendus naissent toujours aux jointures, et le parcours les traite de front. Entre 01 et 02, la frontière est la couche `RAW` : l'un la livre, l'autre la reprend, et personne ne transforme dans le couloir. Entre 02 et 03, la frontière est la définition d'un indicateur, qui vit dans les `MARTS` ou dans le modèle sémantique, jamais aux deux endroits.\n\nDeux titres courants du marché tombent dans ces formations sans porter le même nom. Analyste de données, c'est la Business Intelligence. MLOps, c'est le Machine Learning Engineering.\n\n## Les deux fondations\n\nSQL avancé et Snowflake ne sont pas des étapes de la chaîne : ce sont les fondations sur lesquelles les sept reposent. La première tient le langage, la seconde une plateforme d'entrepôt et sa certification. Elles se suivent quand on en a besoin, pas à un rang précis.\n\n## Ce qui est écrit à ce jour\n\nTrente-sept cours sur quatre-vingt-neuf ont leurs supports : Data Engineering en a huit sur douze, Analytics Engineering sept sur neuf, SQL avancé et Snowflake sont complètes. Les cinquante-deux autres sont nommés, à leur place, dans le parcours de leur formation, avec la mention « En construction ». Les cinq formations qui n'ont que leur plan des modules le publient tel quel.\n\nTout est en français, au format PDF, et chaque page porte sa mention de droit d'auteur.",
@@ -156,6 +156,45 @@
           "description": {
             "fr": "Le socle commun aux neuf formations, étape par étape, avec les vérifications qui prouvent que chaque pièce répond.",
             "en": "The base shared by the nine courses, step by step, with the checks that prove every piece answers."
+          }
+        },
+        {
+          "id": "guide-mise-en-situation-boreal",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/Mises_en_situation/Mise_en_situation_Boreal.pdf",
+          "titre": {
+            "fr": "L'entreprise du fil rouge : Véhicules Boréal inc.",
+            "en": "The common thread: Véhicules Boréal inc."
+          },
+          "description": {
+            "fr": "Le fabricant de motoneiges dont les données traversent tout le parcours : ses six sources, ce que sa direction demande, et ce que chacun des sept métiers y fait.",
+            "en": "The snowmobile maker whose data runs through the whole path: its six sources, what its management asks for, and what each of the seven trades does with it."
+          }
+        },
+        {
+          "id": "guide-mise-en-situation-la-brulerie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/Mises_en_situation/Mise_en_situation_La_Brulerie.pdf",
+          "titre": {
+            "fr": "Le mini-cas : La Brûlerie du Passage",
+            "en": "The small case: La Brûlerie du Passage"
+          },
+          "description": {
+            "fr": "Un café de quartier et un seul mois de ventes, figé : chaque formation y refait son arc en petit, sans labo, avant la synthèse avancée.",
+            "en": "A neighbourhood café and a single frozen month of sales: each course redoes its arc on a small scale, without a lab, before the advanced synthesis."
+          }
+        },
+        {
+          "id": "guide-mise-en-situation-aurore",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/Mises_en_situation/Mise_en_situation_Aurore.pdf",
+          "titre": {
+            "fr": "La synthèse avancée : Comptoir Aurore inc.",
+            "en": "The advanced synthesis: Comptoir Aurore inc."
+          },
+          "description": {
+            "fr": "Une boutique en ligne sur deux marchés, deux devises et deux régimes de taxes : chaque formation s'y referme en refaisant son arc d'un bloc.",
+            "en": "An online shop on two markets, two currencies and two tax regimes: each course closes on it by redoing its arc in one go."
           }
         }
       ],
@@ -208,17 +247,10 @@
             },
             {
               "libelle": {
-                "fr": "Exercices",
-                "en": "Exercises"
+                "fr": "Exercices corrigés",
+                "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_01_Le_metier_les_sources_et_le_premier_regard/Exercices_01.pdf"
-            },
-            {
-              "libelle": {
-                "fr": "Corrigé",
-                "en": "Answer key"
-              },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_01_Le_metier_les_sources_et_le_premier_regard/Corrige_01.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_01_Le_metier_les_sources_et_le_premier_regard/Exercices_corriges_01.pdf"
             }
           ],
           "etapes": [
@@ -303,17 +335,10 @@
             },
             {
               "libelle": {
-                "fr": "Exercices",
-                "en": "Exercises"
+                "fr": "Exercices corrigés",
+                "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_02_Les_formats_de_fichiers_et_le_lac_bronze/Exercices_02.pdf"
-            },
-            {
-              "libelle": {
-                "fr": "Corrigé",
-                "en": "Answer key"
-              },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_02_Les_formats_de_fichiers_et_le_lac_bronze/Corrige_02.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_02_Les_formats_de_fichiers_et_le_lac_bronze/Exercices_corriges_02.pdf"
             }
           ],
           "etapes": [
@@ -416,17 +441,10 @@
             },
             {
               "libelle": {
-                "fr": "Exercices",
-                "en": "Exercises"
+                "fr": "Exercices corrigés",
+                "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_03_Charger_des_fichiers_dans_la_couche_RAW/Exercices_03.pdf"
-            },
-            {
-              "libelle": {
-                "fr": "Corrigé",
-                "en": "Answer key"
-              },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_03_Charger_des_fichiers_dans_la_couche_RAW/Corrige_03.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_03_Charger_des_fichiers_dans_la_couche_RAW/Exercices_corriges_03.pdf"
             }
           ],
           "etapes": [
@@ -548,17 +566,10 @@
             },
             {
               "libelle": {
-                "fr": "Exercices",
-                "en": "Exercises"
+                "fr": "Exercices corrigés",
+                "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_04_Lire_une_base_et_une_API/Exercices_04.pdf"
-            },
-            {
-              "libelle": {
-                "fr": "Corrigé",
-                "en": "Answer key"
-              },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_04_Lire_une_base_et_une_API/Corrige_04.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_04_Lire_une_base_et_une_API/Exercices_corriges_04.pdf"
             }
           ],
           "etapes": [
@@ -696,17 +707,10 @@
             },
             {
               "libelle": {
-                "fr": "Exercices",
-                "en": "Exercises"
+                "fr": "Exercices corrigés",
+                "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_05_Le_code_d_un_pipeline_robuste/Exercices_05.pdf"
-            },
-            {
-              "libelle": {
-                "fr": "Corrigé",
-                "en": "Answer key"
-              },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_05_Le_code_d_un_pipeline_robuste/Corrige_05.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_05_Le_code_d_un_pipeline_robuste/Exercices_corriges_05.pdf"
             }
           ],
           "etapes": [
@@ -872,17 +876,10 @@
             },
             {
               "libelle": {
-                "fr": "Exercices",
-                "en": "Exercises"
+                "fr": "Exercices corrigés",
+                "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_06_Orchestration_avec_Airflow/Exercices_06.pdf"
-            },
-            {
-              "libelle": {
-                "fr": "Corrigé",
-                "en": "Answer key"
-              },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_06_Orchestration_avec_Airflow/Corrige_06.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_06_Orchestration_avec_Airflow/Exercices_corriges_06.pdf"
             }
           ],
           "etapes": [
@@ -1127,17 +1124,10 @@
             },
             {
               "libelle": {
-                "fr": "Exercices",
-                "en": "Exercises"
+                "fr": "Exercices corrigés",
+                "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_07_Traitement_distribue_avec_Spark/Exercices_07.pdf"
-            },
-            {
-              "libelle": {
-                "fr": "Corrigé",
-                "en": "Answer key"
-              },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_07_Traitement_distribue_avec_Spark/Corrige_07.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_07_Traitement_distribue_avec_Spark/Exercices_corriges_07.pdf"
             }
           ],
           "etapes": [
@@ -1330,17 +1320,10 @@
             },
             {
               "libelle": {
-                "fr": "Exercices",
-                "en": "Exercises"
+                "fr": "Exercices corrigés",
+                "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_08_Donnees_de_terrain_SCADA_historien_et_series_temporelles/Exercices_08.pdf"
-            },
-            {
-              "libelle": {
-                "fr": "Corrigé",
-                "en": "Answer key"
-              },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_08_Donnees_de_terrain_SCADA_historien_et_series_temporelles/Corrige_08.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_08_Donnees_de_terrain_SCADA_historien_et_series_temporelles/Exercices_corriges_08.pdf"
             }
           ],
           "etapes": [
@@ -1794,9 +1777,9 @@
           }
         },
         {
-          "id": "de-mise-en-situation-boreal",
+          "id": "de-mise-en-situation-boreal-01-de",
           "type": "pdf",
-          "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Mise_en_situation_Boreal.pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Mise_en_situation_Boreal_01_DE.pdf",
           "titre": {
             "fr": "La mise en situation : Boréal",
             "en": "The case: Boréal"
@@ -1856,17 +1839,10 @@
             },
             {
               "libelle": {
-                "fr": "Exercices",
-                "en": "Exercises"
+                "fr": "Exercices corrigés",
+                "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_01_Le_metier_la_chaine_et_la_RAW_recue/Exercices_01.pdf"
-            },
-            {
-              "libelle": {
-                "fr": "Corrigé",
-                "en": "Answer key"
-              },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_01_Le_metier_la_chaine_et_la_RAW_recue/Corrige_01.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_01_Le_metier_la_chaine_et_la_RAW_recue/Exercices_corriges_01.pdf"
             }
           ],
           "etapes": [
@@ -2012,17 +1988,10 @@
             },
             {
               "libelle": {
-                "fr": "Exercices",
-                "en": "Exercises"
+                "fr": "Exercices corrigés",
+                "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_02_Modelisation_dimensionnelle_et_matrice_de_bus/Exercices_02.pdf"
-            },
-            {
-              "libelle": {
-                "fr": "Corrigé",
-                "en": "Answer key"
-              },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_02_Modelisation_dimensionnelle_et_matrice_de_bus/Corrige_02.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_02_Modelisation_dimensionnelle_et_matrice_de_bus/Exercices_corriges_02.pdf"
             }
           ],
           "etapes": [
@@ -2184,17 +2153,10 @@
             },
             {
               "libelle": {
-                "fr": "Exercices",
-                "en": "Exercises"
+                "fr": "Exercices corrigés",
+                "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_03_dbt_et_la_couche_STAGING/Exercices_03.pdf"
-            },
-            {
-              "libelle": {
-                "fr": "Corrigé",
-                "en": "Answer key"
-              },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_03_dbt_et_la_couche_STAGING/Corrige_03.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_03_dbt_et_la_couche_STAGING/Exercices_corriges_03.pdf"
             }
           ],
           "etapes": [
@@ -2365,17 +2327,10 @@
             },
             {
               "libelle": {
-                "fr": "Exercices",
-                "en": "Exercises"
+                "fr": "Exercices corrigés",
+                "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_04_Batir_l_etoile_des_ventes/Exercices_04.pdf"
-            },
-            {
-              "libelle": {
-                "fr": "Corrigé",
-                "en": "Answer key"
-              },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_04_Batir_l_etoile_des_ventes/Corrige_04.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_04_Batir_l_etoile_des_ventes/Exercices_corriges_04.pdf"
             }
           ],
           "etapes": [
@@ -2587,17 +2542,10 @@
             },
             {
               "libelle": {
-                "fr": "Exercices",
-                "en": "Exercises"
+                "fr": "Exercices corrigés",
+                "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_05_Fiabiliser_l_etoile_tests_snapshots_documentation/Exercices_05.pdf"
-            },
-            {
-              "libelle": {
-                "fr": "Corrigé",
-                "en": "Answer key"
-              },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_05_Fiabiliser_l_etoile_tests_snapshots_documentation/Corrige_05.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_05_Fiabiliser_l_etoile_tests_snapshots_documentation/Exercices_corriges_05.pdf"
             }
           ],
           "etapes": [
@@ -2841,17 +2789,10 @@
             },
             {
               "libelle": {
-                "fr": "Exercices",
-                "en": "Exercises"
+                "fr": "Exercices corrigés",
+                "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_06_Les_faits_que_la_vente_ne_montre_pas/Exercices_06.pdf"
-            },
-            {
-              "libelle": {
-                "fr": "Corrigé",
-                "en": "Answer key"
-              },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_06_Les_faits_que_la_vente_ne_montre_pas/Corrige_06.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_06_Les_faits_que_la_vente_ne_montre_pas/Exercices_corriges_06.pdf"
             }
           ],
           "etapes": [
@@ -3245,17 +3186,10 @@
             },
             {
               "libelle": {
-                "fr": "Exercices",
-                "en": "Exercises"
+                "fr": "Exercices corrigés",
+                "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_07_ELT_en_regime_permanent/Exercices_07.pdf"
-            },
-            {
-              "libelle": {
-                "fr": "Corrigé",
-                "en": "Answer key"
-              },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_07_ELT_en_regime_permanent/Corrige_07.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_07_ELT_en_regime_permanent/Exercices_corriges_07.pdf"
             }
           ],
           "etapes": [
@@ -3627,17 +3561,10 @@
             },
             {
               "libelle": {
-                "fr": "Exercices",
-                "en": "Exercises"
+                "fr": "Exercices corrigés",
+                "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_07_CI_CD_et_qualite_analytique/Exercices_07.pdf"
-            },
-            {
-              "libelle": {
-                "fr": "Corrigé",
-                "en": "Answer key"
-              },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_07_CI_CD_et_qualite_analytique/Corrige_07.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_07_CI_CD_et_qualite_analytique/Exercices_corriges_07.pdf"
             }
           ]
         },
@@ -3786,9 +3713,9 @@
           }
         },
         {
-          "id": "ae-mise-en-situation-boreal",
+          "id": "ae-mise-en-situation-boreal-02-ae",
           "type": "pdf",
-          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Mise_en_situation_Boreal.pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Mise_en_situation_Boreal_02_AE.pdf",
           "titre": {
             "fr": "La mise en situation : Boréal",
             "en": "The case: Boréal"
@@ -3799,9 +3726,9 @@
           }
         },
         {
-          "id": "ae-mise-en-situation-la-brulerie",
+          "id": "ae-mise-en-situation-la-brulerie-02-ae",
           "type": "pdf",
-          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Synthese_La_Brulerie_facile/Mise_en_situation_La_Brulerie.pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Synthese_La_Brulerie_facile/Mise_en_situation_La_Brulerie_02_AE.pdf",
           "titre": {
             "fr": "Synthèse facile : la mise en situation",
             "en": "Easy synthesis: the case"
@@ -3825,9 +3752,9 @@
           }
         },
         {
-          "id": "ae-mise-en-situation-aurore",
+          "id": "ae-mise-en-situation-aurore-02-ae",
           "type": "pdf",
-          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Synthese_Aurore_avancee/Mise_en_situation_Aurore.pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Synthese_Aurore_avancee/Mise_en_situation_Aurore_02_AE.pdf",
           "titre": {
             "fr": "Synthèse avancée : la mise en situation",
             "en": "Advanced synthesis: the case"
@@ -4917,17 +4844,10 @@
             },
             {
               "libelle": {
-                "fr": "Exercices",
-                "en": "Exercises"
+                "fr": "Exercices corrigés",
+                "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_00_Installation/Exercices_00.pdf"
-            },
-            {
-              "libelle": {
-                "fr": "Corrigé",
-                "en": "Answer key"
-              },
-              "fichier": "assets/formations/data-domain/SQL/Cours_00_Installation/Corrige_00.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_00_Installation/Exercices_corriges_00.pdf"
             }
           ],
           "etapes": [
@@ -5028,17 +4948,10 @@
             },
             {
               "libelle": {
-                "fr": "Exercices",
-                "en": "Exercises"
+                "fr": "Exercices corrigés",
+                "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_01_Paysage_SQL_et_modele_relationnel/Exercices_01.pdf"
-            },
-            {
-              "libelle": {
-                "fr": "Corrigé",
-                "en": "Answer key"
-              },
-              "fichier": "assets/formations/data-domain/SQL/Cours_01_Paysage_SQL_et_modele_relationnel/Corrige_01.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_01_Paysage_SQL_et_modele_relationnel/Exercices_corriges_01.pdf"
             }
           ],
           "etapes": [
@@ -5174,17 +5087,10 @@
             },
             {
               "libelle": {
-                "fr": "Exercices",
-                "en": "Exercises"
+                "fr": "Exercices corrigés",
+                "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_02_Le_langage_SQL/Exercices_02.pdf"
-            },
-            {
-              "libelle": {
-                "fr": "Corrigé",
-                "en": "Answer key"
-              },
-              "fichier": "assets/formations/data-domain/SQL/Cours_02_Le_langage_SQL/Corrige_02.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_02_Le_langage_SQL/Exercices_corriges_02.pdf"
             }
           ],
           "etapes": [
@@ -5336,17 +5242,10 @@
             },
             {
               "libelle": {
-                "fr": "Exercices",
-                "en": "Exercises"
+                "fr": "Exercices corrigés",
+                "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_03_Ecrire_dans_la_base/Exercices_03.pdf"
-            },
-            {
-              "libelle": {
-                "fr": "Corrigé",
-                "en": "Answer key"
-              },
-              "fichier": "assets/formations/data-domain/SQL/Cours_03_Ecrire_dans_la_base/Corrige_03.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_03_Ecrire_dans_la_base/Exercices_corriges_03.pdf"
             }
           ],
           "etapes": [
@@ -5530,17 +5429,10 @@
             },
             {
               "libelle": {
-                "fr": "Exercices",
-                "en": "Exercises"
+                "fr": "Exercices corrigés",
+                "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_04_Fonctions_de_fenetrage/Exercices_04.pdf"
-            },
-            {
-              "libelle": {
-                "fr": "Corrigé",
-                "en": "Answer key"
-              },
-              "fichier": "assets/formations/data-domain/SQL/Cours_04_Fonctions_de_fenetrage/Corrige_04.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_04_Fonctions_de_fenetrage/Exercices_corriges_04.pdf"
             }
           ],
           "etapes": [
@@ -5660,17 +5552,10 @@
             },
             {
               "libelle": {
-                "fr": "Exercices",
-                "en": "Exercises"
+                "fr": "Exercices corrigés",
+                "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_05_CTE_et_recursivite/Exercices_05.pdf"
-            },
-            {
-              "libelle": {
-                "fr": "Corrigé",
-                "en": "Answer key"
-              },
-              "fichier": "assets/formations/data-domain/SQL/Cours_05_CTE_et_recursivite/Corrige_05.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_05_CTE_et_recursivite/Exercices_corriges_05.pdf"
             }
           ],
           "etapes": [
@@ -5806,17 +5691,10 @@
             },
             {
               "libelle": {
-                "fr": "Exercices",
-                "en": "Exercises"
+                "fr": "Exercices corrigés",
+                "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_06_Agregation_avancee_et_pivots/Exercices_06.pdf"
-            },
-            {
-              "libelle": {
-                "fr": "Corrigé",
-                "en": "Answer key"
-              },
-              "fichier": "assets/formations/data-domain/SQL/Cours_06_Agregation_avancee_et_pivots/Corrige_06.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_06_Agregation_avancee_et_pivots/Exercices_corriges_06.pdf"
             }
           ],
           "etapes": [
@@ -5952,17 +5830,10 @@
             },
             {
               "libelle": {
-                "fr": "Exercices",
-                "en": "Exercises"
+                "fr": "Exercices corrigés",
+                "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_07_Sous_requetes_correlation_et_ensembles/Exercices_07.pdf"
-            },
-            {
-              "libelle": {
-                "fr": "Corrigé",
-                "en": "Answer key"
-              },
-              "fichier": "assets/formations/data-domain/SQL/Cours_07_Sous_requetes_correlation_et_ensembles/Corrige_07.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_07_Sous_requetes_correlation_et_ensembles/Exercices_corriges_07.pdf"
             }
           ],
           "etapes": [
@@ -6130,17 +6001,10 @@
             },
             {
               "libelle": {
-                "fr": "Exercices",
-                "en": "Exercises"
+                "fr": "Exercices corrigés",
+                "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_08_Donnees_semi_structurees/Exercices_08.pdf"
-            },
-            {
-              "libelle": {
-                "fr": "Corrigé",
-                "en": "Answer key"
-              },
-              "fichier": "assets/formations/data-domain/SQL/Cours_08_Donnees_semi_structurees/Corrige_08.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_08_Donnees_semi_structurees/Exercices_corriges_08.pdf"
             }
           ],
           "etapes": [
@@ -6308,17 +6172,10 @@
             },
             {
               "libelle": {
-                "fr": "Exercices",
-                "en": "Exercises"
+                "fr": "Exercices corrigés",
+                "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_09_Series_temporelles_et_as_of_joins/Exercices_09.pdf"
-            },
-            {
-              "libelle": {
-                "fr": "Corrigé",
-                "en": "Answer key"
-              },
-              "fichier": "assets/formations/data-domain/SQL/Cours_09_Series_temporelles_et_as_of_joins/Corrige_09.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_09_Series_temporelles_et_as_of_joins/Exercices_corriges_09.pdf"
             }
           ],
           "etapes": [
@@ -6479,17 +6336,10 @@
             },
             {
               "libelle": {
-                "fr": "Exercices",
-                "en": "Exercises"
+                "fr": "Exercices corrigés",
+                "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_10_Index_et_optimisation/Exercices_10.pdf"
-            },
-            {
-              "libelle": {
-                "fr": "Corrigé",
-                "en": "Answer key"
-              },
-              "fichier": "assets/formations/data-domain/SQL/Cours_10_Index_et_optimisation/Corrige_10.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_10_Index_et_optimisation/Exercices_corriges_10.pdf"
             }
           ],
           "etapes": [
@@ -6650,17 +6500,10 @@
             },
             {
               "libelle": {
-                "fr": "Exercices",
-                "en": "Exercises"
+                "fr": "Exercices corrigés",
+                "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_11_Transactions_et_concurrence/Exercices_11.pdf"
-            },
-            {
-              "libelle": {
-                "fr": "Corrigé",
-                "en": "Answer key"
-              },
-              "fichier": "assets/formations/data-domain/SQL/Cours_11_Transactions_et_concurrence/Corrige_11.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_11_Transactions_et_concurrence/Exercices_corriges_11.pdf"
             }
           ],
           "etapes": [
@@ -6837,17 +6680,10 @@
             },
             {
               "libelle": {
-                "fr": "Exercices",
-                "en": "Exercises"
+                "fr": "Exercices corrigés",
+                "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_12_SQL_analytique_applique/Exercices_12.pdf"
-            },
-            {
-              "libelle": {
-                "fr": "Corrigé",
-                "en": "Answer key"
-              },
-              "fichier": "assets/formations/data-domain/SQL/Cours_12_SQL_analytique_applique/Corrige_12.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_12_SQL_analytique_applique/Exercices_corriges_12.pdf"
             }
           ],
           "etapes": [
