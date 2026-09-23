@@ -526,8 +526,8 @@ const Contenu = (function () {
   // non, dans l'ordre, ses documents en rang (théorie, labo, exercices,
   // corrigé) qui ouvrent chacun leur PDF, et le résumé dessous. Un cours sans
   // support garde sa ligne et dit son attente. Une formation qui a ses
-  // étapes (clé `phases`) se lit autrement : la carte, puis la fiche d'un
-  // seul cours à la fois (voir creerFichesCours).
+  // étapes (clé `phases`) se lit autrement : la carte, dont chaque nœud ouvre
+  // la page de son cours (voir creerSchemaCours et rendreCours).
   function creerIndexCours(section) {
     const cours = Array.isArray(section.cours) ? section.cours : [];
     if (!cours.length) return "";
@@ -601,11 +601,11 @@ const Contenu = (function () {
   // bandes s'expliquent sous la grille. En mobile, les couloirs tombent : la
   // liste reste dans l'ordre et chaque nœud nomme son étape. C'est la carte de
   // la page : chaque nœud porte les documents de son cours, qui ouvrent
-  // chacun leur PDF, et un clic ailleurs dans le nœud ouvre la fiche du cours,
-  // juste dessous. Aucun chevron entre les en-têtes : le parcours passe d'un
-  // couloir à l'autre dans les deux sens, et une flèche de gauche à droite le
-  // contredirait.
-  function creerSchemaCours(section) {
+  // chacun leur PDF, et un clic ailleurs dans le nœud ouvre la page du cours
+  // (`lienCours(numero)`). Aucun chevron entre les en-têtes : le parcours
+  // passe d'un couloir à l'autre dans les deux sens, et une flèche de gauche
+  // à droite le contredirait.
+  function creerSchemaCours(section, lienCours) {
     const phases = section.phases || {};
     const colonnes = Array.isArray(phases.colonnes) ? phases.colonnes : [];
     const bandes = Array.isArray(phases.bandes) ? phases.bandes : [];
@@ -648,7 +648,7 @@ const Contenu = (function () {
           (ecrit ? "" : " sc-attente") + '" data-numero="' + echapper(c.numero) +
           '" style="grid-column:' + place + ";grid-row:" + (rang + 2) + '">' +
           '<span class="sc-num">' + echapper(c.numero) + "</span>" +
-          '<a class="sc-titre" href="#cours-' + encodeURIComponent(c.numero) + '">' +
+          '<a class="sc-titre" href="' + lienCours(c.numero) + '">' +
           echapper(texteLocalise(c.titre)) + "</a>" +
           (etape
             ? '<span class="sc-tag">' + echapper(texteLocalise(etape.nom)) + "</span>"
@@ -688,31 +688,96 @@ const Contenu = (function () {
     );
   }
 
-  // La fiche d'un cours, sous la carte : UNE seule visible à la fois, celle
-  // que vise l'adresse (#cours-NN), ou la première. La carte sert de sommaire :
-  // un nœud change l'adresse et la fiche suit (voir afficherFiche). Dans
-  // l'esprit de la maquette de la carte du parcours : pas de boîte, de l'air,
-  // la typographie porte la structure. En tête, le cours d'avant et celui
-  // d'après ; puis le titre, le résumé, les documents ; puis, pour un cours
-  // écrit, la chaîne en mots (ceux que ses étapes touchent se cliquent et les
-  // allument) et les étapes du labo, une ligne chacune : repère, tâche
-  // réelle, conduite pointillée, endroit. Un clic sur une étape déplie
-  // pourquoi elle existe.
-  function creerFichesCours(section) {
+  // La carte de la formation en miniature, en haut à droite de la page d'un
+  // cours : la même grille en couloirs (les étapes en tête, un couloir par
+  // colonne, une rangée par cours dans l'ordre du parcours), réduite aux
+  // numéros. Le cours de la page est plein et l'en-tête de son étape
+  // s'éclaire ; chaque autre numéro mène à sa page, son titre en infobulle.
+  // Le lecteur garde ainsi sous les yeux où il se situe. En mobile, les
+  // en-têtes et les couloirs tombent, la grille des numéros reste.
+  function creerMiniCarte(section, numero, lienCours) {
     const phases = section.phases || {};
     const colonnes = Array.isArray(phases.colonnes) ? phases.colonnes : [];
     const cours = Array.isArray(section.cours) ? section.cours : [];
-    if (!cours.length) return "";
+    if (!colonnes.length || !cours.length) return "";
     const etapes = etapesDesCours(section);
-    const fleche = phases.enchainees !== false ? "→" : "·";
+    const ici = etapes[numero];
     const libelle = window.I18n.t("cours.libelle");
 
-    function voisin(c, sens) {
-      if (!c) return '<span class="fiche-' + sens + '"></span>';
-      const texte = echapper(libelle + " " + c.numero);
+    const entetes = colonnes
+      .map(function (g, i) {
+        return (
+          '<span class="cm-phase' + (ici && ici.colonne === i ? " cm-phase-ici" : "") +
+          '" style="grid-column:' + (i + 1) + '">' +
+          echapper(texteLocalise(g.nom)) + "</span>"
+        );
+      })
+      .join("");
+
+    const couloirs = colonnes
+      .map(function (g, i) {
+        return (
+          '<span class="cm-couloir" aria-hidden="true" style="grid-column:' + (i + 1) +
+          ";grid-row:2 / span " + cours.length + '"></span>'
+        );
+      })
+      .join("");
+
+    const noeuds = cours
+      .map(function (c, rang) {
+        const etape = etapes[c.numero];
+        const traverse = !etape || etape.colonne < 0;
+        const ecrit = Array.isArray(c.documents) && c.documents.length;
+        const choisi = c.numero === numero;
+        const nom = libelle + " " + c.numero + " · " + texteLocalise(c.titre);
+        return (
+          '<a class="cm-noeud' + (traverse ? " cm-traverse" : "") +
+          (ecrit ? "" : " cm-attente") + (choisi ? " cm-choisi" : "") +
+          '" href="' + lienCours(c.numero) + '" title="' + echapper(nom) +
+          '" aria-label="' + echapper(nom) + '"' +
+          (choisi ? ' aria-current="page"' : "") +
+          ' style="grid-column:' + (traverse ? "1 / -1" : String(etape.colonne + 1)) +
+          ";grid-row:" + (rang + 2) + '">' + echapper(c.numero) + "</a>"
+        );
+      })
+      .join("");
+
+    return (
+      '<nav class="cours-mini" aria-label="' +
+      echapper(window.I18n.t("cours.mini_aria")) + '">' +
+      '<div class="cm-grille" style="--n:' + colonnes.length + '">' +
+      entetes + couloirs + noeuds +
+      "</div></nav>"
+    );
+  }
+
+  // Le corps de la page d'un cours, sous l'en-tête qui porte son rang, son
+  // titre, son résumé et ses documents. Dans l'esprit de la maquette de la
+  // carte du parcours : pas de boîte, de l'air, la typographie porte la
+  // structure. Pour un cours dont le labo a ses étapes : la chaîne en mots
+  // (ceux que ses étapes touchent se cliquent et les allument), puis les
+  // étapes, une ligne chacune : repère, tâche réelle, conduite pointillée,
+  // endroit ; un clic sur une étape déplie pourquoi elle existe. En pied, le
+  // cours d'avant, le retour à la carte et le cours d'après : jamais de
+  // cul-de-sac.
+  function creerCorpsCours(section, rang, lienCours, hrefFormation) {
+    const phases = section.phases || {};
+    const colonnes = Array.isArray(phases.colonnes) ? phases.colonnes : [];
+    const cours = Array.isArray(section.cours) ? section.cours : [];
+    const c = cours[rang];
+    const fleche = phases.enchainees !== false ? "→" : "·";
+    const libelle = window.I18n.t("cours.libelle");
+    const liste = Array.isArray(c.etapes) ? c.etapes : [];
+
+    function voisin(v, sens) {
+      if (!v) return '<span class="fiche-' + sens + '"></span>';
+      const repere = echapper(libelle + " " + v.numero);
       return (
-        '<a class="fiche-' + sens + '" href="#cours-' + encodeURIComponent(c.numero) + '">' +
-        (sens === "prec" ? "← " + texte : texte + " →") + "</a>"
+        '<a class="fiche-' + sens + '" href="' + lienCours(v.numero) + '">' +
+        '<span class="fiche-sens">' +
+        (sens === "prec" ? "← " + repere : repere + " →") + "</span>" +
+        '<span class="fiche-voisin">' + echapper(texteLocalise(v.titre)) + "</span>" +
+        "</a>"
       );
     }
 
@@ -745,44 +810,20 @@ const Contenu = (function () {
     }
 
     return (
-      '<section class="fiches-cours" data-fiches>' +
-      cours
-        .map(function (c, i) {
-          const etape = etapes[c.numero];
-          const liens = liensDocuments(c, '<span class="fiche-sep" aria-hidden="true">·</span>');
-          const etat = texteLocalise(c.etat);
-          const resume = texteLocalise(c.resume);
-          const liste = Array.isArray(c.etapes) ? c.etapes : [];
-          return (
-            '<article class="fiche-cours" id="fiche-' + echapper(c.numero) +
-            '" data-numero="' + echapper(c.numero) + '"' + (i === 0 ? "" : " hidden") + ">" +
-            '<nav class="fiche-nav" aria-label="' +
-            echapper(window.I18n.t("cours.fiche_nav")) + '">' +
-            voisin(cours[i - 1], "prec") +
-            '<span class="fiche-rang">' + echapper(libelle + " " + c.numero) +
-            (etape
-              ? '<span class="fiche-rang-etape"> · ' +
-                echapper(texteLocalise(etape.nom)) + "</span>"
-              : "") +
-            "</span>" +
-            voisin(cours[i + 1], "suiv") +
-            "</nav>" +
-            '<h2 class="fiche-titre">' + echapper(texteLocalise(c.titre)) + "</h2>" +
-            (resume ? '<p class="fiche-resume">' + echapper(resume) + "</p>" : "") +
-            (liens
-              ? '<p class="fiche-docs">' + liens + "</p>"
-              : etat
-              ? '<p class="fiche-etat">' + echapper(etat) + "</p>"
-              : "") +
-            chaine(liste) +
-            (liste.length
-              ? '<ol class="fiche-etapes">' + liste.map(ligneEtape).join("") + "</ol>"
-              : "") +
-            "</article>"
-          );
-        })
-        .join("") +
-      "</section>"
+      '<div class="fiche-cours">' +
+      (liste.length
+        ? '<p class="index-legende" data-i18n="cours.legende_etapes"></p>' +
+          chaine(liste) +
+          '<ol class="fiche-etapes">' + liste.map(ligneEtape).join("") + "</ol>"
+        : "") +
+      '<nav class="fiche-nav" aria-label="' +
+      echapper(window.I18n.t("cours.fiche_nav")) + '">' +
+      voisin(cours[rang - 1], "prec") +
+      '<a class="fiche-carte" href="' + hrefFormation + '">' +
+      echapper(window.I18n.t("cours.retour_carte")) + "</a>" +
+      voisin(cours[rang + 1], "suiv") +
+      "</nav>" +
+      "</div>"
     );
   }
 
@@ -812,48 +853,22 @@ const Contenu = (function () {
     );
   }
 
-  // Le cours que vise l'adresse, « #cours-NN », ou null.
+  // L'adresse de la page d'un cours : projet-cours.html?p=&s=&c=.
+  function hrefCours(pageCours, projet, sectionId, numero) {
+    return (
+      pageCours +
+      "?p=" + encodeURIComponent(projet) +
+      "&s=" + encodeURIComponent(sectionId) +
+      "&c=" + encodeURIComponent(numero)
+    );
+  }
+
+  // Le cours que vise une ancienne adresse de fiche, « #cours-NN », ou null.
+  // Avant les pages de cours, la fiche vivait sous la carte de la formation.
   function numeroDansAdresse() {
     const m = /^#cours-(.+)$/.exec(window.location.hash || "");
     return m ? decodeURIComponent(m[1]) : null;
   }
-
-  // Montre la fiche du cours visé (la première à défaut), cache les autres, et
-  // marque son nœud sur la carte. `defiler` amène la fiche sous l'en-tête.
-  function afficherFiche(portee, defiler) {
-    const zone = portee.querySelector("[data-fiches]");
-    if (!zone) return;
-    const fiches = Array.prototype.slice.call(zone.querySelectorAll(".fiche-cours"));
-    if (!fiches.length) return;
-    const voulu = numeroDansAdresse();
-    const cible =
-      fiches.filter(function (f) {
-        return f.getAttribute("data-numero") === voulu;
-      })[0] || fiches[0];
-    fiches.forEach(function (f) {
-      f.hidden = f !== cible;
-    });
-    const numero = cible.getAttribute("data-numero");
-    portee.querySelectorAll(".sc-noeud").forEach(function (noeud) {
-      const choisi = noeud.getAttribute("data-numero") === numero;
-      const lien = noeud.querySelector(".sc-titre");
-      noeud.classList.toggle("sc-choisi", choisi);
-      if (!lien) return;
-      if (choisi) lien.setAttribute("aria-current", "true");
-      else lien.removeAttribute("aria-current");
-    });
-    if (defiler) {
-      const reduit = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      zone.scrollIntoView({ behavior: reduit ? "auto" : "smooth", block: "start" });
-    }
-  }
-
-  window.addEventListener("hashchange", function () {
-    if (!numeroDansAdresse()) return;
-    document.querySelectorAll("[data-fiches]").forEach(function (zone) {
-      afficherFiche(zone.closest("[data-projet-section]") || document, true);
-    });
-  });
 
   // Délégation globale, comme les fiches de concepts : le contenu se re-rend
   // à chaque changement de langue. Deux gestes : déplier la note d'une étape,
@@ -2460,6 +2475,7 @@ const Contenu = (function () {
     const sectionId = options.sectionId || null;
     const pageItem = options.pageItem || "";
     const pageSection = options.pageSection || ""; // pour les cartes d'un sous-hub.
+    const pageCours = options.pageCours || "projet-cours.html"; // formation à étapes.
     if (!conteneur) return;
 
     conteneur.setAttribute("aria-busy", "true");
@@ -2471,6 +2487,14 @@ const Contenu = (function () {
       const bloc = await chargerProjet(projet);
       const sections = sectionsDuBloc(bloc);
       const section = trouverSection(sections, sectionId);
+
+      // Une ancienne adresse de fiche (#cours-NN) mène à la page du cours.
+      if (section && section.phases && numeroDansAdresse()) {
+        window.location.replace(
+          hrefCours(pageCours, projet, section.id || sectionId, numeroDansAdresse())
+        );
+        return;
+      }
 
       const elTitre = document.querySelector("[data-section-titre]");
       const elIntro = document.querySelector("[data-section-intro]");
@@ -2618,11 +2642,13 @@ const Contenu = (function () {
         // Une formation du parcours (clé `cours`) se lit par ses cours, puis
         // les documents de cadrage (README, plan, mise en situation), la prose
         // en dernier. Avec des étapes (clé `phases`) : la carte en couloirs,
-        // et sous elle la fiche d'UN cours, celui que vise l'adresse ; sans
-        // étapes, l'index de tous les cours. Les listes portent leur légende,
-        // sans quoi on ne sait pas ce qu'on regarde.
+        // seule, dont chaque nœud ouvre la page de son cours ; sans étapes,
+        // l'index de tous les cours. Les listes portent leur légende, sans
+        // quoi on ne sait pas ce qu'on regarde.
         const indexCours = section.phases
-          ? creerSchemaCours(section) + creerFichesCours(section)
+          ? creerSchemaCours(section, function (numero) {
+              return hrefCours(pageCours, projet, section.id || sectionId, numero);
+            })
           : creerIndexCours(section);
         const corpsItems = indexCours
           ? indexCours +
@@ -2645,11 +2671,6 @@ const Contenu = (function () {
           corpsItems;
         marquerPlanchesLarges(conteneur);
         activerBouclesAnnotees(conteneur);
-        // La fiche du cours visé. On ne défile vers elle qu'au premier rendu
-        // d'une adresse qui en vise une, pas à chaque changement de langue.
-        const premierRendu = !conteneur.hasAttribute("data-fiches-vues");
-        conteneur.setAttribute("data-fiches-vues", "");
-        afficherFiche(conteneur, premierRendu && !!numeroDansAdresse());
       } else if (texte) {
         conteneur.innerHTML =
           avertissementTexteFr(section.texte) + entete + fiche + rendreProse(texte);
@@ -2667,6 +2688,115 @@ const Contenu = (function () {
       if (continuer) conteneur.insertAdjacentHTML("beforeend", continuer);
     } catch (err) {
       console.error("[section] Échec du chargement :", err);
+      conteneur.innerHTML =
+        '<p class="galerie-message erreur" data-i18n="contenu.erreur"></p>';
+    } finally {
+      conteneur.setAttribute("aria-busy", "false");
+      window.I18n.appliquerTraductions(conteneur);
+    }
+  }
+
+  // Rendu de la page d'UN cours d'une formation à étapes (clé `phases`) :
+  // projet-cours.html?p=&s=&c=. Remplit l'en-tête : le fil d'Ariane, la
+  // carte en miniature [data-cours-mini], le rang [data-cours-rang], le
+  // titre, le résumé et les documents [data-cours-docs] ; le corps (étapes
+  // du labo, cours voisins) va dans le conteneur.
+  async function rendreCours(options) {
+    const conteneur = options.conteneur;
+    const projet = options.projet || null;
+    const sectionId = options.sectionId || null;
+    const numero = options.numero || null;
+    const pageSection = options.pageSection || "";
+    const pageCours = options.pageCours || "";
+    if (!conteneur) return;
+
+    conteneur.setAttribute("aria-busy", "true");
+    conteneur.innerHTML =
+      '<p class="galerie-message" data-i18n="contenu.chargement"></p>';
+    window.I18n.appliquerTraductions(conteneur);
+
+    const elTitre = document.querySelector("[data-section-titre]");
+    const elIntro = document.querySelector("[data-section-intro]");
+    const elRang = document.querySelector("[data-cours-rang]");
+    const elDocs = document.querySelector("[data-cours-docs]");
+    const elMini = document.querySelector("[data-cours-mini]");
+
+    try {
+      const bloc = await chargerProjet(projet);
+      const sections = sectionsDuBloc(bloc);
+      const section = trouverSection(sections, sectionId);
+      const cours = section && Array.isArray(section.cours) ? section.cours : [];
+      const rang = cours
+        .map(function (c) {
+          return c.numero;
+        })
+        .indexOf(numero);
+
+      // Fil d'Ariane : hub / chaîne des sections jusqu'à la formation / cours.
+      const chemin = section ? cheminSections(sections, section) : [];
+      rendreRailChaine(bloc, projet, pageSection, chemin.length ? chemin[0].id : null);
+      const morceaux = [{ titre: titreProjet(projet), href: hrefProjet(projet) }];
+      chemin.forEach(function (s) {
+        morceaux.push({
+          titre: texteLocalise(s.titre),
+          href:
+            pageSection +
+            "?p=" + encodeURIComponent(projet) +
+            "&s=" + encodeURIComponent(s.id),
+        });
+      });
+
+      if (!section || !section.phases || rang < 0) {
+        remplirFilAriane(morceaux);
+        if (elTitre) elTitre.textContent = window.I18n.t("contenu.erreur");
+        conteneur.innerHTML =
+          '<p class="galerie-message erreur" data-i18n="contenu.erreur"></p>';
+        return;
+      }
+
+      const c = cours[rang];
+      const libelle = window.I18n.t("cours.libelle");
+      const idSection = section.id || sectionId;
+      morceaux.push({ titre: libelle + " " + c.numero });
+      remplirFilAriane(morceaux);
+
+      function lienCours(n) {
+        return hrefCours(pageCours, projet, idSection, n);
+      }
+      const hrefFormation =
+        pageSection +
+        "?p=" + encodeURIComponent(projet) +
+        "&s=" + encodeURIComponent(idSection);
+
+      const titre = texteLocalise(c.titre);
+      const etape = etapesDesCours(section)[c.numero];
+      if (elTitre) elTitre.textContent = titre;
+      if (elIntro) elIntro.textContent = texteLocalise(c.resume);
+      if (elRang) {
+        elRang.innerHTML =
+          echapper(libelle + " " + c.numero) +
+          (etape
+            ? '<span class="cours-rang-etape"> · ' +
+              echapper(texteLocalise(etape.nom)) + "</span>"
+            : "");
+      }
+      // Les documents du cours ; un cours pas encore écrit dit son attente.
+      const liens = liensDocuments(c, '<span class="fiche-sep" aria-hidden="true">·</span>');
+      const etat = texteLocalise(c.etat);
+      if (elDocs) {
+        elDocs.className = liens ? "fiche-docs" : "fiche-etat";
+        elDocs.innerHTML = liens || echapper(etat);
+        elDocs.hidden = !liens && !etat;
+      }
+      if (elMini) elMini.innerHTML = creerMiniCarte(section, c.numero, lienCours);
+      document.title =
+        titre + " — " + texteLocalise(section.titre) + " — iAlexMG";
+
+      conteneur.innerHTML =
+        banniereAvertissementPdf(!!liens) +
+        creerCorpsCours(section, rang, lienCours, hrefFormation);
+    } catch (err) {
+      console.error("[cours] Échec du chargement :", err);
       conteneur.innerHTML =
         '<p class="galerie-message erreur" data-i18n="contenu.erreur"></p>';
     } finally {
@@ -2790,6 +2920,7 @@ const Contenu = (function () {
     rendreHub: rendreHub,
     rendreSources: rendreSources,
     rendreSection: rendreSection,
+    rendreCours: rendreCours,
     rendreItem: rendreItem,
   };
 })();

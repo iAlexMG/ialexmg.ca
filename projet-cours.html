@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <!--
-  projet-section.html — Vue générique d'UNE section d'un projet.
-  Le projet et la section viennent de l'URL : ?p=<projet>&s=<section>
-  (ex. projet-section.html?p=649&s=phase2). Titre, intro, lien retour et
-  contenu sont remplis par js/content.js (rendreSection). Une section marquée
-  "sousMenu" affiche un sous-menu (une carte par item) ; sinon ses figures +
-  son texte détaillé. Une seule page dessert toutes les sections de tous les
-  projets — pas de duplication.
+  projet-cours.html — Vue générique d'UN cours d'une formation à étapes.
+  Le projet, la formation et le cours viennent de l'URL : ?p=<projet>&s=<section>&c=<numéro>
+  (ex. projet-cours.html?p=formations&s=dd-data-engineering&c=03). En tête, la
+  carte de la formation en miniature, à droite des titres ; dessous, les étapes
+  du labo et les cours voisins. Tout est rempli par js/content.js (rendreCours).
 -->
 <html lang="fr">
 <head>
@@ -20,20 +18,22 @@
   <header class="entete" id="entete"></header>
 
   <main>
-    <section class="entete-page">
+    <section class="entete-page entete-cours">
       <div class="conteneur">
         <nav class="fil-ariane" data-fil-ariane aria-label="Fil d'Ariane"></nav>
+        <!-- La carte en miniature flotte à droite : le rang, le titre, le
+             résumé et les documents coulent à sa gauche. -->
+        <div data-cours-mini></div>
+        <p class="cours-rang" data-cours-rang></p>
         <h1 data-section-titre></h1>
         <p class="accroche" data-section-intro></p>
+        <p class="fiche-docs" data-cours-docs hidden></p>
       </div>
     </section>
 
     <section class="section" style="padding-top:0;">
       <div class="conteneur">
-        <!-- Le projet vient de ?p= ; data-page-section sert aux cartes d'un
-             sous-hub imbriqué, data-page-item à la page feuille,
-             data-page-cours à la page d'un cours d'une formation. -->
-        <div data-projet-section data-page-section="projet-section.html" data-page-item="projet-item.html" data-page-cours="projet-cours.html"></div>
+        <div data-projet-cours data-page-section="projet-section.html" data-page-cours="projet-cours.html"></div>
       </div>
     </section>
   </main>

@@ -97,6 +97,23 @@
         sectionId: params.get("s"),
         pageSection: conteneur.getAttribute("data-page-section") || "",
         pageItem: conteneur.getAttribute("data-page-item") || "",
+        pageCours: conteneur.getAttribute("data-page-cours") || "",
+      });
+    });
+
+    // Page d'un cours d'une formation à étapes : ?p=, ?s= (la formation), ?c=.
+    document.querySelectorAll("[data-projet-cours]").forEach(function (conteneur) {
+      const params = new URLSearchParams(window.location.search);
+      window.Contenu.rendreCours({
+        conteneur: conteneur,
+        projet: resoudreProjet(
+          conteneur.getAttribute("data-projet-cours") || params.get("p"),
+          params.get("s")
+        ),
+        sectionId: params.get("s"),
+        numero: params.get("c"),
+        pageSection: conteneur.getAttribute("data-page-section") || "",
+        pageCours: conteneur.getAttribute("data-page-cours") || "",
       });
     });
 
