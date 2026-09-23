@@ -1758,6 +1758,13 @@ button.fiche-mot[aria-pressed="true"] {
   color: var(--couleur-texte-doux);
 }
 .etape-montage .etape-quoi { color: var(--couleur-texte-doux); }
+/* Les groupes d'un repère de SQL s'empilent : « OLAP 3.1 » sur « OLTP 2.1 ».
+   Un cours dont un groupe dépasse huit signes élargit sa colonne, et la
+   tâche, l'endroit et la note se décalent d'autant. */
+.etape-ref-groupe { display: block; }
+.reperes-larges .etape-ref { width: 5.6rem; }
+.reperes-larges .etape-ou { padding-left: calc(5.6rem + 0.6rem); }
+.reperes-larges .etape-note { margin-left: calc(5.6rem + 0.6rem); }
 .etape-note {
   margin: 0.1rem 0 0.8rem calc(4rem + 0.6rem);
   padding-left: 0.9rem;
@@ -1830,6 +1837,7 @@ button.fiche-mot[aria-pressed="true"] {
      tombe dessous. */
   .etape-rangee,
   .theorie-rangee { flex-wrap: nowrap; }
+  .reperes-larges .etape-ou { padding-left: 0; }
   .etape-quoi { flex: 0 1 auto; max-width: 66%; }
   .etape-conduite {
     display: block;

@@ -6347,7 +6347,7 @@
           ],
           "etapes": [
             {
-              "ref": "00.1",
+              "ref": "1",
               "quoi": {
                 "fr": "Comprendre les deux versions d'AdventureWorks avant de taper",
                 "en": "Understand the two versions of AdventureWorks before typing"
@@ -6364,7 +6364,7 @@
               "montage": true
             },
             {
-              "ref": "00.2",
+              "ref": "2",
               "quoi": {
                 "fr": "Monter l'entrepôt AdventureWorks DW dans DuckDB, en une commande",
                 "en": "Set up the AdventureWorks DW warehouse in DuckDB, in one command"
@@ -6381,7 +6381,7 @@
               "montage": true
             },
             {
-              "ref": "00.3",
+              "ref": "3",
               "quoi": {
                 "fr": "Vérifier les comptes qui serviront de repère",
                 "en": "Check the counts that will serve as landmarks"
@@ -6398,7 +6398,7 @@
               "montage": true
             },
             {
-              "ref": "00.4",
+              "ref": "4",
               "quoi": {
                 "fr": "Charger AdventureWorks OLTP dans PostgreSQL, et lui rendre sa colonne calculée",
                 "en": "Load AdventureWorks OLTP into PostgreSQL, and give it back its computed column"
@@ -6521,7 +6521,7 @@
           ],
           "etapes": [
             {
-              "ref": "01.1",
+              "ref": "1",
               "quoi": {
                 "fr": "Prendre la base en main : le schéma, les tables, les premières lignes",
                 "en": "Get to know the database: the schema, the tables, the first rows"
@@ -6537,7 +6537,7 @@
               }
             },
             {
-              "ref": "01.2",
+              "ref": "2.1–2.2",
               "quoi": {
                 "fr": "Filtrer, joindre, agréger, et voir le moteur refuser une somme dans le WHERE",
                 "en": "Filter, join, aggregate, and watch the engine refuse a sum in the WHERE"
@@ -6553,7 +6553,7 @@
               }
             },
             {
-              "ref": "01.3",
+              "ref": "2.3",
               "quoi": {
                 "fr": "Voir un LEFT JOIN perdre ses lignes par un WHERE mal placé",
                 "en": "Watch a LEFT JOIN lose its rows through a misplaced WHERE"
@@ -6569,7 +6569,7 @@
               }
             },
             {
-              "ref": "01.4",
+              "ref": "2.4",
               "quoi": {
                 "fr": "Compter les prix absents, et voir « = NULL » répondre zéro",
                 "en": "Count the missing prices, and watch “= NULL” answer zero"
@@ -6585,7 +6585,7 @@
               }
             },
             {
-              "ref": "01.5",
+              "ref": "2.5",
               "quoi": {
                 "fr": "Démasquer « NA », une absence déguisée en couleur",
                 "en": "Unmask “NA”, an absence disguised as a colour"
@@ -6601,7 +6601,7 @@
               }
             },
             {
-              "ref": "01.6",
+              "ref": "3",
               "quoi": {
                 "fr": "Lire la même question écrite pour la base normalisée",
                 "en": "Read the same question written for the normalized database"
@@ -6726,7 +6726,7 @@
           ],
           "etapes": [
             {
-              "ref": "02.1",
+              "ref": "1",
               "quoi": {
                 "fr": "Lire, calculer et trier, en disant soi-même où vont les NULL",
                 "en": "Read, compute and sort, stating yourself where the NULLs go"
@@ -6742,7 +6742,7 @@
               }
             },
             {
-              "ref": "02.2",
+              "ref": "2",
               "quoi": {
                 "fr": "Filtrer sans se faire prendre par AND, BETWEEN, la casse et un code complété d'espaces",
                 "en": "Filter without being caught by AND, BETWEEN, case and a space-padded code"
@@ -6758,7 +6758,7 @@
               }
             },
             {
-              "ref": "02.3",
+              "ref": "3",
               "quoi": {
                 "fr": "Décider avec CASE, et convertir sans tout faire planter",
                 "en": "Decide with CASE, and convert without crashing everything"
@@ -6774,7 +6774,7 @@
               }
             },
             {
-              "ref": "02.4",
+              "ref": "4",
               "quoi": {
                 "fr": "Assembler, normaliser et découper du texte",
                 "en": "Assemble, normalize and split text"
@@ -6790,7 +6790,7 @@
               }
             },
             {
-              "ref": "02.5",
+              "ref": "5",
               "quoi": {
                 "fr": "Mesurer des délais, tronquer au mois, calculer un âge",
                 "en": "Measure delays, truncate to the month, compute an age"
@@ -6806,7 +6806,7 @@
               }
             },
             {
-              "ref": "02.6",
+              "ref": "6",
               "quoi": {
                 "fr": "Distinguer lignes, valeurs et commandes, et respecter les règles du GROUP BY",
                 "en": "Tell rows, values and orders apart, and follow the rules of GROUP BY"
@@ -6822,7 +6822,7 @@
               }
             },
             {
-              "ref": "02.7",
+              "ref": "OLTP 7",
               "quoi": {
                 "fr": "Tirer le bilan du contraste entre les deux terrains",
                 "en": "Take stock of the contrast between the two engines"
@@ -6955,7 +6955,7 @@
           ],
           "etapes": [
             {
-              "ref": "03.1",
+              "ref": "1",
               "quoi": {
                 "fr": "Copier un extrait dans un bac à sable, et voir ce qu'une recréation efface",
                 "en": "Copy an extract into a sandbox, and see what recreating it wipes out"
@@ -6971,7 +6971,7 @@
               }
             },
             {
-              "ref": "03.2",
+              "ref": "2",
               "quoi": {
                 "fr": "Créer une table, et voir ce que chaque type refuse ou transforme en silence",
                 "en": "Create a table, and see what each type rejects or silently changes"
@@ -6987,7 +6987,7 @@
               }
             },
             {
-              "ref": "03.3",
+              "ref": "3",
               "quoi": {
                 "fr": "Violer chaque contrainte, une à la fois, et lire les messages",
                 "en": "Violate each constraint, one at a time, and read the messages"
@@ -7003,7 +7003,7 @@
               }
             },
             {
-              "ref": "03.4",
+              "ref": "4",
               "quoi": {
                 "fr": "Insérer en nommant les colonnes, et voir le compteur buter sur l'historique",
                 "en": "Insert naming the columns, and watch the counter trip over the history"
@@ -7019,7 +7019,7 @@
               }
             },
             {
-              "ref": "03.5",
+              "ref": "5",
               "quoi": {
                 "fr": "Modifier et supprimer, en comptant avant d'écrire",
                 "en": "Update and delete, counting before writing"
@@ -7035,7 +7035,7 @@
               }
             },
             {
-              "ref": "03.6",
+              "ref": "6",
               "quoi": {
                 "fr": "Fusionner une mise à jour avec MERGE, puis la rejouer",
                 "en": "Merge an update with MERGE, then replay it"
@@ -7051,7 +7051,7 @@
               }
             },
             {
-              "ref": "03.7",
+              "ref": "7",
               "quoi": {
                 "fr": "Comparer une vue et une colonne calculée une fois",
                 "en": "Compare a view and a column computed once"
@@ -7067,7 +7067,7 @@
               }
             },
             {
-              "ref": "03.8",
+              "ref": "8",
               "quoi": {
                 "fr": "Annuler une transaction qui contient un DDL, puis un DROP",
                 "en": "Roll back a transaction that holds DDL, then a DROP"
@@ -7083,7 +7083,7 @@
               }
             },
             {
-              "ref": "03.9",
+              "ref": "OLTP 9",
               "quoi": {
                 "fr": "Tirer le bilan du contraste",
                 "en": "Take stock of the contrast"
@@ -7208,7 +7208,7 @@
           ],
           "etapes": [
             {
-              "ref": "04.1",
+              "ref": "1",
               "quoi": {
                 "fr": "Voir la différence entre un GROUP BY et une fenêtre",
                 "en": "See the difference between a GROUP BY and a window"
@@ -7224,7 +7224,7 @@
               }
             },
             {
-              "ref": "04.2",
+              "ref": "2.1",
               "quoi": {
                 "fr": "Classer, et voir comment chaque fonction traite les égalités",
                 "en": "Rank, and see how each function handles ties"
@@ -7240,7 +7240,7 @@
               }
             },
             {
-              "ref": "04.3",
+              "ref": "2.2",
               "quoi": {
                 "fr": "Garder les trois produits les plus chers de chaque sous-catégorie",
                 "en": "Keep the three most expensive products of each subcategory"
@@ -7256,7 +7256,7 @@
               }
             },
             {
-              "ref": "04.4",
+              "ref": "2.3–2.4",
               "quoi": {
                 "fr": "Comparer chaque mois au précédent, puis cumuler et lisser",
                 "en": "Compare each month with the previous one, then accumulate and smooth"
@@ -7272,7 +7272,7 @@
               }
             },
             {
-              "ref": "04.5",
+              "ref": "OLTP 3",
               "quoi": {
                 "fr": "Tirer le bilan du contraste",
                 "en": "Take stock of the contrast"
@@ -7405,7 +7405,7 @@
           ],
           "etapes": [
             {
-              "ref": "05.1",
+              "ref": "1",
               "quoi": {
                 "fr": "Réécrire une sous-requête imbriquée en CTE",
                 "en": "Rewrite a nested subquery as a CTE"
@@ -7421,7 +7421,7 @@
               }
             },
             {
-              "ref": "05.2",
+              "ref": "2.1",
               "quoi": {
                 "fr": "Chaîner deux CTE pour comparer chaque mois à la moyenne",
                 "en": "Chain two CTEs to compare each month with the average"
@@ -7437,7 +7437,7 @@
               }
             },
             {
-              "ref": "05.3",
+              "ref": "2.2",
               "quoi": {
                 "fr": "Générer une série pour combler les mois sans vente",
                 "en": "Generate a series to fill in the months with no sales"
@@ -7453,7 +7453,7 @@
               }
             },
             {
-              "ref": "05.4",
+              "ref": "2.3",
               "quoi": {
                 "fr": "Dérouler un arbre par une CTE récursive",
                 "en": "Walk a tree with a recursive CTE"
@@ -7469,14 +7469,14 @@
               }
             },
             {
-              "ref": "05.5",
+              "ref": "OLAP 2.4",
               "quoi": {
                 "fr": "Compter les personnes et non les versions, et voir un filtre couper une branche",
                 "en": "Count people rather than versions, and watch a filter cut off a branch"
               },
               "ou": {
-                "fr": "DuckDB · PostgreSQL",
-                "en": "DuckDB · PostgreSQL"
+                "fr": "DuckDB",
+                "en": "DuckDB"
               },
               "touche": [],
               "note": {
@@ -7485,7 +7485,7 @@
               }
             },
             {
-              "ref": "05.6",
+              "ref": "OLTP 3",
               "quoi": {
                 "fr": "Tirer le bilan du contraste",
                 "en": "Take stock of the contrast"
@@ -7610,7 +7610,7 @@
           ],
           "etapes": [
             {
-              "ref": "06.1",
+              "ref": "1",
               "quoi": {
                 "fr": "Passer du GROUP BY au ROLLUP : le détail et ses totaux en une requête",
                 "en": "Go from GROUP BY to ROLLUP: detail and totals in one query"
@@ -7626,7 +7626,7 @@
               }
             },
             {
-              "ref": "06.2",
+              "ref": "2.1",
               "quoi": {
                 "fr": "Choisir ses niveaux avec GROUPING SETS, ou tout croiser avec CUBE",
                 "en": "Pick your levels with GROUPING SETS, or cross everything with CUBE"
@@ -7642,7 +7642,7 @@
               }
             },
             {
-              "ref": "06.3",
+              "ref": "2.2",
               "quoi": {
                 "fr": "Étiqueter les totaux avec GROUPING()",
                 "en": "Label the totals with GROUPING()"
@@ -7658,7 +7658,7 @@
               }
             },
             {
-              "ref": "06.4",
+              "ref": "2.3",
               "quoi": {
                 "fr": "Mettre un continent par colonne, par agrégat conditionnel",
                 "en": "Put one continent per column, with a conditional aggregate"
@@ -7674,7 +7674,7 @@
               }
             },
             {
-              "ref": "06.5",
+              "ref": "2.4",
               "quoi": {
                 "fr": "Croiser avec PIVOT, replier avec UNPIVOT, et compter ce qui manque",
                 "en": "Cross-tab with PIVOT, fold back with UNPIVOT, and count what is missing"
@@ -7690,7 +7690,7 @@
               }
             },
             {
-              "ref": "06.6",
+              "ref": "OLTP 3",
               "quoi": {
                 "fr": "Tirer le bilan du contraste",
                 "en": "Take stock of the contrast"
@@ -7815,7 +7815,7 @@
           ],
           "etapes": [
             {
-              "ref": "07.1",
+              "ref": "1.1",
               "quoi": {
                 "fr": "Écrire la même question en sous-requête scalaire, puis en fenêtre",
                 "en": "Write the same question as a scalar subquery, then as a window"
@@ -7831,7 +7831,7 @@
               }
             },
             {
-              "ref": "07.2",
+              "ref": "1.2",
               "quoi": {
                 "fr": "Voir le moteur décorréler une sous-requête corrélée",
                 "en": "Watch the engine decorrelate a correlated subquery"
@@ -7847,7 +7847,7 @@
               }
             },
             {
-              "ref": "07.3",
+              "ref": "2.1",
               "quoi": {
                 "fr": "Chercher les produits jamais vendus, de trois façons",
                 "en": "Find the products never sold, in three ways"
@@ -7863,7 +7863,7 @@
               }
             },
             {
-              "ref": "07.4",
+              "ref": "2.2",
               "quoi": {
                 "fr": "Provoquer le piège de NOT IN avec un NULL dans la liste",
                 "en": "Trigger the NOT IN trap with a NULL in the list"
@@ -7879,7 +7879,7 @@
               }
             },
             {
-              "ref": "07.5",
+              "ref": "2.3",
               "quoi": {
                 "fr": "Trouver les clients d'une catégorie mais pas d'une autre",
                 "en": "Find the customers of one category but not another"
@@ -7895,7 +7895,7 @@
               }
             },
             {
-              "ref": "07.6",
+              "ref": "2.4",
               "quoi": {
                 "fr": "Écrire le top 3 par sous-catégorie de trois façons",
                 "en": "Write the top 3 by subcategory in three ways"
@@ -7911,14 +7911,14 @@
               }
             },
             {
-              "ref": "07.7",
+              "ref": "2.5",
               "quoi": {
                 "fr": "Chercher les lignes de fait orphelines de leur dimension",
                 "en": "Look for fact rows orphaned from their dimension"
               },
               "ou": {
-                "fr": "DuckDB",
-                "en": "DuckDB"
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
               },
               "touche": [],
               "note": {
@@ -7927,14 +7927,14 @@
               }
             },
             {
-              "ref": "07.8",
+              "ref": "3",
               "quoi": {
                 "fr": "Tirer le bilan du contraste",
                 "en": "Take stock of the contrast"
               },
               "ou": {
-                "fr": "labo OLTP, lecture",
-                "en": "OLTP lab, reading"
+                "fr": "les deux labos, lecture",
+                "en": "both labs, reading"
               },
               "touche": [],
               "note": {
@@ -8064,7 +8064,7 @@
           ],
           "etapes": [
             {
-              "ref": "08.1",
+              "ref": "1",
               "quoi": {
                 "fr": "Fabriquer un document JSON imbriqué à partir des tables",
                 "en": "Build a nested JSON document from the tables"
@@ -8080,7 +8080,7 @@
               }
             },
             {
-              "ref": "08.2",
+              "ref": "OLAP 2",
               "quoi": {
                 "fr": "Écrire les documents dans un fichier, puis les recharger comme s'ils venaient d'une API",
                 "en": "Write the documents to a file, then reload them as if they came from an API"
@@ -8096,7 +8096,7 @@
               }
             },
             {
-              "ref": "08.3",
+              "ref": "OLAP 3.1 · OLTP 2.1",
               "quoi": {
                 "fr": "Extraire des valeurs, et voir LIKE comparer les guillemets",
                 "en": "Extract values, and watch LIKE compare the quotation marks"
@@ -8112,7 +8112,7 @@
               }
             },
             {
-              "ref": "08.4",
+              "ref": "OLAP 3.2–3.3 · OLTP 2.2–2.3",
               "quoi": {
                 "fr": "Trier et convertir sans se faire piéger par le texte",
                 "en": "Sort and convert without being tricked by text"
@@ -8128,7 +8128,7 @@
               }
             },
             {
-              "ref": "08.5",
+              "ref": "OLAP 3.4 · OLTP 2.4",
               "quoi": {
                 "fr": "Aplatir le tableau des lignes, en gardant les documents vides",
                 "en": "Flatten the array of lines, keeping the empty documents"
@@ -8144,7 +8144,7 @@
               }
             },
             {
-              "ref": "08.6",
+              "ref": "OLTP 3",
               "quoi": {
                 "fr": "Indexer le document sur PostgreSQL, et voir l'index qui ne sert pas",
                 "en": "Index the document on PostgreSQL, and see the index that does not help"
@@ -8160,7 +8160,7 @@
               }
             },
             {
-              "ref": "08.7",
+              "ref": "OLAP 3.5 · OLTP 4",
               "quoi": {
                 "fr": "Poser la même question au document et au relationnel, chronomètre en main",
                 "en": "Ask the document and the relational tables the same question, stopwatch in hand"
@@ -8176,14 +8176,14 @@
               }
             },
             {
-              "ref": "08.8",
+              "ref": "OLAP 4 · OLTP 5",
               "quoi": {
                 "fr": "Tirer le bilan du contraste",
                 "en": "Take stock of the contrast"
               },
               "ou": {
-                "fr": "labo OLTP, lecture",
-                "en": "OLTP lab, reading"
+                "fr": "les deux labos, lecture",
+                "en": "both labs, reading"
               },
               "touche": [],
               "note": {
@@ -8317,7 +8317,7 @@
           ],
           "etapes": [
             {
-              "ref": "09.1",
+              "ref": "1",
               "quoi": {
                 "fr": "Fixer le grain et les bornes de la série avant tout calcul",
                 "en": "Pin down the grain and the edges of the series before any calculation"
@@ -8333,14 +8333,14 @@
               }
             },
             {
-              "ref": "09.2",
+              "ref": "OLAP 2 · OLTP 4.6",
               "quoi": {
                 "fr": "Contrôler les intervalles de validité de la dimension produit",
                 "en": "Check the validity intervals of the product dimension"
               },
               "ou": {
-                "fr": "DuckDB",
-                "en": "DuckDB"
+                "fr": "DuckDB · PostgreSQL",
+                "en": "DuckDB · PostgreSQL"
               },
               "touche": [],
               "note": {
@@ -8349,7 +8349,7 @@
               }
             },
             {
-              "ref": "09.3",
+              "ref": "OLAP 3.1–3.2 · OLTP 4.1–4.5",
               "quoi": {
                 "fr": "Écrire l'as-of join par la seule date de début",
                 "en": "Write the as-of join on the start date alone"
@@ -8365,7 +8365,7 @@
               }
             },
             {
-              "ref": "09.4",
+              "ref": "OLAP 3.3",
               "quoi": {
                 "fr": "Recalculer la version de chaque vente et la comparer à celle que porte le fait",
                 "en": "Recompute each sale's version and compare it with the one the fact carries"
@@ -8381,7 +8381,7 @@
               }
             },
             {
-              "ref": "09.5",
+              "ref": "OLTP 5",
               "quoi": {
                 "fr": "Calculer la marge au coût du moment, par deux as-of joins",
                 "en": "Compute the margin at the cost of the day, with two as-of joins"
@@ -8397,7 +8397,7 @@
               }
             },
             {
-              "ref": "09.6",
+              "ref": "OLAP 4 · OLTP 2–3",
               "quoi": {
                 "fr": "Compléter l'axe des jours, puis lisser, rééchantillonner et mesurer la variation",
                 "en": "Complete the day axis, then smooth, resample and measure change"
@@ -8413,7 +8413,7 @@
               }
             },
             {
-              "ref": "09.7",
+              "ref": "OLAP 5 · OLTP 6",
               "quoi": {
                 "fr": "Mesurer la médiane, puis découper les sessions et les cohortes de clients",
                 "en": "Measure the median, then split customer sessions and cohorts"
@@ -8429,14 +8429,14 @@
               }
             },
             {
-              "ref": "09.8",
+              "ref": "OLAP 6 · OLTP 7",
               "quoi": {
                 "fr": "Tirer le bilan du contraste",
                 "en": "Take stock of the contrast"
               },
               "ou": {
-                "fr": "labo OLTP, lecture",
-                "en": "OLTP lab, reading"
+                "fr": "les deux labos, lecture",
+                "en": "both labs, reading"
               },
               "touche": [],
               "note": {
@@ -8555,7 +8555,7 @@
           ],
           "etapes": [
             {
-              "ref": "10.1",
+              "ref": "1",
               "quoi": {
                 "fr": "Fabriquer un terrain sans index, puis mesurer et lire le plan",
                 "en": "Build a ground with no index, then measure and read the plan"
@@ -8571,7 +8571,7 @@
               }
             },
             {
-              "ref": "10.2",
+              "ref": "2",
               "quoi": {
                 "fr": "Créer un index et remesurer, selon la sélectivité et la colonne demandée",
                 "en": "Create an index and measure again, by selectivity and by the column requested"
@@ -8587,7 +8587,7 @@
               }
             },
             {
-              "ref": "10.3",
+              "ref": "3",
               "quoi": {
                 "fr": "Casser la sargabilité exprès, cinq fois",
                 "en": "Break sargability on purpose, five times"
@@ -8603,7 +8603,7 @@
               }
             },
             {
-              "ref": "10.4",
+              "ref": "4",
               "quoi": {
                 "fr": "Ordonner les colonnes d'un index composite",
                 "en": "Order the columns of a composite index"
@@ -8619,7 +8619,7 @@
               }
             },
             {
-              "ref": "10.5",
+              "ref": "5",
               "quoi": {
                 "fr": "Chiffrer ce que les index coûtent : l'espace, les écritures, les index jamais lus",
                 "en": "Put a figure on what indexes cost: space, writes, indexes never read"
@@ -8635,7 +8635,7 @@
               }
             },
             {
-              "ref": "10.6",
+              "ref": "6",
               "quoi": {
                 "fr": "Voir le planificateur se tromper, puis lui dire la vérité",
                 "en": "Watch the planner get it wrong, then tell it the truth"
@@ -8651,7 +8651,7 @@
               }
             },
             {
-              "ref": "10.7",
+              "ref": "7",
               "quoi": {
                 "fr": "Mesurer l'élagage sur l'entrepôt, où il n'y a aucun index",
                 "en": "Measure pruning on the warehouse, where there is no index"
@@ -8667,7 +8667,7 @@
               }
             },
             {
-              "ref": "10.8",
+              "ref": "8",
               "quoi": {
                 "fr": "Tirer le bilan du contraste",
                 "en": "Take stock of the contrast"
@@ -8793,7 +8793,7 @@
           ],
           "etapes": [
             {
-              "ref": "11.1",
+              "ref": "1",
               "quoi": {
                 "fr": "Ouvrir deux sessions, puis annuler, reprendre, et voir un DDL verrouiller",
                 "en": "Open two sessions, then roll back, resume, and watch DDL take a lock"
@@ -8809,7 +8809,7 @@
               }
             },
             {
-              "ref": "11.2",
+              "ref": "2",
               "quoi": {
                 "fr": "Produire une lecture non répétable et un fantôme, puis les faire disparaître",
                 "en": "Produce a non-repeatable read and a phantom, then make them go away"
@@ -8825,7 +8825,7 @@
               }
             },
             {
-              "ref": "11.3",
+              "ref": "3",
               "quoi": {
                 "fr": "Perdre une mise à jour, puis la corriger de deux façons",
                 "en": "Lose an update, then fix it in two ways"
@@ -8841,7 +8841,7 @@
               }
             },
             {
-              "ref": "11.4",
+              "ref": "4",
               "quoi": {
                 "fr": "Violer une règle collective en lecture répétable, et la voir refusée en sérialisable",
                 "en": "Break a collective rule in repeatable read, and see it refused in serializable"
@@ -8857,7 +8857,7 @@
               }
             },
             {
-              "ref": "11.5",
+              "ref": "5",
               "quoi": {
                 "fr": "Lire un blocage, puis provoquer un interblocage",
                 "en": "Read a block, then cause a deadlock"
@@ -8873,7 +8873,7 @@
               }
             },
             {
-              "ref": "11.6",
+              "ref": "6",
               "quoi": {
                 "fr": "Voir le MVCC de l'intérieur : les versions, le gonflement, le nettoyage",
                 "en": "See MVCC from the inside: versions, bloat, cleanup"
@@ -8889,7 +8889,7 @@
               }
             },
             {
-              "ref": "11.7",
+              "ref": "7",
               "quoi": {
                 "fr": "Rendre un chargement rejouable : transaction, tranche, fusion par clé",
                 "en": "Make a load replayable: transaction, slice, merge by key"
@@ -8905,7 +8905,7 @@
               }
             },
             {
-              "ref": "11.8",
+              "ref": "8",
               "quoi": {
                 "fr": "Refaire l'essai sur l'entrepôt, où un seul processus écrit",
                 "en": "Redo the test on the warehouse, where a single process writes"
@@ -8921,7 +8921,7 @@
               }
             },
             {
-              "ref": "11.9",
+              "ref": "9",
               "quoi": {
                 "fr": "Tirer le bilan du contraste",
                 "en": "Take stock of the contrast"
@@ -9023,7 +9023,7 @@
           ],
           "etapes": [
             {
-              "ref": "12.1",
+              "ref": "1",
               "quoi": {
                 "fr": "Cadrer la demande avant d'écrire une ligne de SQL",
                 "en": "Frame the request before writing a line of SQL"
@@ -9039,7 +9039,7 @@
               }
             },
             {
-              "ref": "12.2",
+              "ref": "2",
               "quoi": {
                 "fr": "Reconstituer la série quotidienne sans trous",
                 "en": "Rebuild the daily series with no gaps"
@@ -9055,7 +9055,7 @@
               }
             },
             {
-              "ref": "12.3",
+              "ref": "3",
               "quoi": {
                 "fr": "Poser les mesures de tendance et le classement mensuel des produits",
                 "en": "Set up the trend measures and the monthly product ranking"
@@ -9071,7 +9071,7 @@
               }
             },
             {
-              "ref": "12.4",
+              "ref": "4",
               "quoi": {
                 "fr": "Contrôler la qualité, et ranger les contrôles dans le livrable",
                 "en": "Check quality, and put the checks in the deliverable"
@@ -9087,7 +9087,7 @@
               }
             },
             {
-              "ref": "12.5",
+              "ref": "5",
               "quoi": {
                 "fr": "Recalculer la marge au coût du jour, et mesurer l'écart avec le fait",
                 "en": "Recompute the margin at the cost of the day, and measure the gap with the fact"
@@ -9103,7 +9103,7 @@
               }
             },
             {
-              "ref": "12.6",
+              "ref": "6",
               "quoi": {
                 "fr": "Produire le rapport avec ses sous-totaux, et le livrer au format long",
                 "en": "Produce the report with its subtotals, and deliver it in long format"
@@ -9119,7 +9119,7 @@
               }
             },
             {
-              "ref": "12.7",
+              "ref": "7",
               "quoi": {
                 "fr": "Mesurer ce que coûte chaque vue, puis matérialiser",
                 "en": "Measure what each view costs, then materialize"
@@ -9135,7 +9135,7 @@
               }
             },
             {
-              "ref": "12.8",
+              "ref": "8",
               "quoi": {
                 "fr": "Rendre le rafraîchissement atomique, par tranche, et journalisé",
                 "en": "Make the refresh atomic, sliced and logged"
@@ -9151,7 +9151,7 @@
               }
             },
             {
-              "ref": "12.9",
+              "ref": "9",
               "quoi": {
                 "fr": "Tirer le bilan du projet",
                 "en": "Take stock of the project"

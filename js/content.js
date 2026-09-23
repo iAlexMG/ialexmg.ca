@@ -769,6 +769,14 @@ const Contenu = (function () {
     const libelle = window.I18n.t("cours.libelle");
     const liste = Array.isArray(c.etapes) ? c.etapes : [];
     const theorie = Array.isArray(c.theorie) ? c.theorie : [];
+    // Un repère de SQL peut viser deux labos numérotés différemment
+    // (« OLAP 3.2–3.3 · OLTP 2.2–2.3 ») : ses groupes s'empilent, et la
+    // colonne s'élargit pour ce cours-là seulement.
+    const larges = liste.some(function (e) {
+      return texteLocalise(e.ref).split(" · ").some(function (g) {
+        return g.length > 8;
+      });
+    });
 
     function voisin(v, sens) {
       if (!v) return '<span class="fiche-' + sens + '"></span>';
@@ -811,7 +819,7 @@ const Contenu = (function () {
     }
 
     return (
-      '<div class="fiche-cours">' +
+      '<div class="fiche-cours' + (larges ? " reperes-larges" : "") + '">' +
       (theorie.length
         ? '<p class="index-legende" data-i18n="cours.legende_theorie"></p>' +
           '<ol class="fiche-theorie">' + theorie.map(ligneTheorie).join("") + "</ol>"
@@ -865,7 +873,14 @@ const Contenu = (function () {
       '<li class="etape' + (e.montage ? " etape-montage" : "") +
       '" data-touche="' + echapper((e.touche || []).join(" ")) + '">' +
       '<button type="button" class="etape-rangee" aria-expanded="false">' +
-      '<span class="etape-ref">' + echapper(texteLocalise(e.ref)) + "</span>" +
+      '<span class="etape-ref">' +
+      texteLocalise(e.ref)
+        .split(" · ")
+        .map(function (g) {
+          return '<span class="etape-ref-groupe">' + echapper(g) + "</span>";
+        })
+        .join("") +
+      "</span>" +
       '<span class="etape-quoi">' + echapper(texteLocalise(e.quoi)) +
       (e.montage
         ? ' <span class="etape-une-fois">' + echapper(window.I18n.t("cours.une_fois")) +
