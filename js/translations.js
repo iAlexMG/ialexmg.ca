@@ -160,6 +160,7 @@ const TRADUCTIONS = {
     "cours.legende_cadrage": "Les documents de cadrage",
     // La page d'un cours
     "cours.mini_aria": "La carte de la formation : où ce cours se situe",
+    "cours.legende_theorie": "La théorie",
     "cours.legende_etapes": "Les étapes du labo",
     "cours.retour_carte": "Retour à la carte",
 
@@ -337,6 +338,7 @@ const TRADUCTIONS = {
     "cours.legende_cadrage": "Framing documents",
     // A module's page
     "cours.mini_aria": "The course map: where this module sits",
+    "cours.legende_theorie": "The theory",
     "cours.legende_etapes": "The lab steps",
     "cours.retour_carte": "Back to the map",
 

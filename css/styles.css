@@ -1560,7 +1560,14 @@ a.fichier-nom:hover { color: var(--couleur-accent); }
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
-.fiche-docs { font-weight: 700; }
+/* Les liens se collent à leurs séparateurs, sans espace : sans flex, la rangée
+   ne se coupait nulle part et débordait en mobile (« Exercices corrigés »). */
+.fiche-docs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  font-weight: 700;
+}
 .fiche-docs a { color: var(--couleur-accent); white-space: nowrap; }
 .fiche-docs a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .fiche-sep { margin: 0 0.6rem; font-weight: 400; color: var(--couleur-texte-doux); }
@@ -1677,10 +1684,20 @@ button.fiche-mot[aria-pressed="true"] {
 }
 /* Les étapes du labo. Une étape allumée par la chaîne prend un filet accent
    à gauche, et les autres s'estompent le temps de la visée. */
-.fiche-etapes {
+.fiche-etapes,
+.fiche-theorie {
   list-style: none;
   margin: 0.6rem 0 0;
   padding: 0;
+}
+/* La théorie : ses sections, et l'endroit du labo où chacune se pratique. Même
+   rangée que les étapes, mais rien ne se déplie. */
+.theorie-rangee {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.1rem 0.6rem;
+  padding: 0.4rem 0;
 }
 .etape {
   margin-left: calc(-0.75rem - 2px);
@@ -1706,7 +1723,7 @@ button.fiche-mot[aria-pressed="true"] {
 }
 .etape-ref {
   flex: none;
-  width: 3.2rem;
+  width: 4rem;
   font-family: var(--police-mono);
   font-size: 0.74rem;
   font-variant-numeric: tabular-nums;
@@ -1726,7 +1743,7 @@ button.fiche-mot[aria-pressed="true"] {
 /* En mobile, l'endroit passe sous la tâche, aligné sur elle. */
 .etape-ou {
   flex-basis: 100%;
-  padding-left: calc(3.2rem + 0.6rem);
+  padding-left: calc(4rem + 0.6rem);
   font-family: var(--police-mono);
   font-size: 0.72rem;
   color: var(--couleur-texte-doux);
@@ -1742,7 +1759,7 @@ button.fiche-mot[aria-pressed="true"] {
 }
 .etape-montage .etape-quoi { color: var(--couleur-texte-doux); }
 .etape-note {
-  margin: 0.1rem 0 0.8rem calc(3.2rem + 0.6rem);
+  margin: 0.1rem 0 0.8rem calc(4rem + 0.6rem);
   padding-left: 0.9rem;
   border-left: 1px solid var(--couleur-bordure);
   max-width: 70ch;
@@ -1811,7 +1828,8 @@ button.fiche-mot[aria-pressed="true"] {
   }
   /* Une seule ligne : c'est la tâche qui se coupe, jamais l'endroit qui
      tombe dessous. */
-  .etape-rangee { flex-wrap: nowrap; }
+  .etape-rangee,
+  .theorie-rangee { flex-wrap: nowrap; }
   .etape-quoi { flex: 0 1 auto; max-width: 66%; }
   .etape-conduite {
     display: block;

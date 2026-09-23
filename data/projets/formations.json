@@ -253,9 +253,58 @@
               "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_01_Le_metier_les_sources_et_le_premier_regard/Exercices_corriges_01.pdf"
             }
           ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "Le métier : ingénieur de données"
+            },
+            {
+              "numero": "2",
+              "titre": "L'architecture de référence"
+            },
+            {
+              "numero": "3",
+              "titre": "Deux chemins : le froid et le chaud"
+            },
+            {
+              "numero": "4",
+              "titre": "Où s'arrête l'ingénieur de données, et ce qu'il livre",
+              "labo": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              }
+            },
+            {
+              "numero": "5",
+              "titre": "Le fil rouge : Véhicules Boréal inc.",
+              "labo": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              }
+            },
+            {
+              "numero": "6",
+              "titre": "DuckDB, pour regarder sans charger",
+              "labo": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              }
+            },
+            {
+              "numero": "7",
+              "titre": "Le type deviné",
+              "labo": {
+                "fr": "Étape 3",
+                "en": "Step 3"
+              }
+            }
+          ],
           "etapes": [
             {
-              "ref": "01.1",
+              "ref": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              },
               "quoi": {
                 "fr": "Créer le dépôt de code, et fermer sa porte aux mots de passe",
                 "en": "Create the code repository, and shut its door to passwords"
@@ -271,7 +320,10 @@
               }
             },
             {
-              "ref": "01.2",
+              "ref": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              },
               "quoi": {
                 "fr": "Compter, sonder et peser les fichiers reçus sans en charger un seul",
                 "en": "Count, probe and weigh the delivered files without loading a single one"
@@ -289,7 +341,10 @@
               }
             },
             {
-              "ref": "01.3",
+              "ref": {
+                "fr": "Étape 3",
+                "en": "Step 3"
+              },
               "quoi": {
                 "fr": "Voir ce que coûte un type deviné : une date prise pour un nombre, un décalage perdu",
                 "en": "See what a guessed type costs: a date read as a number, a lost offset"
@@ -341,9 +396,58 @@
               "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_02_Les_formats_de_fichiers_et_le_lac_bronze/Exercices_corriges_02.pdf"
             }
           ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "Ligne contre colonne"
+            },
+            {
+              "numero": "2",
+              "titre": "Cinq formats, ce qu'ils coûtent et ce qu'ils rendent",
+              "labo": {
+                "fr": "Étapes 2 et 3",
+                "en": "Steps 2 and 3"
+              }
+            },
+            {
+              "numero": "3",
+              "titre": "Parquet, de près",
+              "labo": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              }
+            },
+            {
+              "numero": "4",
+              "titre": "La règle du bronze",
+              "labo": {
+                "fr": "Étapes 1 et 3",
+                "en": "Steps 1 and 3"
+              }
+            },
+            {
+              "numero": "5",
+              "titre": "Le stockage objet et le partitionnement",
+              "labo": {
+                "fr": "Étapes 1, 2 et 3",
+                "en": "Steps 1, 2 and 3"
+              }
+            },
+            {
+              "numero": "6",
+              "titre": "DuckDB sur le lac",
+              "labo": {
+                "fr": "Étapes 1, 2 et 3",
+                "en": "Steps 1, 2 and 3"
+              }
+            }
+          ],
           "etapes": [
             {
-              "ref": "02.1",
+              "ref": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              },
               "quoi": {
                 "fr": "Convertir l'archive de l'usine en Parquet, un dossier par jour livré",
                 "en": "Convert the plant's archive to Parquet, one folder per delivered day"
@@ -361,7 +465,10 @@
               }
             },
             {
-              "ref": "02.2",
+              "ref": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              },
               "quoi": {
                 "fr": "Lire ce que les fichiers Parquet savent d'eux-mêmes",
                 "en": "Read what Parquet files know about themselves"
@@ -379,7 +486,10 @@
               }
             },
             {
-              "ref": "02.3",
+              "ref": {
+                "fr": "Étape 3",
+                "en": "Step 3"
+              },
               "quoi": {
                 "fr": "Convertir les messages des véhicules, structures emboîtées comprises",
                 "en": "Convert the vehicle messages, nested structures included"
@@ -397,7 +507,10 @@
               }
             },
             {
-              "ref": "02.4",
+              "ref": {
+                "fr": "Étape 4",
+                "en": "Step 4"
+              },
               "quoi": {
                 "fr": "Versionner les scripts, jamais le lac",
                 "en": "Version the scripts, never the lake"
@@ -447,9 +560,54 @@
               "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_03_Charger_des_fichiers_dans_la_couche_RAW/Exercices_corriges_03.pdf"
             }
           ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "Trois façons d'extraire",
+              "labo": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              }
+            },
+            {
+              "numero": "2",
+              "titre": "Chargement complet, chargement incrémental",
+              "labo": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              }
+            },
+            {
+              "numero": "3",
+              "titre": "L'idempotence et le journal des chargements",
+              "labo": {
+                "fr": "Étapes 1 et 2",
+                "en": "Steps 1 and 2"
+              }
+            },
+            {
+              "numero": "4",
+              "titre": "La couche RAW",
+              "labo": {
+                "fr": "Étapes 1, 2 et 3",
+                "en": "Steps 1, 2 and 3"
+              }
+            },
+            {
+              "numero": "5",
+              "titre": "Déposer sans transformer : le corpus",
+              "labo": {
+                "fr": "Étape 4",
+                "en": "Step 4"
+              }
+            }
+          ],
           "etapes": [
             {
-              "ref": "03.1",
+              "ref": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              },
               "quoi": {
                 "fr": "Créer l'entrepôt, et voir un fichier chargé deux fois compter double",
                 "en": "Create the warehouse, and watch a file loaded twice count double"
@@ -467,7 +625,10 @@
               }
             },
             {
-              "ref": "03.2",
+              "ref": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              },
               "quoi": {
                 "fr": "Écrire le chargeur qui ne prend que le neuf, et marque son lot",
                 "en": "Write the loader that takes only what is new, and tags its batch"
@@ -486,7 +647,10 @@
               }
             },
             {
-              "ref": "03.3",
+              "ref": {
+                "fr": "Étape 3",
+                "en": "Step 3"
+              },
               "quoi": {
                 "fr": "Retrouver dans la RAW les pièges connus : le mois livré deux fois, les doublons, le client effacé",
                 "en": "Find the known traps in RAW: the month delivered twice, the duplicates, the erased customer"
@@ -504,7 +668,10 @@
               }
             },
             {
-              "ref": "03.4",
+              "ref": {
+                "fr": "Étape 4",
+                "en": "Step 4"
+              },
               "quoi": {
                 "fr": "Déposer la documentation telle quelle, avec son catalogue",
                 "en": "Land the documentation as is, with its catalogue"
@@ -522,7 +689,10 @@
               }
             },
             {
-              "ref": "03.5",
+              "ref": {
+                "fr": "Étape 5",
+                "en": "Step 5"
+              },
               "quoi": {
                 "fr": "Versionner le chargeur, laisser dehors données et entrepôt",
                 "en": "Version the loader, leave data and warehouse out"
@@ -572,9 +742,46 @@
               "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_04_Lire_une_base_et_une_API/Exercices_corriges_04.pdf"
             }
           ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "Tirer ou recevoir : MQTT, REST et ODBC",
+              "labo": {
+                "fr": "Étapes 2 et 4",
+                "en": "Steps 2 and 4"
+              }
+            },
+            {
+              "numero": "2",
+              "titre": "Lire une base par ODBC",
+              "labo": {
+                "fr": "Étapes 1 et 2",
+                "en": "Steps 1 and 2"
+              }
+            },
+            {
+              "numero": "3",
+              "titre": "La capture de changements",
+              "labo": {
+                "fr": "Étapes 1 et 3",
+                "en": "Steps 1 and 3"
+              }
+            },
+            {
+              "numero": "4",
+              "titre": "Tirer une API REST",
+              "labo": {
+                "fr": "Étape 4",
+                "en": "Step 4"
+              }
+            }
+          ],
           "etapes": [
             {
-              "ref": "04.0",
+              "ref": {
+                "fr": "Avant",
+                "en": "Before"
+              },
               "quoi": {
                 "fr": "Recevoir la plateforme, puis démarrer et remplir la base de l'ERP",
                 "en": "Receive the platform, then start and fill the ERP database"
@@ -591,7 +798,10 @@
               "montage": true
             },
             {
-              "ref": "04.1",
+              "ref": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              },
               "quoi": {
                 "fr": "Interroger la base de l'ERP : ce qui a bougé depuis la dernière fois, et ce que la lecture lui coûte",
                 "en": "Query the ERP database: what changed since last time, and what the read costs it"
@@ -609,7 +819,10 @@
               }
             },
             {
-              "ref": "04.2",
+              "ref": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              },
               "quoi": {
                 "fr": "Tirer les neuf tables de l'ERP par ODBC, puis prouver qu'elles égalent la RAW",
                 "en": "Pull the ERP's nine tables over ODBC, then prove they match RAW"
@@ -627,7 +840,10 @@
               }
             },
             {
-              "ref": "04.3",
+              "ref": {
+                "fr": "Étape 3",
+                "en": "Step 3"
+              },
               "quoi": {
                 "fr": "Vérifier le filigrane de décembre contre l'extrait",
                 "en": "Check December's watermark against the extract"
@@ -645,7 +861,10 @@
               }
             },
             {
-              "ref": "04.4",
+              "ref": {
+                "fr": "Étape 4",
+                "en": "Step 4"
+              },
               "quoi": {
                 "fr": "Appeler la vraie API météo page par page, limites et pannes comprises",
                 "en": "Call the real weather API page by page, limits and outages included"
@@ -663,7 +882,10 @@
               }
             },
             {
-              "ref": "04.5",
+              "ref": {
+                "fr": "Étape 5",
+                "en": "Step 5"
+              },
               "quoi": {
                 "fr": "Versionner le code, laisser dehors données et mots de passe",
                 "en": "Version the code, leave data and passwords out"
@@ -713,9 +935,78 @@
               "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_05_Le_code_d_un_pipeline_robuste/Exercices_corriges_05.pdf"
             }
           ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "Ce qui sépare un script d'un pipeline",
+              "labo": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              }
+            },
+            {
+              "numero": "2",
+              "titre": "La configuration hors du code",
+              "labo": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              }
+            },
+            {
+              "numero": "3",
+              "titre": "Les secrets hors du dépôt",
+              "labo": {
+                "fr": "Étapes 2 et 8",
+                "en": "Steps 2 and 8"
+              }
+            },
+            {
+              "numero": "4",
+              "titre": "Une journalisation qui se lit, et qui se compte",
+              "labo": {
+                "fr": "Étape 3",
+                "en": "Step 3"
+              }
+            },
+            {
+              "numero": "5",
+              "titre": "Réessayer ce qui est passager",
+              "labo": {
+                "fr": "Étape 4",
+                "en": "Step 4"
+              }
+            },
+            {
+              "numero": "6",
+              "titre": "Tester une transformation",
+              "labo": {
+                "fr": "Étape 6",
+                "en": "Step 6"
+              }
+            },
+            {
+              "numero": "7",
+              "titre": "Une seule porte d'entrée",
+              "labo": {
+                "fr": "Étape 5",
+                "en": "Step 5"
+              }
+            },
+            {
+              "numero": "8",
+              "titre": "Empaqueter le pipeline",
+              "labo": {
+                "fr": "Étape 7",
+                "en": "Step 7"
+              }
+            }
+          ],
           "etapes": [
             {
-              "ref": "05.1",
+              "ref": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              },
               "quoi": {
                 "fr": "Ranger les scripts des cours précédents dans un paquet Python",
                 "en": "Gather the previous courses' scripts into a Python package"
@@ -731,7 +1022,10 @@
               }
             },
             {
-              "ref": "05.2",
+              "ref": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              },
               "quoi": {
                 "fr": "Sortir la configuration du code, et le mot de passe du dépôt",
                 "en": "Move configuration out of the code, and the password out of the repository"
@@ -747,7 +1041,10 @@
               }
             },
             {
-              "ref": "05.3",
+              "ref": {
+                "fr": "Étape 3",
+                "en": "Step 3"
+              },
               "quoi": {
                 "fr": "Journaliser deux fois : un fichier par jour pour comprendre, une table des exécutions pour compter",
                 "en": "Log twice: a file per day to understand, a runs table to count"
@@ -763,7 +1060,10 @@
               }
             },
             {
-              "ref": "05.4",
+              "ref": {
+                "fr": "Étape 4",
+                "en": "Step 4"
+              },
               "quoi": {
                 "fr": "Faire des reprises de l'API un outil commun à tout le pipeline",
                 "en": "Turn the API retries into a tool shared by the whole pipeline"
@@ -781,7 +1081,10 @@
               }
             },
             {
-              "ref": "05.5",
+              "ref": {
+                "fr": "Étape 5",
+                "en": "Step 5"
+              },
               "quoi": {
                 "fr": "Brancher les cinq étapes sur une seule porte d'entrée, et tout charger d'une commande",
                 "en": "Wire the five steps to a single entry point, and load everything with one command"
@@ -800,7 +1103,10 @@
               }
             },
             {
-              "ref": "05.6",
+              "ref": {
+                "fr": "Étape 6",
+                "en": "Step 6"
+              },
               "quoi": {
                 "fr": "Écrire trois tests, un par promesse du pipeline",
                 "en": "Write three tests, one per pipeline promise"
@@ -816,7 +1122,10 @@
               }
             },
             {
-              "ref": "05.7",
+              "ref": {
+                "fr": "Étape 7",
+                "en": "Step 7"
+              },
               "quoi": {
                 "fr": "Mettre le pipeline dans une image Docker, et la lancer sur le projet",
                 "en": "Put the pipeline into a Docker image, and run it on the project"
@@ -832,7 +1141,10 @@
               }
             },
             {
-              "ref": "05.8",
+              "ref": {
+                "fr": "Étape 8",
+                "en": "Step 8"
+              },
               "quoi": {
                 "fr": "Versionner le code, et vérifier que le .env n'y est pas",
                 "en": "Version the code, and check that the .env is not in it"
@@ -882,9 +1194,78 @@
               "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_06_Orchestration_avec_Airflow/Exercices_corriges_06.pdf"
             }
           ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "Ce qu'un ordonnanceur fait, et ce qu'il ne fait pas",
+              "labo": {
+                "fr": "Étape 6",
+                "en": "Step 6"
+              }
+            },
+            {
+              "numero": "2",
+              "titre": "Le DAG, et ce que ses flèches ne disent pas",
+              "labo": {
+                "fr": "Étape 8",
+                "en": "Step 8"
+              }
+            },
+            {
+              "numero": "3",
+              "titre": "La planification, et l'intervalle de données",
+              "labo": {
+                "fr": "Étapes 1, 2, 8 et 9",
+                "en": "Steps 1, 2, 8 and 9"
+              }
+            },
+            {
+              "numero": "4",
+              "titre": "Le rattrapage",
+              "labo": {
+                "fr": "Étapes 5, 9 et 10",
+                "en": "Steps 5, 9 and 10"
+              }
+            },
+            {
+              "numero": "5",
+              "titre": "Rejouable : la fenêtre, le journal, et la reconstruction",
+              "labo": {
+                "fr": "Étapes 2, 3, 4 et 5",
+                "en": "Steps 2, 3, 4 and 5"
+              }
+            },
+            {
+              "numero": "6",
+              "titre": "Ce qui rate, ce qui tarde, ce qui attend",
+              "labo": {
+                "fr": "Étape 8",
+                "en": "Step 8"
+              }
+            },
+            {
+              "numero": "7",
+              "titre": "Ce qui se partage se réserve",
+              "labo": {
+                "fr": "Étapes 3 et 7",
+                "en": "Steps 3 and 7"
+              }
+            },
+            {
+              "numero": "8",
+              "titre": "Le point de couture",
+              "labo": {
+                "fr": "Étape 8",
+                "en": "Step 8"
+              }
+            }
+          ],
           "etapes": [
             {
-              "ref": "06.0",
+              "ref": {
+                "fr": "Avant",
+                "en": "Before"
+              },
               "quoi": {
                 "fr": "Construire l'image d'Airflow, et démarrer sa pile",
                 "en": "Build Airflow's image, and start its stack"
@@ -901,7 +1282,10 @@
               "montage": true
             },
             {
-              "ref": "06.1",
+              "ref": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              },
               "quoi": {
                 "fr": "Faire avancer Boréal de trois mois : régénérer les sources jusqu'à mars 2026",
                 "en": "Move Boréal three months ahead: regenerate the sources up to March 2026"
@@ -919,7 +1303,10 @@
               }
             },
             {
-              "ref": "06.2",
+              "ref": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              },
               "quoi": {
                 "fr": "Écrire la fenêtre de temps : ce lot tombe-t-il dans ma tranche ?",
                 "en": "Write the time window: does this batch fall within my slice?"
@@ -937,7 +1324,10 @@
               }
             },
             {
-              "ref": "06.3",
+              "ref": {
+                "fr": "Étape 3",
+                "en": "Step 3"
+              },
               "quoi": {
                 "fr": "Brancher la fenêtre sur les étapes, et partager les livraisons entre les deux rythmes",
                 "en": "Wire the window into the steps, and share deliveries between the two cadences"
@@ -955,7 +1345,10 @@
               }
             },
             {
-              "ref": "06.4",
+              "ref": {
+                "fr": "Étape 4",
+                "en": "Step 4"
+              },
               "quoi": {
                 "fr": "Charger une seule journée, puis voir les garde-fous répondre aux commandes fautives",
                 "en": "Load a single day, then watch the guardrails answer bad commands"
@@ -974,7 +1367,10 @@
               }
             },
             {
-              "ref": "06.5",
+              "ref": {
+                "fr": "Étape 5",
+                "en": "Step 5"
+              },
               "quoi": {
                 "fr": "Tester le rattrapage sans Airflow : deux tests de plus",
                 "en": "Test the backfill without Airflow: two more tests"
@@ -990,7 +1386,10 @@
               }
             },
             {
-              "ref": "06.6",
+              "ref": {
+                "fr": "Étape 6",
+                "en": "Step 6"
+              },
               "quoi": {
                 "fr": "Allumer Airflow, et lire les fichiers qui le composent",
                 "en": "Turn Airflow on, and read the files it is made of"
@@ -1006,7 +1405,10 @@
               }
             },
             {
-              "ref": "06.7",
+              "ref": {
+                "fr": "Étape 7",
+                "en": "Step 7"
+              },
               "quoi": {
                 "fr": "Vérifier le verrou de l'entrepôt, et voir ce que coûte son oubli",
                 "en": "Check the warehouse lock, and see what forgetting it costs"
@@ -1024,7 +1426,10 @@
               }
             },
             {
-              "ref": "06.8",
+              "ref": {
+                "fr": "Étape 8",
+                "en": "Step 8"
+              },
               "quoi": {
                 "fr": "Écrire le DAG quotidien, et lui faire charger une journée",
                 "en": "Write the daily DAG, and have it load one day"
@@ -1043,7 +1448,10 @@
               }
             },
             {
-              "ref": "06.9",
+              "ref": {
+                "fr": "Étape 9",
+                "en": "Step 9"
+              },
               "quoi": {
                 "fr": "Écrire le DAG mensuel, préparer un témoin, puis laisser rattraper les trois mois",
                 "en": "Write the monthly DAG, prepare a control copy, then let it backfill the three months"
@@ -1062,7 +1470,10 @@
               }
             },
             {
-              "ref": "06.10",
+              "ref": {
+                "fr": "Étape 10",
+                "en": "Step 10"
+              },
               "quoi": {
                 "fr": "Prouver que le rattrapage égale le chargement d'un bloc",
                 "en": "Prove that the backfill equals the one-block load"
@@ -1080,7 +1491,10 @@
               }
             },
             {
-              "ref": "06.11",
+              "ref": {
+                "fr": "Étape 11",
+                "en": "Step 11"
+              },
               "quoi": {
                 "fr": "Versionner les DAG, la fenêtre et les tests, jamais la plateforme",
                 "en": "Version the DAGs, the window and the tests, never the platform"
@@ -1130,9 +1544,78 @@
               "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_07_Traitement_distribue_avec_Spark/Exercices_corriges_07.pdf"
             }
           ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "Ce qu'une machine fait déjà",
+              "labo": {
+                "fr": "Étapes 1 et 2",
+                "en": "Steps 1 and 2"
+              }
+            },
+            {
+              "numero": "2",
+              "titre": "Le modèle de Spark : un pilote, des exécuteurs, des partitions",
+              "labo": {
+                "fr": "Étape 3",
+                "en": "Step 3"
+              }
+            },
+            {
+              "numero": "3",
+              "titre": "Paresseux : transformations et actions",
+              "labo": {
+                "fr": "Étape 3",
+                "en": "Step 3"
+              }
+            },
+            {
+              "numero": "4",
+              "titre": "Le brassage, le seul geste vraiment cher",
+              "labo": {
+                "fr": "Étapes 5 et 6",
+                "en": "Steps 5 and 6"
+              }
+            },
+            {
+              "numero": "5",
+              "titre": "Lire le plan d'exécution",
+              "labo": {
+                "fr": "Étapes 2 et 5",
+                "en": "Steps 2 and 5"
+              }
+            },
+            {
+              "numero": "6",
+              "titre": "Ce qu'un moteur distribué écrit",
+              "labo": {
+                "fr": "Étape 4",
+                "en": "Step 4"
+              }
+            },
+            {
+              "numero": "7",
+              "titre": "Trois pièges qui coûtent tout",
+              "labo": {
+                "fr": "Étape 7",
+                "en": "Step 7"
+              }
+            },
+            {
+              "numero": "8",
+              "titre": "Quand une machine ne suffit plus",
+              "labo": {
+                "fr": "Étape 8",
+                "en": "Step 8"
+              }
+            }
+          ],
           "etapes": [
             {
-              "ref": "07.0",
+              "ref": {
+                "fr": "Avant",
+                "en": "Before"
+              },
               "quoi": {
                 "fr": "Tirer l'image de Spark, une fois pour toutes",
                 "en": "Pull the Spark image, once and for all"
@@ -1149,7 +1632,10 @@
               "montage": true
             },
             {
-              "ref": "07.1",
+              "ref": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              },
               "quoi": {
                 "fr": "Demander à l'usine tout son historien, puis refaire le bronze avec votre pipeline",
                 "en": "Ask the plant for its whole historian, then rebuild bronze with your pipeline"
@@ -1168,7 +1654,10 @@
               }
             },
             {
-              "ref": "07.2",
+              "ref": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              },
               "quoi": {
                 "fr": "Calculer les agrégats sur une machine, et lire le plan qui explique la vitesse",
                 "en": "Compute the aggregates on one machine, and read the plan that explains the speed"
@@ -1186,7 +1675,10 @@
               }
             },
             {
-              "ref": "07.3",
+              "ref": {
+                "fr": "Étape 3",
+                "en": "Step 3"
+              },
               "quoi": {
                 "fr": "Écrire le même bronze en PySpark, et le lancer dans un conteneur à usage unique",
                 "en": "Write the same bronze in PySpark, and run it in a single-use container"
@@ -1204,7 +1696,10 @@
               }
             },
             {
-              "ref": "07.4",
+              "ref": {
+                "fr": "Étape 4",
+                "en": "Step 4"
+              },
               "quoi": {
                 "fr": "Comparer ce que les deux moteurs ont écrit sur le disque",
                 "en": "Compare what the two engines wrote on disk"
@@ -1222,7 +1717,10 @@
               }
             },
             {
-              "ref": "07.5",
+              "ref": {
+                "fr": "Étape 5",
+                "en": "Step 5"
+              },
               "quoi": {
                 "fr": "Refaire les agrégats en Spark, trouver le brassage dans le plan, comparer ligne à ligne",
                 "en": "Redo the aggregates in Spark, find the shuffle in the plan, compare row by row"
@@ -1240,7 +1738,10 @@
               }
             },
             {
-              "ref": "07.6",
+              "ref": {
+                "fr": "Étape 6",
+                "en": "Step 6"
+              },
               "quoi": {
                 "fr": "Dédoublonner la télémétrie, le pire cas pour Spark",
                 "en": "Deduplicate the telemetry, the worst case for Spark"
@@ -1258,7 +1759,10 @@
               }
             },
             {
-              "ref": "07.7",
+              "ref": {
+                "fr": "Étape 7",
+                "en": "Step 7"
+              },
               "quoi": {
                 "fr": "Provoquer les trois pièges classiques, et les mesurer",
                 "en": "Trigger the three classic traps, and measure them"
@@ -1276,7 +1780,10 @@
               }
             },
             {
-              "ref": "07.8",
+              "ref": {
+                "fr": "Étape 8",
+                "en": "Step 8"
+              },
               "quoi": {
                 "fr": "Conclure, remettre le projet dans l'état du Cours 06, versionner",
                 "en": "Conclude, put the project back as course 06 left it, version"
@@ -1326,9 +1833,110 @@
               "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_08_Donnees_de_terrain_SCADA_historien_et_series_temporelles/Exercices_corriges_08.pdf"
             }
           ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "La chaîne qui produit un point",
+              "labo": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              }
+            },
+            {
+              "numero": "2",
+              "titre": "OPC UA, la langue commune des équipements",
+              "labo": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              }
+            },
+            {
+              "numero": "3",
+              "titre": "La bande morte : ce que l'historien garde, et ce qu'il jette",
+              "labo": {
+                "fr": "Étapes 4 et 7",
+                "en": "Steps 4 and 7"
+              }
+            },
+            {
+              "numero": "4",
+              "titre": "La qualité d'un point, et ce qu'elle vaut",
+              "labo": {
+                "fr": "Étape 6",
+                "en": "Step 6"
+              }
+            },
+            {
+              "numero": "5",
+              "titre": "Les étiquettes et la hiérarchie des actifs",
+              "labo": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              }
+            },
+            {
+              "numero": "6",
+              "titre": "La frontière entre technologies opérationnelles et technologies de l'information",
+              "labo": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              }
+            },
+            {
+              "numero": "7",
+              "titre": "Les quatre pièges d'horloge",
+              "labo": {
+                "fr": "Étapes 2, 3 et 5",
+                "en": "Steps 2, 3 and 5"
+              }
+            },
+            {
+              "numero": "8",
+              "titre": "Le capteur figé, et son faux jumeau",
+              "labo": {
+                "fr": "Étape 6",
+                "en": "Step 6"
+              }
+            },
+            {
+              "numero": "9",
+              "titre": "Rendre la série régulière",
+              "labo": {
+                "fr": "Étapes 9, 10 et 11",
+                "en": "Steps 9, 10 and 11"
+              }
+            },
+            {
+              "numero": "10",
+              "titre": "Chaque nature de point a sa règle",
+              "labo": {
+                "fr": "Étapes 10, 11 et 12",
+                "en": "Steps 10, 11 and 12"
+              }
+            },
+            {
+              "numero": "11",
+              "titre": "Une base de séries temporelles, et ce qu'elle change",
+              "labo": {
+                "fr": "Étape 13",
+                "en": "Step 13"
+              }
+            },
+            {
+              "numero": "12",
+              "titre": "L'agrégat continu, et ce qu'il ne peut pas voir",
+              "labo": {
+                "fr": "Étape 14",
+                "en": "Step 14"
+              }
+            }
+          ],
           "etapes": [
             {
-              "ref": "08.0",
+              "ref": {
+                "fr": "Avant",
+                "en": "Before"
+              },
               "quoi": {
                 "fr": "Tirer l'image de la base de séries temporelles, et la démarrer",
                 "en": "Pull the time-series database image, and start it"
@@ -1345,7 +1953,10 @@
               "montage": true
             },
             {
-              "ref": "08.1",
+              "ref": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              },
               "quoi": {
                 "fr": "Lire le référentiel de l'usine : de l'étiquette du capteur à l'équipement",
                 "en": "Read the plant's reference data: from sensor tag to equipment"
@@ -1363,7 +1974,10 @@
               }
             },
             {
-              "ref": "08.2",
+              "ref": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              },
               "quoi": {
                 "fr": "Lire les bons de maintenance, et voir des dates qui se trient de travers",
                 "en": "Read the maintenance work orders, and watch dates sort the wrong way"
@@ -1381,7 +1995,10 @@
               }
             },
             {
-              "ref": "08.3",
+              "ref": {
+                "fr": "Étape 3",
+                "en": "Step 3"
+              },
               "quoi": {
                 "fr": "Lire le compteur électrique, dont l'horodatage marque la fin de l'intervalle",
                 "en": "Read the electricity meter, whose timestamp marks the end of the interval"
@@ -1399,7 +2016,10 @@
               }
             },
             {
-              "ref": "08.4",
+              "ref": {
+                "fr": "Étape 4",
+                "en": "Step 4"
+              },
               "quoi": {
                 "fr": "Compter dans le bronze de l'historien les lignes qui ne sont pas des mesures",
                 "en": "Count the historian bronze rows that are not measurements"
@@ -1418,7 +2038,10 @@
               }
             },
             {
-              "ref": "08.5",
+              "ref": {
+                "fr": "Étape 5",
+                "en": "Step 5"
+              },
               "quoi": {
                 "fr": "Voir les deux jours où l'horloge ment : une heure en double, une heure qui n'existe pas",
                 "en": "See the two days the clock lies: an hour twice over, an hour that does not exist"
@@ -1436,7 +2059,10 @@
               }
             },
             {
-              "ref": "08.6",
+              "ref": {
+                "fr": "Étape 6",
+                "en": "Step 6"
+              },
               "quoi": {
                 "fr": "Compter la qualité et les coupures, puis trouver le capteur figé sans accuser un équipement arrêté",
                 "en": "Count quality and outages, then find the stuck sensor without blaming a stopped machine"
@@ -1454,7 +2080,10 @@
               }
             },
             {
-              "ref": "08.7",
+              "ref": {
+                "fr": "Étape 7",
+                "en": "Step 7"
+              },
               "quoi": {
                 "fr": "Lire l'incident du compresseur 2 dans les points, treize jours avant la maintenance",
                 "en": "Read compressor 2's incident in the points, thirteen days before maintenance"
@@ -1472,7 +2101,10 @@
               }
             },
             {
-              "ref": "08.8",
+              "ref": {
+                "fr": "Étape 8",
+                "en": "Step 8"
+              },
               "quoi": {
                 "fr": "Rassembler les contrôles dans un script de diagnostic, et le versionner",
                 "en": "Gather the checks into a diagnostic script, and version it"
@@ -1490,7 +2122,10 @@
               }
             },
             {
-              "ref": "08.9",
+              "ref": {
+                "fr": "Étape 9",
+                "en": "Step 9"
+              },
               "quoi": {
                 "fr": "Résoudre l'heure en instants absolus, et prouver qu'il ne reste aucun doublon",
                 "en": "Resolve local time into absolute instants, and prove no duplicate is left"
@@ -1508,7 +2143,10 @@
               }
             },
             {
-              "ref": "08.10",
+              "ref": {
+                "fr": "Étape 10",
+                "en": "Step 10"
+              },
               "quoi": {
                 "fr": "Écrire l'argent : découper chaque point aux frontières d'heure, pondérer, écrire trois tables",
                 "en": "Write silver: cut every point at hour boundaries, weight, write three tables"
@@ -1526,7 +2164,10 @@
               }
             },
             {
-              "ref": "08.11",
+              "ref": {
+                "fr": "Étape 11",
+                "en": "Step 11"
+              },
               "quoi": {
                 "fr": "Mesurer ce que la pondération change sur l'heure où le compresseur déclenche",
                 "en": "Measure what weighting changes on the hour the compressor trips"
@@ -1544,7 +2185,10 @@
               }
             },
             {
-              "ref": "08.12",
+              "ref": {
+                "fr": "Étape 12",
+                "en": "Step 12"
+              },
               "quoi": {
                 "fr": "Documenter ce que l'argent livre, et à qui",
                 "en": "Document what silver delivers, and to whom"
@@ -1560,7 +2204,10 @@
               }
             },
             {
-              "ref": "08.13",
+              "ref": {
+                "fr": "Étape 13",
+                "en": "Step 13"
+              },
               "quoi": {
                 "fr": "Charger la base de séries temporelles, en tranches de sept jours",
                 "en": "Load the time-series database, in seven-day chunks"
@@ -1578,7 +2225,10 @@
               }
             },
             {
-              "ref": "08.14",
+              "ref": {
+                "fr": "Étape 14",
+                "en": "Step 14"
+              },
               "quoi": {
                 "fr": "Poser l'agrégat continu, et prouver qu'il égale le calcul de DuckDB",
                 "en": "Set up the continuous aggregate, and prove it equals DuckDB's computation"
@@ -1845,9 +2495,50 @@
               "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_01_Le_metier_la_chaine_et_la_RAW_recue/Exercices_corriges_01.pdf"
             }
           ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "Le métier : ingénieur analytique"
+            },
+            {
+              "numero": "2",
+              "titre": "ELT et ETL : pourquoi l'ordre a changé"
+            },
+            {
+              "numero": "3",
+              "titre": "L'architecture en couches"
+            },
+            {
+              "numero": "4",
+              "titre": "Ces couches ne sont pas le bronze, l'argent et l'or"
+            },
+            {
+              "numero": "5",
+              "titre": "Ce que vous recevez, et comment l'obtenir",
+              "labo": {
+                "fr": "Étapes 1 et 2",
+                "en": "Steps 1 and 2"
+              }
+            },
+            {
+              "numero": "6",
+              "titre": "Ce que la RAW garde exprès",
+              "labo": {
+                "fr": "Étapes 4, 5 et 6",
+                "en": "Steps 4, 5 and 6"
+              }
+            },
+            {
+              "numero": "7",
+              "titre": "Le fil rouge, et les deux autres terrains"
+            }
+          ],
           "etapes": [
             {
-              "ref": "01.1",
+              "ref": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              },
               "quoi": {
                 "fr": "Monter la couche RAW, par le pipeline de Data Engineering ou par le kit de départ",
                 "en": "Set up the RAW layer, through Data Engineering's pipeline or the starter kit"
@@ -1864,7 +2555,10 @@
               "montage": true
             },
             {
-              "ref": "01.2",
+              "ref": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              },
               "quoi": {
                 "fr": "Compter la livraison, table par table, contre le document qui l'annonce",
                 "en": "Count the delivery, table by table, against the document that announces it"
@@ -1880,7 +2574,10 @@
               }
             },
             {
-              "ref": "01.3",
+              "ref": {
+                "fr": "Étape 3",
+                "en": "Step 3"
+              },
               "quoi": {
                 "fr": "Voir que tout est du texte, et d'où vient chaque ligne",
                 "en": "See that everything is text, and where each row comes from"
@@ -1896,7 +2593,10 @@
               }
             },
             {
-              "ref": "01.4",
+              "ref": {
+                "fr": "Étape 4",
+                "en": "Step 4"
+              },
               "quoi": {
                 "fr": "Trouver la même commande livrée deux ou trois fois, et comprendre pourquoi",
                 "en": "Find the same order delivered two or three times, and understand why"
@@ -1912,7 +2612,10 @@
               }
             },
             {
-              "ref": "01.5",
+              "ref": {
+                "fr": "Étape 5",
+                "en": "Step 5"
+              },
               "quoi": {
                 "fr": "Chercher ce que valent les codes du palier commercial",
                 "en": "Look up what the dealer tier codes mean"
@@ -1928,7 +2631,10 @@
               }
             },
             {
-              "ref": "01.6",
+              "ref": {
+                "fr": "Étape 6",
+                "en": "Step 6"
+              },
               "quoi": {
                 "fr": "Voir un maximum faux d'un facteur trente sur un montant rangé en texte",
                 "en": "Watch a maximum go wrong by a factor of thirty on an amount stored as text"
@@ -1944,7 +2650,10 @@
               }
             },
             {
-              "ref": "01.7",
+              "ref": {
+                "fr": "Étape 7",
+                "en": "Step 7"
+              },
               "quoi": {
                 "fr": "Créer le dépôt 02_ae, et fermer sa porte aux artefacts et à la connexion",
                 "en": "Create the 02_ae repository, and shut its door to artefacts and the connection file"
@@ -1994,9 +2703,86 @@
               "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_02_Modelisation_dimensionnelle_et_matrice_de_bus/Exercices_corriges_02.pdf"
             }
           ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "Ce que la forme normalisée fait bien, et pourquoi elle gêne ici",
+              "labo": {
+                "fr": "Étape 6",
+                "en": "Step 6"
+              }
+            },
+            {
+              "numero": "2",
+              "titre": "La recette en quatre temps"
+            },
+            {
+              "numero": "3",
+              "titre": "Le grain",
+              "labo": {
+                "fr": "Étapes 1 et 5",
+                "en": "Steps 1 and 5"
+              }
+            },
+            {
+              "numero": "4",
+              "titre": "Les faits et leurs mesures"
+            },
+            {
+              "numero": "5",
+              "titre": "L'étoile et le flocon",
+              "labo": {
+                "fr": "Étape 4",
+                "en": "Step 4"
+              }
+            },
+            {
+              "numero": "6",
+              "titre": "La clé de substitution"
+            },
+            {
+              "numero": "7",
+              "titre": "Quand une dimension change",
+              "labo": {
+                "fr": "Étape 3",
+                "en": "Step 3"
+              }
+            },
+            {
+              "numero": "8",
+              "titre": "La dimension dégénérée"
+            },
+            {
+              "numero": "9",
+              "titre": "Les dimensions conformes"
+            },
+            {
+              "numero": "10",
+              "titre": "La matrice de bus",
+              "labo": {
+                "fr": "Étape 7",
+                "en": "Step 7"
+              }
+            },
+            {
+              "numero": "11",
+              "titre": "Les trois étoiles de Boréal",
+              "labo": {
+                "fr": "Étapes 1 et 7",
+                "en": "Steps 1 and 7"
+              }
+            },
+            {
+              "numero": "12",
+              "titre": "Le forage transversal"
+            }
+          ],
           "etapes": [
             {
-              "ref": "02.1",
+              "ref": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              },
               "quoi": {
                 "fr": "Écrire le grain des six processus de Boréal, une phrase chacun, avant toute requête",
                 "en": "Write the grain of Boréal's six processes, one sentence each, before any query"
@@ -2014,7 +2800,10 @@
               }
             },
             {
-              "ref": "02.2",
+              "ref": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              },
               "quoi": {
                 "fr": "Fabriquer la dimension des dates, libellés en français compris",
                 "en": "Build the date dimension, French labels included"
@@ -2032,7 +2821,10 @@
               }
             },
             {
-              "ref": "02.3",
+              "ref": {
+                "fr": "Étape 3",
+                "en": "Step 3"
+              },
               "quoi": {
                 "fr": "Tirer la dimension des concessionnaires : état courant, clé, palier décodé",
                 "en": "Derive the dealer dimension: current state, key, decoded tier"
@@ -2051,7 +2843,10 @@
               }
             },
             {
-              "ref": "02.4",
+              "ref": {
+                "fr": "Étape 4",
+                "en": "Step 4"
+              },
               "quoi": {
                 "fr": "Tirer la dimension des produits, la gamme en colonne plutôt qu'en table",
                 "en": "Derive the product dimension, the product line as a column rather than a table"
@@ -2070,7 +2865,10 @@
               }
             },
             {
-              "ref": "02.5",
+              "ref": {
+                "fr": "Étape 5",
+                "en": "Step 5"
+              },
               "quoi": {
                 "fr": "Bâtir le fait des ventes au grain de la ligne, et prouver le grain",
                 "en": "Build the sales fact at the line grain, and prove the grain"
@@ -2089,7 +2887,10 @@
               }
             },
             {
-              "ref": "02.6",
+              "ref": {
+                "fr": "Étape 6",
+                "en": "Step 6"
+              },
               "quoi": {
                 "fr": "Répondre à la question du métier en une seule requête",
                 "en": "Answer the business question in a single query"
@@ -2107,7 +2908,10 @@
               }
             },
             {
-              "ref": "02.7",
+              "ref": {
+                "fr": "Étape 7",
+                "en": "Step 7"
+              },
               "quoi": {
                 "fr": "Remplir la matrice de bus des six processus et des huit dimensions",
                 "en": "Fill in the bus matrix of the six processes and eight dimensions"
@@ -2159,9 +2963,86 @@
               "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_03_dbt_et_la_couche_STAGING/Exercices_corriges_03.pdf"
             }
           ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "Ce qu'est un modèle, et ce que dbt ajoute"
+            },
+            {
+              "numero": "2",
+              "titre": "Le projet et sa configuration",
+              "labo": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              }
+            },
+            {
+              "numero": "3",
+              "titre": "La connexion, et pourquoi elle vit ailleurs",
+              "labo": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              }
+            },
+            {
+              "numero": "4",
+              "titre": "Les sources",
+              "labo": {
+                "fr": "Étapes 4 et 5",
+                "en": "Steps 4 and 5"
+              }
+            },
+            {
+              "numero": "5",
+              "titre": "Où dbt écrit ce qu'il produit",
+              "labo": {
+                "fr": "Étape 3",
+                "en": "Step 3"
+              }
+            },
+            {
+              "numero": "6",
+              "titre": "Les quatre gestes du STAGING",
+              "labo": {
+                "fr": "Étapes 6 et 7",
+                "en": "Steps 6 and 7"
+              }
+            },
+            {
+              "numero": "7",
+              "titre": "L'état courant, et ce qu'il répare",
+              "labo": {
+                "fr": "Étape 8",
+                "en": "Step 8"
+              }
+            },
+            {
+              "numero": "8",
+              "titre": "Les matérialisations",
+              "labo": {
+                "fr": "Étapes 6 et 7",
+                "en": "Steps 6 and 7"
+              }
+            },
+            {
+              "numero": "9",
+              "titre": "ref() et le graphe",
+              "labo": {
+                "fr": "Étape 8",
+                "en": "Step 8"
+              }
+            },
+            {
+              "numero": "10",
+              "titre": "Sur une autre plateforme"
+            }
+          ],
           "etapes": [
             {
-              "ref": "03.1",
+              "ref": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              },
               "quoi": {
                 "fr": "Écrire le fichier de connexion hors du dépôt, avec un chemin absolu",
                 "en": "Write the connection file outside the repository, with an absolute path"
@@ -2177,7 +3058,10 @@
               }
             },
             {
-              "ref": "03.2",
+              "ref": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              },
               "quoi": {
                 "fr": "Poser le projet dbt à la racine du dépôt, puis le vérifier",
                 "en": "Set up the dbt project at the root of the repository, then check it"
@@ -2193,7 +3077,10 @@
               }
             },
             {
-              "ref": "03.3",
+              "ref": {
+                "fr": "Étape 3",
+                "en": "Step 3"
+              },
               "quoi": {
                 "fr": "Poser la macro qui décide dans quel schéma dbt écrit",
                 "en": "Add the macro that decides which schema dbt writes to"
@@ -2211,7 +3098,10 @@
               }
             },
             {
-              "ref": "03.4",
+              "ref": {
+                "fr": "Étape 4",
+                "en": "Step 4"
+              },
               "quoi": {
                 "fr": "Déclarer comme sources les deux tables que les modèles liront, pas une de plus",
                 "en": "Declare as sources the two tables the models will read, not one more"
@@ -2229,7 +3119,10 @@
               }
             },
             {
-              "ref": "03.5",
+              "ref": {
+                "fr": "Étape 5",
+                "en": "Step 5"
+              },
               "quoi": {
                 "fr": "Demander à dbt ce qu'il connaît",
                 "en": "Ask dbt what it knows"
@@ -2245,7 +3138,10 @@
               }
             },
             {
-              "ref": "03.6",
+              "ref": {
+                "fr": "Étape 6",
+                "en": "Step 6"
+              },
               "quoi": {
                 "fr": "Écrire la première vue de staging : renommer, typer, décoder, tirer l'état courant",
                 "en": "Write the first staging view: rename, type, decode, take the current state"
@@ -2263,7 +3159,10 @@
               }
             },
             {
-              "ref": "03.7",
+              "ref": {
+                "fr": "Étape 7",
+                "en": "Step 7"
+              },
               "quoi": {
                 "fr": "Écrire la vue qui retrouve les 25 483 commandes malgré la livraison en double",
                 "en": "Write the view that recovers the 25,483 orders despite the double delivery"
@@ -2281,7 +3180,10 @@
               }
             },
             {
-              "ref": "03.8",
+              "ref": {
+                "fr": "Étape 8",
+                "en": "Step 8"
+              },
               "quoi": {
                 "fr": "Relier deux vues par un modèle de contrôle, et voir le graphe",
                 "en": "Link two views through a check model, and see the graph"
@@ -2333,9 +3235,86 @@
               "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_04_Batir_l_etoile_des_ventes/Exercices_corriges_04.pdf"
             }
           ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "De la vue au produit",
+              "labo": {
+                "fr": "Étape 3",
+                "en": "Step 3"
+              }
+            },
+            {
+              "numero": "2",
+              "titre": "Le premier paquet",
+              "labo": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              }
+            },
+            {
+              "numero": "3",
+              "titre": "La clé de substitution, fabriquée",
+              "labo": {
+                "fr": "Étapes 5 et 8",
+                "en": "Steps 5 and 8"
+              }
+            },
+            {
+              "numero": "4",
+              "titre": "dim_date, la dimension que personne ne livre",
+              "labo": {
+                "fr": "Étape 4",
+                "en": "Step 4"
+              }
+            },
+            {
+              "numero": "5",
+              "titre": "Des vues de staging aux tables de dimension",
+              "labo": {
+                "fr": "Étapes 5 et 6",
+                "en": "Steps 5 and 6"
+              }
+            },
+            {
+              "numero": "6",
+              "titre": "La couche INTERMEDIATE, et le fait mince",
+              "labo": {
+                "fr": "Étape 7",
+                "en": "Step 7"
+              }
+            },
+            {
+              "numero": "7",
+              "titre": "Le fait des ventes",
+              "labo": {
+                "fr": "Étape 8",
+                "en": "Step 8"
+              }
+            },
+            {
+              "numero": "8",
+              "titre": "Réconcilier, puis écrire ce qu'on livre",
+              "labo": {
+                "fr": "Étapes 9 et 10",
+                "en": "Steps 9 and 10"
+              }
+            },
+            {
+              "numero": "9",
+              "titre": "Ce qu'une table coûte, ici et ailleurs",
+              "labo": {
+                "fr": "Étape 3",
+                "en": "Step 3"
+              }
+            }
+          ],
           "etapes": [
             {
-              "ref": "04.1",
+              "ref": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              },
               "quoi": {
                 "fr": "Installer le seul paquet de la formation, et versionner sa version exacte",
                 "en": "Install the course's only package, and version its exact release"
@@ -2351,7 +3330,10 @@
               }
             },
             {
-              "ref": "04.2",
+              "ref": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              },
               "quoi": {
                 "fr": "Écrire la vue des postes de commande, refus rendus reconnaissables",
                 "en": "Write the order-line view, with rejections made recognizable"
@@ -2369,7 +3351,10 @@
               }
             },
             {
-              "ref": "04.3",
+              "ref": {
+                "fr": "Étape 3",
+                "en": "Step 3"
+              },
               "quoi": {
                 "fr": "Ouvrir les couches INTERMEDIATE et MARTS dans le projet",
                 "en": "Open the INTERMEDIATE and MARTS layers in the project"
@@ -2388,7 +3373,10 @@
               }
             },
             {
-              "ref": "04.4",
+              "ref": {
+                "fr": "Étape 4",
+                "en": "Step 4"
+              },
               "quoi": {
                 "fr": "Fabriquer la dimension des dates par une macro, sans aucune source",
                 "en": "Build the date dimension with a macro, from no source at all"
@@ -2406,7 +3394,10 @@
               }
             },
             {
-              "ref": "04.5",
+              "ref": {
+                "fr": "Étape 5",
+                "en": "Step 5"
+              },
               "quoi": {
                 "fr": "Bâtir la dimension des concessionnaires sur le staging, et recalculer sa clé à la main",
                 "en": "Build the dealer dimension on staging, and recompute its key by hand"
@@ -2424,7 +3415,10 @@
               }
             },
             {
-              "ref": "04.6",
+              "ref": {
+                "fr": "Étape 6",
+                "en": "Step 6"
+              },
               "quoi": {
                 "fr": "Bâtir la dimension des produits",
                 "en": "Build the product dimension"
@@ -2442,7 +3436,10 @@
               }
             },
             {
-              "ref": "04.7",
+              "ref": {
+                "fr": "Étape 7",
+                "en": "Step 7"
+              },
               "quoi": {
                 "fr": "Écrire la règle de métier une seule fois, dans un modèle qui n'existera pas dans la base",
                 "en": "Write the business rule once, in a model that will not exist in the database"
@@ -2460,7 +3457,10 @@
               }
             },
             {
-              "ref": "04.8",
+              "ref": {
+                "fr": "Étape 8",
+                "en": "Step 8"
+              },
               "quoi": {
                 "fr": "Bâtir le fait des ventes sans une seule jointure, puis lire ce que dbt a envoyé",
                 "en": "Build the sales fact without a single join, then read what dbt sent"
@@ -2478,7 +3478,10 @@
               }
             },
             {
-              "ref": "04.9",
+              "ref": {
+                "fr": "Étape 9",
+                "en": "Step 9"
+              },
               "quoi": {
                 "fr": "Prouver le grain, puis réconcilier le fait avec les en-têtes de l'ERP",
                 "en": "Prove the grain, then reconcile the fact with the ERP headers"
@@ -2496,7 +3499,10 @@
               }
             },
             {
-              "ref": "04.10",
+              "ref": {
+                "fr": "Étape 10",
+                "en": "Step 10"
+              },
               "quoi": {
                 "fr": "Écrire la livraison, y compris ce qu'elle ne porte pas encore",
                 "en": "Write the delivery note, including what it does not carry yet"
@@ -2548,9 +3554,102 @@
               "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_05_Fiabiliser_l_etoile_tests_snapshots_documentation/Exercices_corriges_05.pdf"
             }
           ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "Ce qu'un test dbt est, et ce qu'il n'est pas",
+              "labo": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              }
+            },
+            {
+              "numero": "2",
+              "titre": "Les quatre tests génériques",
+              "labo": {
+                "fr": "Étapes 1, 2 et 3",
+                "en": "Steps 1, 2 and 3"
+              }
+            },
+            {
+              "numero": "3",
+              "titre": "Le test singulier, et la réconciliation qui ne voit rien",
+              "labo": {
+                "fr": "Étape 4",
+                "en": "Step 4"
+              }
+            },
+            {
+              "numero": "4",
+              "titre": "La sévérité et le seuil",
+              "labo": {
+                "fr": "Étape 5",
+                "en": "Step 5"
+              }
+            },
+            {
+              "numero": "5",
+              "titre": "Le test unitaire",
+              "labo": {
+                "fr": "Étape 9",
+                "en": "Step 9"
+              }
+            },
+            {
+              "numero": "6",
+              "titre": "Le snapshot, ou garder ce que la source ne garde pas",
+              "labo": {
+                "fr": "Étape 6",
+                "en": "Step 6"
+              }
+            },
+            {
+              "numero": "7",
+              "titre": "La dimension à évolution lente, type 2",
+              "labo": {
+                "fr": "Étape 7",
+                "en": "Step 7"
+              }
+            },
+            {
+              "numero": "8",
+              "titre": "Le fait qui pointe la version d'époque",
+              "labo": {
+                "fr": "Étape 8",
+                "en": "Step 8"
+              }
+            },
+            {
+              "numero": "9",
+              "titre": "La documentation qui ne dérive pas",
+              "labo": {
+                "fr": "Étape 10",
+                "en": "Step 10"
+              }
+            },
+            {
+              "numero": "10",
+              "titre": "Les exposures, ou déclarer qui consomme",
+              "labo": {
+                "fr": "Étape 11",
+                "en": "Step 11"
+              }
+            },
+            {
+              "numero": "11",
+              "titre": "La couche PRESENTATION, et où placer un calcul",
+              "labo": {
+                "fr": "Étape 12",
+                "en": "Step 12"
+              }
+            }
+          ],
           "etapes": [
             {
-              "ref": "05.1",
+              "ref": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              },
               "quoi": {
                 "fr": "Poser les tests génériques des dimensions",
                 "en": "Add the generic tests on the dimensions"
@@ -2568,7 +3667,10 @@
               }
             },
             {
-              "ref": "05.2",
+              "ref": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              },
               "quoi": {
                 "fr": "Saboter le décodage des gammes, et voir un test passer au vert sur le désastre",
                 "en": "Sabotage the product-line decoding, and watch a test pass green on the disaster"
@@ -2587,7 +3689,10 @@
               }
             },
             {
-              "ref": "05.3",
+              "ref": {
+                "fr": "Étape 3",
+                "en": "Step 3"
+              },
               "quoi": {
                 "fr": "Tester le fait : son grain, et ses clés vers les dimensions",
                 "en": "Test the fact: its grain, and its keys to the dimensions"
@@ -2605,7 +3710,10 @@
               }
             },
             {
-              "ref": "05.4",
+              "ref": {
+                "fr": "Étape 4",
+                "en": "Step 4"
+              },
               "quoi": {
                 "fr": "Écrire la réconciliation en test, par une jointure externe complète",
                 "en": "Write the reconciliation as a test, with a full outer join"
@@ -2623,7 +3731,10 @@
               }
             },
             {
-              "ref": "05.5",
+              "ref": {
+                "fr": "Étape 5",
+                "en": "Step 5"
+              },
               "quoi": {
                 "fr": "Tolérer 23 années-modèles vides, et savoir si le nombre change",
                 "en": "Tolerate 23 empty model years, and know if the number changes"
@@ -2641,7 +3752,10 @@
               }
             },
             {
-              "ref": "05.6",
+              "ref": {
+                "fr": "Étape 6",
+                "en": "Step 6"
+              },
               "quoi": {
                 "fr": "Rejouer deux ans de révisions de paliers dans un snapshot, en quatre commandes",
                 "en": "Replay two years of tier revisions in a snapshot, in four commands"
@@ -2657,7 +3771,10 @@
               }
             },
             {
-              "ref": "05.7",
+              "ref": {
+                "fr": "Étape 7",
+                "en": "Step 7"
+              },
               "quoi": {
                 "fr": "Réécrire la dimension des concessionnaires en type 2",
                 "en": "Rewrite the dealer dimension as type 2"
@@ -2675,7 +3792,10 @@
               }
             },
             {
-              "ref": "05.8",
+              "ref": {
+                "fr": "Étape 8",
+                "en": "Step 8"
+              },
               "quoi": {
                 "fr": "Joindre le fait à la version d'époque, et le casser deux fois avant de réussir",
                 "en": "Join the fact to the period version, and break it twice before getting it right"
@@ -2693,7 +3813,10 @@
               }
             },
             {
-              "ref": "05.9",
+              "ref": {
+                "fr": "Étape 9",
+                "en": "Step 9"
+              },
               "quoi": {
                 "fr": "Écrire le test unitaire de la jointure temporelle, à ses trois bornes",
                 "en": "Write the unit test of the time-based join, at its three edges"
@@ -2711,7 +3834,10 @@
               }
             },
             {
-              "ref": "05.10",
+              "ref": {
+                "fr": "Étape 10",
+                "en": "Step 10"
+              },
               "quoi": {
                 "fr": "Générer la documentation, et lire le lignage dans le manifeste",
                 "en": "Generate the documentation, and read the lineage in the manifest"
@@ -2727,7 +3853,10 @@
               }
             },
             {
-              "ref": "05.11",
+              "ref": {
+                "fr": "Étape 11",
+                "en": "Step 11"
+              },
               "quoi": {
                 "fr": "Déclarer qui consomme l'étoile",
                 "en": "Declare who consumes the star"
@@ -2745,7 +3874,10 @@
               }
             },
             {
-              "ref": "05.12",
+              "ref": {
+                "fr": "Étape 12",
+                "en": "Step 12"
+              },
               "quoi": {
                 "fr": "Écrire le résumé mensuel par palier, sans y stocker de taux",
                 "en": "Write the monthly summary by tier, without storing any rate"
@@ -2795,9 +3927,110 @@
               "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_06_Les_faits_que_la_vente_ne_montre_pas/Exercices_corriges_06.pdf"
             }
           ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "Les quatre types de faits",
+              "labo": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              }
+            },
+            {
+              "numero": "2",
+              "titre": "Le fait d'accumulation",
+              "labo": {
+                "fr": "Étapes 9 et 10",
+                "en": "Steps 9 and 10"
+              }
+            },
+            {
+              "numero": "3",
+              "titre": "La source qui renvoie tout l'objet",
+              "labo": {
+                "fr": "Étapes 2, 4 et 5",
+                "en": "Steps 2, 4 and 5"
+              }
+            },
+            {
+              "numero": "4",
+              "titre": "Les dimensions conformes",
+              "labo": {
+                "fr": "Étapes 6, 10 et 12",
+                "en": "Steps 6, 10 and 12"
+              }
+            },
+            {
+              "numero": "5",
+              "titre": "Le second fait de transaction, et la dimension de type 2",
+              "labo": {
+                "fr": "Étapes 8 et 12",
+                "en": "Steps 8 and 12"
+              }
+            },
+            {
+              "numero": "6",
+              "titre": "Ce qu'une dimension de clients a le droit de porter",
+              "labo": {
+                "fr": "Étapes 3 et 7",
+                "en": "Steps 3 and 7"
+              }
+            },
+            {
+              "numero": "7",
+              "titre": "Le témoin d'un fait qui n'a rien à réconcilier",
+              "labo": {
+                "fr": "Étape 11",
+                "en": "Step 11"
+              }
+            },
+            {
+              "numero": "8",
+              "titre": "L'instantané périodique",
+              "labo": {
+                "fr": "Étapes 13, 15 et 16",
+                "en": "Steps 13, 15 and 16"
+              }
+            },
+            {
+              "numero": "9",
+              "titre": "Le fait sans mesure",
+              "labo": {
+                "fr": "Étape 17",
+                "en": "Step 17"
+              }
+            },
+            {
+              "numero": "10",
+              "titre": "Une dimension, deux niveaux",
+              "labo": {
+                "fr": "Étapes 14, 17 et 20",
+                "en": "Steps 14, 17 and 20"
+              }
+            },
+            {
+              "numero": "11",
+              "titre": "Le témoin de l'usine",
+              "labo": {
+                "fr": "Étape 18",
+                "en": "Step 18"
+              }
+            },
+            {
+              "numero": "12",
+              "titre": "Un incident, d'un bout à l'autre",
+              "labo": {
+                "fr": "Étapes 19 et 20",
+                "en": "Steps 19 and 20"
+              }
+            }
+          ],
           "etapes": [
             {
-              "ref": "06.1",
+              "ref": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              },
               "quoi": {
                 "fr": "Déclarer les quatre sources de l'après-vente, et pas celles qu'aucun modèle ne lit",
                 "en": "Declare the four after-sales sources, and not the ones no model reads"
@@ -2815,7 +4048,10 @@
               }
             },
             {
-              "ref": "06.2",
+              "ref": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              },
               "quoi": {
                 "fr": "Mesurer comment chaque source se comporte avant d'écrire une ligne de staging",
                 "en": "Measure how each source behaves before writing a line of staging"
@@ -2833,7 +4069,10 @@
               }
             },
             {
-              "ref": "06.3",
+              "ref": {
+                "fr": "Étape 3",
+                "en": "Step 3"
+              },
               "quoi": {
                 "fr": "Écrire le staging des véhicules et des clients, sans aucune donnée personnelle",
                 "en": "Write the vehicle and customer staging, with no personal data at all"
@@ -2851,7 +4090,10 @@
               }
             },
             {
-              "ref": "06.4",
+              "ref": {
+                "fr": "Étape 4",
+                "en": "Step 4"
+              },
               "quoi": {
                 "fr": "Écrire le staging des enregistrements et des réclamations, JSON aplati",
                 "en": "Write the registration and claim staging, with the JSON flattened"
@@ -2869,7 +4111,10 @@
               }
             },
             {
-              "ref": "06.5",
+              "ref": {
+                "fr": "Étape 5",
+                "en": "Step 5"
+              },
               "quoi": {
                 "fr": "Déplier l'historique de chaque réclamation en jalons, une colonne par statut",
                 "en": "Unfold each claim's history into milestones, one column per status"
@@ -2887,7 +4132,10 @@
               }
             },
             {
-              "ref": "06.6",
+              "ref": {
+                "fr": "Étape 6",
+                "en": "Step 6"
+              },
               "quoi": {
                 "fr": "Bâtir la dimension conforme du véhicule",
                 "en": "Build the conformed vehicle dimension"
@@ -2905,7 +4153,10 @@
               }
             },
             {
-              "ref": "06.7",
+              "ref": {
+                "fr": "Étape 7",
+                "en": "Step 7"
+              },
               "quoi": {
                 "fr": "Bâtir la dimension du client, huit colonnes et pas une de plus",
                 "en": "Build the customer dimension, eight columns and not one more"
@@ -2923,7 +4174,10 @@
               }
             },
             {
-              "ref": "06.8",
+              "ref": {
+                "fr": "Étape 8",
+                "en": "Step 8"
+              },
               "quoi": {
                 "fr": "Bâtir le fait des enregistrements sur la version d'époque du concessionnaire",
                 "en": "Build the registration fact on the dealer's period version"
@@ -2941,7 +4195,10 @@
               }
             },
             {
-              "ref": "06.9",
+              "ref": {
+                "fr": "Étape 9",
+                "en": "Step 9"
+              },
               "quoi": {
                 "fr": "Bâtir le premier fait d'accumulation, dont la ligne se met à jour à chaque jalon",
                 "en": "Build the first accumulating fact, whose row updates at every milestone"
@@ -2959,7 +4216,10 @@
               }
             },
             {
-              "ref": "06.10",
+              "ref": {
+                "fr": "Étape 10",
+                "en": "Step 10"
+              },
               "quoi": {
                 "fr": "Tester la nouvelle étoile, ordre des jalons compris",
                 "en": "Test the new star, milestone order included"
@@ -2977,7 +4237,10 @@
               }
             },
             {
-              "ref": "06.11",
+              "ref": {
+                "fr": "Étape 11",
+                "en": "Step 11"
+              },
               "quoi": {
                 "fr": "Recalculer une règle de métier comme témoin, faute de total indépendant",
                 "en": "Recompute a business rule as a control, for lack of an independent total"
@@ -2995,7 +4258,10 @@
               }
             },
             {
-              "ref": "06.12",
+              "ref": {
+                "fr": "Étape 12",
+                "en": "Step 12"
+              },
               "quoi": {
                 "fr": "Répondre au directeur de la qualité, puis forer à travers deux faits",
                 "en": "Answer the quality director, then drill across two facts"
@@ -3013,7 +4279,10 @@
               }
             },
             {
-              "ref": "06.13",
+              "ref": {
+                "fr": "Étape 13",
+                "en": "Step 13"
+              },
               "quoi": {
                 "fr": "Délimiter ce qu'on prend de l'usine, et déclarer la source des séries horaires",
                 "en": "Draw the line on what is taken from the plant, and declare the hourly series source"
@@ -3031,7 +4300,10 @@
               }
             },
             {
-              "ref": "06.14",
+              "ref": {
+                "fr": "Étape 14",
+                "en": "Step 14"
+              },
               "quoi": {
                 "fr": "Bâtir la dimension des actifs à deux niveaux, zone et équipement",
                 "en": "Build the two-level asset dimension, zone and equipment"
@@ -3050,7 +4322,10 @@
               }
             },
             {
-              "ref": "06.15",
+              "ref": {
+                "fr": "Étape 15",
+                "en": "Step 15"
+              },
               "quoi": {
                 "fr": "Pivoter les étiquettes en une ligne par actif et par heure",
                 "en": "Pivot the tags into one row per asset and hour"
@@ -3068,7 +4343,10 @@
               }
             },
             {
-              "ref": "06.16",
+              "ref": {
+                "fr": "Étape 16",
+                "en": "Step 16"
+              },
               "quoi": {
                 "fr": "Bâtir l'instantané périodique de l'usine, heure par heure",
                 "en": "Build the plant's periodic snapshot, hour by hour"
@@ -3086,7 +4364,10 @@
               }
             },
             {
-              "ref": "06.17",
+              "ref": {
+                "fr": "Étape 17",
+                "en": "Step 17"
+              },
               "quoi": {
                 "fr": "Bâtir le fait sans mesure de la production",
                 "en": "Build the factless production fact"
@@ -3104,7 +4385,10 @@
               }
             },
             {
-              "ref": "06.18",
+              "ref": {
+                "fr": "Étape 18",
+                "en": "Step 18"
+              },
               "quoi": {
                 "fr": "Réconcilier le compteur des convoyeurs avec les numéros de série de l'ERP",
                 "en": "Reconcile the conveyor counters with the ERP serial numbers"
@@ -3122,7 +4406,10 @@
               }
             },
             {
-              "ref": "06.19",
+              "ref": {
+                "fr": "Étape 19",
+                "en": "Step 19"
+              },
               "quoi": {
                 "fr": "Lire l'incident du compresseur 2 dans quatre faits",
                 "en": "Read the compressor 2 incident across four facts"
@@ -3140,7 +4427,10 @@
               }
             },
             {
-              "ref": "06.20",
+              "ref": {
+                "fr": "Étape 20",
+                "en": "Step 20"
+              },
               "quoi": {
                 "fr": "Vérifier la matrice de bus dans le graphe plutôt que la croire",
                 "en": "Check the bus matrix in the graph instead of trusting it"
@@ -3192,9 +4482,98 @@
               "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_07_ELT_en_regime_permanent/Exercices_corriges_07.pdf"
             }
           ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "Le chantier et le régime permanent",
+              "labo": {
+                "fr": "Étapes 1, 2 et 7",
+                "en": "Steps 1, 2 and 7"
+              }
+            },
+            {
+              "numero": "2",
+              "titre": "Une source qui change de forme",
+              "labo": {
+                "fr": "Étapes 3 et 4",
+                "en": "Steps 3 and 4"
+              }
+            },
+            {
+              "numero": "3",
+              "titre": "La matérialisation incrémentale",
+              "labo": {
+                "fr": "Étapes 5, 6 et 12",
+                "en": "Steps 5, 6 and 12"
+              }
+            },
+            {
+              "numero": "4",
+              "titre": "Sur quoi filtrer : l'arrivée, jamais l'événement",
+              "labo": {
+                "fr": "Étapes 8 et 9",
+                "en": "Steps 8 and 9"
+              }
+            },
+            {
+              "numero": "5",
+              "titre": "La fenêtre de reprise",
+              "labo": {
+                "fr": "Étape 10",
+                "en": "Step 10"
+              }
+            },
+            {
+              "numero": "6",
+              "titre": "Tout refaire, et ce qui ne se refait pas",
+              "labo": {
+                "fr": "Étapes 11 et 14",
+                "en": "Steps 11 and 14"
+              }
+            },
+            {
+              "numero": "7",
+              "titre": "Ce que l'incrémental ne sait pas faire",
+              "labo": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              }
+            },
+            {
+              "numero": "8",
+              "titre": "Une dimension conforme qui se rouvre",
+              "labo": {
+                "fr": "Étapes 15, 16 et 17",
+                "en": "Steps 15, 16 and 17"
+              }
+            },
+            {
+              "numero": "9",
+              "titre": "Deux environnements",
+              "labo": {
+                "fr": "Étape 13",
+                "en": "Step 13"
+              }
+            },
+            {
+              "numero": "10",
+              "titre": "L'orchestration, du bon côté de la frontière"
+            },
+            {
+              "numero": "11",
+              "titre": "Ce que trois mois changent",
+              "labo": {
+                "fr": "Étape 18",
+                "en": "Step 18"
+              }
+            }
+          ],
           "etapes": [
             {
-              "ref": "07.1",
+              "ref": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              },
               "quoi": {
                 "fr": "Générer trois mois de plus, et laisser Data Engineering charger janvier",
                 "en": "Generate three more months, and let Data Engineering load January"
@@ -3210,7 +4589,10 @@
               }
             },
             {
-              "ref": "07.2",
+              "ref": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              },
               "quoi": {
                 "fr": "Reconstruire sans toucher un modèle, et mesurer ce qu'un lot a changé",
                 "en": "Rebuild without touching a model, and measure what one batch changed"
@@ -3228,7 +4610,10 @@
               }
             },
             {
-              "ref": "07.3",
+              "ref": {
+                "fr": "Étape 3",
+                "en": "Step 3"
+              },
               "quoi": {
                 "fr": "Constater les doublons, la dérive de schéma et les retards de la télémétrie",
                 "en": "Observe the telemetry's duplicates, schema drift and late arrivals"
@@ -3246,7 +4631,10 @@
               }
             },
             {
-              "ref": "07.4",
+              "ref": {
+                "fr": "Étape 4",
+                "en": "Step 4"
+              },
               "quoi": {
                 "fr": "Écrire le staging des sorties : dédoublonner, puis réunir les deux noms du champ",
                 "en": "Write the trip staging: deduplicate, then merge the field's two names"
@@ -3264,7 +4652,10 @@
               }
             },
             {
-              "ref": "07.5",
+              "ref": {
+                "fr": "Étape 5",
+                "en": "Step 5"
+              },
               "quoi": {
                 "fr": "Bâtir le sixième fait, d'abord en table",
                 "en": "Build the sixth fact, as a table first"
@@ -3282,7 +4673,10 @@
               }
             },
             {
-              "ref": "07.6",
+              "ref": {
+                "fr": "Étape 6",
+                "en": "Step 6"
+              },
               "quoi": {
                 "fr": "Rendre le fait incrémental avec le filtre que tout le monde écrit",
                 "en": "Make the fact incremental with the filter everyone writes"
@@ -3300,7 +4694,10 @@
               }
             },
             {
-              "ref": "07.7",
+              "ref": {
+                "fr": "Étape 7",
+                "en": "Step 7"
+              },
               "quoi": {
                 "fr": "Charger février, puis mars, et tenir le journal des passes",
                 "en": "Load February, then March, and keep the log of runs"
@@ -3318,7 +4715,10 @@
               }
             },
             {
-              "ref": "07.8",
+              "ref": {
+                "fr": "Étape 8",
+                "en": "Step 8"
+              },
               "quoi": {
                 "fr": "Comparer le fait à sa source, et trouver les sorties perdues",
                 "en": "Compare the fact with its source, and find the lost trips"
@@ -3337,7 +4737,10 @@
               }
             },
             {
-              "ref": "07.9",
+              "ref": {
+                "fr": "Étape 9",
+                "en": "Step 9"
+              },
               "quoi": {
                 "fr": "Filtrer sur la date de réception plutôt que sur la date de sortie",
                 "en": "Filter on the receipt date rather than the trip date"
@@ -3355,7 +4758,10 @@
               }
             },
             {
-              "ref": "07.10",
+              "ref": {
+                "fr": "Étape 10",
+                "en": "Step 10"
+              },
               "quoi": {
                 "fr": "Poser une fenêtre de reprise de trois jours, et reconstruire de zéro",
                 "en": "Add a three-day lookback window, and rebuild from scratch"
@@ -3373,7 +4779,10 @@
               }
             },
             {
-              "ref": "07.11",
+              "ref": {
+                "fr": "Étape 11",
+                "en": "Step 11"
+              },
               "quoi": {
                 "fr": "Rejouer deux fois de suite, puis sans clé unique",
                 "en": "Replay twice in a row, then without a unique key"
@@ -3391,7 +4800,10 @@
               }
             },
             {
-              "ref": "07.12",
+              "ref": {
+                "fr": "Étape 12",
+                "en": "Step 12"
+              },
               "quoi": {
                 "fr": "Fabriquer un témoin dans la source : le compteur d'heures moteur",
                 "en": "Build a control from the source itself: the engine-hour counter"
@@ -3409,7 +4821,10 @@
               }
             },
             {
-              "ref": "07.13",
+              "ref": {
+                "fr": "Étape 13",
+                "en": "Step 13"
+              },
               "quoi": {
                 "fr": "Séparer le développement de la production",
                 "en": "Separate development from production"
@@ -3425,7 +4840,10 @@
               }
             },
             {
-              "ref": "07.14",
+              "ref": {
+                "fr": "Étape 14",
+                "en": "Step 14"
+              },
               "quoi": {
                 "fr": "Rebâtir d'un bloc, et comparer aux quatre passes par tranches",
                 "en": "Rebuild in one go, and compare with the four incremental runs"
@@ -3443,7 +4861,10 @@
               }
             },
             {
-              "ref": "07.15",
+              "ref": {
+                "fr": "Étape 15",
+                "en": "Step 15"
+              },
               "quoi": {
                 "fr": "Charger les libellés des codes d'anomalie depuis un fichier versionné",
                 "en": "Load the fault-code labels from a versioned file"
@@ -3461,7 +4882,10 @@
               }
             },
             {
-              "ref": "07.16",
+              "ref": {
+                "fr": "Étape 16",
+                "en": "Step 16"
+              },
               "quoi": {
                 "fr": "Déplier les codes de chaque sortie dans leur propre fait, et reprendre la seconde livraison",
                 "en": "Unfold each trip's codes into their own fact, and pick up the second delivery"
@@ -3479,7 +4903,10 @@
               }
             },
             {
-              "ref": "07.17",
+              "ref": {
+                "fr": "Étape 17",
+                "en": "Step 17"
+              },
               "quoi": {
                 "fr": "Compter ensemble ce que deux faits comptent séparément",
                 "en": "Count together what two facts count separately"
@@ -3497,7 +4924,10 @@
               }
             },
             {
-              "ref": "07.18",
+              "ref": {
+                "fr": "Étape 18",
+                "en": "Step 18"
+              },
               "quoi": {
                 "fr": "Rendre le verdict de l'incident du compresseur, dans deux sources indépendantes",
                 "en": "Deliver the verdict on the compressor incident, from two independent sources"
@@ -3515,7 +4945,10 @@
               }
             },
             {
-              "ref": "07.19",
+              "ref": {
+                "fr": "Étape 19",
+                "en": "Step 19"
+              },
               "quoi": {
                 "fr": "Compléter la livraison",
                 "en": "Complete the delivery note"
@@ -3565,6 +4998,68 @@
                 "en": "Exercises and answers"
               },
               "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_07_CI_CD_et_qualite_analytique/Exercices_corriges_07.pdf"
+            }
+          ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "Git pour l'analytique : ce qui change, et ce qui ne change pas",
+              "labo": {
+                "fr": "Étape 8",
+                "en": "Step 8"
+              }
+            },
+            {
+              "numero": "2",
+              "titre": "Intégration continue : rejouer vos tests à votre place",
+              "labo": {
+                "fr": "Étape 5",
+                "en": "Step 5"
+              }
+            },
+            {
+              "numero": "3",
+              "titre": "GitHub Actions : le vocabulaire minimal",
+              "labo": {
+                "fr": "Étape 4",
+                "en": "Step 4"
+              }
+            },
+            {
+              "numero": "4",
+              "titre": "La CI d'un projet dbt : deux gestes",
+              "labo": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              }
+            },
+            {
+              "numero": "5",
+              "titre": "Les secrets d'un pipeline automatisé",
+              "labo": {
+                "fr": "Étape 3",
+                "en": "Step 3"
+              }
+            },
+            {
+              "numero": "6",
+              "titre": "La qualité analytique au-delà des tests",
+              "labo": {
+                "fr": "Étapes 1 et 6",
+                "en": "Steps 1 and 6"
+              }
+            },
+            {
+              "numero": "7",
+              "titre": "Les agents d'IA sur une plateforme analytique"
+            },
+            {
+              "numero": "8",
+              "titre": "Le livrable : un dépôt qu'on peut lire",
+              "labo": {
+                "fr": "Étapes 7 et 8",
+                "en": "Steps 7 and 8"
+              }
             }
           ]
         },
@@ -4954,6 +6449,76 @@
               "fichier": "assets/formations/data-domain/SQL/Cours_01_Paysage_SQL_et_modele_relationnel/Exercices_corriges_01.pdf"
             }
           ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "Cinq mots à connaître : data, database, DBMS, RDBMS, SQL"
+            },
+            {
+              "numero": "2",
+              "titre": "Les cinq familles de commandes SQL",
+              "labo": {
+                "fr": "Partie 1",
+                "en": "Part 1"
+              }
+            },
+            {
+              "numero": "3",
+              "titre": "Un langage, deux moteurs",
+              "labo": {
+                "fr": "Partie 3",
+                "en": "Part 3"
+              }
+            },
+            {
+              "numero": "4",
+              "titre": "Le modèle relationnel, sans jargon",
+              "labo": {
+                "fr": "Partie 1",
+                "en": "Part 1"
+              }
+            },
+            {
+              "numero": "5",
+              "titre": "La base d'exemple : AdventureWorks DW, un entrepôt en étoile",
+              "labo": {
+                "fr": "Partie 1",
+                "en": "Part 1"
+              }
+            },
+            {
+              "numero": "6",
+              "titre": "Dans quel ordre une requête se lit",
+              "labo": {
+                "fr": "Sous-partie 2.2",
+                "en": "Sub-part 2.2"
+              }
+            },
+            {
+              "numero": "7",
+              "titre": "Relier les tables : les jointures",
+              "labo": {
+                "fr": "Sous-parties 2.2 et 2.3",
+                "en": "Sub-parts 2.2 and 2.3"
+              }
+            },
+            {
+              "numero": "8",
+              "titre": "NULL : la valeur « on ne sait pas »",
+              "labo": {
+                "fr": "Sous-partie 2.4",
+                "en": "Sub-part 2.4"
+              }
+            },
+            {
+              "numero": "9",
+              "titre": "« NA » : quand l'absence se déguise en valeur",
+              "labo": {
+                "fr": "Sous-partie 2.5",
+                "en": "Sub-part 2.5"
+              }
+            }
+          ],
           "etapes": [
             {
               "ref": "01.1",
@@ -5091,6 +6656,72 @@
                 "en": "Exercises and answers"
               },
               "fichier": "assets/formations/data-domain/SQL/Cours_02_Le_langage_SQL/Exercices_corriges_02.pdf"
+            }
+          ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "L'anatomie d'une requête",
+              "labo": {
+                "fr": "Partie 1",
+                "en": "Part 1"
+              }
+            },
+            {
+              "numero": "2",
+              "titre": "Filtrer juste",
+              "labo": {
+                "fr": "Partie 2",
+                "en": "Part 2"
+              }
+            },
+            {
+              "numero": "3",
+              "titre": "Décider ligne par ligne : CASE",
+              "labo": {
+                "fr": "Sous-partie 3.1",
+                "en": "Sub-part 3.1"
+              }
+            },
+            {
+              "numero": "4",
+              "titre": "Types, conversions et nombres",
+              "labo": {
+                "fr": "Sous-parties 3.2 et 3.3",
+                "en": "Sub-parts 3.2 and 3.3"
+              }
+            },
+            {
+              "numero": "5",
+              "titre": "Travailler le texte",
+              "labo": {
+                "fr": "Partie 4",
+                "en": "Part 4"
+              }
+            },
+            {
+              "numero": "6",
+              "titre": "Dates et heures",
+              "labo": {
+                "fr": "Partie 5",
+                "en": "Part 5"
+              }
+            },
+            {
+              "numero": "7",
+              "titre": "Agréger avec rigueur",
+              "labo": {
+                "fr": "Partie 6",
+                "en": "Part 6"
+              }
+            },
+            {
+              "numero": "8",
+              "titre": "Sur les deux terrains : OLTP et OLAP",
+              "labo": {
+                "fr": "OLTP, partie 7",
+                "en": "OLTP, part 7"
+              }
             }
           ],
           "etapes": [
@@ -5246,6 +6877,80 @@
                 "en": "Exercises and answers"
               },
               "fichier": "assets/formations/data-domain/SQL/Cours_03_Ecrire_dans_la_base/Exercices_corriges_03.pdf"
+            }
+          ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "Pourquoi un analyste écrit",
+              "labo": {
+                "fr": "Partie 1",
+                "en": "Part 1"
+              }
+            },
+            {
+              "numero": "2",
+              "titre": "Créer une table",
+              "labo": {
+                "fr": "Partie 2",
+                "en": "Part 2"
+              }
+            },
+            {
+              "numero": "3",
+              "titre": "Les contraintes",
+              "labo": {
+                "fr": "Partie 3",
+                "en": "Part 3"
+              }
+            },
+            {
+              "numero": "4",
+              "titre": "INSERT",
+              "labo": {
+                "fr": "Partie 4",
+                "en": "Part 4"
+              }
+            },
+            {
+              "numero": "5",
+              "titre": "UPDATE et DELETE",
+              "labo": {
+                "fr": "Partie 5",
+                "en": "Part 5"
+              }
+            },
+            {
+              "numero": "6",
+              "titre": "MERGE et l'upsert",
+              "labo": {
+                "fr": "Partie 6",
+                "en": "Part 6"
+              }
+            },
+            {
+              "numero": "7",
+              "titre": "Vues, ALTER et DROP",
+              "labo": {
+                "fr": "Partie 7",
+                "en": "Part 7"
+              }
+            },
+            {
+              "numero": "8",
+              "titre": "Ce qui s'annule et ce qui ne s'annule pas",
+              "labo": {
+                "fr": "Partie 8",
+                "en": "Part 8"
+              }
+            },
+            {
+              "numero": "9",
+              "titre": "Sur les deux terrains : OLTP et OLAP",
+              "labo": {
+                "fr": "OLTP, partie 9",
+                "en": "OLTP, part 9"
+              }
             }
           ],
           "etapes": [
@@ -5435,6 +7140,72 @@
               "fichier": "assets/formations/data-domain/SQL/Cours_04_Fonctions_de_fenetrage/Exercices_corriges_04.pdf"
             }
           ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "Le problème : calculer sans écraser les lignes",
+              "labo": {
+                "fr": "Partie 1",
+                "en": "Part 1"
+              }
+            },
+            {
+              "numero": "2",
+              "titre": "La syntaxe : OVER (…)",
+              "labo": {
+                "fr": "Partie 1",
+                "en": "Part 1"
+              }
+            },
+            {
+              "numero": "3",
+              "titre": "Classer les lignes : ROW_NUMBER, RANK, DENSE_RANK, NTILE",
+              "labo": {
+                "fr": "Sous-partie 2.1",
+                "en": "Sub-part 2.1"
+              }
+            },
+            {
+              "numero": "4",
+              "titre": "Regarder la ligne d'à côté : LAG et LEAD",
+              "labo": {
+                "fr": "Sous-partie 2.3",
+                "en": "Sub-part 2.3"
+              }
+            },
+            {
+              "numero": "5",
+              "titre": "Cumuler, lisser, rapporter au total",
+              "labo": {
+                "fr": "Sous-partie 2.4",
+                "en": "Sub-part 2.4"
+              }
+            },
+            {
+              "numero": "6",
+              "titre": "Le cadre : ROWS contre RANGE (et le piège du défaut)",
+              "labo": {
+                "fr": "Sous-partie 2.4",
+                "en": "Sub-part 2.4"
+              }
+            },
+            {
+              "numero": "7",
+              "titre": "Filtrer sur une fenêtre : QUALIFY",
+              "labo": {
+                "fr": "Sous-partie 2.2",
+                "en": "Sub-part 2.2"
+              }
+            },
+            {
+              "numero": "8",
+              "titre": "Sur les deux terrains : OLTP et OLAP",
+              "labo": {
+                "fr": "OLTP, partie 3",
+                "en": "OLTP, part 3"
+              }
+            }
+          ],
           "etapes": [
             {
               "ref": "04.1",
@@ -5556,6 +7327,80 @@
                 "en": "Exercises and answers"
               },
               "fichier": "assets/formations/data-domain/SQL/Cours_05_CTE_et_recursivite/Exercices_corriges_05.pdf"
+            }
+          ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "Le problème : des requêtes qui deviennent illisibles",
+              "labo": {
+                "fr": "Partie 1",
+                "en": "Part 1"
+              }
+            },
+            {
+              "numero": "2",
+              "titre": "WITH : nommer un résultat intermédiaire",
+              "labo": {
+                "fr": "Partie 1",
+                "en": "Part 1"
+              }
+            },
+            {
+              "numero": "3",
+              "titre": "Chaîner les CTE : un pipeline lisible",
+              "labo": {
+                "fr": "Sous-partie 2.1",
+                "en": "Sub-part 2.1"
+              }
+            },
+            {
+              "numero": "4",
+              "titre": "CTE, sous-requête ou vue ?",
+              "labo": {
+                "fr": "Partie 1",
+                "en": "Part 1"
+              }
+            },
+            {
+              "numero": "5",
+              "titre": "La récursivité : répéter jusqu'à une condition",
+              "labo": {
+                "fr": "Sous-parties 2.2 et 2.3",
+                "en": "Sub-parts 2.2 and 2.3"
+              }
+            },
+            {
+              "numero": "6",
+              "titre": "Premier cas : générer une série sans table",
+              "labo": {
+                "fr": "Sous-partie 2.2",
+                "en": "Sub-part 2.2"
+              }
+            },
+            {
+              "numero": "7",
+              "titre": "Deuxième cas : parcourir une hiérarchie",
+              "labo": {
+                "fr": "Sous-partie 2.3",
+                "en": "Sub-part 2.3"
+              }
+            },
+            {
+              "numero": "8",
+              "titre": "Deux pièges : la boucle sans fin et le mythe de la performance",
+              "labo": {
+                "fr": "OLTP, sous-partie 2.3",
+                "en": "OLTP, sub-part 2.3"
+              }
+            },
+            {
+              "numero": "9",
+              "titre": "Sur les deux terrains : OLTP et OLAP",
+              "labo": {
+                "fr": "OLTP, partie 3",
+                "en": "OLTP, part 3"
+              }
             }
           ],
           "etapes": [
@@ -5697,6 +7542,72 @@
               "fichier": "assets/formations/data-domain/SQL/Cours_06_Agregation_avancee_et_pivots/Exercices_corriges_06.pdf"
             }
           ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "Le problème : le détail et ses totaux, d'un seul coup",
+              "labo": {
+                "fr": "Partie 1",
+                "en": "Part 1"
+              }
+            },
+            {
+              "numero": "2",
+              "titre": "GROUPING SETS : choisir précisément les regroupements",
+              "labo": {
+                "fr": "Sous-partie 2.1",
+                "en": "Sub-part 2.1"
+              }
+            },
+            {
+              "numero": "3",
+              "titre": "ROLLUP : les sous-totaux en cascade",
+              "labo": {
+                "fr": "Partie 1",
+                "en": "Part 1"
+              }
+            },
+            {
+              "numero": "4",
+              "titre": "CUBE : toutes les combinaisons",
+              "labo": {
+                "fr": "Sous-partie 2.1",
+                "en": "Sub-part 2.1"
+              }
+            },
+            {
+              "numero": "5",
+              "titre": "GROUPING() : reconnaître les lignes de sous-total",
+              "labo": {
+                "fr": "Sous-partie 2.2",
+                "en": "Sub-part 2.2"
+              }
+            },
+            {
+              "numero": "6",
+              "titre": "Agrégats conditionnels : compter et sommer sous condition",
+              "labo": {
+                "fr": "Sous-partie 2.3",
+                "en": "Sub-part 2.3"
+              }
+            },
+            {
+              "numero": "7",
+              "titre": "PIVOT et UNPIVOT : le tableau croisé, en clair",
+              "labo": {
+                "fr": "Sous-partie 2.4",
+                "en": "Sub-part 2.4"
+              }
+            },
+            {
+              "numero": "8",
+              "titre": "Sur les deux terrains : OLTP et OLAP",
+              "labo": {
+                "fr": "OLTP, partie 3",
+                "en": "OLTP, part 3"
+              }
+            }
+          ],
           "etapes": [
             {
               "ref": "06.1",
@@ -5834,6 +7745,72 @@
                 "en": "Exercises and answers"
               },
               "fichier": "assets/formations/data-domain/SQL/Cours_07_Sous_requetes_correlation_et_ensembles/Exercices_corriges_07.pdf"
+            }
+          ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "Le problème : ce que le GROUP BY ne sait pas dire",
+              "labo": {
+                "fr": "Partie 2",
+                "en": "Part 2"
+              }
+            },
+            {
+              "numero": "2",
+              "titre": "Les trois formes de sous-requête",
+              "labo": {
+                "fr": "Sous-parties 1.1 et 1.3",
+                "en": "Sub-parts 1.1 and 1.3"
+              }
+            },
+            {
+              "numero": "3",
+              "titre": "La corrélation",
+              "labo": {
+                "fr": "Sous-partie 1.2",
+                "en": "Sub-part 1.2"
+              }
+            },
+            {
+              "numero": "4",
+              "titre": "EXISTS et NOT EXISTS : semi-jointure et anti-jointure",
+              "labo": {
+                "fr": "Sous-parties 2.1 et 2.5",
+                "en": "Sub-parts 2.1 and 2.5"
+              }
+            },
+            {
+              "numero": "5",
+              "titre": "IN, ANY, ALL",
+              "labo": {
+                "fr": "Sous-partie 2.2",
+                "en": "Sub-part 2.2"
+              }
+            },
+            {
+              "numero": "6",
+              "titre": "Les opérateurs d'ensembles",
+              "labo": {
+                "fr": "Sous-partie 2.3",
+                "en": "Sub-part 2.3"
+              }
+            },
+            {
+              "numero": "7",
+              "titre": "LATERAL : la jointure qui regarde à gauche",
+              "labo": {
+                "fr": "Sous-partie 2.4",
+                "en": "Sub-part 2.4"
+              }
+            },
+            {
+              "numero": "8",
+              "titre": "Sur les deux terrains",
+              "labo": {
+                "fr": "Partie 3",
+                "en": "Part 3"
+              }
             }
           ],
           "etapes": [
@@ -6007,6 +7984,84 @@
               "fichier": "assets/formations/data-domain/SQL/Cours_08_Donnees_semi_structurees/Exercices_corriges_08.pdf"
             }
           ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "D'où vient le JSON dans une base"
+            },
+            {
+              "numero": "2",
+              "titre": "Les types",
+              "labo": {
+                "fr": "OLTP, sous-partie 1.4",
+                "en": "OLTP, sub-part 1.4"
+              }
+            },
+            {
+              "numero": "3",
+              "titre": "Fabriquer du JSON",
+              "labo": {
+                "fr": "Sous-partie 1.1",
+                "en": "Sub-part 1.1"
+              }
+            },
+            {
+              "numero": "4",
+              "titre": "Extraire",
+              "labo": {
+                "fr": "OLAP, sous-partie 3.1 · OLTP, sous-partie 2.1",
+                "en": "OLAP, sub-part 3.1 · OLTP, sub-part 2.1"
+              }
+            },
+            {
+              "numero": "5",
+              "titre": "Typer",
+              "labo": {
+                "fr": "OLAP, sous-parties 3.2 et 3.3 · OLTP, sous-parties 2.2 et 2.3",
+                "en": "OLAP, sub-parts 3.2 and 3.3 · OLTP, sub-parts 2.2 and 2.3"
+              }
+            },
+            {
+              "numero": "6",
+              "titre": "Aplatir",
+              "labo": {
+                "fr": "OLAP, sous-partie 3.4 · OLTP, sous-partie 2.4",
+                "en": "OLAP, sub-part 3.4 · OLTP, sub-part 2.4"
+              }
+            },
+            {
+              "numero": "7",
+              "titre": "Charger",
+              "labo": {
+                "fr": "OLAP, partie 2",
+                "en": "OLAP, part 2"
+              }
+            },
+            {
+              "numero": "8",
+              "titre": "Performer",
+              "labo": {
+                "fr": "OLTP, partie 3",
+                "en": "OLTP, part 3"
+              }
+            },
+            {
+              "numero": "9",
+              "titre": "Quand ne pas utiliser le JSON",
+              "labo": {
+                "fr": "OLAP, sous-partie 3.5 · OLTP, partie 4",
+                "en": "OLAP, sub-part 3.5 · OLTP, part 4"
+              }
+            },
+            {
+              "numero": "10",
+              "titre": "Sur les deux terrains",
+              "labo": {
+                "fr": "OLAP, partie 4 · OLTP, partie 5",
+                "en": "OLAP, part 4 · OLTP, part 5"
+              }
+            }
+          ],
           "etapes": [
             {
               "ref": "08.1",
@@ -6178,6 +8233,88 @@
               "fichier": "assets/formations/data-domain/SQL/Cours_09_Series_temporelles_et_as_of_joins/Exercices_corriges_09.pdf"
             }
           ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "Le grain temporel",
+              "labo": {
+                "fr": "Partie 1",
+                "en": "Part 1"
+              }
+            },
+            {
+              "numero": "2",
+              "titre": "L'axe complet",
+              "labo": {
+                "fr": "OLAP, sous-parties 4.1 et 4.2 · OLTP, sous-parties 2.1 et 2.2",
+                "en": "OLAP, sub-parts 4.1 and 4.2 · OLTP, sub-parts 2.1 and 2.2"
+              }
+            },
+            {
+              "numero": "3",
+              "titre": "Variation et rendement",
+              "labo": {
+                "fr": "OLAP, sous-partie 4.5",
+                "en": "OLAP, sub-part 4.5"
+              }
+            },
+            {
+              "numero": "4",
+              "titre": "Les cadres en temps",
+              "labo": {
+                "fr": "OLAP, sous-partie 4.3 · OLTP, partie 3",
+                "en": "OLAP, sub-part 4.3 · OLTP, part 3"
+              }
+            },
+            {
+              "numero": "5",
+              "titre": "Rééchantillonner",
+              "labo": {
+                "fr": "OLAP, sous-partie 4.4",
+                "en": "OLAP, sub-part 4.4"
+              }
+            },
+            {
+              "numero": "6",
+              "titre": "L'as-of join",
+              "labo": {
+                "fr": "OLAP, partie 3 · OLTP, partie 4",
+                "en": "OLAP, part 3 · OLTP, part 4"
+              }
+            },
+            {
+              "numero": "7",
+              "titre": "Îlots et lacunes",
+              "labo": {
+                "fr": "OLAP, sous-partie 5.2 · OLTP, sous-partie 6.1",
+                "en": "OLAP, sub-part 5.2 · OLTP, sub-part 6.1"
+              }
+            },
+            {
+              "numero": "8",
+              "titre": "Quantiles",
+              "labo": {
+                "fr": "OLAP, sous-partie 5.1",
+                "en": "OLAP, sub-part 5.1"
+              }
+            },
+            {
+              "numero": "9",
+              "titre": "Cohortes",
+              "labo": {
+                "fr": "OLAP, sous-partie 5.3 · OLTP, sous-partie 6.2",
+                "en": "OLAP, sub-part 5.3 · OLTP, sub-part 6.2"
+              }
+            },
+            {
+              "numero": "10",
+              "titre": "Sur les deux terrains",
+              "labo": {
+                "fr": "OLAP, partie 6 · OLTP, partie 7",
+                "en": "OLAP, part 6 · OLTP, part 7"
+              }
+            }
+          ],
           "etapes": [
             {
               "ref": "09.1",
@@ -6342,6 +8479,80 @@
               "fichier": "assets/formations/data-domain/SQL/Cours_10_Index_et_optimisation/Exercices_corriges_10.pdf"
             }
           ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "Le problème, posé par une mesure",
+              "labo": {
+                "fr": "OLTP, sous-partie 1.1",
+                "en": "OLTP, sub-part 1.1"
+              }
+            },
+            {
+              "numero": "2",
+              "titre": "L'index B-tree",
+              "labo": {
+                "fr": "OLTP, sous-partie 2.1",
+                "en": "OLTP, sub-part 2.1"
+              }
+            },
+            {
+              "numero": "3",
+              "titre": "Lire un plan",
+              "labo": {
+                "fr": "OLTP, sous-parties 1.1, 1.2 et 1.3",
+                "en": "OLTP, sub-parts 1.1, 1.2 and 1.3"
+              }
+            },
+            {
+              "numero": "4",
+              "titre": "La sargabilité",
+              "labo": {
+                "fr": "OLTP, partie 3",
+                "en": "OLTP, part 3"
+              }
+            },
+            {
+              "numero": "5",
+              "titre": "Index composite",
+              "labo": {
+                "fr": "OLTP, partie 4",
+                "en": "OLTP, part 4"
+              }
+            },
+            {
+              "numero": "6",
+              "titre": "Quand un index nuit",
+              "labo": {
+                "fr": "OLTP, partie 5",
+                "en": "OLTP, part 5"
+              }
+            },
+            {
+              "numero": "7",
+              "titre": "Les statistiques",
+              "labo": {
+                "fr": "OLTP, partie 6",
+                "en": "OLTP, part 6"
+              }
+            },
+            {
+              "numero": "8",
+              "titre": "L'entrepôt sans index",
+              "labo": {
+                "fr": "OLTP, partie 7",
+                "en": "OLTP, part 7"
+              }
+            },
+            {
+              "numero": "9",
+              "titre": "Le tableau des réflexes",
+              "labo": {
+                "fr": "OLTP, partie 8",
+                "en": "OLTP, part 8"
+              }
+            }
+          ],
           "etapes": [
             {
               "ref": "10.1",
@@ -6504,6 +8715,80 @@
                 "en": "Exercises and answers"
               },
               "fichier": "assets/formations/data-domain/SQL/Cours_11_Transactions_et_concurrence/Exercices_corriges_11.pdf"
+            }
+          ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "Pourquoi une transaction",
+              "labo": {
+                "fr": "OLTP, sous-partie 1.1",
+                "en": "OLTP, sub-part 1.1"
+              }
+            },
+            {
+              "numero": "2",
+              "titre": "ACID, mot par mot",
+              "labo": {
+                "fr": "OLTP, partie 1",
+                "en": "OLTP, part 1"
+              }
+            },
+            {
+              "numero": "3",
+              "titre": "Les commandes",
+              "labo": {
+                "fr": "OLTP, sous-parties 1.2 et 1.3",
+                "en": "OLTP, sub-parts 1.2 and 1.3"
+              }
+            },
+            {
+              "numero": "4",
+              "titre": "Les anomalies",
+              "labo": {
+                "fr": "OLTP, parties 2, 3 et 4",
+                "en": "OLTP, parts 2, 3 and 4"
+              }
+            },
+            {
+              "numero": "5",
+              "titre": "Les niveaux d'isolation",
+              "labo": {
+                "fr": "OLTP, sous-parties 2.3 et 4.2",
+                "en": "OLTP, sub-parts 2.3 and 4.2"
+              }
+            },
+            {
+              "numero": "6",
+              "titre": "Les verrous",
+              "labo": {
+                "fr": "OLTP, sous-parties 1.3, 5.1 et 5.2",
+                "en": "OLTP, sub-parts 1.3, 5.1 and 5.2"
+              }
+            },
+            {
+              "numero": "7",
+              "titre": "Le MVCC de PostgreSQL",
+              "labo": {
+                "fr": "OLTP, partie 6",
+                "en": "OLTP, part 6"
+              }
+            },
+            {
+              "numero": "8",
+              "titre": "Côté entrepôt",
+              "labo": {
+                "fr": "OLTP, partie 8",
+                "en": "OLTP, part 8"
+              }
+            },
+            {
+              "numero": "9",
+              "titre": "Ce que ça change pour un ingénieur analytique",
+              "labo": {
+                "fr": "OLTP, partie 7",
+                "en": "OLTP, part 7"
+              }
             }
           ],
           "etapes": [
@@ -6684,6 +8969,56 @@
                 "en": "Exercises and answers"
               },
               "fichier": "assets/formations/data-domain/SQL/Cours_12_SQL_analytique_applique/Exercices_corriges_12.pdf"
+            }
+          ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "Ce que le capstone demande",
+              "labo": {
+                "fr": "OLAP, partie 1",
+                "en": "OLAP, part 1"
+              }
+            },
+            {
+              "numero": "2",
+              "titre": "La méthode, en cinq temps",
+              "labo": {
+                "fr": "OLAP, partie 1",
+                "en": "OLAP, part 1"
+              }
+            },
+            {
+              "numero": "3",
+              "titre": "Le cas, et le grain",
+              "labo": {
+                "fr": "OLAP, sous-parties 1.1 et 1.2",
+                "en": "OLAP, sub-parts 1.1 and 1.2"
+              }
+            },
+            {
+              "numero": "4",
+              "titre": "Les huit étapes, et ce que chacune remobilise",
+              "labo": {
+                "fr": "OLAP, parties 2, 3, 4, 5, 6, 7 et 8",
+                "en": "OLAP, parts 2, 3, 4, 5, 6, 7 and 8"
+              }
+            },
+            {
+              "numero": "5",
+              "titre": "Ce qu'on attend de vous",
+              "labo": {
+                "fr": "OLAP, parties 6 et 9",
+                "en": "OLAP, parts 6 and 9"
+              }
+            },
+            {
+              "numero": "6",
+              "titre": "Ce que ce module ne fait pas",
+              "labo": {
+                "fr": "OLAP, partie 9",
+                "en": "OLAP, part 9"
+              }
             }
           ],
           "etapes": [
@@ -6976,9 +9311,38 @@
               "fichier": "assets/formations/data-domain/Snowflake/Cours_00_Mise_en_place_et_strategie_examen/Labo_00.pdf"
             }
           ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "La certification SnowPro Core : ce qu'elle prouve"
+            },
+            {
+              "numero": "2",
+              "titre": "Le format de l'examen (et comment il se lit)"
+            },
+            {
+              "numero": "3",
+              "titre": "La pondération : où sont les points"
+            },
+            {
+              "numero": "4",
+              "titre": "Snowflake en 90 secondes"
+            },
+            {
+              "numero": "5",
+              "titre": "Ce qu'il vous faut pour vous entraîner"
+            },
+            {
+              "numero": "6",
+              "titre": "Comment étudier avec cette formation"
+            }
+          ],
           "etapes": [
             {
-              "ref": "00.1",
+              "ref": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              },
               "quoi": {
                 "fr": "Ouvrir un compte d'essai en édition Enterprise, second facteur compris",
                 "en": "Open an Enterprise-edition trial account, second factor included"
@@ -6995,7 +9359,10 @@
               "montage": true
             },
             {
-              "ref": "00.2",
+              "ref": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              },
               "quoi": {
                 "fr": "Se repérer dans Snowsight",
                 "en": "Find your way around Snowsight"
@@ -7012,7 +9379,10 @@
               "montage": true
             },
             {
-              "ref": "00.3",
+              "ref": {
+                "fr": "Étape 3",
+                "en": "Step 3"
+              },
               "quoi": {
                 "fr": "Lancer la première requête : qui suis-je, et sur quel moteur",
                 "en": "Run the first query: who am I, and on which engine"
@@ -7028,7 +9398,10 @@
               }
             },
             {
-              "ref": "00.4",
+              "ref": {
+                "fr": "Étape 4",
+                "en": "Step 4"
+              },
               "quoi": {
                 "fr": "Créer un entrepôt minuscule qui s'endort tout seul",
                 "en": "Create a tiny warehouse that falls asleep on its own"
@@ -7044,7 +9417,10 @@
               }
             },
             {
-              "ref": "00.5",
+              "ref": {
+                "fr": "Étape 5",
+                "en": "Step 5"
+              },
               "quoi": {
                 "fr": "Créer une base et un schéma de pratique, et fixer le contexte en SQL",
                 "en": "Create a practice database and schema, and set the context in SQL"
@@ -7060,7 +9436,10 @@
               }
             },
             {
-              "ref": "00.6",
+              "ref": {
+                "fr": "Étape 6",
+                "en": "Step 6"
+              },
               "quoi": {
                 "fr": "Faire calculer l'entrepôt sur la base d'exemple TPC-H",
                 "en": "Make the warehouse compute on the TPC-H sample database"
@@ -7076,7 +9455,10 @@
               }
             },
             {
-              "ref": "00.7",
+              "ref": {
+                "fr": "Étape 7",
+                "en": "Step 7"
+              },
               "quoi": {
                 "fr": "Installer la ligne de commande Snowflake (facultatif)",
                 "en": "Install the Snowflake command line (optional)"
@@ -7093,7 +9475,10 @@
               "montage": true
             },
             {
-              "ref": "00.8",
+              "ref": {
+                "fr": "Étape 8",
+                "en": "Step 8"
+              },
               "quoi": {
                 "fr": "Garder sous la main le portail de la certification",
                 "en": "Keep the certification portal at hand"
@@ -7136,9 +9521,46 @@
               "fichier": "assets/formations/data-domain/Snowflake/Cours_01_Architecture_AI_Data_Cloud/Labo_01.pdf"
             }
           ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "Les trois couches — et pourquoi elles battent une base classique"
+            },
+            {
+              "numero": "2",
+              "titre": "Les éditions"
+            },
+            {
+              "numero": "3",
+              "titre": "Les interfaces et les outils"
+            },
+            {
+              "numero": "4",
+              "titre": "La hiérarchie des objets"
+            },
+            {
+              "numero": "5",
+              "titre": "Les entrepôts virtuels en détail"
+            },
+            {
+              "numero": "6",
+              "titre": "Le stockage : micro-partitions, pruning, clustering"
+            },
+            {
+              "numero": "7",
+              "titre": "Types de données ≠ types de tables (+ types de vues)"
+            },
+            {
+              "numero": "8",
+              "titre": "Session et contexte"
+            }
+          ],
           "etapes": [
             {
-              "ref": "01.1",
+              "ref": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              },
               "quoi": {
                 "fr": "Fixer le contexte, et voir la précédence des paramètres",
                 "en": "Set the context, and see parameter precedence"
@@ -7154,7 +9576,10 @@
               }
             },
             {
-              "ref": "01.2",
+              "ref": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              },
               "quoi": {
                 "fr": "Faire lire la même table par deux entrepôts",
                 "en": "Have two warehouses read the same table"
@@ -7170,7 +9595,10 @@
               }
             },
             {
-              "ref": "01.3",
+              "ref": {
+                "fr": "Étape 3",
+                "en": "Step 3"
+              },
               "quoi": {
                 "fr": "Voir le cache de résultats servir une requête sans l'entrepôt",
                 "en": "Watch the result cache serve a query without the warehouse"
@@ -7186,7 +9614,10 @@
               }
             },
             {
-              "ref": "01.4",
+              "ref": {
+                "fr": "Étape 4",
+                "en": "Step 4"
+              },
               "quoi": {
                 "fr": "Mesurer l'élagage des micro-partitions, avant et après un tri",
                 "en": "Measure micro-partition pruning, before and after a sort"
@@ -7202,7 +9633,10 @@
               }
             },
             {
-              "ref": "01.5",
+              "ref": {
+                "fr": "Étape 5",
+                "en": "Step 5"
+              },
               "quoi": {
                 "fr": "Créer une table permanente, transitoire et temporaire",
                 "en": "Create a permanent, a transient and a temporary table"
@@ -7218,7 +9652,10 @@
               }
             },
             {
-              "ref": "01.6",
+              "ref": {
+                "fr": "Étape 6",
+                "en": "Step 6"
+              },
               "quoi": {
                 "fr": "Mêler une colonne structurée et une colonne VARIANT dans la même table",
                 "en": "Mix a structured column and a VARIANT column in the same table"
@@ -7234,7 +9671,10 @@
               }
             },
             {
-              "ref": "01.7",
+              "ref": {
+                "fr": "Étape 7",
+                "en": "Step 7"
+              },
               "quoi": {
                 "fr": "Créer une vue standard et une vue sécurisée",
                 "en": "Create a standard view and a secure view"
@@ -7250,7 +9690,10 @@
               }
             },
             {
-              "ref": "01.8",
+              "ref": {
+                "fr": "Étape 8",
+                "en": "Step 8"
+              },
               "quoi": {
                 "fr": "Parcourir la hiérarchie des objets",
                 "en": "Walk the object hierarchy"
@@ -7293,9 +9736,42 @@
               "fichier": "assets/formations/data-domain/Snowflake/Cours_02_Fonctionnalites_AI_ML_et_developpement/Labo_02.pdf"
             }
           ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "Développer dans Snowflake — l'idée"
+            },
+            {
+              "numero": "2",
+              "titre": "Snowpark — exécuter Python / Java / Scala dans Snowflake"
+            },
+            {
+              "numero": "3",
+              "titre": "Le code réutilisable : UDF, UDTF et procédures stockées"
+            },
+            {
+              "numero": "4",
+              "titre": "Snowflake Notebooks"
+            },
+            {
+              "numero": "5",
+              "titre": "Streamlit in Snowflake"
+            },
+            {
+              "numero": "6",
+              "titre": "Cortex — l'IA intégrée"
+            },
+            {
+              "numero": "7",
+              "titre": "Native Apps — empaqueter pour d'autres"
+            }
+          ],
           "etapes": [
             {
-              "ref": "02.1",
+              "ref": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              },
               "quoi": {
                 "fr": "Écrire une fonction Python qui tourne dans Snowflake, et l'appeler en SQL",
                 "en": "Write a Python function that runs inside Snowflake, and call it from SQL"
@@ -7311,7 +9787,10 @@
               }
             },
             {
-              "ref": "02.2",
+              "ref": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              },
               "quoi": {
                 "fr": "Appeler les fonctions de langage de Cortex en une ligne de SQL",
                 "en": "Call Cortex language functions in one line of SQL"
@@ -7327,7 +9806,10 @@
               }
             },
             {
-              "ref": "02.3",
+              "ref": {
+                "fr": "Étape 3",
+                "en": "Step 3"
+              },
               "quoi": {
                 "fr": "Obtenir une prévision sans écrire de code de data science (facultatif)",
                 "en": "Get a forecast without writing data science code (optional)"
@@ -7343,7 +9825,10 @@
               }
             },
             {
-              "ref": "02.4",
+              "ref": {
+                "fr": "Étape 4",
+                "en": "Step 4"
+              },
               "quoi": {
                 "fr": "Survoler les carnets et Streamlit (facultatif)",
                 "en": "Skim the notebooks and Streamlit (optional)"
@@ -7386,9 +9871,46 @@
               "fichier": "assets/formations/data-domain/Snowflake/Cours_03_Gestion_du_compte_et_gouvernance/Labo_03.pdf"
             }
           ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "Le modèle d'accès : RBAC, DAC et UBAC"
+            },
+            {
+              "numero": "2",
+              "titre": "Les rôles système et leur hiérarchie"
+            },
+            {
+              "numero": "3",
+              "titre": "Privilèges, propriété et octrois utiles"
+            },
+            {
+              "numero": "4",
+              "titre": "L'authentification : prouver qui l'on est"
+            },
+            {
+              "numero": "5",
+              "titre": "Gouvernance : masquer et filtrer la donnée"
+            },
+            {
+              "numero": "6",
+              "titre": "Le chiffrement"
+            },
+            {
+              "numero": "7",
+              "titre": "Maîtriser les coûts : les resource monitors"
+            },
+            {
+              "numero": "8",
+              "titre": "Les traces : l'historique d'accès et le Trust Center"
+            }
+          ],
           "etapes": [
             {
-              "ref": "03.1",
+              "ref": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              },
               "quoi": {
                 "fr": "Lire les rôles système et leur héritage",
                 "en": "Read the system roles and their inheritance"
@@ -7404,7 +9926,10 @@
               }
             },
             {
-              "ref": "03.2",
+              "ref": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              },
               "quoi": {
                 "fr": "Créer un rôle métier, l'outiller et le rattacher à SYSADMIN",
                 "en": "Create a business role, equip it and attach it to SYSADMIN"
@@ -7420,7 +9945,10 @@
               }
             },
             {
-              "ref": "03.3",
+              "ref": {
+                "fr": "Étape 3",
+                "en": "Step 3"
+              },
               "quoi": {
                 "fr": "Masquer une colonne selon le rôle",
                 "en": "Mask a column depending on the role"
@@ -7436,7 +9964,10 @@
               }
             },
             {
-              "ref": "03.4",
+              "ref": {
+                "fr": "Étape 4",
+                "en": "Step 4"
+              },
               "quoi": {
                 "fr": "Filtrer des lignes selon le rôle",
                 "en": "Filter rows depending on the role"
@@ -7452,7 +9983,10 @@
               }
             },
             {
-              "ref": "03.5",
+              "ref": {
+                "fr": "Étape 5",
+                "en": "Step 5"
+              },
               "quoi": {
                 "fr": "Étiqueter une colonne sensible",
                 "en": "Tag a sensitive column"
@@ -7468,7 +10002,10 @@
               }
             },
             {
-              "ref": "03.6",
+              "ref": {
+                "fr": "Étape 6",
+                "en": "Step 6"
+              },
               "quoi": {
                 "fr": "Poser un garde-fou sur les crédits",
                 "en": "Put a guardrail on credits"
@@ -7511,9 +10048,46 @@
               "fichier": "assets/formations/data-domain/Snowflake/Cours_04_Chargement_dechargement_et_connectivite/Labo_04.pdf"
             }
           ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "Le parcours de la donnée — vue d'ensemble"
+            },
+            {
+              "numero": "2",
+              "titre": "Les stages — où atterrissent les fichiers"
+            },
+            {
+              "numero": "3",
+              "titre": "Les formats de fichier"
+            },
+            {
+              "numero": "4",
+              "titre": "COPY INTO <table> — le chargement par lots"
+            },
+            {
+              "numero": "5",
+              "titre": "COPY INTO <emplacement> — le déchargement"
+            },
+            {
+              "numero": "6",
+              "titre": "L'ingestion continue — au-delà du lot"
+            },
+            {
+              "numero": "7",
+              "titre": "La connectivité — relier un programme à Snowflake"
+            },
+            {
+              "numero": "8",
+              "titre": "Les données non structurées"
+            }
+          ],
           "etapes": [
             {
-              "ref": "04.1",
+              "ref": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              },
               "quoi": {
                 "fr": "Créer un format de fichier et un stage interne",
                 "en": "Create a file format and an internal stage"
@@ -7529,7 +10103,10 @@
               }
             },
             {
-              "ref": "04.2",
+              "ref": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              },
               "quoi": {
                 "fr": "Décharger un échantillon vers le stage",
                 "en": "Unload a sample to the stage"
@@ -7545,7 +10122,10 @@
               }
             },
             {
-              "ref": "04.3",
+              "ref": {
+                "fr": "Étape 3",
+                "en": "Step 3"
+              },
               "quoi": {
                 "fr": "Recharger les fichiers dans une table",
                 "en": "Load the files back into a table"
@@ -7561,7 +10141,10 @@
               }
             },
             {
-              "ref": "04.4",
+              "ref": {
+                "fr": "Étape 4",
+                "en": "Step 4"
+              },
               "quoi": {
                 "fr": "Rejouer le même chargement, puis le forcer",
                 "en": "Replay the same load, then force it"
@@ -7577,7 +10160,10 @@
               }
             },
             {
-              "ref": "04.5",
+              "ref": {
+                "fr": "Étape 5",
+                "en": "Step 5"
+              },
               "quoi": {
                 "fr": "Charger des lignes fautives : les valider à blanc, puis les sauter",
                 "en": "Load faulty rows: validate them dry, then skip them"
@@ -7593,7 +10179,10 @@
               }
             },
             {
-              "ref": "04.6",
+              "ref": {
+                "fr": "Étape 6",
+                "en": "Step 6"
+              },
               "quoi": {
                 "fr": "Suivre les changements d'une table avec un stream",
                 "en": "Track a table's changes with a stream"
@@ -7609,7 +10198,10 @@
               }
             },
             {
-              "ref": "04.7",
+              "ref": {
+                "fr": "Étape 7",
+                "en": "Step 7"
+              },
               "quoi": {
                 "fr": "Déclarer une table dynamique qui se tient à jour seule (aperçu)",
                 "en": "Declare a dynamic table that keeps itself up to date (preview)"
@@ -7652,9 +10244,38 @@
               "fichier": "assets/formations/data-domain/Snowflake/Cours_05_Performance_requetes_et_transformation/Labo_05.pdf"
             }
           ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "Le modèle mental de la performance"
+            },
+            {
+              "numero": "2",
+              "titre": "Lire un Query Profile"
+            },
+            {
+              "numero": "3",
+              "titre": "Les trois caches"
+            },
+            {
+              "numero": "4",
+              "titre": "Les leviers de performance"
+            },
+            {
+              "numero": "5",
+              "titre": "Où observer : ACCOUNT_USAGE vs INFORMATION_SCHEMA"
+            },
+            {
+              "numero": "6",
+              "titre": "Transformer la donnée"
+            }
+          ],
           "etapes": [
             {
-              "ref": "05.1",
+              "ref": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              },
               "quoi": {
                 "fr": "Voir le cache de résultats, puis le désactiver",
                 "en": "See the result cache, then turn it off"
@@ -7670,7 +10291,10 @@
               }
             },
             {
-              "ref": "05.2",
+              "ref": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              },
               "quoi": {
                 "fr": "Compter sans lire, par le cache des métadonnées",
                 "en": "Count without reading, through the metadata cache"
@@ -7686,7 +10310,10 @@
               }
             },
             {
-              "ref": "05.3",
+              "ref": {
+                "fr": "Étape 3",
+                "en": "Step 3"
+              },
               "quoi": {
                 "fr": "Provoquer un débordement sur disque, et le lire dans le profil",
                 "en": "Cause a spill to disk, and read it in the profile"
@@ -7702,7 +10329,10 @@
               }
             },
             {
-              "ref": "05.4",
+              "ref": {
+                "fr": "Étape 4",
+                "en": "Step 4"
+              },
               "quoi": {
                 "fr": "Observer en temps réel, puis dans l'historique long",
                 "en": "Observe in real time, then in the long history"
@@ -7718,7 +10348,10 @@
               }
             },
             {
-              "ref": "05.5",
+              "ref": {
+                "fr": "Étape 5",
+                "en": "Step 5"
+              },
               "quoi": {
                 "fr": "Transformer par fenêtrage et par FLATTEN",
                 "en": "Transform with windowing and FLATTEN"
@@ -7734,7 +10367,10 @@
               }
             },
             {
-              "ref": "05.6",
+              "ref": {
+                "fr": "Étape 6",
+                "en": "Step 6"
+              },
               "quoi": {
                 "fr": "Créer une vue matérialisée (aperçu)",
                 "en": "Create a materialized view (preview)"
@@ -7777,9 +10413,42 @@
               "fichier": "assets/formations/data-domain/Snowflake/Cours_06_Collaboration_de_donnees/Labo_06.pdf"
             }
           ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "L'idée maîtresse : collaborer sans copier"
+            },
+            {
+              "numero": "2",
+              "titre": "Le Secure Data Sharing"
+            },
+            {
+              "numero": "3",
+              "titre": "Le clonage zero-copy"
+            },
+            {
+              "numero": "4",
+              "titre": "Le Time Travel"
+            },
+            {
+              "numero": "5",
+              "titre": "Le Fail-safe"
+            },
+            {
+              "numero": "6",
+              "titre": "Réplication et failover"
+            },
+            {
+              "numero": "7",
+              "titre": "Aller plus loin : Marketplace, clean rooms, Native Apps"
+            }
+          ],
           "etapes": [
             {
-              "ref": "06.1",
+              "ref": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              },
               "quoi": {
                 "fr": "Annuler une suppression par le voyage dans le temps, puis ressusciter la table",
                 "en": "Undo a delete with Time Travel, then bring the table back to life"
@@ -7795,7 +10464,10 @@
               }
             },
             {
-              "ref": "06.2",
+              "ref": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              },
               "quoi": {
                 "fr": "Cloner une table sans rien copier, et la faire diverger",
                 "en": "Clone a table without copying anything, and let it diverge"
@@ -7811,7 +10483,10 @@
               }
             },
             {
-              "ref": "06.3",
+              "ref": {
+                "fr": "Étape 3",
+                "en": "Step 3"
+              },
               "quoi": {
                 "fr": "Lire la rétention, et situer le Fail-safe",
                 "en": "Read the retention, and place Fail-safe"
@@ -7827,7 +10502,10 @@
               }
             },
             {
-              "ref": "06.4",
+              "ref": {
+                "fr": "Étape 4",
+                "en": "Step 4"
+              },
               "quoi": {
                 "fr": "Préparer un partage sortant",
                 "en": "Prepare an outbound share"
@@ -7870,9 +10548,34 @@
               "fichier": "assets/formations/data-domain/Snowflake/Cours_07_Revision_et_examen_blanc/Labo_07.pdf"
             }
           ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "L'examen en conditions"
+            },
+            {
+              "numero": "2",
+              "titre": "Synthèse pondérée — ce qui rapporte le plus"
+            },
+            {
+              "numero": "3",
+              "titre": "Les pièges classiques"
+            },
+            {
+              "numero": "4",
+              "titre": "Stratégie du jour J"
+            },
+            {
+              "numero": "5",
+              "titre": "Logistique d'inscription"
+            }
+          ],
           "etapes": [
             {
-              "ref": "07.1",
+              "ref": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              },
               "quoi": {
                 "fr": "Se mettre en conditions, chronomètre réglé à 115 minutes",
                 "en": "Set up exam conditions, timer at 115 minutes"
@@ -7888,7 +10591,10 @@
               }
             },
             {
-              "ref": "07.2",
+              "ref": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              },
               "quoi": {
                 "fr": "Répondre aux 100 questions, domaine par domaine",
                 "en": "Answer the 100 questions, domain by domain"
@@ -7904,7 +10610,10 @@
               }
             },
             {
-              "ref": "07.3",
+              "ref": {
+                "fr": "Étape 3",
+                "en": "Step 3"
+              },
               "quoi": {
                 "fr": "Se corriger, et lire le résultat domaine par domaine",
                 "en": "Mark yourself, and read the result domain by domain"

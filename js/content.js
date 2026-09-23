@@ -768,6 +768,7 @@ const Contenu = (function () {
     const fleche = phases.enchainees !== false ? "→" : "·";
     const libelle = window.I18n.t("cours.libelle");
     const liste = Array.isArray(c.etapes) ? c.etapes : [];
+    const theorie = Array.isArray(c.theorie) ? c.theorie : [];
 
     function voisin(v, sens) {
       if (!v) return '<span class="fiche-' + sens + '"></span>';
@@ -811,6 +812,10 @@ const Contenu = (function () {
 
     return (
       '<div class="fiche-cours">' +
+      (theorie.length
+        ? '<p class="index-legende" data-i18n="cours.legende_theorie"></p>' +
+          '<ol class="fiche-theorie">' + theorie.map(ligneTheorie).join("") + "</ol>"
+        : "") +
       (liste.length
         ? '<p class="index-legende" data-i18n="cours.legende_etapes"></p>' +
           chaine(liste) +
@@ -827,18 +832,40 @@ const Contenu = (function () {
     );
   }
 
-  // Une étape de labo : le repère « cours.étape », la tâche réelle, une
-  // conduite pointillée jusqu'à l'endroit où elle se fait ; la note, repliée,
-  // dit pourquoi elle existe. Une étape de montage (une seule fois) porte sa
-  // mention et s'estompe. `data-touche` porte les ids des étapes de la chaîne
-  // qu'elle touche, que les mots de la chaîne allument.
+  // Une section de la théorie : son numéro et son titre tels que le document
+  // les porte, une conduite pointillée, puis l'endroit du labo où elle se
+  // pratique, tiré des renvois de la théorie. Une section qui ne se pratique
+  // nulle part (une introduction, un panorama) n'a rien à droite. Rien ne se
+  // déplie : la ligne se lit telle quelle.
+  function ligneTheorie(s) {
+    const labo = texteLocalise(s.labo);
+    return (
+      '<li class="theorie">' +
+      '<div class="theorie-rangee">' +
+      '<span class="etape-ref">' + echapper(s.numero || "") + ".</span>" +
+      '<span class="etape-quoi">' + echapper(texteLocalise(s.titre)) + "</span>" +
+      (labo
+        ? '<span class="etape-conduite" aria-hidden="true"></span>' +
+          '<span class="etape-ou">' + echapper(labo) + "</span>"
+        : "") +
+      "</div>" +
+      "</li>"
+    );
+  }
+
+  // Une étape de labo : son repère, tel que le labo le nomme (« Étape 3 »,
+  // « Avant » pour l'étape de montage ; les parties chez SQL), la tâche réelle,
+  // une conduite pointillée jusqu'à l'endroit où elle se fait ; la note,
+  // repliée, dit pourquoi elle existe. Une étape de montage (une seule fois)
+  // porte sa mention et s'estompe. `data-touche` porte les ids des étapes de la
+  // chaîne qu'elle touche, que les mots de la chaîne allument.
   function ligneEtape(e) {
     const note = texteLocalise(e.note);
     return (
       '<li class="etape' + (e.montage ? " etape-montage" : "") +
       '" data-touche="' + echapper((e.touche || []).join(" ")) + '">' +
       '<button type="button" class="etape-rangee" aria-expanded="false">' +
-      '<span class="etape-ref">' + echapper(e.ref || "") + "</span>" +
+      '<span class="etape-ref">' + echapper(texteLocalise(e.ref)) + "</span>" +
       '<span class="etape-quoi">' + echapper(texteLocalise(e.quoi)) +
       (e.montage
         ? ' <span class="etape-une-fois">' + echapper(window.I18n.t("cours.une_fois")) +
