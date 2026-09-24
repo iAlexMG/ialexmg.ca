@@ -82,14 +82,23 @@ const Contenu = (function () {
   }
 
   // Bouton « Code source (GitHub) » en tête de la page projet, si le projet
-  // déclare un champ `code` dans projects.js. Renvoie "" sinon.
+  // déclare un champ `code` dans projects.js. Renvoie "" sinon. Un hub qui
+  // réunit plusieurs projets déclare une liste { url, i18n } : un bouton par
+  // dépôt, chacun avec son libellé.
   function lienCodeSource(projet) {
     const meta = metaProjet(projet);
     if (!meta || !meta.code) return "";
+    const depots = Array.isArray(meta.code)
+      ? meta.code
+      : [{ url: meta.code, i18n: "contenu.code_source" }];
     return (
       '<div class="doc-actions projet-code-source">' +
-      '<a class="bouton" href="' + encodeURI(meta.code) + '"' +
-      ' target="_blank" rel="noopener" data-i18n="contenu.code_source"></a>' +
+      depots.map(function (depot) {
+        return (
+          '<a class="bouton" href="' + encodeURI(depot.url) + '"' +
+          ' target="_blank" rel="noopener" data-i18n="' + depot.i18n + '"></a>'
+        );
+      }).join("") +
       "</div>"
     );
   }

@@ -21,6 +21,8 @@
  *               sections du hub : { i18n: clé du libellé, s: id de section }.
  *   code      : (optionnel) URL du dépôt GitHub du projet — affiche un bouton
  *               « Code source » en tête de la page du projet (content.js).
+ *               Un hub qui réunit plusieurs projets donne une liste
+ *               [{ url, i18n: clé du libellé }] : un bouton par dépôt.
  *   groupe    : (optionnel) clé de GROUPES_ACCUEIL. Les projets d'un même
  *               groupe partagent UNE carte sur l'accueil, placée au rang du
  *               premier d'entre eux ; leurs miniatures s'y côtoient.
@@ -98,7 +100,10 @@ const PROJETS = [
       { i18n: "pilier.phase2", s: "phase2" },
       { i18n: "pilier.synthese", s: "synthese" },
     ],
-    code: "https://github.com/iAlexMG/iAlexMG_649",
+    code: [
+      { url: "https://github.com/iAlexMG/iAlexMG_649", i18n: "contenu.code_source_649" },
+      { url: "https://github.com/iAlexMG/order-flow-ml", i18n: "contenu.code_source_orderflow" },
+    ],
   },
   {
     id: "formations",
