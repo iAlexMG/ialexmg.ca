@@ -113,8 +113,8 @@
         "en": "A self-taught path through the data trades, followed and written at the same time. It walks the chain end to end, from the source to the decision, one trade at a time, on the same data from start to finish. The material is what I wrote in order to learn: theory, lab, and exercises with their answers for every module."
       },
       "texte": {
-        "fr": "## La chaîne, métier par métier\n\nUne donnée traverse sept métiers entre le système qui la produit et la décision qui s'appuie dessus. Le parcours suit cet ordre, et chaque formation reprend là où la précédente s'arrête : source, ingestion, couche `RAW`, transformation, couche `MARTS`, restitution, décision.\n\n1 — **Data Engineering** reçoit les systèmes source, les API et les fichiers. Il possède l'ingestion, le stockage et l'orchestration, et il livre une couche `RAW` fiable et à l'heure.\n\n2 — **Analytics Engineering** reprend cette couche `RAW`. Il possède la transformation et la modélisation, et il livre une étoile testée et documentée.\n\n3 — **Business Intelligence** part de l'étoile livrée. Elle possède le modèle sémantique et la restitution, et elle livre un rapport qui répond à une question.\n\n4 — **Data Science** part de données propres. Elle possède la modélisation statistique, et elle livre un modèle défendable avec son incertitude.\n\n5 — **Machine Learning Engineering** part d'un modèle validé. Il possède sa mise en production, et il livre un modèle servi, versionné et surveillé.\n\n6 — **AI Engineering** part d'un corpus et d'un modèle de langue. Il possède la récupération augmentée et les agents, et il livre un système qui répond et qui s'évalue.\n\n7 — **Architecture et gouvernance** reprend tout ce qui précède. Elle possède les règles, les choix et la séquence, et elle livre une cible défendable et une feuille de route.\n\nDeux malentendus naissent toujours aux jointures, et le parcours les traite de front. Entre 01 et 02, la frontière est la couche `RAW` : l'un la livre, l'autre la reprend, et personne ne transforme dans le couloir. Entre 02 et 03, la frontière est la définition d'un indicateur, qui vit dans les `MARTS` ou dans le modèle sémantique, jamais aux deux endroits.\n\nDeux titres courants du marché tombent dans ces formations sans porter le même nom. Analyste de données, c'est la Business Intelligence. MLOps, c'est le Machine Learning Engineering.\n\n## Les deux fondations\n\nSQL avancé et Snowflake ne sont pas des étapes de la chaîne : ce sont les fondations sur lesquelles les sept reposent. La première tient le langage, la seconde une plateforme d'entrepôt et sa certification. Elles se suivent quand on en a besoin, pas à un rang précis.\n\n## Ce qui est écrit à ce jour\n\nTrente-sept cours sur quatre-vingt-neuf ont leurs supports : Data Engineering en a huit sur douze, Analytics Engineering sept sur neuf, SQL avancé et Snowflake sont complètes. Les cinquante-deux autres sont nommés, à leur place, dans le parcours de leur formation, avec la mention « En construction ». Les cinq formations qui n'ont que leur plan des modules le publient tel quel.\n\nTout est en français, au format PDF, et chaque page porte sa mention de droit d'auteur.",
-        "en": "## The chain, trade by trade\n\nData crosses seven trades between the system that produces it and the decision that rests on it. The path follows that order, and each course picks up where the previous one stops: source, ingestion, the `RAW` layer, transformation, the `MARTS` layer, reporting, decision.\n\n1 — **Data Engineering** receives source systems, APIs and files. It owns ingestion, storage and orchestration, and it delivers a `RAW` layer that is reliable and on time.\n\n2 — **Analytics Engineering** picks up that `RAW` layer. It owns transformation and modelling, and it delivers a tested, documented star schema.\n\n3 — **Business Intelligence** starts from the delivered star. It owns the semantic model and reporting, and it delivers a report that answers a question.\n\n4 — **Data Science** starts from clean data. It owns statistical modelling, and it delivers a defensible model along with its uncertainty.\n\n5 — **Machine Learning Engineering** starts from a validated model. It owns putting it into production, and it delivers a model that is served, versioned and monitored.\n\n6 — **AI Engineering** starts from a corpus and a language model. It owns retrieval augmentation and agents, and it delivers a system that answers and that evaluates itself.\n\n7 — **Architecture and governance** takes in everything above. It owns the rules, the choices and the sequencing, and it delivers a defensible target and a roadmap.\n\nTwo misunderstandings always appear at the seams, and the path tackles both head on. Between 01 and 02, the border is the `RAW` layer: one delivers it, the other picks it up, and nobody transforms in the hallway. Between 02 and 03, the border is a metric's definition, which lives either in the `MARTS` layer or in the semantic model, never in both.\n\nTwo common job titles land inside these courses under another name. Data analyst is Business Intelligence. MLOps is Machine Learning Engineering.\n\n## The two foundations\n\nAdvanced SQL and Snowflake are not steps in the chain: they are the foundations the seven others rest on. The first holds the language, the second a warehouse platform and its certification. You take them when you need them, not at a fixed rank.\n\n## What is written so far\n\nThirty-seven courses out of eighty-nine have their material: Data Engineering has eight of twelve, Analytics Engineering seven of nine, and Advanced SQL and Snowflake are complete. The other fifty-two are named, in place, in their course's module list, marked \"Under construction\". The five courses that only have their module plan publish it as is.\n\nAll of it is in French, as PDF, and every page carries its copyright notice."
+        "fr": "## La chaîne, métier par métier\n\nUne donnée traverse sept métiers entre le système qui la produit et la décision qui s'appuie dessus. Le parcours suit cet ordre, et chaque formation reprend là où la précédente s'arrête : source, ingestion, couche `RAW`, transformation, couche `MARTS`, restitution, décision.\n\n1 — **Data Engineering** reçoit les systèmes source, les API et les fichiers. Il possède l'ingestion, le stockage et l'orchestration, et il livre une couche `RAW` fiable et à l'heure.\n\n2 — **Analytics Engineering** reprend cette couche `RAW`. Il possède la transformation et la modélisation, et il livre une étoile testée et documentée.\n\n3 — **Business Intelligence** part de l'étoile livrée. Elle possède le modèle sémantique et la restitution, et elle livre un rapport qui répond à une question.\n\n4 — **Data Science** part de données propres. Elle possède la modélisation statistique, et elle livre un modèle défendable avec son incertitude.\n\n5 — **Machine Learning Engineering** part d'un modèle validé. Il possède sa mise en production, et il livre un modèle servi, versionné et surveillé.\n\n6 — **AI Engineering** part d'un corpus et d'un modèle de langue. Il possède la récupération augmentée et les agents, et il livre un système qui répond et qui s'évalue.\n\n7 — **Architecture et gouvernance** reprend tout ce qui précède. Elle possède les règles, les choix et la séquence, et elle livre une cible défendable et une feuille de route.\n\nDeux malentendus naissent toujours aux jointures, et le parcours les traite de front. Entre 01 et 02, la frontière est la couche `RAW` : l'un la livre, l'autre la reprend, et personne ne transforme dans le couloir. Entre 02 et 03, la frontière est la définition d'un indicateur, qui vit dans les `MARTS` ou dans le modèle sémantique, jamais aux deux endroits.\n\nDeux titres courants du marché tombent dans ces formations sans porter le même nom. Analyste de données, c'est la Business Intelligence. MLOps, c'est le Machine Learning Engineering.\n\n## Les deux fondations\n\nSQL avancé et Snowflake ne sont pas des étapes de la chaîne : ce sont les fondations sur lesquelles les sept reposent. La première tient le langage, la seconde une plateforme d'entrepôt et sa certification. Elles se suivent quand on en a besoin, pas à un rang précis.\n\n## Ce qui est écrit à ce jour\n\nQuarante-deux cours sur quatre-vingt-neuf ont leurs supports : Data Engineering et Analytics Engineering sont écrites en entier, avec leur mini-cas et leur synthèse, et SQL avancé et Snowflake sont complètes. Les quarante-sept autres sont nommés, à leur place, dans le parcours de leur formation, avec la mention « En construction ». Les cinq formations qui n'ont que leur plan des modules le publient tel quel.\n\nTout est en français, au format PDF, et chaque page porte sa mention de droit d'auteur.",
+        "en": "## The chain, trade by trade\n\nData crosses seven trades between the system that produces it and the decision that rests on it. The path follows that order, and each course picks up where the previous one stops: source, ingestion, the `RAW` layer, transformation, the `MARTS` layer, reporting, decision.\n\n1 — **Data Engineering** receives source systems, APIs and files. It owns ingestion, storage and orchestration, and it delivers a `RAW` layer that is reliable and on time.\n\n2 — **Analytics Engineering** picks up that `RAW` layer. It owns transformation and modelling, and it delivers a tested, documented star schema.\n\n3 — **Business Intelligence** starts from the delivered star. It owns the semantic model and reporting, and it delivers a report that answers a question.\n\n4 — **Data Science** starts from clean data. It owns statistical modelling, and it delivers a defensible model along with its uncertainty.\n\n5 — **Machine Learning Engineering** starts from a validated model. It owns putting it into production, and it delivers a model that is served, versioned and monitored.\n\n6 — **AI Engineering** starts from a corpus and a language model. It owns retrieval augmentation and agents, and it delivers a system that answers and that evaluates itself.\n\n7 — **Architecture and governance** takes in everything above. It owns the rules, the choices and the sequencing, and it delivers a defensible target and a roadmap.\n\nTwo misunderstandings always appear at the seams, and the path tackles both head on. Between 01 and 02, the border is the `RAW` layer: one delivers it, the other picks it up, and nobody transforms in the hallway. Between 02 and 03, the border is a metric's definition, which lives either in the `MARTS` layer or in the semantic model, never in both.\n\nTwo common job titles land inside these courses under another name. Data analyst is Business Intelligence. MLOps is Machine Learning Engineering.\n\n## The two foundations\n\nAdvanced SQL and Snowflake are not steps in the chain: they are the foundations the seven others rest on. The first holds the language, the second a warehouse platform and its certification. You take them when you need them, not at a fixed rank.\n\n## What is written so far\n\nForty-two courses out of eighty-nine have their material: Data Engineering and Analytics Engineering are written in full, with their mini-case and their synthesis, and Advanced SQL and Snowflake are complete. The other forty-seven are named, in place, in their course's module list, marked \"Under construction\". The five courses that only have their module plan publish it as is.\n\nAll of it is in French, as PDF, and every page carries its copyright notice."
       }
     },
     {
@@ -216,8 +216,8 @@
         "en": "The first course of the chain, and the longest. It builds Boréal's pipeline, a fictional but complete manufacturer: six sources, two paths (the cold one in batches, the hot one streaming), and a RAW layer that Analytics Engineering will pick up as is. The stack is local and free: DuckDB, Docker, Airflow, Spark, PostgreSQL, TimescaleDB."
       },
       "texte": {
-        "fr": "## Où en est la rédaction\n\nLes cours 01 à 08 sont écrits, vérifiés et versionnés, chacun avec ses quatre supports et sa part du code de solution. Tous leurs chiffres sortent d'une exécution réelle sur une génération des données de Boréal. Les cours 09 à 12 sont planifiés mais pas rédigés : les huit premiers forment un tout qui se suit et se rejoue sans eux.",
-        "en": "## Where the writing stands\n\nCourses 01 to 08 are written, verified and versioned, each with its four documents and its share of the solution code. Every figure in them comes from a real run on a generation of Boréal's data. Courses 09 to 12 are planned but not written: the first eight stand on their own and can be replayed without them."
+        "fr": "## Où en est la rédaction\n\nLes douze cours sont écrits, vérifiés et versionnés, chacun avec ses trois supports et sa part du code de solution. Tous leurs chiffres sortent d'une exécution réelle sur une génération des données de Boréal. Deux cas referment la formation, chacun d'un bloc et seul : le mini-cas de La Brûlerie, un mois de caisse figé en fichiers, puis la synthèse Aurore, une base de vente rebâtie à partir de son journal.",
+        "en": "## Where the writing stands\n\nAll twelve courses are written, verified and versioned, each with its three documents and its share of the solution code. Every figure in them comes from a real run on a generation of Boréal's data. Two cases close the course, each done in one go and alone: the La Brûlerie mini-case, one month of till data frozen in files, then the Aurore synthesis, a sales database rebuilt from its change log."
       },
       "cours": [
         {
@@ -236,21 +236,21 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_01_Le_metier_les_sources_et_le_premier_regard/Theorie_01.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_01_Le_metier_les_sources_et_le_premier_regard/Theorie_01.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_01_Le_metier_les_sources_et_le_premier_regard/Labo_01.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_01_Le_metier_les_sources_et_le_premier_regard/Labo_01.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_01_Le_metier_les_sources_et_le_premier_regard/Exercices_corriges_01.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_01_Le_metier_les_sources_et_le_premier_regard/Exercices_corriges_01.pdf"
             }
           ],
           "theorie": [
@@ -379,21 +379,21 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_02_Les_formats_de_fichiers_et_le_lac_bronze/Theorie_02.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_02_Les_formats_de_fichiers_et_le_lac_bronze/Theorie_02.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_02_Les_formats_de_fichiers_et_le_lac_bronze/Labo_02.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_02_Les_formats_de_fichiers_et_le_lac_bronze/Labo_02.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_02_Les_formats_de_fichiers_et_le_lac_bronze/Exercices_corriges_02.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_02_Les_formats_de_fichiers_et_le_lac_bronze/Exercices_corriges_02.pdf"
             }
           ],
           "theorie": [
@@ -543,21 +543,21 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_03_Charger_des_fichiers_dans_la_couche_RAW/Theorie_03.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_03_Charger_des_fichiers_dans_la_couche_RAW/Theorie_03.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_03_Charger_des_fichiers_dans_la_couche_RAW/Labo_03.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_03_Charger_des_fichiers_dans_la_couche_RAW/Labo_03.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_03_Charger_des_fichiers_dans_la_couche_RAW/Exercices_corriges_03.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_03_Charger_des_fichiers_dans_la_couche_RAW/Exercices_corriges_03.pdf"
             }
           ],
           "theorie": [
@@ -725,21 +725,21 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_04_Lire_une_base_et_une_API/Theorie_04.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_04_Lire_une_base_et_une_API/Theorie_04.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_04_Lire_une_base_et_une_API/Labo_04.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_04_Lire_une_base_et_une_API/Labo_04.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_04_Lire_une_base_et_une_API/Exercices_corriges_04.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_04_Lire_une_base_et_une_API/Exercices_corriges_04.pdf"
             }
           ],
           "theorie": [
@@ -918,21 +918,21 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_05_Le_code_d_un_pipeline_robuste/Theorie_05.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_05_Le_code_d_un_pipeline_robuste/Theorie_05.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_05_Le_code_d_un_pipeline_robuste/Labo_05.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_05_Le_code_d_un_pipeline_robuste/Labo_05.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_05_Le_code_d_un_pipeline_robuste/Exercices_corriges_05.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_05_Le_code_d_un_pipeline_robuste/Exercices_corriges_05.pdf"
             }
           ],
           "theorie": [
@@ -1177,21 +1177,21 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_06_Orchestration_avec_Airflow/Theorie_06.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_06_Orchestration_avec_Airflow/Theorie_06.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_06_Orchestration_avec_Airflow/Labo_06.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_06_Orchestration_avec_Airflow/Labo_06.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_06_Orchestration_avec_Airflow/Exercices_corriges_06.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_06_Orchestration_avec_Airflow/Exercices_corriges_06.pdf"
             }
           ],
           "theorie": [
@@ -1527,21 +1527,21 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_07_Traitement_distribue_avec_Spark/Theorie_07.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_07_Traitement_distribue_avec_Spark/Theorie_07.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_07_Traitement_distribue_avec_Spark/Labo_07.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_07_Traitement_distribue_avec_Spark/Labo_07.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_07_Traitement_distribue_avec_Spark/Exercices_corriges_07.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_07_Traitement_distribue_avec_Spark/Exercices_corriges_07.pdf"
             }
           ],
           "theorie": [
@@ -1816,21 +1816,21 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_08_Donnees_de_terrain_SCADA_historien_et_series_temporelles/Theorie_08.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_08_Donnees_de_terrain_SCADA_historien_et_series_temporelles/Theorie_08.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_08_Donnees_de_terrain_SCADA_historien_et_series_temporelles/Labo_08.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_08_Donnees_de_terrain_SCADA_historien_et_series_temporelles/Labo_08.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Cours_08_Donnees_de_terrain_SCADA_historien_et_series_temporelles/Exercices_corriges_08.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_08_Donnees_de_terrain_SCADA_historien_et_series_temporelles/Exercices_corriges_08.pdf"
             }
           ],
           "theorie": [
@@ -2257,10 +2257,143 @@
             "fr": "Ce que le temps réel apporte et ce qu'il coûte : MQTT, le protocole léger du terrain, et Kafka, quand le flux doit être conservé et relu.",
             "en": "What real time brings and what it costs: MQTT, the light protocol of the field, and Kafka, when the stream has to be kept and replayed."
           },
-          "etat": {
-            "fr": "En construction",
-            "en": "Under construction"
-          }
+          "documents": [
+            {
+              "libelle": {
+                "fr": "Théorie",
+                "en": "Theory"
+              },
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_09_Streaming_et_evenements_MQTT_et_Kafka/Theorie_09.pdf"
+            },
+            {
+              "libelle": {
+                "fr": "Labo",
+                "en": "Lab"
+              },
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_09_Streaming_et_evenements_MQTT_et_Kafka/Labo_09.pdf"
+            },
+            {
+              "libelle": {
+                "fr": "Exercices corrigés",
+                "en": "Exercises and answers"
+              },
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_09_Streaming_et_evenements_MQTT_et_Kafka/Exercices_corriges_09.pdf"
+            }
+          ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "Ce que le temps réel apporte, et ce qu'il coûte",
+              "labo": {
+                "fr": "Étape 14",
+                "en": "Step 14"
+              }
+            },
+            {
+              "numero": "2",
+              "titre": "MQTT : un courtier, des éditeurs, des abonnés",
+              "labo": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              }
+            },
+            {
+              "numero": "3",
+              "titre": "Les sujets, et leurs jokers",
+              "labo": {
+                "fr": "Étapes 1 et 2",
+                "en": "Steps 1 and 2"
+              }
+            },
+            {
+              "numero": "4",
+              "titre": "La qualité de service, et ce que « livrer » veut dire",
+              "labo": {
+                "fr": "Étapes 3 et 4",
+                "en": "Steps 3 and 4"
+              }
+            },
+            {
+              "numero": "5",
+              "titre": "Le message retenu, et la session persistante",
+              "labo": {
+                "fr": "Étapes 6 et 7",
+                "en": "Steps 6 and 7"
+              }
+            },
+            {
+              "numero": "6",
+              "titre": "L'archive, c'est ce qu'écrit un abonné",
+              "labo": {
+                "fr": "Étapes 3, 4 et 5",
+                "en": "Steps 3, 4 and 5"
+              }
+            },
+            {
+              "numero": "7",
+              "titre": "Kafka : un journal qu'on garde",
+              "labo": {
+                "fr": "Étapes 9 et 15",
+                "en": "Steps 9 and 15"
+              }
+            },
+            {
+              "numero": "8",
+              "titre": "Partitions, clés et ordre",
+              "labo": {
+                "fr": "Étapes 9 et 10",
+                "en": "Steps 9 and 10"
+              }
+            },
+            {
+              "numero": "9",
+              "titre": "Groupes de consommateurs, décalages et relecture",
+              "labo": {
+                "fr": "Étapes 11 et 15",
+                "en": "Steps 11 and 15"
+              }
+            },
+            {
+              "numero": "10",
+              "titre": "Le pont, et l'accusé qui attend la confirmation",
+              "labo": {
+                "fr": "Étapes 10 et 13",
+                "en": "Steps 10 and 13"
+              }
+            },
+            {
+              "numero": "11",
+              "titre": "Le temps de l'événement, les fenêtres et les retards",
+              "labo": {
+                "fr": "Étapes 12 et 16",
+                "en": "Steps 12 and 16"
+              }
+            },
+            {
+              "numero": "12",
+              "titre": "L'état, et l'alarme qui ne clignote pas",
+              "labo": {
+                "fr": "Étapes 12, 13 et 14",
+                "en": "Steps 12, 13 and 14"
+              }
+            },
+            {
+              "numero": "13",
+              "titre": "Livrer une seule fois, en effet",
+              "labo": {
+                "fr": "Étapes 11 et 16",
+                "en": "Steps 11 and 16"
+              }
+            },
+            {
+              "numero": "14",
+              "titre": "Lambda et Kappa",
+              "labo": {
+                "fr": "Étape 16",
+                "en": "Step 16"
+              }
+            }
+          ]
         },
         {
           "numero": "10",
@@ -2272,10 +2405,115 @@
             "fr": "Iceberg et Delta, des transactions ACID sur des fichiers, et l'architecture médaillon mise en regard de RAW, STAGING et MARTS.",
             "en": "Iceberg and Delta, ACID transactions over files, and the medallion architecture set against RAW, STAGING and MARTS."
           },
-          "etat": {
-            "fr": "En construction",
-            "en": "Under construction"
-          }
+          "documents": [
+            {
+              "libelle": {
+                "fr": "Théorie",
+                "en": "Theory"
+              },
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_10_Formats_de_table_ouverts_lakehouse_et_medaillon/Theorie_10.pdf"
+            },
+            {
+              "libelle": {
+                "fr": "Labo",
+                "en": "Lab"
+              },
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_10_Formats_de_table_ouverts_lakehouse_et_medaillon/Labo_10.pdf"
+            },
+            {
+              "libelle": {
+                "fr": "Exercices corrigés",
+                "en": "Exercises and answers"
+              },
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_10_Formats_de_table_ouverts_lakehouse_et_medaillon/Exercices_corriges_10.pdf"
+            }
+          ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "Ce qu'un dossier de Parquet ne sait pas faire",
+              "labo": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              }
+            },
+            {
+              "numero": "2",
+              "titre": "Une table, ce sont des fichiers et des métadonnées",
+              "labo": {
+                "fr": "Étapes 3 et 9",
+                "en": "Steps 3 and 9"
+              }
+            },
+            {
+              "numero": "3",
+              "titre": "Le catalogue, et une validation qui tient en un pointeur",
+              "labo": {
+                "fr": "Étapes 2 et 4",
+                "en": "Steps 2 and 4"
+              }
+            },
+            {
+              "numero": "4",
+              "titre": "L'évolution du schéma : par identifiant, pas par nom",
+              "labo": {
+                "fr": "Étapes 3, 4 et 9",
+                "en": "Steps 3, 4 and 9"
+              }
+            },
+            {
+              "numero": "5",
+              "titre": "Le partitionnement caché",
+              "labo": {
+                "fr": "Étapes 4 et 8",
+                "en": "Steps 4 and 8"
+              }
+            },
+            {
+              "numero": "6",
+              "titre": "Les instantanés et le voyage dans le temps",
+              "labo": {
+                "fr": "Étapes 5 et 6",
+                "en": "Steps 5 and 6"
+              }
+            },
+            {
+              "numero": "7",
+              "titre": "L'entretien : compacter, expirer, nettoyer",
+              "labo": {
+                "fr": "Étapes 7 et 9",
+                "en": "Steps 7 and 9"
+              }
+            },
+            {
+              "numero": "8",
+              "titre": "Iceberg et Delta : deux formats, la même idée",
+              "labo": {
+                "fr": "Étape 9",
+                "en": "Step 9"
+              }
+            },
+            {
+              "numero": "9",
+              "titre": "Le médaillon : bronze, argent, or",
+              "labo": {
+                "fr": "Étape 8",
+                "en": "Step 8"
+              }
+            },
+            {
+              "numero": "10",
+              "titre": "Le médaillon et la chaîne RAW, STAGING, MARTS",
+              "labo": {
+                "fr": "Étape 8",
+                "en": "Step 8"
+              }
+            },
+            {
+              "numero": "11",
+              "titre": "Le lakehouse, et la convergence du lac et de l'entrepôt"
+            }
+          ]
         },
         {
           "numero": "11",
@@ -2287,10 +2525,107 @@
             "fr": "Le contrat de données entre producteur et consommateur, et le choix qui revient à chaque règle : bloquer, ou avertir.",
             "en": "The data contract between producer and consumer, and the choice each rule forces: block, or warn."
           },
-          "etat": {
-            "fr": "En construction",
-            "en": "Under construction"
-          }
+          "documents": [
+            {
+              "libelle": {
+                "fr": "Théorie",
+                "en": "Theory"
+              },
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_11_Qualite_contrats_et_observabilite/Theorie_11.pdf"
+            },
+            {
+              "libelle": {
+                "fr": "Labo",
+                "en": "Lab"
+              },
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_11_Qualite_contrats_et_observabilite/Labo_11.pdf"
+            },
+            {
+              "libelle": {
+                "fr": "Exercices corrigés",
+                "en": "Exercises and answers"
+              },
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_11_Qualite_contrats_et_observabilite/Exercices_corriges_11.pdf"
+            }
+          ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "Un pipeline qui ne plante pas peut mentir",
+              "labo": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              }
+            },
+            {
+              "numero": "2",
+              "titre": "Le contrat de données",
+              "labo": {
+                "fr": "Étapes 2 et 9",
+                "en": "Steps 2 and 9"
+              }
+            },
+            {
+              "numero": "3",
+              "titre": "Les dimensions d'une règle",
+              "labo": {
+                "fr": "Étapes 2, 3 et 6",
+                "en": "Steps 2, 3 and 6"
+              }
+            },
+            {
+              "numero": "4",
+              "titre": "Bloquer, avertir ou suivre",
+              "labo": {
+                "fr": "Étapes 3, 8 et 10",
+                "en": "Steps 3, 8 and 10"
+              }
+            },
+            {
+              "numero": "5",
+              "titre": "Un contrat a une version",
+              "labo": {
+                "fr": "Étape 4",
+                "en": "Step 4"
+              }
+            },
+            {
+              "numero": "6",
+              "titre": "Le contrôle de distribution",
+              "labo": {
+                "fr": "Étape 7",
+                "en": "Step 7"
+              }
+            },
+            {
+              "numero": "7",
+              "titre": "Alerte utile, alerte ignorée",
+              "labo": {
+                "fr": "Étape 8",
+                "en": "Step 8"
+              }
+            },
+            {
+              "numero": "8",
+              "titre": "L'observabilité : lire une plateforme par ses traces",
+              "labo": {
+                "fr": "Étape 5",
+                "en": "Step 5"
+              }
+            },
+            {
+              "numero": "9",
+              "titre": "Conduire un incident de données",
+              "labo": {
+                "fr": "Étape 11",
+                "en": "Step 11"
+              }
+            },
+            {
+              "numero": "10",
+              "titre": "Les outils : ce que le marché ajoute"
+            }
+          ]
         },
         {
           "numero": "12",
@@ -2302,10 +2637,99 @@
             "fr": "Les deux chemins de Boréal, montés de bout en bout sur les sources générées, sans rien de neuf à apprendre.",
             "en": "Boréal's two paths, built end to end on the generated sources, with nothing new to learn."
           },
-          "etat": {
-            "fr": "En construction",
-            "en": "Under construction"
-          }
+          "documents": [
+            {
+              "libelle": {
+                "fr": "Théorie",
+                "en": "Theory"
+              },
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_12_Capstone_pipeline_de_bout_en_bout/Theorie_12.pdf"
+            },
+            {
+              "libelle": {
+                "fr": "Labo",
+                "en": "Lab"
+              },
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_12_Capstone_pipeline_de_bout_en_bout/Labo_12.pdf"
+            },
+            {
+              "libelle": {
+                "fr": "Exercices corrigés",
+                "en": "Exercises and answers"
+              },
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_12_Capstone_pipeline_de_bout_en_bout/Exercices_corriges_12.pdf"
+            }
+          ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "Ce que « fini » veut dire",
+              "labo": {
+                "fr": "Étapes 4 et 5",
+                "en": "Steps 4 and 5"
+              }
+            },
+            {
+              "numero": "2",
+              "titre": "La carte de Boréal"
+            },
+            {
+              "numero": "3",
+              "titre": "Ce qui se versionne, ce qui se reconstruit",
+              "labo": {
+                "fr": "Étapes 4 et 10",
+                "en": "Steps 4 and 10"
+              }
+            },
+            {
+              "numero": "4",
+              "titre": "Orchestrer une reconstruction",
+              "labo": {
+                "fr": "Étapes 1, 2, 3 et 5",
+                "en": "Steps 1, 2, 3 and 5"
+              }
+            },
+            {
+              "numero": "5",
+              "titre": "Trois preuves",
+              "labo": {
+                "fr": "Étape 6",
+                "en": "Step 6"
+              }
+            },
+            {
+              "numero": "6",
+              "titre": "Le chemin chaud de bout en bout",
+              "labo": {
+                "fr": "Étape 7",
+                "en": "Step 7"
+              }
+            },
+            {
+              "numero": "7",
+              "titre": "Le tableau de bord, livrable versionné",
+              "labo": {
+                "fr": "Étape 8",
+                "en": "Step 8"
+              }
+            },
+            {
+              "numero": "8",
+              "titre": "L'incident vu de l'amont",
+              "labo": {
+                "fr": "Étape 9",
+                "en": "Step 9"
+              }
+            },
+            {
+              "numero": "9",
+              "titre": "La passation",
+              "labo": {
+                "fr": "Étapes 10 et 11",
+                "en": "Steps 10 and 11"
+              }
+            }
+          ]
         }
       ],
       "phases": {
@@ -2429,7 +2853,7 @@
         {
           "id": "de-mise-en-situation-boreal-01-de",
           "type": "pdf",
-          "fichier": "assets/formations/data-domain/01_Data_Engineering/Cours/Mise_en_situation_Boreal_01_DE.pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Mise_en_situation_Boreal_01_DE.pdf",
           "titre": {
             "fr": "La mise en situation : Boréal",
             "en": "The case: Boréal"
@@ -2437,6 +2861,58 @@
           "description": {
             "fr": "L'entreprise, ses six sources et le mandat confié à l'ingénieur de données.",
             "en": "The company, its six sources and the mandate handed to the data engineer."
+          }
+        },
+        {
+          "id": "de-mise-en-situation-la-brulerie-01-de",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/02_Brulerie_facile/Mise_en_situation_La_Brulerie_01_DE.pdf",
+          "titre": {
+            "fr": "Synthèse facile : la mise en situation",
+            "en": "Easy synthesis: the case"
+          },
+          "description": {
+            "fr": "Un café de quartier, un mois de caisse et de torréfaction figé en fichiers : l'énoncé.",
+            "en": "A neighbourhood café, one month of till and roasting data frozen in files: the brief."
+          }
+        },
+        {
+          "id": "de-synthese-brulerie",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/02_Brulerie_facile/Synthese_brulerie.pdf",
+          "titre": {
+            "fr": "Synthèse facile : le corrigé",
+            "en": "Easy synthesis: the answer key"
+          },
+          "description": {
+            "fr": "L'arc de la formation refait en petit, des fichiers livrés au contrat de la caisse, lancé par une seule commande.",
+            "en": "The course's arc redone at small scale, from the delivered files to the till's contract, run by a single command."
+          }
+        },
+        {
+          "id": "de-mise-en-situation-aurore-01-de",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/03_Aurore_avancee/Mise_en_situation_Aurore_01_DE.pdf",
+          "titre": {
+            "fr": "Synthèse avancée : la mise en situation",
+            "en": "Advanced synthesis: the case"
+          },
+          "description": {
+            "fr": "Une boutique en ligne dont on ne lit pas la base : son journal de changements, ses événements web et les taux de change.",
+            "en": "An online shop whose database you may not query: its change log, its web events and the exchange rates."
+          }
+        },
+        {
+          "id": "de-synthese-aurore",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/03_Aurore_avancee/Synthese_aurore.pdf",
+          "titre": {
+            "fr": "Synthèse avancée : le corrigé",
+            "en": "Advanced synthesis: the answer key"
+          },
+          "description": {
+            "fr": "La base rebâtie à partir de son journal, les événements web dédoublonnés et le contrat, d'un bloc.",
+            "en": "The database rebuilt from its change log, the web events deduplicated and the contract, in one go."
           }
         }
       ],
@@ -2458,8 +2934,8 @@
         "en": "The course picks up the RAW layer Data Engineering delivered and leaves it alone: it models. Kimball-style dimensional modelling first, on paper, then dbt to run it, test it, document it and replay it. It was rebuilt in September 2026, from Snowflake to dbt-duckdb, so it runs locally with no account and no credit card."
       },
       "texte": {
-        "fr": "## Où en est la rédaction\n\nLes cours 01 à 07 sont écrits dans leur version refondue. Le cours 08, l'intégration continue, est publié ici dans son support d'avant la refonte : il porte encore l'ancienne pile et le dit en tête de chaque page. Il sert de matière au cours à écrire. Le capstone, cours 09, est planifié et pas rédigé.",
-        "en": "## Where the writing stands\n\nCourses 01 to 07 are written in their rebuilt version. Course 08, continuous integration, is published here in its pre-rebuild form: it still carries the old stack and says so at the top of every page. It is the raw material for the course still to be written. The capstone, course 09, is planned and not written."
+        "fr": "## Où en est la rédaction\n\nLes neuf cours sont écrits dans leur version refondue, sur dbt et DuckDB, chacun avec ses trois supports et sa part du projet de solution. Le capstone assemble le projet dbt complet ; le mini-cas de La Brûlerie et la synthèse Aurore referment la formation, chacun d'un bloc.",
+        "en": "## Where the writing stands\n\nAll nine courses are written in their rebuilt version, on dbt and DuckDB, each with its three documents and its share of the solution project. The capstone assembles the complete dbt project; the La Brûlerie mini-case and the Aurore synthesis close the course, each in one go."
       },
       "cours": [
         {
@@ -2478,27 +2954,31 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_01_Le_metier_la_chaine_et_la_RAW_recue/Theorie_01.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_01_Le_metier_la_chaine_et_la_RAW_recue/Theorie_01.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_01_Le_metier_la_chaine_et_la_RAW_recue/Labo_01.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_01_Le_metier_la_chaine_et_la_RAW_recue/Labo_01.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_01_Le_metier_la_chaine_et_la_RAW_recue/Exercices_corriges_01.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_01_Le_metier_la_chaine_et_la_RAW_recue/Exercices_corriges_01.pdf"
             }
           ],
           "theorie": [
             {
               "numero": "1",
-              "titre": "Le métier : ingénieur analytique"
+              "titre": "Le métier : ingénieur analytique",
+              "labo": {
+                "fr": "Étape 7",
+                "en": "Step 7"
+              }
             },
             {
               "numero": "2",
@@ -2524,8 +3004,8 @@
               "numero": "6",
               "titre": "Ce que la RAW garde exprès",
               "labo": {
-                "fr": "Étapes 4, 5 et 6",
-                "en": "Steps 4, 5 and 6"
+                "fr": "Étapes 3, 4, 5 et 6",
+                "en": "Steps 3, 4, 5 and 6"
               }
             },
             {
@@ -2686,21 +3166,21 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_02_Modelisation_dimensionnelle_et_matrice_de_bus/Theorie_02.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_02_Modelisation_dimensionnelle_et_matrice_de_bus/Theorie_02.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_02_Modelisation_dimensionnelle_et_matrice_de_bus/Labo_02.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_02_Modelisation_dimensionnelle_et_matrice_de_bus/Labo_02.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_02_Modelisation_dimensionnelle_et_matrice_de_bus/Exercices_corriges_02.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_02_Modelisation_dimensionnelle_et_matrice_de_bus/Exercices_corriges_02.pdf"
             }
           ],
           "theorie": [
@@ -2714,7 +3194,11 @@
             },
             {
               "numero": "2",
-              "titre": "La recette en quatre temps"
+              "titre": "La recette en quatre temps",
+              "labo": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              }
             },
             {
               "numero": "3",
@@ -2726,7 +3210,11 @@
             },
             {
               "numero": "4",
-              "titre": "Les faits et leurs mesures"
+              "titre": "Les faits et leurs mesures",
+              "labo": {
+                "fr": "Étape 5",
+                "en": "Step 5"
+              }
             },
             {
               "numero": "5",
@@ -2738,7 +3226,11 @@
             },
             {
               "numero": "6",
-              "titre": "La clé de substitution"
+              "titre": "La clé de substitution",
+              "labo": {
+                "fr": "Étape 3",
+                "en": "Step 3"
+              }
             },
             {
               "numero": "7",
@@ -2754,7 +3246,11 @@
             },
             {
               "numero": "9",
-              "titre": "Les dimensions conformes"
+              "titre": "Les dimensions conformes",
+              "labo": {
+                "fr": "Étapes 2 et 7",
+                "en": "Steps 2 and 7"
+              }
             },
             {
               "numero": "10",
@@ -2946,21 +3442,21 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_03_dbt_et_la_couche_STAGING/Theorie_03.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_03_dbt_et_la_couche_STAGING/Theorie_03.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_03_dbt_et_la_couche_STAGING/Labo_03.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_03_dbt_et_la_couche_STAGING/Labo_03.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_03_dbt_et_la_couche_STAGING/Exercices_corriges_03.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_03_dbt_et_la_couche_STAGING/Exercices_corriges_03.pdf"
             }
           ],
           "theorie": [
@@ -3012,8 +3508,8 @@
               "numero": "7",
               "titre": "L'état courant, et ce qu'il répare",
               "labo": {
-                "fr": "Étape 8",
-                "en": "Step 8"
+                "fr": "Étapes 7 et 8",
+                "en": "Steps 7 and 8"
               }
             },
             {
@@ -3028,8 +3524,8 @@
               "numero": "9",
               "titre": "ref() et le graphe",
               "labo": {
-                "fr": "Étape 8",
-                "en": "Step 8"
+                "fr": "Étapes 5 et 8",
+                "en": "Steps 5 and 8"
               }
             },
             {
@@ -3218,21 +3714,21 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_04_Batir_l_etoile_des_ventes/Theorie_04.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_04_Batir_l_etoile_des_ventes/Theorie_04.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_04_Batir_l_etoile_des_ventes/Labo_04.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_04_Batir_l_etoile_des_ventes/Labo_04.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_04_Batir_l_etoile_des_ventes/Exercices_corriges_04.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_04_Batir_l_etoile_des_ventes/Exercices_corriges_04.pdf"
             }
           ],
           "theorie": [
@@ -3537,21 +4033,21 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_05_Fiabiliser_l_etoile_tests_snapshots_documentation/Theorie_05.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_05_Fiabiliser_l_etoile_tests_snapshots_documentation/Theorie_05.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_05_Fiabiliser_l_etoile_tests_snapshots_documentation/Labo_05.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_05_Fiabiliser_l_etoile_tests_snapshots_documentation/Labo_05.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_05_Fiabiliser_l_etoile_tests_snapshots_documentation/Exercices_corriges_05.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_05_Fiabiliser_l_etoile_tests_snapshots_documentation/Exercices_corriges_05.pdf"
             }
           ],
           "theorie": [
@@ -3910,21 +4406,21 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_06_Les_faits_que_la_vente_ne_montre_pas/Theorie_06.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_06_Les_faits_que_la_vente_ne_montre_pas/Theorie_06.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_06_Les_faits_que_la_vente_ne_montre_pas/Labo_06.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_06_Les_faits_que_la_vente_ne_montre_pas/Labo_06.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_06_Les_faits_que_la_vente_ne_montre_pas/Exercices_corriges_06.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_06_Les_faits_que_la_vente_ne_montre_pas/Exercices_corriges_06.pdf"
             }
           ],
           "theorie": [
@@ -4465,21 +4961,21 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_07_ELT_en_regime_permanent/Theorie_07.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_07_ELT_en_regime_permanent/Theorie_07.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_07_ELT_en_regime_permanent/Labo_07.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_07_ELT_en_regime_permanent/Labo_07.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_07_ELT_en_regime_permanent/Exercices_corriges_07.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_07_ELT_en_regime_permanent/Exercices_corriges_07.pdf"
             }
           ],
           "theorie": [
@@ -4487,8 +4983,8 @@
               "numero": "1",
               "titre": "Le chantier et le régime permanent",
               "labo": {
-                "fr": "Étapes 1, 2 et 7",
-                "en": "Steps 1, 2 and 7"
+                "fr": "Étapes 1, 2, 7 et 11",
+                "en": "Steps 1, 2, 7 and 11"
               }
             },
             {
@@ -4970,12 +5466,12 @@
         {
           "numero": "08",
           "titre": {
-            "fr": "CI/CD et qualité analytique (support d'avant la refonte)",
-            "en": "CI/CD and analytics quality (pre-rebuild material)"
+            "fr": "CI/CD et qualité analytique",
+            "en": "CI/CD and analytics quality"
           },
           "resume": {
-            "fr": "Travailler par branche et par demande de tirage sur un projet analytique, et ce que l'intégration continue protège. Ce support porte l'ancienne pile Snowflake et l'ancienne numérotation : il le dit en tête de chaque page, et sert de matière au cours 08 à écrire.",
-            "en": "Working by branch and pull request on an analytics project, and what continuous integration protects. This material still carries the old Snowflake stack and the old numbering: it says so at the top of every page, and serves as raw material for course 08, still to be written."
+            "fr": "Le code mis sous surveillance : branche et revue, une intégration continue qui rejoue le linteur et dbt build sur un entrepôt jetable, et des alertes de fraîcheur réglées sur la cadence de chaque source.",
+            "en": "The code put under watch: branch and review, continuous integration that replays the linter and dbt build on a throwaway warehouse, and freshness alerts tuned to each source's cadence."
           },
           "documents": [
             {
@@ -4983,83 +5479,107 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_07_CI_CD_et_qualite_analytique/Theorie_07.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_08_CI_CD_et_qualite_analytique/Theorie_08.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_07_CI_CD_et_qualite_analytique/Labo_07.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_08_CI_CD_et_qualite_analytique/Labo_08.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Cours_07_CI_CD_et_qualite_analytique/Exercices_corriges_07.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_08_CI_CD_et_qualite_analytique/Exercices_corriges_08.pdf"
             }
           ],
           "theorie": [
             {
               "numero": "1",
-              "titre": "Git pour l'analytique : ce qui change, et ce qui ne change pas",
+              "titre": "Travailler par branche, et relire un modèle",
               "labo": {
-                "fr": "Étape 8",
-                "en": "Step 8"
+                "fr": "Étape 12",
+                "en": "Step 12"
               }
             },
             {
               "numero": "2",
-              "titre": "Intégration continue : rejouer vos tests à votre place",
+              "titre": "L'intégration continue, et ce qu'elle n'est pas",
+              "labo": {
+                "fr": "Étapes 11 et 12",
+                "en": "Steps 11 and 12"
+              }
+            },
+            {
+              "numero": "3",
+              "titre": "Le workflow, ligne à ligne",
+              "labo": {
+                "fr": "Étapes 9, 10 et 11",
+                "en": "Steps 9, 10 and 11"
+              }
+            },
+            {
+              "numero": "4",
+              "titre": "La forme : le linteur",
+              "labo": {
+                "fr": "Étapes 2, 3 et 4",
+                "en": "Steps 2, 3 and 4"
+              }
+            },
+            {
+              "numero": "5",
+              "titre": "Le fond, sans les données",
+              "labo": {
+                "fr": "Étapes 7, 8, 10 et 12",
+                "en": "Steps 7, 8, 10 and 12"
+              }
+            },
+            {
+              "numero": "6",
+              "titre": "L'entrepôt jetable, et le ménage",
+              "labo": {
+                "fr": "Étapes 1, 8 et 13",
+                "en": "Steps 1, 8 and 13"
+              }
+            },
+            {
+              "numero": "7",
+              "titre": "Les secrets, et ce qui entre au dépôt",
+              "labo": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              }
+            },
+            {
+              "numero": "8",
+              "titre": "La fraîcheur, et ce qu'un avertissement vaut",
               "labo": {
                 "fr": "Étape 5",
                 "en": "Step 5"
               }
             },
             {
-              "numero": "3",
-              "titre": "GitHub Actions : le vocabulaire minimal",
+              "numero": "9",
+              "titre": "Le contrat",
               "labo": {
-                "fr": "Étape 4",
-                "en": "Step 4"
+                "fr": "Étapes 6 et 8",
+                "en": "Steps 6 and 8"
               }
             },
             {
-              "numero": "4",
-              "titre": "La CI d'un projet dbt : deux gestes",
+              "numero": "10",
+              "titre": "Ce qu'un agent lit du manifest.json",
               "labo": {
-                "fr": "Étape 2",
-                "en": "Step 2"
+                "fr": "Étape 14",
+                "en": "Step 14"
               }
             },
             {
-              "numero": "5",
-              "titre": "Les secrets d'un pipeline automatisé",
-              "labo": {
-                "fr": "Étape 3",
-                "en": "Step 3"
-              }
-            },
-            {
-              "numero": "6",
-              "titre": "La qualité analytique au-delà des tests",
-              "labo": {
-                "fr": "Étapes 1 et 6",
-                "en": "Steps 1 and 6"
-              }
-            },
-            {
-              "numero": "7",
-              "titre": "Les agents d'IA sur une plateforme analytique"
-            },
-            {
-              "numero": "8",
-              "titre": "Le livrable : un dépôt qu'on peut lire",
-              "labo": {
-                "fr": "Étapes 7 et 8",
-                "en": "Steps 7 and 8"
-              }
+              "numero": "11",
+              "titre": "Sur une autre plateforme"
             }
           ]
         },
@@ -5073,10 +5593,87 @@
             "fr": "Les trois étoiles, les dimensions conformes, l'incrémental, les tests, la documentation et la CI, assemblés sans rien découvrir de neuf.",
             "en": "The three stars, the conformed dimensions, the incremental models, the tests, the documentation and the CI, assembled with nothing new to discover."
           },
-          "etat": {
-            "fr": "En construction",
-            "en": "Under construction"
-          }
+          "documents": [
+            {
+              "libelle": {
+                "fr": "Théorie",
+                "en": "Theory"
+              },
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_09_Capstone_le_projet_dbt_complet/Theorie_09.pdf"
+            },
+            {
+              "libelle": {
+                "fr": "Labo",
+                "en": "Lab"
+              },
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_09_Capstone_le_projet_dbt_complet/Labo_09.pdf"
+            },
+            {
+              "libelle": {
+                "fr": "Exercices corrigés",
+                "en": "Exercises and answers"
+              },
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_09_Capstone_le_projet_dbt_complet/Exercices_corriges_09.pdf"
+            }
+          ],
+          "theorie": [
+            {
+              "numero": "1",
+              "titre": "Ce que « fini » veut dire",
+              "labo": {
+                "fr": "Étapes 5 et 6",
+                "en": "Steps 5 and 6"
+              }
+            },
+            {
+              "numero": "2",
+              "titre": "La carte du projet",
+              "labo": {
+                "fr": "Étape 10",
+                "en": "Step 10"
+              }
+            },
+            {
+              "numero": "3",
+              "titre": "Ce qui se versionne, ce qui se refait, ce qui se garde",
+              "labo": {
+                "fr": "Étape 5",
+                "en": "Step 5"
+              }
+            },
+            {
+              "numero": "4",
+              "titre": "La reconstruction, son ordre et sa garde",
+              "labo": {
+                "fr": "Étapes 3, 4 et 6",
+                "en": "Steps 3, 4 and 6"
+              }
+            },
+            {
+              "numero": "5",
+              "titre": "Refaire n'est pas prouver",
+              "labo": {
+                "fr": "Étapes 7, 8 et 9",
+                "en": "Steps 7, 8 and 9"
+              }
+            },
+            {
+              "numero": "6",
+              "titre": "L'incident, par les deux bouts",
+              "labo": {
+                "fr": "Étape 9",
+                "en": "Step 9"
+              }
+            },
+            {
+              "numero": "7",
+              "titre": "La passation",
+              "labo": {
+                "fr": "Étapes 2, 10, 11 et 12",
+                "en": "Steps 2, 10, 11 and 12"
+              }
+            }
+          ]
         }
       ],
       "phases": {
@@ -5197,7 +5794,7 @@
         {
           "id": "ae-aide-memoire",
           "type": "pdf",
-          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Aide_memoire.pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Aide_memoire.pdf",
           "titre": {
             "fr": "L'aide-mémoire",
             "en": "The cheat sheet"
@@ -5210,7 +5807,7 @@
         {
           "id": "ae-mise-en-situation-boreal-02-ae",
           "type": "pdf",
-          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Cours/Mise_en_situation_Boreal_02_AE.pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Mise_en_situation_Boreal_02_AE.pdf",
           "titre": {
             "fr": "La mise en situation : Boréal",
             "en": "The case: Boréal"
@@ -5223,7 +5820,7 @@
         {
           "id": "ae-mise-en-situation-la-brulerie-02-ae",
           "type": "pdf",
-          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Synthese_La_Brulerie_facile/Mise_en_situation_La_Brulerie_02_AE.pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/02_Brulerie_facile/Mise_en_situation_La_Brulerie_02_AE.pdf",
           "titre": {
             "fr": "Synthèse facile : la mise en situation",
             "en": "Easy synthesis: the case"
@@ -5236,7 +5833,7 @@
         {
           "id": "ae-synthese-brulerie",
           "type": "pdf",
-          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Synthese_La_Brulerie_facile/Synthese_brulerie.pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/02_Brulerie_facile/Synthese_brulerie.pdf",
           "titre": {
             "fr": "Synthèse facile : le corrigé",
             "en": "Easy synthesis: the answer key"
@@ -5249,7 +5846,7 @@
         {
           "id": "ae-mise-en-situation-aurore-02-ae",
           "type": "pdf",
-          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Synthese_Aurore_avancee/Mise_en_situation_Aurore_02_AE.pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/03_Aurore_avancee/Mise_en_situation_Aurore_02_AE.pdf",
           "titre": {
             "fr": "Synthèse avancée : la mise en situation",
             "en": "Advanced synthesis: the case"
@@ -5262,7 +5859,7 @@
         {
           "id": "ae-synthese-aurore",
           "type": "pdf",
-          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/Synthese_Aurore_avancee/Synthese_aurore.pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/03_Aurore_avancee/Synthese_aurore.pdf",
           "titre": {
             "fr": "Synthèse avancée : le corrigé",
             "en": "Advanced synthesis: the answer key"
