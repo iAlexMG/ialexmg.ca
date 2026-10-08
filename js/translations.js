@@ -30,7 +30,7 @@ const TRADUCTIONS = {
 
     // Titres d'onglet des pages statiques (le contenu du <title> HTML sert de
     // repli pour le no-JS ; ce texte le remplace selon la langue active).
-    "page.accueil.titre": "iAlexMG — Ingénierie & trading quantitatif",
+    "page.accueil.titre": "iAlexMG — Données, IA et marchés financiers",
     "page.crypto.titre": "Crypto — De la donnée à l'exécution | iAlexMG",
     "page.indices.titre": "Indices boursiers — De la donnée à l'exécution | iAlexMG",
     "page.machine-learning.titre": "Machine Learning — Des modèles à l'épreuve des données | iAlexMG",
@@ -210,7 +210,7 @@ const TRADUCTIONS = {
 
     // Static page tab titles (the HTML <title> content is the no-JS fallback;
     // this text replaces it according to the active language).
-    "page.accueil.titre": "iAlexMG — Quantitative Engineering & Trading",
+    "page.accueil.titre": "iAlexMG — Data, AI & Financial Markets",
     "page.crypto.titre": "Crypto — From Data to Execution | iAlexMG",
     "page.indices.titre": "Stock Indices — From Data to Execution | iAlexMG",
     "page.machine-learning.titre": "Machine Learning — Models Tested Against Real Data | iAlexMG",
