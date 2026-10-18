@@ -148,7 +148,7 @@
         {
           "id": "guide-guide-installation",
           "type": "pdf",
-          "fichier": "assets/formations/data-domain/GUIDE_INSTALLATION.pdf",
+          "fichier": "assets/formations/data-domain/00_Installation/Guide_installation.pdf",
           "titre": {
             "fr": "Le guide d'installation",
             "en": "The installation guide"
@@ -159,12 +159,25 @@
           }
         },
         {
+          "id": "guide-labo-installation",
+          "type": "pdf",
+          "fichier": "assets/formations/data-domain/00_Installation/Labo_installation.pdf",
+          "titre": {
+            "fr": "Le labo d'installation",
+            "en": "The installation lab"
+          },
+          "description": {
+            "fr": "Les sept mêmes étapes, les commandes seules, chacune renvoyant à sa section du guide quand une sortie surprend.",
+            "en": "The same seven steps, commands only, each pointing back to its section of the guide when an output looks wrong."
+          }
+        },
+        {
           "id": "guide-mise-en-situation-boreal",
           "type": "pdf",
           "fichier": "assets/formations/data-domain/Mises_en_situation/Mise_en_situation_Boreal.pdf",
           "titre": {
-            "fr": "L'entreprise du fil rouge : Véhicules Boréal inc.",
-            "en": "The common thread: Véhicules Boréal inc."
+            "fr": "L'entreprise du cas d'étude : Véhicules Boréal inc.",
+            "en": "The case study: Véhicules Boréal inc."
           },
           "description": {
             "fr": "Le fabricant de motoneiges dont les données traversent tout le parcours : ses six sources, ce que sa direction demande, et ce que chacun des sept métiers y fait.",
@@ -236,27 +249,27 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_01_Le_metier_les_sources_et_le_premier_regard/Theorie_01.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_01_Le_metier_les_sources_et_le_premier_regard/Theorie_01_DE.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_01_Le_metier_les_sources_et_le_premier_regard/Labo_01.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_01_Le_metier_les_sources_et_le_premier_regard/Labo_01_DE.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_01_Le_metier_les_sources_et_le_premier_regard/Exercices_corriges_01.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_01_Le_metier_les_sources_et_le_premier_regard/Exercices_corriges_01_DE.pdf"
             }
           ],
           "theorie": [
             {
               "numero": "1",
-              "titre": "Le métier : ingénieur de données"
+              "titre": "Le métier"
             },
             {
               "numero": "2",
@@ -264,38 +277,42 @@
             },
             {
               "numero": "3",
-              "titre": "Deux chemins : le froid et le chaud"
+              "titre": "Le cold path et le hot path"
             },
             {
               "numero": "4",
-              "titre": "Où s'arrête l'ingénieur de données, et ce qu'il livre",
-              "labo": {
-                "fr": "Étape 1",
-                "en": "Step 1"
-              }
+              "titre": "Le périmètre de la formation"
             },
             {
               "numero": "5",
-              "titre": "Le fil rouge : Véhicules Boréal inc.",
+              "titre": "Le cas d'étude : Projet Boréal",
               "labo": {
-                "fr": "Étape 2",
-                "en": "Step 2"
+                "fr": "Étape 2 · Étape 3",
+                "en": "Step 2 · Step 3"
               }
             },
             {
               "numero": "6",
-              "titre": "DuckDB, pour regarder sans charger",
+              "titre": "DuckDB",
               "labo": {
-                "fr": "Étape 2",
-                "en": "Step 2"
+                "fr": "Étape 3 · Étape 4 · Étape 5",
+                "en": "Step 3 · Step 4 · Step 5"
               }
             },
             {
               "numero": "7",
               "titre": "Le type deviné",
               "labo": {
-                "fr": "Étape 3",
-                "en": "Step 3"
+                "fr": "Étape 4",
+                "en": "Step 4"
+              }
+            },
+            {
+              "numero": "8",
+              "titre": "Le premier regard, en pratique",
+              "labo": {
+                "fr": "Étape 2 · Étape 3",
+                "en": "Step 2 · Step 3"
               }
             }
           ],
@@ -379,66 +396,74 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_02_Les_formats_de_fichiers_et_le_lac_bronze/Theorie_02.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_02_Les_formats_de_fichiers_et_le_lac_bronze/Theorie_02_DE.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_02_Les_formats_de_fichiers_et_le_lac_bronze/Labo_02.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_02_Les_formats_de_fichiers_et_le_lac_bronze/Labo_02_DE.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_02_Les_formats_de_fichiers_et_le_lac_bronze/Exercices_corriges_02.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_02_Les_formats_de_fichiers_et_le_lac_bronze/Exercices_corriges_02_DE.pdf"
             }
           ],
           "theorie": [
             {
               "numero": "1",
-              "titre": "Ligne contre colonne"
+              "titre": "Ligne contre colonne",
+              "labo": {
+                "fr": "Étape 5",
+                "en": "Step 5"
+              }
             },
             {
               "numero": "2",
-              "titre": "Cinq formats, ce qu'ils coûtent et ce qu'ils rendent",
-              "labo": {
-                "fr": "Étapes 2 et 3",
-                "en": "Steps 2 and 3"
-              }
+              "titre": "Cinq formats"
             },
             {
               "numero": "3",
               "titre": "Parquet, de près",
               "labo": {
-                "fr": "Étape 2",
-                "en": "Step 2"
+                "fr": "Étape 4 · Étape 5",
+                "en": "Step 4 · Step 5"
               }
             },
             {
               "numero": "4",
               "titre": "La règle du bronze",
               "labo": {
-                "fr": "Étapes 1 et 3",
-                "en": "Steps 1 and 3"
+                "fr": "Étape 1 · Étape 2 · Étape 3",
+                "en": "Step 1 · Step 2 · Step 3"
               }
             },
             {
               "numero": "5",
               "titre": "Le stockage objet et le partitionnement",
               "labo": {
-                "fr": "Étapes 1, 2 et 3",
-                "en": "Steps 1, 2 and 3"
+                "fr": "Étape 1 · Étape 3 · Étape 4 · Étape 5",
+                "en": "Step 1 · Step 3 · Step 4 · Step 5"
               }
             },
             {
               "numero": "6",
               "titre": "DuckDB sur le lac",
               "labo": {
-                "fr": "Étapes 1, 2 et 3",
-                "en": "Steps 1, 2 and 3"
+                "fr": "Étape 1 · Étape 2 · Étape 5",
+                "en": "Step 1 · Step 2 · Step 5"
+              }
+            },
+            {
+              "numero": "7",
+              "titre": "Contrôler un bronze, en pratique",
+              "labo": {
+                "fr": "Étape 3",
+                "en": "Step 3"
               }
             }
           ],
@@ -543,21 +568,21 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_03_Charger_des_fichiers_dans_la_couche_RAW/Theorie_03.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_03_Charger_des_fichiers_dans_la_couche_RAW/Theorie_03_DE.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_03_Charger_des_fichiers_dans_la_couche_RAW/Labo_03.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_03_Charger_des_fichiers_dans_la_couche_RAW/Labo_03_DE.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_03_Charger_des_fichiers_dans_la_couche_RAW/Exercices_corriges_03.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_03_Charger_des_fichiers_dans_la_couche_RAW/Exercices_corriges_03_DE.pdf"
             }
           ],
           "theorie": [
@@ -573,24 +598,24 @@
               "numero": "2",
               "titre": "Chargement complet, chargement incrémental",
               "labo": {
-                "fr": "Étape 2",
-                "en": "Step 2"
+                "fr": "Étape 2 · Étape 3",
+                "en": "Step 2 · Step 3"
               }
             },
             {
               "numero": "3",
               "titre": "L'idempotence et le journal des chargements",
               "labo": {
-                "fr": "Étapes 1 et 2",
-                "en": "Steps 1 and 2"
+                "fr": "Étape 1 · Étape 2 · Étape 3",
+                "en": "Step 1 · Step 2 · Step 3"
               }
             },
             {
               "numero": "4",
               "titre": "La couche RAW",
               "labo": {
-                "fr": "Étapes 1, 2 et 3",
-                "en": "Steps 1, 2 and 3"
+                "fr": "Étape 1 · Étape 2 · Étape 3",
+                "en": "Step 1 · Step 2 · Step 3"
               }
             },
             {
@@ -600,6 +625,10 @@
                 "fr": "Étape 4",
                 "en": "Step 4"
               }
+            },
+            {
+              "numero": "6",
+              "titre": "Charger une livraison, en pratique"
             }
           ],
           "etapes": [
@@ -725,21 +754,21 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_04_Lire_une_base_et_une_API/Theorie_04.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_04_Lire_une_base_et_une_API/Theorie_04_DE.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_04_Lire_une_base_et_une_API/Labo_04.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_04_Lire_une_base_et_une_API/Labo_04_DE.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_04_Lire_une_base_et_une_API/Exercices_corriges_04.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_04_Lire_une_base_et_une_API/Exercices_corriges_04_DE.pdf"
             }
           ],
           "theorie": [
@@ -747,24 +776,24 @@
               "numero": "1",
               "titre": "Tirer ou recevoir : MQTT, REST et ODBC",
               "labo": {
-                "fr": "Étapes 2 et 4",
-                "en": "Steps 2 and 4"
+                "fr": "Étape 2 · Étape 4",
+                "en": "Step 2 · Step 4"
               }
             },
             {
               "numero": "2",
               "titre": "Lire une base par ODBC",
               "labo": {
-                "fr": "Étapes 1 et 2",
-                "en": "Steps 1 and 2"
+                "fr": "Étape 1 · Étape 2",
+                "en": "Step 1 · Step 2"
               }
             },
             {
               "numero": "3",
               "titre": "La capture de changements",
               "labo": {
-                "fr": "Étapes 1 et 3",
-                "en": "Steps 1 and 3"
+                "fr": "Étape 1 · Étape 3",
+                "en": "Step 1 · Step 3"
               }
             },
             {
@@ -774,6 +803,10 @@
                 "fr": "Étape 4",
                 "en": "Step 4"
               }
+            },
+            {
+              "numero": "5",
+              "titre": "Lire une source qu'on tire, en pratique"
             }
           ],
           "etapes": [
@@ -918,21 +951,21 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_05_Le_code_d_un_pipeline_robuste/Theorie_05.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_05_Le_code_d_un_pipeline_robuste/Theorie_05_DE.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_05_Le_code_d_un_pipeline_robuste/Labo_05.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_05_Le_code_d_un_pipeline_robuste/Labo_05_DE.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_05_Le_code_d_un_pipeline_robuste/Exercices_corriges_05.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_05_Le_code_d_un_pipeline_robuste/Exercices_corriges_05_DE.pdf"
             }
           ],
           "theorie": [
@@ -948,24 +981,24 @@
               "numero": "2",
               "titre": "La configuration hors du code",
               "labo": {
-                "fr": "Étape 2",
-                "en": "Step 2"
+                "fr": "Étape 2 · Étape 5",
+                "en": "Step 2 · Step 5"
               }
             },
             {
               "numero": "3",
               "titre": "Les secrets hors du dépôt",
               "labo": {
-                "fr": "Étapes 2 et 8",
-                "en": "Steps 2 and 8"
+                "fr": "Étape 2 · Étape 9",
+                "en": "Step 2 · Step 9"
               }
             },
             {
               "numero": "4",
               "titre": "Une journalisation qui se lit, et qui se compte",
               "labo": {
-                "fr": "Étape 3",
-                "en": "Step 3"
+                "fr": "Étape 3 · Étape 6",
+                "en": "Step 3 · Step 6"
               }
             },
             {
@@ -980,25 +1013,29 @@
               "numero": "6",
               "titre": "Tester une transformation",
               "labo": {
-                "fr": "Étape 6",
-                "en": "Step 6"
+                "fr": "Étape 7",
+                "en": "Step 7"
               }
             },
             {
               "numero": "7",
               "titre": "Une seule porte d'entrée",
               "labo": {
-                "fr": "Étape 5",
-                "en": "Step 5"
+                "fr": "Étape 5 · Étape 6",
+                "en": "Step 5 · Step 6"
               }
             },
             {
               "numero": "8",
               "titre": "Empaqueter le pipeline",
               "labo": {
-                "fr": "Étape 7",
-                "en": "Step 7"
+                "fr": "Étape 8",
+                "en": "Step 8"
               }
+            },
+            {
+              "numero": "9",
+              "titre": "Un pipeline robuste, en pratique"
             }
           ],
           "etapes": [
@@ -1177,27 +1214,27 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_06_Orchestration_avec_Airflow/Theorie_06.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_06_Orchestration_avec_Airflow/Theorie_06_DE.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_06_Orchestration_avec_Airflow/Labo_06.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_06_Orchestration_avec_Airflow/Labo_06_DE.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_06_Orchestration_avec_Airflow/Exercices_corriges_06.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_06_Orchestration_avec_Airflow/Exercices_corriges_06_DE.pdf"
             }
           ],
           "theorie": [
             {
               "numero": "1",
-              "titre": "Ce qu'un ordonnanceur fait, et ce qu'il ne fait pas",
+              "titre": "Ce qu'un orchestrateur fait, et ce qu'il ne fait pas",
               "labo": {
                 "fr": "Étape 6",
                 "en": "Step 6"
@@ -1215,24 +1252,24 @@
               "numero": "3",
               "titre": "La planification, et l'intervalle de données",
               "labo": {
-                "fr": "Étapes 1, 2, 8 et 9",
-                "en": "Steps 1, 2, 8 and 9"
+                "fr": "Étape 1 · Étape 2 · Étape 8 · Étape 9",
+                "en": "Step 1 · Step 2 · Step 8 · Step 9"
               }
             },
             {
               "numero": "4",
               "titre": "Le rattrapage",
               "labo": {
-                "fr": "Étapes 5, 9 et 10",
-                "en": "Steps 5, 9 and 10"
+                "fr": "Étape 5 · Étape 9 · Étape 10",
+                "en": "Step 5 · Step 9 · Step 10"
               }
             },
             {
               "numero": "5",
               "titre": "Rejouable : la fenêtre, le journal, et la reconstruction",
               "labo": {
-                "fr": "Étapes 2, 3, 4 et 5",
-                "en": "Steps 2, 3, 4 and 5"
+                "fr": "Étape 2 · Étape 3 · Étape 4 · Étape 5",
+                "en": "Step 2 · Step 3 · Step 4 · Step 5"
               }
             },
             {
@@ -1247,8 +1284,8 @@
               "numero": "7",
               "titre": "Ce qui se partage se réserve",
               "labo": {
-                "fr": "Étapes 3 et 7",
-                "en": "Steps 3 and 7"
+                "fr": "Étape 3 · Étape 7",
+                "en": "Step 3 · Step 7"
               }
             },
             {
@@ -1258,6 +1295,10 @@
                 "fr": "Étape 8",
                 "en": "Step 8"
               }
+            },
+            {
+              "numero": "9",
+              "titre": "Un pipeline orchestré, en pratique"
             }
           ],
           "etapes": [
@@ -1527,21 +1568,21 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_07_Traitement_distribue_avec_Spark/Theorie_07.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_07_Traitement_distribue_avec_Spark/Theorie_07_DE.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_07_Traitement_distribue_avec_Spark/Labo_07.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_07_Traitement_distribue_avec_Spark/Labo_07_DE.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_07_Traitement_distribue_avec_Spark/Exercices_corriges_07.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_07_Traitement_distribue_avec_Spark/Exercices_corriges_07_DE.pdf"
             }
           ],
           "theorie": [
@@ -1549,8 +1590,8 @@
               "numero": "1",
               "titre": "Ce qu'une machine fait déjà",
               "labo": {
-                "fr": "Étapes 1 et 2",
-                "en": "Steps 1 and 2"
+                "fr": "Étape 1 · Étape 2",
+                "en": "Step 1 · Step 2"
               }
             },
             {
@@ -1573,16 +1614,16 @@
               "numero": "4",
               "titre": "Le brassage, le seul geste vraiment cher",
               "labo": {
-                "fr": "Étapes 5 et 6",
-                "en": "Steps 5 and 6"
+                "fr": "Étape 5 · Étape 6",
+                "en": "Step 5 · Step 6"
               }
             },
             {
               "numero": "5",
               "titre": "Lire le plan d'exécution",
               "labo": {
-                "fr": "Étapes 2 et 5",
-                "en": "Steps 2 and 5"
+                "fr": "Étape 2 · Étape 5",
+                "en": "Step 2 · Step 5"
               }
             },
             {
@@ -1608,6 +1649,10 @@
                 "fr": "Étape 8",
                 "en": "Step 8"
               }
+            },
+            {
+              "numero": "9",
+              "titre": "Choisir un moteur, en pratique"
             }
           ],
           "etapes": [
@@ -1816,21 +1861,21 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_08_Donnees_de_terrain_SCADA_historien_et_series_temporelles/Theorie_08.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_08_Donnees_de_terrain_SCADA_historien_et_series_temporelles/Theorie_08_DE.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_08_Donnees_de_terrain_SCADA_historien_et_series_temporelles/Labo_08.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_08_Donnees_de_terrain_SCADA_historien_et_series_temporelles/Labo_08_DE.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_08_Donnees_de_terrain_SCADA_historien_et_series_temporelles/Exercices_corriges_08.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_08_Donnees_de_terrain_SCADA_historien_et_series_temporelles/Exercices_corriges_08_DE.pdf"
             }
           ],
           "theorie": [
@@ -2263,21 +2308,21 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_09_Streaming_et_evenements_MQTT_et_Kafka/Theorie_09.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_09_Streaming_et_evenements_MQTT_et_Kafka/Theorie_09_DE.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_09_Streaming_et_evenements_MQTT_et_Kafka/Labo_09.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_09_Streaming_et_evenements_MQTT_et_Kafka/Labo_09_DE.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_09_Streaming_et_evenements_MQTT_et_Kafka/Exercices_corriges_09.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_09_Streaming_et_evenements_MQTT_et_Kafka/Exercices_corriges_09_DE.pdf"
             }
           ],
           "theorie": [
@@ -2411,21 +2456,21 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_10_Formats_de_table_ouverts_lakehouse_et_medaillon/Theorie_10.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_10_Formats_de_table_ouverts_lakehouse_et_medaillon/Theorie_10_DE.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_10_Formats_de_table_ouverts_lakehouse_et_medaillon/Labo_10.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_10_Formats_de_table_ouverts_lakehouse_et_medaillon/Labo_10_DE.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_10_Formats_de_table_ouverts_lakehouse_et_medaillon/Exercices_corriges_10.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_10_Formats_de_table_ouverts_lakehouse_et_medaillon/Exercices_corriges_10_DE.pdf"
             }
           ],
           "theorie": [
@@ -2531,21 +2576,21 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_11_Qualite_contrats_et_observabilite/Theorie_11.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_11_Qualite_contrats_et_observabilite/Theorie_11_DE.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_11_Qualite_contrats_et_observabilite/Labo_11.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_11_Qualite_contrats_et_observabilite/Labo_11_DE.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_11_Qualite_contrats_et_observabilite/Exercices_corriges_11.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_11_Qualite_contrats_et_observabilite/Exercices_corriges_11_DE.pdf"
             }
           ],
           "theorie": [
@@ -2643,21 +2688,21 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_12_Capstone_pipeline_de_bout_en_bout/Theorie_12.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_12_Capstone_pipeline_de_bout_en_bout/Theorie_12_DE.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_12_Capstone_pipeline_de_bout_en_bout/Labo_12.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_12_Capstone_pipeline_de_bout_en_bout/Labo_12_DE.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_12_Capstone_pipeline_de_bout_en_bout/Exercices_corriges_12.pdf"
+              "fichier": "assets/formations/data-domain/01_Data_Engineering/01_Boreal/Cours_12_Capstone_pipeline_de_bout_en_bout/Exercices_corriges_12_DE.pdf"
             }
           ],
           "theorie": [
@@ -2903,9 +2948,9 @@
           }
         },
         {
-          "id": "de-synthese-aurore",
+          "id": "de-synthese-aurore-de",
           "type": "pdf",
-          "fichier": "assets/formations/data-domain/01_Data_Engineering/03_Aurore_avancee/Synthese_aurore.pdf",
+          "fichier": "assets/formations/data-domain/01_Data_Engineering/03_Aurore_avancee/Synthese_aurore_DE.pdf",
           "titre": {
             "fr": "Synthèse avancée : le corrigé",
             "en": "Advanced synthesis: the answer key"
@@ -2954,21 +2999,21 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_01_Le_metier_la_chaine_et_la_RAW_recue/Theorie_01.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_01_Le_metier_la_chaine_et_la_RAW_recue/Theorie_01_AE.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_01_Le_metier_la_chaine_et_la_RAW_recue/Labo_01.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_01_Le_metier_la_chaine_et_la_RAW_recue/Labo_01_AE.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_01_Le_metier_la_chaine_et_la_RAW_recue/Exercices_corriges_01.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_01_Le_metier_la_chaine_et_la_RAW_recue/Exercices_corriges_01_AE.pdf"
             }
           ],
           "theorie": [
@@ -3010,7 +3055,7 @@
             },
             {
               "numero": "7",
-              "titre": "Le fil rouge, et les deux autres terrains"
+              "titre": "Le cas d'étude, et les deux autres terrains"
             }
           ],
           "etapes": [
@@ -3166,21 +3211,21 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_02_Modelisation_dimensionnelle_et_matrice_de_bus/Theorie_02.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_02_Modelisation_dimensionnelle_et_matrice_de_bus/Theorie_02_AE.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_02_Modelisation_dimensionnelle_et_matrice_de_bus/Labo_02.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_02_Modelisation_dimensionnelle_et_matrice_de_bus/Labo_02_AE.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_02_Modelisation_dimensionnelle_et_matrice_de_bus/Exercices_corriges_02.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_02_Modelisation_dimensionnelle_et_matrice_de_bus/Exercices_corriges_02_AE.pdf"
             }
           ],
           "theorie": [
@@ -3442,21 +3487,21 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_03_dbt_et_la_couche_STAGING/Theorie_03.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_03_dbt_et_la_couche_STAGING/Theorie_03_AE.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_03_dbt_et_la_couche_STAGING/Labo_03.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_03_dbt_et_la_couche_STAGING/Labo_03_AE.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_03_dbt_et_la_couche_STAGING/Exercices_corriges_03.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_03_dbt_et_la_couche_STAGING/Exercices_corriges_03_AE.pdf"
             }
           ],
           "theorie": [
@@ -3714,21 +3759,21 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_04_Batir_l_etoile_des_ventes/Theorie_04.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_04_Batir_l_etoile_des_ventes/Theorie_04_AE.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_04_Batir_l_etoile_des_ventes/Labo_04.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_04_Batir_l_etoile_des_ventes/Labo_04_AE.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_04_Batir_l_etoile_des_ventes/Exercices_corriges_04.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_04_Batir_l_etoile_des_ventes/Exercices_corriges_04_AE.pdf"
             }
           ],
           "theorie": [
@@ -4033,21 +4078,21 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_05_Fiabiliser_l_etoile_tests_snapshots_documentation/Theorie_05.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_05_Fiabiliser_l_etoile_tests_snapshots_documentation/Theorie_05_AE.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_05_Fiabiliser_l_etoile_tests_snapshots_documentation/Labo_05.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_05_Fiabiliser_l_etoile_tests_snapshots_documentation/Labo_05_AE.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_05_Fiabiliser_l_etoile_tests_snapshots_documentation/Exercices_corriges_05.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_05_Fiabiliser_l_etoile_tests_snapshots_documentation/Exercices_corriges_05_AE.pdf"
             }
           ],
           "theorie": [
@@ -4406,21 +4451,21 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_06_Les_faits_que_la_vente_ne_montre_pas/Theorie_06.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_06_Les_faits_que_la_vente_ne_montre_pas/Theorie_06_AE.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_06_Les_faits_que_la_vente_ne_montre_pas/Labo_06.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_06_Les_faits_que_la_vente_ne_montre_pas/Labo_06_AE.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_06_Les_faits_que_la_vente_ne_montre_pas/Exercices_corriges_06.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_06_Les_faits_que_la_vente_ne_montre_pas/Exercices_corriges_06_AE.pdf"
             }
           ],
           "theorie": [
@@ -4961,21 +5006,21 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_07_ELT_en_regime_permanent/Theorie_07.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_07_ELT_en_regime_permanent/Theorie_07_AE.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_07_ELT_en_regime_permanent/Labo_07.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_07_ELT_en_regime_permanent/Labo_07_AE.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_07_ELT_en_regime_permanent/Exercices_corriges_07.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_07_ELT_en_regime_permanent/Exercices_corriges_07_AE.pdf"
             }
           ],
           "theorie": [
@@ -5479,21 +5524,21 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_08_CI_CD_et_qualite_analytique/Theorie_08.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_08_CI_CD_et_qualite_analytique/Theorie_08_AE.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_08_CI_CD_et_qualite_analytique/Labo_08.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_08_CI_CD_et_qualite_analytique/Labo_08_AE.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_08_CI_CD_et_qualite_analytique/Exercices_corriges_08.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_08_CI_CD_et_qualite_analytique/Exercices_corriges_08_AE.pdf"
             }
           ],
           "theorie": [
@@ -5599,21 +5644,21 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_09_Capstone_le_projet_dbt_complet/Theorie_09.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_09_Capstone_le_projet_dbt_complet/Theorie_09_AE.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_09_Capstone_le_projet_dbt_complet/Labo_09.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_09_Capstone_le_projet_dbt_complet/Labo_09_AE.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_09_Capstone_le_projet_dbt_complet/Exercices_corriges_09.pdf"
+              "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Cours_09_Capstone_le_projet_dbt_complet/Exercices_corriges_09_AE.pdf"
             }
           ],
           "theorie": [
@@ -5792,9 +5837,9 @@
           }
         },
         {
-          "id": "ae-aide-memoire",
+          "id": "ae-aide-memoire-ae",
           "type": "pdf",
-          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Aide_memoire.pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/01_Boreal/Aide_memoire_AE.pdf",
           "titre": {
             "fr": "L'aide-mémoire",
             "en": "The cheat sheet"
@@ -5857,9 +5902,9 @@
           }
         },
         {
-          "id": "ae-synthese-aurore",
+          "id": "ae-synthese-aurore-ae",
           "type": "pdf",
-          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/03_Aurore_avancee/Synthese_aurore.pdf",
+          "fichier": "assets/formations/data-domain/02_Analytics_Engineering/03_Aurore_avancee/Synthese_aurore_AE.pdf",
           "titre": {
             "fr": "Synthèse avancée : le corrigé",
             "en": "Advanced synthesis: the answer key"
@@ -6932,14 +6977,14 @@
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_00_Installation/Labo_00.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_00_Installation/Labo_00_SQL.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_00_Installation/Exercices_corriges_00.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_00_Installation/Exercices_corriges_00_SQL.pdf"
             }
           ],
           "etapes": [
@@ -7029,21 +7074,21 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_01_Paysage_SQL_et_modele_relationnel/Theorie_01.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_01_Paysage_SQL_et_modele_relationnel/Theorie_01_SQL.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_01_Paysage_SQL_et_modele_relationnel/Labo_01.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_01_Paysage_SQL_et_modele_relationnel/Labo_01_SQL.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_01_Paysage_SQL_et_modele_relationnel/Exercices_corriges_01.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_01_Paysage_SQL_et_modele_relationnel/Exercices_corriges_01_SQL.pdf"
             }
           ],
           "theorie": [
@@ -7231,28 +7276,28 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_02_Le_langage_SQL/Theorie_02.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_02_Le_langage_SQL/Theorie_02_SQL.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo OLAP",
                 "en": "OLAP lab"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_02_Le_langage_SQL/Labo_02_OLAP.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_02_Le_langage_SQL/Labo_02_OLAP_SQL.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo OLTP",
                 "en": "OLTP lab"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_02_Le_langage_SQL/Labo_02_OLTP.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_02_Le_langage_SQL/Labo_02_OLTP_SQL.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_02_Le_langage_SQL/Exercices_corriges_02.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_02_Le_langage_SQL/Exercices_corriges_02_SQL.pdf"
             }
           ],
           "theorie": [
@@ -7452,28 +7497,28 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_03_Ecrire_dans_la_base/Theorie_03.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_03_Ecrire_dans_la_base/Theorie_03_SQL.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo OLAP",
                 "en": "OLAP lab"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_03_Ecrire_dans_la_base/Labo_03_OLAP.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_03_Ecrire_dans_la_base/Labo_03_OLAP_SQL.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo OLTP",
                 "en": "OLTP lab"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_03_Ecrire_dans_la_base/Labo_03_OLTP.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_03_Ecrire_dans_la_base/Labo_03_OLTP_SQL.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_03_Ecrire_dans_la_base/Exercices_corriges_03.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_03_Ecrire_dans_la_base/Exercices_corriges_03_SQL.pdf"
             }
           ],
           "theorie": [
@@ -7713,28 +7758,28 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_04_Fonctions_de_fenetrage/Theorie_04.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_04_Fonctions_de_fenetrage/Theorie_04_SQL.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo OLAP",
                 "en": "OLAP lab"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_04_Fonctions_de_fenetrage/Labo_04_OLAP.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_04_Fonctions_de_fenetrage/Labo_04_OLAP_SQL.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo OLTP",
                 "en": "OLTP lab"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_04_Fonctions_de_fenetrage/Labo_04_OLTP.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_04_Fonctions_de_fenetrage/Labo_04_OLTP_SQL.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_04_Fonctions_de_fenetrage/Exercices_corriges_04.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_04_Fonctions_de_fenetrage/Exercices_corriges_04_SQL.pdf"
             }
           ],
           "theorie": [
@@ -7902,28 +7947,28 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_05_CTE_et_recursivite/Theorie_05.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_05_CTE_et_recursivite/Theorie_05_SQL.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo OLAP",
                 "en": "OLAP lab"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_05_CTE_et_recursivite/Labo_05_OLAP.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_05_CTE_et_recursivite/Labo_05_OLAP_SQL.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo OLTP",
                 "en": "OLTP lab"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_05_CTE_et_recursivite/Labo_05_OLTP.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_05_CTE_et_recursivite/Labo_05_OLTP_SQL.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_05_CTE_et_recursivite/Exercices_corriges_05.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_05_CTE_et_recursivite/Exercices_corriges_05_SQL.pdf"
             }
           ],
           "theorie": [
@@ -8115,28 +8160,28 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_06_Agregation_avancee_et_pivots/Theorie_06.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_06_Agregation_avancee_et_pivots/Theorie_06_SQL.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo OLAP",
                 "en": "OLAP lab"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_06_Agregation_avancee_et_pivots/Labo_06_OLAP.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_06_Agregation_avancee_et_pivots/Labo_06_OLAP_SQL.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo OLTP",
                 "en": "OLTP lab"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_06_Agregation_avancee_et_pivots/Labo_06_OLTP.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_06_Agregation_avancee_et_pivots/Labo_06_OLTP_SQL.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_06_Agregation_avancee_et_pivots/Exercices_corriges_06.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_06_Agregation_avancee_et_pivots/Exercices_corriges_06_SQL.pdf"
             }
           ],
           "theorie": [
@@ -8198,6 +8243,14 @@
             },
             {
               "numero": "8",
+              "titre": "Agréger en texte ou en liste : STRING_AGG, LIST et ARRAY_AGG",
+              "labo": {
+                "fr": "Sous-partie 2.5",
+                "en": "Sub-part 2.5"
+              }
+            },
+            {
+              "numero": "9",
               "titre": "Sur les deux terrains : OLTP et OLAP",
               "labo": {
                 "fr": "OLTP, partie 3",
@@ -8320,28 +8373,28 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_07_Sous_requetes_correlation_et_ensembles/Theorie_07.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_07_Sous_requetes_correlation_et_ensembles/Theorie_07_SQL.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo OLAP",
                 "en": "OLAP lab"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_07_Sous_requetes_correlation_et_ensembles/Labo_07_OLAP.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_07_Sous_requetes_correlation_et_ensembles/Labo_07_OLAP_SQL.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo OLTP",
                 "en": "OLTP lab"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_07_Sous_requetes_correlation_et_ensembles/Labo_07_OLTP.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_07_Sous_requetes_correlation_et_ensembles/Labo_07_OLTP_SQL.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_07_Sous_requetes_correlation_et_ensembles/Exercices_corriges_07.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_07_Sous_requetes_correlation_et_ensembles/Exercices_corriges_07_SQL.pdf"
             }
           ],
           "theorie": [
@@ -8389,8 +8442,8 @@
               "numero": "6",
               "titre": "Les opérateurs d'ensembles",
               "labo": {
-                "fr": "Sous-partie 2.3",
-                "en": "Sub-part 2.3"
+                "fr": "Sous-parties 2.3 et 2.6",
+                "en": "Sub-parts 2.3 and 2.6"
               }
             },
             {
@@ -8557,28 +8610,28 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_08_Donnees_semi_structurees/Theorie_08.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_08_Donnees_semi_structurees/Theorie_08_SQL.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo OLAP",
                 "en": "OLAP lab"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_08_Donnees_semi_structurees/Labo_08_OLAP.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_08_Donnees_semi_structurees/Labo_08_OLAP_SQL.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo OLTP",
                 "en": "OLTP lab"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_08_Donnees_semi_structurees/Labo_08_OLTP.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_08_Donnees_semi_structurees/Labo_08_OLTP_SQL.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_08_Donnees_semi_structurees/Exercices_corriges_08.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_08_Donnees_semi_structurees/Exercices_corriges_08_SQL.pdf"
             }
           ],
           "theorie": [
@@ -8806,28 +8859,28 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_09_Series_temporelles_et_as_of_joins/Theorie_09.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_09_Series_temporelles_et_as_of_joins/Theorie_09_SQL.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo OLAP",
                 "en": "OLAP lab"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_09_Series_temporelles_et_as_of_joins/Labo_09_OLAP.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_09_Series_temporelles_et_as_of_joins/Labo_09_OLAP_SQL.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo OLTP",
                 "en": "OLTP lab"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_09_Series_temporelles_et_as_of_joins/Labo_09_OLTP.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_09_Series_temporelles_et_as_of_joins/Labo_09_OLTP_SQL.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_09_Series_temporelles_et_as_of_joins/Exercices_corriges_09.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_09_Series_temporelles_et_as_of_joins/Exercices_corriges_09_SQL.pdf"
             }
           ],
           "theorie": [
@@ -8867,8 +8920,8 @@
               "numero": "5",
               "titre": "Rééchantillonner",
               "labo": {
-                "fr": "OLAP, sous-partie 4.4",
-                "en": "OLAP, sub-part 4.4"
+                "fr": "OLAP, sous-partie 4.4 · OLTP, sous-partie 2.4",
+                "en": "OLAP, sub-part 4.4 · OLTP, sub-part 2.4"
               }
             },
             {
@@ -9059,21 +9112,21 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_10_Index_et_optimisation/Theorie_10.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_10_Index_et_optimisation/Theorie_10_SQL.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo OLTP",
                 "en": "OLTP lab"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_10_Index_et_optimisation/Labo_10_OLTP.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_10_Index_et_optimisation/Labo_10_OLTP_SQL.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_10_Index_et_optimisation/Exercices_corriges_10.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_10_Index_et_optimisation/Exercices_corriges_10_SQL.pdf"
             }
           ],
           "theorie": [
@@ -9297,21 +9350,21 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_11_Transactions_et_concurrence/Theorie_11.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_11_Transactions_et_concurrence/Theorie_11_SQL.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo OLTP",
                 "en": "OLTP lab"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_11_Transactions_et_concurrence/Labo_11_OLTP.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_11_Transactions_et_concurrence/Labo_11_OLTP_SQL.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_11_Transactions_et_concurrence/Exercices_corriges_11.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_11_Transactions_et_concurrence/Exercices_corriges_11_SQL.pdf"
             }
           ],
           "theorie": [
@@ -9551,21 +9604,21 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_12_SQL_analytique_applique/Theorie_12.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_12_SQL_analytique_applique/Theorie_12_SQL.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo OLAP",
                 "en": "OLAP lab"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_12_SQL_analytique_applique/Labo_12_OLAP.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_12_SQL_analytique_applique/Labo_12_OLAP_SQL.pdf"
             },
             {
               "libelle": {
                 "fr": "Exercices corrigés",
                 "en": "Exercises and answers"
               },
-              "fichier": "assets/formations/data-domain/SQL/Cours_12_SQL_analytique_applique/Exercices_corriges_12.pdf"
+              "fichier": "assets/formations/data-domain/SQL/Cours_12_SQL_analytique_applique/Exercices_corriges_12_SQL.pdf"
             }
           ],
           "theorie": [
@@ -9898,20 +9951,24 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/Snowflake/Cours_00_Mise_en_place_et_strategie_examen/Theorie_00.pdf"
+              "fichier": "assets/formations/data-domain/Snowflake/Cours_00_Mise_en_place_et_strategie_examen/Theorie_00_SNOW.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/Snowflake/Cours_00_Mise_en_place_et_strategie_examen/Labo_00.pdf"
+              "fichier": "assets/formations/data-domain/Snowflake/Cours_00_Mise_en_place_et_strategie_examen/Labo_00_SNOW.pdf"
             }
           ],
           "theorie": [
             {
               "numero": "1",
-              "titre": "La certification SnowPro Core : ce qu'elle prouve"
+              "titre": "La certification SnowPro Core : ce qu'elle prouve",
+              "labo": {
+                "fr": "Étape 8",
+                "en": "Step 8"
+              }
             },
             {
               "numero": "2",
@@ -9923,11 +9980,19 @@
             },
             {
               "numero": "4",
-              "titre": "Snowflake en 90 secondes"
+              "titre": "Snowflake en 90 secondes",
+              "labo": {
+                "fr": "Étapes 1, 3, 4 et 5",
+                "en": "Steps 1, 3, 4 and 5"
+              }
             },
             {
               "numero": "5",
-              "titre": "Ce qu'il vous faut pour vous entraîner"
+              "titre": "Ce qu'il vous faut pour vous entraîner",
+              "labo": {
+                "fr": "Étapes 1, 2, 4 et 7",
+                "en": "Steps 1, 2, 4 and 7"
+              }
             },
             {
               "numero": "6",
@@ -10108,20 +10173,24 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/Snowflake/Cours_01_Architecture_AI_Data_Cloud/Theorie_01.pdf"
+              "fichier": "assets/formations/data-domain/Snowflake/Cours_01_Architecture_AI_Data_Cloud/Theorie_01_SNOW.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/Snowflake/Cours_01_Architecture_AI_Data_Cloud/Labo_01.pdf"
+              "fichier": "assets/formations/data-domain/Snowflake/Cours_01_Architecture_AI_Data_Cloud/Labo_01_SNOW.pdf"
             }
           ],
           "theorie": [
             {
               "numero": "1",
-              "titre": "Les trois couches — et pourquoi elles battent une base classique"
+              "titre": "Les trois couches — et pourquoi elles battent une base classique",
+              "labo": {
+                "fr": "Étapes 2 et 3",
+                "en": "Steps 2 and 3"
+              }
             },
             {
               "numero": "2",
@@ -10133,23 +10202,43 @@
             },
             {
               "numero": "4",
-              "titre": "La hiérarchie des objets"
+              "titre": "La hiérarchie des objets",
+              "labo": {
+                "fr": "Étape 8",
+                "en": "Step 8"
+              }
             },
             {
               "numero": "5",
-              "titre": "Les entrepôts virtuels en détail"
+              "titre": "Les entrepôts virtuels en détail",
+              "labo": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              }
             },
             {
               "numero": "6",
-              "titre": "Le stockage : micro-partitions, pruning, clustering"
+              "titre": "Le stockage : micro-partitions, pruning, clustering",
+              "labo": {
+                "fr": "Étape 4",
+                "en": "Step 4"
+              }
             },
             {
               "numero": "7",
-              "titre": "Types de données ≠ types de tables (+ types de vues)"
+              "titre": "Types de données ≠ types de tables (+ types de vues)",
+              "labo": {
+                "fr": "Étapes 5, 6 et 7",
+                "en": "Steps 5, 6 and 7"
+              }
             },
             {
               "numero": "8",
-              "titre": "Session et contexte"
+              "titre": "Session et contexte",
+              "labo": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              }
             }
           ],
           "etapes": [
@@ -10323,14 +10412,14 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/Snowflake/Cours_02_Fonctionnalites_AI_ML_et_developpement/Theorie_02.pdf"
+              "fichier": "assets/formations/data-domain/Snowflake/Cours_02_Fonctionnalites_AI_ML_et_developpement/Theorie_02_SNOW.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/Snowflake/Cours_02_Fonctionnalites_AI_ML_et_developpement/Labo_02.pdf"
+              "fichier": "assets/formations/data-domain/Snowflake/Cours_02_Fonctionnalites_AI_ML_et_developpement/Labo_02_SNOW.pdf"
             }
           ],
           "theorie": [
@@ -10340,23 +10429,43 @@
             },
             {
               "numero": "2",
-              "titre": "Snowpark — exécuter Python / Java / Scala dans Snowflake"
+              "titre": "Snowpark — exécuter Python / Java / Scala dans Snowflake",
+              "labo": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              }
             },
             {
               "numero": "3",
-              "titre": "Le code réutilisable : UDF, UDTF et procédures stockées"
+              "titre": "Le code réutilisable : UDF, UDTF et procédures stockées",
+              "labo": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              }
             },
             {
               "numero": "4",
-              "titre": "Snowflake Notebooks"
+              "titre": "Snowflake Notebooks",
+              "labo": {
+                "fr": "Étape 4",
+                "en": "Step 4"
+              }
             },
             {
               "numero": "5",
-              "titre": "Streamlit in Snowflake"
+              "titre": "Streamlit in Snowflake",
+              "labo": {
+                "fr": "Étape 4",
+                "en": "Step 4"
+              }
             },
             {
               "numero": "6",
-              "titre": "Cortex — l'IA intégrée"
+              "titre": "Cortex — l'IA intégrée",
+              "labo": {
+                "fr": "Étapes 2 et 3",
+                "en": "Steps 2 and 3"
+              }
             },
             {
               "numero": "7",
@@ -10458,28 +10567,40 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/Snowflake/Cours_03_Gestion_du_compte_et_gouvernance/Theorie_03.pdf"
+              "fichier": "assets/formations/data-domain/Snowflake/Cours_03_Gestion_du_compte_et_gouvernance/Theorie_03_SNOW.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/Snowflake/Cours_03_Gestion_du_compte_et_gouvernance/Labo_03.pdf"
+              "fichier": "assets/formations/data-domain/Snowflake/Cours_03_Gestion_du_compte_et_gouvernance/Labo_03_SNOW.pdf"
             }
           ],
           "theorie": [
             {
               "numero": "1",
-              "titre": "Le modèle d'accès : RBAC, DAC et UBAC"
+              "titre": "Le modèle d'accès : RBAC, DAC et UBAC",
+              "labo": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              }
             },
             {
               "numero": "2",
-              "titre": "Les rôles système et leur hiérarchie"
+              "titre": "Les rôles système et leur hiérarchie",
+              "labo": {
+                "fr": "Étapes 1 et 2",
+                "en": "Steps 1 and 2"
+              }
             },
             {
               "numero": "3",
-              "titre": "Privilèges, propriété et octrois utiles"
+              "titre": "Privilèges, propriété et octrois utiles",
+              "labo": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              }
             },
             {
               "numero": "4",
@@ -10487,7 +10608,11 @@
             },
             {
               "numero": "5",
-              "titre": "Gouvernance : masquer et filtrer la donnée"
+              "titre": "Gouvernance : masquer et filtrer la donnée",
+              "labo": {
+                "fr": "Étapes 3, 4 et 5",
+                "en": "Steps 3, 4 and 5"
+              }
             },
             {
               "numero": "6",
@@ -10495,7 +10620,11 @@
             },
             {
               "numero": "7",
-              "titre": "Maîtriser les coûts : les resource monitors"
+              "titre": "Maîtriser les coûts : les resource monitors",
+              "labo": {
+                "fr": "Étape 6",
+                "en": "Step 6"
+              }
             },
             {
               "numero": "8",
@@ -10635,14 +10764,14 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/Snowflake/Cours_04_Chargement_dechargement_et_connectivite/Theorie_04.pdf"
+              "fichier": "assets/formations/data-domain/Snowflake/Cours_04_Chargement_dechargement_et_connectivite/Theorie_04_SNOW.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/Snowflake/Cours_04_Chargement_dechargement_et_connectivite/Labo_04.pdf"
+              "fichier": "assets/formations/data-domain/Snowflake/Cours_04_Chargement_dechargement_et_connectivite/Labo_04_SNOW.pdf"
             }
           ],
           "theorie": [
@@ -10652,23 +10781,43 @@
             },
             {
               "numero": "2",
-              "titre": "Les stages — où atterrissent les fichiers"
+              "titre": "Les stages — où atterrissent les fichiers",
+              "labo": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              }
             },
             {
               "numero": "3",
-              "titre": "Les formats de fichier"
+              "titre": "Les formats de fichier",
+              "labo": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              }
             },
             {
               "numero": "4",
-              "titre": "COPY INTO <table> — le chargement par lots"
+              "titre": "COPY INTO <table> — le chargement par lots",
+              "labo": {
+                "fr": "Étapes 3, 4 et 5",
+                "en": "Steps 3, 4 and 5"
+              }
             },
             {
               "numero": "5",
-              "titre": "COPY INTO <emplacement> — le déchargement"
+              "titre": "COPY INTO <emplacement> — le déchargement",
+              "labo": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              }
             },
             {
               "numero": "6",
-              "titre": "L'ingestion continue — au-delà du lot"
+              "titre": "L'ingestion continue — au-delà du lot",
+              "labo": {
+                "fr": "Étapes 6 et 7",
+                "en": "Steps 6 and 7"
+              }
             },
             {
               "numero": "7",
@@ -10831,14 +10980,14 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/Snowflake/Cours_05_Performance_requetes_et_transformation/Theorie_05.pdf"
+              "fichier": "assets/formations/data-domain/Snowflake/Cours_05_Performance_requetes_et_transformation/Theorie_05_SNOW.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/Snowflake/Cours_05_Performance_requetes_et_transformation/Labo_05.pdf"
+              "fichier": "assets/formations/data-domain/Snowflake/Cours_05_Performance_requetes_et_transformation/Labo_05_SNOW.pdf"
             }
           ],
           "theorie": [
@@ -10848,23 +10997,43 @@
             },
             {
               "numero": "2",
-              "titre": "Lire un Query Profile"
+              "titre": "Lire un Query Profile",
+              "labo": {
+                "fr": "Étape 3",
+                "en": "Step 3"
+              }
             },
             {
               "numero": "3",
-              "titre": "Les trois caches"
+              "titre": "Les trois caches",
+              "labo": {
+                "fr": "Étapes 1 et 2",
+                "en": "Steps 1 and 2"
+              }
             },
             {
               "numero": "4",
-              "titre": "Les leviers de performance"
+              "titre": "Les leviers de performance",
+              "labo": {
+                "fr": "Étape 6",
+                "en": "Step 6"
+              }
             },
             {
               "numero": "5",
-              "titre": "Où observer : ACCOUNT_USAGE vs INFORMATION_SCHEMA"
+              "titre": "Où observer : ACCOUNT_USAGE vs INFORMATION_SCHEMA",
+              "labo": {
+                "fr": "Étape 4",
+                "en": "Step 4"
+              }
             },
             {
               "numero": "6",
-              "titre": "Transformer la donnée"
+              "titre": "Transformer la donnée",
+              "labo": {
+                "fr": "Étape 5",
+                "en": "Step 5"
+              }
             }
           ],
           "etapes": [
@@ -11000,14 +11169,14 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/Snowflake/Cours_06_Collaboration_de_donnees/Theorie_06.pdf"
+              "fichier": "assets/formations/data-domain/Snowflake/Cours_06_Collaboration_de_donnees/Theorie_06_SNOW.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/Snowflake/Cours_06_Collaboration_de_donnees/Labo_06.pdf"
+              "fichier": "assets/formations/data-domain/Snowflake/Cours_06_Collaboration_de_donnees/Labo_06_SNOW.pdf"
             }
           ],
           "theorie": [
@@ -11017,19 +11186,35 @@
             },
             {
               "numero": "2",
-              "titre": "Le Secure Data Sharing"
+              "titre": "Le Secure Data Sharing",
+              "labo": {
+                "fr": "Étape 4",
+                "en": "Step 4"
+              }
             },
             {
               "numero": "3",
-              "titre": "Le clonage zero-copy"
+              "titre": "Le clonage zero-copy",
+              "labo": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              }
             },
             {
               "numero": "4",
-              "titre": "Le Time Travel"
+              "titre": "Le Time Travel",
+              "labo": {
+                "fr": "Étapes 1 et 3",
+                "en": "Steps 1 and 3"
+              }
             },
             {
               "numero": "5",
-              "titre": "Le Fail-safe"
+              "titre": "Le Fail-safe",
+              "labo": {
+                "fr": "Étape 3",
+                "en": "Step 3"
+              }
             },
             {
               "numero": "6",
@@ -11135,36 +11320,56 @@
                 "fr": "Théorie",
                 "en": "Theory"
               },
-              "fichier": "assets/formations/data-domain/Snowflake/Cours_07_Revision_et_examen_blanc/Theorie_07.pdf"
+              "fichier": "assets/formations/data-domain/Snowflake/Cours_07_Revision_et_examen_blanc/Theorie_07_SNOW.pdf"
             },
             {
               "libelle": {
                 "fr": "Labo",
                 "en": "Lab"
               },
-              "fichier": "assets/formations/data-domain/Snowflake/Cours_07_Revision_et_examen_blanc/Labo_07.pdf"
+              "fichier": "assets/formations/data-domain/Snowflake/Cours_07_Revision_et_examen_blanc/Labo_07_SNOW.pdf"
             }
           ],
           "theorie": [
             {
               "numero": "1",
-              "titre": "L'examen en conditions"
+              "titre": "L'examen en conditions",
+              "labo": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              }
             },
             {
               "numero": "2",
-              "titre": "Synthèse pondérée — ce qui rapporte le plus"
+              "titre": "Synthèse pondérée — ce qui rapporte le plus",
+              "labo": {
+                "fr": "Étapes 2 et 3",
+                "en": "Steps 2 and 3"
+              }
             },
             {
               "numero": "3",
-              "titre": "Les pièges classiques"
+              "titre": "Les pièges classiques",
+              "labo": {
+                "fr": "Étape 2",
+                "en": "Step 2"
+              }
             },
             {
               "numero": "4",
-              "titre": "Stratégie du jour J"
+              "titre": "Stratégie du jour J",
+              "labo": {
+                "fr": "Étape 1",
+                "en": "Step 1"
+              }
             },
             {
               "numero": "5",
-              "titre": "Logistique d'inscription"
+              "titre": "Logistique d'inscription",
+              "labo": {
+                "fr": "Étape 3",
+                "en": "Step 3"
+              }
             }
           ],
           "etapes": [
@@ -11318,9 +11523,9 @@
           }
         },
         {
-          "id": "sf-aide-memoire",
+          "id": "sf-aide-memoire-snow",
           "type": "pdf",
-          "fichier": "assets/formations/data-domain/Snowflake/Aide_memoire.pdf",
+          "fichier": "assets/formations/data-domain/Snowflake/Aide_memoire_SNOW.pdf",
           "titre": {
             "fr": "L'aide-mémoire",
             "en": "The cheat sheet"
