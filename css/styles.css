@@ -1488,6 +1488,92 @@ a.fichier-nom:hover { color: var(--couleur-accent); }
   text-underline-offset: 3px;
 }
 .sc-sep { margin: 0 0.45rem; font-weight: 400; color: var(--couleur-texte-doux); }
+
+/* Les supports d'un cours groupés par projet (DE et AE, depuis le 2026-10-23) :
+   une rangée par projet, son nom à gauche dans une colonne de largeur fixe,
+   pour que les liens des projets s'alignent d'une rangée à l'autre. */
+.docs-groupe {
+  display: grid;
+  grid-template-columns: 5.2rem 1fr;
+  gap: 0 0.5rem;
+  align-items: baseline;
+  flex-basis: 100%;
+}
+.docs-groupe + .docs-groupe { margin-top: 0.15rem; }
+.docs-projet {
+  color: var(--couleur-texte);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+.docs-liens { display: flex; flex-wrap: wrap; align-items: baseline; }
+.docs-attente .docs-liens { color: var(--couleur-texte-doux); font-weight: 400; }
+.fiche-docs .docs-groupe { grid-template-columns: 10rem 1fr; }
+.fiche-docs .docs-groupe + .docs-groupe { margin-top: 0.35rem; }
+@media (max-width: 520px) {
+  .fiche-docs .docs-groupe { grid-template-columns: 1fr; }
+}
+
+/* Les trois projets d'une formation, en tête de sa page : trois cartes côte à
+   côte au large, empilées en mobile. Le projet à écrire s'estompe. */
+.projets-formation {
+  list-style: none;
+  margin: 0.6rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+@media (min-width: 760px) {
+  .projets-formation { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+.projet-carte {
+  display: flex;
+  flex-direction: column;
+  padding: 0.85rem 0.95rem 0.9rem;
+  background: var(--couleur-surface);
+  border: 1px solid var(--couleur-bordure);
+  border-radius: var(--rayon);
+}
+.projet-carte p { margin: 0; }
+.projet-tete {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.2rem 0.8rem;
+}
+.projet-nom { font-size: 1rem; font-weight: 700; color: var(--couleur-texte); }
+.projet-niveau,
+.projet-role,
+.projet-mise,
+.projet-statut {
+  font-family: var(--police-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.projet-niveau { color: var(--couleur-accent); font-weight: 700; white-space: nowrap; }
+.projet-carte .projet-role { margin-top: 0.25rem; color: var(--couleur-texte-doux); }
+.projet-carte .projet-description {
+  margin-top: 0.6rem;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--couleur-texte);
+}
+.projet-carte .projet-supports {
+  margin-top: 0.45rem;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--couleur-texte-doux);
+}
+.projet-mise,
+.projet-statut { margin-top: auto; padding-top: 0.7rem; font-weight: 700; }
+.projet-mise { color: var(--couleur-accent); align-self: flex-start; }
+.projet-mise:hover { text-decoration: underline; text-underline-offset: 3px; }
+.projet-statut { color: var(--couleur-texte-doux); }
+.projet-attente { border-style: dashed; }
+.projet-attente .projet-nom,
+.projet-attente .projet-description { opacity: 0.7; }
+.legende-projet { letter-spacing: 0.06em; }
 /* L'étape du nœud : toujours dite en mobile ; au large, seulement pour un
    cours de bande, que son couloir ne nomme pas. */
 .sc-tag {
@@ -2774,7 +2860,7 @@ button:focus-visible {
  * ------------------------------------------------------------------------ */
 @media (prefers-reduced-motion: reduce) {
   * {
-    transition: none !important;
-    scroll-behavior: auto !important;
+    transition: none;
+    scroll-behavior: auto;
   }
 }

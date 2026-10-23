@@ -160,6 +160,9 @@ const TRADUCTIONS = {
     "cours.fiche_nav": "Cours voisins",
     "cours.chaine_aide": "Cliquez un mot pour allumer les étapes qui le touchent.",
     "cours.legende_cadrage": "Les documents de cadrage",
+    // Les projets d'une formation (DE et AE), en tête de sa page
+    "cours.legende_projets": "Trois projets, les mêmes cours",
+    "cours.mise_en_situation": "La mise en situation",
     // La page d'un cours
     "cours.mini_aria": "La carte de la formation : où ce cours se situe",
     "cours.legende_theorie": "La théorie",
@@ -340,6 +343,9 @@ const TRADUCTIONS = {
     "cours.fiche_nav": "Neighbouring modules",
     "cours.chaine_aide": "Click a word to light up the steps that touch it.",
     "cours.legende_cadrage": "Framing documents",
+    // The projects of a course (DE and AE), at the top of its page
+    "cours.legende_projets": "Three projects, the same modules",
+    "cours.mise_en_situation": "The case brief",
     // A module's page
     "cours.mini_aria": "The course map: where this module sits",
     "cours.legende_theorie": "The theory",

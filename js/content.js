@@ -568,18 +568,106 @@ const Contenu = (function () {
 
   // Les documents d'un cours, en liens qui ouvrent chacun leur PDF ; `sep`
   // s'intercale entre eux (rien dans l'index, un point médian dans la fiche).
-  function liensDocuments(c, sep) {
-    return (Array.isArray(c.documents) ? c.documents : [])
-      .filter(function (d) {
-        return d && d.fichier;
-      })
-      .map(function (d) {
-        return (
-          '<a href="' + encoderChemin(d.fichier) + '" target="_blank" rel="noopener">' +
-          echapper(texteLocalise(d.libelle)) + "</a>"
-        );
-      })
-      .join(sep);
+  // Dans une formation à projets (DE et AE : La Brûlerie, Boréal
+  // intermédiaire, Boréal avancé), chaque document porte l'id de son projet :
+  // les liens se groupent alors par projet, une rangée chacun, coiffée du nom
+  // que `noms` donne (court sur la carte, entier sur la page du cours). Avec
+  // `attente`, un projet qui n'a pas encore ce cours garde sa rangée et dit
+  // son état.
+  function liensDocuments(c, sep, noms, attente) {
+    const docs = (Array.isArray(c.documents) ? c.documents : []).filter(function (d) {
+      return d && d.fichier;
+    });
+    function lien(d) {
+      return (
+        '<a href="' + encoderChemin(d.fichier) + '" target="_blank" rel="noopener">' +
+        echapper(texteLocalise(d.libelle)) + "</a>"
+      );
+    }
+    if (!noms || !docs.some(function (d) { return d.projet; })) {
+      return docs.map(lien).join(sep);
+    }
+    const groupes = [];
+    docs.forEach(function (d) {
+      const dernier = groupes[groupes.length - 1];
+      if (dernier && dernier.projet === d.projet) dernier.docs.push(d);
+      else groupes.push({ projet: d.projet, docs: [d] });
+    });
+    function rangee(nom, contenu, classe) {
+      return (
+        '<span class="docs-groupe' + (classe ? " " + classe : "") + '">' +
+        (nom ? '<span class="docs-projet">' + echapper(nom) + "</span>" : "") +
+        '<span class="docs-liens">' + contenu + "</span></span>"
+      );
+    }
+    return (
+      groupes
+        .map(function (g) {
+          return rangee(noms[g.projet], g.docs.map(lien).join(sep), "");
+        })
+        .join("") +
+      (attente || [])
+        .filter(function (p) {
+          return !groupes.some(function (g) { return g.projet === p.id; });
+        })
+        .map(function (p) {
+          return rangee(noms[p.id], echapper(texteLocalise(p.statut)), "docs-attente");
+        })
+        .join("")
+    );
+  }
+
+  // Le nom de chaque projet d'une formation, par id : `cle` vaut « court »
+  // (les nœuds de la carte, où la place manque) ou « nom ». Null sans projets.
+  function nomsProjets(section, cle) {
+    const projets = Array.isArray(section.projets) ? section.projets : [];
+    if (!projets.length) return null;
+    const noms = {};
+    projets.forEach(function (p) {
+      noms[p.id] = texteLocalise(p[cle] || p.nom);
+    });
+    return noms;
+  }
+
+  // Les projets d'une formation (clé `projets`), en tête de sa page, avant la
+  // carte des cours : une carte par projet, du plus petit au plus grand, qui
+  // dit son niveau, son rôle, ce qu'on y fait, ses supports par cours, et
+  // ouvre sa mise en situation. Un projet pas encore écrit garde sa carte,
+  // s'estompe et dit son état. Les cours d'un même rang se répondent d'un
+  // projet à l'autre : c'est ce que la carte des cours montre ensuite.
+  function creerProjets(section) {
+    const projets = Array.isArray(section.projets) ? section.projets : [];
+    if (!projets.length) return "";
+    return (
+      '<p class="index-legende" data-i18n="cours.legende_projets"></p>' +
+      '<ol class="projets-formation">' +
+      projets
+        .map(function (p) {
+          const statut = texteLocalise(p.statut);
+          const supports = texteLocalise(p.supports);
+          return (
+            '<li class="projet-carte' + (statut ? " projet-attente" : "") + '">' +
+            '<p class="projet-tete">' +
+            '<span class="projet-nom">' + echapper(texteLocalise(p.nom)) + "</span>" +
+            '<span class="projet-niveau">' + echapper(texteLocalise(p.niveau)) + "</span>" +
+            "</p>" +
+            '<p class="projet-role">' + echapper(texteLocalise(p.role)) + "</p>" +
+            '<p class="projet-description">' + echapper(texteLocalise(p.description)) +
+            "</p>" +
+            (supports ? '<p class="projet-supports">' + echapper(supports) + "</p>" : "") +
+            (p.mise
+              ? '<a class="projet-mise" href="' + encoderChemin(p.mise) +
+                '" target="_blank" rel="noopener" data-i18n="cours.mise_en_situation"></a>'
+              : statut
+              ? '<span class="projet-statut">' + echapper(statut) + "</span>"
+              : "") +
+            "</li>"
+          );
+        })
+        .join("") +
+      "</ol>" +
+      '<p class="index-legende" data-i18n="cours.legende_cours"></p>'
+    );
   }
 
   // L'étape de chaque cours, par numéro : { nom, role, colonne (index 0…,
@@ -622,6 +710,7 @@ const Contenu = (function () {
     if ((!colonnes.length && !bandes.length) || !cours.length) return "";
     const etapes = etapesDesCours(section);
     const n = Math.max(colonnes.length, 1);
+    const noms = nomsProjets(section, "court");
 
     const entetes = colonnes
       .map(function (g, i) {
@@ -651,7 +740,7 @@ const Contenu = (function () {
         const ecrit = Array.isArray(c.documents) && c.documents.length;
         const etat = ecrit ? "" : texteLocalise(c.etat);
         const place = traverse ? "1 / -1" : String(etape.colonne + 1);
-        const docs = liensDocuments(c, '<span class="sc-sep" aria-hidden="true">·</span>');
+        const docs = liensDocuments(c, '<span class="sc-sep" aria-hidden="true">·</span>', noms);
         return (
           '<div class="sc-noeud' + (traverse ? " sc-traverse" : "") +
           (ecrit ? "" : " sc-attente") + '" data-numero="' + echapper(c.numero) +
@@ -827,14 +916,28 @@ const Contenu = (function () {
       );
     }
 
+    // Dans une formation à projets, la théorie et les étapes du labo sont
+    // celles d'un seul projet (`projetFiche`) : la légende le nomme.
+    const noms = nomsProjets(section, "nom");
+    const projetFiche = noms && section.projetFiche ? noms[section.projetFiche] : "";
+    function legende(cle) {
+      return (
+        '<p class="index-legende"><span data-i18n="' + cle + '"></span>' +
+        (projetFiche
+          ? '<span class="legende-projet"> · ' + echapper(projetFiche) + "</span>"
+          : "") +
+        "</p>"
+      );
+    }
+
     return (
       '<div class="fiche-cours' + (larges ? " reperes-larges" : "") + '">' +
       (theorie.length
-        ? '<p class="index-legende" data-i18n="cours.legende_theorie"></p>' +
+        ? legende("cours.legende_theorie") +
           '<ol class="fiche-theorie">' + theorie.map(ligneTheorie).join("") + "</ol>"
         : "") +
       (liste.length
-        ? '<p class="index-legende" data-i18n="cours.legende_etapes"></p>' +
+        ? legende("cours.legende_etapes") +
           chaine(liste) +
           '<ol class="fiche-etapes">' + liste.map(ligneEtape).join("") + "</ol>"
         : "") +
@@ -2697,7 +2800,8 @@ const Contenu = (function () {
         // l'index de tous les cours. Les listes portent leur légende, sans
         // quoi on ne sait pas ce qu'on regarde.
         const indexCours = section.phases
-          ? creerSchemaCours(section, function (numero) {
+          ? creerProjets(section) +
+            creerSchemaCours(section, function (numero) {
               return hrefCours(pageCours, projet, section.id || sectionId, numero);
             })
           : creerIndexCours(section);
@@ -2832,7 +2936,12 @@ const Contenu = (function () {
             : "");
       }
       // Les documents du cours ; un cours pas encore écrit dit son attente.
-      const liens = liensDocuments(c, '<span class="fiche-sep" aria-hidden="true">·</span>');
+      const liens = liensDocuments(
+        c,
+        '<span class="fiche-sep" aria-hidden="true">·</span>',
+        nomsProjets(section, "nom"),
+        section.projets
+      );
       const etat = texteLocalise(c.etat);
       if (elDocs) {
         elDocs.className = liens ? "fiche-docs" : "fiche-etat";
