@@ -19,7 +19,7 @@
   // Date de dernière mise à jour du site (format ISO AAAA-MM-JJ).
   // ⚙️ À METTRE À JOUR à chaque déploiement notable : c'est la seule valeur à
   // changer pour rafraîchir la mention du pied de page.
-  const DATE_MAJ = "2026-10-18";
+  const DATE_MAJ = "2026-10-23";
 
   // Résout un id de projet en tenant compte des anciens ids (projets fusionnés
   // dans les hubs — voir PROJETS_ALIAS dans projects.js). La section demandée
@@ -29,6 +29,23 @@
     const deplacees = (window.SECTIONS_ALIAS || {})[id];
     if (deplacees && section && deplacees[section]) return deplacees[section];
     return (window.PROJETS_ALIAS || {})[id] || id;
+  }
+
+  // Une section retirée du site renvoie à la page qui l'accueillait (voir
+  // SECTIONS_RETIREES dans projects.js), qu'on arrive par sa page, par celle
+  // d'un de ses cours ou par celle d'un de ses documents.
+  function redirigerSectionRetiree() {
+    const params = new URLSearchParams(window.location.search);
+    const section = params.get("s");
+    if (!section || !params.get("p")) return false;
+    const projet = resoudreProjet(params.get("p"), section);
+    const repli = ((window.SECTIONS_RETIREES || {})[projet] || {})[section];
+    if (!repli) return false;
+    window.location.replace(
+      "projet-section.html?p=" + encodeURIComponent(projet) +
+        "&s=" + encodeURIComponent(repli)
+    );
+    return true;
   }
 
   // Formate DATE_MAJ dans la langue active (ex. « 30 juin 2026 » / « June 30, 2026 »).
@@ -58,6 +75,7 @@
   // (window.Contenu n'est chargé que sur les pages de projet.)
   function rendreProjets() {
     if (!window.Contenu) return;
+    if (redirigerSectionRetiree()) return;
 
     // Page de projet « classique » (tout le contenu).
     document.querySelectorAll("[data-projet]").forEach(function (conteneur) {

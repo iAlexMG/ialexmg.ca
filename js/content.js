@@ -1857,7 +1857,7 @@ const Contenu = (function () {
   // le poste de travail en haut, à monter avant tout le reste ; puis un cadre
   // qui tient la chaîne des trois métiers (sous chacun la bande des couches
   // qu'il possède), la fourche des trois dérivations qui sortent de la chaîne
-  // et y reviennent, et les deux fondations ; la gouvernance ferme ce cadre
+  // et y reviennent, et la fondation ; la gouvernance ferme ce cadre
   // par le bas, parce qu'elle englobe tout ce qu'il contient et se suit en
   // dernier. Les deux repères numérotés marquent les frontières où naissent
   // les malentendus ; la prose sous la carte les explique. Au large, la carte
@@ -2064,7 +2064,7 @@ const Contenu = (function () {
       }
     }
 
-    // Les deux fondations, sous la chaîne.
+    // La fondation, sous la chaîne.
     const fondations = Array.isArray(plan.fondations) ? plan.fondations : [];
     if (fondations.length) {
       if (plan.noteFondations) {

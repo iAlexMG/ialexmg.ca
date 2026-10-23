@@ -180,8 +180,19 @@ const SECTIONS_ALIAS = {
   },
 };
 
+// Sections RETIRÉES du site : projet -> { id de l'ancienne section -> section qui
+// l'accueillait }. Une ancienne adresse (la page de la section, d'un de ses cours
+// ou d'un de ses documents) mène à la page de repli plutôt qu'à « introuvable ».
+// Snowflake (SnowPro Core) a quitté le domaine des données le 2026-10-23.
+const SECTIONS_RETIREES = {
+  formations: {
+    "dd-snowflake": "domaine-donnees",
+  },
+};
+
 // Exposition globale (pas de modules pour rester compatible file:// et GitHub Pages).
 window.PROJETS = PROJETS;
 window.GROUPES_ACCUEIL = GROUPES_ACCUEIL;
 window.PROJETS_ALIAS = PROJETS_ALIAS;
 window.SECTIONS_ALIAS = SECTIONS_ALIAS;
+window.SECTIONS_RETIREES = SECTIONS_RETIREES;
